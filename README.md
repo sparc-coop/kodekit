@@ -2,19 +2,17 @@
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+1.	Currently only the "UI-Kit" projects works. "UI-Kit.Web" is the WebAssembly version that hasn't been hooked up yet.
+2.  Database: uikit.database.windows.net
+3.  Blob Storage: "uikit" blob container in the "kuviocreative" storage account
+4.  UI-Kit resource group in Azure.
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1.  Published to https://ui-kit.azurewebsites.net/
+2.  The idea is that a user uploads a css file and the file has an id that can be used to access it with https://ui-kit.azurewebsites.net/uikit/{GUID}
+    a. The /uikit link redirects to the direct link of the file in blob storage. 
 
 # Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+1. Needs user authentication and the user flow process.
+2. Ability to import other file types or add content manually.
+3. Add frontend styling when designs are complete.
