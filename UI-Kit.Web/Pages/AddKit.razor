@@ -1,0 +1,53 @@
+﻿@page "/AddKit"
+
+<div class="add-kit">
+    <EditForm Model="@kitModel" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <label>
+                Kit Name
+                <InputText id="name" @bind-Value="kitModel.Name" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Input
+                <InputTextArea @bind-Value="kitModel.Input" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Textarea
+                <InputTextArea @bind-Value="kitModel.Textarea" />
+            </label>
+        </div>
+        <div>
+            <label>
+                H1
+                <InputTextArea @bind-Value="kitModel.H1" />
+            </label>
+        </div>
+        <div>
+            <label>
+                H2
+                <InputTextArea @bind-Value="kitModel.H2" />
+            </label>
+        </div>
+
+        <button type="submit">Submit</button>
+    </EditForm>
+</div>
+
+<div>
+    <button>Upload CSS File</button>
+</div>
+
+@code {
+    private Kit kitModel = new Kit();
+
+    private void HandleValidSubmit()
+    {
+
+    }
+}

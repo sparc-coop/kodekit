@@ -1,0 +1,10 @@
+﻿body {
+    background: pink;
+}
+
+h1 {
+    color: green;
+    text-decoration: underline;
+    text-transform: lowercase;
+    background: blue;
+}

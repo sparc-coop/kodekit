@@ -1,0 +1,33 @@
+﻿@page "/"
+@namespace UI_Kit.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI-Kit</title>
+    <base href="~/" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+    <script src="_framework/blazor.server.js"></script>
+    <script src="_content/BlazorInputFile/inputfile.js"></script>
+    <script>
+        function copyToClipboard(id) {
+            var copyText = document.querySelector("#" + id);
+            copyText.select();
+            document.execCommand("copy");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@import "../_variables";
+
+.landing {
+
+    .hero {
+        background: url('/images/background_hero.jpg');
+        background-repeat: no-repeat;
+        background-size: 100vw auto;
+        height: calc(100vh - 70px);
+        margin-top: -40px;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: Lato;
+        font-size: 60px;
+        padding: 100px 135px;
+    }
+}

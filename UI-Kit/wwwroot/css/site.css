@@ -1,0 +1,169 @@
+﻿.header {
+  height: 70px;
+  background: #FFFFFF;
+  font-family: Lato; }
+  .header .logo {
+    position: absolute;
+    top: 20px;
+    left: 135px;
+    font-size: 20px; }
+  .header .login {
+    position: absolute;
+    top: 20px;
+    right: 185px; }
+  .header a {
+    text-decoration: none;
+    color: #000000; }
+  .header button {
+    cursor: pointer;
+    background: none;
+    border: none; }
+
+.navbar {
+  position: fixed;
+  right: -300px;
+  width: 300px;
+  background: #FFFFFF;
+  height: 100vh;
+  z-index: 10;
+  transform: translatex(-100%);
+  transition-duration: 0.5s;
+  transition-property: right,transform;
+  font-family: Lato;
+  box-shadow: 12px 24px 10px 9px #c2c2c2; }
+  .navbar ul li {
+    list-style-type: none;
+    padding: 10px 0; }
+  .navbar a {
+    text-decoration: none;
+    color: #000000; }
+    .navbar a:hover {
+      text-decoration: underline; }
+  .navbar--toggler {
+    position: absolute;
+    top: 15px;
+    right: 85px; }
+  .navbar.collapse {
+    right: -300px;
+    transform: translatex(100%);
+    transition-duration: 1s;
+    transition-property: right,transform; }
+
+.add-kit {
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Lato; }
+  .add-kit form {
+    position: relative;
+    width: 100%; }
+    .add-kit form .title input {
+      width: 400px; }
+  .add-kit form > div {
+    padding: 20px; }
+    .add-kit form > div input, .add-kit form > div textarea {
+      display: block;
+      margin-top: 5px;
+      border: none;
+      border-radius: 4px;
+      padding: 10px; }
+      .add-kit form > div input[type=file], .add-kit form > div textarea[type=file] {
+        padding: 0;
+        margin-bottom: 20px; }
+  .add-kit .manual-input > div {
+    padding: 20px; }
+  .add-kit .manual-input textarea {
+    margin-left: 20px; }
+  .add-kit .upload {
+    width: 100%; }
+    .add-kit .upload input[type=file] {
+      cursor: pointer;
+      width: 90px; }
+    .add-kit .upload code {
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 15px 20px;
+      color: #525151;
+      margin-top: 10px; }
+    .add-kit .upload p {
+      padding-bottom: 10px; }
+    .add-kit .upload span {
+      cursor: pointer;
+      position: absolute;
+      right: 25px; }
+    .add-kit .upload #code-copy {
+      color: #f2f2f2;
+      background: #f2f2f2;
+      position: absolute;
+      left: -1000px;
+      top: -1000px; }
+  .add-kit .save {
+    position: absolute;
+    top: 40px;
+    right: 220px;
+    padding: 14px 25px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #c2c2c2;
+    text-transform: uppercase;
+    background: #FFFFFF; }
+
+.landing .hero {
+  background: url("/images/background_hero.jpg");
+  background-repeat: no-repeat;
+  background-size: 100vw auto;
+  height: calc(100vh - 70px);
+  margin-top: -40px;
+  text-align: center; }
+
+.landing h1 {
+  font-family: Lato;
+  font-size: 60px;
+  padding: 100px 135px; }
+
+.kit-list {
+  padding-top: 50px; }
+  .kit-list h2 {
+    margin: 0 0 50px 0; }
+  .kit-list__container {
+    max-width: 975px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: Lato;
+    padding: 20px 50px; }
+  .kit-list .kit {
+    padding-bottom: 40px;
+    position: relative; }
+    .kit-list .kit:not(:last-child) {
+      border-bottom: 1px solid #c2c2c2; }
+    .kit-list .kit--header {
+      position: relative; }
+      .kit-list .kit--header a {
+        position: absolute;
+        right: 66px;
+        top: 5px;
+        color: #525151;
+        font-size: 12px; }
+    .kit-list .kit code {
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 15px 20px;
+      color: #525151;
+      margin-top: 10px; }
+    .kit-list .kit span {
+      cursor: pointer;
+      position: absolute;
+      right: 25px; }
+    .kit-list .kit .code-select {
+      color: #f2f2f2;
+      background: #f2f2f2;
+      position: absolute;
+      left: -1000px;
+      top: -1000px; }
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #f2f2f2; }

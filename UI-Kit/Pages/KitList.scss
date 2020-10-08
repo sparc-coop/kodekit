@@ -1,0 +1,60 @@
+﻿@import "../_variables";
+
+.kit-list {
+    padding-top: 50px;
+
+    h2 {
+        margin: 0 0 50px 0;
+    }
+
+    &__container {
+        max-width: 975px;
+        width: 100%;
+        margin: 0 auto;
+        font-family: Lato;
+        padding: 20px 50px;
+    }
+
+    .kit {
+        padding-bottom: 40px;
+        position: relative;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $gray;
+        }
+
+        &--header {
+            position: relative;
+
+            a {
+                position: absolute;
+                right: 66px;
+                top: 5px;
+                color: $dark-gray;
+                font-size: 12px;
+            }
+        }
+
+        code {
+            background: $white;
+            border-radius: 6px;
+            padding: 15px 20px;
+            color: $dark-gray;
+            margin-top: 10px;
+        }
+
+        span {
+            cursor: pointer;
+            position: absolute;
+            right: 25px;
+        }
+
+        .code-select {
+            color: $background;
+            background: $background;
+            position: absolute;
+            left: -1000px;
+            top: -1000px;
+        }
+    }
+}
