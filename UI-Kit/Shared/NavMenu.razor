@@ -1,0 +1,35 @@
+﻿<div class="header">
+    <a class="logo" href="/">UI Kit</a>
+    <a href="" class="login">Login / Sign up</a>
+    <button class="navbar--toggler" @onclick="ToggleNavMenu">
+        <span class="material-icons">
+            menu
+        </span>
+    </button>
+</div>
+
+<div class="navbar @hideNavMenu" @onclick="ToggleNavMenu">
+    <ul>
+        <li>
+            <NavLink class="nav-link" href="/AddKit" Match="NavLinkMatch.All">
+                <span aria-hidden="true"></span> Add UI-Kit
+            </NavLink>
+        </li>
+        <li>
+            <NavLink class="nav-link" href="/KitList" Match="NavLinkMatch.All">
+                <span aria-hidden="true"></span> View All UI Kits
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string hideNavMenu => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

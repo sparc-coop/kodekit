@@ -1,0 +1,50 @@
+﻿@import "../_variables";
+
+.header {
+    height: 70px;
+    background: $white;
+
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 135px;
+    }
+
+    .login {
+        position: absolute;
+        top: 20px;
+        right: 185px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.navbar {
+    position: fixed;
+    right: 0;
+    width: 300px;
+    background: $white;
+    height: 100vh;
+
+    ul {
+        li {
+            list-style-type: none;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    &--toggler {
+        position: absolute;
+        top: 15px;
+        right: 85px;
+    }
+
+    &.collapse {
+        display: none;
+    }
+}

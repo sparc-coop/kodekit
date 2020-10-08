@@ -1,0 +1,40 @@
+﻿@page "/KitList"
+
+<div class="kit-list">
+    <div class="kit-list__container">
+        <h2>UI Kit List</h2>
+        @foreach (var kit in kits)
+        {
+            <div class="kit">
+                <div class="kit--header">
+                    <h4>@kit.Name</h4> <a href="@kit.Url" target="_blank">View file</a>
+                </div>
+                <code>
+                    &lt;link rel="stylesheet" type="text/css" href="https://ui-kit.azurewebsites.net/uikit/@kit.GUID"&gt;
+                </code>
+                <input id="code-copy-@kit.id" class="code-select" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://ui-kit.azurewebsites.net/uikit/" + kit.GUID + "\">")" />
+                <span class="material-icons" @onclick="@(e => CopyLink(kit.id))">
+                    content_copy
+                </span>
+            </div>
+        }
+    </div>
+</div>
+
+@inject IRepository<Kit> KitRepo
+@inject IJSRuntime JSRuntime
+
+@code {
+    List<Kit> kits = new List<Kit>();
+
+    protected override void OnInitialized()
+    {
+        //get user and only show kits from user
+        kits = KitRepo.Query.Where(x => x.Url != null).ToList();
+    }
+
+    private async Task CopyLink(int id)
+    {
+        await JSRuntime.InvokeAsync<string>("copyToClipboard", "code-copy-" + id);
+    }
+}

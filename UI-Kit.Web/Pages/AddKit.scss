@@ -1,0 +1,20 @@
+﻿
+.add-kit {
+    padding: 50px;
+
+    form > div {
+        padding: 20px;
+
+        input, textarea {
+            display: block;
+            margin-top: 5px;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    }
+
+    button {
+        margin: 20px;
+    }
+}

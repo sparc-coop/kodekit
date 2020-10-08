@@ -1,0 +1,15 @@
+﻿@layout EmptyLayout
+@page "/uikit/{GUID}"
+
+
+@inject NavigationManager Navigation
+@inject IRepository<Kit> KitRepo
+
+@code {
+    [Parameter] public string GUID { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Navigation.NavigateTo($"https://kuviocreative.blob.core.windows.net/uikit/" + GUID + ".css");
+    }
+}
