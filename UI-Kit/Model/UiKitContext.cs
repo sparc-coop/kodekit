@@ -19,7 +19,8 @@ namespace UI_Kit.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(ConfigureUser);
-            modelBuilder.Entity<Kit>(ConfigureKit);
+            // modelBuilder.Entity<Kit>(ConfigureKit);
+            ConfigureKit(modelBuilder);
         }
 
         private void ConfigureUser(EntityTypeBuilder<User> entity)
@@ -27,9 +28,12 @@ namespace UI_Kit.Model
 
         }
 
-        private void ConfigureKit(EntityTypeBuilder<Kit> entity)
+        private void ConfigureKit(ModelBuilder modelBuilder)//EntityTypeBuilder<Kit> entity)
         {
-
+            modelBuilder.Entity<Kit>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+            });
         }
     }
 }

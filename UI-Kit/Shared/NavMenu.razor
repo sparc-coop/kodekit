@@ -1,14 +1,24 @@
 ﻿<div class="header">
-    <a class="logo" href="/">UI Kit</a>
-    <a href="" class="login">Login / Sign up</a>
-    <button class="navbar--toggler" @onclick="ToggleNavMenu">
-        <span class="material-icons">
-            menu
-        </span>
-    </button>
+    <a class="logo" href="/">
+        <img src="/images/logo.svg"/>
+        KODEKIT.CSS
+    </a>
+    @*@if (homePage == true)
+    {
+        <a href="/GetStarted" class="login">Get Started for Free</a>
+    }
+    else
+    {
+        <a href="/Preview" class="login">Preview</a>
+    }*@
+    @*<button class="navbar--toggler" @onclick="ToggleNavMenu">
+            <span class="material-icons">
+                menu
+            </span>
+        </button>*@
 </div>
 
-<div class="navbar @hideNavMenu" @onclick="ToggleNavMenu">
+@*<div class="navbar @hideNavMenu" @onclick="ToggleNavMenu">
     <ul>
         <li>
             <NavLink class="nav-link" href="/AddKit" Match="NavLinkMatch.All">
@@ -21,15 +31,26 @@
             </NavLink>
         </li>
     </ul>
-</div>
+</div>*@
 
+@inject NavigationManager Navigation
 @code {
-    private bool collapseNavMenu = true;
+    //private bool collapseNavMenu = true;
+    //private string hideNavMenu => collapseNavMenu ? "collapse" : null;
+    //private bool homePage = false;
+    //private string test = ""; 
 
-    private string hideNavMenu => collapseNavMenu ? "collapse" : null;
+    //protected override void OnInitialized()
+    //{
+    //    test = Navigation.Uri;
+    //    if (Navigation.Uri == Navigation.BaseUri)
+    //    {
+    //        homePage = true;
+    //    }
+    //}
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    //private void ToggleNavMenu()
+    //{
+    //    collapseNavMenu = !collapseNavMenu;
+    //}
 }

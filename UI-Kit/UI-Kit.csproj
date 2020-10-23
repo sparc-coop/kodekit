@@ -20,4 +20,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Pages\Colors.scss">
+      <DependentUpon>Colors.razor</DependentUpon>
+    </None>
+    <None Update="Pages\Finish.scss">
+      <DependentUpon>Finish.razor</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>
