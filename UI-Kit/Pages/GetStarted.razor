@@ -1,0 +1,24 @@
+﻿@page "/GetStarted"
+
+<div class="get-started">
+    <div class="get-started__container">
+        <div class="title">
+            <h2>Build Your System</h2>
+            <p>
+                This is where you can build your very own system, and at the end export it to use in your projects.
+            </p>
+        </div>
+        <img src="/images/step_1.svg" />
+        <button @onclick="@(e => GoTo("/Typography"))">Get Started</button>
+    </div>
+</div>
+
+@inject NavigationManager Navigation
+
+@code {
+
+    void GoTo(string page)
+    {
+        Navigation.NavigateTo(page);
+    }
+}

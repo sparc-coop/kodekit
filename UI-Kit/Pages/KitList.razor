@@ -1,5 +1,4 @@
-﻿@page "/KitList"
-
+﻿
 <div class="kit-list">
     <div class="kit-list__container">
         <h2>UI Kit List</h2>
@@ -12,8 +11,8 @@
                 <code>
                     &lt;link rel="stylesheet" type="text/css" href="https://ui-kit.azurewebsites.net/uikit/@kit.GUID"&gt;
                 </code>
-                <input id="code-copy-@kit.id" class="code-select" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://ui-kit.azurewebsites.net/uikit/" + kit.GUID + "\">")" />
-                <span class="material-icons" @onclick="@(e => CopyLink(kit.id))">
+                <input id="code-copy-@kit.Id" class="code-select" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://ui-kit.azurewebsites.net/uikit/" + kit.GUID + "\">")" />
+                <span class="material-icons" @onclick="@(e => CopyLink(kit.Id))">
                     content_copy
                 </span>
             </div>
@@ -26,6 +25,8 @@
 
 @code {
     List<Kit> kits = new List<Kit>();
+
+    //OLD PAGE
 
     protected override void OnInitialized()
     {

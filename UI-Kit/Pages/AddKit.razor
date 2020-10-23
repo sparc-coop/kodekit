@@ -1,5 +1,4 @@
-﻿@page "/AddKit"
-
+﻿
 <div class="add-kit">
     <EditForm Model="@newKit" OnValidSubmit="@HandleValidSubmit">
         <DataAnnotationsValidator />
@@ -28,37 +27,6 @@
                 </span>
             }
         </div>
-        @*<div>OR</div>
-            <div class="manual-input">
-                <div>
-                    <label>
-                        input {
-                        <InputTextArea @bind-Value="newKit.Input" />
-                        }
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        textarea {
-                        <InputTextArea @bind-Value="newKit.Textarea" />
-                        }
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        h1 {
-                        <InputTextArea @bind-Value="newKit.H1" />
-                        }
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        h2 {
-                        <InputTextArea @bind-Value="newKit.H2" />
-                        }
-                    </label>
-                </div>
-            </div>*@
         @if (submitted == false)
         {
             <button type="submit" class="save">Submit</button>
@@ -81,6 +49,9 @@
     bool submitted = false;
     string linktext;
     string fileName;
+
+
+    //OLD PAGE
 
     protected override void OnInitialized()
     {
@@ -110,7 +81,7 @@
 
     public async Task FileSelected(IFileListEntry[] files)
     {
-        int userId = 1;
+        int userId = 0;
 
         foreach (var file in files)
         {

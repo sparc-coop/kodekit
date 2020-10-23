@@ -1,12 +1,16 @@
 ﻿@import "../_variables";
 
 .add-kit {
-    padding: 50px;
+    padding: 0 235px;
     display: flex;
     flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 0 auto;
+    //max-width: 1000px;
+    //margin: 0 auto;
     font-family: Lato;
+    background: $background;
+    padding-top: 180px;
+    margin-top: -180px;
+    height: 100vh;
 
     form {
         position: relative;
@@ -28,6 +32,8 @@
             border: none;
             border-radius: 4px;
             padding: 10px;
+            border: 1px solid #E7E7ED;
+            background: $white;
 
             &[type=file] {
                 padding: 0;
@@ -38,11 +44,11 @@
 
     .manual-input {
         > div {
-            padding: 20px;
+            padding: 20px 0;
         }
 
         textarea {
-            margin-left: 20px;
+            //margin-left: 20px;
         }
     }
 
