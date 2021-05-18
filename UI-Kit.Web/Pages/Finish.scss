@@ -1,0 +1,84 @@
+﻿@import "../_variables";
+
+.finish {
+    background: $background;
+    height: calc(100vh - 180px);
+    padding: 180px 20px 0 20px;
+    margin-top: -180px;
+
+    &__container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        height: calc(100vh - 180px);
+    }
+
+    h2 {
+        font-family: Roboto Mono;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 160%;
+        color: $text-primary;
+        margin: 0;
+    }
+
+    p {
+        font-family: Roboto;
+        font-size: 18px;
+        line-height: 180%;
+        color: $text-secondary;
+        margin: 0;
+        padding: 18px 0 40px 0;
+    }
+
+    .download {
+        background: $blue;
+        border-radius: 4px;
+        color: $white;
+        font-family: Roboto Mono;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 160%;
+        padding: 6px 24px;
+        border: none;
+        display: block;
+        width: 90px;
+        text-align: center;
+        margin-bottom: 60px;
+        text-decoration: none;
+    }
+
+    code {
+        background: $white;
+        border-radius: 6px;
+        padding: 20px;
+        color: $dark-gray;
+        margin-top: 10px;
+        font-size: 12.5px;
+        font-family: Roboto Mono;
+        border: 1px solid $gray;
+
+        @media only screen and (max-width: 1045px) {
+            display: flex;
+        }
+    }
+
+    span {
+        cursor: pointer;
+        position: absolute;
+        right: 5px;
+
+        @media only screen and (max-width: 1045px) {
+            margin-top: 12px;
+        }
+    }
+
+    #code-copy {
+        color: $background;
+        background: $background;
+        position: absolute;
+        left: -1000px;
+        top: -1000px;
+    }
+}

@@ -5,6 +5,12 @@
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
 @using Microsoft.JSInterop
-@using UI_Kit.Web
-@using UI_Kit.Web.Shared
-@using UI_Kit.Model
+@using Kodekit.Web
+@using Kodekit.Web.Shared
+@using Kodekit.Features
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+
+@inject NavigationManager Nav
+@inject KodekitApi Api
