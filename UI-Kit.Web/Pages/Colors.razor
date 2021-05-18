@@ -1,0 +1,124 @@
+﻿@page  "/Colors/{kitId}"
+
+<div class="colors">
+    <div class="container">
+        <div class="progress">
+            <img src="/images/step_3.svg" />
+        </div>
+        <div class="title">
+            <h4>Step Two</h4>
+            <h2>Colors</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+            </p>
+        </div>
+        <div class="content">
+            @*<h3>Brand Colors</h3>
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <div class="section">
+                        <label>
+                            Primary
+                            <span style="background-color: @kit.PrimaryColor"></span>
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Secondary
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Tertiary
+                            <span style="background-color: @kit.TertiaryColor"></span>
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <div style="background-color: @kit.PrimaryColor"></div>
+                        <div style="background-color: @kit.SecondaryColor"></div>
+                        <div style="background-color: @kit.TertiaryColor"></div>
+                    </div>
+                    <h3>Greyscale</h3>
+                    <div class="section">
+                        <label>
+                            Darkest
+                            <span style="background-color: @kit.DarkColor"></span>
+                            <InputText @bind-Value="kit.DarkColor" />
+                        </label>
+                        <label>
+                            Lightest
+                            <span style="background-color: @kit.LightColor"></span>
+                            <InputText @bind-Value="kit.LightColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example preview-example--grayscale">
+                        <div style="background-color: @kit.DarkColor"></div>
+                        <div style="background-color: #2B2D39"></div>
+                        <div style="background-color: #30313F"></div>
+                        <div style="background-color: #393A4A"></div>
+                        <div style="background-color: #6B6C7E"></div>
+                        <div style="background-color: #A7A9BC"></div>
+                        <div style="background-color: #CDCED9"></div>
+                        <div style="background-color: #E7E7ED"></div>
+                        <div style="background-color: @kit.LightColor"></div>
+                    </div>
+                    <h3>System Colors</h3>
+                    <div class="section">
+                        <label>
+                            Primary
+                            <span style="background-color: @kit.PrimaryColor"></span>
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Secondary
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Tertiary
+                            <span style="background-color: @kit.TertiaryColor"></span>
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <div style="background-color: @kit.PrimaryColor"></div>
+                        <div style="background-color: @kit.SecondaryColor"></div>
+                        <div style="background-color: @kit.TertiaryColor"></div>
+                    </div>-->
+                    <!--<div class="button--save" @onclick="Submit">Save & Continue</div>
+                </EditForm>
+            }*@
+        </div>
+    </div>
+</div>
+
+@code {
+    //private Kit kit { get; set; }
+    [Parameter] public string kitId { get; set; }
+
+    protected override void OnInitialized()
+    {
+        //kit = KitRepo.Query.Where(x => x.GUID.ToString() == kitId).FirstOrDefault();
+        //kit.PrimaryColor = "#0B5FFF";
+        //kit.SecondaryColor = "#4B9BFF";
+        //kit.TertiaryColor = "#FFB46E";
+        //kit.DarkColor = "#272833";
+        //kit.LightColor = "#F3F3F9";
+    }
+
+    private async Task Submit()
+    {
+        //string newCss = new CreateCss().Execute(kit);
+
+        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
+        //SaveColors();
+    }
+
+    //private void SaveColors()
+    //{
+    //    KitRepo.Update(kit);
+    //    KitRepo.Commit();
+    //    Navigation.NavigateTo("/Finish/" + kit.GUID);
+    //}
+}

@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\_variables.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\_variables.scss" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.3" PrivateAssets="all" />
+    <!--<PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="5.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+        <PackageReference Include="Sparc.Authentication.Blazor" Version="2.1.4" />-->
+    <PackageReference Include="Sparc.Platforms.Web" Version="2.3.5" />
+
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <!--<PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="3.1.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.12" />-->
+  </ItemGroup>
+
+  <!--<ItemGroup>
+      <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>-->
+
+
+  <ItemGroup>
+    <OpenApiReference Include="../Kodekit.Features/swagger.json" Namespace="Kodekit.Features">
+      <ClassName>KodekitApi</ClassName>
+    </OpenApiReference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="Pages\Colors.scss">
+      <DependentUpon>Colors.razor</DependentUpon>
+    </None>
+    <None Update="Pages\Finish.scss">
+      <DependentUpon>Finish.razor</DependentUpon>
+    </None>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\components\" />
+  </ItemGroup>
+
+</Project>

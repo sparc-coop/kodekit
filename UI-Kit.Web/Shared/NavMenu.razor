@@ -1,30 +1,44 @@
 ﻿<div class="header">
-    <a class="logo" href="/">UI-Kit</a>
-    <a href="" class="login">Login / Sign up</a>
-    <button class="navbar--toggler" @onclick="ToggleNavMenu">
-        <span class="material-icons">
-            menu
-        </span>
-    </button>
+    <a class="logo" href="/">
+        <img src="/images/logo.svg" />
+        KODEKIT.CSS
+    </a>
+    <a href="/authentication/login" class="login">Login / Sign up</a>
 </div>
 
-<div class="navbar @hideNavMenu" @onclick="ToggleNavMenu">
-    <ul>
-        <li>
-            <NavLink class="nav-link" href="/AddKit" Match="NavLinkMatch.All">
-                <span aria-hidden="true"></span> Add UI-Kit
-            </NavLink>
-        </li>
-    </ul>
-</div>
+@*<div class="navbar @hideNavMenu" @onclick="ToggleNavMenu">
+        <ul>
+            <li>
+                <NavLink class="nav-link" href="/AddKit" Match="NavLinkMatch.All">
+                    <span aria-hidden="true"></span> Add UI-Kit
+                </NavLink>
+            </li>
+            <li>
+                <NavLink class="nav-link" href="/KitList" Match="NavLinkMatch.All">
+                    <span aria-hidden="true"></span> View All UI Kits
+                </NavLink>
+            </li>
+        </ul>
+    </div>*@
 
+@inject NavigationManager Navigation
 @code {
-    private bool collapseNavMenu = true;
+    //private bool collapseNavMenu = true;
+    //private string hideNavMenu => collapseNavMenu ? "collapse" : null;
+    //private bool homePage = false;
+    //private string test = "";
 
-    private string hideNavMenu => collapseNavMenu ? "collapse" : null;
+    //protected override void OnInitialized()
+    //{
+    //    test = Navigation.Uri;
+    //    if (Navigation.Uri == Navigation.BaseUri)
+    //    {
+    //        homePage = true;
+    //    }
+    //}
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+    //private void ToggleNavMenu()
+    //{
+    //    collapseNavMenu = !collapseNavMenu;
+    //}
 }

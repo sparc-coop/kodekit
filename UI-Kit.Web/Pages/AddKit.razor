@@ -1,53 +1,100 @@
-﻿@page "/AddKit"
-
+﻿
 <div class="add-kit">
-    <EditForm Model="@kitModel" OnValidSubmit="@HandleValidSubmit">
+    <EditForm @*Model="@newKit"*@ @*OnValidSubmit="@HandleValidSubmit"*@>
         <DataAnnotationsValidator />
         <ValidationSummary />
-        <div>
+        <div class="title">
             <label>
-                Kit Name
-                <InputText id="name" @bind-Value="kitModel.Name" />
+                Kit Name:
+                @*<InputText id="name" @bind-Value="newKit.Name" />*@
             </label>
         </div>
-        <div>
-            <label>
-                Input
-                <InputTextArea @bind-Value="kitModel.Input" />
-            </label>
+        <div class="upload">
+            @*<InputFile OnChange="FileSelected" />*@
+            @if (fileName != null && submitted == false)
+            {
+                <div>File: @fileName</div>
+            }
+            @if (submitted == true)
+            {
+                <p>Your UI Kit has been saved! You can now add this style sheet to any project!</p>
+                <code>
+                    @*&lt;link rel="stylesheet" type="text/css" href="https://ui-kit.azurewebsites.net/uikit/@newKit.GUID"&gt;*@
+                </code>
+                <input id="code-copy" value="@linktext" />
+                @*<span class="material-icons" @onclick="CopyLink">
+                    content_copy
+                </span>*@
+            }
         </div>
-        <div>
-            <label>
-                Textarea
-                <InputTextArea @bind-Value="kitModel.Textarea" />
-            </label>
-        </div>
-        <div>
-            <label>
-                H1
-                <InputTextArea @bind-Value="kitModel.H1" />
-            </label>
-        </div>
-        <div>
-            <label>
-                H2
-                <InputTextArea @bind-Value="kitModel.H2" />
-            </label>
-        </div>
-
-        <button type="submit">Submit</button>
+        @if (submitted == false)
+        {
+            <button type="submit" class="save">Submit</button>
+        }
+        else
+        {
+            @*<button class="save" @onclick="Reload">Add a new UI Kit</button>*@
+        }
     </EditForm>
 </div>
 
-<div>
-    <button>Upload CSS File</button>
-</div>
-
 @code {
-    private Kit kitModel = new Kit();
+    //private Kit newKit = new Kit();
+    private string fileUrl;
+    bool fileUploaded = false;
+    bool submitted = false;
+    string linktext;
+    string fileName;
 
-    private void HandleValidSubmit()
+
+    //OLD PAGE
+
+    protected override void OnInitialized()
     {
-
+        //newKit.GUID = Guid.NewGuid();
     }
+
+    //private void HandleValidSubmit()
+    //{
+    //    if (fileUploaded == true)
+    //    {
+    //        newKit.Url = fileUrl;
+    //        KitRepo.Add(newKit);
+    //        KitRepo.Commit();
+    //        submitted = true;
+    //        linktext = $"<link rel=\"stylesheet\" type=\"text/css\" href=\"https://ui-kit.azurewebsites.net/uikit/" + newKit.GUID + "\" >";
+    //    }
+    //}
+
+    //private void Save()
+    //{
+    //    newKit.Name = "test1";
+    //    newKit.Url = "www.google.com";
+    //    newKit.UserId = 1;
+    //    KitRepo.Add(newKit);
+
+    //}
+
+    //public async Task FileSelected(IFileListEntry[] files)
+    //{
+    //    int userId = 0;
+
+    //    foreach (var file in files)
+    //    {
+    //        fileName = file.Name;
+    //        fileUrl = await new StorageContext().Upload(file.Data, newKit.GUID.ToString() + ".css", userId);
+    //        if (fileUrl != null)
+    //            fileUploaded = true;
+    //    }
+    //}
+
+    //private async Task CopyLink()
+    //{
+    //    await JSRuntime.InvokeAsync<string>("copyToClipboard", linktext);
+    //}
+
+    //void Reload()
+    //{
+    //    Navigation.NavigateTo("/AddKit", forceLoad: true);
+    //}
 }

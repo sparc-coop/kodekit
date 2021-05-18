@@ -1,14 +1,12 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Kodekit.Features;
+using Sparc.Authentication.Blazor;
+using System.Threading.Tasks;
 
-namespace UI_Kit.Web
+namespace Kodekit.Web
 {
     public class Program
     {
@@ -19,7 +17,12 @@ namespace UI_Kit.Web
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            await builder.Build().RunAsync();
+            builder.AddB2CApi<KodekitApi>(
+                    "https://kodekitui.onmicrosoft.com",
+                    builder.Configuration["ApiUrl"]);
+
+            var host = builder.Build();
+            await host.RunAsync();
         }
     }
 }
