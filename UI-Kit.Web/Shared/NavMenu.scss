@@ -28,12 +28,6 @@
         color: $black;
         text-decoration: none;
     }
-
-    .login {
-        position: absolute;
-        right: 0;
-        top: 46px;
-    }
 }
 
 .navbar {
@@ -77,4 +71,11 @@
         transition-duration: 1s;
         transition-property: right,transform;
     }
+}
+
+.login-display {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 46px;
 }
