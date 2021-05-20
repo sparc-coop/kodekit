@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30014.187
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI-Kit", "UI-Kit\UI-Kit.csproj", "{87B9CDA0-DD6E-46FD-9618-302F29571F2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web", "UI-Kit.Web\Kodekit.Web.csproj", "{4BB97F2D-7CFB-40D2-AE4F-6C61EF40BF72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web", "Kodekit.Web\Kodekit.Web.csproj", "{4BB97F2D-7CFB-40D2-AE4F-6C61EF40BF72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodekit.Core", "Kodekit.Core\Kodekit.Core.csproj", "{08BF3393-22C7-4D9D-9B86-009486302F06}"
 EndProject

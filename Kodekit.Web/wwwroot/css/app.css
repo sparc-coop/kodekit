@@ -32,7 +32,7 @@
   transition-duration: 0.5s;
   transition-property: right,transform;
   font-family: Lato;
-  box-shadow: 12px 24px 10px 9px #c2c2c2; }
+  box-shadow: 12px 24px 10px 9px; }
   .navbar ul li {
     list-style-type: none;
     padding: 10px 0; }
@@ -56,6 +56,9 @@
   position: absolute;
   right: 0;
   top: 46px; }
+  .login-display .logout {
+    border: none;
+    background: none; }
 
 .add-kit {
   padding: 0 235px;
