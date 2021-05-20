@@ -1,4 +1,4 @@
-﻿@import "../_variables";
+﻿@import "../wwwroot/css/_variables";
 
 .header {
     height: 180px;
@@ -41,7 +41,7 @@
     transition-duration: 0.5s;
     transition-property: right,transform;
     font-family: Lato;
-    box-shadow: 12px 24px 10px 9px $gray;
+    box-shadow: 12px 24px 10px 9px;
 
     ul {
         li {
@@ -78,4 +78,9 @@
     position: absolute;
     right: 0;
     top: 46px;
+
+    .logout {
+        border: none;
+        background: none;
+    }
 }
