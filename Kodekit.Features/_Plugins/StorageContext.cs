@@ -6,8 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Azure.Storage.Blobs.Models;
 using System.Text;
 
-namespace UI_Kit.Storage
+namespace Kodekit.Features
 {
+    //From original project, not hookedup/working yet
     public class StorageContext
     {
         private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=kuviocreative;AccountKey=KLS5GllFAdTF2Vp6ogzMpFjkEEM+bg/NJMFdKzWU4jOP+4hCIxyyXAUkhmW8SajS50o6wNd8D780HerrOn2iZQ==;EndpointSuffix=core.windows.net";

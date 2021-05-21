@@ -10,7 +10,7 @@
             </label>
         </div>
         <div class="upload">
-            @*<InputFile OnChange="FileSelected" />*@
+            <InputFile OnChange="FileSelected" />
             @if (fileName != null && submitted == false)
             {
                 <div>File: @fileName</div>
@@ -45,7 +45,14 @@
     bool submitted = false;
     string linktext;
     string fileName;
+    public IBrowserFile UploadContent { get; set; }
 
+    private async Task FileSelected(InputFileChangeEventArgs e)
+    {
+        UploadContent = e.File;
+        //Document.FileName = e.File.Name;
+        //Document.Size = Convert.ToInt32(e.File.Size);
+    }
 
     //OLD PAGE
 
