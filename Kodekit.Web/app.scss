@@ -1,10 +1,8 @@
 ﻿@import "_variables.scss";
 
-@import "../../Shared/NavMenu";
-@import "../../Shared/MainLayout";
+@import "../../Pages/all";
+@import "../../Shared/all";
 
-@import "../../Pages/AddKit";
-@import "../../Pages/Index";
 
 body {
     margin: 0;
@@ -12,7 +10,6 @@ body {
     background: $background;
     font-family: 'Roboto', sans-serif;
 }
-
 
 .loading {
     text-align: center;
