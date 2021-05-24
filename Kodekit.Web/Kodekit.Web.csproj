@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="app.scss" />
+    <Content Include="_variables.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\app.css" />
+    <None Include="wwwroot\css\app.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.3" PrivateAssets="all" />
+    <PackageReference Include="Sparc.Platforms.Web" Version="2.3.5" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <OpenApiReference Include="../Kodekit.Features/swagger.json" Namespace="Kodekit.Features">
+      <ClassName>KodekitApi</ClassName>
+    </OpenApiReference>
+  </ItemGroup>
+
+</Project>

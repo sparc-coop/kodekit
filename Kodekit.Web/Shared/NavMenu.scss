@@ -1,0 +1,86 @@
+﻿@import "../wwwroot/css/_variables";
+
+.header {
+    height: 180px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+
+    .logo {
+        position: absolute;
+        top: 46px;
+        left: 0;
+        font-size: 20px;
+        font-family: 'Roboto Mono';
+        font-weight: 500;
+        font-size: 14px;
+
+        img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    }
+
+    a {
+        color: $black;
+        text-decoration: none;
+    }
+}
+
+.navbar {
+    position: fixed;
+    right: -300px;
+    width: 300px;
+    background: $white;
+    height: 100vh;
+    z-index: 10;
+    transform: translatex(-100%);
+    transition-duration: 0.5s;
+    transition-property: right,transform;
+    font-family: Lato;
+    box-shadow: 12px 24px 10px 9px;
+
+    ul {
+        li {
+            list-style-type: none;
+            padding: 10px 0;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: $black;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &--toggler {
+        position: absolute;
+        top: 15px;
+        right: 85px;
+    }
+
+    &.collapse {
+        right: -300px;
+        transform: translatex(100%);
+        transition-duration: 1s;
+        transition-property: right,transform;
+    }
+}
+
+.login-display {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 46px;
+
+    .logout {
+        border: none;
+        background: none;
+    }
+}
