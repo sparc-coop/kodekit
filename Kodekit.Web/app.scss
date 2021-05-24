@@ -1,0 +1,58 @@
+﻿@import "_variables.scss";
+
+@import "../../Pages/all";
+@import "../../Shared/all";
+
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: $background;
+    font-family: 'Roboto', sans-serif;
+}
+
+.loading {
+    text-align: center;
+    padding-top: 22%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    img {
+        vertical-align: middle;
+        animation-name: bounce;
+        animation-timing-function: ease;
+        align-self: flex-end;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        height: 30px;
+        margin: 0 auto 0 auto;
+        transform-origin: bottom;
+        width: 200px;
+    }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-100px); }
+    100% { transform: translateY(0); }
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.sparc-authentication{
+    justify-content: center;
+    text-align: center;
+    padding-top: 15%;
+}
