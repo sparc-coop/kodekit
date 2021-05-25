@@ -29,5 +29,12 @@ namespace Kodekit.Core
         public string BodyLineHeight { get; set; }
         public DateTime? DateCreated { get; set; }
         public bool? IsFinished { get; set; }
+
+        public Kit(int userId, Guid guid, string name)
+        {
+            UserId = userId;
+            GUID = guid;
+            Name = name;
+        }
     }
 }
