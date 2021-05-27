@@ -8,12 +8,17 @@
                 This is where you can build your very own system, and at the end export it to use in your projects.
             </p>
         </div>
-        <img src="/images/step_1.svg" />
         <button @onclick="@(e => GoTo("/Typography"))">Get Started</button>
     </div>
 </div>
 
 @code {
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await Api.CreateUserAsync();
+    }
 
     void GoTo(string page)
     {

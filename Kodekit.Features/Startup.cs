@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using Sparc.Authentication.AzureADB2C;
 using Sparc.Features;
 using Sparc.Database.SqlServer;
+using Sparc.Plugins.Database.Cosmos;
+
 
 namespace Kodekit.Features
 {
@@ -31,7 +33,8 @@ namespace Kodekit.Features
         {
             services.AddControllersWithViews();
             services.Sparcify<Startup>(Configuration["ClientUrl"]);
-            services.AddSqlServer<KodekitContext>(Configuration["ConnectionStrings:Database"]);
+            services.AddCosmos<KodekitContext>(Configuration["ConnectionStrings:CosmosDb"], "kodekit-dev");
+            //services.AddSqlServer<KodekitContext>(Configuration["ConnectionStrings:Database"]);
             services.AddAzureADB2CAuthentication(Configuration);
             services.AddRazorPages();
         }

@@ -157,6 +157,35 @@
         }
       }
     },
+    "/api/CreateUser": {
+      "post": {
+        "tags": [
+          "CreateUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/UpdateUser": {
       "post": {
         "tags": [
@@ -220,10 +249,105 @@
   },
   "components": {
     "schemas": {
+      "Kit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "primaryColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "secondaryColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "tertiaryColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "darkColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "lightColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "typeScale": {
+            "type": "string",
+            "nullable": true
+          },
+          "headerFont": {
+            "type": "string",
+            "nullable": true
+          },
+          "headerFontSize": {
+            "type": "string",
+            "nullable": true
+          },
+          "headerTypeScale": {
+            "type": "string",
+            "nullable": true
+          },
+          "headerLineHeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "bodyFont": {
+            "type": "string",
+            "nullable": true
+          },
+          "bodyFontSize": {
+            "type": "string",
+            "nullable": true
+          },
+          "bodyTypeScale": {
+            "type": "string",
+            "nullable": true
+          },
+          "bodyLineHeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isFinished": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "User": {
         "type": "object",
         "properties": {
           "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
             "type": "string",
             "nullable": true
           },
@@ -237,6 +361,13 @@
           },
           "lastName": {
             "type": "string",
+            "nullable": true
+          },
+          "kits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Kit"
+            },
             "nullable": true
           }
         },
