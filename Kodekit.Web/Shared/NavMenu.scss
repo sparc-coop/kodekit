@@ -1,6 +1,67 @@
-﻿@import "../wwwroot/css/_variables";
+﻿@import "../_variables.scss";
+
+.sidebar {
+    background: $white;
+    max-width: 256px;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    height: 100vh;
+    bottom: 0;
+    z-index: 10;
+
+    .menu {
+        padding: 20px 16px;
+    }
+
+
+    .login-display {
+        display: flex;
+        position: absolute;
+        left: 16px;
+        bottom: 50px;
+
+        a {
+            color: $black;
+            text-decoration: none;
+        }
+
+        .logout {
+            border: none;
+            background: none;
+        }
+    }
+}
 
 .header {
+    height: 55px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    z-index: 10;
+    margin: 0 auto;
+    padding: 20px 16px;
+    border-bottom: 1px solid $gray100;
+    box-sizing: border-box;
+
+    .logo {
+        font-size: 20px;
+        font-family: 'Roboto Mono';
+        font-weight: 500;
+        font-size: 14px;
+
+        img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    }
+
+    a {
+        color: $black;
+        text-decoration: none;
+    }
+}
+
+.landing-header {
     height: 180px;
     font-family: 'Roboto', sans-serif;
     position: relative;
@@ -28,59 +89,11 @@
         color: $black;
         text-decoration: none;
     }
-}
 
-.navbar {
-    position: fixed;
-    right: -300px;
-    width: 300px;
-    background: $white;
-    height: 100vh;
-    z-index: 10;
-    transform: translatex(-100%);
-    transition-duration: 0.5s;
-    transition-property: right,transform;
-    font-family: Lato;
-    box-shadow: 12px 24px 10px 9px;
-
-    ul {
-        li {
-            list-style-type: none;
-            padding: 10px 0;
-        }
-    }
-
-    a {
-        text-decoration: none;
-        color: $black;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &--toggler {
+    .login-display {
+        display: flex;
         position: absolute;
-        top: 15px;
-        right: 85px;
-    }
-
-    &.collapse {
-        right: -300px;
-        transform: translatex(100%);
-        transition-duration: 1s;
-        transition-property: right,transform;
-    }
-}
-
-.login-display {
-    display: flex;
-    position: absolute;
-    right: 0;
-    top: 46px;
-
-    .logout {
-        border: none;
-        background: none;
+        top: 46px;
+        right: 0px;
     }
 }

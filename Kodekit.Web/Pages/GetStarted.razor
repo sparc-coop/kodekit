@@ -1,7 +1,7 @@
 ﻿@page "/GetStarted"
 
-<div class="get-started">
-    <div class="get-started__container">
+<div class="page">
+    <div class="page__container">
         <div class="title">
             <h2>Build Your System</h2>
             <p>
@@ -14,10 +14,9 @@
 
 @code {
 
-
     protected override async Task OnInitializedAsync()
     {
-        //await Api.CreateUserAsync();
+        await Api.CreateUserAsync();
     }
 
     void GoTo(string page)

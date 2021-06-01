@@ -19,9 +19,9 @@ namespace Kodekit.Features.Users
         {
             try
             {
-                User user = new User();
-                user.FirstName = "TestFirst";
-                user.LastName = "LastName";
+                User user =  new User();
+                user.FirstName = User.Identity.Name;
+
                 await Users.AddAsync(user);
                 return true;
             }

@@ -1,18 +1,10 @@
 ﻿@import "../_variables";
 
 .get-started {
-    background: $background;
-    height: calc(100vh - 180px);
+/*    height: calc(100vh - 180px);
     padding: 180px 20px 0 20px;
-    margin-top: -180px;
+    margin-top: -180px;*/
 
-    &__container {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-        height: calc(100vh - 180px);
-    }
 
     h2 {
         font-family: Roboto Mono;
