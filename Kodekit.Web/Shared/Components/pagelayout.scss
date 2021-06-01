@@ -1,0 +1,13 @@
+﻿@import "../../_variables.scss";
+
+.page {
+    background: $background;
+    padding: 138px 80px 100px 80px;
+
+    &__container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+    }
+}

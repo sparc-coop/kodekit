@@ -1,25 +1,16 @@
-﻿<div class="header">
-    <a class="logo" href="/">
-        <img src="/images/logo.svg" />
-        KODEKIT.CSS
-    </a>
+﻿<div class="sidebar">
+    <div class="header">
+        <a class="logo" href="/">
+            <img src="/images/logo.svg" />
+            KODEKIT.CSS
+        </a>
+    </div>
+    <div class="menu">
+        <div>Getting Started</div>
+        <div>Introduction</div>
+    </div>
     <LoginDisplay />
 </div>
-
-@*<div class="navbar @hideNavMenu" @onclick="ToggleNavMenu">
-        <ul>
-            <li>
-                <NavLink class="nav-link" href="/AddKit" Match="NavLinkMatch.All">
-                    <span aria-hidden="true"></span> Add UI-Kit
-                </NavLink>
-            </li>
-            <li>
-                <NavLink class="nav-link" href="/KitList" Match="NavLinkMatch.All">
-                    <span aria-hidden="true"></span> View All UI Kits
-                </NavLink>
-            </li>
-        </ul>
-    </div>*@
 
 @inject NavigationManager Navigation
 @code {

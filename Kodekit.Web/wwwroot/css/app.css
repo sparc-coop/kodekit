@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   font-family: Lato;
-  background: linear-gradient(128deg, #FDFBFB 28.07%, #EBEDEE 100%);
+  background: #F5F7FA;
   padding-top: 180px;
   margin-top: -180px;
   height: 100vh; }
@@ -45,8 +45,8 @@
       position: absolute;
       right: 25px; }
     .add-kit .upload #code-copy {
-      color: linear-gradient(128deg, #FDFBFB 28.07%, #EBEDEE 100%);
-      background: linear-gradient(128deg, #FDFBFB 28.07%, #EBEDEE 100%);
+      color: #F5F7FA;
+      background: #F5F7FA;
       position: absolute;
       left: -1000px;
       top: -1000px; }
@@ -57,12 +57,399 @@
     padding: 14px 25px;
     cursor: pointer;
     border-radius: 4px;
-    border: 1px solid #c2c2c2;
+    border: 1px solid #F5F7FA;
     text-transform: uppercase;
     background: #FFFFFF; }
 
+.colors {
+  background: #F5F7FA;
+  padding: 180px 20px 0 20px;
+  margin-top: -180px; }
+  .colors__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    height: calc(100vh - 180px); }
+  .colors h2 {
+    font-family: Roboto Mono;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 160%;
+    color: #272833;
+    margin: 0; }
+  .colors p {
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 180%;
+    color: #6B6C7E;
+    width: 572px;
+    margin: 0;
+    padding: 16px 0 40px 0; }
+  .colors .title h4 {
+    font-family: Roboto Mono;
+    font-size: 14px;
+    line-height: 160%;
+    color: #0B5FFF;
+    margin: 0; }
+  .colors label {
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 180%;
+    color: #6B6C7E; }
+  .colors input {
+    background: #FFFFFF;
+    border: 1px solid #E7E7ED;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 16px 8px 44px;
+    display: block;
+    margin: 0 30px 20px 0;
+    font-family: Roboto Mono;
+    font-size: 16px;
+    line-height: 160%;
+    color: #6B6C7E; }
+  .colors h3 {
+    color: #272833;
+    font-family: Roboto Mono;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 160%;
+    padding-bottom: 12px; }
+  .colors .button--save {
+    background: #0B5FFF;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: Roboto Mono;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    padding: 6px 24px;
+    border: none;
+    width: 193px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 80px; }
+  .colors .preview-example {
+    background: #FFFFFF;
+    border: 1px solid #E7E7ED;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 10px 25px;
+    display: flex;
+    flex-wrap: wrap; }
+    .colors .preview-example > div {
+      width: 286px;
+      height: 142px;
+      border-radius: 4px;
+      margin: 20px 15px; }
+    .colors .preview-example--grayscale > div {
+      width: 102px;
+      height: 102px;
+      margin: 20px 0;
+      border-radius: 0; }
+      .colors .preview-example--grayscale > div:first-child {
+        border-radius: 4px 0px 0px 4px;
+        margin: 20px 0 20px 15px; }
+      .colors .preview-example--grayscale > div:last-child {
+        border-radius: 0px 4px 4px 0px;
+        margin: 20px 15px 20px 0; }
+  .colors .section {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 40px; }
+    .colors .section label {
+      position: relative; }
+      .colors .section label span {
+        position: absolute;
+        top: 34px;
+        left: 8px;
+        width: 24px;
+        height: 24px;
+        display: block;
+        z-index: 10;
+        border-radius: 4px; }
+  .colors .content {
+    padding-bottom: 100px; }
+
+.finish {
+  background: #F5F7FA;
+  height: calc(100vh - 180px);
+  padding: 180px 20px 0 20px;
+  margin-top: -180px; }
+  .finish__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    height: calc(100vh - 180px); }
+  .finish h2 {
+    font-family: Roboto Mono;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 160%;
+    color: #272833;
+    margin: 0; }
+  .finish p {
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 180%;
+    color: #393A4A;
+    margin: 0;
+    padding: 18px 0 40px 0; }
+  .finish .download {
+    background: #0B5FFF;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: Roboto Mono;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    padding: 6px 24px;
+    border: none;
+    display: block;
+    width: 90px;
+    text-align: center;
+    margin-bottom: 60px;
+    text-decoration: none; }
+  .finish code {
+    background: #FFFFFF;
+    border-radius: 6px;
+    padding: 20px;
+    color: #525151;
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-family: Roboto Mono;
+    border: 1px solid #F5F7FA; }
+    @media only screen and (max-width: 1045px) {
+      .finish code {
+        display: flex; } }
+  .finish span {
+    cursor: pointer;
+    position: absolute;
+    right: 5px; }
+    @media only screen and (max-width: 1045px) {
+      .finish span {
+        margin-top: 12px; } }
+  .finish #code-copy {
+    color: #F5F7FA;
+    background: #F5F7FA;
+    position: absolute;
+    left: -1000px;
+    top: -1000px; }
+
+.get-started {
+  /*    height: calc(100vh - 180px);
+    padding: 180px 20px 0 20px;
+    margin-top: -180px;*/ }
+  .get-started h2 {
+    font-family: Roboto Mono;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 160%;
+    color: #272833;
+    margin: 0; }
+  .get-started p {
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 180%;
+    color: #393A4A;
+    width: 400px;
+    margin: 0;
+    padding: 18px 0 80px 0; }
+  .get-started button {
+    background: #0B5FFF;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: Roboto Mono;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    padding: 6px 24px;
+    border: none;
+    position: absolute;
+    bottom: 140px;
+    left: 0; }
+
+.typography {
+  background: #F5F7FA;
+  padding: 180px 20px 0 20px;
+  margin-top: -180px; }
+  .typography__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    height: calc(100vh - 180px); }
+  .typography h2 {
+    font-family: Roboto Mono;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 160%;
+    color: #272833;
+    margin: 0; }
+  .typography p {
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 180%;
+    color: #6B6C7E;
+    width: 572px;
+    margin: 0;
+    padding: 16px 0 40px 0; }
+  .typography .title h4 {
+    font-family: Roboto Mono;
+    font-size: 14px;
+    line-height: 160%;
+    color: #0B5FFF;
+    margin: 0; }
+  .typography h3 {
+    color: #272833;
+    font-family: Roboto Mono;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 160%;
+    padding-bottom: 12px; }
+  .typography .button--save {
+    background: #0B5FFF;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: Roboto Mono;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    padding: 6px 24px;
+    border: none;
+    width: 193px;
+    box-sizing: border-box;
+    cursor: pointer; }
+  .typography label {
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 180%;
+    color: #6B6C7E; }
+  .typography input, .typography select, .typography textarea {
+    background: #FFFFFF;
+    border: 1px solid #E7E7ED;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 16px;
+    display: block;
+    margin: 0 30px 20px 0;
+    font-family: Roboto Mono;
+    font-size: 16px;
+    line-height: 160%;
+    color: #6B6C7E; }
+  .typography .preview-example {
+    background: #FFFFFF;
+    border: 1px solid #E7E7ED;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 80px;
+    color: #272833; }
+    .typography .preview-example > div:not(:last-child) {
+      padding-bottom: 32px; }
+    .typography .preview-example label {
+      font-family: Roboto;
+      font-size: 14px;
+      line-height: 180%;
+      color: #6B6C7E;
+      padding-bottom: 32px; }
+    .typography .preview-example h1 {
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example h2 {
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 39px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example h3 {
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 31px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example h4 {
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example h5 {
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example h6 {
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example p {
+      color: #272833;
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .typography .preview-example--body p {
+      width: 100%; }
+    .typography .preview-example--body .large {
+      color: #272833;
+      font-family: Roboto;
+      font-size: 20px;
+      line-height: 160%; }
+    .typography .preview-example--body .medium {
+      color: #272833;
+      font-family: Roboto;
+      font-size: 17px;
+      line-height: 160%; }
+    .typography .preview-example--body .small {
+      color: #272833;
+      font-family: Roboto;
+      font-size: 14px;
+      line-height: 160%; }
+  .typography .section {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 40px; }
+    .typography .section p {
+      font-family: Roboto;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 180%;
+      color: #6B6C7E;
+      padding: 0; }
+    .typography .section textarea {
+      max-width: 486px;
+      width: 100%;
+      min-height: 96px; }
+    .typography .section .large {
+      width: 486px; }
+    .typography .section .medium {
+      width: 314px; }
+    .typography .section .small {
+      width: 142px; }
+  .typography .content {
+    padding-bottom: 100px; }
+
 .landing .hero {
-  background: linear-gradient(128deg, #FDFBFB 28.07%, #EBEDEE 100%);
+  background: #F5F7FA;
   height: calc(100vh - 180px);
   padding: 180px 20px 0 20px;
   margin-top: -180px; }
@@ -269,18 +656,42 @@
       height: 36px;
       border-radius: 4px; }
 
+.main {
+  margin-left: 256px; }
+
+.sidebar {
+  background: #FFFFFF;
+  max-width: 256px;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  height: 100vh;
+  bottom: 0;
+  z-index: 10; }
+  .sidebar .menu {
+    padding: 20px 16px; }
+  .sidebar .login-display {
+    display: flex;
+    position: absolute;
+    left: 16px;
+    bottom: 50px; }
+    .sidebar .login-display a {
+      color: #000000;
+      text-decoration: none; }
+    .sidebar .login-display .logout {
+      border: none;
+      background: none; }
+
 .header {
-  height: 180px;
+  height: 55px;
   font-family: 'Roboto', sans-serif;
   position: relative;
   z-index: 10;
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 20px 16px;
+  border-bottom: 1px solid #F5F7FA;
+  box-sizing: border-box; }
   .header .logo {
-    position: absolute;
-    top: 46px;
-    left: 0;
     font-size: 20px;
     font-family: 'Roboto Mono';
     font-weight: 500;
@@ -292,49 +703,47 @@
     color: #000000;
     text-decoration: none; }
 
-.navbar {
-  position: fixed;
-  right: -300px;
-  width: 300px;
-  background: #FFFFFF;
-  height: 100vh;
+.landing-header {
+  height: 180px;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
   z-index: 10;
-  transform: translatex(-100%);
-  transition-duration: 0.5s;
-  transition-property: right,transform;
-  font-family: Lato;
-  box-shadow: 12px 24px 10px 9px; }
-  .navbar ul li {
-    list-style-type: none;
-    padding: 10px 0; }
-  .navbar a {
-    text-decoration: none;
-    color: #000000; }
-    .navbar a:hover {
-      text-decoration: underline; }
-  .navbar--toggler {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto; }
+  .landing-header .logo {
     position: absolute;
-    top: 15px;
-    right: 85px; }
-  .navbar.collapse {
-    right: -300px;
-    transform: translatex(100%);
-    transition-duration: 1s;
-    transition-property: right,transform; }
+    top: 46px;
+    left: 0;
+    font-size: 20px;
+    font-family: 'Roboto Mono';
+    font-weight: 500;
+    font-size: 14px; }
+    .landing-header .logo img {
+      vertical-align: middle;
+      margin-right: 5px; }
+  .landing-header a {
+    color: #000000;
+    text-decoration: none; }
+  .landing-header .login-display {
+    display: flex;
+    position: absolute;
+    top: 46px;
+    right: 0px; }
 
-.login-display {
-  display: flex;
-  position: absolute;
-  right: 0;
-  top: 46px; }
-  .login-display .logout {
-    border: none;
-    background: none; }
+.page {
+  background: #F5F7FA;
+  padding: 138px 80px 100px 80px; }
+  .page__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative; }
 
 body {
   margin: 0;
   overflow-x: hidden;
-  background: linear-gradient(128deg, #FDFBFB 28.07%, #EBEDEE 100%);
+  background: #F5F7FA;
   font-family: 'Roboto', sans-serif; }
 
 .loading {
