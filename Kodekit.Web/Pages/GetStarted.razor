@@ -1,4 +1,4 @@
-﻿@page "/GetStarted"
+﻿@page "/"
 
 <div class="page">
     <div class="page__container">
@@ -14,10 +14,15 @@
 
 @code {
 
+    string test = "";
+    Kit NewKit = new Kit();
+
     protected override async Task OnInitializedAsync()
     {
-        await Api.CreateUserAsync();
+        //test = await Api.CreateUserAsync();
+        NewKit = await Api.CreateKitAsync();
     }
+
 
     void GoTo(string page)
     {

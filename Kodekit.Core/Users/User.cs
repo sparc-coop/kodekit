@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 using Sparc.Core;
 
 namespace Kodekit.Core
@@ -14,11 +13,6 @@ namespace Kodekit.Core
             //Kits = new List<Kit>();
         }
 
-        public static User Create(string email)
-        {
-            User user = new User();
-            return user;
-        }
         public string UserId { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
