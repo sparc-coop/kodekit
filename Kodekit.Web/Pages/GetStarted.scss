@@ -1,19 +1,6 @@
 ﻿@import "../_variables";
 
 .get-started {
-/*    height: calc(100vh - 180px);
-    padding: 180px 20px 0 20px;
-    margin-top: -180px;*/
-
-
-    h2 {
-        font-family: Roboto Mono;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 160%;
-        color: $text-primary;
-        margin: 0;
-    }
 
     p {
         font-family: Roboto;
@@ -26,7 +13,7 @@
     }
 
     button {
-        background: $blue;
+        background: $primary500;
         border-radius: 4px;
         color: $white;
         font-family: Roboto Mono;

@@ -118,7 +118,7 @@
     line-height: 160%;
     padding-bottom: 12px; }
   .colors .button--save {
-    background: #0B5FFF;
+    background: #F5F7FA;
     border-radius: 4px;
     color: #FFFFFF;
     font-family: Roboto Mono;
@@ -239,38 +239,28 @@
     left: -1000px;
     top: -1000px; }
 
-.get-started {
-  /*    height: calc(100vh - 180px);
-    padding: 180px 20px 0 20px;
-    margin-top: -180px;*/ }
-  .get-started h2 {
-    font-family: Roboto Mono;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 160%;
-    color: #272833;
-    margin: 0; }
-  .get-started p {
-    font-family: Roboto;
-    font-size: 18px;
-    line-height: 180%;
-    color: #393A4A;
-    width: 400px;
-    margin: 0;
-    padding: 18px 0 80px 0; }
-  .get-started button {
-    background: #0B5FFF;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-family: Roboto Mono;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 160%;
-    padding: 6px 24px;
-    border: none;
-    position: absolute;
-    bottom: 140px;
-    left: 0; }
+.get-started p {
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 180%;
+  color: #393A4A;
+  width: 400px;
+  margin: 0;
+  padding: 18px 0 80px 0; }
+
+.get-started button {
+  background: #0B5FFF;
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-family: Roboto Mono;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  padding: 6px 24px;
+  border: none;
+  position: absolute;
+  bottom: 140px;
+  left: 0; }
 
 .typography {
   background: #F5F7FA;
@@ -684,7 +674,6 @@
 
 .header {
   height: 55px;
-  font-family: 'Roboto', sans-serif;
   position: relative;
   z-index: 10;
   margin: 0 auto;
@@ -693,7 +682,6 @@
   box-sizing: border-box; }
   .header .logo {
     font-size: 20px;
-    font-family: 'Roboto Mono';
     font-weight: 500;
     font-size: 14px; }
     .header .logo img {
@@ -705,7 +693,6 @@
 
 .landing-header {
   height: 180px;
-  font-family: 'Roboto', sans-serif;
   position: relative;
   z-index: 10;
   max-width: 1000px;
@@ -716,7 +703,6 @@
     top: 46px;
     left: 0;
     font-size: 20px;
-    font-family: 'Roboto Mono';
     font-weight: 500;
     font-size: 14px; }
     .landing-header .logo img {
@@ -739,12 +725,32 @@
     max-width: 1000px;
     margin: 0 auto;
     position: relative; }
+  .page .title {
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    color: #0B5FFF; }
+  .page h2 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 120%;
+    color: #17171A;
+    margin: 0; }
+  .page button {
+    color: #17171A;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #17171A;
+    background: #FFFFFF;
+    padding: 8px 16px;
+    margin-top: 20px; }
 
 body {
   margin: 0;
   overflow-x: hidden;
   background: #F5F7FA;
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Inter', sans-serif; }
 
 .loading {
   text-align: center;

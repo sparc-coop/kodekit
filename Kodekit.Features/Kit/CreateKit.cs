@@ -13,7 +13,7 @@ namespace Kodekit.Features
         public override async Task<Kit> ExecuteAsync()
         {
             Kit kit = new Kit();
-            kit.Description = "New example kit";
+            kit.Description = "UI Kit";
             await Kit.UpdateAsync(kit);
             return kit;
         }

@@ -34,9 +34,7 @@
 }
 
 .header {
-    height: 55px;
-    font-family: 'Roboto', sans-serif;
-    position: relative;
+    height: 55px;    position: relative;
     z-index: 10;
     margin: 0 auto;
     padding: 20px 16px;
@@ -45,7 +43,6 @@
 
     .logo {
         font-size: 20px;
-        font-family: 'Roboto Mono';
         font-weight: 500;
         font-size: 14px;
 
@@ -63,7 +60,6 @@
 
 .landing-header {
     height: 180px;
-    font-family: 'Roboto', sans-serif;
     position: relative;
     z-index: 10;
     max-width: 1000px;
@@ -75,7 +71,6 @@
         top: 46px;
         left: 0;
         font-size: 20px;
-        font-family: 'Roboto Mono';
         font-weight: 500;
         font-size: 14px;
 

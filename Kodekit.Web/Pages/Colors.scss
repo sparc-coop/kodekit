@@ -37,7 +37,7 @@
             font-family: Roboto Mono;
             font-size: 14px;
             line-height: 160%;
-            color: $blue;
+            color: $primary500;
             margin: 0;
         }
     }
@@ -74,7 +74,7 @@
     }
 
     .button--save {
-        background: $blue;
+        background: $background;
         border-radius: 4px;
         color: $white;
         font-family: Roboto Mono;
@@ -131,7 +131,7 @@
         padding-bottom: 40px;
 
         label {
-            position: relative; 
+            position: relative;
 
             span {
                 position: absolute;
