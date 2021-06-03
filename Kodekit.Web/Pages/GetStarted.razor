@@ -2,30 +2,21 @@
 
 <div class="page">
     <div class="page__container">
-        <div class="title">
-            <h2>Build Your System</h2>
+        <header>
+            <div class="title">Getting Started</div>
+            <h2>Introduction</h2>
             <p>
                 This is where you can build your very own system, and at the end export it to use in your projects.
             </p>
-        </div>
-        <button @onclick="@(e => GoTo("/Typography"))">Get Started</button>
+        </header>
+        <button @onclick="CreateNewKit">Get Started</button>
     </div>
 </div>
 
 @code {
-
-    string test = "";
-    Kit NewKit = new Kit();
-
-    protected override async Task OnInitializedAsync()
+    async Task CreateNewKit()
     {
-        //test = await Api.CreateUserAsync();
-        NewKit = await Api.CreateKitAsync();
-    }
-
-
-    void GoTo(string page)
-    {
-        Nav.NavigateTo(page);
+        await Api.CreateKitAsync();
+        Nav.NavigateTo("/Typography");
     }
 }
