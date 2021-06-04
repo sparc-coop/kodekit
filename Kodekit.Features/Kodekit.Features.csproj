@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Sparc.Features" Version="2.5.0" />
-    <PackageReference Include="Sparc.Database.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Sparc.Database.Cosmos" Version="2.5.0" />
     <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="2.0.3" />
     <PackageReference Include="Sparc.Storage.Azure" Version="2.0.2" />
   </ItemGroup>

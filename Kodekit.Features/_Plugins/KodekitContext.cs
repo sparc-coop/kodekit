@@ -8,18 +8,12 @@ namespace Kodekit.Features
         public KodekitContext(DbContextOptions<KodekitContext> options) : 
             base(options) { }
 
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Kit> Kit { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder.Entity<User>(builder => {
-                builder.HasKey(x => x.Id);
-            });
+            var user = builder.Entity<User>().HasPartitionKey(x => x.UserId);
+            //user.OwnsMany(x => x.Kits);
 
-            modelBuilder.Entity<Kit>(builder => {
-                builder.HasKey(x => x.Id);
-            });
+            builder.Entity<Kit>().HasPartitionKey(x => x.UserId);
         }
 
     }

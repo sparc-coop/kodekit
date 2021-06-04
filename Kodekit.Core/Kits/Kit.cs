@@ -1,15 +1,22 @@
-﻿using System;
+﻿using Sparc.Core;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Kodekit.Core
 {
-    public class Kit
+    public class Kit : Root<string>
     {
-        [Key]
-        public int Id { get; set; }
-        public int? UserId { get; set; }
-        public Guid? GUID { get; set; }
+        public Kit()
+        {
+            Id = Guid.NewGuid().ToString();
+            UserId = string.Empty;
+            //Kits = new List<Kit>();
+        }
+
+
+        public string UserId { get; set; }
+        //public Guid? GUID { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }

@@ -1,53 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Kodekit.Core;
+using Sparc.Core;
+using Sparc.Features;
 
 namespace Kodekit.Features
 {
-    public class CreateKit
+    public class CreateKit : PublicFeature<Kit>
     {
-        public string Execute(Kit kit)
-        {
-            string cssString = "h1 { \n" +
-            "   font-family: Roboto Mono;\n" +
-            "   font-size: 48px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n" +
-            "h2 { \n" +
-            "   font-family: Roboto Mono;\n" +
-            "   font-size: 48px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n" +
-            "h3 { \n" +
-            "   font-family: Roboto Mono;\n" +
-            "   font-size: 48px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n" +
-            "h4 { \n" +
-            "   font-family: Roboto Mono;\n" +
-            "   font-size: 48px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n" +
-            "h5 { \n" +
-            "   font-family: Roboto Mono;\n" +
-            "   font-size: 48px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n" +
-            "h6 { \n" +
-            "   font-family: Roboto Mono;\n" +
-            "   font-size: 48px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n" +
-            "button { \n" +
-            "   color: #FFFFFF;\n" +
-            "   background-color: "+ kit.PrimaryColor +";\n" +
-            "   font-size: 16px;\n" +
-            "   line-height: " + kit.HeaderLineHeight + ";\n" +
-            "}\n";
+        public IRepository<Kit> Kit { get; }
+        public CreateKit(IRepository<Kit> kit) => Kit = kit;
 
-            return cssString;
+        public override async Task<Kit> ExecuteAsync()
+        {
+            Kit kit = new Kit();
+            kit.Description = "UI Kit";
+            await Kit.UpdateAsync(kit);
+            return kit;
         }
     }
 }

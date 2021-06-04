@@ -15,10 +15,8 @@ namespace Kodekit.Web
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
             builder.AddB2CApi<KodekitApi>(
-                    "https://kodekitui.onmicrosoft.com/3ad526bb-0eb9-484f-9487-00c739685ad0/Kodekit.API",
+                    "https://kodekitui.onmicrosoft.com/ccba7246-6276-4566-a964-12d7a2b48198/KodekitAPI.Access",
                     builder.Configuration["ApiUrl"]);
 
             var host = builder.Build();
