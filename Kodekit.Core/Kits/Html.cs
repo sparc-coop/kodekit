@@ -56,6 +56,12 @@ namespace Kodekit.Core.Kits
         public string Padding { get; set; }
     }
 
+    public class Figure
+    {
+        public string Margin { get; set; }
+        public string Padding { get; set; }
+    }
+
     public class Footer
     {
         public string Margin { get; set; }
@@ -70,4 +76,35 @@ namespace Kodekit.Core.Kits
         public string LineHeight { get; set; }
 
     }
+
+    public class Video
+    {
+
+    }
+
+    public class Audio
+    {
+
+    }
+
+    public class Fieldset
+    {
+
+    }
+
+    public class Label
+    {
+
+    }
+
+    public class Legend
+    {
+
+    }
+
+    public class Input
+    {
+
+    }
+
 }
