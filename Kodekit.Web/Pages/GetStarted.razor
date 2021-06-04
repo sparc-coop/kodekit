@@ -1,22 +1,22 @@
-﻿@page "/GetStarted"
+﻿@page "/"
 
-<div class="get-started">
-    <div class="get-started__container">
-        <div class="title">
-            <h2>Build Your System</h2>
+<div class="page">
+    <div class="page__container">
+        <header>
+            <div class="title">Getting Started</div>
+            <h2>Introduction</h2>
             <p>
                 This is where you can build your very own system, and at the end export it to use in your projects.
             </p>
-        </div>
-        <img src="/images/step_1.svg" />
-        <button @onclick="@(e => GoTo("/Typography"))">Get Started</button>
+        </header>
+        <button @onclick="CreateNewKit">Get Started</button>
     </div>
 </div>
 
 @code {
-
-    void GoTo(string page)
+    async Task CreateNewKit()
     {
-        Nav.NavigateTo(page);
+        await Api.CreateKitAsync();
+        Nav.NavigateTo("/Typography");
     }
 }

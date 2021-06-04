@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sparc.Core;
 
 namespace Kodekit.Core
 {
-    public class User
+    public class User : Root<string>
     {
-        public string Id { get; set; }
+        public User()
+        {
+            Id = Guid.NewGuid().ToString();
+            UserId = Id;
+            //Kits = new List<Kit>();
+        }
+
+        public string UserId { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public ICollection<Kit> Kits { get; set; }
     }
 }

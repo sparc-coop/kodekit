@@ -1,14 +1,25 @@
-﻿@import "_variables.scss";
+﻿@import "_variables";
 
-@import "../../Pages/all";
-@import "../../Shared/all";
+@import "Pages/Account";
+@import "Pages/AddKit";
+@import "Pages/Colors";
+@import "Pages/Finish";
+@import "Pages/GetStarted";
+@import "Pages/Typography";
+@import "Pages/Index";
+
+@import "Shared/MainLayout";
+@import "Shared/NavMenu";
+
+//Components 
+@import "Shared/Components/pagelayout";
 
 
 body {
     margin: 0;
     overflow-x: hidden;
-    background: $background;
-    font-family: 'Roboto', sans-serif;
+    background: $gray100;
+    font-family: 'Inter', sans-serif;
 }
 
 .loading {

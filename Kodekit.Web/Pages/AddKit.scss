@@ -1,4 +1,4 @@
-﻿@import "../wwwroot/css/_variables.scss";
+﻿@import "../_variables.scss";
 
 .add-kit {
     padding: 0 235px;
@@ -94,7 +94,7 @@
         padding: 14px 25px;
         cursor: pointer;
         border-radius: 4px;
-        border: 1px solid $gray;
+        border: 1px solid $gray100;
         text-transform: uppercase;
         background: $white;
     }

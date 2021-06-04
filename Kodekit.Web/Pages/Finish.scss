@@ -33,7 +33,7 @@
     }
 
     .download {
-        background: $blue;
+        background: $primary500;
         border-radius: 4px;
         color: $white;
         font-family: Roboto Mono;
@@ -57,7 +57,7 @@
         margin-top: 10px;
         font-size: 12.5px;
         font-family: Roboto Mono;
-        border: 1px solid $gray;
+        border: 1px solid $gray100;
 
         @media only screen and (max-width: 1045px) {
             display: flex;
