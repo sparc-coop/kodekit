@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="_Plugins\test.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include=".config\dotnet-tools.json" />
+    <Content Include="_Plugins\test.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

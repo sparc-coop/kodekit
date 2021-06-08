@@ -262,181 +262,142 @@
   bottom: 140px;
   left: 0; }
 
-.typography {
-  background: #F5F7FA;
-  padding: 180px 20px 0 20px;
-  margin-top: -180px; }
-  .typography__container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    height: calc(100vh - 180px); }
-  .typography h2 {
-    font-family: Roboto Mono;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 160%;
-    color: #272833;
+.typography label {
+  font-size: 14px;
+  line-height: 180%;
+  color: #6B6C7E; }
+
+.typography input, .typography select {
+  background: #FFFFFF;
+  border: 1px solid #D2D4D9;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: block;
+  margin: 0 30px 20px 0;
+  font-size: 16px;
+  line-height: 160%;
+  color: #6B6C7E; }
+
+.typography .preview-example {
+  background: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 8px 8px 0px 0px;
+  padding: 40px;
+  margin-bottom: -20px;
+  color: #17171A;
+  font-family: 'Roboto Mono', monospace; }
+  .typography .preview-example > div:not(:last-child) {
+    padding-bottom: 32px; }
+  .typography .preview-example h1 {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    padding: 0;
     margin: 0; }
-  .typography p {
-    font-family: Roboto;
-    font-size: 16px;
-    line-height: 180%;
-    color: #6B6C7E;
-    width: 572px;
-    margin: 0;
-    padding: 16px 0 40px 0; }
-  .typography .title h4 {
-    font-family: Roboto Mono;
-    font-size: 14px;
-    line-height: 160%;
-    color: #0B5FFF;
+  .typography .preview-example h2 {
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 120%;
+    padding: 0;
     margin: 0; }
-  .typography h3 {
-    color: #272833;
-    font-family: Roboto Mono;
+  .typography .preview-example h3 {
+    font-weight: 400;
+    font-size: 31px;
+    line-height: 120%;
+    padding: 0;
+    margin: 0; }
+  .typography .preview-example h4 {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 120%;
+    padding: 0;
+    margin: 0; }
+  .typography .preview-example h5 {
     font-weight: 400;
     font-size: 20px;
-    line-height: 160%;
-    padding-bottom: 12px; }
-  .typography .button--save {
-    background: #0B5FFF;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-family: Roboto Mono;
+    line-height: 120%;
+    padding: 0;
+    margin: 0; }
+  .typography .preview-example h6 {
     font-weight: 400;
     font-size: 16px;
-    line-height: 160%;
-    padding: 6px 24px;
-    border: none;
-    width: 193px;
-    box-sizing: border-box;
-    cursor: pointer; }
-  .typography label {
-    font-family: Roboto;
-    font-weight: normal;
+    line-height: 120%;
+    padding: 0;
+    margin: 0; }
+  .typography .preview-example label {
     font-size: 14px;
     line-height: 180%;
-    color: #6B6C7E; }
-  .typography input, .typography select, .typography textarea {
-    background: #FFFFFF;
-    border: 1px solid #E7E7ED;
+    color: #6B6C7E;
+    padding-bottom: 32px;
+    font-family: 'Inter', sans-serif; }
+  .typography .preview-example p {
+    color: #272833;
+    font-family: Roboto Mono;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    padding: 0;
+    margin: 0; }
+  .typography .preview-example--body p {
+    width: 100%; }
+  .typography .preview-example--body .large {
+    color: #272833;
+    font-family: Roboto;
+    font-size: 20px;
+    line-height: 160%; }
+  .typography .preview-example--body .medium {
+    color: #272833;
+    font-family: Roboto;
+    font-size: 17px;
+    line-height: 160%; }
+  .typography .preview-example--body .small {
+    color: #272833;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 160%; }
+
+.typography .code-example {
+  background: #17171A;
+  border-radius: 0px 0px 8px 8px;
+  padding: 32px;
+  color: #CA9100; }
+  .typography .code-example span {
+    color: #875BBF; }
+
+.typography .section {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 40px; }
+  .typography .section .preview {
+    max-width: 496px;
+    width: 100%;
+    min-height: 87px; }
+  .typography .section textarea {
+    font-family: 'Inter';
+    max-width: 496px;
+    width: 100%;
+    min-height: 87px;
+    padding: 10px 16px;
     box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #D2D4D9;
     border-radius: 4px;
-    padding: 8px 16px;
     display: block;
     margin: 0 30px 20px 0;
-    font-family: Roboto Mono;
     font-size: 16px;
     line-height: 160%;
-    color: #6B6C7E; }
-  .typography .preview-example {
-    background: #FFFFFF;
-    border: 1px solid #E7E7ED;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 40px;
-    margin-bottom: 80px;
-    color: #272833; }
-    .typography .preview-example > div:not(:last-child) {
-      padding-bottom: 32px; }
-    .typography .preview-example label {
-      font-family: Roboto;
-      font-size: 14px;
-      line-height: 180%;
-      color: #6B6C7E;
-      padding-bottom: 32px; }
-    .typography .preview-example h1 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 48px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h2 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 39px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h3 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 31px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h4 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 25px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h5 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h6 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example p {
-      color: #272833;
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example--body p {
-      width: 100%; }
-    .typography .preview-example--body .large {
-      color: #272833;
-      font-family: Roboto;
-      font-size: 20px;
-      line-height: 160%; }
-    .typography .preview-example--body .medium {
-      color: #272833;
-      font-family: Roboto;
-      font-size: 17px;
-      line-height: 160%; }
-    .typography .preview-example--body .small {
-      color: #272833;
-      font-family: Roboto;
-      font-size: 14px;
-      line-height: 160%; }
-  .typography .section {
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 40px; }
-    .typography .section p {
-      font-family: Roboto;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 180%;
-      color: #6B6C7E;
-      padding: 0; }
-    .typography .section textarea {
-      max-width: 486px;
-      width: 100%;
-      min-height: 96px; }
-    .typography .section .large {
-      width: 486px; }
-    .typography .section .medium {
-      width: 314px; }
-    .typography .section .small {
-      width: 142px; }
-  .typography .content {
-    padding-bottom: 100px; }
+    color: #787980; }
+  .typography .section .large {
+    width: 486px; }
+  .typography .section .medium {
+    width: 314px; }
+  .typography .section .small {
+    width: 142px; }
+
+.typography .content {
+  padding-bottom: 100px; }
 
 .landing .hero {
   background: #F5F7FA;
@@ -660,6 +621,17 @@
   z-index: 10; }
   .sidebar .menu {
     padding: 20px 16px; }
+    .sidebar .menu a {
+      display: block;
+      text-decoration: none;
+      color: #787980;
+      font-size: 14px;
+      padding: 16px 16px 0 16px; }
+    .sidebar .menu .heading {
+      padding: 32px 16px 0 16px;
+      color: #17171A;
+      font-size: 12px;
+      line-height: 14.4px; }
   .sidebar .login-display {
     display: flex;
     position: absolute;
@@ -719,10 +691,11 @@
 
 .page {
   background: #F5F7FA;
-  padding: 138px 80px 100px 80px; }
+  padding: 138px 80px 100px 80px;
+  font-family: 'Inter', sans-serif; }
   .page__container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 1024px;
     margin: 0 auto;
     position: relative; }
   .page .title {
@@ -738,13 +711,18 @@
     margin: 0; }
   .page button {
     color: #17171A;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
+    line-height: 19.2px;
     border-radius: 4px;
     border: 1px solid #17171A;
-    background: #FFFFFF;
+    background: #F5F7FA;
     padding: 8px 16px;
-    margin-top: 20px; }
+    margin-top: 20px;
+    cursor: pointer; }
+    .page button img {
+      margin-left: 14px;
+      vertical-align: middle; }
 
 body {
   margin: 0;

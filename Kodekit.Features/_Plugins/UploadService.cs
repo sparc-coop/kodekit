@@ -8,24 +8,23 @@ using System.Text;
 
 namespace Kodekit.Features
 {
-    //From original project, not hookedup/working yet
-    public class StorageContext
+    public class UploadService
     {
         private readonly string connectionString = "";
-        private readonly string containerName = "uikit";
-        private readonly string baseUrl = "https://kuviocreative.blob.core.windows.net/";
+        private readonly string containerName = "kits";
+        private readonly string baseUrl = "https://kodekit.blob.core.windows.net/";
 
-        public StorageContext()
+        public UploadService()
         {
 
         }
 
-        public StorageContext(IConfiguration config)
+        public UploadService(IConfiguration config)
         {
             //connectionString = config["BlobStorage:ConnectionString"];
         }
 
-        public async Task<string> Upload(Stream stream, string fileName, int userId)
+        public async Task<string> Upload(Stream stream, string fileName, int? userId)
         {
             var encodeFileName = Uri.EscapeUriString(fileName);//);DateTime.Now.Ticks + fileName);
             BlobContainerClient container = new BlobContainerClient(connectionString, containerName);

@@ -1,88 +1,20 @@
 ﻿@import "../_variables";
 
 .typography {
-    background: $background;
-    padding: 180px 20px 0 20px;
-    margin-top: -180px;
-
-    &__container {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-        height: calc(100vh - 180px);
-    }
-
-    h2 {
-        font-family: Roboto Mono;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 160%;
-        color: $text-primary;
-        margin: 0;
-    }
-
-    p {
-        font-family: Roboto;
-        font-size: 16px;
-        line-height: 180%;
-        color: $text-gray;
-        width: 572px;
-        margin: 0;
-        padding: 16px 0 40px 0;
-    }
-
-    .title {
-        h4 {
-            font-family: Roboto Mono;
-            font-size: 14px;
-            line-height: 160%;
-            color: $primary500;
-            margin: 0;
-        }
-    }
-
-    h3 {
-        color: $text-primary;
-        font-family: Roboto Mono;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 160%;
-        padding-bottom: 12px;
-    }
-
-    .button--save {
-        background: $primary500;
-        border-radius: 4px;
-        color: $white;
-        font-family: Roboto Mono;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 160%;
-        padding: 6px 24px;
-        border: none;
-        width: 193px;
-        box-sizing: border-box;
-        cursor: pointer;
-    }
-
     label {
-        font-family: Roboto;
-        font-weight: normal;
         font-size: 14px;
         line-height: 180%;
         color: $text-gray;
     }
 
-    input, select, textarea {
+    input, select {
         background: $white;
-        border: 1px solid #E7E7ED;
+        border: 1px solid $gray300;
         box-sizing: border-box;
         border-radius: 4px;
         padding: 8px 16px;
         display: block;
         margin: 0 30px 20px 0;
-        font-family: Roboto Mono;
         font-size: 16px;
         line-height: 160%;
         color: $text-gray;
@@ -90,27 +22,19 @@
 
     .preview-example {
         background: $white;
-        border: 1px solid #E7E7ED;
+        border: 1px solid $white;
         box-sizing: border-box;
-        border-radius: 8px;
+        border-radius: 8px 8px 0px 0px;
         padding: 40px;
-        margin-bottom: 80px;
-        color: $text-primary;
+        margin-bottom: -20px;
+        color: $gray900;
+        font-family: 'Roboto Mono', monospace;
 
         > div:not(:last-child) {
             padding-bottom: 32px;
         }
 
-        label {
-            font-family: Roboto;
-            font-size: 14px;
-            line-height: 180%;
-            color: $text-gray;
-            padding-bottom: 32px;
-        }
-
         h1 {
-            font-family: Roboto Mono;
             font-weight: 400;
             font-size: 48px;
             line-height: 120%;
@@ -119,7 +43,6 @@
         }
 
         h2 {
-            font-family: Roboto Mono;
             font-weight: 400;
             font-size: 39px;
             line-height: 120%;
@@ -128,7 +51,6 @@
         }
 
         h3 {
-            font-family: Roboto Mono;
             font-weight: 400;
             font-size: 31px;
             line-height: 120%;
@@ -137,7 +59,6 @@
         }
 
         h4 {
-            font-family: Roboto Mono;
             font-weight: 400;
             font-size: 25px;
             line-height: 120%;
@@ -146,7 +67,6 @@
         }
 
         h5 {
-            font-family: Roboto Mono;
             font-weight: 400;
             font-size: 20px;
             line-height: 120%;
@@ -155,12 +75,19 @@
         }
 
         h6 {
-            font-family: Roboto Mono;
             font-weight: 400;
             font-size: 16px;
             line-height: 120%;
             padding: 0;
             margin: 0;
+        }
+
+        label {
+            font-size: 14px;
+            line-height: 180%;
+            color: $text-gray;
+            padding-bottom: 32px;
+            font-family: 'Inter', sans-serif;
         }
 
         p {
@@ -202,24 +129,44 @@
         }
     }
 
+
+    .code-example {
+        background: $gray900;
+        border-radius: 0px 0px 8px 8px;
+        padding: 32px;
+        color: $orange;
+
+        span {
+            color: $purple;
+        }
+    }
+
     .section {
         display: flex;
         flex-wrap: wrap;
         padding-bottom: 40px;
 
-        p {
-            font-family: Roboto;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 180%;
-            color: $text-gray;
-            padding: 0;
+        .preview {
+            max-width: 496px;
+            width: 100%;
+            min-height: 87px;
         }
 
         textarea {
-            max-width: 486px;
+            font-family: 'Inter';
+            max-width: 496px;
             width: 100%;
-            min-height: 96px;
+            min-height: 87px;
+            padding: 10px 16px;
+            box-sizing: border-box;
+            background: $white;
+            border: 1px solid $gray300;
+            border-radius: 4px;
+            display: block;
+            margin: 0 30px 20px 0;
+            font-size: 16px;
+            line-height: 160%;
+            color: $gray500;
         }
 
         .large {

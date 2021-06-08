@@ -8,7 +8,7 @@ namespace Kodekit.Core
     {
         public User()
         {
-            Id = Guid.NewGuid().ToString();
+            Id = string.Empty;
             UserId = Id;
             //Kits = new List<Kit>();
         }

@@ -3,10 +3,11 @@
 .page {
     background: $background;
     padding: 138px 80px 100px 80px;
+    font-family: 'Inter', sans-serif;
 
     &__container {
         width: 100%;
-        max-width: 1000px;
+        max-width: 1024px;
         margin: 0 auto;
         position: relative;
     }
@@ -28,12 +29,19 @@
 
     button {
         color: $gray900;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 16px;
+        line-height: 19.2px;
         border-radius: 4px;
         border: 1px solid $gray900;
-        background: $white;
+        background: $background;
         padding: 8px 16px;
         margin-top: 20px;
+        cursor: pointer;
+
+        img {
+            margin-left: 14px;
+            vertical-align: middle;
+        }
     }
 }

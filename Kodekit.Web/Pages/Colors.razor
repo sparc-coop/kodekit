@@ -1,17 +1,14 @@
 ﻿@page  "/Colors/{kitId}"
 
-<div class="colors">
-    <div class="container">
-        <div class="progress">
-            <img src="/images/step_3.svg" />
-        </div>
-        <div class="title">
-            <h4>Step Two</h4>
+<div class="colors page">
+    <div class="page__container">
+        <header>
+            <div class="title">Global Styles</div>
             <h2>Colors</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
             </p>
-        </div>
+        </header>
         <div class="content">
             @*<h3>Brand Colors</h3>
             @if (kit != null)
@@ -94,7 +91,7 @@
 </div>
 
 @code {
-    //private Kit kit { get; set; }
+    private Kit kit { get; set; }
     [Parameter] public string kitId { get; set; }
 
     protected override void OnInitialized()
