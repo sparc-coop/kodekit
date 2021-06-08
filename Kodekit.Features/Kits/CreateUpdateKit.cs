@@ -5,10 +5,10 @@ using Sparc.Features;
 
 namespace Kodekit.Features
 {
-    public class CreateKit : PublicFeature<Kit>
+    public class CreateUpdateKit : PublicFeature<Kit>
     {
         public IRepository<Kit> Kit { get; }
-        public CreateKit(IRepository<Kit> kit) => Kit = kit;
+        public CreateUpdateKit(IRepository<Kit> kit) => Kit = kit;
 
         public override async Task<Kit> ExecuteAsync()
         {

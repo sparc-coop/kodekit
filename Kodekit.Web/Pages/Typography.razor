@@ -1,20 +1,20 @@
 ﻿@page  "/Typography"
 
-<div class="typography">
-    <div class="container">
-        <div class="progress">
-            <img src="/images/step_2.svg" />
-        </div>
-        <div class="title">
-            <h4>Step One</h4>
+<div class="typography page">
+    <div class="page__container">
+        <header>
+            <div class="title">Global Styles</div>
             <h2>Typography</h2>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
             </p>
-        </div>
+        </header>
         <div class="content">
-            <h3>Header Settings</h3>
-            <EditForm @*Model="@newKit"*@>
+            <h3>Heading Settings</h3>
+            <p>
+                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
+            </p>
+            <EditForm Model="@kit">
                 <div class="section">
                     <label>
                         Preview Text
@@ -28,7 +28,7 @@
                     </label>
                     <label>
                         Base Font Size (px)
-                        @*<InputText @bind-Value="newKit.HeaderFontSize" class="small"/>*@
+                        <InputText @bind-Value="kit.HeaderFontSize" class="small" />
                     </label>
                     <label>
                         Choose a Type Scale
@@ -38,7 +38,7 @@
                     </label>
                     <label>
                         Line Height
-                        @*<InputText @bind-Value="newKit.HeaderLineHeight" class="small" />*@
+                        <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
                     </label>
                 </div>
                 <div class="preview-example">
@@ -71,12 +71,19 @@
                         <label>Subtitle - Font Size: xxpx (xem)</label>
                     </div>
                 </div>
-                <h3>Body Settings</h3>
+                <div class="code-example">
+                    <code>
+                        <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
+                        <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
+                        <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                    </code>
+                </div>
+                <h3>Paragraph Settings</h3>
                 <div class="section">
-                    <p>
+                    <label class="preview">
                         Preview Text
                         <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
-                    </p>
+                    </label>
                     <label>
                         Choose Body font
                         <select class="medium">
@@ -85,7 +92,7 @@
                     </label>
                     <label>
                         Base Font Size (px)
-                        @*<InputText @bind-Value="newKit.BodyFontSize" class="small"/>*@
+                        <InputText @bind-Value="kit.BodyFontSize" class="small" />
                     </label>
                     <label>
                         Choose a Type Scale
@@ -95,7 +102,7 @@
                     </label>
                     <label>
                         Line Height
-                        @*<InputText @bind-Value="newKit.BodyLineHeight" class="small"/>*@
+                        <InputText @bind-Value="kit.BodyLineHeight" class="small" />
                     </label>
                 </div>
                 <div class="preview-example preview-example--body">
@@ -112,36 +119,40 @@
                         <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
                     </div>
                 </div>
-                <div class="button--save" @onclick="Submit">Save & Continue</div>
+                <div class="code-example">
+                    <code>
+                        <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
+                        <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
+                        <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                    </code>
+                </div>
+                <button @onclick="Submit">
+                    Save & Continue
+                    <img src="/images/eyecon.svg" />
+                </button>
             </EditForm>
-            @*<div>@newKit.Url</div>*@
         </div>
     </div>
 </div>
 
-@*@inject IRepository<Kit> KitRepo*@
-@inject NavigationManager Navigation
-
 @code {
-    //private Kit newKit = new Kit();
+    private Kit kit = new Kit();
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
-    //private string fileUrl = "";
 
     protected override void OnInitialized()
     {
-        //newKit.HeaderFontSize = "16";
-        //newKit.HeaderLineHeight = "120%";
-        //newKit.BodyFontSize = "16";
-        //newKit.BodyLineHeight = "120%";
+        kit.HeaderFontSize = "16";
+        kit.HeaderLineHeight = "120%";
+        kit.BodyFontSize = "16";
+        kit.BodyLineHeight = "120%";
     }
 
     private async Task Submit()
     {
         //newKit.GUID = Guid.NewGuid();
         //newKit.DateCreated = DateTime.Now;
-        //KitRepo.Add(newKit);
-        //KitRepo.Commit();
-        //Navigation.NavigateTo("/Colors/" + newKit.GUID);
+        await Api.CreateUpdateKitAsync();
+        Nav.NavigateTo("/Colors/" + kit.Id);
     }
 }

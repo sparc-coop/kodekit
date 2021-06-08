@@ -1,0 +1,12 @@
+﻿@layout EmptyLayout
+@page "/{kitid}"
+
+
+@code {
+    public string kitid { get; }
+
+    protected override void OnInitialized()
+    {
+        Nav.NavigateTo("https://kodekit.blob.core.windows.net/kits/"+ kitid +".css");
+    }
+} 

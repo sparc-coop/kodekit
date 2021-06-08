@@ -8,24 +8,23 @@ using System.Text;
 
 namespace Kodekit.Features
 {
-    //From original project, not hookedup/working yet
-    public class StorageContext
+    public class UploadService
     {
-        private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=kuviocreative;AccountKey=KLS5GllFAdTF2Vp6ogzMpFjkEEM+bg/NJMFdKzWU4jOP+4hCIxyyXAUkhmW8SajS50o6wNd8D780HerrOn2iZQ==;EndpointSuffix=core.windows.net";
-        private readonly string containerName = "uikit";
-        private readonly string baseUrl = "https://kuviocreative.blob.core.windows.net/";
+        private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=kodekit;AccountKey=1C/QtEYejRDLCOinYPFO2J7KRMIZzocBIlh4LkdEzMSvE/fq2Olk4oZj0oL0ji6Xv6wgIYs15LL3Qf9ZyaduyQ==;EndpointSuffix=core.windows.net";
+        private readonly string containerName = "kits";
+        private readonly string baseUrl = "https://kodekit.blob.core.windows.net/";
 
-        public StorageContext()
+        public UploadService()
         {
 
         }
 
-        public StorageContext(IConfiguration config)
+        public UploadService(IConfiguration config)
         {
             //connectionString = config["BlobStorage:ConnectionString"];
         }
 
-        public async Task<string> Upload(Stream stream, string fileName, int userId)
+        public async Task<string> Upload(Stream stream, string fileName, int? userId)
         {
             var encodeFileName = Uri.EscapeUriString(fileName);//);DateTime.Now.Ticks + fileName);
             BlobContainerClient container = new BlobContainerClient(connectionString, containerName);

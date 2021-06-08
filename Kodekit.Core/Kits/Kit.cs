@@ -11,12 +11,12 @@ namespace Kodekit.Core
         {
             Id = Guid.NewGuid().ToString();
             UserId = string.Empty;
-            //Kits = new List<Kit>();
+            ParentId = string.Empty;
         }
 
 
         public string UserId { get; set; }
-        //public Guid? GUID { get; set; }
+        public string ParentId { get; set; }//If this is a version update
         public string Description { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }
