@@ -1,6 +1,7 @@
 ﻿<div class="login-display">
     <AuthorizeView>
         <Authorized>
+            <a href="/my-kits">My Kits</a>
             <button class="logout" @onclick="BeginLogout">Log Out</button>
         </Authorized>
         <NotAuthorized>
@@ -12,11 +13,6 @@
 
 @inject SignOutSessionStateManager SignOutManager
 @code{
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Api.CreateUserAsync();
-    }
 
     private async Task BeginLogout(MouseEventArgs args)
     {

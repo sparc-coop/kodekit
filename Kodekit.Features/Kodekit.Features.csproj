@@ -3,17 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="_Plugins\test.css" />
-  </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include=".config\dotnet-tools.json" />
-    <Content Include="_Plugins\test.css">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +13,7 @@
     <PackageReference Include="Sparc.Database.Cosmos" Version="2.5.0" />
     <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="2.0.3" />
     <PackageReference Include="Sparc.Storage.Azure" Version="2.0.2" />
+    <PackageReference Include="Blazored.LocalStorage" Version="4.1.1" />
   </ItemGroup>
 
   <ItemGroup>
