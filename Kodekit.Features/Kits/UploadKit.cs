@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-using Sparc.Features;
+﻿using Sparc.Features;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Kodekit.Features
 {
@@ -15,7 +13,7 @@ namespace Kodekit.Features
         {
             var newFile = Path.Combine(Environment.CurrentDirectory, "_Plugins\\test.css");
             FileStream stream = new FileStream(newFile, FileMode.Open);
-            string fileUrl = await new UploadService().Upload(stream, "test.css", null);
+            string fileUrl = await new UploadService().Upload(stream, "app.css");
             return fileUrl;
         }
     }

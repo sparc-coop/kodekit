@@ -1,0 +1,16 @@
+﻿
+@*@inject ProtectedLocalStorage local
+@code {
+    string currentKitId;
+
+    public async Task Save()
+    {
+        await local.SetAsync("kodekitId", currentKitId);
+    }
+
+    public async Task Read()
+    {
+        var result = await local.GetAsync<string>("kodekitId");
+        currentKitId = result.Success ? result.Value : "";
+    }
+}*@

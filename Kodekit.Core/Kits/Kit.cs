@@ -10,13 +10,12 @@ namespace Kodekit.Core
         public Kit()
         {
             Id = Guid.NewGuid().ToString();
-            UserId = string.Empty;
-            ParentId = string.Empty;
         }
 
 
         public string UserId { get; set; }
-        public string ParentId { get; set; }//If this is a version update
+        public string ParentId { get; set; }//For child elements/later versions
+        public int Version { get; set; }
         public string Description { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }
@@ -35,6 +34,6 @@ namespace Kodekit.Core
         public string BodyTypeScale { get; set; }
         public string BodyLineHeight { get; set; }
         public DateTime? DateCreated { get; set; }
-        public bool? IsFinished { get; set; }
+        public bool? IsPublished { get; set; }
     }
 }

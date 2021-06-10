@@ -1,4 +1,5 @@
 ﻿@page  "/Typography"
+@page  "/Typography/{kitId}"
 
 <div class="typography page">
     <div class="page__container">
@@ -135,24 +136,66 @@
     </div>
 </div>
 
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 @code {
     private Kit kit = new Kit();
+    private User User;
+    [Parameter] public string kitId { get; set; }
+    string currentKitId;
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         kit.HeaderFontSize = "16";
         kit.HeaderLineHeight = "120%";
         kit.BodyFontSize = "16";
         kit.BodyLineHeight = "120%";
+
+        await GetKit();
+        await GetUser();
     }
 
     private async Task Submit()
     {
-        //newKit.GUID = Guid.NewGuid();
-        //newKit.DateCreated = DateTime.Now;
-        await Api.CreateUpdateKitAsync();
+        Kit newKit = new Kit();
+        newKit = kit;
+        kit.UserId = User.Id;
+
+        if (kit.Id != null)
+        {
+            newKit.ParentId = kit.Id;
+            newKit.Version += 1;
+        }
+
+        kit = await Api.CreateUpdateKitAsync(newKit);
+
+        //save to local storage
+        if (currentKitId == null) { currentKitId = newKit.Id; }
+        await localStorage.SetItemAsync("kodekitId", currentKitId);
+
         Nav.NavigateTo("/Colors/" + kit.Id);
+    }
+
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if(kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+    }
+
+    private async Task GetUser()
+    {
+        User = await Api.GetUserAsync();
     }
 }
