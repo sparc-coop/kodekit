@@ -1,5 +1,9 @@
 ﻿@import "_variables";
 
+
+//Components
+@import "Shared/Components/pagelayout";
+
 @import "Pages/AddKit";
 @import "Pages/Colors";
 @import "Pages/Effects";
@@ -11,9 +15,6 @@
 
 @import "Shared/MainLayout";
 @import "Shared/NavMenu";
-
-//Components 
-@import "Shared/Components/pagelayout";
 
 
 body {

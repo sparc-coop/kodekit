@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features
 {
-    public class GetKit : Feature<string, Kit>
+    public class GetKit : PublicFeature<string, Kit>
     {
         public GetKit(IRepository<Kit> kits)
         {

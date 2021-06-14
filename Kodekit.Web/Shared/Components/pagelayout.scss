@@ -52,9 +52,14 @@
         border-radius: 0px 0px 8px 8px;
         padding: 32px;
         color: $orange;
+        margin-bottom: 50px;
 
         span {
             color: $purple;
+        }
+
+        .comment {
+            color: $light-gray;
         }
     }
 
@@ -108,14 +113,9 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        padding: 40px;
         margin-bottom: -20px;
         color: $gray900;
         font-family: 'Roboto Mono', monospace;
-
-        > div:not(:last-child) {
-            padding-bottom: 32px;
-        }
 
         h1 {
             font-weight: 400;
