@@ -1,4 +1,5 @@
 ﻿@page  "/effects"
+@page  "/effects/{kitId}"
 
 <div class="effects page">
     <div class="page__container">
@@ -108,7 +109,7 @@
 
 @code {
     private Kit kit = new Kit();
-    //[Parameter] public string kitId { get; set; }
+    [Parameter] public string kitId { get; set; }
 
     protected override void OnInitialized()
     {

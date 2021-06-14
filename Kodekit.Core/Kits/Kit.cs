@@ -24,6 +24,9 @@ namespace Kodekit.Core
         public string TertiaryColor { get; set; }
         public string DarkColor { get; set; }
         public string LightColor { get; set; }
+        public string ErrorColor { get; set; }
+        public string WarningColor { get; set; }
+        public string SuccessColor { get; set; }
         public string TypeScale { get; set; }
         public string HeaderFont { get; set; }
         public string HeaderFontSize { get; set; }

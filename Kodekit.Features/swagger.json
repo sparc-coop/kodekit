@@ -157,10 +157,10 @@
         }
       }
     },
-    "/api/CreateUpdateKit": {
+    "/api/CreateKit": {
       "post": {
         "tags": [
-          "CreateUpdateKit"
+          "CreateKit"
         ],
         "requestBody": {
           "content": {
@@ -361,6 +361,66 @@
         }
       }
     },
+    "/api/UpdateKit": {
+      "post": {
+        "tags": [
+          "UpdateKit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/UpdateUser": {
       "post": {
         "tags": [
@@ -501,6 +561,18 @@
             "nullable": true
           },
           "lightColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "warningColor": {
+            "type": "string",
+            "nullable": true
+          },
+          "successColor": {
             "type": "string",
             "nullable": true
           },
