@@ -13,12 +13,25 @@
     letter-spacing: 0.02em;
     color: #0B5FFF;
     padding-bottom: 6px; }
+  .page p {
+    max-width: 672px;
+    line-height: 160%;
+    font-size: 18px; }
   .page h2 {
     font-weight: 700;
     font-size: 40px;
     line-height: 120%;
     color: #17171A;
     margin: 0; }
+  .page h4 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+    color: #3A3A40; }
+  .page .subheader {
+    color: #787980;
+    max-width: 496px;
+    font-size: 16px; }
   .page button {
     color: #17171A;
     font-weight: 500;
@@ -33,6 +46,22 @@
     .page button img {
       margin-left: 14px;
       vertical-align: middle; }
+  .page label {
+    font-size: 14px;
+    line-height: 180%;
+    color: #6B6C7E; }
+  .page input, .page select {
+    background: #FFFFFF;
+    border: 1px solid #D2D4D9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 16px;
+    display: block;
+    margin: 0 30px 20px 0;
+    font-size: 16px;
+    line-height: 160%;
+    height: 40px;
+    color: #6B6C7E; }
   .page .code-example {
     background: #17171A;
     border-radius: 0px 0px 8px 8px;
@@ -146,6 +175,32 @@
       color: #272833;
       font-size: 14px;
       line-height: 160%; }
+
+.buttons .preview-example {
+  padding: 32px; }
+  .buttons .preview-example button {
+    background: #0B5FFF;
+    border: 1px solid #0B5FFF;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 0;
+    margin-bottom: 24px; }
+  .buttons .preview-example .button-secondary {
+    color: #00BFB2;
+    background: #FFFFFF;
+    border: 1px solid #00BFB2; }
+  .buttons .preview-example .button-disabled {
+    color: #D2D4D9;
+    background: #FFFFFF;
+    border: 1px solid #D2D4D9; }
+  .buttons .preview-example img {
+    vertical-align: middle;
+    margin: 0 12px;
+    margin-top: -2px; }
 
 .add-kit {
   padding: 0 235px;
@@ -274,6 +329,25 @@
 .colors .comment {
   color: #A3A60E; }
 
+.effects input {
+  max-width: 144px; }
+
+.effects .section {
+  max-width: 850px; }
+
+.effects .example-shadow {
+  width: 222px;
+  height: 160px;
+  border-radius: 8px;
+  background: #FFFFFF; }
+
+.effects .preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px 18px; }
+  .effects .preview-example > div {
+    margin: 0 12px 34px 12px; }
+
 .finish {
   background: #F5F7FA;
   height: calc(100vh - 180px);
@@ -362,23 +436,6 @@
   position: absolute;
   bottom: 140px;
   left: 0; }
-
-.typography label {
-  font-size: 14px;
-  line-height: 180%;
-  color: #6B6C7E; }
-
-.typography input, .typography select {
-  background: #FFFFFF;
-  border: 1px solid #D2D4D9;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 8px 16px;
-  display: block;
-  margin: 0 30px 20px 0;
-  font-size: 16px;
-  line-height: 160%;
-  color: #6B6C7E; }
 
 .typography .preview-example {
   padding: 40px 32px; }

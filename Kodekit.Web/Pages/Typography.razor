@@ -172,6 +172,7 @@
         {
             newKit.ParentId = kit.Id;
             newKit.Version += 1;
+            newKit.UserId = User.Id;
         }
 
         kit = await Api.CreateKitAsync(newKit);

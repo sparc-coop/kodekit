@@ -160,7 +160,10 @@
                         <span>$success-100</span><br />
                     </code>
                 </div>
-                <button @onclick="Submit">Save & Continue</button>
+                <button @onclick="Submit">
+                    Save & Continue
+                    <img src="/images/eyecon.svg" />
+                </button>
             </EditForm>
                 }
             </div>
@@ -189,7 +192,7 @@
 
         private async Task Submit()
         {
-            //await Api.UpdateKitAsync(currentKitId);
+            await Api.UpdateKitAsync(kit);
             Nav.NavigateTo("/Effects/" + kit.Id);
         }
 
