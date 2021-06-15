@@ -1,1 +1,42 @@
-﻿@import "../_variables";
+﻿@import "../../_variables";
+
+.buttons {
+    .preview-example {
+        padding: 32px;
+
+        button {
+            background: $primary500;
+            border: 1px solid $primary500;
+            color: $white;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 120%;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+
+        .button-secondary {
+            color: $secondary500;
+            background: $white;
+            border: 1px solid $secondary500;
+        }
+
+        .hover {
+
+        }
+
+        .button-disabled {
+            color: $gray300;
+            background: $white;
+            border: 1px solid $gray300;
+        }
+
+        img {
+            vertical-align: middle;
+            margin: 0 12px;
+            margin-top: -2px;
+        }
+    }
+}

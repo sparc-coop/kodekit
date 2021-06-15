@@ -1,1 +1,32 @@
 ﻿@import "../_variables";
+
+.effects {
+    input {
+        max-width: 144px;
+    }
+
+    .section {
+        max-width: 850px;
+    }
+
+    .example-shadow {
+        width: 222px;
+        height: 160px;
+        border-radius: 8px;
+        background: $white;
+    }
+
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 24px 18px;
+
+        label {
+
+        }
+
+        > div {
+            margin: 0 12px 34px 12px;
+        }
+    }
+}
