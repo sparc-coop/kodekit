@@ -1,100 +1,72 @@
-﻿@page  "/effects"
-@page  "/effects/{kitId}"
+﻿@page  "/box-shadow"
+@page  "/box-shadow/{kitId}"
 
 <div class="effects page">
     <div class="page__container">
         <header>
-            <div class="title">Global Styles</div>
-            <h2>Effects</h2>
+            <div class="title">Elements</div>
+            <h2>Links</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
         <div class="content">
-            <h3>Drop Shadows</h3>
+            <h3>Core Buttons</h3>
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
-                    <h4>Small Shadow Settings</h4>
                     <div class="section">
                         <label>
-                            X Length (px)
+                            Font Size
+                            <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
                         </label>
                         <label>
-                            Y Length (px)
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Blur (px)
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Spread(px)
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Shadow Color
+                            Font Weight
                             <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
-                            Shadow Opacity
+                            Vertical Padding
+                            <span style="background-color: @kit.TertiaryColor"></span>
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            Horizontal Padding
+                            <span style="background-color: @kit.PrimaryColor"></span>
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Corner Radius
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Border Width
+                            <span style="background-color: @kit.TertiaryColor"></span>
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            Icon Width
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Icon Height
+                            <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                     </div>
-                    <h4>X-Large Shadow Settings</h4>
+                    <h4>Secondary Button</h4>
                     <div class="section">
-                        <label>
-                            X Length (px)
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Y Length (px)
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Blur (px)
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Spread(px)
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Shadow Color
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Shadow Opacity
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
+   
+
                     </div>
                     <div class="preview-example">
-                        <div>
-                            <label>Small Shadow</label>
-                            <div class="example-shadow" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);">
-                            </div>
-                        </div>
-                        <div>
-                            <label>Medium Shadow</label>
-                            <div class="example-shadow" style="box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
-                            </div>
-                        </div>
-                        <div>
-                            <label>Large Shadow</label>
-                            <div class="example-shadow" style="box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
-                            </div>
-                        </div>
-                        <div>
-                            <label>X-Large Shadow</label>
-                            <div class="example-shadow" style="box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
-                            </div>
-                        </div>
+
                     </div>
                     <div class="code-example">
                         <code>
