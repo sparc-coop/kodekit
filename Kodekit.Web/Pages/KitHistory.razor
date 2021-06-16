@@ -1,0 +1,17 @@
+﻿@page "/history/{parentId}"
+
+<div>
+
+</div>
+
+@code {
+    [Parameter] public string kitId { get; set; }
+    //private User User;
+    private ICollection<Kit> Kits;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //User = await Api.GetUserAsync();
+        Kits = await Api.GetUserKitsAsync();
+    }
+}
