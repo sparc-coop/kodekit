@@ -1,11 +1,11 @@
-﻿@page  "/forms"
-@page "/forms/{kitId}"
+﻿@page  "/anchors--"
+@page  "/anchors/{kitId}"
 
 <div class="effects page">
     <div class="page__container">
         <header>
             <div class="title">Elements</div>
-            <h2>Forms</h2>
+            <h2>Links</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
@@ -21,30 +21,37 @@
                     <div class="section">
                         <label>
                             Font Size
+                            <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
                         </label>
                         <label>
                             Font Weight
+                            <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
                             Vertical Padding
+                            <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                         <label>
                             Horizontal Padding
+                            <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
                         </label>
                         <label>
                             Corner Radius
+                            <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
                             Border Width
+                            <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                         <label>
                             Icon Width
+                            <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
@@ -55,15 +62,11 @@
                     </div>
                     <h4>Secondary Button</h4>
                     <div class="section">
+   
 
                     </div>
                     <div class="preview-example">
-                        <div class="primary-button">
-                            <button>Button</button>
-                            <button>Button</button>
-                            <button>Button</button>
-                            <button>Button</button>
-                        </div>
+
                     </div>
                     <div class="code-example">
                         <code>
