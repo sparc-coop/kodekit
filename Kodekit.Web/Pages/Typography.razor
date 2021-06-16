@@ -1,6 +1,5 @@
 ﻿@page  "/Typography"
 @page  "/Typography/{kitId}"
-@attribute [AllowAnonymous]
 
 <div class="typography page">
     <div class="page__container">
@@ -140,9 +139,6 @@
     </div>
 </div>
 
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject AuthenticationStateProvider AuthenticationStateProvider
-
 @code {
     private Kit kit = new Kit();
     private User User;
@@ -167,9 +163,8 @@
         Kit newKit = new Kit();
         if (User != null)
         {
-            kit.UserId = User.Id;
+            newKit.UserId = User.Id;
         }
-
 
         newKit.HeaderFontSize = kit.HeaderFontSize;
 

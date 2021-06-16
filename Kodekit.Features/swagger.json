@@ -520,6 +520,10 @@
             "type": "string",
             "nullable": true
           },
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
           "userId": {
             "type": "string",
             "nullable": true
