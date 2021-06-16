@@ -141,6 +141,7 @@
 </div>
 
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 @code {
     private Kit kit = new Kit();
@@ -164,7 +165,11 @@
     private async Task Submit()
     {
         Kit newKit = new Kit();
-        kit.UserId = User.Id;
+        if (User != null)
+        {
+            kit.UserId = User.Id;
+        }
+
 
         newKit.HeaderFontSize = kit.HeaderFontSize;
 
@@ -201,6 +206,11 @@
 
     private async Task GetUser()
     {
-        User = await Api.GetUserAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+        }
     }
 }

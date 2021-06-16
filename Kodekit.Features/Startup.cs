@@ -10,6 +10,7 @@ using Sparc.Plugins.Database.Cosmos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Net.Http.Headers;
 using Blazored.LocalStorage;
+using System;
 
 namespace Kodekit.Features
 {
@@ -31,6 +32,7 @@ namespace Kodekit.Features
             services.AddAzureStorage(Configuration["BlobStorage:ConnectionString"]);
             services.AddAzureADB2CAuthentication(Configuration);
             services.AddBlazoredLocalStorage();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

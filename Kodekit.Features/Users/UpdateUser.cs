@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Sparc.Features;
 using Sparc.Core;
-using Kodekit.Core;
 
 namespace Kodekit.Features
 {

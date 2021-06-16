@@ -1,9 +1,9 @@
 ﻿@layout EmptyLayout
-@page "/viewkit/{kitid}"
+@page "/kit/{kitid}"
 
 
 @code {
-    public string kitid { get; }
+    [Parameter] public string kitid { get; set; }
 
     protected override void OnInitialized()
     {

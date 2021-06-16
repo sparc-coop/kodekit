@@ -1,9 +1,7 @@
 ﻿using Sparc.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Kodekit.Core
+namespace Kodekit.Features
 {
     public class Kit : Root<string>
     {
