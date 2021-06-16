@@ -8,9 +8,10 @@ namespace Kodekit.Features
         public Kit()
         {
             Id = Guid.NewGuid().ToString();
+            KitId = Id;
         }
 
-
+        public string KitId { get; set; }
         public string UserId { get; set; }
         public string ParentId { get; set; }//For child elements/later versions
         public int Version { get; set; }
