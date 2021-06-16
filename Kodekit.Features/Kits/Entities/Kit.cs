@@ -1,18 +1,17 @@
 ﻿using Sparc.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Kodekit.Core
+namespace Kodekit.Features
 {
     public class Kit : Root<string>
     {
         public Kit()
         {
             Id = Guid.NewGuid().ToString();
+            KitId = Id;
         }
 
-
+        public string KitId { get; set; }
         public string UserId { get; set; }
         public string ParentId { get; set; }//For child elements/later versions
         public int Version { get; set; }

@@ -1,6 +1,5 @@
 ﻿@page  "/Typography"
 @page  "/Typography/{kitId}"
-@attribute [AllowAnonymous]
 
 <div class="typography page">
     <div class="page__container">
@@ -140,8 +139,6 @@
     </div>
 </div>
 
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-
 @code {
     private Kit kit = new Kit();
     private User User;
@@ -164,7 +161,10 @@
     private async Task Submit()
     {
         Kit newKit = new Kit();
-        kit.UserId = User.Id;
+        if (User != null)
+        {
+            newKit.UserId = User.Id;
+        }
 
         newKit.HeaderFontSize = kit.HeaderFontSize;
 
@@ -202,6 +202,11 @@
 
     private async Task GetUser()
     {
-        User = await Api.GetUserAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+        }
     }
 }

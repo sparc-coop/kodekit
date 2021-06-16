@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Kodekit.Core;
 
 namespace Kodekit.Features
 {
@@ -10,10 +9,8 @@ namespace Kodekit.Features
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            var user = builder.Entity<User>().HasPartitionKey(x => x.UserId);
-            //user.OwnsMany(x => x.Kits);
-
-            builder.Entity<Kit>().HasPartitionKey(x => x.UserId);
+            builder.Entity<User>().HasNoKey();//.HasPartitionKey(x => x.UserId);
+            builder.Entity<Kit>().HasPartitionKey(x => x.KitId);//x.UserId);
         }
 
     }
