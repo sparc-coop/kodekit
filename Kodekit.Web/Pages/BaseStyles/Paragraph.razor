@@ -1,5 +1,5 @@
-﻿@page  "/layout"
-@page  "/layout/{kitId}"
+﻿@page  "/paragraph"
+@page  "/paragraph/{kitId}"
 
 <div class="effects page">
     <div class="page__container">
@@ -11,10 +11,7 @@
             </p>
         </header>
         <div class="content">
-            <h3>Drop Shadows</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
+ 
             @if (kit != null)
             {
                 <EditForm Model="@kit">
