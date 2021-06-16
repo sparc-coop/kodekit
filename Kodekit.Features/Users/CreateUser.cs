@@ -1,10 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Sparc.Authentication.AzureADB2C;
 using Sparc.Features;
 using Sparc.Core;
-using Kodekit.Core;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Security.Claims;
 
