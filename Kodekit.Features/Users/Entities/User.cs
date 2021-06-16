@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Sparc.Core;
 
-namespace Kodekit.Core
+namespace Kodekit.Features
 {
     public class User : Root<string>
     {
