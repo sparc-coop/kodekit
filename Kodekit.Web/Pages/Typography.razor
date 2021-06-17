@@ -171,10 +171,9 @@
         if (kit.Id != null)
         {
             newKit.ParentId = kit.Id;
-            newKit.Version += 1;
         }
 
-        kit = await Api.CreateKitAsync(newKit);
+        kit = await PublicApi().CreateKitAsync(newKit);
 
         //save to local storage
         if (currentKitId == null) { currentKitId = kit.Id; }
