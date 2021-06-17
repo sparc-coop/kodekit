@@ -1,6 +1,12 @@
 ﻿@import "_variables";
 
-@import "Pages/Account";
+@import "TestScss/Variables/core.scss";
+@import "TestScss/Variables/buttons.scss";
+@import "TestScss/Variables/reset.scss";
+@import "TestScss/Variables/typography.scss";
+@import "TestScss/Variables/defaults.scss";
+
+/*@import "Pages/Account";
 @import "Pages/AddKit";
 @import "Pages/Colors";
 @import "Pages/Finish";
@@ -12,16 +18,16 @@
 @import "Shared/NavMenu";
 
 //Components 
-@import "Shared/Components/pagelayout";
+@import "Shared/Components/pagelayout";*/
 
 
 body {
     margin: 0;
     overflow-x: hidden;
-    background: $gray100;
+    /*background: $gray100;*/
     font-family: 'Inter', sans-serif;
 }
-
+/*
 .loading {
     text-align: center;
     padding-top: 22%;
@@ -66,4 +72,4 @@ button {
     justify-content: center;
     text-align: center;
     padding-top: 15%;
-}
+}*/
