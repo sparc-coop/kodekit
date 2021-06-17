@@ -294,6 +294,63 @@
         }
       }
     },
+    "/api/GetRelatedKits": {
+      "post": {
+        "tags": [
+          "GetRelatedKits"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetUser": {
       "post": {
         "tags": [
@@ -354,6 +411,66 @@
                   "items": {
                     "$ref": "#/components/schemas/Kit"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/PublishKit": {
+      "post": {
+        "tags": [
+          "PublishKit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
                 }
               }
             }
@@ -531,10 +648,6 @@
           "parentId": {
             "type": "string",
             "nullable": true
-          },
-          "version": {
-            "type": "integer",
-            "format": "int32"
           },
           "description": {
             "type": "string",
