@@ -1,1 +1,29 @@
-﻿
+﻿@import "../../_variables.scss";
+
+button {
+    //Reset
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+
+    background: $primary-500;
+    border-radius: 4px;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &:hover {
+        background: $primary-300;
+    }
+}
+
+.secondary {
+    background: white;
+    border: 1px solid $button-secondary;
+    color: $button-secondary;
+
+    &:hover{
+        background: $button-secondary-hover;
+    }
+}

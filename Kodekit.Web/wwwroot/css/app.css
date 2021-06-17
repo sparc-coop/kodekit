@@ -1,4 +1,29 @@
-﻿/*@import "Pages/Account";
+﻿section {
+  margin: 0 auto;
+  width: 70%;
+  text-align: center; }
+
+button {
+  font-size: 100%;
+  font-family: inherit;
+  border: 0;
+  padding: 0;
+  background: #0B5FFF;
+  border-radius: 4px;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer; }
+  button:hover {
+    background: #80ACFF; }
+
+.secondary {
+  background: white;
+  border: 1px solid #00BFB2;
+  color: #00BFB2; }
+  .secondary:hover {
+    background: #E5F7F6; }
+
+/*@import "Pages/Account";
 @import "Pages/AddKit";
 @import "Pages/Colors";
 @import "Pages/Finish";
