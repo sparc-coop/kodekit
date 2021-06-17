@@ -14,9 +14,14 @@ namespace Kodekit.Features
 
         public IRepository<Kit> Kits { get; }
 
-        public override async Task<Kit> ExecuteAsync(string kitId) //=> await Kits.FindAsync(kitId); 
-        {
-            return Kits.Query.Where(x => x.Id == kitId).FirstOrDefault();
+        public override async Task<Kit> ExecuteAsync(string kitId) 
+        { 
+            Kit kit = await Kits.FindAsync(kitId);
+            if (string.IsNullOrEmpty(kit.UserId) && kit.IsPublished == true)
+            {
+                kit = new Kit();
+            }
+            return kit;
         }
     }
 }
