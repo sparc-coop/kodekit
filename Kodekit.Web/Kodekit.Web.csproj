@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\icon.png" />
+    <Content Remove="wwwroot\images\icon.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\icon.png" />
+    <None Include="wwwroot\images\icon.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.4" PrivateAssets="all" />
 

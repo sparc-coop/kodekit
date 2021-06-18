@@ -10,10 +10,47 @@
             <button>Button Primary</button>
             <button class="secondary">Button Secondary</button>
 
-            <h1 class="secondary">Test</h1>
+            @* To get the spacing on the first child the text inside of the button needs to be an element. For example a span or <p> tag *@
+            <button><img src="./images/icon.svg" /><span>Button</span></button>
+            <button><span>Button</span><img src="./images/icon.svg" /></button>
+
+            <h1 class="secondary">This is a h1</h1>
+            <h2 class="secondary">This is a h2</h2>
+            <h3 class="secondary">This is a h3</h3>
+            <h4 class="secondary">This is a h4</h4>
+            <h5 class="secondary">This is a h5</h5>
+            <h6 class="secondary">This is a h6</h6>
+            <span class="subtitle">This is the subtitle class</span>
+            <h1><strong>This is a bold h1</strong></h1>
+            <h1><span class="light">This is a light h1</span></h1>
+
+
+            <form>
+                <div>
+                    @* <i> for images *@
+                    <i><img src="./images/profile.svg" /></i>
+                    <input type="email" value="" placeholder="Username" />
+                    <label class="subtitle">Default Field</label>
+                </div>
+                <div>
+                    @* <i> for images *@
+                    <i><img src="./images/profile.svg" /></i>
+                    <input type="email" value="" placeholder="Username" required />
+                    <label class="subtitle">Required field</label>
+                </div>
+                <div>
+                    @* <i> for images *@
+                    <i><img src="./images/profile.svg" /></i>
+                    <input type="email" value="" placeholder="Username" disabled />
+                    <label class="subtitle">Disabled Field</label>
+                </div>
+                <button type="submit">submit</button>
+            </form>
+            
+
         </div>
     </main>
     <footer>
-
+ 
     </footer>
 </section>

@@ -1,1 +1,43 @@
-﻿
+﻿//Header Tags
+h1, h2, h3, h4, h5, h6, .subtitle {
+    line-height: 120%;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 39px;
+}
+
+h3 {
+    font-size: 31px;
+}
+
+h4 {
+    font-size: 25px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+//Class for a 7th header. Do we make this link to element? for example <h6 class="subtitle"></h6> or would a span work fine.
+.subtitle {
+    font-size: 12px;
+}
+
+//Bold tag
+strong {
+    font-weight: 700;
+}
+
+//light tag (For now)
+span.light {
+    font-weight: 300;
+}

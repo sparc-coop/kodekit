@@ -1,8 +1,31 @@
 ﻿* {
+    h1, h2, h3, h4, h5, h6, p{
+        font-size: 100%;
+        padding: 0;
+        margin: 0;
+        font-family: inherit;
+        font-weight: 400;
+    }
+
     button {
         font-size: 100%;
         font-family: inherit;
         border: 0;
         padding: 0;
+    }
+
+    input {
+        padding: 0;
+        margin: 0;
+        border: none;
+
+        &:focus {
+            border-color: inherit;
+            color: inherit;
+        }
+    }
+
+    input:focus, select:focus, textarea:focus, button:focus {
+        outline: none;
     }
 }

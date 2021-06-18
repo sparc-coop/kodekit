@@ -23,3 +23,12 @@ button.secondary {
         color: $secondary-300;
     }
 }
+
+button > :first-child{
+    margin-right: 14px;
+}
+
+/*button
+    :first-child {
+    margin-right: 14px;
+}*/
