@@ -1,12 +1,6 @@
 ﻿@import "../../_variables.scss";
 
 button {
-    //Reset
-    font-size: 100%;
-    font-family: inherit;
-    border: 0;
-    padding: 0;
-
     background: $primary-500;
     border-radius: 4px;
     color: white;
@@ -16,14 +10,16 @@ button {
     &:hover {
         background: $primary-300;
     }
+
 }
 
-.secondary {
+button.secondary {
     background: white;
-    border: 1px solid $button-secondary;
-    color: $button-secondary;
+    border: 1px solid $secondary-500;
+    color: $secondary-500;
 
-    &:hover{
-        background: $button-secondary-hover;
+    &:hover {
+        border-color: $secondary-300;
+        color: $secondary-300;
     }
 }

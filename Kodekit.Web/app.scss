@@ -1,10 +1,22 @@
 ﻿@import "_variables";
 
-@import "TestScss/Variables/core.scss";
-@import "TestScss/Variables/buttons.scss";
-@import "TestScss/Variables/reset.scss";
-@import "TestScss/Variables/typography.scss";
-@import "TestScss/Variables/defaults.scss";
+//Core style imports
+@import "TestScss/Core/colors.scss";
+@import "TestScss/Core/global-settings.scss";
+@import "TestScss/Core/icons.scss";
+@import "TestScss/Core/layout.scss";
+@import "TestScss/Core/typography.scss";
+
+//Elements style imports
+@import "TestScss/Elements/anchors.scss";
+@import "TestScss/Elements/buttons.scss";
+@import "TestScss/Elements/checkbox-radios.scss";
+@import "TestScss/Elements/dropdowns.scss";
+@import "TestScss/Elements/images.scss";
+@import "TestScss/Elements/inputs-textareas.scss";
+
+//Effects style imports
+@import "TestScss/Effects/boxshadows.scss";
 
 /*@import "Pages/Account";
 @import "Pages/AddKit";
