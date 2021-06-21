@@ -5,78 +5,77 @@
     <div class="page__container">
         <header>
             <div class="title">Elements</div>
-            <h2>Forms</h2>
+            <h2>Inputs & Textareas</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
         <div class="content">
-            <h3>Core Buttons</h3>
+            <h3>Form Styling</h3>
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
-                <EditForm Model="@kit">
-                    <div class="section">
-                        <label>
-                            Font Size
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Font Weight
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Vertical Padding
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Horizontal Padding
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Corner Radius
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Border Width
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Icon Width
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Icon Height
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                    </div>
-                    <h4>Secondary Button</h4>
-                    <div class="section">
+            <EditForm Model="@kit">
+            <div class="section">
+                <label>
+                    Font Size
+                    <InputText @bind-Value="kit.PrimaryColor" />
+                </label>
+                <label>
+                    Font Weight
+                    <InputText @bind-Value="kit.SecondaryColor" />
+                </label>
+                <label>
+                    Vertical Padding
+                    <InputText @bind-Value="kit.TertiaryColor" />
+                </label>
+                <label>
+                    Horizontal Padding
+                    <InputText @bind-Value="kit.PrimaryColor" />
+                </label>
+                <label>
+                    Corner Radius
+                    <InputText @bind-Value="kit.SecondaryColor" />
+                </label>
+                <label>
+                    Border Width
+                    <InputText @bind-Value="kit.TertiaryColor" />
+                </label>
+            </div>
+            <div class="preview-example">
+                <input />
+                <textarea></textarea>
+            </div>
+            <div class="code-example">
+                <code>
+                    <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
+                    <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
+                    <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                </code>
+            </div>
 
-                    </div>
-                    <div class="preview-example">
-                        <div class="primary-button">
-                            <button>Button</button>
-                            <button>Button</button>
-                            <button>Button</button>
-                            <button>Button</button>
-                        </div>
-                    </div>
-                    <div class="code-example">
-                        <code>
-                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
-                        </code>
-                    </div>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" />
-                    </button>
-                </EditForm>
+            <h3>Input & Textarea states</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            <div class="preview-example">
+                <label>
+                    Placeholder
+                    <input placeholder="username"/>
+                </label>
+            </div>
+            <div class="code-example">
+                <code>
+
+                </code>
+            </div>
+            <button @onclick="Submit">
+                Save & Continue
+                <img src="/images/eyecon.svg" />
+            </button>
+        </EditForm>
             }
         </div>
     </div>
