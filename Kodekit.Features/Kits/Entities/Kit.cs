@@ -1,22 +1,19 @@
 ﻿using Sparc.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Kodekit.Core
+namespace Kodekit.Features
 {
     public class Kit : Root<string>
     {
         public Kit()
         {
             Id = Guid.NewGuid().ToString();
-            UserId = string.Empty;
-            //Kits = new List<Kit>();
+            KitId = Id;
         }
 
-
+        public string KitId { get; set; }
         public string UserId { get; set; }
-        //public Guid? GUID { get; set; }
+        public string ParentId { get; set; }//For child elements/later versions
         public string Description { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }
@@ -25,6 +22,9 @@ namespace Kodekit.Core
         public string TertiaryColor { get; set; }
         public string DarkColor { get; set; }
         public string LightColor { get; set; }
+        public string ErrorColor { get; set; }
+        public string WarningColor { get; set; }
+        public string SuccessColor { get; set; }
         public string TypeScale { get; set; }
         public string HeaderFont { get; set; }
         public string HeaderFontSize { get; set; }
@@ -35,6 +35,6 @@ namespace Kodekit.Core
         public string BodyTypeScale { get; set; }
         public string BodyLineHeight { get; set; }
         public DateTime? DateCreated { get; set; }
-        public bool? IsFinished { get; set; }
+        public bool? IsPublished { get; set; }
     }
 }

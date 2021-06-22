@@ -6,30 +6,37 @@
         </a>
     </div>
     <div class="menu">
-        <div>Getting Started</div>
-        <div>Introduction</div>
+        <div class="heading">Getting Started</div>
+        <NavLink href="/" Match="NavLinkMatch.All">
+            Introduction
+        </NavLink>
+        <NavLink href="#" Match="NavLinkMatch.Prefix">
+            Release Notes
+        </NavLink>
+        <div class="heading">Global Styles</div>
+        <NavLink href="typography" Match="NavLinkMatch.Prefix">
+            Typography
+        </NavLink>
+        <NavLink href="colors" Match="NavLinkMatch.Prefix">
+            Colors
+        </NavLink>
+        <NavLink href="effects" Match="NavLinkMatch.Prefix">
+            Effects
+        </NavLink>
+        <div class="heading">Elements</div>
+        <NavLink href="buttons" Match="NavLinkMatch.Prefix">
+            Buttons
+        </NavLink>
+        <NavLink href="forms" Match="NavLinkMatch.Prefix">
+            Forms
+        </NavLink>
+        <NavLink href="links" Match="NavLinkMatch.Prefix">
+            Links
+        </NavLink>
     </div>
     <LoginDisplay />
 </div>
 
-@inject NavigationManager Navigation
 @code {
-    //private bool collapseNavMenu = true;
-    //private string hideNavMenu => collapseNavMenu ? "collapse" : null;
-    //private bool homePage = false;
-    //private string test = "";
 
-    //protected override void OnInitialized()
-    //{
-    //    test = Navigation.Uri;
-    //    if (Navigation.Uri == Navigation.BaseUri)
-    //    {
-    //        homePage = true;
-    //    }
-    //}
-
-    //private void ToggleNavMenu()
-    //{
-    //    collapseNavMenu = !collapseNavMenu;
-    //}
 }

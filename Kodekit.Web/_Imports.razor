@@ -19,3 +19,7 @@
 
 @inject NavigationManager Nav
 @inject KodekitApi Api
+@inject Public<KodekitApi> PublicApi
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@attribute [AllowAnonymous]

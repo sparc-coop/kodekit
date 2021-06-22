@@ -1,0 +1,37 @@
+﻿@page "/my-kits"
+@attribute [Authorize]
+
+<div class="account-page page">
+    <div class="page__container">
+        @if (User != null)
+        {
+            <h2>Hi, @User.FirstName</h2>
+        }
+
+        @if (Kits == null)
+        {
+            <p>Create a new kit to get started!</p>
+        }
+        else
+        {
+            <div>
+                @foreach (var kit in Kits)
+                {
+                    <a href="typography/@kit.Id">Edit Kit: @kit.Id</a>
+                }
+            </div>
+        }
+        <button @onclick="@(e => Nav.NavigateTo("/typography"))">New Kit</button>
+    </div>
+</div>
+
+@code {
+    private User User;
+    private ICollection<Kit> Kits;
+
+    protected override async Task OnInitializedAsync()
+    {
+        User = await Api.GetUserAsync();
+        Kits = await Api.GetUserKitsAsync();
+    }
+}

@@ -1,49 +1,7 @@
 ﻿@import "../_variables";
 
 .colors {
-    background: $background;
-    padding: 180px 20px 0 20px;
-    margin-top: -180px;
-
-    &__container {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-        height: calc(100vh - 180px);
-    }
-
-    h2 {
-        font-family: Roboto Mono;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 160%;
-        color: $text-primary;
-        margin: 0;
-    }
-
-    p {
-        font-family: Roboto;
-        font-size: 16px;
-        line-height: 180%;
-        color: $text-gray;
-        width: 572px;
-        margin: 0;
-        padding: 16px 0 40px 0;
-    }
-
-    .title {
-        h4 {
-            font-family: Roboto Mono;
-            font-size: 14px;
-            line-height: 160%;
-            color: $primary500;
-            margin: 0;
-        }
-    }
-
     label {
-        font-family: Roboto;
         font-weight: normal;
         font-size: 14px;
         line-height: 180%;
@@ -58,68 +16,48 @@
         padding: 8px 16px 8px 44px;
         display: block;
         margin: 0 30px 20px 0;
-        font-family: Roboto Mono;
         font-size: 16px;
         line-height: 160%;
         color: $text-gray;
     }
 
-    h3 {
-        color: $text-primary;
-        font-family: Roboto Mono;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 160%;
-        padding-bottom: 12px;
-    }
-
-    .button--save {
-        background: $background;
-        border-radius: 4px;
-        color: $white;
-        font-family: Roboto Mono;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 160%;
-        padding: 6px 24px;
-        border: none;
-        width: 193px;
-        box-sizing: border-box;
-        cursor: pointer;
-        margin-top: 80px;
-    }
 
     .preview-example {
-        background: $white;
-        border: 1px solid #E7E7ED;
         box-sizing: border-box;
         border-radius: 8px;
-        padding: 10px 25px;
+        padding: 24px 16px 50px 16px;
         display: flex;
         flex-wrap: wrap;
+        max-width: 1024px;
+        width: 100%;
 
-        > div {
-            width: 286px;
+        label {
+            padding: 8px 15px;
+        }
+
+        .color-display {
+            width: 293px;
             height: 142px;
             border-radius: 4px;
-            margin: 20px 15px;
+            margin: 6px 15px 0;
         }
 
         &--grayscale {
-            > div {
-                width: 102px;
+
+            .color-display {
+                width: 106px;
                 height: 102px;
-                margin: 20px 0;
+                margin: 20px 0 0 0;
                 border-radius: 0;
 
-                &:first-child {
+                &.first {
                     border-radius: 4px 0px 0px 4px;
-                    margin: 20px 0 20px 15px;
+                    margin: 20px 0 0 15px;
                 }
 
-                &:last-child {
+                &.last {
                     border-radius: 0px 4px 4px 0px;
-                    margin: 20px 15px 20px 0;
+                    margin: 20px 15px 0 0;
                 }
             }
         }
@@ -146,7 +84,7 @@
         }
     }
 
-    .content {
-        padding-bottom: 100px;
+    .comment {
+        color: $yellow;
     }
 }

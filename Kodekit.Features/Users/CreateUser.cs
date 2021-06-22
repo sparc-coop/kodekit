@@ -1,14 +1,13 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Sparc.Authentication.AzureADB2C;
 using Sparc.Features;
 using Sparc.Core;
-using Kodekit.Core;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Security.Claims;
 
 namespace Kodekit.Features
 {
-    public class CreateUser : Feature<string>
+    public class CreateUser : Feature<bool>
     {
         public CreateUser(IRepository<User> users)
         {
@@ -17,22 +16,48 @@ namespace Kodekit.Features
 
         public IRepository<User> Users { get; }
 
-        public override async Task<string> ExecuteAsync()
+        public override async Task<bool> ExecuteAsync()
         {
-            return "test123";
-            //try
-            //{
-            //    User user =  new User();
-            //    user.FirstName = "NewTest";// User.Identity.Name;
-            //    user.LastName = "Last";
-            //    user.Email = "test@gmail.com";
-            //    await Users.AddAsync(user);
-            //    return true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    return false;
-            //}
+            try
+            {
+                if (!UserExists())
+                {
+                    var claims = User.Claims;
+                    User user = new User();
+
+                    user.Id = User.Id();
+                    user.FirstName = claims.SingleOrDefault(x => x.Type == ClaimTypes.GivenName).Value;
+                    user.LastName = claims.SingleOrDefault(x => x.Type == ClaimTypes.Surname).Value;
+                    user.Email = claims.SingleOrDefault(x => x.Type == "emails").Value;
+                    await Users.AddAsync(user);
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //return false;
+            }
+            return false;
+        }
+
+        private bool UserExists()
+        {
+            if(User.Id() != null)
+            {
+                if(Users.Query.Where(x => x.Id == User.Id()).Any())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
