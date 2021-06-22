@@ -1,4 +1,153 @@
-﻿.add-kit {
+﻿.page {
+  background: #F5F7FA;
+  padding: 138px 80px 100px 80px;
+  font-family: 'Inter', sans-serif; }
+  .page__container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative; }
+  .page .title {
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    color: #0B5FFF;
+    padding-bottom: 6px; }
+  .page h2 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 120%;
+    color: #17171A;
+    margin: 0; }
+  .page button {
+    color: #17171A;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19.2px;
+    border-radius: 4px;
+    border: 1px solid #17171A;
+    background: #F5F7FA;
+    padding: 8px 16px;
+    margin-top: 20px;
+    cursor: pointer; }
+    .page button img {
+      margin-left: 14px;
+      vertical-align: middle; }
+  .page .code-example {
+    background: #17171A;
+    border-radius: 0px 0px 8px 8px;
+    padding: 32px;
+    color: #CA9100;
+    margin-bottom: 50px; }
+    .page .code-example span {
+      color: #875BBF; }
+    .page .code-example .comment {
+      color: #979797; }
+  .page .section {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 40px; }
+    .page .section .preview {
+      max-width: 496px;
+      width: 100%;
+      min-height: 87px; }
+    .page .section textarea {
+      font-family: 'Inter';
+      max-width: 496px;
+      width: 100%;
+      min-height: 87px;
+      padding: 10px 16px;
+      box-sizing: border-box;
+      background: #FFFFFF;
+      border: 1px solid #D2D4D9;
+      border-radius: 4px;
+      display: block;
+      margin: 0 30px 20px 0;
+      font-size: 16px;
+      line-height: 160%;
+      color: #787980; }
+    .page .section .large {
+      width: 486px; }
+    .page .section .medium {
+      width: 314px; }
+    .page .section .small {
+      width: 142px; }
+  .page .content {
+    padding-bottom: 100px; }
+  .page .preview-example {
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 8px 8px 0px 0px;
+    margin-bottom: -20px;
+    color: #17171A;
+    font-family: 'Roboto Mono', monospace; }
+    .page .preview-example h1 {
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example h2 {
+      font-weight: 400;
+      font-size: 39px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example h3 {
+      font-weight: 400;
+      font-size: 31px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example h4 {
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example h5 {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example h6 {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example label {
+      font-size: 14px;
+      line-height: 180%;
+      color: #6B6C7E;
+      padding-bottom: 32px;
+      font-family: 'Inter', sans-serif; }
+    .page .preview-example p {
+      color: #272833;
+      font-family: Roboto Mono;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 120%;
+      padding: 0;
+      margin: 0; }
+    .page .preview-example--body p {
+      width: 100%; }
+    .page .preview-example--body .large {
+      color: #272833;
+      font-size: 20px;
+      line-height: 160%; }
+    .page .preview-example--body .medium {
+      color: #272833;
+      font-size: 17px;
+      line-height: 160%; }
+    .page .preview-example--body .small {
+      color: #272833;
+      font-size: 14px;
+      line-height: 160%; }
+
+.add-kit {
   padding: 0 235px;
   display: flex;
   flex-wrap: wrap;
@@ -61,117 +210,69 @@
     text-transform: uppercase;
     background: #FFFFFF; }
 
-.colors {
-  background: #F5F7FA;
-  padding: 180px 20px 0 20px;
-  margin-top: -180px; }
-  .colors__container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    height: calc(100vh - 180px); }
-  .colors h2 {
-    font-family: Roboto Mono;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 160%;
-    color: #272833;
-    margin: 0; }
-  .colors p {
-    font-family: Roboto;
-    font-size: 16px;
-    line-height: 180%;
-    color: #6B6C7E;
-    width: 572px;
-    margin: 0;
-    padding: 16px 0 40px 0; }
-  .colors .title h4 {
-    font-family: Roboto Mono;
-    font-size: 14px;
-    line-height: 160%;
-    color: #0B5FFF;
-    margin: 0; }
-  .colors label {
-    font-family: Roboto;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 180%;
-    color: #6B6C7E; }
-  .colors input {
-    background: #FFFFFF;
-    border: 1px solid #E7E7ED;
-    box-sizing: border-box;
+.colors label {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 180%;
+  color: #6B6C7E; }
+
+.colors input {
+  background: #FFFFFF;
+  border: 1px solid #E7E7ED;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 16px 8px 44px;
+  display: block;
+  margin: 0 30px 20px 0;
+  font-size: 16px;
+  line-height: 160%;
+  color: #6B6C7E; }
+
+.colors .preview-example {
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 24px 16px 50px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1024px;
+  width: 100%; }
+  .colors .preview-example label {
+    padding: 8px 15px; }
+  .colors .preview-example .color-display {
+    width: 293px;
+    height: 142px;
     border-radius: 4px;
-    padding: 8px 16px 8px 44px;
-    display: block;
-    margin: 0 30px 20px 0;
-    font-family: Roboto Mono;
-    font-size: 16px;
-    line-height: 160%;
-    color: #6B6C7E; }
-  .colors h3 {
-    color: #272833;
-    font-family: Roboto Mono;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 160%;
-    padding-bottom: 12px; }
-  .colors .button--save {
-    background: #F5F7FA;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-family: Roboto Mono;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
-    padding: 6px 24px;
-    border: none;
-    width: 193px;
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-top: 80px; }
-  .colors .preview-example {
-    background: #FFFFFF;
-    border: 1px solid #E7E7ED;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 10px 25px;
-    display: flex;
-    flex-wrap: wrap; }
-    .colors .preview-example > div {
-      width: 286px;
-      height: 142px;
-      border-radius: 4px;
-      margin: 20px 15px; }
-    .colors .preview-example--grayscale > div {
-      width: 102px;
-      height: 102px;
-      margin: 20px 0;
-      border-radius: 0; }
-      .colors .preview-example--grayscale > div:first-child {
-        border-radius: 4px 0px 0px 4px;
-        margin: 20px 0 20px 15px; }
-      .colors .preview-example--grayscale > div:last-child {
-        border-radius: 0px 4px 4px 0px;
-        margin: 20px 15px 20px 0; }
-  .colors .section {
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 40px; }
-    .colors .section label {
-      position: relative; }
-      .colors .section label span {
-        position: absolute;
-        top: 34px;
-        left: 8px;
-        width: 24px;
-        height: 24px;
-        display: block;
-        z-index: 10;
-        border-radius: 4px; }
-  .colors .content {
-    padding-bottom: 100px; }
+    margin: 6px 15px 0; }
+  .colors .preview-example--grayscale .color-display {
+    width: 106px;
+    height: 102px;
+    margin: 20px 0 0 0;
+    border-radius: 0; }
+    .colors .preview-example--grayscale .color-display.first {
+      border-radius: 4px 0px 0px 4px;
+      margin: 20px 0 0 15px; }
+    .colors .preview-example--grayscale .color-display.last {
+      border-radius: 0px 4px 4px 0px;
+      margin: 20px 15px 0 0; }
+
+.colors .section {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 40px; }
+  .colors .section label {
+    position: relative; }
+    .colors .section label span {
+      position: absolute;
+      top: 34px;
+      left: 8px;
+      width: 24px;
+      height: 24px;
+      display: block;
+      z-index: 10;
+      border-radius: 4px; }
+
+.colors .comment {
+  color: #A3A60E; }
 
 .finish {
   background: #F5F7FA;
@@ -262,181 +363,25 @@
   bottom: 140px;
   left: 0; }
 
-.typography {
-  background: #F5F7FA;
-  padding: 180px 20px 0 20px;
-  margin-top: -180px; }
-  .typography__container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    height: calc(100vh - 180px); }
-  .typography h2 {
-    font-family: Roboto Mono;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 160%;
-    color: #272833;
-    margin: 0; }
-  .typography p {
-    font-family: Roboto;
-    font-size: 16px;
-    line-height: 180%;
-    color: #6B6C7E;
-    width: 572px;
-    margin: 0;
-    padding: 16px 0 40px 0; }
-  .typography .title h4 {
-    font-family: Roboto Mono;
-    font-size: 14px;
-    line-height: 160%;
-    color: #0B5FFF;
-    margin: 0; }
-  .typography h3 {
-    color: #272833;
-    font-family: Roboto Mono;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 160%;
-    padding-bottom: 12px; }
-  .typography .button--save {
-    background: #0B5FFF;
-    border-radius: 4px;
-    color: #FFFFFF;
-    font-family: Roboto Mono;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 160%;
-    padding: 6px 24px;
-    border: none;
-    width: 193px;
-    box-sizing: border-box;
-    cursor: pointer; }
-  .typography label {
-    font-family: Roboto;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 180%;
-    color: #6B6C7E; }
-  .typography input, .typography select, .typography textarea {
-    background: #FFFFFF;
-    border: 1px solid #E7E7ED;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 8px 16px;
-    display: block;
-    margin: 0 30px 20px 0;
-    font-family: Roboto Mono;
-    font-size: 16px;
-    line-height: 160%;
-    color: #6B6C7E; }
-  .typography .preview-example {
-    background: #FFFFFF;
-    border: 1px solid #E7E7ED;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 40px;
-    margin-bottom: 80px;
-    color: #272833; }
-    .typography .preview-example > div:not(:last-child) {
-      padding-bottom: 32px; }
-    .typography .preview-example label {
-      font-family: Roboto;
-      font-size: 14px;
-      line-height: 180%;
-      color: #6B6C7E;
-      padding-bottom: 32px; }
-    .typography .preview-example h1 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 48px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h2 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 39px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h3 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 31px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h4 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 25px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h5 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example h6 {
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example p {
-      color: #272833;
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .typography .preview-example--body p {
-      width: 100%; }
-    .typography .preview-example--body .large {
-      color: #272833;
-      font-family: Roboto;
-      font-size: 20px;
-      line-height: 160%; }
-    .typography .preview-example--body .medium {
-      color: #272833;
-      font-family: Roboto;
-      font-size: 17px;
-      line-height: 160%; }
-    .typography .preview-example--body .small {
-      color: #272833;
-      font-family: Roboto;
-      font-size: 14px;
-      line-height: 160%; }
-  .typography .section {
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 40px; }
-    .typography .section p {
-      font-family: Roboto;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 180%;
-      color: #6B6C7E;
-      padding: 0; }
-    .typography .section textarea {
-      max-width: 486px;
-      width: 100%;
-      min-height: 96px; }
-    .typography .section .large {
-      width: 486px; }
-    .typography .section .medium {
-      width: 314px; }
-    .typography .section .small {
-      width: 142px; }
-  .typography .content {
-    padding-bottom: 100px; }
+.typography label {
+  font-size: 14px;
+  line-height: 180%;
+  color: #6B6C7E; }
+
+.typography input, .typography select {
+  background: #FFFFFF;
+  border: 1px solid #D2D4D9;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: block;
+  margin: 0 30px 20px 0;
+  font-size: 16px;
+  line-height: 160%;
+  color: #6B6C7E; }
+
+.typography .preview-example {
+  padding: 40px 32px; }
 
 .landing .hero {
   background: #F5F7FA;
@@ -646,6 +591,11 @@
       height: 36px;
       border-radius: 4px; }
 
+.account-page a {
+  display: block;
+  text-decoration: none;
+  margin: 10px 0; }
+
 .main {
   margin-left: 256px; }
 
@@ -660,14 +610,38 @@
   z-index: 10; }
   .sidebar .menu {
     padding: 20px 16px; }
+    .sidebar .menu a {
+      display: block;
+      text-decoration: none;
+      color: #787980;
+      font-size: 14px;
+      margin: 0 16px;
+      padding: 8px 0; }
+    .sidebar .menu .heading {
+      padding: 32px 16px 8px 16px;
+      color: #17171A;
+      font-size: 12px;
+      line-height: 14.4px;
+      font-weight: 500; }
+      .sidebar .menu .heading:first-child {
+        padding: 0 16px 8px 16px; }
+    .sidebar .menu .active {
+      background-color: #EBF2FF;
+      border-radius: 4px;
+      margin: 0;
+      padding: 8px 16px;
+      color: #0B5FFF;
+      font-weight: 500; }
   .sidebar .login-display {
-    display: flex;
     position: absolute;
     left: 16px;
     bottom: 50px; }
     .sidebar .login-display a {
       color: #000000;
-      text-decoration: none; }
+      text-decoration: none;
+      display: block;
+      padding: 6px;
+      font-size: 14px; }
     .sidebar .login-display .logout {
       border: none;
       background: none; }
@@ -681,12 +655,14 @@
   border-bottom: 1px solid #F5F7FA;
   box-sizing: border-box; }
   .header .logo {
-    font-size: 20px;
     font-weight: 500;
-    font-size: 14px; }
+    font-size: 14px;
+    padding-left: 20px; }
     .header .logo img {
       vertical-align: middle;
-      margin-right: 5px; }
+      margin-right: 2px;
+      margin-top: -3px;
+      width: 25px; }
   .header a {
     color: #000000;
     text-decoration: none; }
@@ -716,35 +692,6 @@
     position: absolute;
     top: 46px;
     right: 0px; }
-
-.page {
-  background: #F5F7FA;
-  padding: 138px 80px 100px 80px; }
-  .page__container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative; }
-  .page .title {
-    font-size: 14px;
-    line-height: 120%;
-    letter-spacing: 0.02em;
-    color: #0B5FFF; }
-  .page h2 {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 120%;
-    color: #17171A;
-    margin: 0; }
-  .page button {
-    color: #17171A;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #17171A;
-    background: #FFFFFF;
-    padding: 8px 16px;
-    margin-top: 20px; }
 
 body {
   margin: 0;

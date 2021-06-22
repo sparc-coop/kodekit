@@ -12,11 +12,40 @@
 
     .menu {
         padding: 20px 16px;
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: $gray500;
+            font-size: 14px;
+            margin: 0 16px;
+            padding: 8px 0;
+        }
+
+        .heading {
+            padding: 32px 16px 8px 16px;
+            color: $gray900;
+            font-size: 12px;
+            line-height: 14.4px;
+            font-weight: 500;
+
+            &:first-child {
+                padding: 0 16px 8px 16px;
+            }
+        }
+
+        .active {
+            background-color: $primary100;
+            border-radius: 4px;
+            margin: 0;
+            padding: 8px 16px;
+            color: $primary500;
+            font-weight: 500;
+        }
     }
 
 
     .login-display {
-        display: flex;
         position: absolute;
         left: 16px;
         bottom: 50px;
@@ -24,6 +53,9 @@
         a {
             color: $black;
             text-decoration: none;
+            display: block;
+            padding: 6px;
+            font-size: 14px;
         }
 
         .logout {
@@ -34,7 +66,8 @@
 }
 
 .header {
-    height: 55px;    position: relative;
+    height: 55px;
+    position: relative;
     z-index: 10;
     margin: 0 auto;
     padding: 20px 16px;
@@ -42,13 +75,15 @@
     box-sizing: border-box;
 
     .logo {
-        font-size: 20px;
         font-weight: 500;
         font-size: 14px;
+        padding-left: 20px;
 
         img {
             vertical-align: middle;
-            margin-right: 5px;
+            margin-right: 2px;
+            margin-top: -3px;
+            width: 25px;
         }
     }
 

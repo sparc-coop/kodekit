@@ -3,10 +3,11 @@
 .page {
     background: $background;
     padding: 138px 80px 100px 80px;
+    font-family: 'Inter', sans-serif;
 
     &__container {
         width: 100%;
-        max-width: 1000px;
+        max-width: 1024px;
         margin: 0 auto;
         position: relative;
     }
@@ -16,6 +17,7 @@
         line-height: 120%;
         letter-spacing: 0.02em;
         color: $primary500;
+        padding-bottom: 6px;
     }
 
     h2 {
@@ -28,12 +30,182 @@
 
     button {
         color: $gray900;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 16px;
+        line-height: 19.2px;
         border-radius: 4px;
         border: 1px solid $gray900;
-        background: $white;
+        background: $background;
         padding: 8px 16px;
         margin-top: 20px;
+        cursor: pointer;
+
+        img {
+            margin-left: 14px;
+            vertical-align: middle;
+        }
+    }
+
+
+    .code-example {
+        background: $gray900;
+        border-radius: 0px 0px 8px 8px;
+        padding: 32px;
+        color: $orange;
+        margin-bottom: 50px;
+
+        span {
+            color: $purple;
+        }
+
+        .comment {
+            color: $light-gray;
+        }
+    }
+
+    .section {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 40px;
+
+        .preview {
+            max-width: 496px;
+            width: 100%;
+            min-height: 87px;
+        }
+
+        textarea {
+            font-family: 'Inter';
+            max-width: 496px;
+            width: 100%;
+            min-height: 87px;
+            padding: 10px 16px;
+            box-sizing: border-box;
+            background: $white;
+            border: 1px solid $gray300;
+            border-radius: 4px;
+            display: block;
+            margin: 0 30px 20px 0;
+            font-size: 16px;
+            line-height: 160%;
+            color: $gray500;
+        }
+
+        .large {
+            width: 486px;
+        }
+
+        .medium {
+            width: 314px
+        }
+
+        .small {
+            width: 142px;
+        }
+    }
+
+    .content {
+        padding-bottom: 100px;
+    }
+
+    .preview-example {
+        background: $white;
+        border: 1px solid $white;
+        box-sizing: border-box;
+        border-radius: 8px 8px 0px 0px;
+        margin-bottom: -20px;
+        color: $gray900;
+        font-family: 'Roboto Mono', monospace;
+
+        h1 {
+            font-weight: 400;
+            font-size: 48px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        h2 {
+            font-weight: 400;
+            font-size: 39px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 31px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        h5 {
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        h6 {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        label {
+            font-size: 14px;
+            line-height: 180%;
+            color: $text-gray;
+            padding-bottom: 32px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        p {
+            color: $text-primary;
+            font-family: Roboto Mono;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 120%;
+            padding: 0;
+            margin: 0;
+        }
+
+        &--body {
+
+            p {
+                width: 100%;
+            }
+
+            .large {
+                color: $text-primary;
+                font-size: 20px;
+                line-height: 160%;
+            }
+
+            .medium {
+                color: $text-primary;
+                font-size: 17px;
+                line-height: 160%;
+            }
+
+            .small {
+                color: $text-primary;
+                font-size: 14px;
+                line-height: 160%;
+            }
+        }
     }
 }

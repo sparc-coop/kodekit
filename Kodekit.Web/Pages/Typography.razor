@@ -1,147 +1,210 @@
 ﻿@page  "/Typography"
+@page  "/Typography/{kitId}"
 
-<div class="typography">
-    <div class="container">
-        <div class="progress">
-            <img src="/images/step_2.svg" />
-        </div>
-        <div class="title">
-            <h4>Step One</h4>
+<div class="typography page">
+    <div class="page__container">
+        <header>
+            <div class="title">Global Styles</div>
             <h2>Typography</h2>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
             </p>
-        </div>
+        </header>
         <div class="content">
-            <h3>Header Settings</h3>
-            <EditForm @*Model="@newKit"*@>
-                <div class="section">
-                    <label>
-                        Preview Text
-                        <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
-                    </label>
-                    <label>
-                        Choose heading font
-                        <select class="medium">
-                            <option selected>Roboto Mono</option>
-                        </select>
-                    </label>
-                    <label>
-                        Base Font Size (px)
-                        @*<InputText @bind-Value="newKit.HeaderFontSize" class="small"/>*@
-                    </label>
-                    <label>
-                        Choose a Type Scale
-                        <select class="medium">
-                            <option selected>1.250 (Major Third)</option>
-                        </select>
-                    </label>
-                    <label>
-                        Line Height
-                        @*<InputText @bind-Value="newKit.HeaderLineHeight" class="small" />*@
-                    </label>
-                </div>
-                <div class="preview-example">
-                    <div>
-                        <h1>@previewText</h1>
-                        <label>H1 - Font Size: 48px (3em) / Line Height: 120%</label>
+            <h3>Heading Settings</h3>
+            <p>
+                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
+            </p>
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <div class="section">
+                        <label>
+                            Preview Text
+                            <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
+                        </label>
+                        <label>
+                            Choose heading font
+                            <select class="medium">
+                                <option selected>Roboto Mono</option>
+                            </select>
+                        </label>
+                        <label>
+                            Base Font Size (px)
+                            <InputText @bind-Value="kit.HeaderFontSize" class="small" />
+                        </label>
+                        <label>
+                            Choose a Type Scale
+                            <select class="medium">
+                                <option selected>1.250 (Major Third)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Line Height
+                            <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
+                        </label>
                     </div>
-                    <div>
-                        <h2>@previewText</h2>
-                        <label>H2 - Font Size: xxpx (xem)</label>
+                    <div class="preview-example">
+                        <div>
+                            <h1>@previewText</h1>
+                            <label>H1 - Font Size: 48px (3em) / Line Height: 120%</label>
+                        </div>
+                        <div>
+                            <h2>@previewText</h2>
+                            <label>H2 - Font Size: xxpx (xem)</label>
+                        </div>
+                        <div>
+                            <h3>@previewText</h3>
+                            <label>H3 - Font Size: xxpx (xem)</label>
+                        </div>
+                        <div>
+                            <h4>@previewText</h4>
+                            <label>H4 - Font Size: xxpx (xem)</label>
+                        </div>
+                        <div>
+                            <h5>@previewText</h5>
+                            <label>H5 - Font Size: xxpx (xem)</label>
+                        </div>
+                        <div>
+                            <h6>@previewText</h6>
+                            <label>H6 - Font Size: xxpx (xem)</label>
+                        </div>
+                        <div>
+                            <p>@previewText</p>
+                            <label>Subtitle - Font Size: xxpx (xem)</label>
+                        </div>
                     </div>
-                    <div>
-                        <h3>@previewText</h3>
-                        <label>H3 - Font Size: xxpx (xem)</label>
+                    <div class="code-example">
+                        <code>
+                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
+                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
+                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                        </code>
                     </div>
-                    <div>
-                        <h4>@previewText</h4>
-                        <label>H4 - Font Size: xxpx (xem)</label>
+                    <h3>Paragraph Settings</h3>
+                    <div class="section">
+                        <label class="preview">
+                            Preview Text
+                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
+                        </label>
+                        <label>
+                            Choose Body font
+                            <select class="medium">
+                                <option selected>Roboto Mono</option>
+                            </select>
+                        </label>
+                        <label>
+                            Base Font Size (px)
+                            <InputText @bind-Value="kit.BodyFontSize" class="small" />
+                        </label>
+                        <label>
+                            Choose a Type Scale
+                            <select class="medium">
+                                <option selected>1.250 (Major Third)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Line Height
+                            <InputText @bind-Value="kit.BodyLineHeight" class="small" />
+                        </label>
                     </div>
-                    <div>
-                        <h5>@previewText</h5>
-                        <label>H5 - Font Size: xxpx (xem)</label>
+                    <div class="preview-example preview-example--body">
+                        <div>
+                            <p class="large">@previewTextBody</p>
+                            <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
+                        </div>
+                        <div>
+                            <p class="medium">@previewTextBody</p>
+                            <label>Body - Font Size: xxpx (xem) / Line Height: 160%</label>
+                        </div>
+                        <div>
+                            <p class="small">@previewTextBody</p>
+                            <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
+                        </div>
                     </div>
-                    <div>
-                        <h6>@previewText</h6>
-                        <label>H6 - Font Size: xxpx (xem)</label>
+                    <div class="code-example">
+                        <code>
+                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
+                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
+                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                        </code>
                     </div>
-                    <div>
-                        <p>@previewText</p>
-                        <label>Subtitle - Font Size: xxpx (xem)</label>
-                    </div>
-                </div>
-                <h3>Body Settings</h3>
-                <div class="section">
-                    <p>
-                        Preview Text
-                        <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
-                    </p>
-                    <label>
-                        Choose Body font
-                        <select class="medium">
-                            <option selected>Roboto Mono</option>
-                        </select>
-                    </label>
-                    <label>
-                        Base Font Size (px)
-                        @*<InputText @bind-Value="newKit.BodyFontSize" class="small"/>*@
-                    </label>
-                    <label>
-                        Choose a Type Scale
-                        <select class="medium">
-                            <option selected>1.250 (Major Third)</option>
-                        </select>
-                    </label>
-                    <label>
-                        Line Height
-                        @*<InputText @bind-Value="newKit.BodyLineHeight" class="small"/>*@
-                    </label>
-                </div>
-                <div class="preview-example preview-example--body">
-                    <div>
-                        <p class="large">@previewTextBody</p>
-                        <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
-                    </div>
-                    <div>
-                        <p class="medium">@previewTextBody</p>
-                        <label>Body - Font Size: xxpx (xem) / Line Height: 160%</label>
-                    </div>
-                    <div>
-                        <p class="small">@previewTextBody</p>
-                        <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
-                    </div>
-                </div>
-                <div class="button--save" @onclick="Submit">Save & Continue</div>
-            </EditForm>
-            @*<div>@newKit.Url</div>*@
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" />
+                    </button>
+                </EditForm>
+            }
         </div>
     </div>
 </div>
 
-@*@inject IRepository<Kit> KitRepo*@
-@inject NavigationManager Navigation
-
 @code {
-    //private Kit newKit = new Kit();
+    private Kit kit = new Kit();
+    private User User;
+    [Parameter] public string kitId { get; set; }
+    string currentKitId;
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
-    //private string fileUrl = "";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        //newKit.HeaderFontSize = "16";
-        //newKit.HeaderLineHeight = "120%";
-        //newKit.BodyFontSize = "16";
-        //newKit.BodyLineHeight = "120%";
+        kit.HeaderFontSize = "16";
+        kit.HeaderLineHeight = "120%";
+        kit.BodyFontSize = "16";
+        kit.BodyLineHeight = "120%";
+
+        await GetKit();
+        await GetUser();
     }
 
     private async Task Submit()
     {
-        //newKit.GUID = Guid.NewGuid();
-        //newKit.DateCreated = DateTime.Now;
-        //KitRepo.Add(newKit);
-        //KitRepo.Commit();
-        //Navigation.NavigateTo("/Colors/" + newKit.GUID);
+        Kit newKit = new Kit();
+        if (User != null)
+        {
+            newKit.UserId = User.Id;
+        }
+
+        newKit.HeaderFontSize = kit.HeaderFontSize;
+
+        if (kit.Id != null)
+        {
+            newKit.ParentId = kit.Id;
+        }
+
+        kit = await PublicApi().CreateKitAsync(newKit);
+
+        //save to local storage
+        if (currentKitId == null) { currentKitId = kit.Id; }
+        await localStorage.SetItemAsync("kodekitId", currentKitId);
+
+        Nav.NavigateTo("/Colors/" + kit.Id);
+    }
+
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+    }
+
+    private async Task GetUser()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+        }
     }
 }

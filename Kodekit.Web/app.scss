@@ -1,18 +1,20 @@
 ﻿@import "_variables";
 
-@import "Pages/Account";
+
+//Components
+@import "Shared/Components/pagelayout";
+
 @import "Pages/AddKit";
 @import "Pages/Colors";
+@import "Pages/Effects";
 @import "Pages/Finish";
 @import "Pages/GetStarted";
 @import "Pages/Typography";
 @import "Pages/Index";
+@import "Pages/UserKits";
 
 @import "Shared/MainLayout";
 @import "Shared/NavMenu";
-
-//Components 
-@import "Shared/Components/pagelayout";
 
 
 body {
