@@ -49,7 +49,7 @@
   .page label {
     font-size: 14px;
     line-height: 180%;
-    color: #6B6C7E; }
+    color: #787980; }
   .page input, .page select {
     background: #FFFFFF;
     border: 1px solid #D2D4D9;
@@ -61,7 +61,7 @@
     font-size: 16px;
     line-height: 160%;
     height: 40px;
-    color: #6B6C7E; }
+    color: #787980; }
   .page .code-example {
     background: #17171A;
     border-radius: 0px 0px 8px 8px;
@@ -150,11 +150,11 @@
     .page .preview-example label {
       font-size: 14px;
       line-height: 180%;
-      color: #6B6C7E;
+      color: #787980;
       padding-bottom: 32px;
       font-family: 'Inter', sans-serif; }
     .page .preview-example p {
-      color: #272833;
+      color: #17171A;
       font-family: Roboto Mono;
       font-weight: 400;
       font-size: 12px;
@@ -164,15 +164,15 @@
     .page .preview-example--body p {
       width: 100%; }
     .page .preview-example--body .large {
-      color: #272833;
+      color: #17171A;
       font-size: 20px;
       line-height: 160%; }
     .page .preview-example--body .medium {
-      color: #272833;
+      color: #17171A;
       font-size: 17px;
       line-height: 160%; }
     .page .preview-example--body .small {
-      color: #272833;
+      color: #17171A;
       font-size: 14px;
       line-height: 160%; }
 
@@ -267,9 +267,15 @@
 .inputs .preview-example {
   display: flex;
   flex-wrap: wrap;
-  padding: 32px; }
+  padding: 32px 32px 50px; }
   .inputs .preview-example input, .inputs .preview-example select {
-    width: 200px; }
+    width: 200px;
+    background: #FFFFFF;
+    border: 1px solid #D2D4D9;
+    color: #17171A;
+    margin: 6px 30px 0 0; }
+  .inputs .preview-example label {
+    color: #3A3A40; }
   .inputs .preview-example textarea {
     width: 100%;
     max-width: 664px;
@@ -280,13 +286,32 @@
     font-size: 16px;
     color: #787980;
     font-family: 'Inter';
-    padding: 10px 16px; }
+    padding: 10px 16px;
+    margin-top: 30px; }
+  .inputs .preview-example span {
+    font-size: 12px;
+    line-height: 120%;
+    color: #787980; }
+  .inputs .preview-example .selected input {
+    border: 1px solid #0B5FFF; }
+  .inputs .preview-example .disabled {
+    color: #D2D4D9; }
+    .inputs .preview-example .disabled input {
+      border: 1px solid #D2D4D9;
+      color: #D2D4D9; }
+  .inputs .preview-example .error {
+    color: #F96464; }
+    .inputs .preview-example .error span {
+      color: #F96464; }
+    .inputs .preview-example .error input {
+      border: 1px solid #F96464;
+      color: #F96464; }
 
 .colors label {
   font-weight: normal;
   font-size: 14px;
   line-height: 180%;
-  color: #6B6C7E; }
+  color: #787980; }
 
 .colors input {
   background: #FFFFFF;
@@ -298,7 +323,7 @@
   margin: 0 30px 20px 0;
   font-size: 16px;
   line-height: 160%;
-  color: #6B6C7E; }
+  color: #787980; }
 
 .colors .preview-example {
   box-sizing: border-box;
@@ -353,13 +378,13 @@
   font-family: Roboto;
   font-size: 18px;
   line-height: 180%;
-  color: #393A4A;
+  color: #3A3A40;
   width: 400px;
   margin: 0;
   padding: 18px 0 80px 0; }
 
 .get-started button {
-  background: #0B5FFF;
+  background: #F5F7FA;
   border-radius: 4px;
   color: #FFFFFF;
   font-family: Roboto Mono;
@@ -395,8 +420,8 @@
       font-weight: 400; }
     .landing .hero__container .button--gray {
       border: none;
-      color: #6B6C7E;
-      background: #E7E7ED;
+      color: #787980;
+      background: #D2D4D9;
       border-radius: 4px;
       padding: 7px 24px;
       font-size: 16px;
@@ -405,7 +430,7 @@
       margin-left: 24px; }
     .landing .hero__container a {
       text-decoration: none;
-      color: #272833;
+      color: #0B5FFF;
       cursor: pointer;
       font-family: Roboto Mono;
       font-size: 16px;
@@ -426,7 +451,7 @@
       font-weight: 500;
       font-size: 18px;
       line-height: 160%;
-      color: #004AD7;
+      color: #0B5FFF;
       padding-bottom: 10px;
       margin: 0; }
     .landing .hero .example .divider {
@@ -434,10 +459,10 @@
       font-weight: normal;
       font-size: 14px;
       line-height: 160%;
-      color: #6B6C7E;
+      color: #D2D4D9;
       padding: 4px 0 24px 0; }
     .landing .hero .example label {
-      color: #6B6C7E;
+      color: #787980;
       font-family: Roboto;
       font-size: 14px;
       line-height: 180%;
@@ -488,7 +513,7 @@
   font-size: 40px;
   line-height: 160%;
   font-weight: bold;
-  color: #272833; }
+  color: #0B5FFF; }
 
 .landing p {
   font-family: Roboto;
@@ -496,7 +521,7 @@
   line-height: 180%;
   max-width: 400px;
   width: 100%;
-  color: #393A4A;
+  color: #787980;
   padding-bottom: 50px; }
 
 .landing .highlight {
@@ -512,7 +537,7 @@
     .landing .highlight > div:not(:last-child) {
       margin-right: 28px; }
   .landing .highlight p {
-    color: #272833;
+    color: #0B5FFF;
     font-family: Roboto Mono;
     font-size: 14px;
     line-height: 160%;
@@ -529,7 +554,7 @@
     max-width: 1000px;
     margin: 0 auto; }
   .landing .intro--header {
-    color: #272833;
+    color: #0B5FFF;
     font-family: Roboto Mono;
     font-weight: 700;
     font-size: 32px;
@@ -553,7 +578,7 @@
       width: 486px; }
   .landing .intro-cta {
     background: linear-gradient(128deg, #FDFBFB 28.07%, #EBEDEE 100%);
-    border: 1px solid #272833;
+    border: 1px solid #0B5FFF;
     box-sizing: border-box;
     border-radius: 4px;
     display: flex;
@@ -574,8 +599,8 @@
       font-size: 16px;
       line-height: 160%;
       padding: 5px 15px;
-      color: #393A4A;
-      border: 1px solid #393A4A;
+      color: #787980;
+      border: 1px solid #00BFB2;
       background: none;
       height: 36px;
       border-radius: 4px; }
