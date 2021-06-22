@@ -68,7 +68,7 @@
     label {
         font-size: 14px;
         line-height: 180%;
-        color: $text-gray;
+        color: $gray500;
     }
 
     input, select {
@@ -82,7 +82,7 @@
         font-size: 16px;
         line-height: 160%;
         height: 40px;
-        color: $text-gray;
+        color: $gray500;
     }
 
     .code-example {
@@ -206,13 +206,13 @@
         label {
             font-size: 14px;
             line-height: 180%;
-            color: $text-gray;
+            color: $gray500;
             padding-bottom: 32px;
             font-family: 'Inter', sans-serif;
         }
 
         p {
-            color: $text-primary;
+            color: $gray900;
             font-family: Roboto Mono;
             font-weight: 400;
             font-size: 12px;
@@ -228,19 +228,19 @@
             }
 
             .large {
-                color: $text-primary;
+                color: $gray900;
                 font-size: 20px;
                 line-height: 160%;
             }
 
             .medium {
-                color: $text-primary;
+                color: $gray900;
                 font-size: 17px;
                 line-height: 160%;
             }
 
             .small {
-                color: $text-primary;
+                color: $gray900;
                 font-size: 14px;
                 line-height: 160%;
             }
