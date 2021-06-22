@@ -36,7 +36,7 @@
 
         .disabled {
             color: $gray300;
-            background: $white;
+            background: $gray100;
             border: 1px solid $gray300;
 
             &-secondary {
@@ -48,7 +48,7 @@
 
         img {
             vertical-align: middle;
-            margin: 0 12px;
+            margin: 0;
             margin-top: -2px;
         }
     }
@@ -60,27 +60,6 @@
         height: 24px;
         margin-right: 14px;
 
-        input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-
-            &:checked + .slider {
-                background-color: $background;
-                border: 2px solid $primary500;
-
-                :before {
-                    -webkit-transform: translateX(20px);
-                    -ms-transform: translateX(20px);
-                    transform: translateX(20px);
-                }
-            }
-
-            &:focus + .slider {
-                box-shadow: 0 0 1px $primary500;
-            }
-        }
-
         .slider {
             position: absolute;
             cursor: pointer;
@@ -88,8 +67,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: $button-gray;
-            border: 2px solid $gray500;
+            background-color: $gray300;
+            border: 2px solid $primary500;
             -webkit-transition: .4s;
             transition: .4s;
             border-radius: 20px;
@@ -105,6 +84,27 @@
                 background-color: $primary500;
                 -webkit-transition: .4s;
                 transition: .4s;
+            }
+        }
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+
+            &:checked + .slider {
+                background-color: $background;
+                border: 2px solid $primary500;
+
+                &:before {
+                    -webkit-transform: translateX(20px);
+                    -ms-transform: translateX(20px);
+                    transform: translateX(20px);
+                }
+            }
+
+            &:focus + .slider {
+                box-shadow: 0 0 1px $primary500;
             }
         }
     }
