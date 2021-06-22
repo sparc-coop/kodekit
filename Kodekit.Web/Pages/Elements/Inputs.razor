@@ -1,7 +1,7 @@
 ﻿@page  "/inputs"
 @page "/inputs/{kitId}"
 
-<div class="effects page">
+<div class="inputs page">
     <div class="page__container">
         <header>
             <div class="title">Elements</div>
@@ -20,12 +20,15 @@
             <EditForm Model="@kit">
             <div class="section">
                 <label>
-                    Font Size
+                    Input Font Size
                     <InputText @bind-Value="kit.PrimaryColor" />
                 </label>
                 <label>
-                    Font Weight
-                    <InputText @bind-Value="kit.SecondaryColor" />
+                    Input Font Weight
+                    <select>
+                        <option selected>Regular (400)</option>
+                        <option>Bold (500)</option>
+                    </select>
                 </label>
                 <label>
                     Vertical Padding
@@ -45,14 +48,18 @@
                 </label>
             </div>
             <div class="preview-example">
-                <input />
-                <textarea></textarea>
+                <input placeholder="Placeholder" />
+                <input placeholder="Placeholder" />
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+                <textarea>Placeholder</textarea>
             </div>
             <div class="code-example">
                 <code>
-                    <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                    <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                    <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+
                 </code>
             </div>
 
@@ -63,7 +70,27 @@
             <div class="preview-example">
                 <label>
                     Placeholder
-                    <input placeholder="username"/>
+                    <input placeholder="username" />
+                    Enter your username.
+                </label>
+                <label>
+                    Selected
+                    <input placeholder="username" />
+                    Enter your username.
+                </label>
+                <label>
+                    Entered
+                    <input placeholder="username" />
+                    Enter your username.
+                </label>
+                <label>
+                    Error
+                    <input placeholder="username" />
+                    Enter your username.
+                </label>
+                <label>
+                    Disabled
+                    <input placeholder="enter username" disabled/>
                 </label>
             </div>
             <div class="code-example">

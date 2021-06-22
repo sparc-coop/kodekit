@@ -202,7 +202,7 @@
       color: #2AD2C6; }
   .buttons .preview-example .disabled {
     color: #D2D4D9;
-    background: #FFFFFF;
+    background: #F5F7FA;
     border: 1px solid #D2D4D9; }
     .buttons .preview-example .disabled-secondary {
       background: #FFFFFF;
@@ -210,7 +210,7 @@
       border: 1px solid #D2D4D9; }
   .buttons .preview-example img {
     vertical-align: middle;
-    margin: 0 12px;
+    margin: 0;
     margin-top: -2px; }
 
 .buttons .switch {
@@ -219,19 +219,6 @@
   width: 45px;
   height: 24px;
   margin-right: 14px; }
-  .buttons .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0; }
-    .buttons .switch input:checked + .slider {
-      background-color: #F5F7FA;
-      border: 2px solid #0B5FFF; }
-      .buttons .switch input:checked + .slider :before {
-        -webkit-transform: translateX(20px);
-        -ms-transform: translateX(20px);
-        transform: translateX(20px); }
-    .buttons .switch input:focus + .slider {
-      box-shadow: 0 0 1px #0B5FFF; }
   .buttons .switch .slider {
     position: absolute;
     cursor: pointer;
@@ -239,8 +226,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #E7E7ED;
-    border: 2px solid #787980;
+    background-color: #D2D4D9;
+    border: 2px solid #0B5FFF;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 20px; }
@@ -255,6 +242,45 @@
       background-color: #0B5FFF;
       -webkit-transition: .4s;
       transition: .4s; }
+  .buttons .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0; }
+    .buttons .switch input:checked + .slider {
+      background-color: #F5F7FA;
+      border: 2px solid #0B5FFF; }
+      .buttons .switch input:checked + .slider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20px);
+        transform: translateX(20px); }
+    .buttons .switch input:focus + .slider {
+      box-shadow: 0 0 1px #0B5FFF; }
+
+.inputs .section input {
+  box-sizing: border-box;
+  width: 144px;
+  height: 40px; }
+
+.inputs .section select {
+  width: 232px; }
+
+.inputs .preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px; }
+  .inputs .preview-example input, .inputs .preview-example select {
+    width: 200px; }
+  .inputs .preview-example textarea {
+    width: 100%;
+    max-width: 664px;
+    height: 122px;
+    border: 1px solid #D2D4D9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #787980;
+    font-family: 'Inter';
+    padding: 10px 16px; }
 
 .colors label {
   font-weight: normal;
