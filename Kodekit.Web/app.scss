@@ -4,17 +4,19 @@
 //Components
 @import "Shared/Components/pagelayout";
 
-@import "Pages/AddKit";
-@import "Pages/Colors";
-@import "Pages/Effects";
-@import "Pages/Finish";
+@import "Pages/Elements/Buttons";
+@import "Pages/Elements/Anchors";
+@import "Pages/Elements/Inputs";
+@import "Pages/BaseStyles/Colors";
+@import "Pages/BaseStyles/Layout";
+@import "Pages/BaseStyles/Typography";
 @import "Pages/GetStarted";
-@import "Pages/Typography";
 @import "Pages/Index";
 @import "Pages/UserKits";
 
 @import "Shared/MainLayout";
 @import "Shared/NavMenu";
+@import "Shared/SignUpBanner";
 
 
 body {

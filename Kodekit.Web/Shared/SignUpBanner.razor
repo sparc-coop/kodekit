@@ -1,0 +1,32 @@
+﻿@if (showBanner == true)
+{
+    <div class="banner">
+        <span class="material-icons button--close" @onclick="HideBanner">close</span>
+        <h3>
+            <span class="material-icons">error_outline</span>
+            Changes will not be saved
+        </h3>
+        <p>
+            Please <a href="authentication/login">log in or create an account</a> to save any changes made.
+        </p>
+    </div>
+}
+
+@code {
+    bool showBanner = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            showBanner = false;
+        }
+    }
+
+    void HideBanner()
+    {
+        showBanner = false;
+    }
+}
