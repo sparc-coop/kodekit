@@ -20,13 +20,18 @@ namespace Kodekit.Features
         {
             try
             {
-                kit.IsPublished = true;
-                if(User.Id() != null)
+                //Verify kit can be published
+                if (kit.IsPublished == true && string.IsNullOrEmpty(kit.UserId))
                 {
-                    kit.UserId = User.Id();
+                    //return sorry cannot publish a new version unless you sign in.
+                    return false;
                 }
-                await Kits.UpdateAsync(kit);
-                return true;
+                else
+                {
+                    kit.IsPublished = true;
+                    await Kits.UpdateAsync(kit);
+                    return true;
+                }
             }
             catch(Exception ex)
             {
