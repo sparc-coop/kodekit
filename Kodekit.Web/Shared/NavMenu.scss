@@ -47,11 +47,11 @@
 
     .login-display {
         position: absolute;
-        left: 16px;
+        left: 26px;
         bottom: 50px;
 
         a {
-            color: $black;
+            color: $gray500;
             text-decoration: none;
             display: block;
             padding: 6px;
@@ -59,6 +59,7 @@
         }
 
         .logout {
+            color: $gray500;
             border: none;
             background: none;
         }

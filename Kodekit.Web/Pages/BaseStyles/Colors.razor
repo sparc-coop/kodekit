@@ -12,6 +12,9 @@
         </header>
         <div class="content">
             <h3>Brand Colors</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
@@ -53,6 +56,9 @@
                         </code>
                     </div>
                     <h3>Greyscale</h3>
+                    <p class="subheader">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                    </p>
                     <div class="section">
                         <label>
                             Darkest
@@ -112,6 +118,9 @@
                         </code>
                     </div>
                     <h3>System Colors</h3>
+                    <p class="subheader">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                    </p>
                     <div class="section">
                         <label>
                             Error
@@ -148,65 +157,86 @@
                     </div>
                     <div class="code-example">
                         <code>
-                                <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                                <span>$error-900</span><br />
-                                <span>$error-500</span><br />
-                                <span>$error-100</span><br />
-                                <span>$warning-900</span><br />
-                                <span>$warning-500</span><br />
-                                <span>$warning-100</span><br />
-                                <span>$success-900</span><br />
-                                <span>$success-500</span><br />
-                                <span>$success-100</span><br />
-                            </code>
+                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
+                            <span>$error-900</span><br />
+                            <span>$error-500</span><br />
+                            <span>$error-100</span><br />
+                            <span>$warning-900</span><br />
+                            <span>$warning-500</span><br />
+                            <span>$warning-100</span><br />
+                            <span>$success-900</span><br />
+                            <span>$success-500</span><br />
+                            <span>$success-100</span><br />
+                        </code>
                     </div>
-                    <button @onclick="Submit">Save & Continue</button>
+                    <div class="preview-mockup">
+                        <h3>Preview</h3>
+                        <p class="subheader">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                        </p>
+                        <section>
+                            <div>
+                                <img />
+                                <div>
+                                    <button>Primary CTA</button> 
+                                </div>
+                            </div>
+                            <div>
+                                <button>Primary CTA</button>
+                                <button>Secondary CTA</button>
+                            </div>
+                        </section>
+                    </div>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" />
+                    </button>
                 </EditForm>
             }
         </div>
+        </div>
     </div>
-</div>
 
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
+    @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
-@code {
-    private Kit kit = new Kit();
-    [Parameter] public string kitId { get; set; }
-    string currentKitId;
+    @code {
+        private Kit kit = new Kit();
+        [Parameter] public string kitId { get; set; }
+        string currentKitId;
 
-    protected override async Task OnInitializedAsync()
-    {
-        await GetKit();
-        kit.PrimaryColor = "#0B5FFF";
-        kit.SecondaryColor = "#4B9BFF";
-        kit.TertiaryColor = "#FFB46E";
-        kit.DarkColor = "#272833";
-        kit.LightColor = "#F3F3F9";
-        kit.ErrorColor = "#F96464";
-        kit.WarningColor = "#FF8F39";
-        kit.SuccessColor = "#5ACA75";
-    }
-
-    private async Task Submit()
-    {
-        await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/Effects/" + kit.Id);
-    }
-
-    private async Task GetKit()
-    {
-        //get from local storage
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        currentKitId = result;
-
-        if (kitId != null)
+        protected override async Task OnInitializedAsync()
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            await GetKit();
+            kit.PrimaryColor = "#0B5FFF";
+            kit.SecondaryColor = "#4B9BFF";
+            kit.TertiaryColor = "#FFB46E";
+            kit.DarkColor = "#272833";
+            kit.LightColor = "#F3F3F9";
+            kit.ErrorColor = "#F96464";
+            kit.WarningColor = "#FF8F39";
+            kit.SuccessColor = "#5ACA75";
         }
-        else if (currentKitId != null)
-        {
-            kit = await Api.GetKitAsync(currentKitId);
-        }
-    }
 
-}
+        private async Task Submit()
+        {
+            await Api.UpdateKitAsync(kit);
+            Nav.NavigateTo("/Effects/" + kit.Id);
+        }
+
+        private async Task GetKit()
+        {
+            //get from local storage
+            string result = await localStorage.GetItemAsync<string>("kodekitId");
+            currentKitId = result;
+
+            if (kitId != null)
+            {
+                kit = await Api.GetKitAsync(currentKitId);
+            }
+            else if (currentKitId != null)
+            {
+                kit = await Api.GetKitAsync(currentKitId);
+            }
+        }
+
+    }

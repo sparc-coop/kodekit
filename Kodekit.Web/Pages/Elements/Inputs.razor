@@ -1,0 +1,127 @@
+﻿@page  "/inputs"
+@page "/inputs/{kitId}"
+
+<div class="inputs page">
+    <div class="page__container">
+        <header>
+            <div class="title">Elements</div>
+            <h2>Inputs & Textareas</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+        </header>
+        <div class="content">
+            <h3>Form Styling</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            @if (kit != null)
+            {
+            <EditForm Model="@kit">
+            <div class="section">
+                <label>
+                    Input Font Size
+                    <InputText @bind-Value="kit.PrimaryColor" />
+                </label>
+                <label>
+                    Input Font Weight
+                    <select>
+                        <option selected>Regular (400)</option>
+                        <option>Bold (500)</option>
+                    </select>
+                </label>
+                <label>
+                    Vertical Padding
+                    <InputText @bind-Value="kit.TertiaryColor" />
+                </label>
+                <label>
+                    Horizontal Padding
+                    <InputText @bind-Value="kit.PrimaryColor" />
+                </label>
+                <label>
+                    Corner Radius
+                    <InputText @bind-Value="kit.SecondaryColor" />
+                </label>
+                <label>
+                    Border Width
+                    <InputText @bind-Value="kit.TertiaryColor" />
+                </label>
+            </div>
+            <div class="preview-example">
+                <input placeholder="Placeholder" />
+                <input placeholder="Placeholder" />
+                <select>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+                <textarea>Placeholder</textarea>
+            </div>
+            <div class="code-example">
+                <code>
+
+                </code>
+            </div>
+
+            <h3>Input & Textarea states</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            <div class="preview-example">
+                <label>
+                    Placeholder
+                    <input placeholder="username" />
+                    <span>Enter your username.</span>
+                </label>
+                <label class="selected">
+                    Selected
+                    <input placeholder="username" />
+                    <span>Enter your username.</span>
+                </label>
+                <label>
+                    Entered
+                    <input placeholder="username" />
+                    <span>Enter your username.</span>
+                </label>
+                <label class="error">
+                    Error
+                    <input value="username" />
+                    <span>Enter your username.</span>
+                </label>
+                <label class="disabled">
+                    Disabled
+                    <input value="enter username" disabled/>
+                </label>
+            </div>
+            <div class="code-example">
+                <code>
+
+                </code>
+            </div>
+            <button @onclick="Submit">
+                Save & Continue
+                <img src="/images/eyecon.svg" />
+            </button>
+        </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task Submit()
+    {
+        //string newCss = new CreateCss().Execute(kit);
+
+        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
+        //SaveColors();
+    }
+}

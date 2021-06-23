@@ -20,12 +20,31 @@
         padding-bottom: 6px;
     }
 
+    p {
+        max-width: 672px;
+        line-height: 160%;
+        font-size: 18px;
+    }
+
     h2 {
         font-weight: 700;
         font-size: 40px;
         line-height: 120%;
         color: $gray900;
         margin: 0;
+    }
+
+    h4 {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19.2px;
+        color: $gray700;
+    }
+
+    .subheader {
+        color: $gray500;
+        max-width: 496px;
+        font-size: 16px;
     }
 
     button {
@@ -46,6 +65,25 @@
         }
     }
 
+    label {
+        font-size: 14px;
+        line-height: 180%;
+        color: $gray500;
+    }
+
+    input, select {
+        background: $white;
+        border: 1px solid $gray300;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 8px 16px;
+        display: block;
+        margin: 0 30px 20px 0;
+        font-size: 16px;
+        line-height: 160%;
+        height: 40px;
+        color: $gray500;
+    }
 
     .code-example {
         background: $gray900;
@@ -168,13 +206,13 @@
         label {
             font-size: 14px;
             line-height: 180%;
-            color: $text-gray;
+            color: $gray500;
             padding-bottom: 32px;
             font-family: 'Inter', sans-serif;
         }
 
         p {
-            color: $text-primary;
+            color: $gray900;
             font-family: Roboto Mono;
             font-weight: 400;
             font-size: 12px;
@@ -190,19 +228,19 @@
             }
 
             .large {
-                color: $text-primary;
+                color: $gray900;
                 font-size: 20px;
                 line-height: 160%;
             }
 
             .medium {
-                color: $text-primary;
+                color: $gray900;
                 font-size: 17px;
                 line-height: 160%;
             }
 
             .small {
-                color: $text-primary;
+                color: $gray900;
                 font-size: 14px;
                 line-height: 160%;
             }
