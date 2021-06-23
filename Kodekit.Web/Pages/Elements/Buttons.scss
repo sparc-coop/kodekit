@@ -1,1 +1,111 @@
-﻿@import "../_variables";
+﻿@import "../../_variables";
+
+.buttons {
+    .preview-example {
+        padding: 32px;
+
+        button {
+            background: $primary500;
+            border: 1px solid $primary500;
+            color: $white;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 120%;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+
+        .button-secondary {
+            color: $secondary500;
+            background: $white;
+            border: 1px solid $secondary500;
+        }
+
+        .hover {
+            background: $primary400;
+            color: $white;
+
+            &-secondary {
+                background: $secondary100;
+                border: 1px solid $secondary400;
+                color: $secondary400;
+            }
+        }
+
+        .disabled {
+            color: $gray300;
+            background: $gray100;
+            border: 1px solid $gray300;
+
+            &-secondary {
+                background: $white;
+                color: $gray300;
+                border: 1px solid $gray300;
+            }
+        }
+
+        img {
+            vertical-align: middle;
+            margin: 0;
+            margin-top: -2px;
+        }
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 45px;
+        height: 24px;
+        margin-right: 14px;
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $gray300;
+            border: 2px solid $primary500;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 20px;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 15px;
+                width: 15px;
+                left: 3px;
+                bottom: 3px;
+                border-radius: 50%;
+                background-color: $primary500;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+        }
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+
+            &:checked + .slider {
+                background-color: $background;
+                border: 2px solid $primary500;
+
+                &:before {
+                    -webkit-transform: translateX(20px);
+                    -ms-transform: translateX(20px);
+                    transform: translateX(20px);
+                }
+            }
+
+            &:focus + .slider {
+                box-shadow: 0 0 1px $primary500;
+            }
+        }
+    }
+}

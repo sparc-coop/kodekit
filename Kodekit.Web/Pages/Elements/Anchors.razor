@@ -1,97 +1,72 @@
-﻿@page  "/effects"
-@page  "/effects/{kitId}"
+﻿@page  "/anchors--"
+@page  "/anchors/{kitId}"
 
 <div class="effects page">
     <div class="page__container">
         <header>
-            <div class="title">Global Styles</div>
-            <h2>Effects</h2>
+            <div class="title">Elements</div>
+            <h2>Links</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
         <div class="content">
-            <h3>Drop Shadows</h3>
-            <p>
+            <h3>Core Buttons</h3>
+            <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
-                    <h4>Small Shadow Settings</h4>
                     <div class="section">
                         <label>
-                            X Length (px)
+                            Font Size
                             <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
                         </label>
                         <label>
-                            Y Length (px)
+                            Font Weight
                             <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
-                            Blur (px)
+                            Vertical Padding
                             <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                         <label>
-                            Spread(px)
+                            Horizontal Padding
                             <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
                         </label>
                         <label>
-                            Shadow Color
+                            Corner Radius
                             <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
-                            Shadow Opacity
+                            Border Width
+                            <span style="background-color: @kit.TertiaryColor"></span>
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            Icon Width
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Icon Height
                             <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                     </div>
-                    <h4>X-Large Shadow Settings</h4>
+                    <h4>Secondary Button</h4>
                     <div class="section">
-                        <label>
-                            X Length (px)
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Y Length (px)
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Blur (px)
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Spread(px)
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Shadow Color
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Shadow Opacity
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
+   
+
                     </div>
                     <div class="preview-example">
-                        <div style="background-color: @kit.PrimaryColor"></div>
-                        <div style="background-color: @kit.SecondaryColor"></div>
-                        <div style="background-color: @kit.TertiaryColor"></div>
-                    </div>
 
-                    <div class="preview-example preview-example--grayscale">
-                        <label>Small Shadow</label>
                     </div>
                     <div class="code-example">
                         <code>
@@ -100,7 +75,10 @@
                             <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
                         </code>
                     </div>
-                    <button @onclick="Submit">Save & Continue</button>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" />
+                    </button>
                 </EditForm>
             }
         </div>
