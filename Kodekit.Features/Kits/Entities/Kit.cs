@@ -8,7 +8,7 @@ namespace Kodekit.Features
         public Kit()
         {
             Id = Guid.NewGuid().ToString();
-            KitId = Id;
+            KitId = Guid.NewGuid().ToString();
         }
 
         public string KitId { get; set; }

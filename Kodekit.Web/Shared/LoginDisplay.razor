@@ -1,6 +1,7 @@
 ﻿<div class="login-display">
     <AuthorizeView>
         <Authorized>
+            <button @onclick="Publish">Publish Current Version</button>
             <a href="/my-kits">My Kits</a>
             <button class="logout" @onclick="BeginLogout">Log Out</button>
         </Authorized>
@@ -12,11 +13,25 @@
 
 
 @inject SignOutSessionStateManager SignOutManager
-@code{
 
+@code{
     private async Task BeginLogout(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
         Nav.NavigateTo("authentication/logout");
+    }
+
+    private async Task Publish()
+    {
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        Kit kit = await Api.GetKitAsync(result);
+
+        User user = await Api.GetUserAsync();
+        if(user != null)
+        {
+            kit.UserId = user.Id;
+        }
+
+        await Api.PublishKitAsync(kit);
     }
 }

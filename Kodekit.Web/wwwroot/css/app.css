@@ -645,6 +645,12 @@
     .sidebar .login-display .logout {
       border: none;
       background: none; }
+    .sidebar .login-display button {
+      background: #FFFFFF;
+      border-radius: 4px;
+      border: 1px solid #17171A;
+      padding: 8px;
+      margin-bottom: 20px; }
 
 .header {
   height: 55px;
