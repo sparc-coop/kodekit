@@ -1,0 +1,80 @@
+﻿@import "../../_variables";
+
+.inputs {
+
+    .section {
+        input {
+            box-sizing: border-box;
+            width: 144px;
+            height: 40px;
+        }
+
+        select {
+            width: 232px;
+        }
+    }
+
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 32px 32px 50px;
+
+        input, select {
+            width: 200px;
+            background: #FFFFFF;
+            border: 1px solid $gray300;
+            color: $gray900;
+            margin: 6px 30px 0 0;
+        }
+
+        label {
+            color: $gray700;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 664px;
+            height: 122px;
+            border: 1px solid #D2D4D9;
+            box-sizing: border-box;
+            border-radius: 4px;
+            font-size: 16px;
+            color: $gray500;
+            font-family: 'Inter';
+            padding: 10px 16px;
+            margin-top: 30px;
+        }
+
+        span {
+            font-size: 12px;
+            line-height: 120%;
+            color: $gray500;
+        }
+
+        .selected input {
+            border: 1px solid $primary500;
+        }
+
+        .disabled {
+            color: $gray300;
+
+            input {
+                border: 1px solid $gray300;
+                color: $gray300;
+            }
+        }
+
+        .error {
+            color: $warning;
+
+            span {
+                color: $warning;
+            }
+
+            input {
+                border: 1px solid $warning;
+                color: $warning;
+            }
+        }
+    }
+}

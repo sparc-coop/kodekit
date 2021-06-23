@@ -1,0 +1,129 @@
+﻿@page  "/paragraph"
+@page  "/paragraph/{kitId}"
+
+<div class="effects page">
+    <div class="page__container">
+        <header>
+            <div class="title">Global Styles</div>
+            <h2>Effects</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+        </header>
+        <div class="content">
+ 
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <h4>Small Shadow Settings</h4>
+                    <div class="section">
+                        <label>
+                            X Length (px)
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Y Length (px)
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Blur (px)
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            Spread(px)
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Shadow Color
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Shadow Opacity
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                    </div>
+                    <h4>X-Large Shadow Settings</h4>
+                    <div class="section">
+                        <label>
+                            X Length (px)
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Y Length (px)
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Blur (px)
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            Spread(px)
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Shadow Color
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Shadow Opacity
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <div>
+                            <label>Small Shadow</label>
+                            <div class="example-shadow" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);">
+                            </div>
+                        </div>
+                        <div>
+                            <label>Medium Shadow</label>
+                            <div class="example-shadow" style="box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
+                            </div>
+                        </div>
+                        <div>
+                            <label>Large Shadow</label>
+                            <div class="example-shadow" style="box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
+                            </div>
+                        </div>
+                        <div>
+                            <label>X-Large Shadow</label>
+                            <div class="example-shadow" style="box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="code-example">
+                        <code>
+                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
+                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
+                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                        </code>
+                    </div>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" />
+                    </button>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task Submit()
+    {
+        //string newCss = new CreateCss().Execute(kit);
+
+        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
+        //SaveColors();
+    }
+}
