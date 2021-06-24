@@ -246,4 +246,14 @@
             }
         }
     }
+
+    .show-link {
+        background: $white;
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: 1px solid $gray300;
+        display: block; 
+        margin-top: 16px;
+        font-size: 14px;
+    }
 }

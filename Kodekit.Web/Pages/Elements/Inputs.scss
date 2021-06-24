@@ -65,15 +65,15 @@
         }
 
         .error {
-            color: $warning;
+            color: $error;
 
             span {
-                color: $warning;
+                color: $error;
             }
 
             input {
-                border: 1px solid $warning;
-                color: $warning;
+                border: 1px solid $error;
+                color: $error;
             }
         }
     }

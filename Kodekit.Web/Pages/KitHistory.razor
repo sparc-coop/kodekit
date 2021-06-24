@@ -1,17 +1,67 @@
-﻿@page "/history/{parentId}"
+﻿@page "/kits/{kitId}"
 
-<div>
+<div class="page">
+    <div class="page__container">
+        @if (Kits != null)
+        {
+            @if (Kits.Where(x => x.Id == kitId).First().IsPublished != null && Kits.Where(x => x.Id == kitId).First().IsPublished == true)
+            {
+                <button @onclick="GoTo">Edit Current Verison</button>
+            }
+            else if(Kits.Where(x => x.Id == kitId).First().IsPublished == null)
+            {
+                <button @onclick="Publish">Publish Current Version</button>
+            }
 
+            <p>
+                Kit Name:
+            </p>
+            <h4>
+                Kit Link: 
+                <code class="show-link">&lt;link rel="stylesheet" type="text/css" href="https://ui-kit.azurewebsites.net/kit/@kitId"&gt;</code>
+            </h4>
+            <h4>Version History</h4>
+            <ul>
+
+                <li>Current Version: @Kits.Where(x => x.Id == kitId).First().DateCreated.Value.ToString("dddd, MMMM dd yyyy")</li>
+                @if (Kits.Count() > 1)
+                {
+                    @foreach (var item in Kits)
+                    {
+                        <li>@item.DateCreated.Value.ToString("dd MMMM yyyy")</li>
+                    }
+                }
+            </ul>
+        }
+    </div>
 </div>
 
 @code {
     [Parameter] public string kitId { get; set; }
-    //private User User;
+    private User User;
     private ICollection<Kit> Kits;
 
     protected override async Task OnInitializedAsync()
     {
-        //User = await Api.GetUserAsync();
-        Kits = await Api.GetUserKitsAsync();
+        User = await Api.GetUserAsync();
+        Kits = await Api.GetRelatedKitsAsync(kitId);
+    }
+
+    private async Task Publish()
+    {
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        Kit kit = await Api.GetKitAsync(result);
+
+        if (User != null)
+        {
+            kit.UserId = User.Id;
+        }
+
+        await Api.PublishKitAsync(kit);
+    }
+
+    void GoTo()
+    {
+        Nav.NavigateTo("/Typography/" + kitId);
     }
 }
