@@ -17,8 +17,8 @@ namespace Kodekit.Features
 
         public override async Task<List<Kit>> ExecuteAsync(string kitId)
         {
-            return await Kits.Query.Where(x => x.UserId == User.Id() && (x.ParentId == kitId || x.KitId == kitId))
-                .OrderBy(x => x.DateCreated)
+            return await Kits.Query.Where(x => x.UserId == User.Id() && (x.ParentId == kitId || x.Id == kitId))
+                .OrderByDescending(x => x.DateCreated)
                 .ToListAsync();
         }
 

@@ -35,6 +35,7 @@ namespace Kodekit.Features
         public string BodyTypeScale { get; set; }
         public string BodyLineHeight { get; set; }
         public DateTime? DateCreated { get; set; }
+        public DateTime? ModifiedDate { get; set; }
         public bool? IsPublished { get; set; }
     }
 }

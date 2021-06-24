@@ -29,6 +29,7 @@ namespace Kodekit.Features
                 else
                 {
                     kit.IsPublished = true;
+                    kit.ModifiedDate = DateTime.Now;
                     await Kits.UpdateAsync(kit);
                     return true;
                 }

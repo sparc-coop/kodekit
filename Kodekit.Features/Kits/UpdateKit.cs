@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Sparc.Core;
 using Sparc.Features;
 
@@ -11,6 +12,11 @@ namespace Kodekit.Features
 
         public override async Task<Kit> ExecuteAsync(Kit kit)
         {
+            if(kit.DateCreated == null)
+            {
+                kit.DateCreated = DateTime.Now;
+            }
+            kit.ModifiedDate = DateTime.Now;
             await Kit.UpdateAsync(kit);
             return kit;
         }
