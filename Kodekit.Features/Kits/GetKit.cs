@@ -17,7 +17,7 @@ namespace Kodekit.Features
         public override async Task<Kit> ExecuteAsync(string kitId) 
         { 
             Kit kit = await Kits.FindAsync(kitId);
-            if (string.IsNullOrEmpty(kit.UserId) && kit.IsPublished == true)
+            if (kit == null || (string.IsNullOrEmpty(kit.UserId) && kit.IsPublished == true))
             {
                 kit = new Kit();
             }

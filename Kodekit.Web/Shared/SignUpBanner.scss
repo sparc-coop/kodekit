@@ -16,12 +16,6 @@
     border-radius: 8px;
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06);
 
-    a {
-        color: $primary500;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
     h3 {
         margin: 0;
         font-size: 14px;
@@ -31,6 +25,14 @@
     p {
         font-size: 14px;
         color: $gray500;
+
+        .select-login {
+            color: $primary500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline;
+            padding: 0;
+        }
     }
 
     .material-icons {

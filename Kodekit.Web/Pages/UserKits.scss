@@ -1,9 +1,68 @@
 ﻿@import "../_variables.scss";
 
-.account-page {
+.dashboard {
+
+    .page__container {
+        max-width: 1056px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
     a {
         display: block;
         text-decoration: none;
-        margin: 10px 0;
+    }
+
+    &-container {
+        margin: 20px -16px;
+        width: 100%;
+        max-width: 1240px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .sort {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 27px;
+        padding: 6px 12px;
+        font-size: 12px;
+        color: $gray700;
+        background: $background;
+        border: 1px solid $gray300;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    &-card {
+        margin: 16px;
+        height: 341px;
+        width: 320px;
+        border-radius: 8px;
+        padding: 24px;
+        background: $white;
+        cursor: pointer;
+        box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+        box-sizing: border-box;
+
+        img {
+            width: 272px;
+        }
+
+        .title {
+            color: $gray900;
+            font-size: 20px;
+            line-height: 24px;
+        }
+
+        .date {
+            color: $gray400;
+            font-size: 12px;
+            line-height: 14.4px;
+        }
     }
 }

@@ -1,22 +1,43 @@
 ﻿<div class="login-display">
     <AuthorizeView>
         <Authorized>
-            <a href="my-kits">My Kits</a>
+            <div class="user-menu">
+                <span class="material-icons">
+                    account_circle
+                </span>
+                <span class="material-icons" @onclick="ToggleMenu">
+                    arrow_drop_down
+                </span>
+            </div>
+            @if (showMenu == true)
+            {
+                <div class="dropdown-menu">
+                    <a href="my-kits" @onclick="ToggleMenu">My Kits</a>
+                </div>
+            }
             <button class="logout" @onclick="BeginLogout">Log Out</button>
         </Authorized>
         <NotAuthorized>
             <a href="authentication/login" class="login">Log In / Sign Up</a>
+            <SignUpBanner />
         </NotAuthorized>
     </AuthorizeView>
 </div>
 
 
 @inject SignOutSessionStateManager SignOutManager
+
 @code{
+    bool showMenu = false;
 
     private async Task BeginLogout(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
         Nav.NavigateTo("authentication/logout");
+    }
+
+    private void ToggleMenu()
+    {
+        showMenu = !showMenu;
     }
 }
