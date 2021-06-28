@@ -1,18 +1,24 @@
-﻿<div class="sidebar">
-    <div class="header">
-        <a class="logo" href="/">
-            <img src="/images/logo.svg" />
-            KODEKIT.CSS
-        </a>
-    </div>
+﻿<div class="header">
+    <a class="logo" href="/">
+        <img src="/images/logo.svg" />
+        KODEKIT.CSS
+    </a>
+    <LoginDisplay />
+</div>
+
+<div class="sidebar">
     <div class="menu">
-        <div class="heading">Getting Started</div>
+        <div class="heading">Overview</div>
         <NavLink href="/" Match="NavLinkMatch.All">
             Introduction
         </NavLink>
         <NavLink href="#" Match="NavLinkMatch.Prefix">
+            Themes
+        </NavLink>
+        <NavLink href="#" Match="NavLinkMatch.Prefix">
             Release Notes
         </NavLink>
+
         <div class="heading">Base Styles</div>
         <NavLink href="typography" Match="NavLinkMatch.Prefix">
             Typography
@@ -20,12 +26,16 @@
         <NavLink href="colors" Match="NavLinkMatch.Prefix">
             Colors
         </NavLink>
+        <NavLink href="#" Match="NavLinkMatch.Prefix">
+            Icons
+        </NavLink>
         <NavLink href="layout" Match="NavLinkMatch.Prefix">
             Layout
         </NavLink>
         <NavLink href="paragraph" Match="NavLinkMatch.Prefix">
-            Paragraph Settings
+            Global Settings
         </NavLink>
+
         <div class="heading">HTML Elements</div>
         <NavLink href="buttons" Match="NavLinkMatch.Prefix">
             Buttons
@@ -45,12 +55,12 @@
         <NavLink href="images" Match="NavLinkMatch.Prefix">
             Images
         </NavLink>
+
         <div class="heading">Effects</div>
         <NavLink href="box-shadow" Match="NavLinkMatch.Prefix">
             Box Shadow
         </NavLink>
     </div>
-    <LoginDisplay />
 </div>
 
 @code {

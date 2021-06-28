@@ -1,27 +1,35 @@
 ﻿@page "/my-kits"
 @attribute [Authorize]
 
-<div class="account-page page">
+<div class="dashboard page">
     <div class="page__container">
-        @if (User != null)
-        {
-            <h2>Hi, @User.FirstName</h2>
-        }
-
+        <h2>Your Projects</h2>
+        <select class="sort">
+            <option>Recently Updated</option>
+        </select>
+        <button @onclick="@(e => Nav.NavigateTo("/typography"))">New Kit</button>
         @if (Kits == null)
         {
             <p>Create a new kit to get started!</p>
         }
         else
         {
-            <div>
+            <div class="dashboard-container">
                 @foreach (var kit in Kits)
                 {
-                    <a href="typography/@kit.Id">Edit Kit: @kit.Id</a>
+                    <a href="kits/@kit.Id" class="dashboard-card">
+                        <img src="/images/dash-icon.svg" />
+                        <div>
+                            <div class="title">@kit.Id</div>
+                            <div class="date">Last Updated:
+                             @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy") 
+                                : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
+                            </div>
+                        </div>
+                    </a>
                 }
             </div>
         }
-        <button @onclick="@(e => Nav.NavigateTo("/typography"))">New Kit</button>
     </div>
 </div>
 

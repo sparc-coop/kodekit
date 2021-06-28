@@ -12,6 +12,7 @@
 
     .menu {
         padding: 20px 16px;
+        margin-top: 80px;
 
         a {
             display: block;
@@ -43,37 +44,19 @@
             font-weight: 500;
         }
     }
-
-
-    .login-display {
-        position: absolute;
-        left: 26px;
-        bottom: 50px;
-
-        a {
-            color: $gray500;
-            text-decoration: none;
-            display: block;
-            padding: 6px;
-            font-size: 14px;
-        }
-
-        .logout {
-            color: $gray500;
-            border: none;
-            background: none;
-        }
-    }
 }
 
 .header {
-    height: 55px;
-    position: relative;
-    z-index: 10;
+    height: 64px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 11;
     margin: 0 auto;
     padding: 20px 16px;
     border-bottom: 1px solid $gray100;
     box-sizing: border-box;
+    background: $white;
 
     .logo {
         font-weight: 500;
@@ -91,6 +74,59 @@
     a {
         color: $black;
         text-decoration: none;
+    }
+
+    .login-display {
+        position: absolute;
+        right: 65px;
+        top: 18px;
+
+        a {
+            color: $gray500;
+            text-decoration: none;
+            display: block;
+            padding: 6px;
+            font-size: 14px;
+        }
+
+
+        .logout {
+            color: $gray500;
+            border: none;
+            background: none;
+        }
+
+        button {
+            background: $white;
+            border-radius: 4px;
+            border: 1px solid $gray900;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        .user-menu {
+            position: absolute;
+            right: 100px;
+            top: 4px;
+            display: flex;
+
+            span {
+                color: $gray500;
+                cursor: pointer;
+            }
+        }
+
+        .dropdown-menu {
+            background: $white;
+            border-radius: 4px;
+            padding: 6px 20px;
+            width: 150px;
+            display: flex;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 55px;
+            right: -25px;
+        }
     }
 }
 
@@ -119,12 +155,5 @@
     a {
         color: $black;
         text-decoration: none;
-    }
-
-    .login-display {
-        display: flex;
-        position: absolute;
-        top: 46px;
-        right: 0px;
     }
 }
