@@ -26,24 +26,69 @@
 
 
             <form>
-                <div>
-                    @* <i> for images *@
+                @* Try changing this into Label and inputting all of the content inside of label. *@
+                    @* <i> for icons images could be <figure> maybe <picture> ? *@
+
+                <label class="subtitle" for="default">
                     <i><img src="./images/profile.svg" /></i>
-                    <input type="email" value="" placeholder="Username" />
-                    <label class="subtitle">Default Field</label>
-                </div>
-                <div>
-                    @* <i> for images *@
+                    <input type="email" name="default" value="" placeholder="Username" />
+                    Default Field
+                </label>
+
+                @* <i> for icons *@
+
+                <label class="subtitle" for="required">
                     <i><img src="./images/profile.svg" /></i>
-                    <input type="email" value="" placeholder="Username" required />
-                    <label class="subtitle">Required field</label>
-                </div>
-                <div>
-                    @* <i> for images *@
+                    <input type="email" name="required" placeholder="Username" required />
+                    Required field
+                </label>
+
+
+                @* <i> for icons *@
+
+                <label class="subtitle" for="disabled">
                     <i><img src="./images/profile.svg" /></i>
-                    <input type="email" value="" placeholder="Username" disabled />
-                    <label class="subtitle">Disabled Field</label>
+                    <input type="email" name="disabled" placeholder="Username" disabled />
+                    Disabled Field
+                </label>
+
+
+
+                <div class="checkboxes">
+                    <label for="box-default">
+                        <input type="checkbox" name="box-default" value="" />
+                        Default
+                    </label>
+
+                    <label for="box-active">
+                        <input type="checkbox" name="box-active" value="" checked />
+                        Active
+                    </label>
+                    <label for="box-disabled">
+                        <input type="checkbox" name="box-disabled" disabled value="" />
+                        Disabled
+                    </label>
                 </div>
+                
+
+                <div class="radios">
+                    <label for="radio-default">
+                        <input type="radio" id="radio-default" name="radio" value="" />
+                        Default
+                    </label>
+                    <label for="radio-active">
+                        <input type="radio" id="radio-active" name="radio" value="" checked />
+                        Active
+                    </label>
+                    <label for="radio-disabled">
+                        <input type="radio" id="radio-disabled" name="radio" disabled value="" />
+                        Disabled
+                    </label>
+                </div>
+
+                
+
+
                 <button type="submit">submit</button>
             </form>
             

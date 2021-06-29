@@ -1,5 +1,8 @@
 ﻿@import "_variables";
 
+//Reset test pages
+@import "TestScss/Core/destyle-reset.scss";
+
 //Core style imports
 @import "TestScss/Core/colors.scss";
 @import "TestScss/Core/global-settings.scss";

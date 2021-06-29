@@ -1,61 +1,99 @@
 ﻿@import "../Core/colors.scss";
 
-input {
-    padding: 10px 16px 10px 10px;
-    border-radius: 4px;
-    border: 1px solid $grey-300;
-    color: $grey-900;
-    letter-spacing: 0.02em;
-    padding: 10px 16px 10px 40px;
+section {
+    input {
+        padding: 10px 16px 10px 10px;
+        border-radius: 4px;
+        border: 1px solid $grey-300;
+        color: $grey-900;
+        letter-spacing: 0.02em;
+        padding: 10px 16px 10px 40px;
+        //Do we need these styles, because it is the same as h6
+        font-size: 16px;
+        line-height: 120%;
+        //Changing color of placeholder
+        &::placeholder {
+            color: $grey-300;
+        }
+        //Changing color of outline when selected
+        &:focus {
+            border-color: $primary-500;
+        }
 
-    //Do we need these styles, because it is the same as h6
-    font-size: 16px;
-    line-height: 120%;
+        &:disabled {
+            border-color: $grey-300;
+            color: $grey-300;
+        }
+        //This would be for invalid but not working as of yet.
+        &:invalid {
+            border-color: $error-500;
+            color: $error-500;
 
-    //Changing color of placeholder
-    &::placeholder {
-        color: $grey-300;
+            &::placeholder {
+                color: $error-500;
+            }
+        }
     }
 
-    //Changing color of outline when selected
-    &:focus {
-        border-color: $primary-500;
-    }
-
-    &:disabled {
-        border-color: $grey-300;
-        color: $grey-300;
-    }
-
-    //This would be for invalid but not working as of yet.
-    /*&:invalid {
-        border-color: $error-500;
-        color: $error-500;
-    }*/
-}
-
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    //Div that contains the Input, Label and Icon
-    div {
+    form {
         display: flex;
-        align-content: center;
         justify-content: center;
+        align-items: center;
         flex-direction: column;
-        text-align: left;
-        position: relative;
+        //Div that contains the Input, Label and Icon
+        label {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: left;
+            position: relative;
+            //Selecting the image inside of the input div.
+            i {
+                position: absolute;
+                top: 40%;
+                transform: translateY(-50%);
+                z-index: 2;
+                left: 5%;
+            }
+        }
 
-        //Selecting the image inside of the input div.
-        i {
-            position: absolute;
-            top: 40%;
-            transform: translateY(-50%);
-            z-index: 2;
-            left: 5%;
+        //Controlling the color of checkbox and color when clicked.
+        input[type=checkbox] {
+            border-radius: 2px;
+
+            &:checked {
+                /*outline: 1px solid $primary-500;*/
+                border-radius: 2px;
+            }
+        }
+
+        input[type=radio] {
+            background: $grey-300;
+
+            &:checked {
+                background: $primary-500;
+            }
+        }
+
+
+
+        .checkboxes, .radios {
+            display: flex;
+
+            label {
+                flex-direction: row;
+                align-items: center;
+                margin-right: 20px;
+
+                input {
+                    margin-right: 13px;
+                }
+            }
+
+            label:last-child {
+                margin-right: 0;
+            }
         }
     }
 }
