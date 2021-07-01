@@ -119,41 +119,13 @@
         .dropdown-menu {
             background: $white;
             border-radius: 4px;
-            padding: 6px 20px;
-            width: 150px;
+            padding: 12px 20px;
+            width: 122px;
             display: flex;
             flex-wrap: wrap;
             position: absolute;
             top: 55px;
-            right: -25px;
+            right: -11px;
         }
-    }
-}
-
-.landing-header {
-    height: 180px;
-    position: relative;
-    z-index: 10;
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
-
-    .logo {
-        position: absolute;
-        top: 46px;
-        left: 0;
-        font-size: 20px;
-        font-weight: 500;
-        font-size: 14px;
-
-        img {
-            vertical-align: middle;
-            margin-right: 5px;
-        }
-    }
-
-    a {
-        color: $black;
-        text-decoration: none;
     }
 }

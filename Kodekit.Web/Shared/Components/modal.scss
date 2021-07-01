@@ -1,0 +1,77 @@
+﻿@import "../../_variables.scss";
+
+.active .modal {
+    visibility: visible;
+}
+
+.modal {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(23, 23, 26, 0.5);
+    height: 100%;
+    overflow-y: auto;
+    visibility: hidden;
+
+    &--container {
+        width: 480px;
+        height: 237px;
+        box-sizing: border-box;
+        padding: 32px;
+        background: $white;
+        border-radius: 8px;
+        margin: 20% auto;
+        position: relative;
+
+        h3 {
+            margin: 0;
+            font-family: Inter;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0.02em;
+            text-align: left;
+            color: $gray900;
+        }
+
+        p {
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: $gray500;
+        }
+    }
+
+    button {
+        border: 1px solid $gray500;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-size: 13px;
+        color: $gray500;
+        background: $white;
+        padding: 6px 12px;
+    }
+
+    .button--confirm {
+        border: 1px solid $error;
+        color: $error;
+        margin-right: 12px;
+    }
+
+    .button--close {
+        position: absolute;
+        font-size: 20px;
+        top: 20px;
+        right: 20px;
+        color: $gray500;
+        cursor: pointer;
+    }
+}
