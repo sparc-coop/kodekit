@@ -3,14 +3,18 @@
 
 //Components
 @import "Shared/Components/pagelayout";
+@import "Shared/Components/modal";
+@import "Shared/Components/toggle-switch";
 
 @import "Pages/Elements/Buttons";
 @import "Pages/Elements/Anchors";
 @import "Pages/Elements/Inputs";
 @import "Pages/BaseStyles/Colors";
+@import "Pages/BaseStyles/Icons";
 @import "Pages/BaseStyles/Layout";
 @import "Pages/BaseStyles/Typography";
-@import "Pages/GetStarted";
+@import "Pages/BaseStyles/GlobalSettings";
+@import "Pages/Introduction";
 @import "Pages/Index";
 @import "Pages/UserKits";
 
