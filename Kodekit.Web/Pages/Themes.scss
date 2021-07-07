@@ -1,0 +1,19 @@
+﻿@import "../_variables.scss";
+
+.theme-page {
+    .theme-card {
+        width: 496px;
+        height: 319px;
+        border-radius: 8px;
+        background: $white;
+        margin-right: 32px;
+    }
+
+    label {
+        display:block;
+        color: $gray900;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 16px;
+    }
+}

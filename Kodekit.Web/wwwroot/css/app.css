@@ -524,6 +524,17 @@
 .global-page h3 {
   margin: 80px 0 8px 0; }
 
+.effects-page .preview-example {
+  display: flex;
+  padding: 20px 31px 60px 32px; }
+
+.effects-page .example-shadow {
+  width: 222px;
+  height: 160px;
+  background: #FFFFFF;
+  margin: 8px 24px 0 0;
+  border-radius: 8px; }
+
 .get-started p {
   font-family: Roboto;
   font-size: 18px;
@@ -546,6 +557,20 @@
   position: absolute;
   bottom: 140px;
   left: 0; }
+
+.theme-page .theme-card {
+  width: 496px;
+  height: 319px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  margin-right: 32px; }
+
+.theme-page label {
+  display: block;
+  color: #17171A;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 16px; }
 
 .landing .hero {
   background: #F5F7FA;
@@ -848,6 +873,7 @@
 .header {
   height: 64px;
   position: fixed;
+  top: 0;
   right: 0;
   left: 0;
   z-index: 11;
@@ -947,6 +973,85 @@
     cursor: pointer;
     font-size: 16px;
     margin: 0; }
+
+.page-info {
+  margin: 90px auto 20px auto;
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  position: relative; }
+  .page-info > div {
+    display: flex; }
+  .page-info .title {
+    color: #A9ACB2;
+    font-size: 14px; }
+    .page-info .title img {
+      margin: 0 8px; }
+  .page-info .kit-select {
+    color: #3A3A40;
+    font-size: 14px;
+    cursor: pointer; }
+    .page-info .kit-select img {
+      vertical-align: middle;
+      margin-left: 2px; }
+  .page-info .actions img {
+    margin: 0 4px;
+    cursor: pointer; }
+  .page-info .info {
+    display: flex;
+    position: absolute;
+    right: 0; }
+    .page-info .info--time {
+      color: #A9ACB2;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14px;
+      letter-spacing: 0.02em;
+      text-align: left;
+      text-transform: uppercase; }
+  .page-info .history {
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    border: 1px solid #D2D4D9;
+    box-sizing: border-box;
+    padding: 2px 8px;
+    border-radius: 100px;
+    color: #787980;
+    height: 22px;
+    margin-left: 18px; }
+    .page-info .history img {
+      vertical-align: middle; }
+    .page-info .history--dropdown {
+      background: #FFFFFF;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+      border-radius: 8px;
+      width: 232px;
+      height: 340px;
+      box-sizing: border-box;
+      padding: 24px;
+      position: absolute;
+      right: 0;
+      top: 34px;
+      display: block; }
+      .page-info .history--dropdown ul {
+        padding: 0 0 0 20px;
+        margin: 0; }
+        .page-info .history--dropdown ul li {
+          padding: 5px 0; }
+      .page-info .history--dropdown .current, .page-info .history--dropdown li {
+        color: #17171A;
+        font-size: 12px;
+        line-height: 14.4px;
+        font-weight: 500;
+        padding: 10px 0; }
+      .page-info .history--dropdown .title {
+        font-size: 12px;
+        color: #A9ACB2;
+        text-transform: uppercase; }
 
 body {
   margin: 0;
