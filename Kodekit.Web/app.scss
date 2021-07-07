@@ -14,13 +14,16 @@
 @import "Pages/BaseStyles/Layout";
 @import "Pages/BaseStyles/Typography";
 @import "Pages/BaseStyles/GlobalSettings";
+@import "Pages/Effects/BoxShadow";
 @import "Pages/Introduction";
+@import "Pages/Themes";
 @import "Pages/Index";
 @import "Pages/UserKits";
 
 @import "Shared/MainLayout";
 @import "Shared/NavMenu";
 @import "Shared/SignUpBanner";
+@import "Shared/PageInfo";
 
 
 body {
