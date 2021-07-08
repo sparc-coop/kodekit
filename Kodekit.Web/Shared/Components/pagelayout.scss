@@ -85,20 +85,10 @@
         color: $gray500;
     }
 
-    .code-example {
-        background: $gray900;
+    .code-example .hljs {
         border-radius: 0px 0px 8px 8px;
         padding: 32px;
-        color: $orange;
         margin-bottom: 50px;
-
-        span {
-            color: $purple;
-        }
-
-        .comment {
-            color: $light-gray;
-        }
     }
 
     .section, section {

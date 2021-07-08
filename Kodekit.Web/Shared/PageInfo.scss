@@ -62,14 +62,36 @@
         letter-spacing: 0.02em;
         border: 1px solid $gray300;
         box-sizing: border-box;
-        padding: 2px 8px;
+        padding: 3px 7px;
         border-radius: 100px;
         color: $gray500;
         height: 22px;
+        width: 138px;
         margin-left: 18px;
+        position: relative;
+
+        &.selected {
+            background: $primary100;
+            border: 1px solid $primary500;
+            color: $primary500;
+
+            .icon-right {
+                top: 4px;
+            }
+        }
 
         img {
             vertical-align: middle;
+        }
+
+        .icon-left {
+            margin-top: -2px;
+        }
+
+        .icon-right {
+            position: absolute;
+            right: 7px;
+            top: 1px;
         }
 
         &--dropdown {
@@ -84,6 +106,7 @@
             right: 0;
             top: 34px;
             display: block;
+            z-index: 10;
 
             ul {
                 padding: 0 0 0 20px;
@@ -103,7 +126,7 @@
             }
 
             .title {
-                font-size: 12px;
+                font-size: 11px;
                 color: $gray400;
                 text-transform: uppercase;
             }
