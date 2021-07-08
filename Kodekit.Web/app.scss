@@ -1,5 +1,20 @@
 ﻿@import "_variables";
 
+//KodeKit Styles & Imports
+//Core Inports
+@import "wwwroot/CoreStyles/Core/Colors.scss";
+@import "wwwroot/CoreStyles/Core/GlobalSettings.scss";
+@import "wwwroot/CoreStyles/Core/Icons.scss";
+@import "wwwroot/CoreStyles/Core/Layout.scss";
+@import "wwwroot/CoreStyles/Core/Reset.scss";
+@import "wwwroot/CoreStyles/Core/Typography.scss";
+
+//Effect Imports
+@import "wwwroot/CoreStyles/Effects/Boxshadow.scss";
+
+//Elements Imports
+@import "wwwroot/CoreStyles/Elements/Anchors.scss";
+@import "wwwroot/CoreStyles/Elements/Buttons.scss";
 
 //Components
 @import "Shared/Components/pagelayout";

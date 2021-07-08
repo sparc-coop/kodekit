@@ -20,27 +20,6 @@
         padding-bottom: 6px;
     }
 
-    p {
-        max-width: 672px;
-        line-height: 160%;
-        font-size: 18px;
-    }
-
-    h2 {
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 120%;
-        color: $gray900;
-        margin: 0;
-    }
-
-    h4 {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 19.2px;
-        color: $gray700;
-    }
-
     .subheader {
         color: $gray500;
         max-width: 496px;
@@ -128,18 +107,6 @@
             line-height: 160%;
             color: $gray500;
         }
-
-        .large {
-            width: 486px;
-        }
-
-        .medium {
-            width: 314px
-        }
-
-        .small {
-            width: 142px;
-        }
     }
 
     .content {
@@ -155,95 +122,12 @@
         color: $gray900;
         font-family: 'Roboto Mono', monospace;
 
-        h1 {
-            font-weight: 400;
-            font-size: 48px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
-        h2 {
-            font-weight: 400;
-            font-size: 39px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
-        h3 {
-            font-weight: 400;
-            font-size: 31px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
-        h4 {
-            font-weight: 400;
-            font-size: 25px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
-        h5 {
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
-        h6 {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
         label {
             font-size: 14px;
             line-height: 180%;
             color: $gray500;
             padding-bottom: 32px;
             font-family: 'Inter', sans-serif;
-        }
-
-        p {
-            color: $gray900;
-            font-family: Roboto Mono;
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 120%;
-            padding: 0;
-            margin: 0;
-        }
-
-        &--body {
-
-            p {
-                width: 100%;
-            }
-
-            .large {
-                color: $gray900;
-                font-size: 20px;
-                line-height: 160%;
-            }
-
-            .medium {
-                color: $gray900;
-                font-size: 17px;
-                line-height: 160%;
-            }
-
-            .small {
-                color: $gray900;
-                font-size: 14px;
-                line-height: 160%;
-            }
         }
     }
 
@@ -252,7 +136,7 @@
         padding: 8px 14px;
         border-radius: 6px;
         border: 1px solid $gray300;
-        display: block; 
+        display: block;
         margin-top: 16px;
         font-size: 14px;
     }

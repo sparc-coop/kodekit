@@ -1,6 +1,6 @@
 ﻿//Colors that are currently being used for the website
 //colors
-$background: #F5F7FA;
+/*$background: #F5F7FA;
 $black: #000000;
 $white: #FFFFFF;
 
@@ -27,7 +27,49 @@ $yellow: #A3A60E;
 $orange: #CA9100;
 $purple: #875BBF;
 
-$error: #F96464;
+$error: #F96464;*/
 
+$background: #F5F7FA;
 
 //Colors on spec.
+//Primary Colors
+$primary-100: #B3CDFF;
+$primary-300: #80ACFF;
+$primary-500: #0B5FFF;
+$primary-700: #0053F0;
+$primary-900: #004AD7;
+
+//Secondary Colors
+$secondary-100: #A1CBFF;
+$secondary-300: #6DAEFF;
+$secondary-500: #4B9BFF;
+$secondary-700: #2782F4;
+$secondary-900: #126FE4;
+
+//Tertiary Colors
+$tertiary-100: #FFDEC0;
+$tertiary-300: #FFCC9C;
+$tertiary-500: #FFB46E;
+$tertiary-700: #F89B45;
+$tertiary-900: #EB8629;
+
+//Grey Scale
+$grey-100: #F1F2F5;
+$grey-200: #E7E7ED;
+$grey-300: #CDCED9;
+$grey-400: #A7A9BC;
+$grey-500: #787980;
+$grey-600: #393A4A;
+$grey-700: #30313F;
+$grey-800: #2B2D39;
+$grey-900: #272833;
+
+//System Colors
+//Error Color
+$error-500: #F96464;
+
+//Warning Color
+$warning-500: #FF8F39;
+
+//Success Color
+$success-500: #5ACA75;

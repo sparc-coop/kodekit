@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿@import "Colors.scss";
 
-namespace Kodekit.Web.wwwroot.CoreStyles.Core
-{
-    public class Layout
-    {
-    }
+section {
+    background: $background;
+    padding: 138px 80px 100px 80px;
+    font-family: 'Inter', sans-serif;
 }

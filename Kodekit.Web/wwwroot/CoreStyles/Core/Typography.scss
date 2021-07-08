@@ -1,11 +1,67 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿@import "Colors.scss";
 
-namespace Kodekit.Web.wwwroot.CoreStyles.Core
-{
-    public class Typography
-    {
+//Header Tags
+.page {
+
+    h1, h2, h3, h4, h5, h6, .subtitle {
+        line-height: 120%;
+        //Padding and margin here until reset has been applied
+        margin: 0;
+        padding: 0;
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    h2 {
+        font-size: 39px;
+    }
+
+    h3 {
+        font-size: 31px;
+    }
+
+    h4 {
+        font-size: 25px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    h6 {
+        font-size: 16px;
+    }
+    //Class for a 7th header. Do we make this link to element? for example <h6 class="subtitle"></h6> or would a span work fine.
+    .subtitle {
+        font-size: 12px;
+    }
+    //Paragraph Tags
+    p {
+        line-height: 160%;
+        font-size: 16px;
+        color: $grey-500;
+    }
+
+    p.large {
+        font-size: 20px;
+    }
+
+    p.medium {
+        font-size: 17px;
+    }
+
+    p.small {
+        font-size: 14px;
+    }
+    //Bold tag
+    strong {
+        font-weight: 700;
+    }
+    //light tag (For now)
+    span.light {
+        font-weight: 300;
     }
 }
