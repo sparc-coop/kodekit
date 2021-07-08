@@ -97,12 +97,14 @@
                         </div>
                     </div>
                     <div class="code-example">
-                        <code>
-                            <span>use box-shadows as their own class</span><br />
-                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
-                        </code>
+                        <pre>
+<code class="language-html">
+&lt;!--use box-shadows as their own class--&gt;
+&lt;h1&gt;The power of small steps&lt;/h1&gt;
+&lt;h2&gt;The power of small steps&lt;/h2&gt;
+&lt;h3&gt;The power of small steps&lt;/h3&gt;
+</code>
+                        </pre>
                     </div>
                     <button @onclick="Submit">
                         Save & Continue
@@ -118,16 +120,16 @@
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
 
-    protected override void OnInitialized()
-    {
+    //protected override void OnInitialized()
+    //{
 
-    }
+    //}
+
+
+
 
     private async Task Submit()
     {
-        //string newCss = new CreateCss().Execute(kit);
 
-        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
-        //SaveColors();
     }
 }
