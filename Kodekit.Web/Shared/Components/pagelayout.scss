@@ -26,7 +26,7 @@
         font-size: 16px;
     }
 
-    button {
+    /*button {
         color: $gray900;
         font-weight: 500;
         font-size: 16px;
@@ -42,7 +42,7 @@
             margin-left: 14px;
             vertical-align: middle;
         }
-    }
+    }*/
 
     label {
         font-size: 14px;
@@ -62,22 +62,6 @@
         line-height: 160%;
         height: 40px;
         color: $gray500;
-    }
-
-    .code-example {
-        background: $gray900;
-        border-radius: 0px 0px 8px 8px;
-        padding: 32px;
-        color: $orange;
-        margin-bottom: 50px;
-
-        span {
-            color: $purple;
-        }
-
-        .comment {
-            color: $light-gray;
-        }
     }
 
     .section {

@@ -1,5 +1,89 @@
-﻿.typography {
+﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
+
+.typography {
     .preview-example {
         padding: 40px 32px;
+    }
+}
+
+
+.typography {
+    header {
+        .subtitle {
+            color: $primary-500;
+        }
+    }
+
+    div {
+        form {
+            header {
+                margin-bottom: 32px;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            section:first-of-type {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            section:nth-of-type(2) {
+                padding: 40px 32px;
+                background: #FFFFFF;
+                border: 1px solid #FFFFFF;
+                box-sizing: border-box;
+                border-radius: 8px 8px 0px 0px;
+                margin-bottom: -20px;
+                color: #17171A;
+                font-family: 'Roboto Mono', monospace;
+
+                div{
+                    margin-bottom: 40px;
+                }
+
+                // Removing Margin on last div element
+                div:last-of-type{
+                    margin-bottom: 0px;
+                }
+            }
+
+            section:nth-of-type(3) {
+                display: flex;
+                flex-wrap: wrap;
+
+                textarea {
+                    margin: 0px 30px 20px 0px;
+                    width: 338px;
+                    height: 87px;
+                }
+            }
+
+            section:nth-of-type(4) {
+                padding: 40px 32px;
+                background: #FFFFFF;
+                border: 1px solid #FFFFFF;
+                box-sizing: border-box;
+                border-radius: 8px 8px 0px 0px;
+                margin-bottom: -20px;
+                color: #17171A;
+                font-family: 'Roboto Mono', monospace;
+
+                div {
+                    margin-bottom: 40px;
+                    p.large, p.medium, p.small {
+                        color: $grey-900;
+                    }
+                }
+                div:last-of-type{
+                    margin-bottom: 0px;
+                }
+            }
+            //Removing margin bottom on last element
+            section:last-of-type {
+                margin-bottom: 0px;
+            }
+        }
     }
 }

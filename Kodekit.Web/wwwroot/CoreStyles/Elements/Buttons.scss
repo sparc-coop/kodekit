@@ -1,1 +1,34 @@
-﻿
+﻿@import "../Core/Colors.scss";
+
+button {
+    background: inherit;
+    border-radius: 4px;
+    color: $grey-900;
+    border: 1px solid $grey-900;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &:hover {
+        background: $primary-300;
+    }
+}
+
+button.secondary {
+    background: white;
+    border: 1px solid $secondary-500;
+    color: $secondary-500;
+
+    &:hover {
+        border-color: $secondary-300;
+        color: $secondary-300;
+    }
+}
+
+button > :first-child {
+    margin-right: 14px;
+}
+
+/*button
+    :first-child {
+    margin-right: 14px;
+}*/

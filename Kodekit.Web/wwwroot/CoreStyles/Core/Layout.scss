@@ -1,7 +1,31 @@
 ﻿@import "Colors.scss";
 
-section {
+.page {
     background: $background;
     padding: 138px 80px 100px 80px;
     font-family: 'Inter', sans-serif;
+}
+
+section {
+
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.code-example {
+    background: $grey-900;
+    border-radius: 0px 0px 8px 8px;
+    padding: 32px;
+    color: $orange;
+    margin-bottom: 50px;
+
+    span {
+        color: $purple;
+    }
+
+    .comment {
+        color: $grey-300;
+    }
 }

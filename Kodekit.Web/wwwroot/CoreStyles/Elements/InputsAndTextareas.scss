@@ -1,6 +1,6 @@
 ﻿@import "../Core/colors.scss";
 
-section {
+.page {
     input {
         padding: 10px 16px 10px 10px;
         border-radius: 4px;
@@ -36,10 +36,6 @@ section {
     }
 
     form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         //Div that contains the Input, Label and Icon
         label {
             display: flex;
@@ -73,6 +69,23 @@ section {
             &:checked {
                 background: $primary-500;
             }
+        }
+
+        textarea {
+            font-family: 'Inter';
+            max-width: 496px;
+            width: 100%;
+            min-height: 87px;
+            padding: 10px 16px;
+            box-sizing: border-box;
+            background: #FFFFFF;
+            border: 1px solid #D2D4D9;
+            border-radius: 4px;
+            display: block;
+            margin: 0 30px 20px 0;
+            font-size: 16px;
+            line-height: 160%;
+            color: #787980;
         }
 
 
