@@ -93,6 +93,11 @@
         section {
             width: 1080px;
 
+
+            @media screen and (max-width: 780px) {
+                width: unset;
+            }
+
             > div {
                 height: 227px;
                 width: 496px;
@@ -102,13 +107,26 @@
                 background: $white;
                 margin-right: 32px;
 
+
+                @media screen and (max-width: 780px) {
+                    margin: 10px auto;
+                }
+
                 img {
                     margin: -32px -40px;
+
+                    @media screen and (max-width: 500px) {
+                        width: 160px;
+                    }
                 }
 
                 p {
                     font-size: 14px;
                     color: $gray500;
+
+                    @media screen and (max-width: 500px) {
+                        line-height: unset;
+                    }
                 }
             }
         }
