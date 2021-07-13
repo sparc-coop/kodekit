@@ -1,1 +1,17 @@
 ﻿@import "../../_variables";
+
+.effects-page {
+
+    .preview-example {
+        display: flex;
+        padding: 20px 31px 60px 32px;
+    }
+
+    .example-shadow {
+        width: 222px;
+        height: 160px;
+        background: $white;
+        margin: 8px 24px 0 0;
+        border-radius: 8px;
+    }
+}
