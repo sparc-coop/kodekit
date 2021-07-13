@@ -231,7 +231,7 @@
         private async Task Submit()
         {
             await Api.UpdateKitAsync(kit);
-            Nav.NavigateTo("/Effects/" + kit.Id);
+            Nav.NavigateTo("/icons/" + kit.Id);
         }
 
         private async Task GetKit()

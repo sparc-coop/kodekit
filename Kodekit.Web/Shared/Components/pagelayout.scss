@@ -5,6 +5,15 @@
     padding: 138px 80px 100px 80px;
     font-family: 'Inter', sans-serif;
 
+
+    @media screen and (max-width: 780px) {
+        padding: 0 40px 100px 40px;
+    }
+
+    @media screen and (max-width: 780px) {
+        padding: 0 25px 100px 25px;
+    }
+
     &__container {
         width: 100%;
         max-width: 1024px;
@@ -256,7 +265,7 @@
         padding: 8px 14px;
         border-radius: 6px;
         border: 1px solid $gray300;
-        display: block; 
+        display: block;
         margin-top: 16px;
         font-size: 14px;
     }
