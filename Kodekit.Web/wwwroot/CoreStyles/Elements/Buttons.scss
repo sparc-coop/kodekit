@@ -9,7 +9,7 @@ button {
     cursor: pointer;
 
     &:hover {
-        background: $primary-300;
+        background: $grey-300;
     }
 }
 
@@ -24,11 +24,6 @@ button.secondary {
     }
 }
 
-button > :first-child {
-    margin-right: 14px;
-}
-
-/*button
-    :first-child {
+/*button > :first-child {
     margin-right: 14px;
 }*/

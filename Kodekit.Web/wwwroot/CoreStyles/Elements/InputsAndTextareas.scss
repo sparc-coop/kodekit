@@ -1,16 +1,18 @@
-﻿@import "../Core/colors.scss";
+﻿@import "../Core/Colors.scss";
 
 .page {
-    input {
-        padding: 10px 16px 10px 10px;
-        border-radius: 4px;
+    input, select {
+        background: $white;
         border: 1px solid $grey-300;
-        color: $grey-900;
-        letter-spacing: 0.02em;
-        padding: 10px 16px 10px 40px;
-        //Do we need these styles, because it is the same as h6
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 8px 16px;
+        display: block;
+        margin: 0 30px 20px 0;
         font-size: 16px;
-        line-height: 120%;
+        line-height: 160%;
+        height: 40px;
+        color: $grey-500;
         //Changing color of placeholder
         &::placeholder {
             color: $grey-300;

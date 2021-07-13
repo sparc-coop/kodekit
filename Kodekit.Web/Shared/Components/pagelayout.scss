@@ -20,50 +20,6 @@
         padding-bottom: 6px;
     }
 
-    .subheader {
-        color: $gray500;
-        max-width: 496px;
-        font-size: 16px;
-    }
-
-    /*button {
-        color: $gray900;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19.2px;
-        border-radius: 4px;
-        border: 1px solid $gray900;
-        background: $background;
-        padding: 8px 16px;
-        margin-top: 20px;
-        cursor: pointer;
-
-        img {
-            margin-left: 14px;
-            vertical-align: middle;
-        }
-    }*/
-
-    label {
-        font-size: 14px;
-        line-height: 180%;
-        color: $gray500;
-    }
-
-    input, select {
-        background: $white;
-        border: 1px solid $gray300;
-        box-sizing: border-box;
-        border-radius: 4px;
-        padding: 8px 16px;
-        display: block;
-        margin: 0 30px 20px 0;
-        font-size: 16px;
-        line-height: 160%;
-        height: 40px;
-        color: $gray500;
-    }
-
     .section {
         display: flex;
         flex-wrap: wrap;

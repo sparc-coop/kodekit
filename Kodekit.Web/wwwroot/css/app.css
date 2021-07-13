@@ -1,7 +1,5 @@
-﻿/*$black: #000000;
-$white: #FFFFFF;
-
-$primary100: #EBF2FF;
+﻿/*$black: #000000;*/
+/*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
 $primary500: #0B5FFF;
 
@@ -20,10 +18,8 @@ $gray900: #17171A;
 $dark-gray: #525151;
 $light-gray: #979797;*/
 /*$error: #F96464;*/
-/*$black: #000000;
-$white: #FFFFFF;
-
-$primary100: #EBF2FF;
+/*$black: #000000;*/
+/*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
 $primary500: #0B5FFF;
 
@@ -471,10 +467,8 @@ template {
 [hidden] {
   display: none; }
 
-/*$black: #000000;
-$white: #FFFFFF;
-
-$primary100: #EBF2FF;
+/*$black: #000000;*/
+/*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
 $primary500: #0B5FFF;
 
@@ -545,10 +539,8 @@ $light-gray: #979797;*/
   line-height: 180%;
   color: #787980; }
 
-/*$black: #000000;
-$white: #FFFFFF;
-
-$primary100: #EBF2FF;
+/*$black: #000000;*/
+/*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
 $primary500: #0B5FFF;
 
@@ -575,7 +567,7 @@ button {
   padding: 8px 16px;
   cursor: pointer; }
   button:hover {
-    background: #80ACFF; }
+    background: #CDCED9; }
 
 button.secondary {
   background: white;
@@ -585,17 +577,11 @@ button.secondary {
     border-color: #6DAEFF;
     color: #6DAEFF; }
 
-button > :first-child {
-  margin-right: 14px; }
-
-/*button
-    :first-child {
+/*button > :first-child {
     margin-right: 14px;
 }*/
-/*$black: #000000;
-$white: #FFFFFF;
-
-$primary100: #EBF2FF;
+/*$black: #000000;*/
+/*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
 $primary500: #0B5FFF;
 
@@ -614,26 +600,29 @@ $gray900: #17171A;
 $dark-gray: #525151;
 $light-gray: #979797;*/
 /*$error: #F96464;*/
-.page input {
-  padding: 10px 16px 10px 10px;
-  border-radius: 4px;
+.page input, .page select {
+  background: #FFFFFF;
   border: 1px solid #CDCED9;
-  color: #272833;
-  letter-spacing: 0.02em;
-  padding: 10px 16px 10px 40px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: block;
+  margin: 0 30px 20px 0;
   font-size: 16px;
-  line-height: 120%; }
-  .page input::placeholder {
+  line-height: 160%;
+  height: 40px;
+  color: #787980; }
+  .page input::placeholder, .page select::placeholder {
     color: #CDCED9; }
-  .page input:focus {
+  .page input:focus, .page select:focus {
     border-color: #0B5FFF; }
-  .page input:disabled {
+  .page input:disabled, .page select:disabled {
     border-color: #CDCED9;
     color: #CDCED9; }
-  .page input:invalid {
+  .page input:invalid, .page select:invalid {
     border-color: #F96464;
     color: #F96464; }
-    .page input:invalid::placeholder {
+    .page input:invalid::placeholder, .page select:invalid::placeholder {
       color: #F96464; }
 
 .page form label {
@@ -691,24 +680,7 @@ $light-gray: #979797;*/
 .page {
   background: #F5F7FA;
   padding: 138px 80px 100px 80px;
-  font-family: 'Inter', sans-serif;
-  /*button {
-        color: $gray900;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 19.2px;
-        border-radius: 4px;
-        border: 1px solid $gray900;
-        background: $background;
-        padding: 8px 16px;
-        margin-top: 20px;
-        cursor: pointer;
-
-        img {
-            margin-left: 14px;
-            vertical-align: middle;
-        }
-    }*/ }
+  font-family: 'Inter', sans-serif; }
   .page__container {
     width: 100%;
     max-width: 1024px;
@@ -720,26 +692,6 @@ $light-gray: #979797;*/
     letter-spacing: 0.02em;
     color: #0B5FFF;
     padding-bottom: 6px; }
-  .page .subheader {
-    color: #787980;
-    max-width: 496px;
-    font-size: 16px; }
-  .page label {
-    font-size: 14px;
-    line-height: 180%;
-    color: #787980; }
-  .page input, .page select {
-    background: #FFFFFF;
-    border: 1px solid #D2D4D9;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 8px 16px;
-    display: block;
-    margin: 0 30px 20px 0;
-    font-size: 16px;
-    line-height: 160%;
-    height: 40px;
-    color: #787980; }
   .page .section {
     display: flex;
     flex-wrap: wrap;
@@ -983,10 +935,8 @@ $light-gray: #979797;*/
 .colors .comment {
   color: #A3A60E; }
 
-/*$black: #000000;
-$white: #FFFFFF;
-
-$primary100: #EBF2FF;
+/*$black: #000000;*/
+/*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
 $primary500: #0B5FFF;
 

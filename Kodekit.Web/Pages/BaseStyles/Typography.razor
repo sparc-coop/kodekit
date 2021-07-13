@@ -28,27 +28,27 @@
                 <section>
                     <label>
                         Preview Text
-                        <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
+                        <input @bind-value="previewText" @bind-value:event="oninput" />
                     </label>
                     <label>
                         Choose heading font
-                        <select class="medium">
+                        <select>
                             <option selected>Roboto Mono</option>
                         </select>
                     </label>
                     <label>
                         Base Font Size (px)
-                        <InputText @bind-Value="kit.HeaderFontSize" class="small" />
+                        <InputText @bind-Value="kit.HeaderFontSize" />
                     </label>
                     <label>
                         Choose a Type Scale
-                        <select class="medium">
+                        <select>
                             <option selected>1.250 (Major Third)</option>
                         </select>
                     </label>
                     <label>
                         Line Height
-                        <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
+                        <InputText @bind-Value="kit.HeaderLineHeight" />
                     </label>
                 </section>
 
@@ -96,29 +96,29 @@
                 @* Paragraph Settings Section *@
                 <h3>Paragraph Settings</h3>
                 <section>
-                    <label class="preview">
+                    <label>
                         Preview Text
                         <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
                     </label>
                     <label>
                         Choose Body font
-                        <select class="medium">
+                        <select>
                             <option selected>Roboto Mono</option>
                         </select>
                     </label>
                     <label>
                         Base Font Size (px)
-                        <InputText @bind-Value="kit.BodyFontSize" class="small" />
+                        <InputText @bind-Value="kit.BodyFontSize" />
                     </label>
                     <label>
                         Choose a Type Scale
-                        <select class="medium">
+                        <select>
                             <option selected>1.250 (Major Third)</option>
                         </select>
                     </label>
                     <label>
                         Line Height
-                        <InputText @bind-Value="kit.BodyLineHeight" class="small" />
+                        <InputText @bind-Value="kit.BodyLineHeight" />
                     </label>
                 </section>
 
