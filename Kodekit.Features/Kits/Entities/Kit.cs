@@ -37,5 +37,6 @@ namespace Kodekit.Features
         public DateTime? DateCreated { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool? IsPublished { get; set; }
+        public bool? IsDeleted { get; set; }
     }
 }

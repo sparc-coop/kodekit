@@ -22,24 +22,31 @@
             </h4>
             <h4>Version History</h4>
             <ul>
-
-                <li>Current Version: @Kits.Where(x => x.Id == kitId).First().DateCreated.Value.ToString("dddd, MMMM dd yyyy")</li>
+                <li>
+                    Current Version: @Kits.Where(x => x.Id == kitId).First().DateCreated.Value.ToString("dddd, MMMM dd yyyy")
+                    <span class="material-icons delete" @onclick="ShowDeleteModal">delete</span>
+                </li>
                 @if (Kits.Count() > 1)
                 {
                     @foreach (var item in Kits)
                     {
-                        <li>@item.DateCreated.Value.ToString("dd MMMM yyyy")</li>
+                        <li>
+                            @item.DateCreated.Value.ToString("dd MMMM yyyy")
+                            <span class="material-icons delete" @onclick="ShowDeleteModal">delete</span>
+                        </li>
                     }
                 }
             </ul>
         }
     </div>
+    <DeleteKitModal Show="@Show" CloseModal="CloseModal"/>
 </div>
 
 @code {
     [Parameter] public string kitId { get; set; }
     private User User;
     private ICollection<Kit> Kits;
+    string Show = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -60,8 +67,18 @@
         await Api.PublishKitAsync(kit);
     }
 
-    void GoTo()
+    private void GoTo()
     {
         Nav.NavigateTo("/Typography/" + kitId);
+    }
+
+    private void ShowDeleteModal()
+    {
+        Show = "active";
+    }
+
+    private void CloseModal()
+    {
+        Show = "";
     }
 }

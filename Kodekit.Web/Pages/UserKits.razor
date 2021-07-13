@@ -5,7 +5,7 @@
     <div class="page__container">
         <h2>Your Projects</h2>
         <select class="sort">
-            <option>Recently Updated</option>
+            <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
         </select>
         <button @onclick="@(e => Nav.NavigateTo("/typography"))">New Kit</button>
         @if (Kits == null)
@@ -20,7 +20,7 @@
                     <a href="kits/@kit.Id" class="dashboard-card">
                         <img src="/images/dash-icon.svg" />
                         <div>
-                            <div class="title">@kit.Id</div>
+                            <div class="title">Project Name</div>
                             <div class="date">Last Updated:
                              @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy") 
                                 : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
@@ -41,5 +41,13 @@
     {
         User = await Api.GetUserAsync();
         Kits = await Api.GetUserKitsAsync();
+    }
+
+    private void Sort(string filter)
+    {
+        if(filter == "date-mod")
+        {
+            Kits = Kits.OrderByDescending(x => x.ModifiedDate).ToList();
+        }
     }
 }
