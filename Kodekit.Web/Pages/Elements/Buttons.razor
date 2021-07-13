@@ -10,15 +10,17 @@
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
-        <div class="content">
+
+        @* Content Start *@
+        <div>
             <h3>Core Buttons</h3>
-            <p class="subheader">
+            <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
-                    <div class="section">
+                    <section>
                         <label>
                             Font Size
                             <span style="background-color: @kit.PrimaryColor"></span>
@@ -59,7 +61,7 @@
                             <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
-                    </div>
+                    </section>
                     <h4>Secondary Button</h4>
                     <div class="section">
                         <label class="switch">
@@ -68,7 +70,7 @@
                         </label>
                         Secondary Button Border
                     </div>
-                    <div class="preview-example">
+                    <section class="preview-example">
                         <div>
                             <button>Button</button>
                             <button>
@@ -82,18 +84,18 @@
                             <button><img src="/images/eyecon.svg" /></button>
                         </div>
                         <div>
-                            <button class="button-secondary">Button</button>
-                            <button class="button-secondary">
+                            <button class="secondary">Button</button>
+                            <button class="secondary">
                                 <img src="/images/eyecon.svg" />
                                 Button
                             </button>
-                            <button class="button-secondary">
+                            <button class="secondary">
                                 Button 
                                 <img src="/images/eyecon.svg" />
                             </button>
-                            <button class="button-secondary"><img src="/images/eyecon.svg" /></button>
+                            <button class="secondary"><img src="/images/eyecon.svg" /></button>
                         </div>
-                    </div>
+                    </section>
                     <div class="code-example">
                         <code>
                             <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
@@ -117,15 +119,15 @@
                                 Hover
                                 <img src="/images/eyecon.svg" />
                             </button>
-                            <button class="disabled">Disabled</button>
-                            <button class="disabled">
+                            <button disabled>Disabled</button>
+                            <button disabled>
                                 Disabled
                                 <img src="/images/eyecon.svg" />
                             </button>
                         </div>
                         <div>
-                            <button class="button-secondary">Default</button>
-                            <button class="button-secondary">
+                            <button class="secondary">Default</button>
+                            <button class="secondary">
                                 Default
                                 <img src="/images/eyecon.svg" />
                             </button>
@@ -134,8 +136,8 @@
                                 Hover
                                 <img src="/images/eyecon.svg" />
                             </button>
-                            <button class="disabled-secondary">Disabled</button>
-                            <button class="disabled-secondary">
+                            <button class="secondary" disabled>Disabled</button>
+                            <button class="secondary" disabled>
                                 Disabled
                                 <img src="/images/eyecon.svg" />
                             </button>

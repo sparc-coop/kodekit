@@ -1,12 +1,13 @@
-﻿@import "../../_variables";
+﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
 
 .buttons {
     .preview-example {
         padding: 32px;
+        display: block;
 
         button {
-            background: $primary500;
-            border: 1px solid $primary500;
+            background: $primary-500;
+            border: 1px solid $primary-500;
             color: $white;
             font-weight: 500;
             font-size: 16px;
@@ -15,34 +16,43 @@
             border-radius: 4px;
             margin-top: 0;
             margin-bottom: 24px;
-        }
+            /*&:hover {
+                background: $primary-300;
+                color: $white;
+            }*/
 
-        .button-secondary {
-            color: $secondary500;
-            background: $white;
-            border: 1px solid $secondary500;
-        }
-
-        .hover {
-            background: $primary400;
-            color: $white;
-
-            &-secondary {
-                background: $secondary100;
-                border: 1px solid $secondary400;
-                color: $secondary400;
+            &:disabled {
+                color: $grey-300;
+                background: $grey-100;
+                border: 1px solid $grey-100;
             }
         }
 
-        .disabled {
-            color: $gray300;
-            background: $gray100;
-            border: 1px solid $gray300;
+        button.secondary {
+            color: $secondary-500;
+            background: $white;
+            border: 1px solid $secondary-500;
+            /*&:hover {
+                background: $secondary-100;
+                border: 1px solid $secondary-300;
+                color: $secondary-300;
+            }*/
+
+            &:disabled {
+                background: $white;
+                color: $grey-300;
+                border: 1px solid $grey-300;
+            }
+        }
+        //Do we want the Hover constantly active?
+        .hover {
+            background: $primary-300;
+            color: $white;
 
             &-secondary {
-                background: $white;
-                color: $gray300;
-                border: 1px solid $gray300;
+                background: $secondary-100;
+                border: 1px solid $secondary-300;
+                color: $secondary-300;
             }
         }
 
@@ -53,6 +63,10 @@
         }
     }
 
+    section {
+        display: flex;
+        flex-wrap: wrap;
+    }
     //This is for the Switch Slider
     .switch {
         position: relative;
@@ -68,8 +82,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: $gray300;
-            border: 2px solid $primary500;
+            background-color: $grey-300;
+            border: 2px solid $primary-500;
             -webkit-transition: .4s;
             transition: .4s;
             border-radius: 20px;
@@ -82,7 +96,7 @@
                 left: 3px;
                 bottom: 3px;
                 border-radius: 50%;
-                background-color: $primary500;
+                background-color: $primary-500;
                 -webkit-transition: .4s;
                 transition: .4s;
             }
@@ -95,7 +109,7 @@
 
             &:checked + .slider {
                 background-color: $background;
-                border: 2px solid $primary500;
+                border: 2px solid $primary-500;
 
                 &:before {
                     -webkit-transform: translateX(20px);
@@ -105,7 +119,7 @@
             }
 
             &:focus + .slider {
-                box-shadow: 0 0 1px $primary500;
+                box-shadow: 0 0 1px $primary-500;
             }
         }
     }
