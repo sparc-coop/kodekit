@@ -306,6 +306,66 @@
         }
       }
     },
+    "/api/DeleteKit": {
+      "post": {
+        "tags": [
+          "DeleteKit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetKit": {
       "post": {
         "tags": [
@@ -826,6 +886,10 @@
             "nullable": true
           },
           "isPublished": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isDeleted": {
             "type": "boolean",
             "nullable": true
           }

@@ -1,4 +1,5 @@
-﻿using Sparc.Core;
+﻿using Microsoft.Azure.Cosmos.Linq;
+using Sparc.Core;
 using Sparc.Features;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +18,9 @@ namespace Kodekit.Features
 
         public override async Task<List<Kit>> ExecuteAsync()
         {
-            return await Kits.Query.Where(x => x.UserId == User.Id() && x.ParentId == null)
+            var kits = await Kits.Query.Where(x => x.UserId == User.Id() && x.ParentId == null)//&& x.IsDeleted != true)
                 .ToListAsync();
+            return kits;
         }
     }
 }

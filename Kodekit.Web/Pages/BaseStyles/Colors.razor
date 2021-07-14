@@ -4,7 +4,7 @@
 <div class="colors page">
     <div class="page__container">
         <header>
-            <div class="title">Global Styles</div>
+            <div class="title">Base Styles</div>
             <h2>Colors</h2>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
@@ -17,187 +17,192 @@
             </p>
             @if (kit != null)
             {
-        <EditForm Model="@kit">
-            <div class="section">
-                <label>
-                    Primary
-                    <span style="background-color: @kit.PrimaryColor"></span>
-                    <InputText @bind-Value="kit.PrimaryColor" />
-                </label>
-                <label>
-                    Secondary
-                    <span style="background-color: @kit.SecondaryColor"></span>
-                    <InputText @bind-Value="kit.SecondaryColor" />
-                </label>
-                <label>
-                    Tertiary
-                    <span style="background-color: @kit.TertiaryColor"></span>
-                    <InputText @bind-Value="kit.TertiaryColor" />
-                </label>
-            </div>
-            @if (colorResult.AaText == "fail")
-            {
-                <p class="subheader">
-                    Your contrast of @colorResult.Contrast fails the recommended WCAG guidelines for accessibility. Consider colors with a greater contrast for increased readability.
-                </p>
-            }
-            <div class="preview-example">
-                <div>
-                    <label>Primary</label>
-                    <div class="color-display" style="background-color: @kit.PrimaryColor"></div>
-                </div>
-                <div>
-                    <label>Secondary</label>
-                    <div class="color-display" style="background-color: @kit.SecondaryColor"></div>
-                </div>
-                <div>
-                    <label>Tertiary</label>
-                    <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
-                </div>
-            </div>
-            <div class="code-example">
-                <code>
-                    <span>&lt;div class="color-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
-                    <span>&lt;div class="bg-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
-                </code>
-            </div>
-            <h3>Greyscale</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
-            <div class="section">
-                <label>
-                    Darkest
-                    <span style="background-color: @kit.DarkColor"></span>
-                    <InputText @bind-Value="kit.DarkColor" />
-                </label>
-                <label>
-                    Lightest
-                    <span style="background-color: @kit.LightColor"></span>
-                    <InputText @bind-Value="kit.LightColor" />
-                </label>
-            </div>
-            <div class="preview-example preview-example--grayscale">
-                <div>
-                    <label>900</label>
-                    <div class="color-display first" style="background-color: @kit.DarkColor"></div>
-                </div>
-                <div>
-                    <label>800</label>
-                    <div class="color-display" style="background-color: #2B2D39"></div>
-                </div>
-                <div>
-                    <label>700</label>
-                    <div class="color-display" style="background-color: #30313F"></div>
-                </div>
-                <div>
-                    <label>600</label>
-                    <div class="color-display" style="background-color: #393A4A"></div>
-                </div>
-                <div>
-                    <label>500</label>
-                    <div class="color-display" style="background-color: #6B6C7E"></div>
-                </div>
-                <div>
-                    <label>400</label>
-                    <div class="color-display" style="background-color: #A7A9BC"></div>
-                </div>
-                <div>
-                    <label>300</label>
-                    <div class="color-display" style="background-color: #CDCED9"></div>
-                </div>
-                <div>
-                    <label>200</label>
-                    <div class="color-display" style="background-color: #E7E7ED"></div>
-                </div>
-                <div>
-                    <label>100</label>
-                    <div class="color-display last" style="background-color: @kit.LightColor"></div>
-                </div>
-            </div>
-            <div class="code-example">
-                <code>
-                    <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                    <span>$greyscale-900</span><br />
-                    <span>$greyscale-800</span><br />
-                    <span>$greyscale-700</span><br />
-                </code>
-            </div>
-            <h3>System Colors</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
-            <div class="section">
-                <label>
-                    Error
-                    <span class="color-display" style="background-color: @kit.ErrorColor"></span>
-                    <InputText @bind-Value="kit.ErrorColor" />
-                </label>
-                <label>
-                    Warning
-                    <span class="color-display" style="background-color: @kit.WarningColor"></span>
-                    <InputText @bind-Value="kit.WarningColor" />
-                </label>
-                <label>
-                    Success
-                    <span class="color-display" style="background-color: @kit.SuccessColor"></span>
-                    <InputText @bind-Value="kit.SuccessColor" />
-                </label>
-            </div>
-            <div class="preview-example">
-                <div style="background-color: @kit.ErrorColor"></div>
-                <div style="background-color: @kit.WarningColor"></div>
-                <div style="background-color: @kit.SuccessColor"></div>
-                <div>
-                    <label>Error</label>
-                    <div class="color-display" style="background-color: @kit.ErrorColor"></div>
-                </div>
-                <div>
-                    <label>Warning</label>
-                    <div class="color-display" style="background-color: @kit.WarningColor"></div>
-                </div>
-                <div>
-                    <label>Success</label>
-                    <div class="color-display" style="background-color: @kit.SuccessColor"></div>
-                </div>
-            </div>
-            <div class="code-example">
-                <code>
-                    <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                    <span>$error-900</span><br />
-                    <span>$error-500</span><br />
-                    <span>$error-100</span><br />
-                    <span>$warning-900</span><br />
-                    <span>$warning-500</span><br />
-                    <span>$warning-100</span><br />
-                    <span>$success-900</span><br />
-                    <span>$success-500</span><br />
-                    <span>$success-100</span><br />
-                </code>
-            </div>
-            <div class="preview-mockup">
-                <h3>Preview</h3>
-                <p class="subheader">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-                </p>
-                <section>
-                    <div>
-                        <img />
+                <EditForm Model="@kit">
+                    <div class="section">
+                        <label>
+                            Primary
+                            <span style="background-color: @kit.PrimaryColor"></span>
+                            <InputText @bind-Value="kit.PrimaryColor" />
+                        </label>
+                        <label>
+                            Secondary
+                            <span style="background-color: @kit.SecondaryColor"></span>
+                            <InputText @bind-Value="kit.SecondaryColor" />
+                        </label>
+                        <label>
+                            Tertiary
+                            <span style="background-color: @kit.TertiaryColor"></span>
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example">
                         <div>
-                            <button>Primary CTA</button>
+                            <label>Primary</label>
+                            <div class="color-display" style="background-color: @kit.PrimaryColor"></div>
+                        </div>
+                        <div>
+                            <label>Secondary</label>
+                            <div class="color-display" style="background-color: @kit.SecondaryColor"></div>
+                        </div>
+                        <div>
+                            <label>Tertiary</label>
+                            <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
                         </div>
                     </div>
-                    <div>
-                        <button>Primary CTA</button>
-                        <button>Secondary CTA</button>
+                    <div class="code-example">
+                        <code>
+                            <span>&lt;div class="color-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
+                            <span>&lt;div class="bg-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
+                        </code>
                     </div>
-                </section>
-            </div>
-            <button @onclick="Submit">
-                Save & Continue
-                <img src="/images/eyecon.svg" />
-            </button>
-        </EditForm>
+                    <h3>Greyscale</h3>
+                    <p class="subheader">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                    </p>
+                    <div class="section">
+                        <label>
+                            Darkest
+                            <span style="background-color: @kit.DarkColor"></span>
+                            <InputText @bind-Value="kit.DarkColor" />
+                        </label>
+                        <label>
+                            Lightest
+                            <span style="background-color: @kit.LightColor"></span>
+                            <InputText @bind-Value="kit.LightColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example preview-example--grayscale">
+                        <div>
+                            <label>900</label>
+                            <div class="color-display first" style="background-color: @kit.DarkColor"></div>
+                        </div>
+                        <div>
+                            <label>800</label>
+                            <div class="color-display" style="background-color: #2B2D39"></div>
+                        </div>
+                        <div>
+                            <label>700</label>
+                            <div class="color-display" style="background-color: #30313F"></div>
+                        </div>
+                        <div>
+                            <label>600</label>
+                            <div class="color-display" style="background-color: #393A4A"></div>
+                        </div>
+                        <div>
+                            <label>500</label>
+                            <div class="color-display" style="background-color: #6B6C7E"></div>
+                        </div>
+                        <div>
+                            <label>400</label>
+                            <div class="color-display" style="background-color: #A7A9BC"></div>
+                        </div>
+                        <div>
+                            <label>300</label>
+                            <div class="color-display" style="background-color: #CDCED9"></div>
+                        </div>
+                        <div>
+                            <label>200</label>
+                            <div class="color-display" style="background-color: #E7E7ED"></div>
+                        </div>
+                        <div>
+                            <label>100</label>
+                            <div class="color-display last" style="background-color: @kit.LightColor"></div>
+                        </div>
+                    </div>
+                    <div class="code-example">
+                        <code>
+                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
+                            <span>$greyscale-900</span><br />
+                            <span>$greyscale-800</span><br />
+                            <span>$greyscale-700</span><br />
+                        </code>
+                    </div>
+                    <h3>System Colors</h3>
+                    <p class="subheader">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                    </p>
+                    <div class="section">
+                        <label>
+                            Error
+                            <span class="color-display" style="background-color: @kit.ErrorColor"></span>
+                            <InputText @bind-Value="kit.ErrorColor" />
+                        </label>
+                        <label>
+                            Warning
+                            <span class="color-display" style="background-color: @kit.WarningColor"></span>
+                            <InputText @bind-Value="kit.WarningColor" />
+                        </label>
+                        <label>
+                            Success
+                            <span class="color-display" style="background-color: @kit.SuccessColor"></span>
+                            <InputText @bind-Value="kit.SuccessColor" />
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <div style="background-color: @kit.ErrorColor"></div>
+                        <div style="background-color: @kit.WarningColor"></div>
+                        <div style="background-color: @kit.SuccessColor"></div>
+                        <div>
+                            <label>Error</label>
+                            <div class="color-display" style="background-color: @kit.ErrorColor"></div>
+                        </div>
+                        <div>
+                            <label>Warning</label>
+                            <div class="color-display" style="background-color: @kit.WarningColor"></div>
+                        </div>
+                        <div>
+                            <label>Success</label>
+                            <div class="color-display" style="background-color: @kit.SuccessColor"></div>
+                        </div>
+                    </div>
+                    <div class="code-example">
+                        <code>
+                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
+                            <span>$error-900</span><br />
+                            <span>$error-500</span><br />
+                            <span>$error-100</span><br />
+                            <span>$warning-900</span><br />
+                            <span>$warning-500</span><br />
+                            <span>$warning-100</span><br />
+                            <span>$success-900</span><br />
+                            <span>$success-500</span><br />
+                            <span>$success-100</span><br />
+                        </code>
+                    </div>
+                    <div class="preview-mockup">
+                        <h3>Preview</h3>
+                        <p class="subheader">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                        </p>
+                        <section>
+                            <div class="preview-mockup--left">
+                                <img src="/images/example1.png"/>
+                                <div>
+                                    <h5>Information</h5>
+                                    <h4>Brand Colors</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                    </p>
+                                    <button>Primary CTA</button> 
+                                </div>
+                            </div>
+                            <div class="preview-mockup--right">
+                                <h5>Information</h5>
+                                <h4>Brand Colors</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </p>
+                                <div class="buttons">
+                                    <button>Primary CTA</button>
+                                    <button class="button-secondary">Secondary CTA</button>
+                                </div></div>
+                        </section>
+                    </div>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" />
+                    </button>
+                </EditForm>
             }
         </div>
     </div>
