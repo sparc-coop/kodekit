@@ -9,6 +9,9 @@ namespace Kodekit.Features.Elements
     public record FontFamily
     {
         public string FriendlyName { get; set; }
+        public string InternalName { get; set; }
         public string SourceUrl { get; set; }
+
+        public override string ToString() => $"'{InternalName}'";
     }
 }

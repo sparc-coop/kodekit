@@ -67,7 +67,7 @@ namespace Kodekit.Features
 
         private StringBuilder Write(StringBuilder css, Element element)
         {
-            return css.Append(element).AppendLine().AppendLine();
+            return element.ToCss(css).AppendLine();
         }
     }
 }

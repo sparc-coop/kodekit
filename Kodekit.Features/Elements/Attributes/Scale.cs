@@ -18,5 +18,6 @@ namespace Kodekit.Features.Elements
             { 1.618, "Golden Ratio" }
         };
 
+        public override string ToString() => Value.ToString();
     }
 }
