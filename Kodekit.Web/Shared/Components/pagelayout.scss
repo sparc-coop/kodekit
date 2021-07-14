@@ -101,10 +101,14 @@
         }
     }
 
-    .section {
+    .section, section {
         display: flex;
         flex-wrap: wrap;
         padding-bottom: 40px;
+
+        &-container {
+            display: block;
+        }
 
         .preview {
             max-width: 496px;
@@ -255,5 +259,12 @@
         display: block; 
         margin-top: 16px;
         font-size: 14px;
+    }
+
+    .delete {
+        cursor: pointer;
+        margin: -4px 0 0 15px;
+        font-size: 19px;
+        vertical-align: middle;
     }
 }

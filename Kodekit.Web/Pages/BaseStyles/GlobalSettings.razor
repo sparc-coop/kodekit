@@ -1,0 +1,174 @@
+﻿@page "/global-settings"
+@page "/global-settings/{kitId}"
+
+<div class="page global-page">
+    <div class="page__container">
+        <header>
+            <div class="title">Base Styles</div>
+            <h2>Global Settings</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+        </header>
+        <div class="content">
+            <h3>Global Resets</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Reset Everything to Default
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Headings
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Paragraphs
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Lists
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Checkboxes, Radios & Toggles
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Anchors
+                        </div>
+                    </div>
+                    <h3>Kodekit Styling</h3>
+                    <p class="subheader">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                    </p>
+                    <div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            All Kodekit Elements
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Typography
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Colors
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Icons
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Layout
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Buttons
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Inputs & Text Areas
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Checkboxes & Radios
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Dropdowns
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Anchors
+                        </div>
+                        <div class="section-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Images
+                        </div>
+                    </div>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" />
+                    </button>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task Submit()
+    {
+        //string newCss = new CreateCss().Execute(kit);
+
+        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
+        //SaveColors();
+    }
+}
