@@ -690,6 +690,255 @@
   },
   "components": {
     "schemas": {
+      "Button": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "verticalPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "horizontalPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "cornerRadius": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "borderWidth": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "iconWidth": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "iconHeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Color": {
+        "type": "object",
+        "properties": {
+          "hexValue": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ColorVariable": {
+        "type": "object",
+        "properties": {
+          "friendlyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FontFamily": {
+        "type": "object",
+        "properties": {
+          "friendlyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HeadingTypography": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fontFamily": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FontFamily"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "typeScale": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Scale"
+              }
+            ],
+            "nullable": true
+          },
+          "lineHeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Input": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "verticalPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "horizontalPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "cornerRadius": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "borderWidth": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Kit": {
         "type": "object",
         "properties": {
@@ -721,72 +970,51 @@
             "type": "string",
             "nullable": true
           },
-          "primaryColor": {
-            "type": "string",
+          "colors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ColorVariable"
+            },
             "nullable": true
           },
-          "secondaryColor": {
-            "type": "string",
+          "headingSettings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HeadingTypography"
+              }
+            ],
             "nullable": true
           },
-          "tertiaryColor": {
-            "type": "string",
+          "paragraphSettings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Typography"
+              }
+            ],
             "nullable": true
           },
-          "darkColor": {
-            "type": "string",
+          "buttonSettings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Button"
+              }
+            ],
             "nullable": true
           },
-          "lightColor": {
-            "type": "string",
+          "inputSettings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Input"
+              }
+            ],
             "nullable": true
           },
-          "errorColor": {
-            "type": "string",
-            "nullable": true
-          },
-          "warningColor": {
-            "type": "string",
-            "nullable": true
-          },
-          "successColor": {
-            "type": "string",
-            "nullable": true
-          },
-          "typeScale": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerFont": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerFontSize": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerTypeScale": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerLineHeight": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyFont": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyFontSize": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyTypeScale": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyLineHeight": {
-            "type": "string",
+          "selectorSettings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Selector"
+              }
+            ],
             "nullable": true
           },
           "dateCreated": {
@@ -805,6 +1033,132 @@
           },
           "isDeleted": {
             "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Scale": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Selector": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "activeColor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Size": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "double"
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
+          },
+          "placeholder": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Typography": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fontFamily": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FontFamily"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "typeScale": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Scale"
+              }
+            ],
+            "nullable": true
+          },
+          "lineHeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
             "nullable": true
           }
         },
@@ -838,6 +1192,20 @@
             "items": {
               "$ref": "#/components/schemas/Kit"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Weight": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "placeholder": {
+            "type": "string",
             "nullable": true
           }
         },
