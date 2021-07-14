@@ -12,6 +12,5 @@ namespace Kodekit.Features
             builder.Entity<User>().HasNoKey();//.HasPartitionKey(x => x.UserId);
             builder.Entity<Kit>().HasPartitionKey(x => x.KitId);//x.UserId);
         }
-
     }
 }
