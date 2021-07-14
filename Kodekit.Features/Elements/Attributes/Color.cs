@@ -16,5 +16,7 @@ namespace Kodekit.Features.Elements
         }
 
         public string HexValue { get; set; }
+
+        public override string ToString() => $"#{HexValue}";
     }
 }

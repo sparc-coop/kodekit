@@ -25,5 +25,7 @@ namespace Kodekit.Features.Elements
             { 800, "Extra-Bold" },
             { 900, "Black" }
         };
+
+        public override string ToString() => Value.ToString();
     }
 }

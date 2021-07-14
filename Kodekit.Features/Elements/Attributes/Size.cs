@@ -27,5 +27,7 @@ namespace Kodekit.Features.Elements
             { "vh", "relative to viewport height" },
             { "%", "percentage" }
         };
+
+        public override string ToString() => $"{Value}{Unit}";
     }
 }
