@@ -2,7 +2,7 @@
 
 .page {
     background: $background;
-    padding: 138px 80px 100px 80px;
+    padding: 10px 80px 100px 80px;
     font-family: 'Inter', sans-serif;
 
 
@@ -164,9 +164,9 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        margin-bottom: -20px;
+        margin-bottom: -5px;
         color: $gray900;
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Inter';
 
         h1 {
             font-weight: 400;

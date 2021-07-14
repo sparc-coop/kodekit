@@ -1,6 +1,6 @@
 ﻿.page {
   background: #F5F7FA;
-  padding: 138px 80px 100px 80px;
+  padding: 10px 80px 100px 80px;
   font-family: 'Inter', sans-serif; }
   @media screen and (max-width: 780px) {
     .page {
@@ -116,9 +116,9 @@
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 8px 8px 0px 0px;
-    margin-bottom: -20px;
+    margin-bottom: -5px;
     color: #17171A;
-    font-family: 'Roboto Mono', monospace; }
+    font-family: 'Inter'; }
     .page .preview-example h1 {
       font-weight: 400;
       font-size: 48px;
@@ -398,6 +398,10 @@
       border: 1px solid #F96464;
       color: #F96464; }
 
+.lists .preview-example {
+  display: flex;
+  padding-bottom: 20px; }
+
 .colors label {
   font-weight: normal;
   font-size: 14px;
@@ -541,7 +545,8 @@
   color: #72E5DD; }
 
 .typography .preview-example {
-  padding: 40px 32px; }
+  padding: 40px 32px;
+  font-family: 'Roboto Mono', monospace; }
 
 .global-page .section-container {
   display: flex;
@@ -1056,11 +1061,19 @@
 
 .page-info {
   margin: 90px auto 20px auto;
-  width: 100%;
   max-width: 1024px;
   display: flex;
   position: relative;
-  padding: 20px; }
+  padding: 20px 0; }
+  @media screen and (max-width: 1455px) {
+    .page-info {
+      margin: 80px auto 40px 80px; } }
+  @media screen and (max-width: 780px) {
+    .page-info {
+      margin: 80px auto 40px 25px; } }
+  @media screen and (max-width: 500px) {
+    .page-info {
+      margin: 80px auto 80px 25px; } }
   .page-info > div {
     display: flex; }
   .page-info .title {
@@ -1079,9 +1092,16 @@
     margin: 0 4px;
     cursor: pointer; }
   .page-info .info {
-    display: flex;
     position: absolute;
-    right: 0; }
+    right: 20px; }
+    @media screen and (max-width: 1150px) {
+      .page-info .info {
+        right: unset;
+        left: -20px;
+        top: 50px; } }
+    @media screen and (max-width: 500px) {
+      .page-info .info {
+        flex-wrap: wrap; } }
     .page-info .info--time {
       color: #A9ACB2;
       padding: 6px 18px;
@@ -1104,6 +1124,9 @@
     color: #787980;
     height: 22px;
     margin-left: 18px; }
+    @media screen and (max-width: 500px) {
+      .page-info .history {
+        margin-top: 10px; } }
     .page-info .history img {
       vertical-align: middle; }
     .page-info .history--dropdown {
@@ -1117,7 +1140,12 @@
       position: absolute;
       right: 0;
       top: 34px;
-      display: block; }
+      display: block;
+      z-index: 10; }
+      @media screen and (max-width: 500px) {
+        .page-info .history--dropdown {
+          right: unset;
+          top: 120px; } }
       .page-info .history--dropdown ul {
         padding: 0 0 0 20px;
         margin: 0; }
