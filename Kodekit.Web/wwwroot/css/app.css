@@ -17,7 +17,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 /*$black: #000000;*/
 /*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
@@ -37,7 +36,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 .page {
   background: #F5F7FA;
   padding: 138px 80px 100px 80px;
@@ -486,7 +484,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page .subtitle {
   line-height: 120%;
   margin: 0;
@@ -558,7 +555,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 button {
   background: inherit;
   border-radius: 4px;
@@ -599,7 +595,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 .page input, .page select {
   background: #FFFFFF;
   border: 1px solid #CDCED9;
@@ -759,7 +754,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 .buttons .preview-example {
   padding: 32px;
   display: block; }
@@ -988,7 +982,6 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
-/*$error: #F96464;*/
 .typography .preview-example {
   padding: 40px 32px; }
 
