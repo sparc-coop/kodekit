@@ -49,12 +49,24 @@
                             <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
+                    <div>
                         <pre>
-                        <code>
+                            <code>
+&lt;!-- use directly as colors or background properties --&gt;
 &lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
 &lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
-                        </code>
+                            </code>
+                            <code class="language-scss">
+&lt;!-- however it is best to use them as variables within your classes --&gt;
+
+.box {
+    background-color: $primary-500;
+}
+
+.box-alt {
+    background-color: $secondary-100;
+}
+                            </code>
                         </pre>
                     </div>
                     <h3>Greyscale</h3>
@@ -111,15 +123,14 @@
                             <div class="color-display last" style="background-color: @kit.LightColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
                         <pre>
-                        <code>
+                        <code class="language-scss">
 &lt;!--System Variables--&gt;
 $greyscale-900
 $greyscale-800
 $greyscale-700
-                    </code></pre>
-                    </div>
+                    </code>
+</pre>
                     <h3>System Colors</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -160,7 +171,7 @@ $greyscale-700
                     </div>
                     <div class="code-example">
                         <pre>
-                        <code>
+                        <code class="language-scss">
 &lt;!--System Variables--&gt;
 $error-900
 $error-500
