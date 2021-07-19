@@ -37,6 +37,32 @@
         }
     }
 
+    .selected input{
+        border: 1px solid $primary-500;
+    }
+
+    .error  {
+        color: $error-500;
+
+        span {
+            color: $error-500;
+        }
+
+        input {
+            border: 1px solid $error-500;
+            color: $error-500;
+        }
+    }
+
+    .disabled {
+        color: $grey-300;
+
+        input {
+            border: 1px solid $grey-300;
+            color: $grey-300;
+        }
+    }
+
     form {
         //Div that contains the Input, Label and Icon
         label {
@@ -88,26 +114,6 @@
             font-size: 16px;
             line-height: 160%;
             color: #787980;
-        }
-
-
-
-        .checkboxes, .radios {
-            display: flex;
-
-            label {
-                flex-direction: row;
-                align-items: center;
-                margin-right: 20px;
-
-                input {
-                    margin-right: 13px;
-                }
-            }
-
-            label:last-child {
-                margin-right: 0;
-            }
         }
     }
 }

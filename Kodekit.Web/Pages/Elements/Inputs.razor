@@ -4,21 +4,21 @@
 <div class="inputs page">
     <div class="page__container">
         <header>
-            <div class="title">Elements</div>
+            <div class="subtitle">Elements</div>
             <h2>Inputs & Textareas</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
         <div class="content">
-            <h3>Form Styling</h3>
+            <h5>Form Styling</h5>
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
             <EditForm Model="@kit">
-            <div class="section">
+            <section>
                 <label>
                     Input Font Size
                     <InputText @bind-Value="kit.PrimaryColor" />
@@ -46,8 +46,8 @@
                     Border Width
                     <InputText @bind-Value="kit.TertiaryColor" />
                 </label>
-            </div>
-            <div class="preview-example">
+            </section>
+            <section class="secondary">
                 <input placeholder="Placeholder" />
                 <input placeholder="Placeholder" />
                 <select>
@@ -56,18 +56,18 @@
                     <option>Option 3</option>
                 </select>
                 <textarea>Placeholder</textarea>
-            </div>
+            </section>
             <div class="code-example">
                 <code>
 
                 </code>
             </div>
 
-            <h3>Input & Textarea states</h3>
-            <p class="subheader">
+            <h5>Input & Textarea states</h5>
+            <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
-            <div class="preview-example">
+            <section class="secondary">
                 <label>
                     Placeholder
                     <input placeholder="username" />
@@ -92,7 +92,7 @@
                     Disabled
                     <input value="enter username" disabled/>
                 </label>
-            </div>
+            </section>
             <div class="code-example">
                 <code>
 
