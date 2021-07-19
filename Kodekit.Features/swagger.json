@@ -199,17 +199,26 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContrastColorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContrastColorResponse"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContrastColorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContrastColorResponse"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContrastColorResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContrastColorResponse"
+                  }
                 }
               }
             }
@@ -770,6 +779,21 @@
             "nullable": true
           },
           "aaa": {
+            "type": "string",
+            "nullable": true
+          },
+          "failed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "colorA": {
+            "type": "string",
+            "nullable": true
+          },
+          "colorB": {
             "type": "string",
             "nullable": true
           }

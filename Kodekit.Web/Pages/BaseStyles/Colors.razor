@@ -11,10 +11,19 @@
             </p>
         </header>
         <div class="content">
+
             <h3>Brand Colors</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
+            <section style="display: flex;">
+                <p class="subheader">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                </p>
+                @if (contrastResults.Any())
+                {
+            <aside style="background: yellow;">
+                The color contrast of ? between your background and primary color is below the standard for WCAG and may be difficult to view for many users.
+            </aside>
+                }
+            </section>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
@@ -34,6 +43,7 @@
                             <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
+
                     </div>
                     <div class="preview-example">
                         <div>
@@ -176,14 +186,14 @@
                         </p>
                         <section>
                             <div class="preview-mockup--left">
-                                <img src="/images/example1.png"/>
+                                <img src="/images/example1.png" />
                                 <div>
                                     <h5>Information</h5>
                                     <h4>Brand Colors</h4>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button>Primary CTA</button> 
+                                    <button>Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
@@ -195,7 +205,8 @@
                                 <div class="buttons">
                                     <button>Primary CTA</button>
                                     <button class="button-secondary">Secondary CTA</button>
-                                </div></div>
+                                </div>
+                            </div>
                         </section>
                     </div>
                     <button @onclick="Submit">
@@ -218,6 +229,8 @@
         string currentKitId;
         string ColorContrast = "";
         ColorResults colorResult = new ColorResults();
+        List<ColorResults> contrastResults = new List<ColorResults>();
+
         //ContrastColorResponse colorContrast = new ContrastColorResponse();
 
         protected override async Task OnInitializedAsync()
@@ -262,10 +275,17 @@
         {
             //checkColors("ffffff", "000000");
 
-            var contrastResults = await Api.ColorContrastCheckerAsync(kit);
-            colorResult.AaText = contrastResults.Aa;
-            colorResult.AaLarge = contrastResults.AaaLarge;
-            colorResult.Contrast = contrastResults.Ratio;
+            var contrastApiResults = await Api.ColorContrastCheckerAsync(kit);
+
+            foreach (var item in contrastApiResults)
+            {
+                ColorResults newItem = new ColorResults();
+                newItem.AaText = item.Aa;
+                newItem.Contrast = item.Ratio;
+
+                contrastResults.Add(newItem);
+            }
+
 
             //ColorContrast = idk.AA;
             //var str = "ffffff", "000000";
@@ -286,8 +306,8 @@
         {
             public string Contrast { get; set; }
             public string AaText { get; set; }
-            public string AaaText { get; set; }
-            public string AaLarge { get; set; }
+            //public string AaaText { get; set; }
+            //public string AaLarge { get; set; }
         }
 
     }
