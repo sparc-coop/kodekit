@@ -63,10 +63,14 @@
         }
     }
 
-    section {
-        display: flex;
-        flex-wrap: wrap;
+    .code-example {
+        margin-bottom: 80px;
     }
+
+    h6{
+        margin-bottom: 32px;
+    }
+
     //This is for the Switch Slider
     .switch {
         position: relative;
