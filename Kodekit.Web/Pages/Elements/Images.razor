@@ -4,21 +4,21 @@
 <div class="effects page">
     <div class="page__container">
         <header>
-            <div class="title">Elements</div>
+            <div class="subheader">Elements</div>
             <h2>Links</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
-        <div class="content">
+        <section>
             <h3>Core Buttons</h3>
-            <p class="subheader">
+            <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
-                    <div class="section">
+                    <section>
                         <label>
                             Font Size
                             <span style="background-color: @kit.PrimaryColor"></span>
@@ -59,12 +59,12 @@
                             <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
-                    </div>
+                    </section>
                     <h4>Secondary Button</h4>
-                    <div class="section">
+                    <section>
    
 
-                    </div>
+                    </section>
                     <div class="preview-example">
 
                     </div>
@@ -81,7 +81,7 @@
                     </button>
                 </EditForm>
             }
-        </div>
+        </section>
     </div>
 </div>
 

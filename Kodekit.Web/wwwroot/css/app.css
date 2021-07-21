@@ -69,6 +69,9 @@ header {
   .code-example .comment {
     color: #CDCED9; }
 
+.effects section {
+  padding-bottom: 40px; }
+
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
@@ -551,6 +554,9 @@ $light-gray: #979797;*/
   line-height: 180%;
   color: #787980; }
 
+.page header .subtitle {
+  color: #0B5FFF; }
+
 /*$black: #000000;*/
 /*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
@@ -1032,9 +1038,6 @@ $dark-gray: #525151;
 $light-gray: #979797;*/
 .typography .preview-example {
   padding: 40px 32px; }
-
-.typography header .subtitle {
-  color: #0B5FFF; }
 
 .typography div form header {
   margin-bottom: 32px; }
