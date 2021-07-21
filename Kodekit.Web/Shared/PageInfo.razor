@@ -12,7 +12,15 @@
             </div>
         </div>
         <div class="info">
-            <div class="info--time">Last Saved: 12:03 PM</div>
+            @if (showLogin == true)
+            {
+                <div class="info--time">Please <a href="authentication/login">Log In</a> to save changes</div>
+            }
+            else
+            {
+                <div class="info--time">Last Saved: 12:03 PM</div>
+            }
+
             <div class="actions">
                 <img @onclick="DeleteKit" src="/images/delete-icon.png" title="Delete" />
                 <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
@@ -22,18 +30,21 @@
 
                 </div>
             </div>
-            <div class="history" @onclick="@(e => ShowDropdown = !ShowDropdown)">
-                <img src="/images/history-icon.svg" />
-                Version History
-                @if (ShowDropdown == false)
-                {
-                    <img src="/images/dropdown-icon.svg" />
-                }
-                else
-                {
-                    <img src="/images/blue-close-icon.svg" />
-                }
-            </div>
+            @if (showLogin == false)
+            {
+                <div class="history" @onclick="@(e => ShowDropdown = !ShowDropdown)">
+                    <img src="/images/history-icon.svg" />
+                    Version History
+                    @if (ShowDropdown == false)
+                    {
+                        <img src="/images/dropdown-icon.svg" />
+                    }
+                    else
+                    {
+                        <img src="/images/blue-close-icon.svg" />
+                    }
+                </div>
+            }
         </div>
         @if (ShowDropdown == true)
         {
@@ -44,10 +55,9 @@
                 <ul>
                     @foreach (var item in Kits)
                     {
-                        <li>@item.DateCreated.Value.ToString("f")</li>
+                        <li>@item.DateCreated.Value.ToString("f")</li> 
                     }
                 </ul>
-
             </div>
         }
     }
@@ -56,11 +66,26 @@
 @code {
     bool ShowDropdown = false;
     private ICollection<Kit> Kits;
+    bool showLogin = true;
 
     protected override async Task OnInitializedAsync()
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
-        Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            showLogin = false;
+            Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        } else if(!String.IsNullOrEmpty(currentKitId))
+        {
+            var kit = await Api.GetKitAsync(currentKitId);
+            Kits.Add(kit);
+        } else
+        {
+            var kit = await PublicApi().CreateKitAsync(new Kit());
+            Kits.Add(kit);
+        }
     }
 
     private void DeleteKit()

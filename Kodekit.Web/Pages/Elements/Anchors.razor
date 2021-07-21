@@ -1,7 +1,7 @@
 ﻿@page  "/anchors"
 @page  "/anchors/{kitId}"
 
-<div class="effects page">
+<div class="anchors page">
     <div class="page__container">
         <header>
             <div class="title">Elements</div>
@@ -21,11 +21,12 @@
                     <div class="section">
                         <label>
                             Font Size
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            <input placeholder="16px"/>
                         </label>
                         <label>
                             Font Weight
                             <select>
+                                <option selected>Thin (300)</option>
                                 <option selected>Regular (400)</option>
                                 <option>Bold (500)</option>
                             </select>
@@ -35,30 +36,26 @@
                     <div class="section">
                         <label>
                             Default
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input type="color" value="#17171A">
                         </label>
                         <label>
                             Hover
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            <input type="color" value="#0B5FFF">
                         </label>
                         <label>
                             Visited
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <input type="color" value="#7FABFF">
                         </label>
                         <label>
                             Active
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input type="color" value="#00BFB2">
                         </label>
                     </div>
                     <div class="preview-example">
                         <a href="#">Default</a>
-                        <a href="#">Hover</a>
-                        <a href="#">Visited</a>
-                        <a href="#">Active</a>
+                        <a href="#" class="hover">Hover</a>
+                        <a href="#" class="visited">Visited</a>
+                        <a href="#" class="active">Active</a>
                     </div>
                     <div class="code-example">
                         <code>

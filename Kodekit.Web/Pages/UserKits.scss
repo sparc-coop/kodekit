@@ -13,6 +13,10 @@
     a {
         display: block;
         text-decoration: none;
+
+        @media screen and (max-width: 780px) {
+            margin: 20px auto;
+        }
     }
 
     &-container {
@@ -21,6 +25,10 @@
         max-width: 1240px;
         display: flex;
         flex-wrap: wrap;
+
+        @media screen and (max-width: 780px) {
+            margin: 20px auto;
+        }
     }
 
     .sort {

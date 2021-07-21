@@ -3,4 +3,10 @@
         padding: 40px 32px;
         font-family: 'Roboto Mono', monospace;
     }
+
+    .large {
+        @media screen and (max-width: 500px) {
+            width: 314px !important;
+        }
+    }
 }
