@@ -5,7 +5,7 @@
   @media screen and (max-width: 780px) {
     .page {
       padding: 0 40px 100px 40px; } }
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 500px) {
     .page {
       padding: 0 25px 100px 25px; } }
   .page__container {
@@ -220,6 +220,13 @@
     border-radius: 8px;
     margin: 20% auto;
     position: relative; }
+    @media screen and (max-width: 780px) {
+      .modal--container {
+        width: 80%;
+        margin: 40% auto; } }
+    @media screen and (max-width: 500px) {
+      .modal--container {
+        width: 85%; } }
     .modal--container h3 {
       margin: 0;
       font-family: Inter;
@@ -239,6 +246,9 @@
       letter-spacing: 0em;
       text-align: left;
       color: #787980; }
+      @media screen and (max-width: 560px) {
+        .modal--container p {
+          line-height: 20px; } }
   .modal button {
     border: 1px solid #787980;
     box-sizing: border-box;
@@ -247,6 +257,9 @@
     color: #787980;
     background: #FFFFFF;
     padding: 6px 12px; }
+    @media screen and (max-width: 500px) {
+      .modal button {
+        margin-top: 2px; } }
   .modal .button--confirm {
     border: 1px solid #F96464;
     color: #F96464;
@@ -315,9 +328,9 @@
     margin-top: 0;
     margin-bottom: 24px; }
   .buttons .preview-example .button-secondary {
-    color: #72E5DD;
+    color: #00BFB2;
     background: #FFFFFF;
-    border: 1px solid #72E5DD; }
+    border: 1px solid #00BFB2; }
   .buttons .preview-example .hover {
     background: #3C7FFF;
     color: #FFFFFF; }
@@ -337,6 +350,25 @@
     vertical-align: middle;
     margin: 0;
     margin-top: -2px; }
+
+.anchors .preview-example {
+  padding: 32px; }
+  .anchors .preview-example a {
+    font-size: 16px;
+    padding-right: 32px;
+    text-decoration: none; }
+    .anchors .preview-example a.hover {
+      color: #0B5FFF; }
+    .anchors .preview-example a.visited {
+      color: #7FABFF; }
+    .anchors .preview-example a.active {
+      color: #00BFB2; }
+
+.anchors input[type=color] {
+  width: 90px;
+  height: 40px;
+  cursor: pointer;
+  padding: 5px 10px; }
 
 .inputs .section input {
   box-sizing: border-box;
@@ -402,6 +434,11 @@
   display: flex;
   padding-bottom: 20px; }
 
+.dropdowns .preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px; }
+
 .colors label {
   font-weight: normal;
   font-size: 14px;
@@ -413,12 +450,14 @@
   border: 1px solid #E7E7ED;
   box-sizing: border-box;
   border-radius: 4px;
-  padding: 8px 16px 8px 44px;
+  padding: 4px 16px 4px 16px;
   display: block;
   margin: 0 30px 20px 0;
   font-size: 16px;
   line-height: 160%;
-  color: #787980; }
+  color: #787980;
+  cursor: pointer;
+  width: 100px; }
 
 .colors .preview-example {
   box-sizing: border-box;
@@ -542,11 +581,15 @@
 
 .colors .preview-mockup .button-secondary {
   background: none;
-  color: #72E5DD; }
+  color: #00BFB2; }
 
 .typography .preview-example {
   padding: 40px 32px;
   font-family: 'Roboto Mono', monospace; }
+
+@media screen and (max-width: 500px) {
+  .typography .large {
+    width: 314px !important; } }
 
 .global-page .section-container {
   display: flex;
@@ -558,7 +601,10 @@
 
 .effects-page .preview-example {
   display: flex;
-  padding: 20px 31px 60px 32px; }
+  flex-wrap: wrap;
+  padding: 10px 6px 60px 32px; }
+  .effects-page .preview-example > div {
+    padding-top: 10px; }
 
 .effects-page .example-shadow {
   width: 222px;
@@ -807,7 +853,7 @@
       line-height: 160%;
       padding: 5px 15px;
       color: #787980;
-      border: 1px solid #72E5DD;
+      border: 1px solid #00BFB2;
       background: none;
       height: 36px;
       border-radius: 4px; }
@@ -821,6 +867,9 @@
 .dashboard a {
   display: block;
   text-decoration: none; }
+  @media screen and (max-width: 780px) {
+    .dashboard a {
+      margin: 20px auto; } }
 
 .dashboard-container {
   margin: 20px -16px;
@@ -828,6 +877,9 @@
   max-width: 1240px;
   display: flex;
   flex-wrap: wrap; }
+  @media screen and (max-width: 780px) {
+    .dashboard-container {
+      margin: 20px auto; } }
 
 .dashboard .sort {
   position: absolute;
