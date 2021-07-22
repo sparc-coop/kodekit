@@ -1,4 +1,12 @@
 ﻿<div class="header">
+    @if (ShowMobileMenu == false)
+    {
+        <span class="material-icons mobile" @onclick="ToggleMobile">menu</span>
+    }
+    else
+    {
+        <span class="material-icons mobile" @onclick="@ToggleMobile">close</span>
+    }
     <a class="logo" href="/">
         <img src="/images/logo.svg" />
         KODEKIT.CSS
@@ -6,7 +14,7 @@
     <LoginDisplay />
 </div>
 
-<div class="sidebar">
+<div class="sidebar @Show">
     <div class="menu">
         <div class="heading">Overview</div>
         <NavLink href="/" Match="NavLinkMatch.All">
@@ -26,7 +34,7 @@
         <NavLink href="colors" Match="NavLinkMatch.Prefix">
             Colors
         </NavLink>
-        <NavLink href="#" Match="NavLinkMatch.Prefix">
+        <NavLink href="icons" Match="NavLinkMatch.Prefix">
             Icons
         </NavLink>
         <NavLink href="layout" Match="NavLinkMatch.Prefix">
@@ -43,8 +51,8 @@
         <NavLink href="inputs" Match="NavLinkMatch.Prefix">
             Inputs & Textareas
         </NavLink>
-        <NavLink href="checkboxes" Match="NavLinkMatch.Prefix">
-            Checkboxs & Radios
+        <NavLink href="selectors" Match="NavLinkMatch.Prefix">
+            Selectors & Toggles
         </NavLink>
         <NavLink href="dropdowns" Match="NavLinkMatch.Prefix">
             Dropdowns
@@ -52,8 +60,8 @@
         <NavLink href="anchors" Match="NavLinkMatch.Prefix">
             Anchors
         </NavLink>
-        <NavLink href="images" Match="NavLinkMatch.Prefix"> 
-            Images
+        <NavLink href="lists" Match="NavLinkMatch.Prefix"> 
+            Lists
         </NavLink>
 
         <div class="heading">Effects</div>
@@ -62,3 +70,18 @@
         </NavLink>
     </div>
 </div>
+
+@code {
+    bool ShowMobileMenu = false;
+    string Show = "";
+
+    private void ToggleMobile()
+    {
+        ShowMobileMenu = !ShowMobileMenu;
+
+        if (ShowMobileMenu == true)
+            Show = "show-mobile";
+        else
+            Show = "";
+    }
+}

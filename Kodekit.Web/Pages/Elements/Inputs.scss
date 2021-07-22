@@ -29,6 +29,7 @@
 
         label {
             color: $gray700;
+            position: relative;
         }
 
         textarea {
@@ -43,6 +44,22 @@
             font-family: 'Inter';
             padding: 10px 16px;
             margin-top: 30px;
+        }
+
+        .icon-space {
+            input { 
+                padding: 10px 16px 10px 40px;
+            }
+
+            img {
+                position: absolute;
+                top: 40px;
+                left: 13px;
+            }
+
+            &--nolabel img {
+                top: 15px;
+            }
         }
 
         span {
