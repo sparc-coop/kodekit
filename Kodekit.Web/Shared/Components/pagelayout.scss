@@ -2,8 +2,17 @@
 
 .page {
     background: $background;
-    padding: 138px 80px 100px 80px;
+    padding: 10px 80px 100px 80px;
     font-family: 'Inter', sans-serif;
+
+
+    @media screen and (max-width: 780px) {
+        padding: 0 40px 100px 40px;
+    }
+
+    @media screen and (max-width: 780px) {
+        padding: 0 25px 100px 25px;
+    }
 
     &__container {
         width: 100%;
@@ -85,20 +94,12 @@
         color: $gray500;
     }
 
-    .code-example {
-        background: $gray900;
+    pre {
         border-radius: 0px 0px 8px 8px;
-        padding: 32px;
-        color: $orange;
-        margin-bottom: 50px;
-
-        span {
-            color: $purple;
-        }
-
-        .comment {
-            color: $light-gray;
-        }
+        margin: -20px 0 50px 0;
+        overflow: hidden;
+        background: #22272e;
+        padding: 0 0 20px 20px;
     }
 
     .section, section {
@@ -155,9 +156,8 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        margin-bottom: -20px;
         color: $gray900;
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Inter';
 
         h1 {
             font-weight: 400;
@@ -256,7 +256,7 @@
         padding: 8px 14px;
         border-radius: 6px;
         border: 1px solid $gray300;
-        display: block; 
+        display: block;
         margin-top: 16px;
         font-size: 14px;
     }

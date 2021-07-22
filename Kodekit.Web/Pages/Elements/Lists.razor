@@ -1,17 +1,17 @@
-﻿@page  "/anchors"
-@page  "/anchors/{kitId}"
+﻿@page  "/lists"
+@page  "/lists/{kitId}"
 
-<div class="effects page">
+<div class="lists page">
     <div class="page__container">
         <header>
             <div class="title">Elements</div>
-            <h2>Anchor Links</h2>
+            <h2>Lists</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
         <div class="content">
-            <h3>Link Styling</h3>
+            <h3>Ordered & Unordered Styling</h3>
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
@@ -20,50 +20,69 @@
                 <EditForm Model="@kit">
                     <div class="section">
                         <label>
-                            Font Size
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            OL Style Type
+                            <select>
+                                <option selected>Upper-roman (IV)</option>
+                                <option>Bold (500)</option>
+                            </select>
                         </label>
                         <label>
-                            Font Weight
+                            UL Style Type
+                            <select>
+                                <option selected>None</option>
+                                <option>Bold (500)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Vertical Padding
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            Horizontal Padding
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                    </div>
+                     <h4>List Item Styling</h4>
+                    <div class="section">
+                        <label>
+                            List Item Font Size
+                            <InputText @bind-Value="kit.TertiaryColor" />
+                        </label>
+                        <label>
+                            List Item Font Weight
                             <select>
                                 <option selected>Regular (400)</option>
                                 <option>Bold (500)</option>
                             </select>
                         </label>
-                    </div>
-                    <h4>Link States</h4>
-                    <div class="section">
                         <label>
-                            Default
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Hover
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
-                        </label>
-                        <label>
-                            Visited
+                            Vertical Padding
                             <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
-                            Active
-                            <span style="background-color: @kit.TertiaryColor"></span>
+                            Horizontal Padding
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                     </div>
                     <div class="preview-example">
-                        <a href="#">Default</a>
-                        <a href="#">Hover</a>
-                        <a href="#">Visited</a>
-                        <a href="#">Active</a>
+                        <ol>
+                            <li>List Item</li>  
+                            <li>List Item</li>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                        </ol>
+                        <ul>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                        </ul>
                     </div>
                     <div class="code-example">
                         <code>
  
-                        </code>
+                        </code> 
                     </div>
                     <button @onclick="Submit">
                         Save & Continue
@@ -86,6 +105,6 @@
 
     private async Task Submit()
     {
-        Nav.NavigateTo("/lists/" + kit.Id);
+        Nav.NavigateTo("/box-shadow/" + kit.Id);
     }
 }
