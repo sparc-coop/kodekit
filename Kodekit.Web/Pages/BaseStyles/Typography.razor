@@ -74,13 +74,19 @@
                             <label>Subtitle - Font Size: xxpx (xem)</label>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
-                        </code>
-                    </div>
+<pre>
+<code>
+&lt;h1&gt;The power of small steps&lt;/h1&gt;
+&lt;h2&gt;The power of small steps&lt;/h2&gt;
+&lt;h3&gt;The power of small steps&lt;/h3&gt;
+&lt;h4&gt;The power of small steps&lt;/h4&gt;
+&lt;h5&gt;The power of small steps&lt;/h5&gt;
+&lt;span class="subtitle"&gt;The power of small steps&lt;/span&gt;
+&lt;!-- combine with other HTML elements --&gt;
+&lt;h1&gt;The power of small steps&lt;/h1&gt;
+&lt;h1&gt;&lt;strong&gt;The power of small steps&lt;/strong&gt;&lt;h1&gt;
+</code>
+</pre>
                     <h3>Paragraph Settings</h3>
                     <div class="section">
                         <label class="preview">
@@ -122,13 +128,15 @@
                             <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                     </div>
-                    <div class="code-example">
+                    <pre>
                         <code>
-                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+    &lt;p class="sub-title"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
+    &lt;p&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
+    &lt;p class="disclaimer"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/h3&gt;
+    &lt;!-- combine with other HTML elements --&gt;
+    &lt;h1&gt;&lt;strong&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/strong&gt;&lt;h1&gt;
                         </code>
-                    </div>
+                    </pre>
                     <button @onclick="Submit">
                         Save & Continue
                         <img src="/images/eyecon.svg" />

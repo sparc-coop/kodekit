@@ -1,7 +1,13 @@
 ﻿.page {
   background: #F5F7FA;
-  padding: 138px 80px 100px 80px;
+  padding: 10px 80px 100px 80px;
   font-family: 'Inter', sans-serif; }
+  @media screen and (max-width: 780px) {
+    .page {
+      padding: 0 40px 100px 40px; } }
+  @media screen and (max-width: 780px) {
+    .page {
+      padding: 0 25px 100px 25px; } }
   .page__container {
     width: 100%;
     max-width: 1024px;
@@ -62,16 +68,12 @@
     line-height: 160%;
     height: 40px;
     color: #787980; }
-  .page .code-example {
-    background: #17171A;
+  .page pre {
     border-radius: 0px 0px 8px 8px;
-    padding: 32px;
-    color: #FFB46E;
-    margin-bottom: 50px; }
-    .page .code-example span {
-      color: #875BBF; }
-    .page .code-example .comment {
-      color: #979797; }
+    margin: -20px 0 50px 0;
+    overflow: hidden;
+    background: #22272e;
+    padding: 0 0 20px 20px; }
   .page .section, .page section {
     display: flex;
     flex-wrap: wrap;
@@ -110,9 +112,8 @@
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 8px 8px 0px 0px;
-    margin-bottom: -20px;
     color: #17171A;
-    font-family: 'Roboto Mono', monospace; }
+    font-family: 'Inter'; }
     .page .preview-example h1 {
       font-weight: 400;
       font-size: 48px;
@@ -351,7 +352,8 @@
     color: #17171A;
     margin: 6px 30px 0 0; }
   .inputs .preview-example label {
-    color: #3A3A40; }
+    color: #3A3A40;
+    position: relative; }
   .inputs .preview-example textarea {
     width: 100%;
     max-width: 664px;
@@ -364,6 +366,14 @@
     font-family: 'Inter';
     padding: 10px 16px;
     margin-top: 30px; }
+  .inputs .preview-example .icon-space input {
+    padding: 10px 16px 10px 40px; }
+  .inputs .preview-example .icon-space img {
+    position: absolute;
+    top: 40px;
+    left: 13px; }
+  .inputs .preview-example .icon-space--nolabel img {
+    top: 15px; }
   .inputs .preview-example span {
     font-size: 12px;
     line-height: 120%;
@@ -382,6 +392,10 @@
     .inputs .preview-example .error input {
       border: 1px solid #F96464;
       color: #F96464; }
+
+.lists .preview-example {
+  display: flex;
+  padding-bottom: 20px; }
 
 .colors label {
   font-weight: normal;
@@ -449,6 +463,9 @@
 
 .colors .preview-mockup section {
   width: 1080px; }
+  @media screen and (max-width: 780px) {
+    .colors .preview-mockup section {
+      width: unset; } }
   .colors .preview-mockup section > div {
     height: 227px;
     width: 496px;
@@ -457,11 +474,20 @@
     border-radius: 8px;
     background: #FFFFFF;
     margin-right: 32px; }
+    @media screen and (max-width: 780px) {
+      .colors .preview-mockup section > div {
+        margin: 10px auto; } }
     .colors .preview-mockup section > div img {
       margin: -32px -40px; }
+      @media screen and (max-width: 500px) {
+        .colors .preview-mockup section > div img {
+          width: 160px; } }
     .colors .preview-mockup section > div p {
       font-size: 14px;
       color: #787980; }
+      @media screen and (max-width: 500px) {
+        .colors .preview-mockup section > div p {
+          line-height: unset; } }
 
 .colors .preview-mockup--left {
   display: flex; }
@@ -514,7 +540,10 @@
   color: #72E5DD; }
 
 .typography .preview-example {
-  padding: 40px 32px; }
+  padding: 0 32px 40px 32px;
+  font-family: 'Roboto Mono', monospace; }
+  .typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
+    margin-top: 40px; }
 
 .global-page .section-container {
   display: flex;
@@ -834,6 +863,9 @@
 
 .main {
   margin-left: 256px; }
+  @media screen and (max-width: 780px) {
+    .main {
+      margin-left: 0; } }
 
 .sidebar {
   background: #FFFFFF;
@@ -844,6 +876,17 @@
   height: 100vh;
   bottom: 0;
   z-index: 10; }
+  @media screen and (max-width: 780px) {
+    .sidebar {
+      transform: translateX(-256px);
+      transition: all 0.5s ease; }
+      .sidebar.show-mobile {
+        display: block;
+        left: 0;
+        z-index: 11;
+        transform: translateX(0);
+        transition: all 0.5s ease;
+        box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); } }
   .sidebar .menu {
     padding: 20px 16px;
     margin-top: 80px; }
@@ -876,16 +919,23 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 11;
+  z-index: 12;
   margin: 0 auto;
   padding: 20px 16px;
   border-bottom: 1px solid #F5F7FA;
   box-sizing: border-box;
   background: #FFFFFF; }
+  @media screen and (max-width: 780px) {
+    .header {
+      text-align: center; } }
   .header .logo {
     font-weight: 500;
     font-size: 14px;
     padding-left: 20px; }
+    @media screen and (max-width: 780px) {
+      .header .logo {
+        margin: 0 auto;
+        padding-left: 0; } }
     .header .logo img {
       vertical-align: middle;
       margin-right: 2px;
@@ -896,8 +946,14 @@
     text-decoration: none; }
   .header .login-display {
     position: absolute;
-    right: 65px;
-    top: 18px; }
+    right: 45px;
+    top: 16px; }
+    @media screen and (max-width: 780px) {
+      .header .login-display {
+        right: 25px; } }
+    @media screen and (max-width: 500px) {
+      .header .login-display {
+        right: 15px; } }
     .header .login-display a {
       color: #787980;
       text-decoration: none;
@@ -907,7 +963,12 @@
     .header .login-display .logout {
       color: #787980;
       border: none;
-      background: none; }
+      background: none;
+      margin-bottom: 0; }
+      .header .login-display .logout span {
+        vertical-align: middle;
+        font-size: 16px;
+        margin: -2px 0 0 5px; }
     .header .login-display button {
       background: #FFFFFF;
       border-radius: 4px;
@@ -916,9 +977,12 @@
       margin-bottom: 20px; }
     .header .login-display .user-menu {
       position: absolute;
-      right: 100px;
+      right: 82px;
       top: 4px;
       display: flex; }
+      @media screen and (max-width: 780px) {
+        .header .login-display .user-menu {
+          right: 5px; } }
       .header .login-display .user-menu span {
         color: #787980;
         cursor: pointer; }
@@ -932,6 +996,14 @@
       position: absolute;
       top: 55px;
       right: -11px; }
+  .header .mobile {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    left: 25px; }
+    @media screen and (max-width: 780px) {
+      .header .mobile {
+        display: block; } }
 
 .banner {
   width: 100%;
@@ -948,6 +1020,13 @@
   z-index: 10;
   border-radius: 8px;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06); }
+  @media screen and (max-width: 600px) {
+    .banner {
+      margin: 0 20px;
+      left: 0;
+      bottom: 15px;
+      transform: unset;
+      width: 90%; } }
   .banner h3 {
     margin: 0;
     font-size: 14px;
@@ -961,6 +1040,9 @@
       text-decoration: none;
       display: inline;
       padding: 0; }
+    @media screen and (max-width: 600px) {
+      .banner p {
+        margin-top: 6px; } }
   .banner .material-icons {
     vertical-align: middle;
     margin: -3px 10px 0 -36px;
@@ -976,10 +1058,19 @@
 
 .page-info {
   margin: 90px auto 20px auto;
-  width: 100%;
   max-width: 1024px;
   display: flex;
-  position: relative; }
+  position: relative;
+  padding: 20px 0; }
+  @media screen and (max-width: 1455px) {
+    .page-info {
+      margin: 80px auto 40px 80px; } }
+  @media screen and (max-width: 780px) {
+    .page-info {
+      margin: 80px auto 40px 25px; } }
+  @media screen and (max-width: 500px) {
+    .page-info {
+      margin: 80px auto 80px 25px; } }
   .page-info > div {
     display: flex; }
   .page-info .title {
@@ -998,9 +1089,16 @@
     margin: 0 4px;
     cursor: pointer; }
   .page-info .info {
-    display: flex;
     position: absolute;
-    right: 0; }
+    right: 20px; }
+    @media screen and (max-width: 1150px) {
+      .page-info .info {
+        right: unset;
+        left: -20px;
+        top: 50px; } }
+    @media screen and (max-width: 500px) {
+      .page-info .info {
+        flex-wrap: wrap; } }
     .page-info .info--time {
       color: #A9ACB2;
       padding: 6px 18px;
@@ -1018,13 +1116,30 @@
     letter-spacing: 0.02em;
     border: 1px solid #D2D4D9;
     box-sizing: border-box;
-    padding: 2px 8px;
+    padding: 3px 7px;
     border-radius: 100px;
     color: #787980;
     height: 22px;
-    margin-left: 18px; }
+    width: 138px;
+    margin-left: 18px;
+    position: relative; }
+    .page-info .history.selected {
+      background: #EBF2FF;
+      border: 1px solid #0B5FFF;
+      color: #0B5FFF; }
+      .page-info .history.selected .icon-right {
+        top: 4px; }
+    @media screen and (max-width: 500px) {
+      .page-info .history {
+        margin-top: 10px; } }
     .page-info .history img {
       vertical-align: middle; }
+    .page-info .history .icon-left {
+      margin-top: -2px; }
+    .page-info .history .icon-right {
+      position: absolute;
+      right: 7px;
+      top: 1px; }
     .page-info .history--dropdown {
       background: #FFFFFF;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
@@ -1034,9 +1149,14 @@
       box-sizing: border-box;
       padding: 24px;
       position: absolute;
-      right: 0;
-      top: 34px;
-      display: block; }
+      right: 18px;
+      top: 54px;
+      display: block;
+      z-index: 10; }
+      @media screen and (max-width: 500px) {
+        .page-info .history--dropdown {
+          right: unset;
+          top: 120px; } }
       .page-info .history--dropdown ul {
         padding: 0 0 0 20px;
         margin: 0; }
@@ -1049,7 +1169,7 @@
         font-weight: 500;
         padding: 10px 0; }
       .page-info .history--dropdown .title {
-        font-size: 12px;
+        font-size: 11px;
         color: #A9ACB2;
         text-transform: uppercase; }
 
@@ -1078,6 +1198,9 @@ body {
     margin: 0 auto 0 auto;
     transform-origin: bottom;
     width: 200px; }
+  @media screen and (max-width: 500px) {
+    .loading {
+      padding-top: 45%; } }
 
 @keyframes bounce {
   0% {
