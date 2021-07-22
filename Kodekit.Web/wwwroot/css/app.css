@@ -433,11 +433,47 @@
 .lists .preview-example {
   display: flex;
   padding-bottom: 20px; }
+  .lists .preview-example ul {
+    list-style-type: none; }
+  .lists .preview-example li {
+    padding: 4px 0; }
 
 .dropdowns .preview-example {
   display: flex;
   flex-wrap: wrap;
   padding: 32px; }
+
+.dropdowns aside {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 19.2px;
+  color: #787980; }
+  .dropdowns aside a {
+    text-decoration: none;
+    color: #0B5FFF; }
+
+.dropdowns .section-container {
+  padding: 34px 0;
+  font-size: 16px;
+  color: #3A3A40; }
+  .dropdowns .section-container .switch {
+    vertical-align: middle;
+    margin-top: -3px; }
+
+.selectors .preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px 32px; }
+  .selectors .preview-example > div {
+    padding-right: 50px; }
+  .selectors .preview-example label {
+    display: flex;
+    padding: 5px 0;
+    font-size: 16px; }
+  .selectors .preview-example input {
+    margin: 5px 12px 0 0;
+    height: 20px;
+    width: 20px; }
 
 .colors label {
   font-weight: normal;
@@ -636,12 +672,30 @@
   bottom: 140px;
   left: 0; }
 
+.theme-page section {
+  width: 1060px; }
+  @media screen and (max-width: 1410px) {
+    .theme-page section {
+      width: auto; } }
+  .theme-page section > div {
+    margin-bottom: 30px; }
+    @media screen and (max-width: 800px) {
+      .theme-page section > div {
+        width: 100%; } }
+
 .theme-page .theme-card {
   width: 496px;
   height: 319px;
   border-radius: 8px;
   background: #FFFFFF;
   margin-right: 32px; }
+  @media screen and (max-width: 1410px) {
+    .theme-page .theme-card {
+      width: 370px; } }
+  @media screen and (max-width: 800px) {
+    .theme-page .theme-card {
+      width: 100%;
+      max-width: 496px; } }
 
 .theme-page label {
   display: block;
