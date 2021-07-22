@@ -2,15 +2,26 @@
 
 .page-info {
     margin: 90px auto 20px auto;
-    width: 100%;
     max-width: 1024px;
     display: flex;
     position: relative;
+    padding: 20px 0;
+
+    @media screen and (max-width: 1455px) {
+        margin: 80px auto 40px 80px;
+    }
+
+    @media screen and (max-width: 780px) {
+        margin: 80px auto 40px 25px;
+    }
+
+    @media screen and (max-width: 500px) {
+        margin: 80px auto 80px 25px;
+    }
 
     > div {
         display: flex;
     }
-
 
     .title {
         color: $gray400;
@@ -38,9 +49,18 @@
     }
 
     .info {
-        display: flex;
         position: absolute;
-        right: 0;
+        right: 20px;
+
+        @media screen and (max-width: 1150px) {
+            right: unset;
+            left: -20px;
+            top: 50px;
+        }
+
+        @media screen and (max-width: 500px) {
+            flex-wrap: wrap;
+        }
 
         &--time {
             color: $gray400;
@@ -62,14 +82,40 @@
         letter-spacing: 0.02em;
         border: 1px solid $gray300;
         box-sizing: border-box;
-        padding: 2px 8px;
+        padding: 3px 7px;
         border-radius: 100px;
         color: $gray500;
         height: 22px;
+        width: 138px;
         margin-left: 18px;
+        position: relative;
+
+        &.selected {
+            background: $primary100;
+            border: 1px solid $primary500;
+            color: $primary500;
+
+            .icon-right {
+                top: 4px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            margin-top: 10px;
+        }
 
         img {
             vertical-align: middle;
+        }
+
+        .icon-left {
+            margin-top: -2px;
+        }
+
+        .icon-right {
+            position: absolute;
+            right: 7px;
+            top: 1px;
         }
 
         &--dropdown {
@@ -81,9 +127,15 @@
             box-sizing: border-box;
             padding: 24px;
             position: absolute;
-            right: 0;
-            top: 34px;
+            right: 18px;
+            top: 54px;
             display: block;
+            z-index: 10;
+
+            @media screen and (max-width: 500px) {
+                right: unset;
+                top: 120px;
+            }
 
             ul {
                 padding: 0 0 0 20px;
@@ -103,7 +155,7 @@
             }
 
             .title {
-                font-size: 12px;
+                font-size: 11px;
                 color: $gray400;
                 text-transform: uppercase;
             }

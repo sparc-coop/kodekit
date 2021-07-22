@@ -1,6 +1,6 @@
-﻿@*<div class="page-info">
-    @if (Kits != null)
-    {
+﻿<div class="page-info">
+    @*@if (Kits != null)
+    {*@
         <div class="breadcrumbs">
             <div class="title">
                 My Styleguides
@@ -22,16 +22,23 @@
 
                 </div>
             </div>
-            <div class="history" @onclick="@(e => ShowDropdown = !ShowDropdown)">
-                <img src="/images/history-icon.svg" />
-                Version History
+            <div class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown">
                 @if (ShowDropdown == false)
                 {
-                    <img src="/images/dropdown-icon.svg" />
+                    <img class="icon-left" src="/images/history-icon.svg" />
                 }
                 else
                 {
-                    <img src="/images/blue-close-icon.svg" />
+                    <img class="icon-left" src="/images/blue-history-icon.svg" />
+                }
+                Version History
+                @if (ShowDropdown == false)
+                {
+                    <img class="icon-right" src="/images/dropdown-icon.svg" />
+                }
+                else
+                {
+                    <img class="icon-right" src="/images/blue-close-icon.svg" />
                 }
             </div>
         </div>
@@ -42,15 +49,14 @@
                 <div class="current">Current Version</div>
                 <div class="title">Past Versions</div>
                 <ul>
-                    @foreach (var item in Kits)
+                    @*@foreach (var item in Kits)
                     {
                         <li>@item.DateCreated.Value.ToString("f")</li>
-                    }
+                    }*@
                 </ul>
 
             </div>
         }
-    }
 </div>
 
 @code {
@@ -60,7 +66,13 @@
     protected override async Task OnInitializedAsync()
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
-        Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        //Kits = await Api.GetRelatedKitsAsync(currentKitId);
+    }
+
+    private void ToggleDropdown()
+    {
+        ShowDropdown = !ShowDropdown;
+
     }
 
     private void DeleteKit()
@@ -77,4 +89,4 @@
     {
 
     }
-}*@
+}
