@@ -1,24 +1,8 @@
 ﻿@import "../../_variables";
 
 .colors {
-    label {
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 180%;
-        color: $gray500;
-    }
-
     input {
-        background: $white;
-        border: 1px solid #E7E7ED;
-        box-sizing: border-box;
-        border-radius: 4px;
         padding: 8px 16px 8px 44px;
-        display: block;
-        margin: 0 30px 20px 0;
-        font-size: 16px;
-        line-height: 160%;
-        color: $gray500;
     }
 
 
@@ -33,33 +17,6 @@
 
         label {
             padding: 8px 15px;
-        }
-
-        .color-display {
-            width: 293px;
-            height: 142px;
-            border-radius: 4px;
-            margin: 6px 15px 0;
-        }
-
-        &--grayscale {
-
-            .color-display {
-                width: 106px;
-                height: 102px;
-                margin: 20px 0 0 0;
-                border-radius: 0;
-
-                &.first {
-                    border-radius: 4px 0px 0px 4px;
-                    margin: 20px 0 0 15px;
-                }
-
-                &.last {
-                    border-radius: 0px 4px 4px 0px;
-                    margin: 20px 15px 0 0;
-                }
-            }
         }
     }
 
