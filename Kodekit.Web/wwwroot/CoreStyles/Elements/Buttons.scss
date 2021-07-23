@@ -13,6 +13,17 @@ button {
     }
 }
 
+button.primary {
+    background: $primary-500;
+    border: 1px solid $primary-500;
+    color: $white;
+
+    &:hover {
+        border-color: $primary-300;
+        color: $primary-300;
+    }
+}
+
 button.secondary {
     background: white;
     border: 1px solid $secondary-500;

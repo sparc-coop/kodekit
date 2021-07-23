@@ -71,3 +71,35 @@ $warning-500: #FF8F39;
 
 //Success Color
 $success-500: #5ACA75;
+
+
+
+.colors {
+    .preview-example {
+        .color-display {
+            width: 293px;
+            height: 142px;
+            border-radius: 4px;
+            margin: 6px 15px 0;
+        }
+    }
+
+    .preview-example--grayscale {
+        .color-display {
+            width: 106px;
+            height: 102px;
+            margin: 20px 0 0 0;
+            border-radius: 0;
+
+            &.first {
+                border-radius: 4px 0px 0px 4px;
+                margin: 20px 0 0 15px;
+            }
+
+            &.last {
+                border-radius: 0px 4px 4px 0px;
+                margin: 20px 15px 0 0;
+            }
+        }
+    }
+}

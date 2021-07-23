@@ -4,21 +4,21 @@
 <div class="colors page">
     <div class="page__container">
         <header>
-            <div class="title">Global Styles</div>
+            <div class="subtitle">Global Styles</div>
             <h2>Colors</h2>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
             </p>
         </header>
-        <div class="content">
+        <div>
             <h3>Brand Colors</h3>
-            <p class="subheader">
+            <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
-                    <div class="section">
+                    <section>
                         <label>
                             Primary
                             <span style="background-color: @kit.PrimaryColor"></span>
@@ -34,8 +34,8 @@
                             <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
-                    </div>
-                    <div class="preview-example">
+                    </section>
+                    <section class="preview-example">
                         <div>
                             <label>Primary</label>
                             <div class="color-display" style="background-color: @kit.PrimaryColor"></div>
@@ -48,18 +48,18 @@
                             <label>Tertiary</label>
                             <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
                         </div>
-                    </div>
-                    <div class="code-example">
+                    </section>
+                    <section class="code-example">
                         <code>
                             <span>&lt;div class="color-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
                             <span>&lt;div class="bg-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
                         </code>
-                    </div>
+                    </section>
                     <h3>Greyscale</h3>
-                    <p class="subheader">
+                    <p>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
                     </p>
-                    <div class="section">
+                    <section>
                         <label>
                             Darkest
                             <span style="background-color: @kit.DarkColor"></span>
@@ -70,8 +70,8 @@
                             <span style="background-color: @kit.LightColor"></span>
                             <InputText @bind-Value="kit.LightColor" />
                         </label>
-                    </div>
-                    <div class="preview-example preview-example--grayscale">
+                    </section>
+                    <section class="preview-example preview-example--grayscale">
                         <div>
                             <label>900</label>
                             <div class="color-display first" style="background-color: @kit.DarkColor"></div>
@@ -108,20 +108,20 @@
                             <label>100</label>
                             <div class="color-display last" style="background-color: @kit.LightColor"></div>
                         </div>
-                    </div>
-                    <div class="code-example">
+                    </section>
+                    <section class="code-example">
                         <code>
                             <span class="comment">&lt;!--System Variables--&gt;</span><br />
                             <span>$greyscale-900</span><br />
                             <span>$greyscale-800</span><br />
                             <span>$greyscale-700</span><br />
                         </code>
-                    </div>
+                    </section>
                     <h3>System Colors</h3>
-                    <p class="subheader">
+                    <p>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
                     </p>
-                    <div class="section">
+                    <section>
                         <label>
                             Error
                             <span class="color-display" style="background-color: @kit.ErrorColor"></span>
@@ -137,8 +137,8 @@
                             <span class="color-display" style="background-color: @kit.SuccessColor"></span>
                             <InputText @bind-Value="kit.SuccessColor" />
                         </label>
-                    </div>
-                    <div class="preview-example">
+                    </section>
+                    <section class="preview-example">
                         <div style="background-color: @kit.ErrorColor"></div>
                         <div style="background-color: @kit.WarningColor"></div>
                         <div style="background-color: @kit.SuccessColor"></div>
@@ -154,8 +154,8 @@
                             <label>Success</label>
                             <div class="color-display" style="background-color: @kit.SuccessColor"></div>
                         </div>
-                    </div>
-                    <div class="code-example">
+                    </section>
+                    <section class="code-example">
                         <code>
                             <span class="comment">&lt;!--System Variables--&gt;</span><br />
                             <span>$error-900</span><br />
@@ -168,25 +168,36 @@
                             <span>$success-500</span><br />
                             <span>$success-100</span><br />
                         </code>
-                    </div>
-                    <div class="preview-mockup">
+                    </section>
+                    <section>
                         <h3>Preview</h3>
-                        <p class="subheader">
+                        <p>
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
                         </p>
+
+                        @* Not sure about this section *@
                         <section>
-                            <div>
-                                <img />
+                            <div class="cta-card cta-card-image">
+                                    <img src="./images/Rectangle 11.svg" alt="Alternate Text" />
                                 <div>
-                                    <button>Primary CTA</button> 
+                                    <p class="subtitle">Information</p>
+                                    <h5><strong>Brand Colors</strong></h5>
+                                    <p class="small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+                                    <button class="primary">Primary CTA</button> 
                                 </div>
                             </div>
-                            <div>
-                                <button>Primary CTA</button>
-                                <button>Secondary CTA</button>
+                            <div class="cta-card">
+                                <div>
+                                    <p class="subtitle">Information</p>
+                                    <h5>Brand Colours</h5>
+                                    <p class="small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+                                    <button class="primary">Primary CTA</button>
+                                    <button class="secondary">Secondary CTA</button>
+                                </div>
+                                
                             </div>
                         </section>
-                    </div>
+                    </section>
                     <button @onclick="Submit">
                         Save & Continue
                         <img src="/images/eyecon.svg" />

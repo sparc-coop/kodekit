@@ -17,6 +17,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 /*$black: #000000;*/
 /*$primary100: #EBF2FF;
 $primary400: #3C7FFF;
@@ -36,6 +54,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 .page {
   background: #F5F7FA;
   padding: 138px 80px 100px 80px;
@@ -501,6 +537,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page .subtitle {
   line-height: 120%;
   margin: 0;
@@ -576,6 +630,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 button {
   background: inherit;
   border-radius: 4px;
@@ -585,6 +657,14 @@ button {
   cursor: pointer; }
   button:hover {
     background: #CDCED9; }
+
+button.primary {
+  background: #0B5FFF;
+  border: 1px solid #0B5FFF;
+  color: #FFFFFF; }
+  button.primary:hover {
+    border-color: #80ACFF;
+    color: #80ACFF; }
 
 button.secondary {
   background: white;
@@ -627,6 +707,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 .page input, .page select {
   background: #FFFFFF;
   border: 1px solid #CDCED9;
@@ -792,6 +890,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 .buttons .preview-example {
   padding: 32px;
   display: block; }
@@ -998,24 +1114,39 @@ $light-gray: #979797;*/
       border-radius: 0px 4px 4px 0px;
       margin: 20px 15px 0 0; }
 
-.colors .section {
-  display: flex;
-  flex-wrap: wrap;
+.colors section {
   padding-bottom: 40px; }
-  .colors .section label {
-    position: relative; }
-    .colors .section label span {
-      position: absolute;
-      top: 34px;
-      left: 8px;
-      width: 24px;
-      height: 24px;
-      display: block;
-      z-index: 10;
-      border-radius: 4px; }
+  .colors section label span {
+    position: absolute;
+    top: 34px;
+    left: 8px;
+    width: 24px;
+    height: 24px;
+    display: block;
+    z-index: 10;
+    border-radius: 4px; }
 
 .colors .comment {
   color: #A3A60E; }
+
+.colors section:last-of-type section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.colors .cta-card {
+  width: 48%;
+  background: #FFFFFF;
+  display: flex; }
+  .colors .cta-card div {
+    padding: 33px 43px 35px 30px; }
+    .colors .cta-card div .subtitle {
+      color: #FFB46E; }
+    .colors .cta-card div h5 {
+      margin-bottom: 15px; }
+    .colors .cta-card div button:last-child {
+      margin-left: 20px; }
 
 /*$black: #000000;*/
 /*$primary100: #EBF2FF;
@@ -1036,6 +1167,24 @@ $gray900: #17171A;
 
 $dark-gray: #525151;
 $light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
 .typography .preview-example {
   padding: 40px 32px; }
 

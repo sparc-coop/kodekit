@@ -63,13 +63,10 @@
         }
     }
 
-    .section {
-        display: flex;
-        flex-wrap: wrap;
+    section {
         padding-bottom: 40px;
 
         label {
-            position: relative;
 
             span {
                 position: absolute;
@@ -86,5 +83,36 @@
 
     .comment {
         color: $yellow;
+    }
+
+    section:last-of-type {
+        section {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .cta-card {
+        width: 48%;
+        background: $white;
+        display: flex;
+
+        div {
+            padding: 33px 43px 35px 30px;
+
+            .subtitle {
+                color: #FFB46E;
+            }
+
+            h5 {
+                margin-bottom: 15px;
+            }
+
+            button:last-child {
+                margin-left: 20px;
+            }
+        }
     }
 }
