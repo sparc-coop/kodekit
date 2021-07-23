@@ -148,6 +148,6 @@ function checkColors(foregroundColor, backgroundColor) {
     "backgroundLuma":backgroundLuma
   }
 
-    var returnData = "Your color contrast: " + colorData.contrast + "\n" + "Pass: " + colorData.aaText;
-    return returnData;
+    //var returnData = "Your color contrast: " + colorData.contrast + "\n" + "Pass: " + colorData.aaText;
+    return colorData;
 };
