@@ -11,18 +11,51 @@
             </p>
         </header>
         <div class="content">
-            <aside class="accesibility-checker">Accessibility Checker</aside>
+            <aside class="accessibility-checker">
+                <h3>Contrast Checker</h3>
+                @if (colorResult != null)
+                {
+                    <p class="large">@colorResult.Contrast</p>
+                }               
+                <section>
+                    <label>Text Color</label>
+                    <div style="width: 10px; height: 10px; background-color: @pair.FGColor"></div>
+                </section>
+                <section>
+                    <label>Background Color</label>
+                    <div style="width: 10px; height: 10px; background-color: @pair.BGColor"></div>
+                </section>
+                <section>
+                    <label>Large Text</label>
+                    @if (colorResult.AaText == "pass")
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red"></div>
+                    }
+
+                </section>
+                <section>
+                    <label>Small Text</label>
+                    @if (colorResult.AaHeadline == "pass")
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red"></div>
+                    }
+                </section>
+                
+                
+            </aside>
             <h3>Brand Colors</h3>
             <section style="display: flex;">
                 <p class="subheader">
                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
                 </p>
-                @if (contrastResults.Any())
-                {
-            <aside style="background: yellow;">
-                The color contrast of ? between your background and primary color is below the standard for WCAG and may be difficult to view for many users.
-            </aside>
-                }
             </section>
             @if (kit != null)
             {
@@ -243,9 +276,10 @@ $success-100
         private Kit kit = new Kit();
         [Parameter] public string kitId { get; set; }
         string currentKitId;
-        string ColorContrast = "";
+        //string ColorContrast = "";
         ColorResults colorResult = new ColorResults();
-        List<ColorResults> contrastResults = new List<ColorResults>();
+        //List<ColorResults> contrastResults = new List<ColorResults>();
+        ColorPair pair = new ColorPair();
 
         //ContrastColorResponse colorContrast = new ContrastColorResponse();
 
@@ -261,16 +295,19 @@ $success-100
             kit.WarningColor = "#FF8F39";
             kit.SuccessColor = "#5ACA75";
 
-            //await CheckColors();
+
+            pair.BGColor = kit.LightColor;
+            pair.FGColor = kit.DarkColor;
+
+            await CheckColors();
         }
 
         private async Task Submit()
         {
-            await Api.UpdateKitAsync(kit);
-            Nav.NavigateTo("/icons/" + kit.Id);
             await CheckColors();
             //await Api.UpdateKitAsync(kit);
-            //Nav.NavigateTo("/Effects/" + kit.Id);
+            //Nav.NavigateTo("/icons/" + kit.Id);
+
         }
 
         private async Task GetKit()
@@ -291,29 +328,24 @@ $success-100
 
         async Task CheckColors()
         {
-            //checkColors("ffffff", "000000");
+            //api method
+            var strToSend = pair.BGColor.Substring(1) + "+" + pair.FGColor.Substring(1);
 
-            var contrastApiResults = await Api.ColorContrastCheckerAsync(kit);
+            var contrastApiResults = await Api.ColorContrastCheckerAsync(strToSend);
 
-            foreach (var item in contrastApiResults)
-            {
-                ColorResults newItem = new ColorResults();
-                newItem.AaText = item.Aa;
-                newItem.Contrast = item.Ratio;
-
-                contrastResults.Add(newItem);
-            }
+            colorResult.AaText = contrastApiResults.Aa;
+            colorResult.AaHeadline = contrastApiResults.AaLarge;
+            colorResult.Contrast = contrastApiResults.Ratio;
 
 
-            //ColorContrast = idk.AA;
-            //var str = "ffffff", "000000";
-            //var str = new { "f": "000000", "b": "ffffff" };
-            //colors.F = "ffffff";
-            //colors.B = "000000";
 
-            //ColorContrast = await JS.InvokeAsync<string>("checkColors", kit.PrimaryColor, kit.SecondaryColor);
-            //var contrastResult = await JS.InvokeAsync<Object>("colorData.contrast");
-            //var str = System.Text.Json.JsonSerializer.Serialize<string>(json);
+            //javascript method
+            //await JS.InvokeVoidAsync("checkColors", pair.Color1, pair.Color2);
+            //var str = System.Text.Json.JsonSerializer.Serialize<ColorResults>(json);
+            //colorResult.Contrast = await JS.InvokeAsync<string>("colorData.contrast");
+            //colorResult.AaText = await JS.InvokeAsync<string>("colorData.aaText");
+            //colorResult.AaLarge = await JS.InvokeAsync<string>("colorData.aaHeadline");
+
             //colorResult = System.Text.Json.JsonSerializer.Deserialize<ColorResults>(str);
 
             StateHasChanged();
@@ -324,8 +356,13 @@ $success-100
         {
             public string Contrast { get; set; }
             public string AaText { get; set; }
-            //public string AaaText { get; set; }
-            //public string AaLarge { get; set; }
+            public string AaHeadline { get; set; }
+        }
+
+        public class ColorPair
+        {
+            public string BGColor { get; set; }
+            public string FGColor { get; set; }
         }
 
     }

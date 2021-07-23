@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace Kodekit.Features
 {
-    public class ColorContrastChecker : PublicFeature<Kit, List<ContrastColorResponse>>
+    public class ColorContrastChecker : PublicFeature<string, ContrastColorResponse>
     {
         string baseurl = "https://webaim.org/resources/contrastchecker/?";
         string clrs = "";
@@ -20,7 +20,7 @@ namespace Kodekit.Features
         {
             //clrs = colors;
         }
-        public override async Task<List<ContrastColorResponse>> ExecuteAsync(Kit kit)
+        public override async Task<ContrastColorResponse> ExecuteAsync(string colors)
         {
             HttpClient client = new HttpClient();
             //fcolor=0000FF&bcolor=FFFFFF&api
@@ -34,48 +34,59 @@ namespace Kodekit.Features
             //primary + darkest, lightest?
 
             ContrastColorResponse colorContrast = new ContrastColorResponse();
-            List<ContrastColorResponse> resultsList = new List<ContrastColorResponse>();
+            //List<ContrastColorResponse> resultsList = new List<ContrastColorResponse>();
 
             try
             {
                 
                 //Record record = new Record();
-                string colorCompare = "";
-                string testing = "";
-                ContrastColorResponse contrastResults = new ContrastColorResponse();
-                PropertyInfo[] properties = typeof(Kit).GetProperties();
-                foreach (PropertyInfo property in properties.Skip(6).Take(5))
-                {
+                //string colorCompare = "";
+                //string testing = "";
+                //ContrastColorResponse contrastResults = new ContrastColorResponse();
 
-                    colorCompare = property.GetValue(kit).ToString();
-                    testing = property.Name;
+                string c1 = colors.Split("+").ElementAt(0);
+                string c2 = colors.Split("+").ElementAt(1);
+
+                var apiurl = baseurl + "fcolor=" + c1 + "&bcolor=" + c2 + "&api";
+                var url = new Uri(apiurl);
+                var response = await client.GetAsync(url);
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                colorContrast = JsonConvert.DeserializeObject<ContrastColorResponse>(responseBody);
+
+                //PropertyInfo[] properties = typeof(Kit).GetProperties();
+                //foreach (PropertyInfo property in properties.Skip(6).Take(5))
+                //{
+
+                //    colorCompare = property.GetValue(kit).ToString();
+                //    testing = property.Name;
 
 
-                    var apiurl = baseurl + "fcolor=" + kit.PrimaryColor.Substring(1) + "&bcolor=" + colorCompare.Substring(1) + "&api";
-                    var url = new Uri(apiurl);
-                    var response = await client.GetAsync(url);
-                    var responseBody = await response.Content.ReadAsStringAsync();
+                //    var apiurl = baseurl + "fcolor=" + kit.PrimaryColor.Substring(1) + "&bcolor=" + colorCompare.Substring(1) + "&api";
+                //    var url = new Uri(apiurl);
+                //    var response = await client.GetAsync(url);
+                //    var responseBody = await response.Content.ReadAsStringAsync();
 
-                    contrastResults = JsonConvert.DeserializeObject<ContrastColorResponse>(responseBody);
-                    //contrastResults.Failed = new List<string>();
-                    contrastResults.ColorA = "PrimaryColor";
-                    contrastResults.ColorB = property.Name;
+                //    contrastResults = JsonConvert.DeserializeObject<ContrastColorResponse>(responseBody);
+                //    //contrastResults.Failed = new List<string>();
+                //    contrastResults.ColorA = "PrimaryColor";
+                //    contrastResults.ColorB = property.Name;
 
-                    if (contrastResults.AA == "fail")
-                    {
-                        resultsList.Add(contrastResults);
-                    }
+                //    if (contrastResults.AA == "fail")
+                //    {
+                //        resultsList.Add(contrastResults);
+                //    }
 
-                    
-                }
+
+                //}
                 client.Dispose();
-                return resultsList;
+                return colorContrast;
             }
             catch (Exception ex)
             {
                 string checkResult = "Error " + ex.ToString();
                 client.Dispose();
-                return resultsList;
+                return colorContrast;
                 //return checkResult;
             }
 
@@ -85,20 +96,7 @@ namespace Kodekit.Features
 
             //return answer;
         }
-        //public async Task<string> CheckColors(string fg, string bg)
-        //{
 
-        //    HttpClient client = new HttpClient();
-        //    //fcolor=0000FF&bcolor=FFFFFF&api
-
-        //    var apiurl = baseurl + "fcolor=" + fg + "&bcolor=" + bg + "&api";
-        //    var response = await client.GetStringAsync($"apiurl");
-
-        //    var answer = JsonConvert.DeserializeObject<string>(response);
-
-        //    return answer;
-
-        //}
     }
 
     public class ContrastColorResponse
@@ -108,9 +106,6 @@ namespace Kodekit.Features
         public string AALarge { get; set; }
         public string AAALarge { get; set; }
         public string AAA { get; set; }
-        public List<string> Failed {get; set;}
-        public string ColorA { get; set; }
-        public string ColorB { get; set; }
     }
 
 }

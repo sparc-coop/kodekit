@@ -1,6 +1,22 @@
 ﻿@import "../../_variables";
 
 .colors {
+
+    aside {
+        box-sizing: border-box;
+        border-radius: 8px;
+        padding: 24px 16px 50px 16px;
+        background: #fff;
+        float: right;
+
+        section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2px;
+        }
+    }
+
     label {
         font-weight: normal;
         font-size: 14px;
