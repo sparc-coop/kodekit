@@ -46,11 +46,25 @@
                             <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span>&lt;div class="color-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
-                            <span>&lt;div class="bg-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
-                        </code>
+                    <div>
+                        <pre>
+                            <code>
+&lt;!-- use directly as colors or background properties --&gt;
+&lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
+&lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
+                            </code>
+                            <code class="language-scss">
+&lt;!-- however it is best to use them as variables within your classes --&gt;
+
+.box {
+    background-color: $primary-500;
+}
+
+.box-alt {
+    background-color: $secondary-100;
+}
+                            </code>
+                        </pre>
                     </div>
                     <h3>Greyscale</h3>
                     <p class="subheader">
@@ -106,14 +120,14 @@
                             <div class="color-display last" style="background-color: @kit.LightColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                            <span>$greyscale-900</span><br />
-                            <span>$greyscale-800</span><br />
-                            <span>$greyscale-700</span><br />
-                        </code>
-                    </div>
+                        <pre>
+                        <code class="language-scss">
+&lt;!--System Variables--&gt;
+$greyscale-900
+$greyscale-800
+$greyscale-700
+                    </code>
+</pre>
                     <h3>System Colors</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -150,18 +164,20 @@
                         </div>
                     </div>
                     <div class="code-example">
-                        <code>
-                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                            <span>$error-900</span><br />
-                            <span>$error-500</span><br />
-                            <span>$error-100</span><br />
-                            <span>$warning-900</span><br />
-                            <span>$warning-500</span><br />
-                            <span>$warning-100</span><br />
-                            <span>$success-900</span><br />
-                            <span>$success-500</span><br />
-                            <span>$success-100</span><br />
+                        <pre>
+                        <code class="language-scss">
+&lt;!--System Variables--&gt;
+$error-900
+$error-500
+$error-100
+$warning-900
+$warning-500
+$warning-100
+$success-900
+$success-500
+$success-100
                         </code>
+                        </pre>
                     </div>
                     <div class="preview-mockup">
                         <h3>Preview</h3>
