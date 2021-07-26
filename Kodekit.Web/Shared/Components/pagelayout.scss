@@ -94,20 +94,12 @@
         color: $gray500;
     }
 
-    .code-example {
-        background: $gray900;
+    pre {
         border-radius: 0px 0px 8px 8px;
-        padding: 32px;
-        color: $orange;
-        margin-bottom: 50px;
-
-        span {
-            color: $purple;
-        }
-
-        .comment {
-            color: $light-gray;
-        }
+        margin: -20px 0 50px 0;
+        overflow: hidden;
+        background: #22272e;
+        padding: 0 0 20px 20px;
     }
 
     .section, section {
@@ -164,7 +156,6 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        margin-bottom: -5px;
         color: $gray900;
         font-family: 'Inter';
 
