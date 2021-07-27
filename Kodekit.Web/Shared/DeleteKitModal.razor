@@ -7,7 +7,7 @@
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                 Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
             </p>
-            <button @onclick="DeleteVersion" class="button--confirm">Confirm & Delete</button>
+            <button @onclick="DeleteKit" class="button--confirm">Confirm & Delete</button>
             <button @onclick="Close">Cancel</button>
         </div>
     </div>
@@ -20,14 +20,18 @@
     public string Show { get; set; }
     [Parameter]
     public EventCallback CloseModal { get; set; }
+    [Parameter]
+    public Kit Kit { get; set; }
 
     private async Task Close()
     {
         await CloseModal.InvokeAsync();
     }
 
-    private async Task DeleteVersion()
+    private async Task DeleteKit()
     {
-        //await Api.DeleteKitAsync();
+        await Api.DeleteKitAsync(Kit);
+        Nav.NavigateTo("/my-kits");
+        await CloseModal.InvokeAsync();
     }
-    }
+}

@@ -1,6 +1,6 @@
-﻿<div class="page-info">
-    @*@if (Kits != null)
-    {*@
+﻿@if (ShowPage == true)
+{
+    <div class="page-info">
         <div class="breadcrumbs">
             <div class="title">
                 My Styleguides
@@ -14,10 +14,10 @@
         <div class="info">
             <div class="info--time">Last Saved: 12:03 PM</div>
             <div class="actions">
-                <img @onclick="DeleteKit" src="/images/delete-icon.png" title="Delete" />
+                <img @onclick="ShowDeleteModal" src="/images/delete-icon.png" title="Delete" />
                 <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
                 <img @onclick="DownloadKit" src="/images/download-icon.png" title="Download" />
-                <img src="/images/settings-icon.png" title="Settings" />
+                @*<img src="/images/settings-icon.png" title="Settings" />*@
                 <div class="version-select">
 
                 </div>
@@ -50,23 +50,39 @@
                 <div class="title">Past Versions</div>
                 <ul>
                     @*@foreach (var item in Kits)
-                    {
-                        <li>@item.DateCreated.Value.ToString("f")</li>
-                    }*@
+                        {
+                            <li>@item.DateCreated.Value.ToString("f")</li>
+                        }*@
                 </ul>
 
             </div>
         }
-</div>
+    </div>
+    <DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@kit"/>
+}
+
 
 @code {
     bool ShowDropdown = false;
+    bool ShowPage = true;
+    string Show = "";
     private ICollection<Kit> Kits;
+    Kit kit;
+
 
     protected override async Task OnInitializedAsync()
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
+        kit = await Api.GetKitAsync(currentKitId);
         //Kits = await Api.GetRelatedKitsAsync(currentKitId);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (Nav.Uri.Contains("my-kits"))
+            ShowPage = false;
     }
 
     private void ToggleDropdown()
@@ -75,14 +91,20 @@
 
     }
 
-    private void DeleteKit()
+    private void ShowDeleteModal()
     {
-
+        Show = "active";
     }
 
-    private void CopyKit()
+    private void CloseModal()
     {
+        Show = "";
+    }
 
+    private async Task CopyKit()
+    {
+        Kit newkit = await Api.CreateKitAsync(kit);
+        Nav.NavigateTo("/typography/" + newkit.Id);
     }
 
     private void DownloadKit()

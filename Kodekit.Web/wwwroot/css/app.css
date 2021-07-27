@@ -810,7 +810,8 @@
       border-radius: 4px; }
 
 .dashboard .page__container {
-  max-width: 1056px; }
+  max-width: 1056px;
+  margin-top: 100px; }
 
 .dashboard h2 {
   font-size: 20px; }
@@ -827,22 +828,22 @@
   flex-wrap: wrap; }
 
 .dashboard .sort {
-  position: absolute;
-  top: 0;
-  right: 0;
+  /*        position: absolute;
+        top: 0;
+        right: 0;*/
   width: 150px;
   height: 27px;
   padding: 6px 12px;
   font-size: 12px;
   color: #3A3A40;
   background: #F5F7FA;
-  border: 1px solid #D2D4D9;
+  border: none !important;
   box-sizing: border-box;
   border-radius: 4px; }
 
 .dashboard-card {
   margin: 16px;
-  height: 341px;
+  height: 329px;
   width: 320px;
   border-radius: 8px;
   padding: 24px;
@@ -855,11 +856,26 @@
   .dashboard-card .title {
     color: #17171A;
     font-size: 20px;
-    line-height: 24px; }
+    line-height: 24px;
+    padding-top: 16px; }
   .dashboard-card .date {
     color: #A9ACB2;
     font-size: 12px;
     line-height: 14.4px; }
+
+.dashboard--header {
+  display: flex; }
+  .dashboard--header button {
+    width: 138px;
+    height: 31px;
+    font-size: 12px;
+    padding: 6px 11px;
+    margin-top: 0; }
+  .dashboard--header .right {
+    position: absolute;
+    right: 0;
+    width: 358px;
+    display: flex; }
 
 .main {
   margin-left: 256px; }
@@ -931,7 +947,8 @@
   .header .logo {
     font-weight: 500;
     font-size: 14px;
-    padding-left: 20px; }
+    padding-left: 20px;
+    font-family: Inter; }
     @media screen and (max-width: 780px) {
       .header .logo {
         margin: 0 auto;
@@ -1135,7 +1152,8 @@
     .page-info .history img {
       vertical-align: middle; }
     .page-info .history .icon-left {
-      margin-top: -2px; }
+      margin-top: -2px;
+      width: 12px; }
     .page-info .history .icon-right {
       position: absolute;
       right: 7px;
@@ -1194,7 +1212,7 @@ body {
     align-self: flex-end;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
-    height: 30px;
+    height: 50px;
     margin: 0 auto 0 auto;
     transform-origin: bottom;
     width: 200px; }
