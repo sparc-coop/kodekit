@@ -562,22 +562,29 @@ $light-gray: #979797;*/
   font-weight: 400; }
 
 .page h1 {
-  font-size: 48px; }
+  font-size: 48px;
+  font-size: 3em;
+  font-size: 3rem; }
 
 .page h2 {
-  font-size: 39px; }
+  font-size: 39px;
+  font-size: 2.43em; }
 
 .page h3 {
-  font-size: 31px; }
+  font-size: 31px;
+  font-size: 1.93em; }
 
 .page h4 {
-  font-size: 25px; }
+  font-size: 25px;
+  font-size: 1.56em; }
 
 .page h5 {
-  font-size: 20px; }
+  font-size: 20px;
+  font-size: 1.25em; }
 
 .page h6 {
-  font-size: 16px; }
+  font-size: 16px;
+  font-size: 1em; }
 
 .page .subtitle {
   font-size: 12px; }

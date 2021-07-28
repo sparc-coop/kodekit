@@ -13,26 +13,32 @@
 
     h1 {
         font-size: 48px;
+        font-size: 3rem;
     }
 
     h2 {
         font-size: 39px;
+        font-size: 2.43rem;
     }
 
     h3 {
         font-size: 31px;
+        font-size: 1.93rem;
     }
 
     h4 {
         font-size: 25px;
+        font-size: 1.56rem;
     }
 
     h5 {
         font-size: 20px;
+        font-size: 1.25rem;
     }
 
     h6 {
         font-size: 16px;
+        font-size: 1rem;
     }
     //Class for a 7th header. Do we make this link to element? for example <h6 class="subtitle"></h6> or would a span work fine.
     .subtitle {
@@ -71,8 +77,9 @@
         line-height: 180%;
         color: $grey-500;
     }
-    header{
-        .subtitle{
+
+    header {
+        .subtitle {
             color: $primary-500;
         }
     }
