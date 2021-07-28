@@ -1,0 +1,7 @@
+﻿@inject IJSRuntime JSRuntime
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("showHighlight");
+    }
+} 
