@@ -5,15 +5,27 @@
     aside {
         box-sizing: border-box;
         border-radius: 8px;
-        padding: 24px 16px 50px 16px;
+        padding: 25px;
         background: #fff;
         float: right;
+        width: 250px;
 
         section {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding-bottom: 2px;
+
+            .set-colors {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+
+                div {
+                    margin: 4px;
+                }
+            }
         }
     }
 
