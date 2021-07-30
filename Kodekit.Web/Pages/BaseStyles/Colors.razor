@@ -12,28 +12,55 @@
         </header>
         <div class="content">
             <aside class="accessibility-checker">
-                <h3>Contrast Checker</h3>
+                <p class="large">Contrast Checker</p>
                 @if (colorResult != null)
                 {
-                    <p class="large">@colorResult.Contrast</p>
-                }               
-                <section>
-                    <label>Text Color</label>
-                    <div style="width: 10px; height: 10px; background-color: @pair.FGColor"></div>
-                </section>
-                <section>
-                    <label>Background Color</label>
-                    <div style="width: 10px; height: 10px; background-color: @pair.BGColor"></div>
-                </section>
+                    <h3>@colorResult.Contrast</h3>
+                }
+            <section>
+                <label>Text Color</label>
+                <div style="width: 10px; height: 10px; background-color: @pair.FGColor; border-radius: 2px;" @onclick="@(() => FGToggle = !FGToggle)"></div>
+                @if (!FGToggle)
+                {
+            <div class="set-colors">Select a color:</div>   
+            <div class="set-colors">
+                
+                <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "fg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "fg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "fg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "fg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "fg"))"></div>
+            </div>
+                }
+
+            </section>
+
+            <section>
+                <label>Background Color</label>
+                <div style="width: 10px; height: 10px; background-color: @pair.BGColor; border-radius: 2px;" @onclick="@(() => BGToggle = !BGToggle)"></div>
+                @if (!BGToggle)
+                {
+            <div class="set-colors">Select a color:</div>  
+            <div class="set-colors">
+               
+                <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "bg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "bg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "bg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "bg"))"></div>
+                <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "bg"))"></div>
+            </div>
+                }
+
+            </section>
                 <section>
                     <label>Large Text</label>
                     @if (colorResult.AaText == "pass")
                     {
-                        <div style="width: 10px; height: 10px; background-color: green"></div>
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
                     }
                     else
                     {
-                        <div style="width: 10px; height: 10px; background-color: red"></div>
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
                     }
 
                 </section>
@@ -41,15 +68,15 @@
                     <label>Small Text</label>
                     @if (colorResult.AaHeadline == "pass")
                     {
-                        <div style="width: 10px; height: 10px; background-color: green"></div>
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
                     }
                     else
                     {
-                        <div style="width: 10px; height: 10px; background-color: red"></div>
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
                     }
                 </section>
-                
-                
+
+
             </aside>
             <h3>Brand Colors</h3>
             <section style="display: flex;">
@@ -65,7 +92,10 @@
                             Primary
                             <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
+                            @*<input type="radio" name="bgcolor" checked="@(pair.BGColor == kit.PrimaryColor)" @onchange='(() => UpdateColorChecker(kit.PrimaryColor, "bg"))' /> Background
+                            <input type="radio" name="fgcolor" checked="@(pair.FGColor == kit.PrimaryColor)" @onchange='(() => UpdateColorChecker(kit.PrimaryColor, "fg"))' /> Text*@
                         </label>
+
                         <label>
                             Secondary
                             <span style="background-color: @kit.SecondaryColor"></span>
@@ -280,6 +310,8 @@ $success-100
         ColorResults colorResult = new ColorResults();
         //List<ColorResults> contrastResults = new List<ColorResults>();
         ColorPair pair = new ColorPair();
+        bool FGToggle = true;
+        bool BGToggle = true;
 
         //ContrastColorResponse colorContrast = new ContrastColorResponse();
 
@@ -350,6 +382,21 @@ $success-100
 
             StateHasChanged();
 
+        }
+
+        async void UpdateColors(string color, string type)
+        {
+            if (type == "fg")
+            {
+                pair.FGColor = color;
+                FGToggle = !FGToggle;
+            } else
+            {
+                pair.BGColor = color;
+                BGToggle = !BGToggle;
+            }
+
+            await CheckColors();
         }
 
         public class ColorResults
