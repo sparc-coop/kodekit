@@ -132,6 +132,10 @@
             display: block;
             z-index: 10;
 
+            @media screen and (max-width: 780px) {
+                top: 86px;
+            }
+
             @media screen and (max-width: 500px) {
                 right: unset;
                 top: 120px;

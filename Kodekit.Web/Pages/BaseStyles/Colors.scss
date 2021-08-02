@@ -41,14 +41,15 @@
         border: 1px solid #E7E7ED;
         box-sizing: border-box;
         border-radius: 4px;
-        padding: 8px 16px 8px 44px;
+        padding: 4px 16px 4px 16px;
         display: block;
         margin: 0 30px 20px 0;
         font-size: 16px;
         line-height: 160%;
         color: $gray500;
+        cursor: pointer;
+        width: 100px;
     }
-
 
     .preview-example {
         box-sizing: border-box;
