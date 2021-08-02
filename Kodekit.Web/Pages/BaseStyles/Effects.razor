@@ -38,8 +38,10 @@
                         </label>
                         <label>
                             Shadow Color
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <span>
+                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
+                                @kit.LightColor
+                            </span>
                         </label>
                         <label>
                             Shadow Opacity
@@ -66,8 +68,10 @@
                         </label>
                         <label>
                             Shadow Color
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <span>
+                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
+                                @kit.LightColor
+                            </span>
                         </label>
                         <label>
                             Shadow Opacity
@@ -114,10 +118,29 @@
 @code {
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    string currentKitId;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await GetKit();
+    }
 
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+
+        kit.LightColor = "#F3F3F9";
     }
 
     private async Task Submit()

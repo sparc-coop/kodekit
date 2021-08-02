@@ -678,6 +678,43 @@
   margin: 8px 24px 0 0;
   border-radius: 8px; }
 
+.effects-page .section label {
+  position: relative;
+  margin-right: 32px; }
+  .effects-page .section label span {
+    background: #FFFFFF;
+    padding: 6px 10px;
+    width: 144px;
+    height: 40px;
+    border: 1px solid #D2D4D9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    font-size: 16px;
+    line-height: 150%;
+    cursor: pointer; }
+    .effects-page .section label span input {
+      border: none;
+      border-radius: 4px;
+      width: 23px;
+      height: 26px;
+      margin: 0 10px 0 0;
+      padding: 0; }
+
+.effects-page .preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 6px 60px 32px; }
+  .effects-page .preview-example > div {
+    padding-top: 10px; }
+
+.effects-page .example-shadow {
+  width: 222px;
+  height: 160px;
+  background: #FFFFFF;
+  margin: 8px 24px 0 0;
+  border-radius: 8px; }
+
 .get-started p {
   font-family: Roboto;
   font-size: 18px;
