@@ -108,62 +108,6 @@ header {
 .effects section {
   padding-bottom: 40px; }
 
-.card {
-  border-radius: 12px;
-  padding: 32px 32px 40px 32px;
-  flex-direction: column;
-  width: 100%;
-  max-width: 308px; }
-  .card p.small {
-    margin-bottom: 4px; }
-  .card h4 {
-    margin-bottom: 12px; }
-  .card h5 {
-    margin-bottom: 32px; }
-    .card h5 span {
-      margin-left: 8px;
-      font-size: 14px;
-      line-height: 160%;
-      opacity: 0.5; }
-  .card .inactive {
-    color: #80ACFF; }
-  .card div {
-    margin: 0;
-    justify-content: flex-start;
-    margin-bottom: 16px; }
-    .card div img {
-      margin-right: 13px; }
-    .card div p {
-      margin-bottom: 0; }
-  .card .line {
-    width: 100%; }
-
-.card-primary {
-  background: #0B5FFF;
-  color: #FFFFFF; }
-  .card-primary p.small {
-    color: #C2D7FF; }
-  .card-primary h5 span {
-    color: #FFFFFF; }
-  .card-primary p {
-    color: #FFFFFF; }
-  .card-primary .line {
-    border: 1px solid #80ACFF; }
-
-.card-secondary {
-  background: #FFFFFF;
-  color: #272833; }
-  .card-secondary h5 {
-    color: #0B5FFF; }
-    .card-secondary h5 span {
-      color: #272833; }
-  .card-secondary p.small {
-    color: #787980; }
-  .card-secondary p {
-    color: #30313F; }
-  .card-secondary .line {
-    border: 1px solid #272833; }
-
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
@@ -993,10 +937,10 @@ $light-gray: #979797;*/
 
 .preview .hero {
   background: #FFFFFF;
-  margin-left: -80px;
-  margin-top: -74px;
-  margin-right: -80px;
-  padding: 80px; }
+  margin-left: -8%;
+  margin-top: -8%;
+  margin-right: -8%;
+  padding: 8%; }
   .preview .hero div {
     width: 50%;
     display: block; }
