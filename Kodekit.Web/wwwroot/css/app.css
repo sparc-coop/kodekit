@@ -992,7 +992,11 @@ $light-gray: #979797;*/
   color: #6DAEFF; }
 
 .preview .hero {
-  background: #FFFFFF; }
+  background: #FFFFFF;
+  margin-left: -80px;
+  margin-top: -74px;
+  margin-right: -80px;
+  padding: 80px; }
   .preview .hero div {
     width: 50%;
     display: block; }
