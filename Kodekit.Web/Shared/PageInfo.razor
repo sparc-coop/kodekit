@@ -17,7 +17,6 @@
                 <img @onclick="ShowDeleteModal" src="/images/delete-icon.png" title="Delete" />
                 <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
                 <img @onclick="DownloadKit" src="/images/download-icon.png" title="Download" />
-                @*<img src="/images/settings-icon.png" title="Settings" />*@
                 <div class="version-select">
 
                 </div>
@@ -49,12 +48,30 @@
                 <div class="current">Current Version</div>
                 <div class="title">Past Versions</div>
                 <ul>
-                    @*@foreach (var item in Kits)
+                    @if (Kits != null)
+                    {
+                        @foreach (var item in Kits)
                         {
-                            <li>@item.DateCreated.Value.ToString("f")</li>
-                        }*@
-                </ul>
+                            <li @onclick="@(e => ShowOptions(item.KitId))">
+                                @item.DateCreated.Value.ToString("MMM dd, yyyy hh:mm tt")
+                                <span class="material-icons">more_vert</span>
+                                @if (ShowKitOptions == item.KitId)
+                                {
+                                    <div class="publish-options">
+                                        <ul>
+                                            <li>Push Live</li>
+                                            <li>Rename Version</li>
+                                            <li>Preview Version</li>
+                                            <li>Revert to Version</li>
+                                            <li>Delete Version</li>
+                                        </ul>
+                                    </div>
+                                }
+                            </li>
 
+                        }
+                    }
+                </ul>
             </div>
         }
     </div>
@@ -65,6 +82,7 @@
 @code {
     bool ShowDropdown = false;
     bool ShowPage = true;
+    string ShowKitOptions = "";
     string Show = "";
     private ICollection<Kit> Kits;
     Kit kit;
@@ -74,7 +92,7 @@
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
         kit = await Api.GetKitAsync(currentKitId);
-        //Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        Kits = await Api.GetRelatedKitsAsync(currentKitId);
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -110,5 +128,17 @@
     private void DownloadKit()
     {
 
+    }
+
+    private void ShowOptions(string kitId)
+    {
+        if (ShowKitOptions == kitId)
+        {
+            ShowKitOptions = "";
+        }
+        else
+        {
+            ShowKitOptions = kitId;
+        }
     }
 }
