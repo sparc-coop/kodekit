@@ -7,4 +7,10 @@
             margin-top: 40px;
         }
     }
+
+    .large {
+        @media screen and (max-width: 500px) {
+            width: 314px !important;
+        }
+    }
 }

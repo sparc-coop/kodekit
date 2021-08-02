@@ -21,18 +21,15 @@
                     <div class="section">
                         <label>
                             Primary
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            <input type="color" value="@kit.PrimaryColor">
                         </label>
                         <label>
                             Secondary
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <input type="color" value="@kit.SecondaryColor">
                         </label>
                         <label>
                             Tertiary
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input type="color" value="@kit.TertiaryColor">
                         </label>
                     </div>
                     <div class="preview-example">
@@ -77,12 +74,12 @@
                         <label>
                             Darkest
                             <span style="background-color: @kit.DarkColor"></span>
-                            <InputText @bind-Value="kit.DarkColor" />
+                            <input type="color" value="@kit.DarkColor">
                         </label>
                         <label>
                             Lightest
                             <span style="background-color: @kit.LightColor"></span>
-                            <InputText @bind-Value="kit.LightColor" />
+                            <input type="color" value="@kit.LightColor">
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
@@ -138,18 +135,15 @@ $greyscale-700
                     <div class="section">
                         <label>
                             Error
-                            <span class="color-display" style="background-color: @kit.ErrorColor"></span>
-                            <InputText @bind-Value="kit.ErrorColor" />
+                            <input type="color" value="@kit.ErrorColor">
                         </label>
                         <label>
                             Warning
-                            <span class="color-display" style="background-color: @kit.WarningColor"></span>
-                            <InputText @bind-Value="kit.WarningColor" />
+                            <input type="color" value="@kit.WarningColor">
                         </label>
                         <label>
                             Success
-                            <span class="color-display" style="background-color: @kit.SuccessColor"></span>
-                            <InputText @bind-Value="kit.SuccessColor" />
+                            <input type="color" value="@kit.SuccessColor">
                         </label>
                     </div>
                     <div class="preview-example">

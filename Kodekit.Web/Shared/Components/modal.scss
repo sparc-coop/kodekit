@@ -26,6 +26,15 @@
         margin: 20% auto;
         position: relative;
 
+        @media screen and (max-width: 780px) {
+            width: 80%;
+            margin: 40% auto;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 85%;
+        }
+
         h3 {
             margin: 0;
             font-family: Inter;
@@ -47,6 +56,11 @@
             letter-spacing: 0em;
             text-align: left;
             color: $gray500;
+
+
+            @media screen and (max-width: 560px) {
+                line-height: 20px;
+            }
         }
     }
 
@@ -58,6 +72,11 @@
         color: $gray500;
         background: $white;
         padding: 6px 12px;
+
+
+        @media screen and (max-width: 500px) {
+            margin-top: 2px;
+        }
     }
 
     .button--confirm {
