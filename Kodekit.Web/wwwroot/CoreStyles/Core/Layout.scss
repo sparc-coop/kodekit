@@ -47,3 +47,99 @@ header {
         padding-bottom: 40px;
     }
 }
+//Default Card Styles
+.card {
+    border-radius: 12px;
+    padding: 32px 32px 40px 32px;
+    flex-direction: column;
+    width: 100%;
+    max-width: 308px;
+
+    p.small {
+        margin-bottom: 4px;
+    }
+
+    h4 {
+        margin-bottom: 12px;
+    }
+
+    h5 {
+        margin-bottom: 32px;
+
+        span {
+            margin-left: 8px;
+            font-size: 14px;
+            line-height: 160%;
+            opacity: 0.5;
+        }
+    }
+
+    .inactive {
+        color: $primary-300;
+    }
+
+    div {
+        margin: 0;
+        justify-content: flex-start;
+        margin-bottom: 16px;
+
+        img {
+            margin-right: 13px;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .line {
+        ;
+        width: 100%;
+    }
+}
+//Primary Card Styles
+.card-primary {
+    background: $primary-500;
+    color: $white;
+
+    p.small {
+        color: $primary-200;
+    }
+
+    h5 span {
+        color: $white;
+    }
+
+    p {
+        color: $white;
+    }
+
+    .line {
+        border: 1px solid $primary-300;
+    }
+}
+//Secondary Card Styles
+.card-secondary {
+    background: $white;
+    color: $grey-900;
+
+    h5 {
+        color: $primary-500;
+
+        span {
+            color: $grey-900;
+        }
+    }
+
+    p.small {
+        color: $grey-500;
+    }
+
+    p {
+        color: $grey-700;
+    }
+
+    .line {
+        border: 1px solid $grey-900;
+    }
+}

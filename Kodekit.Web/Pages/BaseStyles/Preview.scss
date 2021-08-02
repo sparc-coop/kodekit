@@ -1,0 +1,91 @@
+﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
+
+.preview {
+
+    p.subtitle {
+        color: $secondary-300;
+    }
+
+    .hero {
+        background: $white;
+
+        div {
+            width: 50%;
+            display: block;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .get-started {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        div:first-child {
+            div {
+            }
+
+            h1 {
+                margin-bottom: 24px;
+            }
+        }
+    }
+
+    section {
+        margin-bottom: 160px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 55%;
+        text-align: center;
+        margin: 0 auto;
+
+        h2 {
+            margin-bottom: 16px;
+        }
+    }
+
+    div {
+        display: flex;
+        justify-content: space-between;
+
+        .feature {
+            width: 32%;
+            background: $white;
+            padding: 40px 32px;
+            border-radius: 12px;
+            border: 1px solid #E5E7EB;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            h5 {
+                margin-top: 24px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+
+    .card-section {
+        flex-direction: column;
+
+        div {
+            width: 67%;
+            margin: 0 auto;
+        }
+    }
+
+    
+}

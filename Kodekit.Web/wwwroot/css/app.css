@@ -108,6 +108,62 @@ header {
 .effects section {
   padding-bottom: 40px; }
 
+.card {
+  border-radius: 12px;
+  padding: 32px 32px 40px 32px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 308px; }
+  .card p.small {
+    margin-bottom: 4px; }
+  .card h4 {
+    margin-bottom: 12px; }
+  .card h5 {
+    margin-bottom: 32px; }
+    .card h5 span {
+      margin-left: 8px;
+      font-size: 14px;
+      line-height: 160%;
+      opacity: 0.5; }
+  .card .inactive {
+    color: #80ACFF; }
+  .card div {
+    margin: 0;
+    justify-content: flex-start;
+    margin-bottom: 16px; }
+    .card div img {
+      margin-right: 13px; }
+    .card div p {
+      margin-bottom: 0; }
+  .card .line {
+    width: 100%; }
+
+.card-primary {
+  background: #0B5FFF;
+  color: #FFFFFF; }
+  .card-primary p.small {
+    color: #C2D7FF; }
+  .card-primary h5 span {
+    color: #FFFFFF; }
+  .card-primary p {
+    color: #FFFFFF; }
+  .card-primary .line {
+    border: 1px solid #80ACFF; }
+
+.card-secondary {
+  background: #FFFFFF;
+  color: #272833; }
+  .card-secondary h5 {
+    color: #0B5FFF; }
+    .card-secondary h5 span {
+      color: #272833; }
+  .card-secondary p.small {
+    color: #787980; }
+  .card-secondary p {
+    color: #30313F; }
+  .card-secondary .line {
+    border: 1px solid #272833; }
+
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
@@ -563,28 +619,27 @@ $light-gray: #979797;*/
 
 .page h1 {
   font-size: 48px;
-  font-size: 3em;
   font-size: 3rem; }
 
 .page h2 {
   font-size: 39px;
-  font-size: 2.43em; }
+  font-size: 2.43rem; }
 
 .page h3 {
   font-size: 31px;
-  font-size: 1.93em; }
+  font-size: 1.93rem; }
 
 .page h4 {
   font-size: 25px;
-  font-size: 1.56em; }
+  font-size: 1.56rem; }
 
 .page h5 {
   font-size: 20px;
-  font-size: 1.25em; }
+  font-size: 1.25rem; }
 
 .page h6 {
   font-size: 16px;
-  font-size: 1em; }
+  font-size: 1rem; }
 
 .page .subtitle {
   font-size: 12px; }
@@ -668,7 +723,8 @@ button {
 button.primary {
   background: #0B5FFF;
   border: 1px solid #0B5FFF;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  max-height: 40px; }
   button.primary:hover {
     border-color: #80ACFF;
     color: #80ACFF; }
@@ -680,6 +736,23 @@ button.secondary {
   button.secondary:hover {
     border-color: #6DAEFF;
     color: #6DAEFF; }
+
+button.card-button-primary {
+  background: #FFFFFF;
+  color: #0B5FFF;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  font-weight: 500; }
+
+button.card-button-secondary {
+  background: #FFFFFF;
+  color: #0B5FFF;
+  border: 1px solid #0B5FFF;
+  border-radius: 4px;
+  padding: 8px 16px;
+  text-align: center;
+  font-weight: 500; }
 
 /*button > :first-child {
     margin-right: 14px;
@@ -877,6 +950,154 @@ $light-gray: #979797;*/
     display: block;
     margin-top: 16px;
     font-size: 14px; }
+
+/*$black: #000000;*/
+/*$primary100: #EBF2FF;
+$primary400: #3C7FFF;
+$primary500: #0B5FFF;
+
+$secondary100: #E5F7F6;
+$secondary400: #2AD2C6;
+$secondary500: #00BFB2;
+
+
+$gray100: #F5F7FA;
+$gray300: #D2D4D9;
+$gray400: #A9ACB2;
+$gray500: #787980;
+$gray700: #3A3A40;
+$gray900: #17171A;
+
+$dark-gray: #525151;
+$light-gray: #979797;*/
+.colors .preview-example .color-display {
+  width: 293px;
+  height: 142px;
+  border-radius: 4px;
+  margin: 6px 15px 0; }
+
+.colors .preview-example--grayscale .color-display {
+  width: 106px;
+  height: 102px;
+  margin: 20px 0 0 0;
+  border-radius: 0; }
+  .colors .preview-example--grayscale .color-display.first {
+    border-radius: 4px 0px 0px 4px;
+    margin: 20px 0 0 15px; }
+  .colors .preview-example--grayscale .color-display.last {
+    border-radius: 0px 4px 4px 0px;
+    margin: 20px 15px 0 0; }
+
+.preview p.subtitle {
+  color: #6DAEFF; }
+
+.preview .hero {
+  background: #FFFFFF; }
+  .preview .hero div {
+    width: 50%;
+    display: block; }
+    .preview .hero div img {
+      width: 100%; }
+  .preview .hero .get-started {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; }
+  .preview .hero div:first-child h1 {
+    margin-bottom: 24px; }
+
+.preview section {
+  margin-bottom: 160px; }
+
+.preview header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55%;
+  text-align: center;
+  margin: 0 auto; }
+  .preview header h2 {
+    margin-bottom: 16px; }
+
+.preview div {
+  display: flex;
+  justify-content: space-between; }
+  .preview div .feature {
+    width: 32%;
+    background: #FFFFFF;
+    padding: 40px 32px;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; }
+    .preview div .feature h5 {
+      margin-top: 24px;
+      margin-bottom: 10px; }
+    .preview div .feature p {
+      margin-bottom: 0px; }
+
+.preview .card-section {
+  flex-direction: column; }
+  .preview .card-section div {
+    width: 67%;
+    margin: 0 auto; }
+
+.preview .card {
+  border-radius: 12px;
+  padding: 32px 32px 40px 32px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 308px; }
+  .preview .card p.small {
+    margin-bottom: 4px; }
+  .preview .card h4 {
+    margin-bottom: 12px; }
+  .preview .card h5 {
+    margin-bottom: 32px; }
+    .preview .card h5 span {
+      margin-left: 8px;
+      font-size: 14px;
+      line-height: 160%;
+      opacity: 0.5; }
+  .preview .card .inactive {
+    color: #80ACFF; }
+  .preview .card div {
+    margin: 0;
+    justify-content: flex-start;
+    margin-bottom: 16px; }
+    .preview .card div img {
+      margin-right: 13px; }
+    .preview .card div p {
+      margin-bottom: 0; }
+  .preview .card .line {
+    width: 100%; }
+
+.preview .card-primary {
+  background: #0B5FFF;
+  color: #FFFFFF; }
+  .preview .card-primary p.small {
+    color: #C2D7FF; }
+  .preview .card-primary h5 span {
+    color: #FFFFFF; }
+  .preview .card-primary p {
+    color: #FFFFFF; }
+  .preview .card-primary .line {
+    border: 1px solid #80ACFF; }
+
+.preview .card-secondary {
+  background: #FFFFFF;
+  color: #272833; }
+  .preview .card-secondary h5 {
+    color: #0B5FFF; }
+    .preview .card-secondary h5 span {
+      color: #272833; }
+  .preview .card-secondary p.small {
+    color: #787980; }
+  .preview .card-secondary p {
+    color: #30313F; }
+  .preview .card-secondary .line {
+    border: 1px solid #272833; }
 
 /*$black: #000000;*/
 /*$primary100: #EBF2FF;
@@ -1189,29 +1410,33 @@ $light-gray: #979797;*/
 .typography div form section:last-of-type {
   margin-bottom: 0px; }
 
-.get-started p {
-  font-family: Roboto;
-  font-size: 18px;
-  line-height: 180%;
-  color: #3A3A40;
-  width: 400px;
-  margin: 0;
-  padding: 18px 0 80px 0; }
+/*.get-started {
 
-.get-started button {
-  background: #F5F7FA;
-  border-radius: 4px;
-  color: #FFFFFF;
-  font-family: Roboto Mono;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 160%;
-  padding: 6px 24px;
-  border: none;
-  position: absolute;
-  bottom: 140px;
-  left: 0; }
+    p {
+        font-family: Roboto;
+        font-size: 18px;
+        line-height: 180%;
+        color: $gray700;
+        width: 400px;
+        margin: 0;
+        padding: 18px 0 80px 0;
+    }
 
+    button {
+        background: $background;
+        border-radius: 4px;
+        color: $white;
+        font-family: Roboto Mono;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 160%;
+        padding: 6px 24px;
+        border: none;
+        position: absolute;
+        bottom: 140px;
+        left: 0;
+    }
+}*/
 .landing .hero {
   background: #F5F7FA;
   height: calc(100vh - 180px);
