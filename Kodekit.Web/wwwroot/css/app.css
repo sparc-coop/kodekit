@@ -1162,7 +1162,7 @@
       background: #FFFFFF;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
       border-radius: 8px;
-      width: 232px;
+      width: 250px;
       height: 340px;
       box-sizing: border-box;
       padding: 24px;
@@ -1179,7 +1179,9 @@
         padding: 0 0 0 20px;
         margin: 0; }
         .page-info .history--dropdown ul li {
-          padding: 5px 0; }
+          padding: 8px 0;
+          cursor: pointer;
+          position: relative; }
       .page-info .history--dropdown .current, .page-info .history--dropdown li {
         color: #17171A;
         font-size: 12px;
@@ -1190,6 +1192,30 @@
         font-size: 11px;
         color: #A9ACB2;
         text-transform: uppercase; }
+      .page-info .history--dropdown .material-icons {
+        vertical-align: middle;
+        color: #A9ACB2;
+        font-size: 16px;
+        position: absolute;
+        right: 0; }
+  .page-info .publish-options {
+    height: 158px;
+    width: 134px;
+    z-index: 1;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 4px 16px;
+    position: absolute;
+    right: -5px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); }
+    .page-info .publish-options ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      .page-info .publish-options ul li {
+        padding: 8px 0;
+        cursor: pointer; }
 
 body {
   margin: 0;
