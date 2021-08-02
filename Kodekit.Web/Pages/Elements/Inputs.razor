@@ -21,30 +21,32 @@
             <div class="section">
                 <label>
                     Input Font Size
-                    <InputText @bind-Value="kit.PrimaryColor" />
+                    <input placeholder="16px"/>
                 </label>
                 <label>
                     Input Font Weight
                     <select>
+                        <option>Light (300)</option>
                         <option selected>Regular (400)</option>
-                        <option>Bold (500)</option>
+                        <option>Medium (500)</option>
+                        <option>Bold (700)</option>
                     </select>
                 </label>
                 <label>
                     Vertical Padding
-                    <InputText @bind-Value="kit.TertiaryColor" />
+                    <input placeholder="10px"/>
                 </label>
                 <label>
                     Horizontal Padding
-                    <InputText @bind-Value="kit.PrimaryColor" />
+                    <InputText @bind-Value="kit.BodyFontSize"/>
                 </label>
                 <label>
                     Corner Radius
-                    <InputText @bind-Value="kit.SecondaryColor" />
+                    <InputText @bind-Value="kit.BodyFontSize" />
                 </label>
                 <label>
                     Border Width
-                    <InputText @bind-Value="kit.TertiaryColor" />
+                    <InputText @bind-Value="kit.BodyLineHeight" />
                 </label>
             </div>
             <div class="preview-example">

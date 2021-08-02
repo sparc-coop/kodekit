@@ -1,1 +1,32 @@
 ﻿@import "../../_variables";
+
+.dropdowns {
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 32px;
+    }
+
+    aside {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 19.2px;
+        color: $gray500;
+
+        a {
+            text-decoration: none;
+            color: $primary500;
+        }
+    }
+
+    .section-container {
+        padding: 34px 0;
+        font-size: 16px;
+        color: $gray700;
+
+        .switch {
+            vertical-align: middle;
+            margin-top: -3px;
+        }
+    }
+}
