@@ -1,16 +1,42 @@
 ﻿@import "../_variables.scss";
 
 .theme-page {
+
+    section {
+        width: 1060px;
+
+        @media screen and (max-width: 1410px) {
+            width: auto;
+        }
+
+        > div {
+            margin-bottom: 30px;
+
+            @media screen and (max-width: 800px) {
+                width: 100%;
+            }
+        }
+    }
+
     .theme-card {
         width: 496px;
         height: 319px;
         border-radius: 8px;
         background: $white;
         margin-right: 32px;
+
+        @media screen and (max-width: 1410px) {
+            width: 370px;
+        }
+
+        @media screen and (max-width: 800px) {
+            width: 100%;
+            max-width: 496px;
+        }
     }
 
     label {
-        display:block;
+        display: block;
         color: $gray900;
         font-size: 16px;
         font-weight: 500;

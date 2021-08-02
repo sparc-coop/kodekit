@@ -35,18 +35,18 @@
                         </label>
                         <label>
                             Vertical Padding
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input placeholder="0px"/>
                         </label>
                         <label>
                             Horizontal Padding
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input placeholder="0px">
                         </label>
                     </div>
                      <h4>List Item Styling</h4>
                     <div class="section">
                         <label>
                             List Item Font Size
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input placeholder="16px">
                         </label>
                         <label>
                             List Item Font Weight
@@ -57,12 +57,11 @@
                         </label>
                         <label>
                             Vertical Padding
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <input placeholder="8px">
                         </label>
                         <label>
                             Horizontal Padding
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input placeholder="0px">
                         </label>
                     </div>
                     <div class="preview-example">
@@ -85,7 +84,11 @@
                         </code> 
                     </div>
                     <button @onclick="Submit">
-                        Save & Continue
+                        Save
+                        <img src="/images/eyecon.svg" />
+                    </button>
+                    <button @onclick="Submit">
+                        Save & Publish
                         <img src="/images/eyecon.svg" />
                     </button>
                 </EditForm>
@@ -106,5 +109,10 @@
     private async Task Submit()
     {
         Nav.NavigateTo("/box-shadow/" + kit.Id);
+    }
+
+    private async Task Publish()
+    {
+        await Api.PublishKitAsync(kit);
     }
 }
