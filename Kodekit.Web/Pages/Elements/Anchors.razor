@@ -1,4 +1,5 @@
-﻿@page  "/anchors"
+﻿@inherits HighlightPageBase
+@page  "/anchors"
 @page  "/anchors/{kitId}"
 
 <div class="anchors page">
@@ -21,7 +22,7 @@
                     <div class="section">
                         <label>
                             Font Size
-                            <input placeholder="16px"/>
+                            <input placeholder="16px" />
                         </label>
                         <label>
                             Font Weight
@@ -37,32 +38,44 @@
                     <div class="section">
                         <label>
                             Default
-                            <input type="color" value="#17171A">
+                            <span>
+                                <input type="color" value="@defaultColor" @oninput="@(e => defaultColor = e.Value.ToString())">
+                                @defaultColor
+                            </span>
                         </label>
                         <label>
                             Hover
-                            <input type="color" value="#0B5FFF">
+                            <span>
+                                <input type="color" value="@hoverColor" @oninput="@(e => hoverColor = e.Value.ToString())">
+                                @hoverColor
+                            </span>
                         </label>
                         <label>
                             Visited
-                            <input type="color" value="#7FABFF">
+                            <span>
+                                <input type="color" value="@visitedColor" @oninput="@(e => visitedColor = e.Value.ToString())">
+                                @visitedColor
+                            </span>
                         </label>
                         <label>
                             Active
-                            <input type="color" value="#00BFB2">
+                            <span>
+                                <input type="color" value="@activeColor" @oninput="@(e => activeColor = e.Value.ToString())">
+                                @activeColor
+                            </span>
                         </label>
                     </div>
                     <div class="preview-example">
-                        <a href="#">Default</a>
-                        <a href="#" class="hover">Hover</a>
-                        <a href="#" class="visited">Visited</a>
-                        <a href="#" class="active">Active</a>
+                        <a href="#" style="color: @defaultColor;">Default</a>
+                        <a href="#" class="hover" style="color: @hoverColor;">Hover</a>
+                        <a href="#" class="visited" style="color: @visitedColor;">Visited</a>
+                        <a href="#" class="active" style="color: @activeColor;">Active</a>
                     </div>
-                    <div class="code-example">
-                        <code>
+                    <pre>
+                    <code>
  
                         </code>
-                    </div>
+                    </pre>
                     <button @onclick="Submit">
                         Save & Continue
                         <img src="/images/eyecon.svg" />
@@ -76,14 +89,40 @@
 @code {
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    string currentKitId;
+    string defaultColor;
+    string hoverColor;
+    string visitedColor;
+    string activeColor;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await GetKit();
+        defaultColor = "#17171A";
+        hoverColor = "#0B5FFF";
+        visitedColor = "#7FABFF";
+        activeColor = "#00BFB2";
+    }
 
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
     }
 
     private async Task Submit()
     {
+        await Api.UpdateKitAsync(kit);
         Nav.NavigateTo("/lists/" + kit.Id);
     }
 }

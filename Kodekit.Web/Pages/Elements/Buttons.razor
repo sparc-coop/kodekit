@@ -1,4 +1,5 @@
-﻿@page  "/buttons"
+﻿@inherits HighlightPageBase
+@page  "/buttons"
 @page  "/buttons/{kitId}"
 
 <div class="buttons page">
@@ -21,49 +22,41 @@
                     <div class="section">
                         <label>
                             Font Size
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            <InputText @bind-Value="kit.BodyFontSize" />
                         </label>
                         <label>
                             Font Weight
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <InputText @bind-Value="kit.BodyFont" />
                         </label>
                         <label>
                             Vertical Padding
-                            <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                         <label>
                             Horizontal Padding
-                            <span style="background-color: @kit.PrimaryColor"></span>
                             <InputText @bind-Value="kit.PrimaryColor" />
                         </label>
                         <label>
                             Corner Radius
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <InputText @bind-Value="kit.BodyFont" />
                         </label>
                         <label>
                             Border Width
-                            <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                         <label>
                             Icon Width
-                            <span style="background-color: @kit.SecondaryColor"></span>
                             <InputText @bind-Value="kit.SecondaryColor" />
                         </label>
                         <label>
                             Icon Height
-                            <span style="background-color: @kit.TertiaryColor"></span>
                             <InputText @bind-Value="kit.TertiaryColor" />
                         </label>
                     </div>
                     <h4>Secondary Button</h4>
                     <div class="section">
                         <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" checked @onclick="ToggleBorder">
                             <span class="slider"></span>
                         </label>
                         Secondary Button Border
@@ -82,20 +75,20 @@
                             <button><img src="/images/eyecon.svg" /></button>
                         </div>
                         <div>
-                            <button class="button-secondary">Button</button>
-                            <button class="button-secondary">
+                            <button class="button-secondary @removeBorder">Button</button>
+                            <button class="button-secondary @removeBorder">
                                 <img src="/images/eyecon.svg" />
                                 Button
                             </button>
-                            <button class="button-secondary">
-                                Button 
+                            <button class="button-secondary @removeBorder">
+                                Button
                                 <img src="/images/eyecon.svg" />
                             </button>
-                            <button class="button-secondary"><img src="/images/eyecon.svg" /></button>
+                            <button class="button-secondary @removeBorder"><img src="/images/eyecon.svg" /></button>
                         </div>
                     </div>
                     <pre>
-                        <code>
+                    <code>
 &lt;button&gt;Button Label&lt;/h1&gt;//default
 &lt;!-- the button contents will adapt as you add labels, svgs, pngs or jpegs --&gt;
 &lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye"&gt;Button Label&lt;/button&gt;
@@ -126,25 +119,25 @@
                             </button>
                         </div>
                         <div>
-                            <button class="button-secondary">Default</button>
-                            <button class="button-secondary">
+                            <button class="button-secondary @removeBorder">Default</button>
+                            <button class="button-secondary @removeBorder">
                                 Default
                                 <img src="/images/eyecon.svg" />
                             </button>
-                            <button class="hover-secondary">Hover</button>
-                            <button class="hover-secondary">
+                            <button class="hover-secondary @removeBorder">Hover</button>
+                            <button class="hover-secondary @removeBorder">
                                 Hover
                                 <img src="/images/eyecon.svg" />
                             </button>
-                            <button class="disabled-secondary">Disabled</button>
-                            <button class="disabled-secondary">
+                            <button class="disabled-secondary @removeBorder">Disabled</button>
+                            <button class="disabled-secondary @removeBorder">
                                 Disabled
                                 <img src="/images/eyecon.svg" />
                             </button>
                         </div>
                     </div>
                     <pre>
-                        <code>
+                    <code>
 &lt;!-- control button state with html attributes --&gt;
 &lt;button&gt;Button Label&lt;/h1&gt;//default
 &lt;button disabled&gt;Button Label&lt;/h1&gt;
@@ -165,17 +158,44 @@
 @code {
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    string currentKitId;
+    string removeBorder = "";
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await GetKit();
+    }
 
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
     }
 
     private async Task Submit()
     {
-        //string newCss = new CreateCss().Execute(kit);
+        await Api.UpdateKitAsync(kit);
+        Nav.NavigateTo("/inputs/" + kit.Id);
+    }
 
-        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
-        //SaveColors();
+    private void ToggleBorder()
+    {
+        if(removeBorder == "")
+        {
+            removeBorder = "remove";
+        } else
+        {
+            removeBorder = "";
+        }
     }
 }
