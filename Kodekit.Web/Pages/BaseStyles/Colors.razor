@@ -90,16 +90,16 @@
                     <div class="section">
                         <label>
                             Primary
-                            <input type="color" value="@kit.PrimaryColor">
+                            <input type="color" @bind="@kit.PrimaryColor">
                         </label>
 
                         <label>
                             Secondary
-                            <input type="color" value="@kit.SecondaryColor">
+                            <input type="color" @bind="@kit.SecondaryColor">
                         </label>
                         <label>
                             Tertiary
-                            <input type="color" value="@kit.TertiaryColor">
+                            <input type="color" @bind="@kit.TertiaryColor">
                         </label>
 
                     </div>
@@ -145,12 +145,12 @@
                         <label>
                             Darkest
                             <span style="background-color: @kit.DarkColor"></span>
-                            <input type="color" value="@kit.DarkColor">
+                            <input type="color" @bind="@kit.DarkColor">
                         </label>
                         <label>
                             Lightest
                             <span style="background-color: @kit.LightColor"></span>
-                            <input type="color" value="@kit.LightColor">
+                            <input type="color" @bind="@kit.LightColor">
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
@@ -206,15 +206,15 @@ $greyscale-700
                     <div class="section">
                         <label>
                             Error
-                            <input type="color" value="@kit.ErrorColor">
+                            <input type="color" @bind="@kit.ErrorColor">
                         </label>
                         <label>
                             Warning
-                            <input type="color" value="@kit.WarningColor">
+                            <input type="color" @bind="@kit.WarningColor">
                         </label>
                         <label>
                             Success
-                            <input type="color" value="@kit.SuccessColor">
+                            <input type="color" @bind="@kit.SuccessColor">
                         </label>
                     </div>
                     <div class="preview-example">
@@ -328,6 +328,7 @@ $success-100
 
         private async Task Submit()
         {
+            StateHasChanged();
             await CheckColors();
             //await Api.UpdateKitAsync(kit);
             //Nav.NavigateTo("/icons/" + kit.Id);
