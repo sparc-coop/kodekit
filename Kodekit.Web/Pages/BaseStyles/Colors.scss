@@ -99,16 +99,29 @@
 
         label {
             position: relative;
+            margin-right: 32px;
 
             span {
-                position: absolute;
-                top: 34px;
-                left: 8px;
-                width: 24px;
-                height: 24px;
-                display: block;
-                z-index: 10;
+                background: $white;
+                padding: 6px 10px;
+                width: 144px;
+                height: 40px;
+                border: 1px solid $gray300;
+                box-sizing: border-box;
                 border-radius: 4px;
+                display: flex;
+                font-size: 16px;
+                line-height: 150%;
+                cursor: pointer;
+
+                input {
+                    border: none;
+                    border-radius: 4px;
+                    width: 23px;
+                    height: 26px;
+                    margin: 0 10px 0 0;
+                    padding: 0;
+                }
             }
         }
     }

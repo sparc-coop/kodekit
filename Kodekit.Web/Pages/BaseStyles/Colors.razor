@@ -1,4 +1,5 @@
-﻿@page  "/colors"
+﻿@inherits HighlightPageBase
+@page "/colors"
 @page "/colors/{kitId}"
 
 <div class="colors page">
@@ -90,16 +91,25 @@
                     <div class="section">
                         <label>
                             Primary
-                            <input type="color" @bind="@kit.PrimaryColor">
+                            <span>
+                                <input type="color" value="@kit.PrimaryColor" @oninput="@(e => kit.PrimaryColor = e.Value.ToString())">
+                                @kit.PrimaryColor
+                            </span>
                         </label>
 
                         <label>
                             Secondary
-                            <input type="color" @bind="@kit.SecondaryColor">
+                            <span>
+                                <input type="color" value="@kit.SecondaryColor" @oninput="@(e => kit.SecondaryColor = e.Value.ToString())">
+                                @kit.SecondaryColor
+                            </span>
                         </label>
                         <label>
                             Tertiary
-                            <input type="color" @bind="@kit.TertiaryColor">
+                            <span>
+                                <input type="color" value="@kit.TertiaryColor" @oninput="@(e => kit.TertiaryColor = e.Value.ToString())">
+                                @kit.TertiaryColor
+                            </span>
                         </label>
 
                     </div>
@@ -117,14 +127,13 @@
                             <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
                         </div>
                     </div>
-                    <div>
-                        <pre>
-                            <code>
+                    <pre>
+                    <code>
 &lt;!-- use directly as colors or background properties --&gt;
 &lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
 &lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
                             </code>
-                            <code class="language-scss">
+                    <code class="language-scss">
 &lt;!-- however it is best to use them as variables within your classes --&gt;
 
 .box {
@@ -136,7 +145,6 @@
 }
                             </code>
                         </pre>
-                    </div>
                     <h3>Greyscale</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -144,13 +152,17 @@
                     <div class="section">
                         <label>
                             Darkest
-                            <span style="background-color: @kit.DarkColor"></span>
-                            <input type="color" @bind="@kit.DarkColor">
+                            <span>
+                                <input type="color" value="@kit.DarkColor" @oninput="@(e => kit.DarkColor = e.Value.ToString())">
+                                @kit.DarkColor
+                            </span>
                         </label>
                         <label>
                             Lightest
-                            <span style="background-color: @kit.LightColor"></span>
-                            <input type="color" @bind="@kit.LightColor">
+                            <span>
+                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
+                                @kit.LightColor
+                            </span>
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
@@ -191,14 +203,14 @@
                             <div class="color-display last" style="background-color: @kit.LightColor"></div>
                         </div>
                     </div>
-                        <pre>
-                        <code class="language-scss">
+                    <pre>
+                    <code class="language-scss">
 &lt;!--System Variables--&gt;
 $greyscale-900
 $greyscale-800
 $greyscale-700
-                    </code>
-</pre>
+                        </code>
+                    </pre>
                     <h3>System Colors</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -206,15 +218,24 @@ $greyscale-700
                     <div class="section">
                         <label>
                             Error
-                            <input type="color" @bind="@kit.ErrorColor">
+                            <span>
+                                <input type="color" value="@kit.ErrorColor" @oninput="@(e => kit.ErrorColor = e.Value.ToString())">
+                                @kit.ErrorColor
+                            </span>
                         </label>
                         <label>
                             Warning
-                            <input type="color" @bind="@kit.WarningColor">
+                            <span>
+                                <input type="color" value="@kit.WarningColor" @oninput="@(e => kit.WarningColor = e.Value.ToString())">
+                                @kit.WarningColor
+                            </span>
                         </label>
                         <label>
                             Success
-                            <input type="color" @bind="@kit.SuccessColor">
+                            <span>
+                                <input type="color" value="@kit.SuccessColor" @oninput="@(e => kit.SuccessColor = e.Value.ToString())">
+                                @kit.SuccessColor
+                            </span>
                         </label>
                     </div>
                     <div class="preview-example">
@@ -234,9 +255,8 @@ $greyscale-700
                             <div class="color-display" style="background-color: @kit.SuccessColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <pre>
-                        <code class="language-scss">
+                    <pre>
+                    <code class="language-scss">
 &lt;!--System Variables--&gt;
 $error-900
 $error-500
@@ -249,7 +269,6 @@ $success-500
 $success-100
                         </code>
                         </pre>
-                    </div>
                     <div class="preview-mockup">
                         <h3>Preview</h3>
                         <p class="subheader">
@@ -307,24 +326,10 @@ $success-100
 
         //ContrastColorResponse colorContrast = new ContrastColorResponse();
 
-        protected override async Task OnInitializedAsync()
-        {
-            await GetKit();
-            kit.PrimaryColor = "#0B5FFF";
-            kit.SecondaryColor = "#4B9BFF";
-            kit.TertiaryColor = "#FFB46E";
-            kit.DarkColor = "#272833";
-            kit.LightColor = "#F3F3F9";
-            kit.ErrorColor = "#F96464";
-            kit.WarningColor = "#FF8F39";
-            kit.SuccessColor = "#5ACA75";
-
-
-            pair.BGColor = kit.LightColor;
-            pair.FGColor = kit.DarkColor;
-
-            await CheckColors();
-        }
+    protected override async Task OnInitializedAsync()
+    {
+        await GetKit();
+    }
 
         private async Task Submit()
         {
@@ -335,11 +340,11 @@ $success-100
 
         }
 
-        private async Task GetKit()
-        {
-            //get from local storage
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            currentKitId = result;
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
 
             if (kitId != null)
             {
@@ -404,5 +409,23 @@ $success-100
             public string BGColor { get; set; }
             public string FGColor { get; set; }
         }
+        if (kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
 
+        kit.PrimaryColor = "#0B5FFF";
+        kit.SecondaryColor = "#4B9BFF";
+        kit.TertiaryColor = "#FFB46E";
+        kit.DarkColor = "#272833";
+        kit.LightColor = "#F3F3F9";
+        kit.ErrorColor = "#F96464";
+        kit.WarningColor = "#FF8F39";
+        kit.SuccessColor = "#5ACA75";
     }
+
+}
