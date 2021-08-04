@@ -150,6 +150,19 @@
                     padding: 8px 0;
                     cursor: pointer;
                     position: relative;
+
+                    input {
+                        padding: 2px 6px;
+                        width: 150px;
+                    }
+
+                    button {
+                        color: $primary500;
+                        margin-top: 4px;
+                        background: $background;
+                        border: 1px solid $primary500;
+                        border-radius: 4px;
+                    }
                 }
             }
 
@@ -197,6 +210,52 @@
             li {
                 padding: 8px 0;
                 cursor: pointer;
+            }
+        }
+    }
+
+    .auto-publish {
+        border-top: 1px solid $gray100;
+        padding-top: 16px;
+        color: $gray500;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 24px;
+        width: 203px;
+        margin: 0 auto;
+
+        .switch {
+            width: 26px;
+            height: 15px;
+        }
+
+        .slider {
+            background-color: $white;
+            border: 1px solid $gray400;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 9px;
+                width: 9px;
+                left: 2.5px;
+                bottom: 2px;
+            }
+        }
+
+        input {
+
+            &:checked + .slider {
+                background-color: $white;
+                border: 1px solid $primary500;
+
+                &:before {
+                    -webkit-transform: translateX(10px);
+                    -ms-transform: translateX(10px);
+                    transform: translateX(10px);
+                    background-color: $primary500;
+                }
             }
         }
     }

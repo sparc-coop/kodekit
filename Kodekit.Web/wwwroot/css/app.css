@@ -1291,6 +1291,15 @@
           padding: 8px 0;
           cursor: pointer;
           position: relative; }
+          .page-info .history--dropdown ul li input {
+            padding: 2px 6px;
+            width: 150px; }
+          .page-info .history--dropdown ul li button {
+            color: #0B5FFF;
+            margin-top: 4px;
+            background: #F5F7FA;
+            border: 1px solid #0B5FFF;
+            border-radius: 4px; }
       .page-info .history--dropdown .current, .page-info .history--dropdown li {
         color: #17171A;
         font-size: 12px;
@@ -1325,6 +1334,37 @@
       .page-info .publish-options ul li {
         padding: 8px 0;
         cursor: pointer; }
+  .page-info .auto-publish {
+    border-top: 1px solid #F5F7FA;
+    padding-top: 16px;
+    color: #787980;
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left: 24px;
+    width: 203px;
+    margin: 0 auto; }
+    .page-info .auto-publish .switch {
+      width: 26px;
+      height: 15px; }
+    .page-info .auto-publish .slider {
+      background-color: #FFFFFF;
+      border: 1px solid #A9ACB2; }
+      .page-info .auto-publish .slider:before {
+        position: absolute;
+        content: "";
+        height: 9px;
+        width: 9px;
+        left: 2.5px;
+        bottom: 2px; }
+    .page-info .auto-publish input:checked + .slider {
+      background-color: #FFFFFF;
+      border: 1px solid #0B5FFF; }
+      .page-info .auto-publish input:checked + .slider:before {
+        -webkit-transform: translateX(10px);
+        -ms-transform: translateX(10px);
+        transform: translateX(10px);
+        background-color: #0B5FFF; }
 
 body {
   margin: 0;
