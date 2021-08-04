@@ -1,5 +1,5 @@
 ﻿@page  "/icons"
-@page  "/icons /{kitId}"
+@page  "/icons/{kitId}"
 
 <div class="effects page">
     <div class="page__container">
@@ -21,14 +21,12 @@
                     <section>
                         <label>
                             Icon Set
-                            <span style="background-color: @kit.PrimaryColor"></span>
                             <select>
                                 <option>Remix Icons</option>
                             </select>
                         </label>
                         <label>
                             Set Variation
-                            <span style="background-color: @kit.SecondaryColor"></span>
                             <select>
                                 <option>Outline</option>
                             </select>
@@ -55,18 +53,32 @@
 @code {
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    string currentKitId;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await GetKit();
+    }
 
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await Api.GetKitAsync(currentKitId);
+        }
     }
 
     private async Task Submit()
     {
-        //string newCss = new CreateCss().Execute(kit);
-
-        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
-        //SaveColors();
-        Nav.NavigateTo("/layout/" + kit.Id);
+        await Api.UpdateKitAsync(kit);
+        Nav.NavigateTo("/buttons/" + kit.Id);
     }
 }
