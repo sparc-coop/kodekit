@@ -803,6 +803,10 @@
             "type": "boolean",
             "nullable": true
           },
+          "isAutoPublish": {
+            "type": "boolean",
+            "nullable": true
+          },
           "isDeleted": {
             "type": "boolean",
             "nullable": true

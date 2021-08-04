@@ -9,7 +9,7 @@
                 <select class="sort">
                     <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
                 </select>
-                <button @onclick="@(e => Nav.NavigateTo("/typography"))">
+                <button @onclick="@(CreateNew)">
                     New Styleguide
                     <img src="/images/add-icon.svg" />
                 </button>
@@ -49,6 +49,14 @@
     {
         User = await Api.GetUserAsync();
         Kits = await Api.GetUserKitsAsync();
+    }
+
+    private async Task CreateNew()
+    {
+        Kit newKit = new Kit();
+        newKit.UserId = User.UserId;
+        newKit = await Api.CreateKitAsync(newKit);
+        Nav.NavigateTo("/typography/" + newKit.KitId);
     }
 
     private void Sort(string filter)

@@ -22,6 +22,16 @@
     public EventCallback CloseModal { get; set; }
     [Parameter]
     public Kit Kit { get; set; }
+    [Parameter]
+    public string SelectedKit { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(!String.IsNullOrEmpty(SelectedKit))
+        {
+            Kit = await Api.GetKitAsync(SelectedKit);
+        }
+    }
 
     private async Task Close()
     {
