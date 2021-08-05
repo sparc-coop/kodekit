@@ -12,6 +12,68 @@
             </p>
         </header>
         <div class="content">
+            <aside class="accessibility-checker">
+                <p class="large">Contrast Checker</p>
+
+                <h3>100%</h3>
+
+
+                <section>
+                    <label>Header Size</label>
+                    @if (int.Parse(kit.HeaderFontSize) >= 16)
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+
+
+                </section>
+                <section>
+                    <label>Header Height</label>
+
+                    @if (int.Parse(kit.HeaderLineHeight.Substring(0, kit.HeaderLineHeight.Length - 1)) >= 100)
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+
+                </section>
+
+                <section>
+                    <label>Body Size</label>
+
+                    @if (int.Parse(kit.BodyFontSize) >= 16)
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+
+                </section>
+                <section>
+                    <label>Body Height</label>
+
+                    @if (int.Parse(kit.BodyLineHeight.Substring(0, kit.BodyLineHeight.Length - 1)) >= 150)
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+
+                </section>
+
+
+            </aside>
             <h3>Heading Settings</h3>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
