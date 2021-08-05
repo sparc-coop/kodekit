@@ -667,6 +667,27 @@
   background: none;
   color: #00BFB2; }
 
+.typography aside {
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 25px;
+  background: #fff;
+  float: right;
+  width: 250px;
+  margin: 10%; }
+  .typography aside section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2px; }
+    .typography aside section .set-colors {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%; }
+      .typography aside section .set-colors div {
+        margin: 4px; }
+
 .typography .preview-example {
   padding: 0 32px 40px 32px;
   font-family: 'Roboto Mono', monospace; }
