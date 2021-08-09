@@ -97,7 +97,15 @@
                         <label>
                             Choose Body font
                             <select class="medium">
-                                <option selected>Roboto Mono</option>
+                                @*<option selected>Roboto Mono</option>*@
+                                @if (fontList.Items != null)
+                                {
+                                    @foreach (var font in fontList.Items)
+                                    {
+                                        <option selected>@font.Family</option>
+                                    }
+                                }
+
                             </select>
                         </label>
                         <label>
@@ -155,6 +163,8 @@
     string currentKitId;
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
+    private List<Font> fonts = new List<Font>();
+    FontListResponse fontList = new FontListResponse();
 
     protected override async Task OnInitializedAsync()
     {
@@ -165,6 +175,9 @@
 
         await GetKit();
         await GetUser();
+
+        fontList = await Api.GoogleFontsAsync("");
+
     }
 
     private async Task Submit()
@@ -216,4 +229,9 @@
             User = await Api.GetUserAsync();
         }
     }
+
+    //private class Font {
+    //    private string Family { get; set; }
+    //}
 }
+
