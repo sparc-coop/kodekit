@@ -108,6 +108,13 @@ header {
 .effects section {
   padding-bottom: 40px; }
 
+.preview-bg-white {
+  background: #FFFFFF;
+  height: 70vh;
+  position: absolute;
+  top: 5%;
+  width: 100%; }
+
 /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
