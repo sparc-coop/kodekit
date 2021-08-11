@@ -1,7 +1,9 @@
-﻿.typography {
+﻿@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.typography {
+
     .preview-example {
-        padding:0 32px 40px 32px;
-        font-family: 'Roboto Mono', monospace;
+        padding: 0 32px 40px 32px;
 
         h1, h2, h3, h4, h5, h6, p {
             margin-top: 40px;
