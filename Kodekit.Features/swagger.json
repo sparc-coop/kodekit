@@ -744,6 +744,28 @@
           "family": {
             "type": "string",
             "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "files": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FontFile"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FontFile": {
+        "type": "object",
+        "properties": {
+          "regular": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

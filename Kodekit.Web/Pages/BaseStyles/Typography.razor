@@ -2,6 +2,12 @@
 @page  "/typography"
 @page  "/typography/{kitId}"
 
+
+
+<style type="text/css" scoped>
+      @@import url('@importUrl');
+</style>
+
 <div class="typography page">
     <div class="page__container">
         <header>
@@ -13,6 +19,7 @@
         </header>
         <div class="content">
             <h3>Heading Settings</h3>
+            <span class="material-icons">face</span>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
             </p>
@@ -26,8 +33,14 @@
                         </label>
                         <label>
                             Choose heading font
-                            <select class="medium">
-                                <option selected>Roboto Mono</option>
+                            <select class="medium" @onchange='args => SelectFonts(args, "head")'>
+                                @if (fontList.Items != null)
+                                {
+                                    @foreach (var font in fontList.Items)
+                                    {
+                                        <option value="@font.Family">@font.Family</option>
+                                    }
+                                }
                             </select>
                         </label>
                         <label>
@@ -45,33 +58,33 @@
                             <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <div class="preview-example" style="font-family: '@headingFont.Family';">
                         <div>
-                            <h1>@previewText</h1>
+                            <h1 style="font-family: '@headingFont.Family';">@previewText</h1>
                             <label>H1 - Font Size: 48px (3em) / Line Height: 120%</label>
                         </div>
                         <div>
-                            <h2>@previewText</h2>
+                            <h2 style="font-family: '@headingFont.Family';">@previewText</h2>
                             <label>H2 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h3>@previewText</h3>
+                            <h3 style="font-family: '@headingFont.Family';">@previewText</h3>
                             <label>H3 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h4>@previewText</h4>
+                            <h4 style="font-family: '@headingFont.Family';">@previewText</h4>
                             <label>H4 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h5>@previewText</h5>
+                            <h5 style="font-family: '@headingFont.Family';">@previewText</h5>
                             <label>H5 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h6>@previewText</h6>
+                            <h6 style="font-family: '@headingFont.Family';">@previewText</h6>
                             <label>H6 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <p>@previewText</p>
+                            <p style="font-family: '@headingFont.Family';">@previewText</p>
                             <label>Subtitle - Font Size: xxpx (xem)</label>
                         </div>
                     </div>
@@ -89,6 +102,7 @@
 </code>
 </pre>
                     <h3>Paragraph Settings</h3>
+
                     <div class="section">
                         <label class="preview">
                             Preview Text
@@ -96,13 +110,12 @@
                         </label>
                         <label>
                             Choose Body font
-                            <select class="medium">
-                                @*<option selected>Roboto Mono</option>*@
+                            <select class="medium" @onchange='args => SelectFonts(args, "body")'>
                                 @if (fontList.Items != null)
                                 {
                                     @foreach (var font in fontList.Items)
                                     {
-                                        <option selected>@font.Family</option>
+                                        <option value="@font.Family">@font.Family</option>
                                     }
                                 }
 
@@ -123,17 +136,17 @@
                             <InputText @bind-Value="kit.BodyLineHeight" class="small" />
                         </label>
                     </div>
-                    <div class="preview-example preview-example--body">
+                    <div class="preview-example preview-example--body" style="font-family: '@bodyFont.Family';">
                         <div>
-                            <p class="large">@previewTextBody</p>
+                            <p class="large" style="font-family: '@bodyFont.Family';">@previewTextBody</p>
                             <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                         <div>
-                            <p class="medium">@previewTextBody</p>
+                            <p class="medium" style="font-family: '@bodyFont.Family';">@previewTextBody</p>
                             <label>Body - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                         <div>
-                            <p class="small">@previewTextBody</p>
+                            <p class="small" style="font-family: '@bodyFont.Family';">@previewTextBody</p>
                             <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                     </div>
@@ -156,6 +169,9 @@
     </div>
 </div>
 
+@inject IJSRuntime JS
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 @code {
     private Kit kit = new Kit();
     private User User;
@@ -165,6 +181,10 @@
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
     private List<Font> fonts = new List<Font>();
     FontListResponse fontList = new FontListResponse();
+    string FontUrl = "test";
+    Font headingFont = new Font();
+    Font bodyFont = new Font();
+    string importUrl = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -176,7 +196,25 @@
         await GetKit();
         await GetUser();
 
-        fontList = await Api.GoogleFontsAsync("");
+        bodyFont.Family = "Roboto Mono";
+        headingFont.Family = "Open Sans";
+
+        var fontSelection = await localStorage.GetItemAsync<FontListResponse>("googleFonts");
+
+        if (fontSelection != null)
+        {
+            fontList = fontSelection;
+        }
+        else
+        {
+            fontList = await Api.GoogleFontsAsync("");
+            await localStorage.SetItemAsync<FontListResponse>("googleFonts", fontList);
+        }
+
+
+
+
+
 
     }
 
@@ -229,6 +267,36 @@
             User = await Api.GetUserAsync();
         }
     }
+
+    void SelectFonts(ChangeEventArgs e, string type)
+    {
+        @if (type == "head")
+        {
+            headingFont.Family = e.Value.ToString();
+        }
+        else
+        {
+            bodyFont.Family = e.Value.ToString();
+        }
+
+
+        importUrl = "https://fonts.googleapis.com/css?family=" + bodyFont.Family.Replace(" ", "+") + "|" + headingFont.Family.Replace(" ", "+");
+
+
+        StateHasChanged();
+
+    }
+
+    //void SelectFonts(ChangeEventArgs e)
+    //{
+    //    bodyFont.Family = e.Value.ToString();
+
+    //    importUrl = "https://fonts.googleapis.com/css?family=" + bodyFont.Family.Replace(" ", "+");
+
+
+    //    StateHasChanged();
+
+    //}
 
     //private class Font {
     //    private string Family { get; set; }
