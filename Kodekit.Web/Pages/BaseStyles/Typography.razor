@@ -264,6 +264,21 @@
 
         CheckAccessibility();
 
+        bodyFont.Family = "Roboto Mono";
+        headingFont.Family = "Open Sans";
+
+        var fontSelection = await localStorage.GetItemAsync<FontListResponse>("googleFonts");
+
+        if (fontSelection != null)
+        {
+            fontList = fontSelection;
+        }
+        else
+        {
+            fontList = await Api.GoogleFontsAsync("");
+            await localStorage.SetItemAsync<FontListResponse>("googleFonts", fontList);
+        }
+
         await GetKit();
         await GetUser();
 
@@ -282,26 +297,6 @@
         if (bodyHeight) totalScore += 25;
 
         StateHasChanged();
-
-        bodyFont.Family = "Roboto Mono";
-        headingFont.Family = "Open Sans";
-
-        var fontSelection = await localStorage.GetItemAsync<FontListResponse>("googleFonts");
-
-        if (fontSelection != null)
-        {
-            fontList = fontSelection;
-        }
-        else
-        {
-            fontList = await Api.GoogleFontsAsync("");
-            await localStorage.SetItemAsync<FontListResponse>("googleFonts", fontList);
-        }
-
-
-
-
-
 
     }
 
