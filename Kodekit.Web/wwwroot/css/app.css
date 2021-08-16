@@ -1,4 +1,5 @@
-﻿.page {
+﻿@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.page {
   background: #F5F7FA;
   padding: 10px 80px 100px 80px;
   font-family: 'Inter', sans-serif; }
@@ -689,8 +690,7 @@
         margin: 4px; }
 
 .typography .preview-example {
-  padding: 0 32px 40px 32px;
-  font-family: 'Roboto Mono', monospace; }
+  padding: 0 32px 40px 32px; }
   .typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
     margin-top: 40px; }
 
