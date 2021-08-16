@@ -12,6 +12,71 @@
             </p>
         </header>
         <div class="content">
+            <aside class="accessibility-checker">
+                <p class="large">Contrast Checker</p>
+
+                <h3>@totalScore%</h3>
+
+                @if (kit != null)
+                {
+                    <section>
+                        <label>Header Size @headerSize</label>
+                        @if (headerSize)
+                        {
+                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                        }
+                        else
+                        {
+                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                        }
+
+
+                    </section>
+                    <section>
+                        <label>Header Height @headerHeight</label>
+
+                        @if (headerHeight)
+                        {
+                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                        }
+                        else
+                        {
+                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                        }
+
+                    </section>
+
+                    <section>
+                        <label>Body Size @bodySize</label>
+
+                        @if (bodySize)
+                        {
+                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                        }
+                        else
+                        {
+                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                        }
+
+                    </section>
+                    <section>
+                        <label>Body Height @bodyHeight</label>
+
+                        @if (bodyHeight)
+                        {
+                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                        }
+                        else
+                        {
+                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                        }
+
+                    </section>
+                }
+
+
+
+            </aside>
             <h3>Heading Settings</h3>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
@@ -155,16 +220,39 @@
     string currentKitId;
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
+    bool headerHeight;
+    bool headerSize;
+    bool bodyHeight;
+    bool bodySize;
+    int totalScore = 0;
 
     protected override async Task OnInitializedAsync()
     {
-        kit.HeaderFontSize = "16";
+        kit.HeaderFontSize = "24";
         kit.HeaderLineHeight = "120%";
         kit.BodyFontSize = "16";
         kit.BodyLineHeight = "120%";
 
+        CheckAccessibility();
+
         await GetKit();
         await GetUser();
+
+    }
+
+    public void CheckAccessibility()
+    {
+        headerSize = int.Parse(kit.HeaderFontSize) >= 24;
+        headerHeight = int.Parse(kit.HeaderLineHeight.Substring(0, kit.HeaderLineHeight.Length - 1)) >= 100;
+        bodySize = int.Parse(kit.BodyFontSize) >= 16;
+        bodyHeight = int.Parse(kit.BodyLineHeight.Substring(0, kit.BodyLineHeight.Length - 1)) >= 150;
+
+        if (headerSize) totalScore += 25;
+        if (headerHeight) totalScore += 25;
+        if (bodySize) totalScore += 25;
+        if (bodyHeight) totalScore += 25;
+
+        StateHasChanged();
     }
 
     private async Task Submit()
