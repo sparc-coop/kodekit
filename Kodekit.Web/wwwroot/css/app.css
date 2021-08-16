@@ -1068,7 +1068,7 @@
     .sidebar .menu a {
       display: block;
       text-decoration: none;
-      color: #787980;
+      color: #3A3A40;
       font-size: 14px;
       margin: 0 16px;
       padding: 8px 0; }
@@ -1249,7 +1249,7 @@
   .page-info > div {
     display: flex; }
   .page-info .title {
-    color: #A9ACB2;
+    color: #3A3A40;
     font-size: 14px; }
     .page-info .title img {
       margin: 0 8px; }
@@ -1275,7 +1275,7 @@
       .page-info .info {
         flex-wrap: wrap; } }
     .page-info .info--time {
-      color: #A9ACB2;
+      color: #3A3A40;
       padding: 6px 18px;
       font-size: 12px;
       font-weight: 400;
