@@ -123,6 +123,6 @@
     private async Task Submit()
     {
         await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/lists/" + kit.Id);
+        Nav.NavigateTo("/lists/" + kit.KitId);
     }
 }

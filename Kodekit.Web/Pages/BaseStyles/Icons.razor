@@ -79,6 +79,6 @@
     private async Task Submit()
     {
         await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/buttons/" + kit.Id);
+        Nav.NavigateTo("/buttons/" + kit.KitId);
     }
 }

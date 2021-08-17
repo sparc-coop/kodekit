@@ -265,18 +265,18 @@
 
         newKit.HeaderFontSize = kit.HeaderFontSize;
 
-        if (kit.Id != null)
+        if (kit.KitId != null)
         {
-            newKit.ParentId = kit.Id;
+            newKit.ParentId = kit.KitId;
         }
 
         kit = await PublicApi().CreateKitAsync(newKit);
 
         //save to local storage
-        if (currentKitId == null) { currentKitId = kit.Id; }
+        if (currentKitId == null) { currentKitId = kit.KitId; }
         await localStorage.SetItemAsync("kodekitId", currentKitId);
 
-        Nav.NavigateTo("/Colors/" + kit.Id);
+        Nav.NavigateTo("/Colors/" + kit.KitId);
     }
 
     private async Task GetKit()

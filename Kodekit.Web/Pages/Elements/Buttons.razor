@@ -185,7 +185,7 @@
     private async Task Submit()
     {
         await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/inputs/" + kit.Id);
+        Nav.NavigateTo("/inputs/" + kit.KitId);
     }
 
     private void ToggleBorder()

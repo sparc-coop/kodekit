@@ -12,7 +12,18 @@
             </div>
         </div>
         <div class="info">
-            <div class="info--time">Last Saved: 12:03 PM</div>
+            <AuthorizeView>
+                <Authorized>
+                    @if (!string.IsNullOrEmpty(ModifiedDate))
+                    {
+                        <div class="info--time">Last Saved: @ModifiedDate</div>
+                    }
+                </Authorized>
+                <NotAuthorized>
+                    <div class="info--time">Please <a href="authentication/login">Log In</a> to save changes</div>               
+                </NotAuthorized>
+            </AuthorizeView>
+
             <div class="actions">
                 <img @onclick="@(e => ShowDeleteModal(kit.Id))" src="/images/delete-icon.png" title="Delete" />
                 <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
@@ -45,11 +56,15 @@
         {
             <div class="history--dropdown">
                 <div class="title">Version History</div>
-                <div class="current">Current Version</div>
-                <div class="title">Past Versions</div>
-                <ul>
-                    @if (Kits != null)
-                    {
+                <div class="current">
+                    <img class="img-left" src="/images/ellipse_open_icon.svg"/>
+                    Current Version
+                    <img class="img-right" @onclick="UpdateKit" src="/images/save_icon.svg"/>
+                </div>
+                @if(Kits.Count > 0)
+                {
+                    <div class="title">Past Versions</div>
+                    <ul>
                         @foreach (var item in Kits)
                         {
                             <li @onclick="@(e => ShowOptions(item.KitId))">
@@ -92,8 +107,8 @@
                                 }
                             </li>
                         }
-                    }
-                </ul>
+                    </ul>
+                }
                 <div class="auto-publish">
                     <label class="switch">
                         <input type="checkbox" @bind="SelectAutoPublish" @oninput="SetAutoPublish">
@@ -116,15 +131,23 @@
     string SelectedVersion = "";
     string EditName = "";
     bool SelectAutoPublish = false;
+    string ModifiedDate = "";
     private ICollection<Kit> Kits;
     Kit kit;
-
 
     protected override async Task OnInitializedAsync()
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
-        kit = await Api.GetKitAsync(currentKitId);
-        Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        kit = await PublicApi().GetKitAsync(currentKitId);
+        ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
+            : kit.DateCreated.Value.ToString("MMM dd, hh:mm tt");
+
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -157,6 +180,7 @@
         Kit newkit = kit;
         newkit.Id = Guid.NewGuid().ToString();
         newkit.KitId = Guid.NewGuid().ToString();
+        newkit.ParentId = kit.ParentId;
         newkit = await Api.CreateKitAsync(newkit);
         Nav.NavigateTo("/typography/" + newkit.KitId);
     }
@@ -214,5 +238,11 @@
         kit.IsAutoPublish = SelectAutoPublish;
 
         await Api.UpdateKitAsync(kit);
+    }
+
+    private async Task UpdateKit()
+    {
+        await Api.UpdateKitAsync(kit);
+        ModifiedDate = "JUST NOW";
     }
 }
