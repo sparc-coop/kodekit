@@ -330,7 +330,7 @@ $success-100
     private async Task Submit()
     {
         await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/icons/" + kit.Id);
+        Nav.NavigateTo("/icons/" + kit.KitId);
     }
 
     private async Task GetKit()
