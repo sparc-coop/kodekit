@@ -12,10 +12,79 @@
             </p>
         </header>
         <div class="content">
+            <aside class="accessibility-checker">
+                <p class="large">Contrast Checker</p>
+                @if (colorResult != null)
+                {
+                    <h3>@colorResult.Contrast</h3>
+                }
+                <section>
+                    <label>Text Color</label>
+                    <div style="width: 10px; height: 10px; background-color: @pair.FGColor; border-radius: 2px;" @onclick="@(() => FGToggle = !FGToggle)"></div>
+                    @if (!FGToggle)
+                    {
+                        <div class="set-colors">Select a color:</div>
+                        <div class="set-colors">
+
+                            <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "fg"))"></div>
+                        </div>
+                    }
+
+                </section>
+
+                <section>
+                    <label>Background Color</label>
+                    <div style="width: 10px; height: 10px; background-color: @pair.BGColor; border-radius: 2px;" @onclick="@(() => BGToggle = !BGToggle)"></div>
+                    @if (!BGToggle)
+                    {
+                        <div class="set-colors">Select a color:</div>
+                        <div class="set-colors">
+
+                            <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "bg"))"></div>
+                        </div>
+                    }
+
+                </section>
+                <section>
+                    <label>Large Text</label>
+                    @if (colorResult.AaText == "pass")
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+
+                </section>
+                <section>
+                    <label>Small Text</label>
+                    @if (colorResult.AaHeadline == "pass")
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+                </section>
+
+
+            </aside>
             <h3>Brand Colors</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
+            <section>
+                <p class="subheader">
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                </p>
+            </section>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
@@ -27,6 +96,7 @@
                                 @kit.PrimaryColor
                             </span>
                         </label>
+
                         <label>
                             Secondary
                             <span>
@@ -41,6 +111,7 @@
                                 @kit.TertiaryColor
                             </span>
                         </label>
+
                     </div>
                     <div class="preview-example">
                         <div>
@@ -205,10 +276,11 @@ $success-100
                         </p>
                         <section>
                             <div class="preview-mockup--left">
-                                <img src="/images/example1.png" alt="Example" />
+                                <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-                                    <h5>Information</h5>
+
                                     <h4>Brand Colors</h4>
+                                    <h5>Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
@@ -216,8 +288,8 @@ $success-100
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h5>Information</h5>
                                 <h4>Brand Colors</h4>
+                                <h5>Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
@@ -239,11 +311,16 @@ $success-100
 </div>
 
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject IJSRuntime JS
 
 @code {
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
     string currentKitId;
+    ColorResults colorResult = new ColorResults();
+    ColorPair pair = new ColorPair();
+    bool FGToggle = true;
+    bool BGToggle = true;
 
     protected override async Task OnInitializedAsync()
     {
@@ -279,6 +356,66 @@ $success-100
         kit.ErrorColor = "#F96464";
         kit.WarningColor = "#FF8F39";
         kit.SuccessColor = "#5ACA75";
+
+        pair.BGColor = kit.LightColor;
+        pair.FGColor = kit.DarkColor;
+
+        await CheckColors();
+    }
+
+    async Task CheckColors()
+    {
+        //api method
+        var strToSend = pair.BGColor.Substring(1) + "+" + pair.FGColor.Substring(1);
+
+        var contrastApiResults = await Api.ColorContrastCheckerAsync(strToSend);
+
+        colorResult.AaText = contrastApiResults.Aa;
+        colorResult.AaHeadline = contrastApiResults.AaLarge;
+        colorResult.Contrast = contrastApiResults.Ratio;
+
+
+
+        //javascript method
+        //await JS.InvokeVoidAsync("checkColors", pair.Color1, pair.Color2);
+        //var str = System.Text.Json.JsonSerializer.Serialize<ColorResults>(json);
+        //colorResult.Contrast = await JS.InvokeAsync<string>("colorData.contrast");
+        //colorResult.AaText = await JS.InvokeAsync<string>("colorData.aaText");
+        //colorResult.AaLarge = await JS.InvokeAsync<string>("colorData.aaHeadline");
+
+        //colorResult = System.Text.Json.JsonSerializer.Deserialize<ColorResults>(str);
+
+        StateHasChanged();
+
+    }
+
+    async void UpdateColors(string color, string type)
+    {
+        if (type == "fg")
+        {
+            pair.FGColor = color;
+            FGToggle = !FGToggle;
+        }
+        else
+        {
+            pair.BGColor = color;
+            BGToggle = !BGToggle;
+        }
+
+        await CheckColors();
+    }
+
+    public class ColorResults
+    {
+        public string Contrast { get; set; }
+        public string AaText { get; set; }
+        public string AaHeadline { get; set; }
+    }
+
+    public class ColorPair
+    {
+        public string BGColor { get; set; }
+        public string FGColor { get; set; }
     }
 
 }
