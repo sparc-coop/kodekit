@@ -163,8 +163,14 @@
     protected override async Task OnInitializedAsync()
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
-        Console.WriteLine(currentKitId);
-        kit = await PublicApi().GetKitAsync(currentKitId);
+        if(string.IsNullOrEmpty(currentKitId))
+        {
+            kit = await PublicApi().CreateKitAsync(new Kit());
+        } else
+        {
+            kit = await PublicApi().GetKitAsync(currentKitId);
+        }
+
         ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
             : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
 
@@ -174,7 +180,7 @@
         {
             Kits = await Api.GetRelatedKitsAsync(currentKitId);
             UserKits = await Api.GetUserKitsAsync();
-        } 
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
