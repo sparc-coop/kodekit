@@ -55,7 +55,7 @@
     {
         Kit newKit = new Kit();
         newKit.UserId = User.UserId;
-        newKit = await Api.CreateKitAsync(newKit);
+        newKit = await PublicApi().CreateKitAsync(newKit);
         Nav.NavigateTo("/typography/" + newKit.KitId);
     }
 

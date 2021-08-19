@@ -1,6 +1,7 @@
-﻿@page "/installation"
+﻿@inherits HighlightPageBase
+@page "/installation"
 
-<div class="page">
+<div class="page installation">
     <div class="page__container">
         <header>
             <div class="title">Getting Started</div>
@@ -15,9 +16,15 @@
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             <div class="steps">1. Add Script</div>
-            <pre>
-<code></code>
-            </pre>
+            <div class="instructions">
+                <button @onclick="StepOne">Copy</button>
+                <pre>
+<code>
+    &lt;link rel="stylesheet" href="https://kodekit.com/stylesheet.min.css"&gt;
+</code>
+                </pre>
+            </div>
+
             <div class="steps">2. Auto Update</div>
             <p>
                 Each time you change, update or save your Kodekit theme, your projects
@@ -29,11 +36,26 @@
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
         </p>
         <div class="steps">1. Download your .scss file</div>
-        <button>Download .scss file</button>
+        <button class="download">Download .scss file</button>
         <div class="steps">2. Install & Link</div>
         <p>
             Each time you change, update or save your Kodekit theme, your projects
             using the theme script will auto-update, allowing you to make changes to your live project.
         </p>
+        <div class="instructions">
+            <button @onclick="StepOne">Copy</button>
+            <pre>
+<code>
+    &lt;link rel="stylesheet" href="css/stylesheet.min.css"&gt;
+</code>
+                </pre>
+        </div>
     </div>
 </div>
+
+@code {
+    private void StepOne()
+    {
+        //copy to clipboard step one link
+    }
+}

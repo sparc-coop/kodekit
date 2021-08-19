@@ -57,14 +57,14 @@
     private async Task Publish()
     {
         string result = await localStorage.GetItemAsync<string>("kodekitId");
-        Kit kit = await Api.GetKitAsync(result);
+        Kit kit = await PublicApi().GetKitAsync(result);
 
         if (User != null)
         {
             kit.UserId = User.Id;
         }
 
-        await Api.PublishKitAsync(kit);
+        await PublicApi().PublishKitAsync(kit);
     }
 
     private void GoTo()

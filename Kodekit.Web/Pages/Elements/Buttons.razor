@@ -174,17 +174,17 @@
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
     }
 
     private async Task Submit()
     {
-        await Api.UpdateKitAsync(kit);
+        await PublicApi().UpdateKitAsync(kit);
         Nav.NavigateTo("/inputs/" + kit.KitId);
     }
 

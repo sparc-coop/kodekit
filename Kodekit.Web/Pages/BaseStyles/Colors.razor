@@ -329,7 +329,7 @@ $success-100
 
     private async Task Submit()
     {
-        await Api.UpdateKitAsync(kit);
+        await PublicApi().UpdateKitAsync(kit);
         Nav.NavigateTo("/icons/" + kit.KitId);
     }
 
@@ -341,11 +341,11 @@ $success-100
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
 
         kit.PrimaryColor = "#0B5FFF";
@@ -368,7 +368,7 @@ $success-100
         //api method
         var strToSend = pair.BGColor.Substring(1) + "+" + pair.FGColor.Substring(1);
 
-        var contrastApiResults = await Api.ColorContrastCheckerAsync(strToSend);
+        var contrastApiResults = await PublicApi().ColorContrastCheckerAsync(strToSend);
 
         colorResult.AaText = contrastApiResults.Aa;
         colorResult.AaHeadline = contrastApiResults.AaLarge;
