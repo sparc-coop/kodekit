@@ -133,11 +133,11 @@
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
 
         kit.LightColor = "#F3F3F9";

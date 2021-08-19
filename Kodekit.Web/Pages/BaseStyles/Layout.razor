@@ -77,12 +77,12 @@ $mobile: 320px;
 
     private async Task Save()
     {
-        await Api.UpdateKitAsync(kit);
+        await PublicApi().UpdateKitAsync(kit);
     }
 
     private async Task Publish()
     {
-        await Api.PublishKitAsync(kit);
+        await PublicApi().PublishKitAsync(kit);
         Nav.NavigateTo("/my-kits");
     }
 }

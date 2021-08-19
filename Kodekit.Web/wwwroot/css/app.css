@@ -780,6 +780,28 @@
   bottom: 140px;
   left: 0; }
 
+.installation .instructions {
+  background: #22272e;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  padding-top: 20px;
+  margin: 16px 0 40px 0;
+  height: 50px; }
+  .installation .instructions button {
+    font-size: 12px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #22272e;
+    border: 1px solid #787980;
+    border-radius: 8px;
+    color: #787980;
+    margin-top: 0; }
+
+.installation .download {
+  margin-bottom: 40px; }
+
 .theme-page section {
   width: 1060px; }
   @media screen and (max-width: 1410px) {
@@ -1315,7 +1337,8 @@
   .page-info .kit-select {
     color: #3A3A40;
     font-size: 14px;
-    cursor: pointer; }
+    cursor: pointer;
+    position: relative; }
     .page-info .kit-select img {
       vertical-align: middle;
       margin-left: 2px; }
@@ -1336,12 +1359,15 @@
     .page-info .info--time {
       color: #A9ACB2;
       padding: 6px 18px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
       line-height: 14px;
       letter-spacing: 0.02em;
       text-align: left;
       text-transform: uppercase; }
+      .page-info .info--time a {
+        color: #0B5FFF;
+        text-decoration: none; }
   .page-info .history {
     cursor: pointer;
     font-size: 12px;
@@ -1483,6 +1509,31 @@
         -ms-transform: translateX(10px);
         transform: translateX(10px);
         background-color: #0B5FFF; }
+  .page-info .user-kits--dropdown {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    width: 210px;
+    box-sizing: border-box;
+    padding: 15px 20px 15px 15px;
+    position: absolute;
+    left: -15px;
+    top: 10px;
+    display: block;
+    z-index: 10; }
+    .page-info .user-kits--dropdown li {
+      list-style-type: none;
+      padding: 5px 0;
+      color: #17171A; }
+      .page-info .user-kits--dropdown li:hover {
+        color: #0B5FFF; }
+      .page-info .user-kits--dropdown li img {
+        margin-right: 10px; }
+      .page-info .user-kits--dropdown li span {
+        font-size: 11px;
+        display: block;
+        color: #787980;
+        margin-left: 25px; }
 
 body {
   margin: 0;
