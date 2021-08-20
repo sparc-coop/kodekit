@@ -34,20 +34,20 @@
             <div class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown">
                 @if (ShowDropdown == false)
                 {
-                    <img class="icon-left" src="/images/history-icon.svg" />
+                    <img class="icon-left" src="/images/history-icon.svg" alt="History Icon" />
                 }
                 else
                 {
-                    <img class="icon-left" src="/images/blue-history-icon.svg" />
+                    <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon" />
                 }
                 Version History
                 @if (ShowDropdown == false)
                 {
-                    <img class="icon-right" src="/images/dropdown-icon.svg" />
+                    <img class="icon-right" src="/images/dropdown-icon.svg" alt="Down Icon" />
                 }
                 else
                 {
-                    <img class="icon-left" src="/images/blue-close-icon.svg" />
+                    <img class="icon-left" src="/images/blue-close-icon.svg" alt="Close Icon" />
                 }
             </div>
         }
