@@ -21,7 +21,7 @@
                     <div>
                         <div class="section-container">
                             <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" @onchange="SetDefault">
                                 <span class="slider"></span>
                             </label>
                             Reset Everything to Default
@@ -157,9 +157,15 @@
 
 @code {
     private Kit kit = new Kit();
+    private GlobalSettings settings = new GlobalSettings();
     [Parameter] public string kitId { get; set; }
 
     protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task SetDefault()
     {
 
     }
