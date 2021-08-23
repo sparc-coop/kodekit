@@ -331,7 +331,7 @@
     background: #3C7FFF;
     color: #FFFFFF; }
     .buttons .preview-example .hover-secondary {
-      background: #E5F7F6;
+      background: #FFFFFF;
       border: 1px solid #2AD2C6;
       color: #2AD2C6; }
   .buttons .preview-example .disabled {
@@ -342,12 +342,12 @@
       background: #FFFFFF;
       color: #D2D4D9;
       border: 1px solid #D2D4D9; }
-  .buttons .preview-example img {
+  .buttons .preview-example svg {
     vertical-align: middle;
     margin: 0;
     margin-top: -2px; }
   .buttons .preview-example .remove {
-    border: unset; }
+    border: 1px solid transparent !important; }
 
 .anchors .preview-example {
   padding: 30px 30px 50px; }
@@ -491,26 +491,46 @@
     height: 20px;
     width: 20px; }
 
+.colors .content {
+  position: relative; }
+
 .colors aside {
   box-sizing: border-box;
   border-radius: 8px;
-  padding: 25px;
-  background: #fff;
-  float: right;
-  width: 250px;
-  margin: 10%; }
+  padding: 16px;
+  background: #FFFFFF;
+  width: 150px;
+  position: absolute;
+  top: -150px;
+  right: 0;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); }
+  .colors aside .title {
+    font-size: 10px;
+    color: #A9ACB2;
+    margin: 0; }
+  .colors aside h3 {
+    font-size: 24px;
+    color: #17171A;
+    margin: 2px 0 10px; }
   .colors aside section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 2px; }
+    .colors aside section label {
+      font-size: 11px;
+      color: #3A3A40; }
+      .colors aside section label div {
+        cursor: pointer; }
     .colors aside section .set-colors {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 100%; }
+      width: 100%;
+      font-size: 12px; }
       .colors aside section .set-colors div {
-        margin: 4px; }
+        margin: 4px;
+        cursor: pointer; }
 
 .colors label {
   font-weight: normal;
