@@ -110,6 +110,7 @@
 
         .icon-left {
             margin-top: -2px;
+            width: 12px;
         }
 
         .icon-right {
@@ -122,7 +123,7 @@
             background: $white;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
             border-radius: 8px;
-            width: 232px;
+            width: 250px;
             height: 340px;
             box-sizing: border-box;
             padding: 24px;
@@ -146,7 +147,22 @@
                 margin: 0;
 
                 li {
-                    padding: 5px 0;
+                    padding: 8px 0;
+                    cursor: pointer;
+                    position: relative;
+
+                    input {
+                        padding: 2px 6px;
+                        width: 150px;
+                    }
+
+                    button {
+                        color: $primary500;
+                        margin-top: 4px;
+                        background: $background;
+                        border: 1px solid $primary500;
+                        border-radius: 4px;
+                    }
                 }
             }
 
@@ -162,6 +178,84 @@
                 font-size: 11px;
                 color: $gray400;
                 text-transform: uppercase;
+            }
+
+            .material-icons {
+                vertical-align: middle;
+                color: $gray400;
+                font-size: 16px;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+
+    .publish-options {
+        height: 158px;
+        width: 134px;
+        z-index: 1;
+        box-sizing: border-box;
+        border-radius: 8px;
+        padding: 4px 16px;
+        position: absolute;
+        right: -5px;
+        background: $white;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                padding: 8px 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .auto-publish {
+        border-top: 1px solid $gray100;
+        padding-top: 16px;
+        color: $gray500;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 24px;
+        width: 203px;
+        margin: 0 auto;
+
+        .switch {
+            width: 26px;
+            height: 15px;
+        }
+
+        .slider {
+            background-color: $white;
+            border: 1px solid $gray400;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 9px;
+                width: 9px;
+                left: 2.5px;
+                bottom: 2px;
+            }
+        }
+
+        input {
+
+            &:checked + .slider {
+                background-color: $white;
+                border: 1px solid $primary500;
+
+                &:before {
+                    -webkit-transform: translateX(10px);
+                    -ms-transform: translateX(10px);
+                    transform: translateX(10px);
+                    background-color: $primary500;
+                }
             }
         }
     }

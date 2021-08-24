@@ -52,8 +52,12 @@ $large-mobile: 480px;
 $mobile: 320px;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
+                    <button @onclick="Save">
+                        Save
+                        <img src="/images/eyecon.svg" />
+                    </button>
+                    <button @onclick="Publish">
+                        Save & Publish
                         <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
@@ -71,9 +75,14 @@ $mobile: 320px;
 
     }
 
-    private async Task Submit()
+    private async Task Save()
     {
-        //save
-        Nav.NavigateTo("/effects/" + kit.Id);
+        await Api.UpdateKitAsync(kit);
+    }
+
+    private async Task Publish()
+    {
+        await Api.PublishKitAsync(kit);
+        Nav.NavigateTo("/my-kits");
     }
 }

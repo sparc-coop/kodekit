@@ -1023,7 +1023,8 @@
       border-radius: 4px; }
 
 .dashboard .page__container {
-  max-width: 1056px; }
+  max-width: 1056px;
+  margin-top: 100px; }
 
 .dashboard h2 {
   font-size: 20px; }
@@ -1046,22 +1047,22 @@
       margin: 20px auto; } }
 
 .dashboard .sort {
-  position: absolute;
-  top: 0;
-  right: 0;
+  /*        position: absolute;
+        top: 0;
+        right: 0;*/
   width: 150px;
   height: 27px;
   padding: 6px 12px;
   font-size: 12px;
   color: #3A3A40;
   background: #F5F7FA;
-  border: 1px solid #D2D4D9;
+  border: none !important;
   box-sizing: border-box;
   border-radius: 4px; }
 
 .dashboard-card {
   margin: 16px;
-  height: 341px;
+  height: 329px;
   width: 320px;
   border-radius: 8px;
   padding: 24px;
@@ -1074,11 +1075,26 @@
   .dashboard-card .title {
     color: #17171A;
     font-size: 20px;
-    line-height: 24px; }
+    line-height: 24px;
+    padding-top: 16px; }
   .dashboard-card .date {
     color: #A9ACB2;
     font-size: 12px;
     line-height: 14.4px; }
+
+.dashboard--header {
+  display: flex; }
+  .dashboard--header button {
+    width: 138px;
+    height: 31px;
+    font-size: 12px;
+    padding: 6px 11px;
+    margin-top: 0; }
+  .dashboard--header .right {
+    position: absolute;
+    right: 0;
+    width: 358px;
+    display: flex; }
 
 .main {
   margin-left: 256px; }
@@ -1150,7 +1166,8 @@
   .header .logo {
     font-weight: 500;
     font-size: 14px;
-    padding-left: 20px; }
+    padding-left: 20px;
+    font-family: Inter; }
     @media screen and (max-width: 780px) {
       .header .logo {
         margin: 0 auto;
@@ -1354,7 +1371,8 @@
     .page-info .history img {
       vertical-align: middle; }
     .page-info .history .icon-left {
-      margin-top: -2px; }
+      margin-top: -2px;
+      width: 12px; }
     .page-info .history .icon-right {
       position: absolute;
       right: 7px;
@@ -1363,7 +1381,7 @@
       background: #FFFFFF;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
       border-radius: 8px;
-      width: 232px;
+      width: 250px;
       height: 340px;
       box-sizing: border-box;
       padding: 24px;
@@ -1383,7 +1401,18 @@
         padding: 0 0 0 20px;
         margin: 0; }
         .page-info .history--dropdown ul li {
-          padding: 5px 0; }
+          padding: 8px 0;
+          cursor: pointer;
+          position: relative; }
+          .page-info .history--dropdown ul li input {
+            padding: 2px 6px;
+            width: 150px; }
+          .page-info .history--dropdown ul li button {
+            color: #0B5FFF;
+            margin-top: 4px;
+            background: #F5F7FA;
+            border: 1px solid #0B5FFF;
+            border-radius: 4px; }
       .page-info .history--dropdown .current, .page-info .history--dropdown li {
         color: #17171A;
         font-size: 12px;
@@ -1394,6 +1423,61 @@
         font-size: 11px;
         color: #A9ACB2;
         text-transform: uppercase; }
+      .page-info .history--dropdown .material-icons {
+        vertical-align: middle;
+        color: #A9ACB2;
+        font-size: 16px;
+        position: absolute;
+        right: 0; }
+  .page-info .publish-options {
+    height: 158px;
+    width: 134px;
+    z-index: 1;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 4px 16px;
+    position: absolute;
+    right: -5px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); }
+    .page-info .publish-options ul {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      .page-info .publish-options ul li {
+        padding: 8px 0;
+        cursor: pointer; }
+  .page-info .auto-publish {
+    border-top: 1px solid #F5F7FA;
+    padding-top: 16px;
+    color: #787980;
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left: 24px;
+    width: 203px;
+    margin: 0 auto; }
+    .page-info .auto-publish .switch {
+      width: 26px;
+      height: 15px; }
+    .page-info .auto-publish .slider {
+      background-color: #FFFFFF;
+      border: 1px solid #A9ACB2; }
+      .page-info .auto-publish .slider:before {
+        position: absolute;
+        content: "";
+        height: 9px;
+        width: 9px;
+        left: 2.5px;
+        bottom: 2px; }
+    .page-info .auto-publish input:checked + .slider {
+      background-color: #FFFFFF;
+      border: 1px solid #0B5FFF; }
+      .page-info .auto-publish input:checked + .slider:before {
+        -webkit-transform: translateX(10px);
+        -ms-transform: translateX(10px);
+        transform: translateX(10px);
+        background-color: #0B5FFF; }
 
 body {
   margin: 0;
@@ -1416,7 +1500,7 @@ body {
     align-self: flex-end;
     animation-duration: 1.5s;
     animation-iteration-count: infinite;
-    height: 30px;
+    height: 50px;
     margin: 0 auto 0 auto;
     transform-origin: bottom;
     width: 200px; }

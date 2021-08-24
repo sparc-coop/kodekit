@@ -1,11 +1,11 @@
 ﻿<div class="login-display">
     <AuthorizeView>
         <Authorized>
-            <div class="user-menu">
+            <div class="user-menu"  @onclick="ToggleMenu">
                 <span class="material-icons">
                     account_circle
                 </span>
-                <span class="material-icons" @onclick="ToggleMenu">
+                <span class="material-icons">
                     arrow_drop_down
                 </span>
             </div>
