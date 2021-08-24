@@ -3,11 +3,19 @@
 
 <div class="dashboard page">
     <div class="page__container">
-        <h2>Your Projects</h2>
-        <select class="sort">
-            <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-        </select>
-        <button @onclick="@(e => Nav.NavigateTo("/typography"))">New Kit</button>
+        <div class="dashboard--header">
+            <h2>Your Styleguides</h2>
+            <div class="right">
+                <select class="sort">
+                    <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
+                </select>
+                <button @onclick="@(CreateNew)">
+                    New Styleguide
+                    <img src="/images/add-icon.svg" />
+                </button>
+            </div>
+        </div>
+
         @if (Kits == null)
         {
             <p>Create a new kit to get started!</p>
@@ -41,6 +49,14 @@
     {
         User = await Api.GetUserAsync();
         Kits = await Api.GetUserKitsAsync();
+    }
+
+    private async Task CreateNew()
+    {
+        Kit newKit = new Kit();
+        newKit.UserId = User.UserId;
+        newKit = await Api.CreateKitAsync(newKit);
+        Nav.NavigateTo("/typography/" + newKit.KitId);
     }
 
     private void Sort(string filter)
