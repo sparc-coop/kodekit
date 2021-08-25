@@ -1,1 +1,11 @@
-﻿
+﻿@import "../../_variables";
+
+.layout {
+    .switch {
+        vertical-align: middle;
+    }
+
+    pre {
+        border-radius: 8px;
+    }
+}

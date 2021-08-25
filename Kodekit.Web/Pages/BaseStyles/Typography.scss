@@ -1,12 +1,33 @@
-﻿.typography {
+﻿@import "../../_variables";
+
+.typography {
+
+    .content {
+        position: relative;
+    }
+
     aside {
         box-sizing: border-box;
         border-radius: 8px;
-        padding: 25px;
-        background: #fff;
-        float: right;
-        width: 250px;
-        margin: 10%;
+        padding: 16px;
+        background: $white;
+        width: 150px;
+        position: absolute;
+        top: -150px;
+        right: 0;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+        .title {
+            font-size: 10px;
+            color: $gray400;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: $gray900;
+            margin: 2px 0 10px;
+        }
 
         section {
             display: flex;
@@ -14,14 +35,25 @@
             align-items: center;
             padding-bottom: 2px;
 
+            label {
+                font-size: 11px;
+                color: $gray700;
+
+                div {
+                    cursor: pointer;
+                }
+            }
+
             .set-colors {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
                 width: 100%;
+                font-size: 12px;
 
                 div {
                     margin: 4px;
+                    cursor: pointer;
                 }
             }
         }
