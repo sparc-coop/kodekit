@@ -36,7 +36,7 @@
     line-height: 19.2px;
     color: #3A3A40; }
   .page .subheader {
-    color: #787980;
+    color: #3A3A40;
     max-width: 496px;
     font-size: 16px; }
   .page button {
@@ -56,7 +56,7 @@
   .page label {
     font-size: 14px;
     line-height: 180%;
-    color: #787980; }
+    color: #3A3A40; }
   .page input, .page select {
     background: #FFFFFF;
     border: 1px solid #D2D4D9;
@@ -68,7 +68,7 @@
     font-size: 16px;
     line-height: 160%;
     height: 40px;
-    color: #787980; }
+    color: #3A3A40; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: -20px 0 50px 0;
@@ -99,7 +99,7 @@
       margin: 0 30px 20px 0;
       font-size: 16px;
       line-height: 160%;
-      color: #787980; }
+      color: #3A3A40; }
     .page .section .large, .page section .large {
       width: 486px; }
     .page .section .medium, .page section .medium {
@@ -517,7 +517,7 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 180%;
-  color: #787980; }
+  color: #3A3A40; }
 
 .colors input {
   background: #FFFFFF;
@@ -877,7 +877,7 @@
       color: #D2D4D9;
       padding: 4px 0 24px 0; }
     .landing .hero .example label {
-      color: #787980;
+      color: #3A3A40;
       font-family: Roboto;
       font-size: 14px;
       line-height: 180%;
@@ -894,6 +894,7 @@
       .landing .hero .example label input {
         display: block;
         font-family: Roboto Mono;
+        color: #3A3A40;
         padding: 8px 16px 8px 44px;
         border: 1px solid #E7E7ED;
         background: #F7F8F9;
@@ -914,7 +915,8 @@
         font-size: 16px;
         width: 290px;
         border-radius: 4px;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        color: #3A3A40; }
   .landing .hero .arrow__container {
     text-align: center;
     position: absolute;
@@ -1126,7 +1128,7 @@
     .sidebar .menu a {
       display: block;
       text-decoration: none;
-      color: #787980;
+      color: #3A3A40;
       font-size: 14px;
       margin: 0 16px;
       padding: 8px 0; }
@@ -1308,7 +1310,7 @@
   .page-info > div {
     display: flex; }
   .page-info .title {
-    color: #A9ACB2;
+    color: #3A3A40;
     font-size: 14px; }
     .page-info .title img {
       margin: 0 8px; }
@@ -1334,7 +1336,7 @@
       .page-info .info {
         flex-wrap: wrap; } }
     .page-info .info--time {
-      color: #A9ACB2;
+      color: #3A3A40;
       padding: 6px 18px;
       font-size: 12px;
       font-weight: 400;
@@ -1352,7 +1354,7 @@
     box-sizing: border-box;
     padding: 3px 7px;
     border-radius: 100px;
-    color: #787980;
+    color: #3A3A40;
     height: 22px;
     width: 138px;
     margin-left: 18px;

@@ -4,11 +4,11 @@
         <div class="breadcrumbs">
             <div class="title">
                 My Styleguides
-                <img src="/images/right-icon.svg" />
+                <img src="/images/right-icon.svg" alt="Right" />
             </div>
             <div class="kit-select">
                 Untitled Styleguide
-                <img src="/images/dropdown-icon.svg" />
+                <img src="/images/dropdown-icon.svg" alt="Dropdown" />
             </div>
         </div>
         <div class="info">
@@ -24,20 +24,20 @@
             <div class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown">
                 @if (ShowDropdown == false)
                 {
-                    <img class="icon-left" src="/images/history-icon.svg" />
+                    <img class="icon-left" src="/images/history-icon.svg" alt="History Icon" />
                 }
                 else
                 {
-                    <img class="icon-left" src="/images/blue-history-icon.svg" />
+                    <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon" />
                 }
                 Version History
                 @if (ShowDropdown == false)
                 {
-                    <img class="icon-right" src="/images/dropdown-icon.svg" />
+                    <img class="icon-right" src="/images/dropdown-icon.svg" alt="Down Icon" />
                 }
                 else
                 {
-                    <img class="icon-right" src="/images/blue-close-icon.svg" />
+                    <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close Icon" />
                 }
             </div>
         </div>
