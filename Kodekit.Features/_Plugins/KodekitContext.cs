@@ -9,9 +9,8 @@ namespace Kodekit.Features
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<User>().HasNoKey();//.HasPartitionKey(x => x.UserId);
-            builder.Entity<Kit>().HasPartitionKey(x => x.KitId);//x.UserId);
+            builder.Entity<User>().HasNoKey();
+            builder.Entity<Kit>().HasPartitionKey(x => x.KitId);
         }
-
     }
 }

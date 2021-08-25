@@ -13,7 +13,7 @@
         </header>
         <div class="content">
             <aside class="accessibility-checker">
-                <p class="large">Contrast Checker</p>
+                <p class="title">Contrast Checker</p>
 
                 <h3>@totalScore%</h3>
 
@@ -85,30 +85,45 @@
             {
                 <EditForm Model="@kit">
                     <div class="section">
-                        <label>
-                            Preview Text
-                            <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
-                        </label>
-                        <label>
-                            Choose heading font
-                            <select class="medium">
-                                <option selected>Roboto Mono</option>
-                            </select>
-                        </label>
-                        <label>
-                            Base Font Size (px)
-                            <InputText @bind-Value="kit.HeaderFontSize" class="small" />
-                        </label>
-                        <label>
-                            Choose a Type Scale
-                            <select class="medium">
-                                <option selected>1.250 (Major Third)</option>
-                            </select>
-                        </label>
-                        <label>
-                            Line Height
-                            <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
-                        </label>
+                        <div>
+                            <label>
+                                Preview Text
+                                <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Heading Font
+                                <select class="medium">
+                                    <option selected>Roboto Mono</option>
+                                </select>
+                            </label>
+                            <label>
+                                Default Heading Weight
+                                <select>
+                                    <option>Light (300)</option>
+                                    <option selected>Regular (400)</option>
+                                    <option>Medium (500)</option>
+                                    <option>Bold (700)</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Base Font Size (px)
+                                <InputText @bind-Value="kit.HeaderFontSize" class="small" />
+                            </label>
+                            <label>
+                                Choose a Type Scale
+                                <select class="medium">
+                                    <option selected>1.250 (Major Third)</option>
+                                </select>
+                            </label>
+                            <label>
+                                Line Height
+                                <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
+                            </label>
+                        </div>
                     </div>
                     <div class="preview-example">
                         <div>
@@ -155,14 +170,14 @@
 </pre>
                     <h3>Paragraph Settings</h3>
                     <div class="section">
-                        <label class="preview">
+                        <label class="preview" style="margin-right: 32px;">
                             Preview Text
-                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
+                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput"/>
                         </label>
                         <label>
-                            Choose Body font
+                            Paragraph Font
                             <select class="medium">
-                                <option selected>Roboto Mono</option>
+                                <option selected>Roboto</option>
                             </select>
                         </label>
                         <label>

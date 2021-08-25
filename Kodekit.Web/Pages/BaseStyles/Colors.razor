@@ -80,11 +80,10 @@
 
             </aside>
             <h3>Brand Colors</h3>
-            <section>
-                <p class="subheader">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-                </p>
-            </section>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+  
             @if (kit != null)
             {
                 <EditForm Model="@kit">
@@ -278,24 +277,23 @@ $success-100
                             <div class="preview-mockup--left">
                                 <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-
-                                    <h4>Brand Colors</h4>
-                                    <h5>Information</h5>
+                                    <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
+                                    <h5 style="color: @(kit.TertiaryColor)">Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button>Primary CTA</button>
+                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h4>Brand Colors</h4>
-                                <h5>Information</h5>
+                                <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
+                                <h5 style="color: @(kit.TertiaryColor)">Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
                                 <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="button-secondary">Secondary CTA</button>
+                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
+                                    <button class="button-secondary" style="color: @(kit.SecondaryColor)">Secondary CTA</button>
                                 </div>
                             </div>
                         </section>

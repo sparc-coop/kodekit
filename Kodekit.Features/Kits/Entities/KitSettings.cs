@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Sparc.Core;
+using System;
 
-namespace Kodekit.Features.Kits.Entities
+namespace Kodekit.Features
 {
-    public class GlobalSettings
+    public class KitSettings
     {
+        public string KitId { get; set; }
         public bool? ResetEverything { get; set; }
         public bool? ResetHeadings { get; set; }
         public bool? ResetParagraphs { get; set; }
