@@ -1,6 +1,10 @@
 ﻿@page  "/icons"
 @page  "/icons/{kitId}"
 
+<style type="text/css" scoped>
+      @@import url('@icon.Url');
+</style>
+
 <div class="effects page">
     <div class="page__container">
         <header>
@@ -21,19 +25,28 @@
                     <section>
                         <label>
                             Icon Set
-                            <select>
-                                <option>Remix Icons</option>
+                            <select @onchange="@SelectIcons">
+                                <option>Select:</option>
+                                <option value="Material">Material</option>
+                                <option value="Remix">Remix</option>
+                                <option value="CSS">CSS</option>
+                                <option value="FontAwesome">FontAwesome</option>
                             </select>
                         </label>
-                        <label>
-                            Set Variation
-                            <select>
-                                <option>Outline</option>
-                            </select>
-                        </label>
+                        @*@if (icon.Name == "Material" || icon.Name == "Remix")
+                        {
+                            <label>
+                                Set Variation
+                                <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
+                                    <option value="Solid">Solid</option>
+                                    <option value="Outline">Outline</option>
+                                </select>
+                            </label>
+                        }*@
+
                     </section>
                     <div class="preview-example">
-
+                        @((MarkupString)icon.Markup)
                     </div>
                     <div class="code-example">
                         <code>
@@ -42,7 +55,7 @@
                     </div>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
@@ -54,10 +67,18 @@
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
     string currentKitId;
+    string importUrl = "";
+    IconLibrary icon = new IconLibrary();
 
     protected override async Task OnInitializedAsync()
     {
         await GetKit();
+
+        //icon.Name = "Material";
+
+        //icon.Url = "https://fonts.googleapis.com/icon?family=Material+Icons";
+        //icon.Markup = "<span class='material-icons'>home</span>";
+        //icon.Type = "Solid";
     }
 
     private async Task GetKit()
@@ -80,5 +101,49 @@
     {
         await PublicApi().UpdateKitAsync(kit);
         Nav.NavigateTo("/buttons/" + kit.KitId);
+    }
+
+    void SelectIcons(ChangeEventArgs e)
+    {
+        var materialUrl = ""; // commenting out due to existing script in index "https://fonts.googleapis.com/icon?family=Material+Icons";
+        var remixUrl = "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css";
+        var cssUrl = "https://css.gg/css";
+        var fontAwesomeUrl = "https://use.fontawesome.com/releases/v5.15.4/css/all.css";
+
+        icon.Name = e.Value.ToString();
+
+        switch (icon.Name)
+        {
+            case "Material":
+                icon.Url = materialUrl;
+                icon.Markup = "<span class='material-icons'>home</span>";
+                break;
+            case "Remix":
+                icon.Url = remixUrl;
+                icon.Markup = "<i class='ri-home-line'></i>";
+                break;
+            case "CSS":
+                icon.Url = cssUrl;
+                icon.Markup = "<i class='gg-home'></i>";
+                break;
+            case "FontAwesome":
+                icon.Url = fontAwesomeUrl;
+                icon.Markup = "<i class='fas fa-home'></i>";
+                break;
+
+                //default:
+                //    icon.Url = materialUrl;
+                //    break;
+        }
+
+        StateHasChanged();
+    }
+
+    public class IconLibrary
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string Markup { get; set; }
+        public string Type { get; set; }
     }
 }
