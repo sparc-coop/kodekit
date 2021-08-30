@@ -1,0 +1,58 @@
+﻿@import "Colors.scss";
+
+.page {
+    background: $background;
+    padding: 138px 80px 100px 80px;
+    font-family: 'Inter', sans-serif;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section.secondary {
+    padding: 40px 32px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 8px 8px 0px 0px;
+    margin-bottom: -20px;
+    color: #17171A;
+    font-family: 'Roboto Mono', monospace;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.code-example {
+    background: $grey-900;
+    border-radius: 0px 0px 8px 8px;
+    padding: 32px;
+    color: $orange;
+    margin-bottom: 40px;
+
+    span {
+        color: $purple;
+    }
+
+    .comment {
+        color: $grey-300;
+    }
+}
+
+.effects {
+    section {
+        padding-bottom: 40px;
+    }
+}
+
+//Preview White background behind hero
+.preview-bg-white {
+    background: $white;
+    height: 70vh;
+    position: absolute;
+    top: 5%;
+    width: 100%;
+}

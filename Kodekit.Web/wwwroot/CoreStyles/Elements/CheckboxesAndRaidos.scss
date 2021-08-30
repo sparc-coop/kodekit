@@ -1,0 +1,19 @@
+﻿.page {
+    .checkboxes, .radios {
+        display: flex;
+
+        label {
+            flex-direction: row;
+            align-items: center;
+            margin-right: 20px;
+
+            input {
+                margin-right: 13px;
+            }
+        }
+
+        label:last-child {
+            margin-right: 0;
+        }
+    }
+}
