@@ -1,27 +1,30 @@
 ﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
 
+
+
+
 .preview {
-
-
-
     p.subtitle {
         color: $secondary-300;
     }
 
     .hero {
-        background: $white;
         margin-left: -8%;
         margin-top: -8%;
         margin-right: -8%;
         padding: 8%;
 
         div {
-            width: 50%;
+            width: 48%;
             display: block;
 
             img {
                 width: 100%;
             }
+        }
+
+        div:first-child{
+            width: 52%;
         }
 
         .get-started {
@@ -36,6 +39,13 @@
 
             h1 {
                 margin-bottom: 24px;
+            }
+        }
+        .get-started{
+            button{
+                position: relative;
+                margin-top: 0;
+                bottom: 0;
             }
         }
     }
@@ -60,6 +70,7 @@
     div {
         display: flex;
         justify-content: space-between;
+        width: 100%;
 
         .feature {
             width: 32%;
@@ -87,7 +98,7 @@
         flex-direction: column;
 
         div {
-            width: 67%;
+            width: 80%;
             margin: 0 auto;
         }
     }
@@ -148,6 +159,10 @@
 
         p.small {
             color: $primary-200;
+        }
+
+        h4{
+            color: $white;
         }
 
         h5 span {
