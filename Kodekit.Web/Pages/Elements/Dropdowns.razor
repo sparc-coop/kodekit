@@ -1,4 +1,5 @@
-﻿@page  "/dropdowns"
+﻿@inherits HighlightPageBase
+@page  "/dropdowns"
 @page  "/dropdowns/{kitId}"
 
 <div class="dropdowns page">
@@ -82,11 +83,16 @@
                             <option>Default Row</option>
                         </select>
                     </div>
-                    <div class="code-example">
-                        <code>
-
+                    <pre>
+                    <code>
+&lt;select&gt;
+&lt;option selected&gt;Dropdown Menu&lt;/option&gt;
+&lt;option&gt;Default Row&lt;/option&gt;
+&lt;option&gt;Default Row&lt;/option&gt;
+&lt;option&gt;Default Row&lt;/option&gt;
+&lt;/select&gt;
                         </code>
-                    </div>
+                    </pre>
                     <button @onclick="Submit">
                         Save & Continue
                         <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
