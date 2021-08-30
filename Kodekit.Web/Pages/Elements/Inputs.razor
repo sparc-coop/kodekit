@@ -1,4 +1,5 @@
-﻿@page  "/inputs"
+﻿@inherits HighlightPageBase
+@page  "/inputs"
 @page "/inputs/{kitId}"
 
 <div class="inputs page">
@@ -17,102 +18,107 @@
             </p>
             @if (kit != null)
             {
-            <EditForm Model="@kit">
-            <div class="section">
-                <label>
-                    Input Font Size
-                    <input placeholder="16px"/>
-                </label>
-                <label>
-                    Input Font Weight
-                    <select>
-                        <option>Light (300)</option>
-                        <option selected>Regular (400)</option>
-                        <option>Medium (500)</option>
-                        <option>Bold (700)</option>
-                    </select>
-                </label>
-                <label>
-                    Vertical Padding
-                    <input placeholder="10px"/>
-                </label>
-                <label>
-                    Horizontal Padding
-                    <InputText @bind-Value="kit.BodyFontSize"/>
-                </label>
-                <label>
-                    Corner Radius
-                    <InputText @bind-Value="kit.BodyFontSize" />
-                </label>
-                <label>
-                    Border Width
-                    <InputText @bind-Value="kit.BodyLineHeight" />
-                </label>
-            </div>
-            <div class="preview-example">
-                <input placeholder="Placeholder" />
-                <label class="icon-space icon-space--nolabel">
-                    <img src="/images/person-icon.svg" alt="Person Icon" />
-                    <input placeholder="Placeholder" />
-                </label>
-                <select>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
-                </select>
-                <textarea>Placeholder</textarea>
-            </div>
-            <div class="code-example">
-                <code>
+                <EditForm Model="@kit">
+                    <div class="section">
+                        <label>
+                            Input Font Size
+                            <input placeholder="16px" />
+                        </label>
+                        <label>
+                            Input Font Weight
+                            <select>
+                                <option>Light (300)</option>
+                                <option selected>Regular (400)</option>
+                                <option>Medium (500)</option>
+                                <option>Bold (700)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Vertical Padding
+                            <input placeholder="10px" />
+                        </label>
+                        <label>
+                            Horizontal Padding
+                            <InputText @bind-Value="kit.BodyFontSize" />
+                        </label>
+                        <label>
+                            Corner Radius
+                            <InputText @bind-Value="kit.BodyFontSize" />
+                        </label>
+                        <label>
+                            Border Width
+                            <InputText @bind-Value="kit.BodyLineHeight" />
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <input placeholder="Placeholder" />
+                        <label class="icon-space icon-space--nolabel">
+                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <input placeholder="Placeholder" />
+                        </label>
+                        <select>
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                        <textarea>Placeholder</textarea>
+                    </div>
+                    <div class="code-example">
+                        <code>
 
+                        </code>
+                    </div>
+
+                    <h3>Input & Textarea states</h3>
+                    <p class="subheader">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                    </p>
+                    <div class="preview-example">
+                        <label class="icon-space">
+                            Placeholder
+                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <input placeholder="username" />
+                            <span>Enter your username.</span>
+                        </label>
+                        <label class="selected icon-space">
+                            Selected
+                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <input placeholder="username" />
+                            <span>Enter your username.</span>
+                        </label>
+                        <label class="icon-space">
+                            Entered
+                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <input placeholder="username" />
+                            <span>Enter your username.</span>
+                        </label>
+                        <label class="error icon-space">
+                            Error
+                            <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
+                            <input value="username" />
+                            <span>Enter your username.</span>
+                        </label>
+                        <label class="disabled icon-space">
+                            Disabled
+                            <img src="/images/person-disabled-icon.svg" alt="Person Input Disabled Icon" />
+                            <input value="enter username" disabled />
+                        </label>
+                    </div>
+                    <pre>
+                    <code>
+&lt;label class="icon-space"&gt;
+Placeholder
+&lt;img src="/images/person-icon.svg" alt="Person Icon" /&gt;
+&lt;input placeholder="username" /&gt;
+&lt;span&gt;Enter your username.&lt;/span&gt;
+&lt;/label&gt;
                 </code>
-            </div>
-
-            <h3>Input & Textarea states</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
-            <div class="preview-example">
-                <label class="icon-space">
-                    Placeholder
-                    <img src="/images/person-icon.svg" alt="Person Icon" />
-                    <input placeholder="username" />
-                    <span>Enter your username.</span>
-                </label>
-                <label class="selected icon-space">
-                    Selected
-                    <img src="/images/person-icon.svg" alt="Person Icon" />
-                    <input placeholder="username" />
-                    <span>Enter your username.</span>
-                </label>
-                <label class="icon-space">
-                    Entered
-                    <img src="/images/person-icon.svg" alt="Person Icon" />
-                    <input placeholder="username" />
-                    <span>Enter your username.</span>
-                </label>
-                <label class="error icon-space">
-                    Error
-                    <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
-                    <input value="username" />
-                    <span>Enter your username.</span>
-                </label>
-                <label class="disabled icon-space">
-                    Disabled
-                    <img src="/images/person-disabled-icon.svg" alt="Person Input Disabled Icon" />
-                    <input value="enter username" disabled />
-                </label>
-            </div>
-            <div class="code-example">
-                <code>
-
-                </code>
-            </div>
-            <button @onclick="Submit">
-                Save & Continue
-                <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-            </button>
-        </EditForm>
+            </pre>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
+                    </button>
+                </EditForm>
             }
         </div>
     </div>

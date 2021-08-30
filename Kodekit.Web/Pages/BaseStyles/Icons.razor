@@ -1,4 +1,5 @@
-﻿@page  "/icons"
+﻿@inherits HighlightPageBase
+@page  "/icons"
 @page  "/icons/{kitId}"
 
 <style type="text/css" scoped>
@@ -34,25 +35,25 @@
                             </select>
                         </label>
                         @*@if (icon.Name == "Material" || icon.Name == "Remix")
-                        {
-                            <label>
-                                Set Variation
-                                <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
-                                    <option value="Solid">Solid</option>
-                                    <option value="Outline">Outline</option>
-                                </select>
-                            </label>
-                        }*@
+                            {
+                                <label>
+                                    Set Variation
+                                    <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
+                                        <option value="Solid">Solid</option>
+                                        <option value="Outline">Outline</option>
+                                    </select>
+                                </label>
+                            }*@
 
                     </section>
                     <div class="preview-example">
                         @((MarkupString)icon.Markup)
                     </div>
-                    <div class="code-example">
-                        <code>
-
+                    <pre>
+                    <code>
+                            @icon.Markup
                         </code>
-                    </div>
+                    </pre>
                     <button @onclick="Submit">
                         Save & Continue
                         <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
