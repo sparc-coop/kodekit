@@ -825,6 +825,11 @@
   .preview .card-section div {
     width: 80%;
     margin: 0 auto; }
+  .preview .card-section .section-container {
+    display: flex;
+    justify-content: center; }
+    .preview .card-section .section-container p:first-child {
+      margin-right: 10px; }
 
 .preview .card {
   border-radius: 12px;

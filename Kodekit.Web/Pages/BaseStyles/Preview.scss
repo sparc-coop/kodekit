@@ -23,7 +23,7 @@
             }
         }
 
-        div:first-child{
+        div:first-child {
             width: 52%;
         }
 
@@ -41,8 +41,9 @@
                 margin-bottom: 24px;
             }
         }
-        .get-started{
-            button{
+
+        .get-started {
+            button {
                 position: relative;
                 margin-top: 0;
                 bottom: 0;
@@ -100,6 +101,15 @@
         div {
             width: 80%;
             margin: 0 auto;
+        }
+
+        .section-container {
+            display: flex;
+            justify-content: center;
+
+            p:first-child{
+                margin-right: 10px;
+            }
         }
     }
 
@@ -161,7 +171,7 @@
             color: $primary-200;
         }
 
-        h4{
+        h4 {
             color: $white;
         }
 
