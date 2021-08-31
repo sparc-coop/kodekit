@@ -15,10 +15,12 @@
         color: $gray400;
 
         input {
+            pointer-events: none;
 
             &:checked + .slider {
                 background-color: $background;
                 border: 2px solid $gray400;
+                pointer-events: none;
 
                 &:before {
                     -webkit-transform: translateX(12px);

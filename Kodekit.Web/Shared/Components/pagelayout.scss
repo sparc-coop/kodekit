@@ -73,8 +73,9 @@
         cursor: pointer;
 
         img {
-            margin-left: 14px;
+            margin-left: 10px;
             vertical-align: middle;
+            margin-top: -2px;
         }
     }
 
@@ -96,6 +97,7 @@
         line-height: 160%;
         height: 40px;
         color: $gray700;
+        cursor: pointer;
     }
 
     pre {

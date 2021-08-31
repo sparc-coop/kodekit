@@ -96,7 +96,7 @@
                             <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
                         </label>
                         <label>
-                            Choose heading font
+                            Heading Font
                             <select class="medium" @onchange='args => SelectFonts(args, "head")'>
                                 @if (fontList.Items != null)
                                 {
@@ -265,7 +265,7 @@
         CheckAccessibility();
 
         bodyFont.Family = "Roboto Mono";
-        headingFont.Family = "Open Sans";
+        headingFont.Family = "Roboto Mono";
 
         var fontSelection = await localStorage.GetItemAsync<FontListResponse>("googleFonts");
 
@@ -275,7 +275,7 @@
         }
         else
         {
-            fontList = await Api.GoogleFontsAsync("");
+            fontList = await PublicApi().GoogleFontsAsync("");
             await localStorage.SetItemAsync<FontListResponse>("googleFonts", fontList);
         }
 

@@ -28,35 +28,35 @@
                         </div>
                         <div class="section-container @disabled">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetHeadings">
+                                <input type="checkbox" @bind="settings.ResetHeadings" disabled="@globalReset">
                                 <span class="slider"></span>
                             </label>
                             Headings
                         </div>
                         <div class="section-container @disabled">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetParagraphs">
+                                <input type="checkbox" @bind="settings.ResetParagraphs" disabled="@globalReset">
                                 <span class="slider"></span>
                             </label>
                             Paragraphs
                         </div>
                         <div class="section-container @disabled">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetLists">
+                                <input type="checkbox" @bind="settings.ResetLists" disabled="@globalReset">
                                 <span class="slider"></span>
                             </label>
                             Lists
                         </div>
                         <div class="section-container @disabled">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetCheckboxes">
+                                <input type="checkbox" @bind="settings.ResetCheckboxes" disabled="@globalReset">
                                 <span class="slider"></span>
                             </label>
                             Checkboxes, Radios & Toggles
                         </div>
                         <div class="section-container @disabled">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetAnchors">
+                                <input type="checkbox" @bind="settings.ResetAnchors" disabled="@globalReset">
                                 <span class="slider"></span>
                             </label>
                             Anchors
@@ -74,72 +74,72 @@
                             </label>
                             All Kodekit Elements
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitTypography">
+                                <input type="checkbox" @bind="settings.KodekitTypography" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Typography
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitColors">
+                                <input type="checkbox" @bind="settings.KodekitColors" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Colors
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitIcons">
+                                <input type="checkbox" @bind="settings.KodekitIcons" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Icons
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitLayout">
+                                <input type="checkbox" @bind="settings.KodekitLayout" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Layout
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitButtons">
+                                <input type="checkbox" @bind="settings.KodekitButtons" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Buttons
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitInputs">
+                                <input type="checkbox" @bind="settings.KodekitInputs" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Inputs & Text Areas
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitCheckboxes">
+                                <input type="checkbox" @bind="settings.KodekitCheckboxes" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Checkboxes & Radios
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitDropdowns">
+                                <input type="checkbox" @bind="settings.KodekitDropdowns" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Dropdowns
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitAnchors">
+                                <input type="checkbox" @bind="settings.KodekitAnchors" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Anchors
                         </div>
-                        <div class="section-container">
+                        <div class="section-container @disabledKodekit">
                             <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitImages">
+                                <input type="checkbox" @bind="settings.KodekitImages" disabled="@kodekitStyleReset">
                                 <span class="slider"></span>
                             </label>
                             Images
@@ -162,6 +162,7 @@
     public bool globalReset = false;
     public bool kodekitStyleReset = false;
     public string disabled = "";
+    public string disabledKodekit = "";
 
     private void SetDefault()
     {
@@ -191,6 +192,7 @@
     {
         @if (kodekitStyleReset == false)
         {
+            disabledKodekit = "disabled";
             kodekitStyleReset = true;
             settings.KodekitTypography = true;
             settings.KodekitColors = true;
@@ -205,6 +207,8 @@
         }
         else
         {
+            disabledKodekit = "";
+            kodekitStyleReset = false;
             settings.KodekitTypography = false;
             settings.KodekitColors = false;
             settings.KodekitIcons = false;
@@ -216,8 +220,6 @@
             settings.KodekitAnchors = false;
             settings.KodekitImages = false;
         }
-
-        //disabled = "disabled";
     }
 
     private async Task Submit()

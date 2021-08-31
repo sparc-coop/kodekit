@@ -53,8 +53,9 @@
     margin-top: 20px;
     cursor: pointer; }
     .page button img {
-      margin-left: 14px;
-      vertical-align: middle; }
+      margin-left: 10px;
+      vertical-align: middle;
+      margin-top: -2px; }
   .page label {
     font-size: 14px;
     line-height: 180%;
@@ -70,7 +71,8 @@
     font-size: 16px;
     line-height: 160%;
     height: 40px;
-    color: #3A3A40; }
+    color: #3A3A40;
+    cursor: pointer; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: -20px 0 50px 0;
@@ -469,6 +471,11 @@
   display: flex;
   flex-wrap: wrap;
   padding: 32px; }
+  .dropdowns .preview-example select {
+    background: url("/images/dropdown-icon.svg") no-repeat right;
+    -webkit-appearance: none;
+    background-position-x: 144px;
+    padding: 8px 40px 8px 16px; }
 
 .dropdowns aside {
   font-size: 12px;
@@ -478,6 +485,13 @@
   .dropdowns aside a {
     text-decoration: none;
     color: #0B5FFF; }
+
+.dropdowns .section select {
+  background: url("/images/dropdown-icon.svg") no-repeat right;
+  background-color: white;
+  -webkit-appearance: none;
+  background-position-x: 125px;
+  padding: 8px 40px 8px 16px; }
 
 .dropdowns .section-container {
   padding: 34px 0;
@@ -764,14 +778,17 @@
 
 .global-page .disabled {
   color: #A9ACB2; }
-  .global-page .disabled input:checked + .slider {
-    background-color: #F5F7FA;
-    border: 2px solid #A9ACB2; }
-    .global-page .disabled input:checked + .slider:before {
-      -webkit-transform: translateX(12px);
-      -ms-transform: translateX(12px);
-      transform: translateX(12px);
-      background-color: #A9ACB2; }
+  .global-page .disabled input {
+    pointer-events: none; }
+    .global-page .disabled input:checked + .slider {
+      background-color: #F5F7FA;
+      border: 2px solid #A9ACB2;
+      pointer-events: none; }
+      .global-page .disabled input:checked + .slider:before {
+        -webkit-transform: translateX(12px);
+        -ms-transform: translateX(12px);
+        transform: translateX(12px);
+        background-color: #A9ACB2; }
 
 .effects-page .preview-example {
   display: flex;
@@ -1136,9 +1153,6 @@
       margin: 20px auto; } }
 
 .dashboard .sort {
-  /*        position: absolute;
-        top: 0;
-        right: 0;*/
   width: 150px;
   height: 27px;
   padding: 6px 12px;

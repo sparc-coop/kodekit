@@ -183,14 +183,6 @@
         }
     }
 
-    protected override void OnAfterRender(bool firstRender)
-    {
-        base.OnAfterRender(firstRender);
-
-        if (Nav.Uri.Contains("my-kits"))
-            ShowPage = false;
-    }
-
     private async Task LoginSucceeded()
     {
         //base.OnParametersSet();
