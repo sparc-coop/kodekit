@@ -1019,19 +1019,19 @@
   left: 0; }
 
 .installation .instructions {
-  background: #22272e;
+  background: #282c34;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
   padding-top: 20px;
   margin: 16px 0 40px 0;
-  height: 50px; }
+  height: 84px; }
   .installation .instructions button {
     font-size: 12px;
     position: absolute;
     top: 16px;
     right: 16px;
-    background: #22272e;
+    background: #282c34;
     border: 1px solid #787980;
     border-radius: 8px;
     color: #787980;
@@ -1046,7 +1046,16 @@
     .theme-page section {
       width: auto; } }
   .theme-page section > div {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    display: block; }
+    .theme-page section > div label {
+      display: block;
+      color: #17171A;
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 16px; }
+    .theme-page section > div h5 {
+      font-weight: 500; }
     @media screen and (max-width: 800px) {
       .theme-page section > div {
         width: 100%; } }
@@ -1064,13 +1073,6 @@
     .theme-page .theme-card {
       width: 100%;
       max-width: 496px; } }
-
-.theme-page label {
-  display: block;
-  color: #17171A;
-  font-size: 16px;
-  font-weight: 500;
-  margin-top: 16px; }
 
 .landing .hero {
   background: #F5F7FA;
@@ -2353,7 +2355,7 @@ button {
   padding: 8px 16px;
   cursor: pointer; }
   button:hover {
-    background: #CDCED9; }
+    background: #E7E7ED; }
 
 button.primary {
   background: #0B5FFF;
