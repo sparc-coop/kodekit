@@ -18,6 +18,7 @@
 @import "Pages/BaseStyles/Typography";
 @import "Pages/BaseStyles/GlobalSettings";
 @import "Pages/BaseStyles/Effects";
+@import "Pages/BaseStyles/Preview";
 @import "Pages/Effects/BoxShadow";
 @import "Pages/Introduction";
 @import "Pages/Themes";
@@ -28,6 +29,25 @@
 @import "Shared/NavMenu";
 @import "Shared/SignUpBanner";
 @import "Shared/PageInfo";
+
+//Core Imports
+@import "wwwroot/CoreStyles/Core/Colors.scss";
+@import "wwwroot/CoreStyles/Core/GlobalSettings.scss";
+@import "wwwroot/CoreStyles/Core/Icons.scss";
+@import "wwwroot/CoreStyles/Core/Layout.scss";
+@import "wwwroot/CoreStyles/Core/Reset.scss";
+@import "wwwroot/CoreStyles/Core/Typography.scss";
+
+//Effect Imports
+@import "wwwroot/CoreStyles/Effects/Boxshadow.scss";
+
+//Elements Imports
+@import "wwwroot/CoreStyles/Elements/Anchors.scss";
+@import "wwwroot/CoreStyles/Elements/Buttons.scss";
+@import "wwwroot/CoreStyles/Elements/CheckboxesAndRadios.scss";
+@import "wwwroot/CoreStyles/Elements/Dropdowns.scss";
+@import "wwwroot/CoreStyles/Elements/Images.scss";
+@import "wwwroot/CoreStyles/Elements/InputsAndTextareas.scss";
 
 
 body {
