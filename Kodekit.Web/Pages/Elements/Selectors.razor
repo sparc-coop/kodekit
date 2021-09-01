@@ -1,4 +1,5 @@
-﻿@page  "/selectors"
+﻿@inherits HighlightPageBase
+@page  "/selectors"
 @page  "/selectors/{kitId}"
 
 <div class="selectors page">
@@ -58,18 +59,19 @@
                                 <input type="radio" /> Default
                             </label>
                             <label>
-                                <input type="radio" checked/> Active
+                                <input type="radio" checked /> Active
                             </label>
                             <label>
-                                <input type="radio" disabled/> Disabled
+                                <input type="radio" disabled /> Disabled
                             </label>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code> 
-
+                    <pre>
+                    <code class="language-html">
+&lt;input type="checkbox"/&gt;
+&lt;input type="radio"/&gt;
                         </code>
-                    </div>
+                    </pre>
                     <button @onclick="Submit">
                         Save & Continue
                         <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
