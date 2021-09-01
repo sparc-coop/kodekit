@@ -1,11 +1,69 @@
 ﻿@import "../../_variables";
 
 .colors {
+
+    .content {
+        position: relative;
+    }
+
+    aside {
+        box-sizing: border-box;
+        border-radius: 8px;
+        padding: 16px;
+        background: $white;
+        width: 150px;
+        position: absolute;
+        top: -150px;
+        right: 0;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+        .title {
+            font-size: 10px;
+            color: $gray400;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: $gray900;
+            margin: 2px 0 10px;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2px;
+
+            label {
+                font-size: 11px;
+                color: $gray700;
+
+                div {
+                    cursor: pointer;
+                }
+            }
+
+            .set-colors {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                font-size: 12px;
+
+                div {
+                    margin: 4px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
     label {
         font-weight: normal;
         font-size: 14px;
         line-height: 180%;
-        color: $gray500;
+        color: $gray700;
     }
 
     input {
@@ -13,14 +71,15 @@
         border: 1px solid #E7E7ED;
         box-sizing: border-box;
         border-radius: 4px;
-        padding: 8px 16px 8px 44px;
+        padding: 4px 16px 4px 16px;
         display: block;
         margin: 0 30px 20px 0;
         font-size: 16px;
         line-height: 160%;
         color: $gray500;
+        cursor: pointer;
+        width: 100px;
     }
-
 
     .preview-example {
         box-sizing: border-box;
@@ -70,16 +129,29 @@
 
         label {
             position: relative;
+            margin-right: 32px;
 
             span {
-                position: absolute;
-                top: 34px;
-                left: 8px;
-                width: 24px;
-                height: 24px;
-                display: block;
-                z-index: 10;
+                background: $white;
+                padding: 6px 10px;
+                width: 144px;
+                height: 40px;
+                border: 1px solid $gray300;
+                box-sizing: border-box;
                 border-radius: 4px;
+                display: flex;
+                font-size: 16px;
+                line-height: 150%;
+                cursor: pointer;
+
+                input {
+                    border: none;
+                    border-radius: 4px;
+                    width: 23px;
+                    height: 26px;
+                    margin: 0 10px 0 0;
+                    padding: 0;
+                }
             }
         }
     }
@@ -93,6 +165,11 @@
         section {
             width: 1080px;
 
+
+            @media screen and (max-width: 780px) {
+                width: unset;
+            }
+
             > div {
                 height: 227px;
                 width: 496px;
@@ -102,13 +179,26 @@
                 background: $white;
                 margin-right: 32px;
 
+
+                @media screen and (max-width: 780px) {
+                    margin: 10px auto;
+                }
+
                 img {
                     margin: -32px -40px;
+
+                    @media screen and (max-width: 500px) {
+                        width: 160px;
+                    }
                 }
 
                 p {
                     font-size: 14px;
                     color: $gray500;
+
+                    @media screen and (max-width: 500px) {
+                        line-height: unset;
+                    }
                 }
             }
         }

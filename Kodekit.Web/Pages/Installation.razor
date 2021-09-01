@@ -1,0 +1,60 @@
+﻿@inherits HighlightPageBase
+@page "/installation"
+
+<div class="page installation">
+    <div class="page__container">
+        <header>
+            <div class="title">Getting Started</div>
+            <h2>Installation</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+            </p>
+        </header>
+        <div class="content">
+            <h3>Import & Auto Update</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            <div class="steps">1. Add Script</div>
+            <div class="instructions">
+                <button @onclick="StepOne">Copy</button>
+            <br />
+            <pre>
+<code>&lt;link rel="stylesheet" href="YOUR GENERATED CODEKIT FILE"&gt;</code>
+            </pre>
+            </div>
+
+            <div class="steps">2. Auto Update</div>
+            <p>
+                Each time you change, update or save your Kodekit theme, your projects
+                using the theme script will auto-update, allowing you to make changes to your live project.
+            </p>
+        </div>
+        <h3>Manual Download</h3>
+        <p class="subheader">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+        </p>
+        <div class="steps">1. Download your .scss file</div>
+        <button class="download">Download .scss file</button>
+        <div class="steps">2. Install & Link</div>
+        <p>
+            Each time you change, update or save your Kodekit theme, your projects
+            using the theme script will auto-update, allowing you to make changes to your live project.
+        </p>
+        <div class="instructions">
+            <button @onclick="StepOne">Copy</button>
+            <pre>
+<code>
+    &lt;link rel="stylesheet" href="css/stylesheet.min.css"&gt;
+</code>
+                </pre>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void StepOne()
+    {
+        //copy to clipboard step one link
+    }
+}

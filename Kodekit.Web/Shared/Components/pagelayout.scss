@@ -2,8 +2,17 @@
 
 .page {
     background: $background;
-    padding: 138px 80px 100px 80px;
+    padding: 10px 80px 100px 80px;
     font-family: 'Inter', sans-serif;
+
+
+    @media screen and (max-width: 780px) {
+        padding: 0 40px 100px 40px;
+    }
+
+    @media screen and (max-width: 500px) {
+        padding: 0 25px 100px 25px;
+    }
 
     &__container {
         width: 100%;
@@ -41,8 +50,22 @@
         color: $gray700;
     }
 
+    header {
+        padding-bottom: 25px;
+
+        h2 {
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 18px;
+            color: $gray700;
+            padding-top: 12px;
+        }
+    }
+
     .subheader {
-        color: $gray500;
+        color: $gray700;
         max-width: 496px;
         font-size: 16px;
     }
@@ -60,15 +83,16 @@
         cursor: pointer;
 
         img {
-            margin-left: 14px;
+            margin-left: 10px;
             vertical-align: middle;
+            margin-top: -2px;
         }
     }
 
     label {
         font-size: 14px;
         line-height: 180%;
-        color: $gray500;
+        color: $gray700;
     }
 
     input, select {
@@ -82,23 +106,16 @@
         font-size: 16px;
         line-height: 160%;
         height: 40px;
-        color: $gray500;
+        color: $gray700;
+        cursor: pointer;
     }
 
-    .code-example {
-        background: $gray900;
+    pre {
         border-radius: 0px 0px 8px 8px;
-        padding: 32px;
-        color: $orange;
-        margin-bottom: 50px;
-
-        span {
-            color: $purple;
-        }
-
-        .comment {
-            color: $light-gray;
-        }
+        margin: -20px 0 50px 0;
+        overflow: hidden;
+        background: #282c34;
+        padding: 0 0 20px 20px;
     }
 
     .section, section {
@@ -130,7 +147,7 @@
             margin: 0 30px 20px 0;
             font-size: 16px;
             line-height: 160%;
-            color: $gray500;
+            color: $gray700;
         }
 
         .large {
@@ -138,16 +155,32 @@
         }
 
         .medium {
-            width: 314px
+            width: 302px
         }
 
         .small {
             width: 142px;
         }
+
+        > div {
+            display: flex;
+        }
     }
 
     .content {
         padding-bottom: 100px;
+
+        h3 {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: $gray500;
+            margin: 0 0 32px;
+        }
     }
 
     .preview-example {
@@ -155,9 +188,8 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        margin-bottom: -20px;
         color: $gray900;
-        font-family: 'Roboto Mono', monospace;
+        font-family: 'Inter';
 
         h1 {
             font-weight: 400;
@@ -256,7 +288,7 @@
         padding: 8px 14px;
         border-radius: 6px;
         border: 1px solid $gray300;
-        display: block; 
+        display: block;
         margin-top: 16px;
         font-size: 14px;
     }

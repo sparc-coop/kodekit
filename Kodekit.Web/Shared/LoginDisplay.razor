@@ -1,11 +1,11 @@
 ﻿<div class="login-display">
     <AuthorizeView>
         <Authorized>
-            <div class="user-menu">
+            <div class="user-menu"  @onclick="ToggleMenu">
                 <span class="material-icons">
                     account_circle
                 </span>
-                <span class="material-icons" @onclick="ToggleMenu">
+                <span class="material-icons">
                     arrow_drop_down
                 </span>
             </div>
@@ -13,9 +13,12 @@
             {
                 <div class="dropdown-menu">
                     <a href="my-kits" @onclick="ToggleMenu">My Kits</a>
+                    <button class="logout" @onclick="BeginLogout">
+                        Log Out
+                        <span class="material-icons">logout</span>
+                    </button>
                 </div>
             }
-            <button class="logout" @onclick="BeginLogout">Log Out</button>
         </Authorized>
         <NotAuthorized>
             <a href="authentication/login" class="login">Log In / Sign Up</a>

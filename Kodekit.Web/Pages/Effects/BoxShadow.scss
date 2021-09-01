@@ -4,7 +4,12 @@
 
     .preview-example {
         display: flex;
-        padding: 20px 31px 60px 32px;
+        flex-wrap: wrap;
+        padding: 10px 6px 60px 32px;
+
+        > div {
+            padding-top: 10px;
+        }
     }
 
     .example-shadow {

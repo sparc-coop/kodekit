@@ -1,0 +1,118 @@
+﻿@page  "/lists"
+@page  "/lists/{kitId}"
+
+<div class="lists page">
+    <div class="page__container">
+        <header>
+            <div class="title">Elements</div>
+            <h2>Lists</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+        </header>
+        <div class="content">
+            <h3>Ordered & Unordered Styling</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <div class="section">
+                        <label>
+                            OL Style Type
+                            <select>
+                                <option selected>Upper-roman (IV)</option>
+                                <option>Bold (500)</option>
+                            </select>
+                        </label>
+                        <label>
+                            UL Style Type
+                            <select>
+                                <option selected>None</option>
+                                <option>Bold (500)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Vertical Padding
+                            <input placeholder="0px"/>
+                        </label>
+                        <label>
+                            Horizontal Padding
+                            <input placeholder="0px">
+                        </label>
+                    </div>
+                     <h4>List Item Styling</h4>
+                    <div class="section">
+                        <label>
+                            List Item Font Size
+                            <input placeholder="16px">
+                        </label>
+                        <label>
+                            List Item Font Weight
+                            <select>
+                                <option selected>Regular (400)</option>
+                                <option>Bold (500)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Vertical Padding
+                            <input placeholder="8px">
+                        </label>
+                        <label>
+                            Horizontal Padding
+                            <input placeholder="0px">
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <ol>
+                            <li>List Item</li>  
+                            <li>List Item</li>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                        </ol>
+                        <ul>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                            <li>List Item</li>
+                        </ul>
+                    </div>
+                    <div class="code-example">
+                        <code>
+ 
+                        </code> 
+                    </div>
+                    <button @onclick="Submit">
+                        Save
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
+                    </button>
+                    <button @onclick="Submit">
+                        Save & Publish
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
+                    </button>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task Submit()
+    {
+        Nav.NavigateTo("/box-shadow/" + kit.KitId);
+    }
+
+    private async Task Publish()
+    {
+        await PublicApi().PublishKitAsync(kit);
+    }
+}

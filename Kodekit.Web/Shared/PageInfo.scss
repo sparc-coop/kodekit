@@ -2,22 +2,34 @@
 
 .page-info {
     margin: 90px auto 20px auto;
-    width: 100%;
     max-width: 1024px;
     display: flex;
     position: relative;
+    padding: 20px 0;
+
+    @media screen and (max-width: 1455px) {
+        margin: 80px auto 40px 80px;
+    }
+
+    @media screen and (max-width: 780px) {
+        margin: 80px auto 40px 25px;
+    }
+
+    @media screen and (max-width: 500px) {
+        margin: 80px auto 80px 25px;
+    }
 
     > div {
         display: flex;
     }
 
-
     .title {
-        color: $gray400;
+        color: $gray700;
         font-size: 14px;
 
         img {
             margin: 0 8px;
+            vertical-align: middle;
         }
     }
 
@@ -25,6 +37,7 @@
         color: $gray700;
         font-size: 14px;
         cursor: pointer;
+        position: relative;
 
         img {
             vertical-align: middle;
@@ -38,19 +51,33 @@
     }
 
     .info {
-        display: flex;
         position: absolute;
-        right: 0;
+        right: 20px;
+
+        @media screen and (max-width: 1150px) {
+            right: unset;
+            left: -20px;
+            top: 50px;
+        }
+
+        @media screen and (max-width: 500px) {
+            flex-wrap: wrap;
+        }
 
         &--time {
-            color: $gray400;
+            color: $gray700;
             padding: 6px 18px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 400;
             line-height: 14px;
             letter-spacing: 0.02em;
             text-align: left;
             text-transform: uppercase;
+
+            a {
+                color: $primary500;
+                text-decoration: none;
+            }
         }
     }
 
@@ -62,35 +89,87 @@
         letter-spacing: 0.02em;
         border: 1px solid $gray300;
         box-sizing: border-box;
-        padding: 2px 8px;
+        padding: 3px 7px;
         border-radius: 100px;
-        color: $gray500;
+        color: $gray700;
         height: 22px;
+        width: 138px;
         margin-left: 18px;
+        position: relative;
+
+        &.selected {
+            background: $primary100;
+            border: 1px solid $primary500;
+            color: $primary500;
+
+            .icon-right {
+                top: 4px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            margin-top: 10px;
+        }
 
         img {
             vertical-align: middle;
+        }
+
+        .icon-left {
+            margin-top: -2px;
+            width: 12px;
+        }
+
+        .icon-right {
+            position: absolute;
+            right: 7px;
+            top: 1px;
         }
 
         &--dropdown {
             background: $white;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
             border-radius: 8px;
-            width: 232px;
-            height: 340px;
+            width: 250px;
+            max-height: 340px;
             box-sizing: border-box;
-            padding: 24px;
+            padding: 24px 24px 45px 24px;
             position: absolute;
-            right: 0;
-            top: 34px;
+            right: 18px;
+            top: 54px;
             display: block;
+            z-index: 10;
+
+            @media screen and (max-width: 780px) {
+                top: 86px;
+            }
+
+            @media screen and (max-width: 500px) {
+                right: unset;
+                top: 120px;
+            }
 
             ul {
                 padding: 0 0 0 20px;
                 margin: 0;
 
                 li {
-                    padding: 5px 0;
+                    padding: 8px 0;
+                    cursor: pointer;
+                    position: relative;
+
+                    input {
+                        padding: 2px 6px;
+                        width: 150px;
+                    }
+
+                    button {
+                        color: $primary500;
+                        margin-top: 4px;
+                        background: $background;
+                        border: 1px solid $primary500;
+                        border-radius: 4px;
+                    }
                 }
             }
 
@@ -102,10 +181,136 @@
                 padding: 10px 0;
             }
 
+            .current {
+                .img-left {
+                    margin-right: 16px;
+                    vertical-align: middle;
+                }
+
+                .img-right {
+                    float: right;
+                    height: 14px;
+                    vertical-align: middle;
+                }
+            }
+
             .title {
-                font-size: 12px;
+                font-size: 11px;
                 color: $gray400;
                 text-transform: uppercase;
+            }
+
+            .material-icons {
+                vertical-align: middle;
+                color: $gray400;
+                font-size: 16px;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+
+    .publish-options {
+        height: 158px;
+        width: 134px;
+        z-index: 1;
+        box-sizing: border-box;
+        border-radius: 8px;
+        padding: 4px 16px;
+        position: absolute;
+        right: -5px;
+        background: $white;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                padding: 8px 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .auto-publish {
+        border-top: 1px solid $gray100;
+        padding-top: 16px;
+        color: $gray500;
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 24px;
+        width: 203px;
+        margin: 0 auto;
+
+        .switch {
+            width: 26px;
+            height: 15px;
+        }
+
+        .slider {
+            background-color: $white;
+            border: 1px solid $gray400;
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: 9px;
+                width: 9px;
+                left: 2.5px;
+                bottom: 2px;
+            }
+        }
+
+        input {
+
+            &:checked + .slider {
+                background-color: $white;
+                border: 1px solid $primary500;
+
+                &:before {
+                    -webkit-transform: translateX(10px);
+                    -ms-transform: translateX(10px);
+                    transform: translateX(10px);
+                    background-color: $primary500;
+                }
+            }
+        }
+    }
+
+    .user-kits--dropdown {
+        background: $white;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+        border-radius: 8px;
+        width: 210px;
+        box-sizing: border-box;
+        padding: 15px 20px 15px 15px;
+        position: absolute;
+        left: -15px;
+        top: 10px;
+        display: block;
+        z-index: 10;
+
+        li {
+            list-style-type: none;
+            padding: 5px 0;
+            color: $gray900;
+
+            &:hover {
+                color: $primary500;
+            }
+
+            img {
+                margin-right: 10px;
+            }
+
+            span {
+                font-size: 11px;
+                display: block;
+                color: $gray500;
+                margin-left: 25px;
             }
         }
     }

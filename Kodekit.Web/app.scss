@@ -9,13 +9,19 @@
 @import "Pages/Elements/Buttons";
 @import "Pages/Elements/Anchors";
 @import "Pages/Elements/Inputs";
+@import "Pages/Elements/Lists";
+@import "Pages/Elements/Dropdowns";
+@import "Pages/Elements/Selectors";
 @import "Pages/BaseStyles/Colors";
 @import "Pages/BaseStyles/Icons";
 @import "Pages/BaseStyles/Layout";
 @import "Pages/BaseStyles/Typography";
 @import "Pages/BaseStyles/GlobalSettings";
+@import "Pages/BaseStyles/Effects";
+@import "Pages/BaseStyles/Preview";
 @import "Pages/Effects/BoxShadow";
 @import "Pages/Introduction";
+@import "Pages/Installation";
 @import "Pages/Themes";
 @import "Pages/Index";
 @import "Pages/UserKits";
@@ -24,6 +30,19 @@
 @import "Shared/NavMenu";
 @import "Shared/SignUpBanner";
 @import "Shared/PageInfo";
+
+//Core Imports
+@import "wwwroot/CoreStyles/Core/Colors.scss";
+@import "wwwroot/CoreStyles/Core/Layout.scss";
+@import "wwwroot/CoreStyles/Core/Reset.scss";
+@import "wwwroot/CoreStyles/Core/Typography.scss";
+
+//Effect Imports
+
+//Elements Imports
+@import "wwwroot/CoreStyles/Elements/Buttons.scss";
+@import "wwwroot/CoreStyles/Elements/CheckboxesAndRadios.scss";
+@import "wwwroot/CoreStyles/Elements/InputsAndTextareas.scss";
 
 
 body {
@@ -49,10 +68,14 @@ body {
         align-self: flex-end;
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
-        height: 30px;
+        height: 50px;
         margin: 0 auto 0 auto;
         transform-origin: bottom;
         width: 200px;
+    }
+
+    @media screen and (max-width: 500px) {
+        padding-top: 45%;
     }
 }
 

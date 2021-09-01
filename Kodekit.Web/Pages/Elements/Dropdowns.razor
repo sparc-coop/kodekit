@@ -1,83 +1,101 @@
-﻿@page  "/dropdowns"
+﻿@inherits HighlightPageBase
+@page  "/dropdowns"
 @page  "/dropdowns/{kitId}"
 
-<div class="effects page">
+<div class="dropdowns page">
     <div class="page__container">
         <header>
             <div class="title">Elements</div>
-            <h2>Links</h2>
+            <h2>Dropdowns</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
         </header>
         <div class="content">
-            <h3>Core Buttons</h3>
+            <h3>Dropdown Styling</h3>
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
+            <aside>This element inherits direct styling from <a href="/inputs">Inputs & Textareas</a> as defaults.</aside>
+            <div class="section-container">
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+                Overwrite inherited styling
+            </div>
             @if (kit != null)
             {
                 <EditForm Model="@kit">
                     <div class="section">
                         <label>
-                            Font Size
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            Input Font Size
+                            <input placeholder="16px">
                         </label>
                         <label>
-                            Font Weight
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            Input Font Weight
+                            <select>
+                                <option selected>Regular (400)</option>
+                                <option>Bold (500)</option>
+                            </select>
                         </label>
                         <label>
                             Vertical Padding
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input placeholder="10px">
                         </label>
                         <label>
                             Horizontal Padding
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            <input placeholder="16px">
                         </label>
                         <label>
                             Corner Radius
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <input placeholder="4px">
                         </label>
                         <label>
                             Border Width
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
-                        </label>
-                        <label>
-                            Icon Width
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
-                        </label>
-                        <label>
-                            Icon Height
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <input placeholder="1px">
                         </label>
                     </div>
-                    <h4>Secondary Button</h4>
-                    <div class="section">
-   
 
-                    </div>
                     <div class="preview-example">
-
+                        <select>
+                            <option selected>Dropdown Menu</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                        </select>
+                        <select>
+                            <option selected>Dropdown Menu</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                        </select>
+                        <select>
+                            <option selected>Dropdown Menu</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                        </select>
+                        <select>
+                            <option selected>Dropdown Menu</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                            <option>Default Row</option>
+                        </select>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
+                    <pre>
+                    <code>
+&lt;select&gt;
+&lt;option selected&gt;Dropdown Menu&lt;/option&gt;
+&lt;option&gt;Default Row&lt;/option&gt;
+&lt;option&gt;Default Row&lt;/option&gt;
+&lt;option&gt;Default Row&lt;/option&gt;
+&lt;/select&gt;
                         </code>
-                    </div>
+                    </pre>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }

@@ -1,10 +1,11 @@
-﻿ @page  "/effects"
+﻿@inherits HighlightPageBase
+@page  "/effects"
 @page  "/effects/{kitId}"
 
-<div class="effects page">
+<div class="effects-page page">
     <div class="page__container">
         <header>
-            <div class="title">Base Styles</div>
+            <div class="title">Global Styles</div>
             <h2>Effects</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -38,8 +39,10 @@
                         </label>
                         <label>
                             Shadow Color
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <span>
+                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
+                                @kit.LightColor
+                            </span>
                         </label>
                         <label>
                             Shadow Opacity
@@ -66,8 +69,10 @@
                         </label>
                         <label>
                             Shadow Color
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <span>
+                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
+                                @kit.LightColor
+                            </span>
                         </label>
                         <label>
                             Shadow Opacity
@@ -96,16 +101,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span>&lt;h1&gt;</span>The power of small steps<span>&lt;/h1&gt;</span><br />
-                            <span>&lt;h2&gt;</span>The power of small steps<span>&lt;/h2&gt;</span><br />
-                            <span>&lt;h3&gt;</span>The power of small steps<span>&lt;/h3&gt;</span><br />
-                        </code>
-                    </div>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
@@ -116,10 +114,29 @@
 @code {
     private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    string currentKitId;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await GetKit();
+    }
 
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
+        {
+            kit = await PublicApi().GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await PublicApi().GetKitAsync(currentKitId);
+        }
+
+        kit.LightColor = "#F3F3F9";
     }
 
     private async Task Submit()

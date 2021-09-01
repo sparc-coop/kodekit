@@ -3,6 +3,7 @@
 .buttons {
     .preview-example {
         padding: 32px;
+        height: 180px;
 
         button {
             background: $primary500;
@@ -28,7 +29,7 @@
             color: $white;
 
             &-secondary {
-                background: $secondary100;
+                background: $white;
                 border: 1px solid $secondary400;
                 color: $secondary400;
             }
@@ -46,10 +47,14 @@
             }
         }
 
-        img {
+        svg {
             vertical-align: middle;
             margin: 0;
             margin-top: -2px;
+        }
+
+        .remove {
+            border: 1px solid transparent !important;
         }
     }
 }
