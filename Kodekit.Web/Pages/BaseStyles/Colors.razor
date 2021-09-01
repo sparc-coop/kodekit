@@ -1,4 +1,5 @@
-﻿@page  "/colors"
+﻿@inherits HighlightPageBase
+@page "/colors"
 @page "/colors/{kitId}"
 
 <div class="colors page">
@@ -11,29 +12,105 @@
             </p>
         </header>
         <div class="content">
+            <aside class="accessibility-checker">
+                <p class="title">Contrast Checker</p>
+                @if (colorResult != null)
+                {
+                    <h3>@colorResult.Contrast</h3>
+                }
+                <section>
+                    <label>Text Color</label>
+                    <div style="width: 10px; height: 10px; background-color: @pair.FGColor; border-radius: 2px;" @onclick="@(() => FGToggle = !FGToggle)"></div>
+                    @if (!FGToggle)
+                    {
+                        <div class="set-colors">Select a color:</div>
+                        <div class="set-colors">
+
+                            <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "fg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "fg"))"></div>
+                        </div>
+                    }
+
+                </section>
+
+                <section>
+                    <label>Background Color</label>
+                    <div style="width: 10px; height: 10px; background-color: @pair.BGColor; border-radius: 2px;" @onclick="@(() => BGToggle = !BGToggle)"></div>
+                    @if (!BGToggle)
+                    {
+                        <div class="set-colors">Select a color:</div>
+                        <div class="set-colors">
+
+                            <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "bg"))"></div>
+                            <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "bg"))"></div>
+                        </div>
+                    }
+
+                </section>
+                <section>
+                    <label>Large Text</label>
+                    @if (colorResult.AaText == "pass")
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+
+                </section>
+                <section>
+                    <label>Small Text</label>
+                    @if (colorResult.AaHeadline == "pass")
+                    {
+                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+                    }
+                    else
+                    {
+                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+                    }
+                </section>
+
+
+            </aside>
             <h3>Brand Colors</h3>
-            <p class="subheader">
+            <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
+  
             @if (kit != null)
             {
                 <EditForm Model="@kit">
                     <div class="section">
                         <label>
                             Primary
-                            <span style="background-color: @kit.PrimaryColor"></span>
-                            <InputText @bind-Value="kit.PrimaryColor" />
+                            <span>
+                                <input type="color" value="@kit.PrimaryColor" @oninput="@(e => kit.PrimaryColor = e.Value.ToString())">
+                                @kit.PrimaryColor
+                            </span>
                         </label>
+
                         <label>
                             Secondary
-                            <span style="background-color: @kit.SecondaryColor"></span>
-                            <InputText @bind-Value="kit.SecondaryColor" />
+                            <span>
+                                <input type="color" value="@kit.SecondaryColor" @oninput="@(e => kit.SecondaryColor = e.Value.ToString())">
+                                @kit.SecondaryColor
+                            </span>
                         </label>
                         <label>
                             Tertiary
-                            <span style="background-color: @kit.TertiaryColor"></span>
-                            <InputText @bind-Value="kit.TertiaryColor" />
+                            <span>
+                                <input type="color" value="@kit.TertiaryColor" @oninput="@(e => kit.TertiaryColor = e.Value.ToString())">
+                                @kit.TertiaryColor
+                            </span>
                         </label>
+
                     </div>
                     <div class="preview-example">
                         <div>
@@ -49,12 +126,24 @@
                             <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span>&lt;div class="color-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
-                            <span>&lt;div class="bg-primary"&gt;</span>The power of small steps<span>&lt;/div&gt;</span><br />
-                        </code>
-                    </div>
+                    <pre>
+                    <code>
+&lt;!-- use directly as colors or background properties --&gt;
+&lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
+&lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
+                            </code>
+                    <code class="language-scss">
+&lt;!-- however it is best to use them as variables within your classes --&gt;
+
+.box {
+    background-color: $primary-500;
+}
+
+.box-alt {
+    background-color: $secondary-100;
+}
+                            </code>
+                        </pre>
                     <h3>Greyscale</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -62,13 +151,17 @@
                     <div class="section">
                         <label>
                             Darkest
-                            <span style="background-color: @kit.DarkColor"></span>
-                            <InputText @bind-Value="kit.DarkColor" />
+                            <span>
+                                <input type="color" value="@kit.DarkColor" @oninput="@(e => kit.DarkColor = e.Value.ToString())">
+                                @kit.DarkColor
+                            </span>
                         </label>
                         <label>
                             Lightest
-                            <span style="background-color: @kit.LightColor"></span>
-                            <InputText @bind-Value="kit.LightColor" />
+                            <span>
+                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
+                                @kit.LightColor
+                            </span>
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
@@ -109,14 +202,14 @@
                             <div class="color-display last" style="background-color: @kit.LightColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                            <span>$greyscale-900</span><br />
-                            <span>$greyscale-800</span><br />
-                            <span>$greyscale-700</span><br />
+                    <pre>
+                    <code class="language-scss">
+&lt;!--System Variables--&gt;
+$greyscale-900
+$greyscale-800
+$greyscale-700
                         </code>
-                    </div>
+                    </pre>
                     <h3>System Colors</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -124,18 +217,24 @@
                     <div class="section">
                         <label>
                             Error
-                            <span class="color-display" style="background-color: @kit.ErrorColor"></span>
-                            <InputText @bind-Value="kit.ErrorColor" />
+                            <span>
+                                <input type="color" value="@kit.ErrorColor" @oninput="@(e => kit.ErrorColor = e.Value.ToString())">
+                                @kit.ErrorColor
+                            </span>
                         </label>
                         <label>
                             Warning
-                            <span class="color-display" style="background-color: @kit.WarningColor"></span>
-                            <InputText @bind-Value="kit.WarningColor" />
+                            <span>
+                                <input type="color" value="@kit.WarningColor" @oninput="@(e => kit.WarningColor = e.Value.ToString())">
+                                @kit.WarningColor
+                            </span>
                         </label>
                         <label>
                             Success
-                            <span class="color-display" style="background-color: @kit.SuccessColor"></span>
-                            <InputText @bind-Value="kit.SuccessColor" />
+                            <span>
+                                <input type="color" value="@kit.SuccessColor" @oninput="@(e => kit.SuccessColor = e.Value.ToString())">
+                                @kit.SuccessColor
+                            </span>
                         </label>
                     </div>
                     <div class="preview-example">
@@ -155,20 +254,20 @@
                             <div class="color-display" style="background-color: @kit.SuccessColor"></div>
                         </div>
                     </div>
-                    <div class="code-example">
-                        <code>
-                            <span class="comment">&lt;!--System Variables--&gt;</span><br />
-                            <span>$error-900</span><br />
-                            <span>$error-500</span><br />
-                            <span>$error-100</span><br />
-                            <span>$warning-900</span><br />
-                            <span>$warning-500</span><br />
-                            <span>$warning-100</span><br />
-                            <span>$success-900</span><br />
-                            <span>$success-500</span><br />
-                            <span>$success-100</span><br />
+                    <pre>
+                    <code class="language-scss">
+&lt;!--System Variables--&gt;
+$error-900
+$error-500
+$error-100
+$warning-900
+$warning-500
+$warning-100
+$success-900
+$success-500
+$success-100
                         </code>
-                    </div>
+                        </pre>
                     <div class="preview-mockup">
                         <h3>Preview</h3>
                         <p class="subheader">
@@ -176,78 +275,145 @@
                         </p>
                         <section>
                             <div class="preview-mockup--left">
-                                <img src="/images/example1.png"/>
+                                <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-                                    <h5>Information</h5>
-                                    <h4>Brand Colors</h4>
+                                    <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
+                                    <h5 style="color: @(kit.TertiaryColor)">Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button>Primary CTA</button> 
+                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h5>Information</h5>
-                                <h4>Brand Colors</h4>
+                                <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
+                                <h5 style="color: @(kit.TertiaryColor)">Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
                                 <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="button-secondary">Secondary CTA</button>
-                                </div></div>
+                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
+                                    <button class="button-secondary" style="color: @(kit.SecondaryColor)">Secondary CTA</button>
+                                </div>
+                            </div>
                         </section>
                     </div>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
         </div>
-        </div>
     </div>
+</div>
 
-    @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject IJSRuntime JS
 
-    @code {
-        private Kit kit = new Kit();
-        [Parameter] public string kitId { get; set; }
-        string currentKitId;
+@code {
+    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
+    string currentKitId;
+    ColorResults colorResult = new ColorResults();
+    ColorPair pair = new ColorPair();
+    bool FGToggle = true;
+    bool BGToggle = true;
 
-        protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
+    {
+        await GetKit();
+    }
+
+    private async Task Submit()
+    {
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/icons/" + kit.KitId);
+    }
+
+    private async Task GetKit()
+    {
+        //get from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (kitId != null)
         {
-            await GetKit();
-            kit.PrimaryColor = "#0B5FFF";
-            kit.SecondaryColor = "#4B9BFF";
-            kit.TertiaryColor = "#FFB46E";
-            kit.DarkColor = "#272833";
-            kit.LightColor = "#F3F3F9";
-            kit.ErrorColor = "#F96464";
-            kit.WarningColor = "#FF8F39";
-            kit.SuccessColor = "#5ACA75";
+            kit = await PublicApi().GetKitAsync(currentKitId);
+        }
+        else if (currentKitId != null)
+        {
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
 
-        private async Task Submit()
-        {
-            await Api.UpdateKitAsync(kit);
-            Nav.NavigateTo("/Effects/" + kit.Id);
-        }
+        kit.PrimaryColor = "#0B5FFF";
+        kit.SecondaryColor = "#4B9BFF";
+        kit.TertiaryColor = "#FFB46E";
+        kit.DarkColor = "#272833";
+        kit.LightColor = "#F3F3F9";
+        kit.ErrorColor = "#F96464";
+        kit.WarningColor = "#FF8F39";
+        kit.SuccessColor = "#5ACA75";
 
-        private async Task GetKit()
-        {
-            //get from local storage
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            currentKitId = result;
+        pair.BGColor = kit.LightColor;
+        pair.FGColor = kit.DarkColor;
 
-            if (kitId != null)
-            {
-                kit = await Api.GetKitAsync(currentKitId);
-            }
-            else if (currentKitId != null)
-            {
-                kit = await Api.GetKitAsync(currentKitId);
-            }
-        }
+        await CheckColors();
+    }
+
+    async Task CheckColors()
+    {
+        //api method
+        var strToSend = pair.BGColor.Substring(1) + "+" + pair.FGColor.Substring(1);
+
+        var contrastApiResults = await PublicApi().ColorContrastCheckerAsync(strToSend);
+
+        colorResult.AaText = contrastApiResults.Aa;
+        colorResult.AaHeadline = contrastApiResults.AaLarge;
+        colorResult.Contrast = contrastApiResults.Ratio;
+
+
+
+        //javascript method
+        //await JS.InvokeVoidAsync("checkColors", pair.Color1, pair.Color2);
+        //var str = System.Text.Json.JsonSerializer.Serialize<ColorResults>(json);
+        //colorResult.Contrast = await JS.InvokeAsync<string>("colorData.contrast");
+        //colorResult.AaText = await JS.InvokeAsync<string>("colorData.aaText");
+        //colorResult.AaLarge = await JS.InvokeAsync<string>("colorData.aaHeadline");
+
+        //colorResult = System.Text.Json.JsonSerializer.Deserialize<ColorResults>(str);
+
+        StateHasChanged();
 
     }
+
+    async void UpdateColors(string color, string type)
+    {
+        if (type == "fg")
+        {
+            pair.FGColor = color;
+            FGToggle = !FGToggle;
+        }
+        else
+        {
+            pair.BGColor = color;
+            BGToggle = !BGToggle;
+        }
+
+        await CheckColors();
+    }
+
+    public class ColorResults
+    {
+        public string Contrast { get; set; }
+        public string AaText { get; set; }
+        public string AaHeadline { get; set; }
+    }
+
+    public class ColorPair
+    {
+        public string BGColor { get; set; }
+        public string FGColor { get; set; }
+    }
+
+}

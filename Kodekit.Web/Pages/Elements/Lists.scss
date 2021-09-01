@@ -1,0 +1,16 @@
+﻿@import "../../_variables";
+
+.lists {
+    .preview-example {
+        display: flex;
+        padding-bottom: 20px;
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            padding: 4px 0;
+        }
+    }
+}

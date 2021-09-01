@@ -1,1 +1,52 @@
-﻿
+﻿@import "../../_variables";
+
+.effects-page {
+
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 6px 60px 32px;
+
+        > div {
+            padding-top: 10px;
+        }
+    }
+
+    .example-shadow {
+        width: 222px;
+        height: 160px;
+        background: $white;
+        margin: 8px 24px 0 0;
+        border-radius: 8px;
+    }
+
+    .section {
+        label {
+            position: relative;
+            margin-right: 32px;
+
+            span {
+                background: $white;
+                padding: 6px 10px;
+                width: 144px;
+                height: 40px;
+                border: 1px solid $gray300;
+                box-sizing: border-box;
+                border-radius: 4px;
+                display: flex;
+                font-size: 16px;
+                line-height: 150%;
+                cursor: pointer;
+
+                input {
+                    border: none;
+                    border-radius: 4px;
+                    width: 23px;
+                    height: 26px;
+                    margin: 0 10px 0 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

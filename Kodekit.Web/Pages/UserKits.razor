@@ -1,13 +1,22 @@
-﻿@page "/my-kits"
+﻿@layout SimplifiedLayout
+@page "/my-kits"
 @attribute [Authorize]
 
 <div class="dashboard page">
     <div class="page__container">
-        <h2>Your Projects</h2>
-        <select class="sort">
-            <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-        </select>
-        <button @onclick="@(e => Nav.NavigateTo("/typography"))">New Kit</button>
+        <div class="dashboard--header">
+            <h2>Your Styleguides</h2>
+            <div class="right">
+                <select class="sort">
+                    <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
+                </select>
+                <button @onclick="@(CreateNew)">
+                    New Styleguide
+                    <img src="/images/add-icon.svg" />
+                </button>
+            </div>
+        </div>
+
         @if (Kits == null)
         {
             <p>Create a new kit to get started!</p>
@@ -17,8 +26,8 @@
             <div class="dashboard-container">
                 @foreach (var kit in Kits)
                 {
-                    <a href="kits/@kit.Id" class="dashboard-card">
-                        <img src="/images/dash-icon.svg" />
+                    <a href="kits/@kit.KitId" class="dashboard-card">
+                        <img src="/images/dash-icon.svg" alt="Dashboard Icon"/>
                         <div>
                             <div class="title">Project Name</div>
                             <div class="date">Last Updated:
@@ -41,6 +50,14 @@
     {
         User = await Api.GetUserAsync();
         Kits = await Api.GetUserKitsAsync();
+    }
+
+    private async Task CreateNew()
+    {
+        Kit newKit = new Kit();
+        newKit.UserId = User.UserId;
+        newKit = await PublicApi().CreateKitAsync(newKit);
+        Nav.NavigateTo("/typography/" + newKit.KitId);
     }
 
     private void Sort(string filter)

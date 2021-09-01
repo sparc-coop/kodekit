@@ -1,22 +1,39 @@
 ﻿<div class="header">
+    @if (ShowMobileMenu == false)
+    {
+        <span class="material-icons mobile" @onclick="ToggleMobile">menu</span>
+    }
+    else
+    {
+        <span class="material-icons mobile" @onclick="@ToggleMobile">close</span>
+    }
     <a class="logo" href="/">
-        <img src="/images/logo.svg" />
-        KODEKIT.CSS
+        <img src="/images/logo.svg" alt="Kodekit Logo" />
+        KODEKIT
     </a>
     <LoginDisplay />
 </div>
 
-<div class="sidebar">
+<div class="sidebar @Show">
     <div class="menu">
         <div class="heading">Overview</div>
         <NavLink href="/" Match="NavLinkMatch.All">
             Introduction
         </NavLink>
+        <NavLink href="installation" Match="NavLinkMatch.Prefix">
+            Installation
+        </NavLink>
         <NavLink href="themes" Match="NavLinkMatch.Prefix">
             Themes
         </NavLink>
-        <NavLink href="#" Match="NavLinkMatch.Prefix">
+        <NavLink href="release-notes" Match="NavLinkMatch.Prefix">
             Release Notes
+        </NavLink>
+        <NavLink href="global-settings" Match="NavLinkMatch.Prefix">
+            Global Reset
+        </NavLink>
+        <NavLink href="preview" Match="NavLinkMatch.Prefix">
+            Preview
         </NavLink>
 
         <div class="heading">Base Styles</div>
@@ -26,14 +43,11 @@
         <NavLink href="colors" Match="NavLinkMatch.Prefix">
             Colors
         </NavLink>
-        <NavLink href="#" Match="NavLinkMatch.Prefix">
+        <NavLink href="icons" Match="NavLinkMatch.Prefix">
             Icons
         </NavLink>
-        <NavLink href="layout" Match="NavLinkMatch.Prefix">
-            Layout
-        </NavLink>
-        <NavLink href="global-settings" Match="NavLinkMatch.Prefix">
-            Global Settings
+        <NavLink href="effects" Match="NavLinkMatch.Prefix">
+            Effects
         </NavLink>
 
         <div class="heading">HTML Elements</div>
@@ -43,8 +57,8 @@
         <NavLink href="inputs" Match="NavLinkMatch.Prefix">
             Inputs & Textareas
         </NavLink>
-        <NavLink href="checkboxes" Match="NavLinkMatch.Prefix">
-            Checkboxs & Radios
+        <NavLink href="selectors" Match="NavLinkMatch.Prefix">
+            Selectors & Toggles
         </NavLink>
         <NavLink href="dropdowns" Match="NavLinkMatch.Prefix">
             Dropdowns
@@ -52,13 +66,31 @@
         <NavLink href="anchors" Match="NavLinkMatch.Prefix">
             Anchors
         </NavLink>
-        <NavLink href="images" Match="NavLinkMatch.Prefix"> 
-            Images
+        <NavLink href="lists" Match="NavLinkMatch.Prefix">
+            Lists
+        </NavLink>
+        <NavLink href="layout" Match="NavLinkMatch.Prefix">
+            Structure
         </NavLink>
 
-        <div class="heading">Effects</div>
+        <div class="heading">Utility</div>
         <NavLink href="box-shadow" Match="NavLinkMatch.Prefix">
             Box Shadow
         </NavLink>
     </div>
 </div>
+
+@code {
+    bool ShowMobileMenu = false;
+    string Show = "";
+
+    private void ToggleMobile()
+    {
+        ShowMobileMenu = !ShowMobileMenu;
+
+        if (ShowMobileMenu == true)
+            Show = "show-mobile";
+        else
+            Show = "";
+    }
+}

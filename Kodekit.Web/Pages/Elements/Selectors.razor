@@ -1,0 +1,101 @@
+﻿@inherits HighlightPageBase
+@page  "/selectors"
+@page  "/selectors/{kitId}"
+
+<div class="selectors page">
+    <div class="page__container">
+        <header>
+            <div class="title">Elements</div>
+            <h2>Selectors & Toggles</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+        </header>
+        <div class="content">
+            <h3>Style & States</h3>
+            <p class="subheader">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <div class="section">
+                        <label>
+                            Label Font Size
+                            <input placeholder="16px">
+                        </label>
+                        <label>
+                            Label Font Weight
+                            <select>
+                                <option>Light (300)</option>
+                                <option selected>Regular (400)</option>
+                                <option>Medium (500)</option>
+                                <option>Bold (700)</option>
+                            </select>
+                        </label>
+                        <label>
+                            Active Color
+                            <select>
+                                <option>Primary (500)</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="preview-example">
+                        <div>
+                            <label>
+                                <input type="checkbox" /> Default
+                            </label>
+                            <label>
+                                <input type="checkbox" checked /> Active
+                            </label>
+                            <label>
+                                <input type="checkbox" disabled /> Disabled
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" /> Default
+                            </label>
+                            <label>
+                                <input type="radio" checked /> Active
+                            </label>
+                            <label>
+                                <input type="radio" disabled /> Disabled
+                            </label>
+                        </div>
+                    </div>
+                    <pre>
+                    <code class="language-html">
+&lt;input type="checkbox"/&gt;
+&lt;input type="radio"/&gt;
+                        </code>
+                    </pre>
+                    <button @onclick="Submit">
+                        Save & Continue
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
+                    </button>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task Submit()
+    {
+        //string newCss = new CreateCss().Execute(kit);
+
+        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
+        //SaveColors();
+    }
+}

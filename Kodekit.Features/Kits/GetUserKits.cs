@@ -18,7 +18,7 @@ namespace Kodekit.Features
 
         public override async Task<List<Kit>> ExecuteAsync()
         {
-            var kits = await Kits.Query.Where(x => x.UserId == User.Id() && x.ParentId == null)//&& x.IsDeleted != true)
+            var kits = await Kits.Query.Where(x => x.UserId == User.Id() && x.ParentId == null && x.IsDeleted != true)
                 .ToListAsync();
             return kits;
         }
