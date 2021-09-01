@@ -1,0 +1,119 @@
+﻿@import "../Core/Colors.scss";
+
+.page {
+    input, select {
+        background: $white;
+        border: 1px solid $grey-300;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 8px 16px;
+        display: block;
+        margin: 0 30px 20px 0;
+        font-size: 16px;
+        line-height: 160%;
+        height: 40px;
+        color: $grey-500;
+        //Changing color of placeholder
+        &::placeholder {
+            color: $grey-300;
+        }
+        //Changing color of outline when selected
+        &:focus {
+            border-color: $primary-500;
+        }
+
+        &:disabled {
+            border-color: $grey-300;
+            color: $grey-300;
+        }
+        //This would be for invalid but not working as of yet.
+        &:invalid {
+            border-color: $error-500;
+            color: $error-500;
+
+            &::placeholder {
+                color: $error-500;
+            }
+        }
+    }
+
+    .selected input {
+        border: 1px solid $primary-500;
+    }
+
+    .error {
+        color: $error-500;
+
+        span {
+            color: $error-500;
+        }
+
+        input {
+            border: 1px solid $error-500;
+            color: $error-500;
+        }
+    }
+
+    .disabled {
+        color: $grey-300;
+
+        input {
+            border: 1px solid $grey-300;
+            color: $grey-300;
+        }
+    }
+
+    form {
+        //Div that contains the Input, Label and Icon
+        label {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: left;
+            position: relative;
+            //Selecting the image inside of the input div.
+            i {
+                position: absolute;
+                top: 40%;
+                transform: translateY(-50%);
+                z-index: 2;
+                left: 5%;
+            }
+        }
+        //Controlling the color of checkbox and color when clicked.
+        input[type=checkbox] {
+            border-radius: 2px;
+
+            &:checked {
+                /*outline: 1px solid $primary-500;*/
+                border-radius: 2px;
+            }
+        }
+
+        input[type=radio] {
+            background: $grey-300;
+
+            &:checked {
+                background: $primary-500;
+            }
+        }
+
+        textarea {
+            font-family: 'Inter';
+            max-width: 496px;
+            width: 100%;
+            min-height: 87px;
+            padding: 10px 16px;
+            box-sizing: border-box;
+            background: #FFFFFF;
+            border: 1px solid #D2D4D9;
+            border-radius: 4px;
+            display: block;
+            margin: 0 30px 20px 0;
+            font-size: 16px;
+            line-height: 160%;
+            color: #787980;
+        }
+    }
+}
