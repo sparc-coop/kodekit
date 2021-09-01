@@ -1,11 +1,5 @@
 ﻿@import "Colors.scss";
 
-.page {
-    background: $background;
-    padding: 138px 80px 100px 80px;
-    font-family: 'Inter', sans-serif;
-}
-
 section {
     display: flex;
     flex-wrap: wrap;
@@ -20,10 +14,6 @@ section.secondary {
     margin-bottom: -20px;
     color: #17171A;
     font-family: 'Roboto Mono', monospace;
-}
-
-header {
-    margin-bottom: 30px;
 }
 
 .code-example {
@@ -47,6 +37,3 @@ header {
         padding-bottom: 40px;
     }
 }
-
-//Preview White background behind hero
-
