@@ -1,0 +1,87 @@
+﻿//Colors that are currently being used for the website
+//colors
+$background: #F5F7FA;
+$white: #FFFFFF;
+
+
+$yellow: #A3A60E;
+$orange: #CA9100;
+$purple: #875BBF;
+
+$background: #F5F7FA;
+
+//Colors on spec.
+//Primary Colors
+$primary-100: #B3CDFF;
+$primary-200: #C2D7FF;
+$primary-300: #80ACFF;
+$primary-500: #0B5FFF;
+$primary-700: #0053F0;
+$primary-900: #004AD7;
+
+//Secondary Colors
+$secondary-100: #E5F7F6;
+$secondary-300: #6DAEFF;
+$secondary-500: #00BFB2;
+$secondary-700: #2782F4;
+$secondary-900: #126FE4;
+
+//Tertiary Colors
+$tertiary-100: #FFDEC0;
+$tertiary-300: #FFCC9C;
+$tertiary-500: #FFB46E;
+$tertiary-700: #F89B45;
+$tertiary-900: #EB8629;
+
+//Grey Scale
+$grey-100: #F1F2F5;
+$grey-200: #E7E7ED;
+$grey-300: #CDCED9;
+$grey-400: #A7A9BC;
+$grey-500: #787980;
+$grey-600: #393A4A;
+$grey-700: #30313F;
+$grey-800: #2B2D39;
+$grey-900: #272833;
+
+//System Colors
+//Error Color
+$error-500: #F96464;
+
+//Warning Color
+$warning-500: #FF8F39;
+
+//Success Color
+$success-500: #5ACA75;
+
+
+
+.colors {
+    .preview-example {
+        .color-display {
+            width: 293px;
+            height: 142px;
+            border-radius: 4px;
+            margin: 6px 15px 0;
+        }
+    }
+
+    .preview-example--grayscale {
+        .color-display {
+            width: 106px;
+            height: 102px;
+            margin: 20px 0 0 0;
+            border-radius: 0;
+
+            &.first {
+                border-radius: 4px 0px 0px 4px;
+                margin: 20px 0 0 15px;
+            }
+
+            &.last {
+                border-radius: 0px 4px 4px 0px;
+                margin: 20px 15px 0 0;
+            }
+        }
+    }
+}
