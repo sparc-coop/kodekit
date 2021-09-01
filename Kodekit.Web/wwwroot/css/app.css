@@ -35,6 +35,14 @@
     font-size: 16px;
     line-height: 19.2px;
     color: #3A3A40; }
+  .page header {
+    padding-bottom: 25px; }
+    .page header h2 {
+      font-weight: 700; }
+    .page header p {
+      font-size: 18px;
+      color: #3A3A40;
+      padding-top: 12px; }
   .page .subheader {
     color: #3A3A40;
     max-width: 496px;
@@ -51,8 +59,9 @@
     margin-top: 20px;
     cursor: pointer; }
     .page button img {
-      margin-left: 14px;
-      vertical-align: middle; }
+      margin-left: 10px;
+      vertical-align: middle;
+      margin-top: -2px; }
   .page label {
     font-size: 14px;
     line-height: 180%;
@@ -68,12 +77,13 @@
     font-size: 16px;
     line-height: 160%;
     height: 40px;
-    color: #3A3A40; }
+    color: #3A3A40;
+    cursor: pointer; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: -20px 0 50px 0;
     overflow: hidden;
-    background: #22272e;
+    background: #282c34;
     padding: 0 0 20px 20px; }
   .page .section, .page section {
     display: flex;
@@ -103,11 +113,21 @@
     .page .section .large, .page section .large {
       width: 486px; }
     .page .section .medium, .page section .medium {
-      width: 314px; }
+      width: 302px; }
     .page .section .small, .page section .small {
       width: 142px; }
+    .page .section > div, .page section > div {
+      display: flex; }
   .page .content {
     padding-bottom: 100px; }
+    .page .content h3 {
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 20px; }
+    .page .content p {
+      font-size: 16px;
+      color: #787980;
+      margin: 0 0 32px; }
   .page .preview-example {
     background: #FFFFFF;
     border: 1px solid #FFFFFF;
@@ -332,7 +352,7 @@
     background: #3C7FFF;
     color: #FFFFFF; }
     .buttons .preview-example .hover-secondary {
-      background: #E5F7F6;
+      background: #FFFFFF;
       border: 1px solid #2AD2C6;
       color: #2AD2C6; }
   .buttons .preview-example .disabled {
@@ -343,12 +363,12 @@
       background: #FFFFFF;
       color: #D2D4D9;
       border: 1px solid #D2D4D9; }
-  .buttons .preview-example img {
+  .buttons .preview-example svg {
     vertical-align: middle;
     margin: 0;
     margin-top: -2px; }
   .buttons .preview-example .remove {
-    border: unset; }
+    border: 1px solid transparent !important; }
 
 .anchors .preview-example {
   padding: 30px 30px 50px; }
@@ -459,6 +479,11 @@
   display: flex;
   flex-wrap: wrap;
   padding: 32px; }
+  .dropdowns .preview-example select {
+    background: url("/images/dropdown-icon.svg") no-repeat right;
+    -webkit-appearance: none;
+    background-position-x: 144px;
+    padding: 8px 40px 8px 16px; }
 
 .dropdowns aside {
   font-size: 12px;
@@ -468,6 +493,13 @@
   .dropdowns aside a {
     text-decoration: none;
     color: #0B5FFF; }
+
+.dropdowns .section select {
+  background: url("/images/dropdown-icon.svg") no-repeat right;
+  background-color: white;
+  -webkit-appearance: none;
+  background-position-x: 125px;
+  padding: 8px 40px 8px 16px; }
 
 .dropdowns .section-container {
   padding: 34px 0;
@@ -492,26 +524,46 @@
     height: 20px;
     width: 20px; }
 
+.colors .content {
+  position: relative; }
+
 .colors aside {
   box-sizing: border-box;
   border-radius: 8px;
-  padding: 25px;
-  background: #fff;
-  float: right;
-  width: 250px;
-  margin: 10%; }
+  padding: 16px;
+  background: #FFFFFF;
+  width: 150px;
+  position: absolute;
+  top: -150px;
+  right: 0;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); }
+  .colors aside .title {
+    font-size: 10px;
+    color: #A9ACB2;
+    margin: 0; }
+  .colors aside h3 {
+    font-size: 24px;
+    color: #17171A;
+    margin: 2px 0 10px; }
   .colors aside section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 2px; }
+    .colors aside section label {
+      font-size: 11px;
+      color: #3A3A40; }
+      .colors aside section label div {
+        cursor: pointer; }
     .colors aside section .set-colors {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 100%; }
+      width: 100%;
+      font-size: 12px; }
       .colors aside section .set-colors div {
-        margin: 4px; }
+        margin: 4px;
+        cursor: pointer; }
 
 .colors label {
   font-weight: normal;
@@ -668,26 +720,52 @@
   background: none;
   color: #00BFB2; }
 
+.layout .switch {
+  vertical-align: middle; }
+
+.layout pre {
+  border-radius: 8px; }
+
+.typography .content {
+  position: relative; }
+
 .typography aside {
   box-sizing: border-box;
   border-radius: 8px;
-  padding: 25px;
-  background: #fff;
-  float: right;
-  width: 250px;
-  margin: 10%; }
+  padding: 16px;
+  background: #FFFFFF;
+  width: 150px;
+  position: absolute;
+  top: -150px;
+  right: 0;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04); }
+  .typography aside .title {
+    font-size: 10px;
+    color: #A9ACB2;
+    margin: 0; }
+  .typography aside h3 {
+    font-size: 24px;
+    color: #17171A;
+    margin: 2px 0 10px; }
   .typography aside section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 2px; }
+    .typography aside section label {
+      font-size: 11px;
+      color: #3A3A40; }
+      .typography aside section label div {
+        cursor: pointer; }
     .typography aside section .set-colors {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 100%; }
+      width: 100%;
+      font-size: 12px; }
       .typography aside section .set-colors div {
-        margin: 4px; }
+        margin: 4px;
+        cursor: pointer; }
 
 .typography .preview-example {
   padding: 0 32px 40px 32px; }
@@ -701,10 +779,24 @@
 .global-page .section-container {
   display: flex;
   margin: 20px 0;
-  color: #787980; }
+  color: #3A3A40; }
 
 .global-page h3 {
   margin: 80px 0 8px 0; }
+
+.global-page .disabled {
+  color: #A9ACB2; }
+  .global-page .disabled input {
+    pointer-events: none; }
+    .global-page .disabled input:checked + .slider {
+      background-color: #F5F7FA;
+      border: 2px solid #A9ACB2;
+      pointer-events: none; }
+      .global-page .disabled input:checked + .slider:before {
+        -webkit-transform: translateX(12px);
+        -ms-transform: translateX(12px);
+        transform: translateX(12px);
+        background-color: #A9ACB2; }
 
 .effects-page .preview-example {
   display: flex;
@@ -925,6 +1017,28 @@
   position: absolute;
   bottom: 140px;
   left: 0; }
+
+.installation .instructions {
+  background: #22272e;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  padding-top: 20px;
+  margin: 16px 0 40px 0;
+  height: 50px; }
+  .installation .instructions button {
+    font-size: 12px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #22272e;
+    border: 1px solid #787980;
+    border-radius: 8px;
+    color: #787980;
+    margin-top: 0; }
+
+.installation .download {
+  margin-bottom: 40px; }
 
 .theme-page section {
   width: 1060px; }
@@ -1193,9 +1307,6 @@
       margin: 20px auto; } }
 
 .dashboard .sort {
-  /*        position: absolute;
-        top: 0;
-        right: 0;*/
   width: 150px;
   height: 27px;
   padding: 6px 12px;
@@ -1459,11 +1570,13 @@
     color: #3A3A40;
     font-size: 14px; }
     .page-info .title img {
-      margin: 0 8px; }
+      margin: 0 8px;
+      vertical-align: middle; }
   .page-info .kit-select {
     color: #3A3A40;
     font-size: 14px;
-    cursor: pointer; }
+    cursor: pointer;
+    position: relative; }
     .page-info .kit-select img {
       vertical-align: middle;
       margin-left: 2px; }
@@ -1484,12 +1597,15 @@
     .page-info .info--time {
       color: #3A3A40;
       padding: 6px 18px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
       line-height: 14px;
       letter-spacing: 0.02em;
       text-align: left;
       text-transform: uppercase; }
+      .page-info .info--time a {
+        color: #0B5FFF;
+        text-decoration: none; }
   .page-info .history {
     cursor: pointer;
     font-size: 12px;
@@ -1528,9 +1644,9 @@
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
       border-radius: 8px;
       width: 250px;
-      height: 340px;
+      max-height: 340px;
       box-sizing: border-box;
-      padding: 24px;
+      padding: 24px 24px 45px 24px;
       position: absolute;
       right: 18px;
       top: 54px;
@@ -1565,6 +1681,13 @@
         line-height: 14.4px;
         font-weight: 500;
         padding: 10px 0; }
+      .page-info .history--dropdown .current .img-left {
+        margin-right: 16px;
+        vertical-align: middle; }
+      .page-info .history--dropdown .current .img-right {
+        float: right;
+        height: 14px;
+        vertical-align: middle; }
       .page-info .history--dropdown .title {
         font-size: 11px;
         color: #A9ACB2;
@@ -1624,6 +1747,31 @@
         -ms-transform: translateX(10px);
         transform: translateX(10px);
         background-color: #0B5FFF; }
+  .page-info .user-kits--dropdown {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    width: 210px;
+    box-sizing: border-box;
+    padding: 15px 20px 15px 15px;
+    position: absolute;
+    left: -15px;
+    top: 10px;
+    display: block;
+    z-index: 10; }
+    .page-info .user-kits--dropdown li {
+      list-style-type: none;
+      padding: 5px 0;
+      color: #17171A; }
+      .page-info .user-kits--dropdown li:hover {
+        color: #0B5FFF; }
+      .page-info .user-kits--dropdown li img {
+        margin-right: 10px; }
+      .page-info .user-kits--dropdown li span {
+        font-size: 11px;
+        display: block;
+        color: #787980;
+        margin-left: 25px; }
 
 .colors .preview-example .color-display {
   width: 293px;
@@ -1660,11 +1808,6 @@
   .colors .preview-example--grayscale .color-display.last {
     border-radius: 0px 4px 4px 0px;
     margin: 20px 15px 0 0; }
-
-.page {
-  background: #F5F7FA;
-  padding: 138px 80px 100px 80px;
-  font-family: 'Inter', sans-serif; }
 
 section {
   display: flex;
@@ -1679,9 +1822,6 @@ section.secondary {
   margin-bottom: -20px;
   color: #17171A;
   font-family: 'Roboto Mono', monospace; }
-
-header {
-  margin-bottom: 30px; }
 
 .code-example {
   background: #272833;
@@ -2249,9 +2389,6 @@ button.card-button-secondary {
   text-align: center;
   font-weight: 500; }
 
-/*button > :first-child {
-    margin-right: 14px;
-}*/
 .page .checkboxes, .page .radios {
   display: flex; }
   .page .checkboxes label, .page .radios label {

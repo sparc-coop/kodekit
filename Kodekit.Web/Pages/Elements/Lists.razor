@@ -108,11 +108,11 @@
 
     private async Task Submit()
     {
-        Nav.NavigateTo("/box-shadow/" + kit.Id);
+        Nav.NavigateTo("/box-shadow/" + kit.KitId);
     }
 
     private async Task Publish()
     {
-        await Api.PublishKitAsync(kit);
+        await PublicApi().PublishKitAsync(kit);
     }
 }

@@ -7,49 +7,88 @@
                 <img src="/images/right-icon.svg" alt="Right" />
             </div>
             <div class="kit-select">
-                Untitled Styleguide
-                <img src="/images/dropdown-icon.svg" alt="Dropdown" />
+                @if (kit != null)
+                {
+                    @(kit.Name != null ? kit.Name : "Untitled Styleguide")
+                }
+                @if (UserKits != null && UserKits.Count > 1)
+                {
+                    <img src="/images/dropdown-icon.svg" @onclick="ShowKitsList" alt="Dropdown"/>
+                    @if (KitsList == true)
+                    {
+                        <ul class="user-kits--dropdown">
+                            @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
+                            {
+                                <li @onclick="@(e => SelectKit(item.KitId))">
+                                    <img class="img-left" src="/images/ellipse_open_icon.svg" alt="More Options"/>
+                                    @(item.Name ?? "Untitled Styleguide")
+                                    <span>
+                                        @(item.ModifiedDate != null ? 
+                                            item.ModifiedDate.Value.ToString("MM/dd/yy hh:mm tt") : 
+                                            item.DateCreated.Value.ToString("MM/dd/yy hh:mm tt"))
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                }
             </div>
         </div>
         <div class="info">
-            <div class="info--time">Last Saved: 12:03 PM</div>
+            <AuthorizeView>
+                <Authorized>
+                    @if (!string.IsNullOrEmpty(ModifiedDate))
+                    {
+                        <div class="info--time">Last Saved: @ModifiedDate</div>
+                    }
+                </Authorized>
+                <NotAuthorized>
+                    <div class="info--time">Please <a href="authentication/login">Log In</a> to save changes</div>
+                </NotAuthorized>
+            </AuthorizeView>
+
             <div class="actions">
-                <img @onclick="@(e => ShowDeleteModal(kit.Id))" src="/images/delete-icon.png" title="Delete" />
+                <img @onclick="@(e => ShowDeleteModal(kit.Id))" src="/images/delete-icon.png" title="Delete"/>
                 <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
                 <img @onclick="DownloadKit" src="/images/download-icon.png" title="Download" />
-                <div class="version-select">
-
-                </div>
             </div>
-            <div class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown">
-                @if (ShowDropdown == false)
-                {
-                    <img class="icon-left" src="/images/history-icon.svg" alt="History Icon" />
-                }
-                else
-                {
-                    <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon" />
-                }
-                Version History
-                @if (ShowDropdown == false)
-                {
-                    <img class="icon-right" src="/images/dropdown-icon.svg" alt="Down Icon" />
-                }
-                else
-                {
-                    <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close Icon" />
-                }
-            </div>
+            <AuthorizeView>
+                <Authorized>
+                    <div class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown">
+                        @if (ShowDropdown == false)
+                        {
+                            <img class="icon-left" src="/images/history-icon.svg" alt="History Icon"/>
+                        }
+                        else
+                        {
+                            <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon"/>
+                        }
+                        Version History
+                        @if (ShowDropdown == false)
+                        {
+                            <img class="icon-right" src="/images/dropdown-icon.svg" alt="Dropdown"/>
+                        }
+                        else
+                        {
+                            <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close"/>
+                        }
+                    </div>
+                </Authorized>
+            </AuthorizeView>
         </div>
         @if (ShowDropdown == true)
         {
             <div class="history--dropdown">
                 <div class="title">Version History</div>
-                <div class="current">Current Version</div>
-                <div class="title">Past Versions</div>
-                <ul>
-                    @if (Kits != null)
-                    {
+                <div class="current">
+                    <img class="img-left" src="/images/ellipse_open_icon.svg"/>
+                    Current Version
+                    <img class="img-right" @onclick="UpdateKit" src="/images/save_icon.svg"/>
+                </div>
+                @if(Kits.Count > 0)
+                {
+                    <div class="title">Past Versions</div>
+                    <ul>
                         @foreach (var item in Kits)
                         {
                             <li @onclick="@(e => ShowOptions(item.KitId))">
@@ -86,14 +125,14 @@
                                             <li @onclick="@(e => ShowEditName(item.KitId))">Rename Version</li>
                                             <li @onclick="@(e => GoToPreview(item.KitId))">Preview Version</li>
                                             <li>Revert to Version</li>
-                                            <li @onclick="@(e => ShowDeleteModal(item.KitId))">Delete Version</li>
+                                            <li @onclick="@(e => GoToPreview(item.KitId))">Delete Version</li>
                                         </ul>
                                     </div>
                                 }
                             </li>
                         }
-                    }
-                </ul>
+                    </ul>
+                }
                 <div class="auto-publish">
                     <label class="switch">
                         <input type="checkbox" @bind="SelectAutoPublish" @oninput="SetAutoPublish">
@@ -107,7 +146,6 @@
     <DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@kit" SelectedKit="@SelectedVersion"/>
 }
 
-
 @code {
     bool ShowDropdown = false;
     bool ShowPage = true;
@@ -116,29 +154,61 @@
     string SelectedVersion = "";
     string EditName = "";
     bool SelectAutoPublish = false;
+    bool KitsList = false;
+    string ModifiedDate = "";
     private ICollection<Kit> Kits;
+    private ICollection<Kit> UserKits;
     Kit kit;
-
 
     protected override async Task OnInitializedAsync()
     {
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
-        kit = await Api.GetKitAsync(currentKitId);
-        Kits = await Api.GetRelatedKitsAsync(currentKitId);
+        if(string.IsNullOrEmpty(currentKitId))
+        {
+            kit = await PublicApi().CreateKitAsync(new Kit());
+        } else
+        {
+            kit = await PublicApi().GetKitAsync(currentKitId);
+        }
+
+        ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
+            : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
+
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            Kits = await Api.GetRelatedKitsAsync(currentKitId);
+            UserKits = await Api.GetUserKitsAsync();
+        }
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    private async Task LoginSucceeded()
     {
-        base.OnAfterRender(firstRender);
-
-        if (Nav.Uri.Contains("my-kits"))
-            ShowPage = false;
+        //base.OnParametersSet();
+        Console.WriteLine("test");
+        string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            //Kits = await Api.GetRelatedKitsAsync(currentKitId);
+            UserKits = await Api.GetUserKitsAsync();
+        }
     }
 
-    private void ToggleDropdown()
+    private async Task ToggleDropdown()
     {
         ShowDropdown = !ShowDropdown;
-
+        if(ShowDropdown)
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity.IsAuthenticated)
+            {
+                Kits = await Api.GetRelatedKitsAsync(kit.KitId);
+            }
+        }
     }
 
     private void ShowDeleteModal(string selected)
@@ -157,7 +227,8 @@
         Kit newkit = kit;
         newkit.Id = Guid.NewGuid().ToString();
         newkit.KitId = Guid.NewGuid().ToString();
-        newkit = await Api.CreateKitAsync(newkit);
+        newkit.ParentId = kit.ParentId;
+        newkit = await PublicApi().CreateKitAsync(newkit);
         Nav.NavigateTo("/typography/" + newkit.KitId);
     }
 
@@ -169,8 +240,8 @@
     private async Task Publish(string kitId)
     {
         //Get version to publish
-        Kit publishKit = await Api.GetKitAsync(kitId);
-        await Api.PublishKitAsync(publishKit);
+        Kit publishKit = await PublicApi().GetKitAsync(kitId);
+        await PublicApi().PublishKitAsync(publishKit);
     }
 
     private void ShowOptions(string kitId)
@@ -196,7 +267,7 @@
         Kit selectedKit = Kits.Where(x => x.KitId == kitId).FirstOrDefault();
         EditName = "";
         Console.WriteLine(kitId);
-        await Api.UpdateKitAsync(selectedKit);
+        await PublicApi().UpdateKitAsync(selectedKit);
     }
 
     private void GoToPreview(string kitId)
@@ -213,6 +284,25 @@
 
         kit.IsAutoPublish = SelectAutoPublish;
 
-        await Api.UpdateKitAsync(kit);
+        await PublicApi().UpdateKitAsync(kit);
+    }
+
+    private async Task UpdateKit()
+    {
+        await PublicApi().UpdateKitAsync(kit);
+        ModifiedDate = "JUST NOW";
+    }
+
+    private void ShowKitsList()
+    {
+        KitsList = !KitsList;
+    }
+
+    private void SelectKit(string kitid)
+    {
+        KitsList = !KitsList;
+        kit = UserKits.Where(x => x.KitId == kitid).FirstOrDefault();
+        ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
+            : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
     }
 }
