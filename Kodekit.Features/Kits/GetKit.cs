@@ -15,8 +15,8 @@ namespace Kodekit.Features
         public IRepository<Kit> Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(string kitId) 
-        { 
-            Kit kit = await Kits.FindAsync(kitId);
+        {
+            Kit kit = Kits.Query.Where(x => x.KitId == kitId).FirstOrDefault();
             if (kit == null || (string.IsNullOrEmpty(kit.UserId) && kit.IsPublished == true))
             {
                 kit = new Kit();

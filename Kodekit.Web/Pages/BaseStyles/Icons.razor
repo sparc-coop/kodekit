@@ -96,18 +96,18 @@
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
     }
 
     private async Task Submit()
     {
-        await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/buttons/" + kit.Id);
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/buttons/" + kit.KitId);
     }
 
     async Task SelectIcons(ChangeEventArgs e)
