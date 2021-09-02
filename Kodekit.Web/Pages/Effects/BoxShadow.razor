@@ -1,4 +1,5 @@
-﻿@page  "/box-shadow"
+﻿@inherits HighlightPageBase
+@page  "/box-shadow"
 @page  "/box-shadow/{kitId}"
 
 <div class="effects-page page">
@@ -96,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                  <pre>
+                    <pre>
 <code class="language-scss">
 //use box-shadows as their own class
 .shadow-small {
@@ -157,9 +158,6 @@
     //{
 
     //}
-
-
-
 
     private async Task Submit()
     {
