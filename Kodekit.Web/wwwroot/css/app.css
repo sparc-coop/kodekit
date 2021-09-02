@@ -771,6 +771,8 @@
   padding: 0 32px 40px 32px; }
   .typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
     margin-top: 40px; }
+  .typography .preview-example label {
+    padding-bottom: 0; }
 
 @media screen and (max-width: 500px) {
   .typography .large {
