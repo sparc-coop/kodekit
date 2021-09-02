@@ -105,11 +105,11 @@
                     </div>
                     <pre>
                     <code>
-&lt;button&gt;Button Label&lt;/h1&gt;//default
+&lt;button&gt;Button Label&lt;/button&gt; &lt;!--default--&gt;
 &lt;!-- the button contents will adapt as you add labels, svgs, pngs or jpegs --&gt;
-&lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye"&gt;Button Label&lt;/button&gt;
+&lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye" /&gt;Button Label&lt;/button&gt;
 &lt;button&gt;Button Label &lt;img src="icon_eye" alt="Image of Kodekit Eye"&gt;&lt;/button&gt;
-&lt;button&gt;&lt;img src="icon_eye" alt="Image of Kodekit Eye"&gt;&lt;/button&gt;
+&lt;button&gt;&lt;img src="icon_eye" alt="Image of Kodekit Eye" /&gt;&lt;/button&gt;
                         </code>
                     </pre>
                     <h3>Button Variations & States</h3>
@@ -167,10 +167,10 @@
                     <pre>
                     <code>
 &lt;!-- control button state with html attributes --&gt;
-&lt;button&gt;Button Label&lt;/h1&gt;//default
-&lt;button disabled&gt;Button Label&lt;/h1&gt;
-&lt;button class="secondary-btn"&gt;Button Label&lt;/h1&gt;
-&lt;button class="secondary-btn" disabled&gt;Button Label&lt;/h1&gt;
+&lt;button&gt;Button Label&lt;/button&gt;  &lt;!--default--&gt;
+&lt;button disabled&gt;Button Label&lt;/button&gt;
+&lt;button class="secondary-btn"&gt;Button Label&lt;/button&gt;
+&lt;button class="secondary-btn" disabled&gt;Button Label&lt;/button&gt;
                         </code>
                     </pre>
                     <button @onclick="Submit">
