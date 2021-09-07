@@ -30,6 +30,11 @@
         function showHighlight() {
             hljs.highlightAll();
         }
+
+        function copyToClipboard(id) {
+            var copyText = document.getElementById(id).value;
+            navigator.clipboard.writeText(copyText);
+        }
     </script>
     <script src="color-checker.js" charset="utf-8"></script>
 </body>
