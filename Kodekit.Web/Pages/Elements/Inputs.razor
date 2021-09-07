@@ -22,32 +22,32 @@
                     <div class="section">
                         <label>
                             Input Font Size
-                            <input placeholder="16px" />
+                            <input placeholder="16px" @bind="kit.InputSettings.FontSize.Value" />
                         </label>
                         <label>
                             Input Font Weight
-                            <select>
-                                <option>Light (300)</option>
-                                <option selected>Regular (400)</option>
-                                <option>Medium (500)</option>
-                                <option>Bold (700)</option>
+                            <select @bind="kit.InputSettings.FontWeight.Value">
+                                @foreach (var option in kit.InputSettings.FontWeight.ValidValues)
+                                {
+                                    <option value="@option.Key">@option.Value</option>
+                                }
                             </select>
                         </label>
                         <label>
                             Vertical Padding
-                            <input placeholder="10px" />
+                            <input placeholder="10px" @bind="kit.InputSettings.VerticalPadding.Value" />
                         </label>
                         <label>
                             Horizontal Padding
-                            <InputText @bind-Value="kit.BodyFontSize" />
+                            <input placeholder="10px" @bind="kit.InputSettings.HorizontalPadding.Value" />
                         </label>
                         <label>
                             Corner Radius
-                            <InputText @bind-Value="kit.BodyFontSize" />
+                            <input placeholder="14px" @bind="kit.InputSettings.CornerRadius.Value" />
                         </label>
                         <label>
                             Border Width
-                            <InputText @bind-Value="kit.BodyLineHeight" />
+                            <input placeholder="1px" @bind="kit.InputSettings.BorderWidth.Value" />
                         </label>
                     </div>
                     <div class="preview-example">

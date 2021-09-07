@@ -19,4 +19,14 @@ namespace Kodekit.Features.Elements
 
         public override string ToString() => $"#{HexValue}";
     }
+
+    public enum Colors
+    {
+        Primary,
+        Secondary,
+        Tertiary,
+        Darkest,
+        Lightest,
+
+    }
 }

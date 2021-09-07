@@ -13,7 +13,7 @@ namespace Kodekit.Features.Elements
             Placeholder = ValidValues.ContainsKey(weight) ? ValidValues[weight] : string.Empty;
         }
 
-        public static Dictionary<int, string> ValidValues = new()
+        public Dictionary<int, string> ValidValues = new()
         {
             { 100, "Thin" },
             { 200, "Extra-Light" },
