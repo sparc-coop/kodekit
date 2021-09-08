@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record UpdateColorsRequest(string KitId, string Primary, string Secondary, string Tertiary, string Darkest, string Lightest, string Error, string Warning, string Success);
-    public class UpdateColors : Feature<UpdateColorsRequest, Kit>
+    public record ColorsModel(string KitId, string Primary, string Secondary, string Tertiary, string Darkest, string Lightest, string Error, string Warning, string Success);
+    public class UpdateColors : Feature<ColorsModel, Kit>
     {
         public UpdateColors(IRepository<Kit> kits)
         {
@@ -17,7 +17,7 @@ namespace Kodekit.Features.Elements
 
         public IRepository<Kit> Kits { get; }
 
-        public override async Task<Kit> ExecuteAsync(UpdateColorsRequest request)
+        public override async Task<Kit> ExecuteAsync(ColorsModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
             kit.SetColor(ColorTypes.Primary, request.Primary);

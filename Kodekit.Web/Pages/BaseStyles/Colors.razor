@@ -12,102 +12,36 @@
             </p>
         </header>
         <div class="content">
-            <aside class="accessibility-checker">
-                <p class="title">Contrast Checker</p>
-                @if (colorResult != null)
-                {
-                    <h3>@colorResult.Contrast</h3>
-                }
-                <section>
-                    <label>Text Color</label>
-                    <div style="width: 10px; height: 10px; background-color: @pair.FGColor; border-radius: 2px;" @onclick="@(() => FGToggle = !FGToggle)"></div>
-                    @if (!FGToggle)
-                    {
-                        <div class="set-colors">Select a color:</div>
-                        <div class="set-colors">
-
-                            <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "fg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "fg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "fg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "fg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "fg"))"></div>
-                        </div>
-                    }
-
-                </section>
-
-                <section>
-                    <label>Background Color</label>
-                    <div style="width: 10px; height: 10px; background-color: @pair.BGColor; border-radius: 2px;" @onclick="@(() => BGToggle = !BGToggle)"></div>
-                    @if (!BGToggle)
-                    {
-                        <div class="set-colors">Select a color:</div>
-                        <div class="set-colors">
-
-                            <div style="width: 20px; height: 20px; background-color: @kit.DarkColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.DarkColor, "bg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.LightColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.LightColor, "bg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.PrimaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.PrimaryColor, "bg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.SecondaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.SecondaryColor, "bg"))"></div>
-                            <div style="width: 20px; height: 20px; background-color: @kit.TertiaryColor; border-radius: 2px;" @onclick="@(() => UpdateColors(kit.TertiaryColor, "bg"))"></div>
-                        </div>
-                    }
-
-                </section>
-                <section>
-                    <label>Large Text</label>
-                    @if (colorResult.AaText == "pass")
-                    {
-                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
-                    }
-                    else
-                    {
-                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
-                    }
-
-                </section>
-                <section>
-                    <label>Small Text</label>
-                    @if (colorResult.AaHeadline == "pass")
-                    {
-                        <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
-                    }
-                    else
-                    {
-                        <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
-                    }
-                </section>
-
-
-            </aside>
+            <!-- Contrast Checker Component Here -->
             <h3>Brand Colors</h3>
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
-  
-            @if (kit != null)
+
+            @if (Model != null)
             {
-                <EditForm Model="@kit">
+                <EditForm Model="@Model">
                     <div class="section">
                         <label>
                             Primary
                             <span>
-                                <input type="color" value="@kit.PrimaryColor" @oninput="@(e => kit.PrimaryColor = e.Value.ToString())">
-                                @kit.PrimaryColor
+                                <input type="color" @bind=Model.Primary @bind:event="oninput">
+                                @Model.Primary
                             </span>
                         </label>
 
                         <label>
                             Secondary
                             <span>
-                                <input type="color" value="@kit.SecondaryColor" @oninput="@(e => kit.SecondaryColor = e.Value.ToString())">
-                                @kit.SecondaryColor
+                                <input type="color" @bind=Model.Secondary @bind:event="oninput">
+                                @Model.Secondary
                             </span>
                         </label>
                         <label>
                             Tertiary
                             <span>
-                                <input type="color" value="@kit.TertiaryColor" @oninput="@(e => kit.TertiaryColor = e.Value.ToString())">
-                                @kit.TertiaryColor
+                                <input type="color" @bind=Model.Tertiary @bind:event="oninput">
+                                @Model.Tertiary
                             </span>
                         </label>
 
@@ -115,35 +49,35 @@
                     <div class="preview-example">
                         <div>
                             <label>Primary</label>
-                            <div class="color-display" style="background-color: @kit.PrimaryColor"></div>
+                            <div class="color-display" style="background-color: @Model.Primary"></div>
                         </div>
                         <div>
                             <label>Secondary</label>
-                            <div class="color-display" style="background-color: @kit.SecondaryColor"></div>
+                            <div class="color-display" style="background-color: @Model.Secondary"></div>
                         </div>
                         <div>
                             <label>Tertiary</label>
-                            <div class="color-display" style="background-color: @kit.TertiaryColor"></div>
+                            <div class="color-display" style="background-color: @Model.Tertiary"></div>
                         </div>
                     </div>
                     <pre>
                     <code>
-&lt;!-- use directly as colors or background properties --&gt;
-&lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
-&lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
-                            </code>
+        &lt;!-- use directly as colors or background properties --&gt;
+        &lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
+        &lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
+                                    </code>
                     <code class="language-scss">
-&lt;!-- however it is best to use them as variables within your classes --&gt;
+        &lt;!-- however it is best to use them as variables within your classes --&gt;
 
-.box {
-    background-color: $primary-500;
-}
+        .box {
+            background-color: $primary-500;
+        }
 
-.box-alt {
-    background-color: $secondary-100;
-}
-                            </code>
-                        </pre>
+        .box-alt {
+            background-color: $secondary-100;
+        }
+                                    </code>
+                                </pre>
                     <h3>Greyscale</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -152,64 +86,35 @@
                         <label>
                             Darkest
                             <span>
-                                <input type="color" value="@kit.DarkColor" @oninput="@(e => kit.DarkColor = e.Value.ToString())">
-                                @kit.DarkColor
+                                <input type="color" @bind=Model.Darkest @bind:event="oninput">
+                                @Model.Darkest
                             </span>
                         </label>
                         <label>
                             Lightest
                             <span>
-                                <input type="color" value="@kit.LightColor" @oninput="@(e => kit.LightColor = e.Value.ToString())">
-                                @kit.LightColor
+                                <input type="color" @bind=Model.Lightest @bind:event="oninput">
+                                @Model.Lightest
                             </span>
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
-                        <div>
-                            <label>900</label>
-                            <div class="color-display first" style="background-color: @kit.DarkColor"></div>
-                        </div>
-                        <div>
-                            <label>800</label>
-                            <div class="color-display" style="background-color: #2B2D39"></div>
-                        </div>
-                        <div>
-                            <label>700</label>
-                            <div class="color-display" style="background-color: #30313F"></div>
-                        </div>
-                        <div>
-                            <label>600</label>
-                            <div class="color-display" style="background-color: #393A4A"></div>
-                        </div>
-                        <div>
-                            <label>500</label>
-                            <div class="color-display" style="background-color: #6B6C7E"></div>
-                        </div>
-                        <div>
-                            <label>400</label>
-                            <div class="color-display" style="background-color: #A7A9BC"></div>
-                        </div>
-                        <div>
-                            <label>300</label>
-                            <div class="color-display" style="background-color: #CDCED9"></div>
-                        </div>
-                        <div>
-                            <label>200</label>
-                            <div class="color-display" style="background-color: #E7E7ED"></div>
-                        </div>
-                        <div>
-                            <label>100</label>
-                            <div class="color-display last" style="background-color: @kit.LightColor"></div>
-                        </div>
+                        @for (int weight = 900; weight <= 100; weight -= 100)
+                        {
+                            <div>
+                                <label>@weight</label>
+                                <div class="color-display @(weight == 900 ? "first" : weight == 100 ? "last" : "") bg-grey-@weight"></div>
+                            </div>
+                        }
                     </div>
                     <pre>
                     <code class="language-scss">
-&lt;!--System Variables--&gt;
-$greyscale-900
-$greyscale-800
-$greyscale-700
-                        </code>
-                    </pre>
+        &lt;!--System Variables--&gt;
+        $grey-900
+        $grey-800
+        $grey-700
+                                </code>
+                            </pre>
                     <h3>System Colors</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -218,56 +123,56 @@ $greyscale-700
                         <label>
                             Error
                             <span>
-                                <input type="color" value="@kit.ErrorColor" @oninput="@(e => kit.ErrorColor = e.Value.ToString())">
-                                @kit.ErrorColor
+                                <input type="color" @bind=Model.Error @bind:event="oninput">
+                                @Model.Error
                             </span>
                         </label>
                         <label>
                             Warning
                             <span>
-                                <input type="color" value="@kit.WarningColor" @oninput="@(e => kit.WarningColor = e.Value.ToString())">
-                                @kit.WarningColor
+                                <input type="color" @bind=Model.Warning @bind:event="oninput">
+                                @Model.Warning
                             </span>
                         </label>
                         <label>
                             Success
                             <span>
-                                <input type="color" value="@kit.SuccessColor" @oninput="@(e => kit.SuccessColor = e.Value.ToString())">
-                                @kit.SuccessColor
+                                <input type="color" @bind=Model.Success @bind:event="oninput">
+                                @Model.Success
                             </span>
                         </label>
                     </div>
                     <div class="preview-example">
-                        <div style="background-color: @kit.ErrorColor"></div>
-                        <div style="background-color: @kit.WarningColor"></div>
-                        <div style="background-color: @kit.SuccessColor"></div>
+                        <div class="bg-error"></div>
+                        <div class="bg-warning"></div>
+                        <div class="bg-success"></div>
                         <div>
                             <label>Error</label>
-                            <div class="color-display" style="background-color: @kit.ErrorColor"></div>
+                            <div class="color-display bg-error"></div>
                         </div>
                         <div>
                             <label>Warning</label>
-                            <div class="color-display" style="background-color: @kit.WarningColor"></div>
+                            <div class="color-display bg-warning"></div>
                         </div>
                         <div>
                             <label>Success</label>
-                            <div class="color-display" style="background-color: @kit.SuccessColor"></div>
+                            <div class="color-display bg-success"></div>
                         </div>
                     </div>
                     <pre>
                     <code class="language-scss">
-&lt;!--System Variables--&gt;
-$error-900
-$error-500
-$error-100
-$warning-900
-$warning-500
-$warning-100
-$success-900
-$success-500
-$success-100
-                        </code>
-                        </pre>
+        &lt;!--System Variables--&gt;
+        $error-900
+        $error-500
+        $error-100
+        $warning-900
+        $warning-500
+        $warning-100
+        $success-900
+        $success-500
+        $success-100
+                                </code>
+                                </pre>
                     <div class="preview-mockup">
                         <h3>Preview</h3>
                         <p class="subheader">
@@ -277,23 +182,23 @@ $success-100
                             <div class="preview-mockup--left">
                                 <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-                                    <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
-                                    <h5 style="color: @(kit.TertiaryColor)">Information</h5>
+                                    <h4 class="color-dark">Brand Colors</h4>
+                                    <h5 class="color-tertiary">Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
+                                    <button>Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
-                                <h5 style="color: @(kit.TertiaryColor)">Information</h5>
+                                <h4 class="color-dark">Brand Colors</h4>
+                                <h5 class="color-tertiary">Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
                                 <div class="buttons">
-                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
-                                    <button class="button-secondary" style="color: @(kit.SecondaryColor)">Secondary CTA</button>
+                                    <button>Primary CTA</button>
+                                    <button class="secondary">Secondary CTA</button>
                                 </div>
                             </div>
                         </section>
@@ -311,107 +216,17 @@ $success-100
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 @code {
-    private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
-    string currentKitId;
-    ColorResults colorResult = new ColorResults();
-    ColorPair pair = new ColorPair();
-    bool FGToggle = true;
-    bool BGToggle = true;
+    ColorsModel Model;
 
     protected override async Task OnInitializedAsync()
     {
-        await GetKit();
+        Model = await PublicApi().GetColorsAsync(kitId);
     }
 
     private async Task Submit()
     {
-        await PublicApi().UpdateKitAsync(kit);
-        Nav.NavigateTo("/icons/" + kit.KitId);
-    }
-
-    private async Task GetKit()
-    {
-        //get from local storage
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        currentKitId = result;
-
-        if (kitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-        else if (currentKitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-
-        kit.PrimaryColor = "#0B5FFF";
-        kit.SecondaryColor = "#4B9BFF";
-        kit.TertiaryColor = "#FFB46E";
-        kit.DarkColor = "#272833";
-        kit.LightColor = "#F3F3F9";
-        kit.ErrorColor = "#F96464";
-        kit.WarningColor = "#FF8F39";
-        kit.SuccessColor = "#5ACA75";
-
-        pair.BGColor = kit.LightColor;
-        pair.FGColor = kit.DarkColor;
-
-        await CheckColors();
-    }
-
-    async Task CheckColors()
-    {
-        //api method
-        var strToSend = pair.BGColor.Substring(1) + "+" + pair.FGColor.Substring(1);
-
-        var contrastApiResults = await PublicApi().ColorContrastCheckerAsync(strToSend);
-
-        colorResult.AaText = contrastApiResults.Aa;
-        colorResult.AaHeadline = contrastApiResults.AaLarge;
-        colorResult.Contrast = contrastApiResults.Ratio;
-
-
-
-        //javascript method
-        //await JS.InvokeVoidAsync("checkColors", pair.Color1, pair.Color2);
-        //var str = System.Text.Json.JsonSerializer.Serialize<ColorResults>(json);
-        //colorResult.Contrast = await JS.InvokeAsync<string>("colorData.contrast");
-        //colorResult.AaText = await JS.InvokeAsync<string>("colorData.aaText");
-        //colorResult.AaLarge = await JS.InvokeAsync<string>("colorData.aaHeadline");
-
-        //colorResult = System.Text.Json.JsonSerializer.Deserialize<ColorResults>(str);
-
-        StateHasChanged();
-
-    }
-
-    async void UpdateColors(string color, string type)
-    {
-        if (type == "fg")
-        {
-            pair.FGColor = color;
-            FGToggle = !FGToggle;
-        }
-        else
-        {
-            pair.BGColor = color;
-            BGToggle = !BGToggle;
-        }
-
-        await CheckColors();
-    }
-
-    public class ColorResults
-    {
-        public string Contrast { get; set; }
-        public string AaText { get; set; }
-        public string AaHeadline { get; set; }
-    }
-
-    public class ColorPair
-    {
-        public string BGColor { get; set; }
-        public string FGColor { get; set; }
+        await PublicApi().UpdateColorsAsync(Model);
+        Nav.NavigateTo("/icons/" + Model.KitId);
     }
 }
