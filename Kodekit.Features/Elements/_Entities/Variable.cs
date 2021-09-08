@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kodekit.Features.Elements
+﻿namespace Kodekit.Features.Elements
 {
     public class Variable<T>
     {
-        public Variable(string friendlyName, string internalName)
+        public Variable(string friendlyName, string internalName, T value)
         {
             FriendlyName = friendlyName;
             InternalName = internalName;
+            Value = value;
         }
 
         public string FriendlyName { get; set; }

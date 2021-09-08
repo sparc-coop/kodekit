@@ -2,6 +2,7 @@
 using Sparc.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Kodekit.Features
@@ -13,23 +14,25 @@ namespace Kodekit.Features
             Id = Guid.NewGuid().ToString();
             KitId = Guid.NewGuid().ToString();
 
-            Colors = new()
-            {
-                new("Primary Color", "primary"),
-                new("Secondary Color", "secondary"),
-                new("Tertiary Color", "tertiary"),
-                new("Darkest Grey", "greyscale"),
-                new("Lightest Grey", "greyscale"),
-                new("Error", "error"),
-                new("Warning", "warning"),
-                new("Success", "success")
-            };
+            Colors = new();
 
             HeadingSettings = new HeadingTypography();
             ParagraphSettings = new Typography("p");
             ButtonSettings = new Button();
             InputSettings = new Input();
             SelectorSettings = new Selector();
+        }
+
+        public void SetColor(ColorTypes colorType, string hexValue, string? toHexValue = null)
+        {
+            var colors = hexValue == null
+                ? new Color(hexValue).GenerateWeights(colorType)
+                : new Color(hexValue).GenerateWeights(new Color(toHexValue));
+
+            Colors.RemoveAll(x => colors.ContainsKey(x.InternalName));
+            
+            foreach (var color in colors)
+                Colors.Add(new Variable<Color>(colorType.ToString(), color.Key, color.Value));
         }
 
         public string KitId { get; set; }
