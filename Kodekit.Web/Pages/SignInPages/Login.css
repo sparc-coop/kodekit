@@ -26,6 +26,8 @@ input {
     border: 1px solid #D2D4D9;
     padding: 10px 16px;
     outline: none;
+    width: 100%;
+    max-width: 322px;
 }
 
 .intro, .divider, .password-label, label {
@@ -51,10 +53,14 @@ p {
     line-height: 160%;
 }
 
+.create {
+    text-align: center;
+}
+
 .entry-item {
     margin-bottom: 32px;
 }
 
-.entry-item:last-of-type{
-    margin-bottom: 52px;
-}
+    .entry-item:last-child {
+        margin-bottom: 52px;
+    }
