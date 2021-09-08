@@ -36,6 +36,11 @@ namespace Kodekit.Features
             Settings = settings;
         }
 
+        internal void UpdateInputs(Input input)
+        {
+            Inputs = input;
+        }
+
         internal void UpdateDropdowns(Dropdown dropdowns)
         {
             Dropdowns = dropdowns;
