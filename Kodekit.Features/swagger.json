@@ -507,6 +507,54 @@
         }
       }
     },
+    "/api/GetShadow": {
+      "post": {
+        "tags": [
+          "GetShadow"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetUser": {
       "post": {
         "tags": [
@@ -772,6 +820,66 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateShadow": {
+      "post": {
+        "tags": [
+          "UpdateShadow"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ShadowsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ShadowsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ShadowsModel"
                   }
                 ]
               }
@@ -1310,6 +1418,13 @@
             },
             "nullable": true
           },
+          "shadows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShadowVariable"
+            },
+            "nullable": true
+          },
           "headingSettings": {
             "allOf": [
               {
@@ -1423,6 +1538,114 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Shadow": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          },
+          "blur": {
+            "type": "number",
+            "format": "double"
+          },
+          "spread": {
+            "type": "number",
+            "format": "double"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "opacity": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShadowModel": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          },
+          "blur": {
+            "type": "number",
+            "format": "double"
+          },
+          "spread": {
+            "type": "number",
+            "format": "double"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "opacity": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShadowsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "small": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ShadowModel"
+              }
+            ],
+            "nullable": true
+          },
+          "xLarge": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ShadowModel"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShadowVariable": {
+        "type": "object",
+        "properties": {
+          "friendlyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Shadow"
               }
             ],
             "nullable": true
