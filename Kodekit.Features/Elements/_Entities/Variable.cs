@@ -9,6 +9,13 @@
             Value = value;
         }
 
+        public Variable(string name, T value)
+        {
+            FriendlyName = name;
+            InternalName = name.ToLower();
+            Value = value;
+        }
+
         public string FriendlyName { get; set; }
         public string InternalName { get; set; }
         public T Value { get; set; }

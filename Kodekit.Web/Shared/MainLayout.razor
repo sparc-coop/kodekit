@@ -1,8 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
+@if (ImportUrl != null)
+{
+    <style type="text/css" scoped>
+        @@import url('@ImportUrl');
+    </style>
+}
+
+
 <NavMenu />
 
 <div class="main">
     <PageInfo />
     @Body
 </div>
+
+@code {
+    string ImportUrl;
+}

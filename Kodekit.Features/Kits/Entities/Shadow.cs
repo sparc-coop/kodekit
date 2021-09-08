@@ -23,7 +23,7 @@ namespace Kodekit.Features.Elements
         public string Color {  get; set; }
         public double Opacity {  get; set; }
 
-        public Dictionary<string, Shadow> GenerateWeights(Shadow xLargeShadow)
+        public Dictionary<string, Shadow> Expand(Shadow xLargeShadow)
         {
             return new Dictionary<string, Shadow>
             {

@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kodekit.Features.Elements
+﻿namespace Kodekit.Features.Elements
 {
     public class Typography : Element
     {
-        public Typography(string name) : base(name)
+        public Typography() : base("p")
         {
+        }
+
+        public Typography(string name, string fontFamily, int fontWeight, double fontSize, double typeScale, double lineHeight) : base(name)
+        {
+            FontFamily = new FontFamily(fontFamily);
+            FontWeight = new Weight(fontWeight);
+            FontSize = new Size(fontSize);
+            TypeScale = new TypeScale(typeScale);
+            LineHeight = new Size(lineHeight);
+
         }
 
         [Css("font-family")]
@@ -19,7 +23,7 @@ namespace Kodekit.Features.Elements
         [Css("font-size")]
         public Size FontSize { get; set; }
         
-        public Scale TypeScale { get; set; }
+        public TypeScale TypeScale { get; set; }
         [Css("line-height")]
         public Size LineHeight { get; set; }
     }

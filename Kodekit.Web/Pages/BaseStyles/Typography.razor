@@ -1,12 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/typography"
-@page  "/typography/{kitId}"
-
-
-
-<style type="text/css" scoped>
-      @@import url('@importUrl');
-</style>
+@page "/{kitId}/typography"
 
 <div class="typography page">
     <div class="page__container">
@@ -18,75 +11,14 @@
             </p>
         </header>
         <div class="content">
-            <aside class="accessibility-checker">
-                <p class="title">Contrast Checker</p>
-
-                <h3>@totalScore%</h3>
-
-                @if (kit != null)
-                {
-                    <section>
-                        <label>Header Size @headerSize</label>
-                        @if (headerSize)
-                        {
-                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
-                        }
-                        else
-                        {
-                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
-                        }
-
-
-                    </section>
-                    <section>
-                        <label>Header Height @headerHeight</label>
-
-                        @if (headerHeight)
-                        {
-                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
-                        }
-                        else
-                        {
-                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
-                        }
-
-                    </section>
-
-                    <section>
-                        <label>Body Size @bodySize</label>
-
-                        @if (bodySize)
-                        {
-                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
-                        }
-                        else
-                        {
-                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
-                        }
-
-                    </section>
-                    <section>
-                        <label>Body Height @bodyHeight</label>
-
-                        @if (bodyHeight)
-                        {
-                            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
-                        }
-                        else
-                        {
-                            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
-                        }
-                    </section>
-                }
-
-            </aside>
+            <!-- Accessibility Checker -->
             <h3>Heading Settings</h3>
             <p>
                 When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
             </p>
-            @if (kit != null)
+            @if (Model != null)
             {
-                <EditForm Model="@kit">
+                <EditForm Model="@Model">
                     <div class="section">
                         <label>
                             Preview Text
@@ -94,292 +26,177 @@
                         </label>
                         <label>
                             Heading Font
-                            <select class="medium" @onchange='args => SelectFonts(args, "head")'>
-                                @if (fontList.Items != null)
+                            <select class="medium" @bind=Model.Heading.FontFamily>
+                                @if (Fonts.Items != null)
                                 {
-                                    @foreach (var font in fontList.Items)
+                                    @foreach (var font in Fonts.Items)
                                     {
-                                        <option value="@font.Family">@font.Family</option>
+                                        <option value="@font.Family">
+                                            @font.Family
+                                        </option>
                                     }
                                 }
                             </select>
                         </label>
                         <label>
                             Base Font Size (px)
-                            <InputText @bind-Value="kit.HeaderFontSize" class="small" />
+                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" />
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium">
-                                <option selected>1.250 (Major Third)</option>
+                            <select class="medium" @bind=Model.Heading.TypeScale>
+                                @foreach (var scale in Model.TypeScales)
+                                {
+                                    <option value="@scale.Key">
+                                        @scale.Key (@scale.Value)
+                                    </option>
+                                }
                             </select>
                         </label>
                         <label>
                             Line Height
-                            <InputText @bind-Value="kit.HeaderLineHeight" class="small" />
+                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" />
                         </label>
                     </div>
-                    <div class="preview-example" style="font-family: '@headingFont.Family';">
+                    <div class="preview-example">
                         <div>
-                            <h1 style="font-family: '@headingFont.Family';">@previewText</h1>
+                            <h1>@previewText</h1>
                             <label>H1 - Font Size: 48px (3em) / Line Height: 120%</label>
                         </div>
                         <div>
-                            <h2 style="font-family: '@headingFont.Family';">@previewText</h2>
+                            <h2>@previewText</h2>
                             <label>H2 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h3 style="font-family: '@headingFont.Family';">@previewText</h3>
+                            <h3>@previewText</h3>
                             <label>H3 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h4 style="font-family: '@headingFont.Family';">@previewText</h4>
+                            <h4>@previewText</h4>
                             <label>H4 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h5 style="font-family: '@headingFont.Family';">@previewText</h5>
+                            <h5>@previewText</h5>
                             <label>H5 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <h6 style="font-family: '@headingFont.Family';">@previewText</h6>
+                            <h6>@previewText</h6>
                             <label>H6 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <p style="font-family: '@headingFont.Family';">@previewText</p>
+                            <p>@previewText</p>
                             <label>Subtitle - Font Size: xxpx (xem)</label>
                         </div>
                     </div>
-<pre>
-    <code>
-&lt;h1&gt;The power of small steps&lt;/h1&gt;
-&lt;h2&gt;The power of small steps&lt;/h2&gt;
-&lt;h3&gt;The power of small steps&lt;/h3&gt;
-&lt;h4&gt;The power of small steps&lt;/h4&gt;
-&lt;h5&gt;The power of small steps&lt;/h5&gt;
-&lt;h6&gt;The power of small steps&lt;/h6&gt;
-&lt;span class="subtitle"&gt;The power of small steps&lt;/span&gt;
+                    <pre>
+                    <code>
+        &lt;h1&gt;@(previewText)&lt;/h1&gt;
+        &lt;h2&gt;@(previewText)&lt;/h2&gt;
+        &lt;h3&gt;@(previewText)&lt;/h3&gt;
+        &lt;h4&gt;@(previewText)&lt;/h4&gt;
+        &lt;h5&gt;@(previewText)&lt;/h5&gt;
+        &lt;h6&gt;@(previewText)&lt;/h6&gt;
+        &lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
 
-&lt;!-- combine with other HTML elements --&gt;
-&lt;h1&gt;The power of small steps&lt;/h1&gt;
-&lt;h1&gt;&lt;strong&gt;The power of small steps&lt;/strong&gt;&lt;h1&gt;
-    </code>
-</pre>
+        &lt;!-- combine with other HTML elements --&gt;
+        &lt;h1&gt;@(previewText)&lt;/h1&gt;
+        &lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
+            </code>
+        </pre>
                     <h3>Paragraph Settings</h3>
 
                     <div class="section">
                         <label class="preview" style="margin-right: 32px;">
                             Preview Text
-                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput"/>
+                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
                         </label>
                         <label>
                             Choose Body font
-                            <select class="medium" @onchange='args => SelectFonts(args, "body")'>
-                                @if (fontList.Items != null)
+                            <select class="medium" @bind=Model.Paragraph.FontFamily>
+                               @if (Fonts.Items != null)
                                 {
-                                    @foreach (var font in fontList.Items)
+                                    @foreach (var font in Fonts.Items)
                                     {
-                                        <option value="@font.Family">@font.Family</option>
+                                        <option value="@font.Family" selected="@(Model.Paragraph.FontFamily == font.Family ? "selected" : "")">
+                                            @font.Family
+                                        </option>
                                     }
                                 }
-
                             </select>
                         </label>
                         <label>
                             Base Font Size (px)
-                            <InputText @bind-Value="kit.BodyFontSize" class="small" />
+                            <InputNumber @bind-Value="Model.Paragraph.FontSize" class="small" />
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium">
-                                <option selected>1.250 (Major Third)</option>
+                            <select class="medium" @bind=Model.Paragraph.TypeScale>
+                                @foreach (var scale in Model.TypeScales)
+                                {
+                                    <option value="@scale.Key">
+                                        @scale.Key (@scale.Value)
+                                    </option>
+                                }
                             </select>
                         </label>
                         <label>
                             Line Height
-                            <InputText @bind-Value="kit.BodyLineHeight" class="small" />
+                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" class="small" />
                         </label>
                     </div>
-                    <div class="preview-example preview-example--body" style="font-family: '@bodyFont.Family';">
+                    <div class="preview-example preview-example--body">
                         <div>
-                            <p class="large" style="font-family: '@bodyFont.Family';">@previewTextBody</p>
+                            <p class="large">@previewTextBody</p>
                             <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                         <div>
-                            <p class="medium" style="font-family: '@bodyFont.Family';">@previewTextBody</p>
+                            <p class="medium">@previewTextBody</p>
                             <label>Body - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                         <div>
-                            <p class="small" style="font-family: '@bodyFont.Family';">@previewTextBody</p>
+                            <p class="small">@previewTextBody</p>
                             <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
                     </div>
                     <pre>
                     <code>
-&lt;p class="sub-title"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
-&lt;p&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
-&lt;p class="disclaimer"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/h3&gt;
-&lt;!-- combine with other HTML elements --&gt;
-&lt;h1&gt;&lt;strong&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/strong&gt;&lt;h1&gt;
-                        </code>
-                    </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+        &lt;p class="sub-title"&gt;@(previewTextBody)&lt;/p&gt;
+        &lt;p&gt;@(previewTextBody).&lt;/p&gt;
+        &lt;p class="disclaimer"&gt;@(previewTextBody)&lt;/h3&gt;
+        &lt;!-- combine with other HTML elements --&gt;
+        &lt;h1&gt;&lt;strong&gt;@(previewTextBody)&lt;/strong&gt;&lt;h1&gt;
+                                </code>
+                            </pre>
+                    <SaveAndContinue OnSubmit=Submit NextPage="colors" />
                 </EditForm>
             }
         </div>
     </div>
 </div>
 
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-
 @code {
-    private Kit kit = new Kit();
-    private User User;
     [Parameter] public string kitId { get; set; }
-    string currentKitId;
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
-    bool headerHeight;
-    bool headerSize;
-    bool bodyHeight;
-    bool bodySize;
-    int totalScore = 0;
-    private List<Font> fonts = new List<Font>();
-    FontListResponse fontList = new FontListResponse();
-    string FontUrl = "test";
-    Font headingFont = new Font();
-    Font bodyFont = new Font();
-    string importUrl = "";
+    FontListResponse Fonts;
+    GetTypographyResponse Model;
 
     protected override async Task OnInitializedAsync()
     {
-        kit.HeaderFontSize = "24";
-        kit.HeaderLineHeight = "120%";
-        kit.BodyFontSize = "16";
-        kit.BodyLineHeight = "120%";
-
-        CheckAccessibility();
-
-        bodyFont.Family = "Roboto Mono";
-        headingFont.Family = "Roboto Mono";
-
-        var fontSelection = await localStorage.GetItemAsync<FontListResponse>("googleFonts");
-
-        if (fontSelection != null)
-        {
-            fontList = fontSelection;
-        }
-        else
-        {
-            fontList = await PublicApi().GoogleFontsAsync("");
-            await localStorage.SetItemAsync<FontListResponse>("googleFonts", fontList);
-        }
-
-        await GetKit();
-        await GetUser();
-
-    }
-
-    public void CheckAccessibility()
-    {
-        headerSize = int.Parse(kit.HeaderFontSize) >= 24;
-        headerHeight = int.Parse(kit.HeaderLineHeight.Substring(0, kit.HeaderLineHeight.Length - 1)) >= 100;
-        bodySize = int.Parse(kit.BodyFontSize) >= 16;
-        bodyHeight = int.Parse(kit.BodyLineHeight.Substring(0, kit.BodyLineHeight.Length - 1)) >= 150;
-
-        if (headerSize) totalScore += 25;
-        if (headerHeight) totalScore += 25;
-        if (bodySize) totalScore += 25;
-        if (bodyHeight) totalScore += 25;
-
-        StateHasChanged();
-
+        Fonts = await PublicApi().GetGoogleFontsAsync("");
+        Model = await PublicApi().GetTypographyAsync(kitId);
     }
 
     private async Task Submit()
     {
-        Kit newKit = new Kit();
-        if (User != null)
+        var result = new UpdateTypographyModel
         {
-            newKit.UserId = User.Id;
-        }
+            KitId = kitId,
+            Headings = Model.Heading,
+            Paragraphs = Model.Paragraph
+        };
 
-        newKit.HeaderFontSize = kit.HeaderFontSize;
-
-        if (kit.KitId != null)
-        {
-            newKit.ParentId = kit.KitId;
-        }
-
-        kit = await PublicApi().CreateKitAsync(newKit);
-
-        //save to local storage
-        if (currentKitId == null) { currentKitId = kit.KitId; }
-        await localStorage.SetItemAsync("kodekitId", currentKitId);
-
-        Nav.NavigateTo("/Colors/" + kit.KitId);
+        await PublicApi().UpdateTypographyAsync(result);
     }
-
-    private async Task GetKit()
-    {
-        //get from local storage
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        currentKitId = result;
-
-        if (kitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-        else if (currentKitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-    }
-
-    private async Task GetUser()
-    {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        if (user.Identity.IsAuthenticated)
-        {
-            User = await Api.GetUserAsync();
-        }
-    }
-
-    void SelectFonts(ChangeEventArgs e, string type)
-    {
-        @if (type == "head")
-        {
-            headingFont.Family = e.Value.ToString();
-        }
-        else
-        {
-            bodyFont.Family = e.Value.ToString();
-        }
-
-
-        importUrl = "https://fonts.googleapis.com/css?family=" + bodyFont.Family.Replace(" ", "+") + "|" + headingFont.Family.Replace(" ", "+");
-
-
-        StateHasChanged();
-
-    }
-
-    //void SelectFonts(ChangeEventArgs e)
-    //{
-    //    bodyFont.Family = e.Value.ToString();
-
-    //    importUrl = "https://fonts.googleapis.com/css?family=" + bodyFont.Family.Replace(" ", "+");
-
-
-    //    StateHasChanged();
-
-    //}
-
-    //private class Font {
-    //    private string Family { get; set; }
-    //}
 }
 

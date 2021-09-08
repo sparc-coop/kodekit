@@ -17,17 +17,23 @@ namespace Kodekit.Features
             Colors = new();
             Shadows = new();
 
-            HeadingSettings = new HeadingTypography();
-            ParagraphSettings = new Typography("p");
-            ButtonSettings = new Button();
-            InputSettings = new Input();
-            SelectorSettings = new Selector();
-            KitSettings = new();
+            Headings = new();
+            Paragraphs = new();
+            Buttons = new();
+            Inputs = new();
+            Selectors = new();
+            Settings = new();
+        }
+
+        public void UpdateTypography(HeadingTypography headings, Typography paragraphs)
+        {
+            Headings = headings;
+            Paragraphs = paragraphs;
         }
 
         public void UpdateSettings(KitSettings settings)
         {
-            KitSettings = settings;
+            Settings = settings;
         }
 
         public Color GetColor(ColorTypes colorType)
@@ -50,22 +56,16 @@ namespace Kodekit.Features
         public void UpdateShadows(Shadow smallShadow, Shadow xLargeShadow)
         {
             Shadows.Clear();
-            var shadows = smallShadow.GenerateWeights(xLargeShadow);
+            var shadows = smallShadow.Expand(xLargeShadow);
 
             foreach (var shadow in shadows)
                 Shadows.Add(new Variable<Shadow>(shadow.Key, shadow.Key, shadow.Value));
         }
 
-        public void UpdateColor(ColorTypes colorType, string hexValue, string? toHexValue = null)
+        public void UpdateColor(ColorTypes colorType, string hexValue)
         {
-            var colors = hexValue == null
-                ? new Color(hexValue).GenerateWeights(colorType)
-                : new Color(hexValue).GenerateWeights(new Color(toHexValue));
-
-            Colors.RemoveAll(x => colors.ContainsKey(x.InternalName));
-            
-            foreach (var color in colors)
-                Colors.Add(new Variable<Color>(colorType.ToString(), color.Key, color.Value));
+            Colors.RemoveAll(x => colorType.ToString() == x.InternalName);
+            Colors.Add(new Variable<Color>(colorType.ToString(), new Color(hexValue)));
         }
 
         public string KitId { get; set; }
@@ -76,12 +76,12 @@ namespace Kodekit.Features
         public string Name { get; set; }
         public List<Variable<Color>> Colors { get; set; }
         public List<Variable<Shadow>> Shadows { get; set; }
-        public HeadingTypography HeadingSettings { get; set; }
-        public Typography ParagraphSettings { get; set; }
-        public Button ButtonSettings { get; set; } 
-        public Input InputSettings { get; set; }
-        public Selector SelectorSettings { get; set; }
-        public KitSettings KitSettings { get; set; }
+        public HeadingTypography Headings { get; set; }
+        public Typography Paragraphs { get; set; }
+        public Button Buttons { get; set; } 
+        public Input Inputs { get; set; }
+        public Selector Selectors { get; set; }
+        public KitSettings Settings { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool? IsPublished { get; set; }
@@ -92,21 +92,21 @@ namespace Kodekit.Features
         {
             var css = new StringBuilder();
 
-            var headings = HeadingSettings.Expand();
+            var headings = Headings.Expand();
             foreach (var heading in headings)
                 Write(css, heading);
 
-            Write(css, ParagraphSettings);
-            Write(css, ButtonSettings);
-            Write(css, InputSettings);
-            Write(css, SelectorSettings);
+            Write(css, Paragraphs);
+            Write(css, Buttons);
+            Write(css, Inputs);
+            Write(css, Selectors);
 
             return css.ToString();
         }
 
         private StringBuilder Write(StringBuilder css, Element element)
         {
-            return element.ToCss(css).AppendLine();
+            return element.ToCss(css).AppendLine().AppendLine();
         }
     }
 }

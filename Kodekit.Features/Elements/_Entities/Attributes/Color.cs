@@ -30,26 +30,26 @@ namespace Kodekit.Features.Elements
 
         public override string ToString() => $"{HexValue}";
 
-        public Dictionary<string, Color> GenerateWeights(ColorTypes colorType)
+        public Dictionary<string, Color> Expand(string name)
         {
-            var type = colorType.ToString().ToLower();
-            
+            name = name.ToLower();
+
             return new Dictionary<string, Color>
             {
-                { $"{type}-50", ChangeBrightness(0.52f) },
-                { $"{type}-100", ChangeBrightness(0.37f) },
-                { $"{type}-200", ChangeBrightness(0.26f) },
-                { $"{type}-300", ChangeBrightness(0.12f) },
-                { $"{type}-400", ChangeBrightness(0.06f) },
-                { $"{type}-500", this },
-                { $"{type}-600", ChangeBrightness(-0.06f) },
-                { $"{type}-700", ChangeBrightness(-0.12f) },
-                { $"{type}-800", ChangeBrightness(-0.18f) },
-                { $"{type}-900", ChangeBrightness(-0.24f) }
+                { $"{name}-50", ChangeBrightness(0.52f) },
+                { $"{name}-100", ChangeBrightness(0.37f) },
+                { $"{name}-200", ChangeBrightness(0.26f) },
+                { $"{name}-300", ChangeBrightness(0.12f) },
+                { $"{name}-400", ChangeBrightness(0.06f) },
+                { $"{name}-500", this },
+                { $"{name}-600", ChangeBrightness(-0.06f) },
+                { $"{name}-700", ChangeBrightness(-0.12f) },
+                { $"{name}-800", ChangeBrightness(-0.18f) },
+                { $"{name}-900", ChangeBrightness(-0.24f) }
             };
         }
 
-        public Dictionary<string, Color> GenerateWeights(Color color)
+        public Dictionary<string, Color> Expand(Color color)
         {
             var type = "grey";
             var colors = new Dictionary<string, Color>();

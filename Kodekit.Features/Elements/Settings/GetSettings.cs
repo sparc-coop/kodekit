@@ -16,7 +16,7 @@ namespace Kodekit.Features.Elements
         public override async Task<UpdateSettingsModel> ExecuteAsync(string id)
         {
             var kit = await Kits.FindAsync(id);
-            return new(id, kit.KitSettings);
+            return new(id, kit.Settings);
         }
     }
 }
