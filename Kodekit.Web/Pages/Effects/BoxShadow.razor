@@ -158,11 +158,9 @@
 
     //}
 
-
-
-
     private async Task Submit()
     {
-
+        await PublicApi().PublishKitAsync(kit);
+        Nav.NavigateTo("/my-kits");
     }
 }
