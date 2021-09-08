@@ -402,6 +402,54 @@
         }
       }
     },
+    "/api/GetGoogleFonts": {
+      "post": {
+        "tags": [
+          "GetGoogleFonts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FontListResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FontListResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FontListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetKit": {
       "post": {
         "tags": [
@@ -603,6 +651,54 @@
         }
       }
     },
+    "/api/GetTypography": {
+      "post": {
+        "tags": [
+          "GetTypography"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTypographyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTypographyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTypographyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetUser": {
       "post": {
         "tags": [
@@ -663,54 +759,6 @@
                   "items": {
                     "$ref": "#/components/schemas/Kit"
                   }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/GoogleFonts": {
-      "post": {
-        "tags": [
-          "GoogleFonts"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FontListResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FontListResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FontListResponse"
                 }
               }
             }
@@ -1018,6 +1066,66 @@
         }
       }
     },
+    "/api/UpdateTypography": {
+      "post": {
+        "tags": [
+          "UpdateTypography"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateTypographyModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateTypographyModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateTypographyModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/UpdateUser": {
       "post": {
         "tags": [
@@ -1114,10 +1222,6 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           },
@@ -1358,14 +1462,46 @@
         },
         "additionalProperties": false
       },
+      "GetTypographyResponse": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
+            "nullable": true
+          },
+          "paragraph": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
+            "nullable": true
+          },
+          "headingWeights": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "typeScales": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "HeadingTypography": {
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           },
@@ -1403,7 +1539,7 @@
           "typeScale": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Scale"
+                "$ref": "#/components/schemas/TypeScale"
               }
             ],
             "nullable": true
@@ -1423,10 +1559,6 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           },
@@ -1533,7 +1665,7 @@
             },
             "nullable": true
           },
-          "headingSettings": {
+          "headings": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/HeadingTypography"
@@ -1541,7 +1673,7 @@
             ],
             "nullable": true
           },
-          "paragraphSettings": {
+          "paragraphs": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Typography"
@@ -1549,7 +1681,7 @@
             ],
             "nullable": true
           },
-          "buttonSettings": {
+          "buttons": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Button"
@@ -1557,7 +1689,7 @@
             ],
             "nullable": true
           },
-          "inputSettings": {
+          "inputs": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Input"
@@ -1565,7 +1697,7 @@
             ],
             "nullable": true
           },
-          "selectorSettings": {
+          "selectors": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Selector"
@@ -1573,7 +1705,7 @@
             ],
             "nullable": true
           },
-          "kitSettings": {
+          "settings": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/KitSettings"
@@ -1684,24 +1816,10 @@
         },
         "additionalProperties": false
       },
-      "Scale": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
       "Selector": {
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           },
@@ -1835,14 +1953,20 @@
         },
         "additionalProperties": false
       },
+      "TypeScale": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "Typography": {
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           },
@@ -1880,7 +2004,7 @@
           "typeScale": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Scale"
+                "$ref": "#/components/schemas/TypeScale"
               }
             ],
             "nullable": true
@@ -1896,6 +2020,32 @@
         },
         "additionalProperties": false
       },
+      "TypographyModel": {
+        "type": "object",
+        "properties": {
+          "fontFamily": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double"
+          },
+          "typeScale": {
+            "type": "number",
+            "format": "double"
+          },
+          "lineHeight": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateSettingsModel": {
         "type": "object",
         "properties": {
@@ -1907,6 +2057,32 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/KitSettings"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTypographyModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "headings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
+            "nullable": true
+          },
+          "paragraphs": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
               }
             ],
             "nullable": true
@@ -1951,10 +2127,6 @@
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           },

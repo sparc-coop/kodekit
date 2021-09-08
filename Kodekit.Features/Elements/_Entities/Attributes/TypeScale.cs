@@ -2,7 +2,7 @@
 
 namespace Kodekit.Features.Elements
 {
-    public record Scale
+    public record TypeScale
     {
         public double Value { get; set; }
 
@@ -17,6 +17,11 @@ namespace Kodekit.Features.Elements
             { 1.500, "Perfect Fifth" },
             { 1.618, "Golden Ratio" }
         };
+
+        public TypeScale(double typeScale)
+        {
+            Value = typeScale;
+        }
 
         public override string ToString() => Value.ToString();
     }

@@ -17,6 +17,13 @@ namespace Kodekit.Features.Elements
             Placeholder = ValidUnits.ContainsKey(Unit) ? ValidUnits[Unit] : string.Empty;
         }
 
+        public Size(double size)
+        {
+            Value = size;
+            Unit = "px";
+            Placeholder = ValidUnits["px"];
+        }
+
         public static Dictionary<string, string> ValidUnits = new()
         {
             { "px", "pixels" },

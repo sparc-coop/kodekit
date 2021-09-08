@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kodekit.Features.Elements
+﻿namespace Kodekit.Features.Elements
 {
     public record FontFamily
     {
+        public FontFamily(string fontFamily)
+        {
+            FriendlyName = fontFamily;
+            InternalName = fontFamily;
+            
+            var cleanFamily = fontFamily.Replace(" ", "+");
+            SourceUrl = $"https://fonts.googleapis.com/css?family={cleanFamily}";
+        }
+
         public string FriendlyName { get; set; }
         public string InternalName { get; set; }
         public string SourceUrl { get; set; }
