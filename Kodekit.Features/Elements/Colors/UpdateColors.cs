@@ -20,13 +20,13 @@ namespace Kodekit.Features.Elements
         public override async Task<Kit> ExecuteAsync(ColorsModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
-            kit.SetColor(ColorTypes.Primary, request.Primary);
-            kit.SetColor(ColorTypes.Secondary, request.Secondary);
-            kit.SetColor(ColorTypes.Tertiary, request.Tertiary);
-            kit.SetColor(ColorTypes.Error, request.Error);
-            kit.SetColor(ColorTypes.Warning, request.Warning);
-            kit.SetColor(ColorTypes.Success, request.Success);
-            kit.SetColor(ColorTypes.Lightest, request.Lightest, request.Darkest);
+            kit.UpdateColor(ColorTypes.Primary, request.Primary);
+            kit.UpdateColor(ColorTypes.Secondary, request.Secondary);
+            kit.UpdateColor(ColorTypes.Tertiary, request.Tertiary);
+            kit.UpdateColor(ColorTypes.Error, request.Error);
+            kit.UpdateColor(ColorTypes.Warning, request.Warning);
+            kit.UpdateColor(ColorTypes.Success, request.Success);
+            kit.UpdateColor(ColorTypes.Lightest, request.Lightest, request.Darkest);
 
             await Kits.UpdateAsync(kit);
             return kit;

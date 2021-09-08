@@ -15,6 +15,7 @@ namespace Kodekit.Features
             KitId = Guid.NewGuid().ToString();
 
             Colors = new();
+            Shadows = new();
 
             HeadingSettings = new HeadingTypography();
             ParagraphSettings = new Typography("p");
@@ -34,8 +35,22 @@ namespace Kodekit.Features
 
             return Colors.FirstOrDefault(x => x.InternalName == $"{colorType.ToString().ToLower()}-{weight}")?.Value;
         }
+        
+        public Shadow GetShadow(string shadowSize)
+        {
+            return Shadows.FirstOrDefault(x => x.InternalName == shadowSize.ToLower())?.Value;
+        }
 
-        public void SetColor(ColorTypes colorType, string hexValue, string? toHexValue = null)
+        public void UpdateShadows(Shadow smallShadow, Shadow xLargeShadow)
+        {
+            Shadows.Clear();
+            var shadows = smallShadow.GenerateWeights(xLargeShadow);
+
+            foreach (var shadow in shadows)
+                Shadows.Add(new Variable<Shadow>(shadow.Key, shadow.Key, shadow.Value));
+        }
+
+        public void UpdateColor(ColorTypes colorType, string hexValue, string? toHexValue = null)
         {
             var colors = hexValue == null
                 ? new Color(hexValue).GenerateWeights(colorType)
@@ -54,6 +69,7 @@ namespace Kodekit.Features
         public string Url { get; set; }
         public string Name { get; set; }
         public List<Variable<Color>> Colors { get; set; }
+        public List<Variable<Shadow>> Shadows { get; set; }
         public HeadingTypography HeadingSettings { get; set; }
         public Typography ParagraphSettings { get; set; }
         public Button ButtonSettings { get; set; } 

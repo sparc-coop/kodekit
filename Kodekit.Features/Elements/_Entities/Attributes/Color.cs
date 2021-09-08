@@ -7,6 +7,9 @@ namespace Kodekit.Features.Elements
 {
     public class Color
     {
+        public Color()
+        { }
+        
         public Color(string hex)
         {
             if (hex.Length < 6 || hex.Length > 7 || !hex.All("#0123456789abcdefABCDEF".Contains))
@@ -102,7 +105,7 @@ namespace Kodekit.Features.Elements
             return new Color(c);
         }
 
-        private Color Interpolate(Color secondColor, float percentage)
+        public Color Interpolate(Color secondColor, float percentage)
         {
             var color1 = ColorTranslator.FromHtml(HexValue);
             var color2 = ColorTranslator.FromHtml(secondColor.HexValue);

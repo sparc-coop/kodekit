@@ -1,0 +1,33 @@
+﻿<div class="section">
+    <label>
+        X Length (px)
+        <InputNumber @bind-Value="Shadow.X" />
+    </label>
+    <label>
+        Y Length (px)
+        <InputNumber @bind-Value="Shadow.Y" />
+    </label>
+    <label>
+        Blur (px)
+        <InputNumber @bind-Value="Shadow.Blur" />
+    </label>
+    <label>
+        Spread(px)
+        <InputNumber @bind-Value="Shadow.Spread" />
+    </label>
+    <label>
+        Shadow Color
+        <span>
+            <input type="color" @bind=Shadow.Color @bind:event="oninput">
+            @Shadow.Color
+        </span>
+    </label>
+    <label>
+        Shadow Opacity
+        <InputNumber @bind-Value="Shadow.Opacity" />
+    </label>
+</div>
+
+@code {
+    [Parameter] public ShadowModel Shadow { get; set; }
+}
