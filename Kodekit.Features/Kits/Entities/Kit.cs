@@ -22,6 +22,12 @@ namespace Kodekit.Features
             ButtonSettings = new Button();
             InputSettings = new Input();
             SelectorSettings = new Selector();
+            KitSettings = new();
+        }
+
+        public void UpdateSettings(KitSettings settings)
+        {
+            KitSettings = settings;
         }
 
         public Color GetColor(ColorTypes colorType)
@@ -75,6 +81,7 @@ namespace Kodekit.Features
         public Button ButtonSettings { get; set; } 
         public Input InputSettings { get; set; }
         public Selector SelectorSettings { get; set; }
+        public KitSettings KitSettings { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool? IsPublished { get; set; }

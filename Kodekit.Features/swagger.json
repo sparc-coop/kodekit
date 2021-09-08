@@ -507,6 +507,54 @@
         }
       }
     },
+    "/api/GetSettings": {
+      "post": {
+        "tags": [
+          "GetSettings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSettingsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSettingsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSettingsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetShadow": {
       "post": {
         "tags": [
@@ -820,6 +868,66 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateSettings": {
+      "post": {
+        "tags": [
+          "UpdateSettings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSettingsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSettingsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSettingsModel"
                   }
                 ]
               }
@@ -1465,6 +1573,14 @@
             ],
             "nullable": true
           },
+          "kitSettings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/KitSettings"
+              }
+            ],
+            "nullable": true
+          },
           "dateCreated": {
             "type": "string",
             "format": "date-time",
@@ -1484,6 +1600,84 @@
             "nullable": true
           },
           "isDeleted": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KitSettings": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "resetEverything": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "resetHeadings": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "resetParagraphs": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "resetLists": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "resetCheckboxes": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "resetAnchors": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "allKodekitElements": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitTypography": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitColors": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitIcons": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitLayout": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitButtons": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitInputs": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitCheckboxes": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitDropdowns": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitAnchors": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "kodekitImages": {
             "type": "boolean",
             "nullable": true
           }
@@ -1575,36 +1769,6 @@
         },
         "additionalProperties": false
       },
-      "ShadowModel": {
-        "type": "object",
-        "properties": {
-          "x": {
-            "type": "number",
-            "format": "double"
-          },
-          "y": {
-            "type": "number",
-            "format": "double"
-          },
-          "blur": {
-            "type": "number",
-            "format": "double"
-          },
-          "spread": {
-            "type": "number",
-            "format": "double"
-          },
-          "color": {
-            "type": "string",
-            "nullable": true
-          },
-          "opacity": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
       "ShadowsModel": {
         "type": "object",
         "properties": {
@@ -1615,7 +1779,7 @@
           "small": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ShadowModel"
+                "$ref": "#/components/schemas/Shadow"
               }
             ],
             "nullable": true
@@ -1623,7 +1787,7 @@
           "xLarge": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ShadowModel"
+                "$ref": "#/components/schemas/Shadow"
               }
             ],
             "nullable": true
@@ -1725,6 +1889,24 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSettingsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "settings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/KitSettings"
               }
             ],
             "nullable": true

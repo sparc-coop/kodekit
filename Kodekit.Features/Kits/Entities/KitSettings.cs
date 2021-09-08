@@ -1,7 +1,4 @@
-﻿using Sparc.Core;
-using System;
-
-namespace Kodekit.Features
+﻿namespace Kodekit.Features
 {
     public class KitSettings
     {

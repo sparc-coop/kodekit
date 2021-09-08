@@ -1,5 +1,4 @@
-﻿@page "/global-settings"
-@page "/global-settings/{kitId}"
+﻿@page "/{kitId}/global-settings"
 
 <div class="page global-page">
     <div class="page__container">
@@ -15,9 +14,9 @@
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
-            @if (kit != null)
+            @if (Model != null)
             {
-                <EditForm Model="@kit">
+                <EditForm Model="@Model">
                     <div>
                         <div class="section-container">
                             <label class="switch">
@@ -26,42 +25,13 @@
                             </label>
                             Reset Everything to Default
                         </div>
-                        <div class="section-container @disabled">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetHeadings" disabled="@globalReset">
-                                <span class="slider"></span>
-                            </label>
-                            Headings
-                        </div>
-                        <div class="section-container @disabled">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetParagraphs" disabled="@globalReset">
-                                <span class="slider"></span>
-                            </label>
-                            Paragraphs
-                        </div>
-                        <div class="section-container @disabled">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetLists" disabled="@globalReset">
-                                <span class="slider"></span>
-                            </label>
-                            Lists
-                        </div>
-                        <div class="section-container @disabled">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetCheckboxes" disabled="@globalReset">
-                                <span class="slider"></span>
-                            </label>
-                            Checkboxes, Radios & Toggles
-                        </div>
-                        <div class="section-container @disabled">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.ResetAnchors" disabled="@globalReset">
-                                <span class="slider"></span>
-                            </label>
-                            Anchors
-                        </div>
+                        <Switch @bind-Value=Model.Settings.ResetHeadings Title="Headings" IsDisabled=globalReset />
+                        <Switch @bind-Value=Model.Settings.ResetParagraphs Title="Paragraphs" IsDisabled=globalReset />
+                        <Switch @bind-Value=Model.Settings.ResetLists Title="Lists" IsDisabled=globalReset />
+                        <Switch @bind-Value=Model.Settings.ResetCheckboxes Title="Checkboxes, Radios and Toggles" IsDisabled=globalReset />
+                        <Switch @bind-Value=Model.Settings.ResetAnchors Title="Anchors" IsDisabled=globalReset />
                     </div>
+
                     <h3>Kodekit Styling</h3>
                     <p class="subheader">
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
@@ -74,81 +44,19 @@
                             </label>
                             All Kodekit Elements
                         </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitTypography" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Typography
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitColors" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Colors
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitIcons" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Icons
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitLayout" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Layout
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitButtons" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Buttons
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitInputs" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Inputs & Text Areas
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitCheckboxes" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Checkboxes & Radios
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitDropdowns" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Dropdowns
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitAnchors" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Anchors
-                        </div>
-                        <div class="section-container @disabledKodekit">
-                            <label class="switch">
-                                <input type="checkbox" @bind="settings.KodekitImages" disabled="@kodekitStyleReset">
-                                <span class="slider"></span>
-                            </label>
-                            Images
-                        </div>
+                        <Switch @bind-Value=Model.Settings.KodekitTypography Title="Typography" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitColors Title="Colors" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitIcons Title="Icons" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitLayout Title="Layout" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitButtons Title="Buttons" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitInputs Title="Inputs and Textareas" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitCheckboxes Title="Checkboxes and Radios" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitDropdowns Title="Dropdowns" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitAnchors Title="Anchors" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.KodekitImages Title="Images" IsDisabled=kodekitStyleReset />
                     </div>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+
+                    <SaveAndContinue OnSubmit=Submit NextPage="typography" />
                 </EditForm>
             }
         </div>
@@ -156,96 +64,43 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
-    private KitSettings settings = new KitSettings();
     [Parameter] public string kitId { get; set; }
+    UpdateSettingsModel Model;
     public bool globalReset = false;
     public bool kodekitStyleReset = false;
-    public string disabled = "";
-    public string disabledKodekit = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = await PublicApi().GetSettingsAsync(kitId);
+    }
 
     private void SetDefault()
     {
-        @if (globalReset == false)
-        {
-            disabled = "disabled";
-            globalReset = true;
-            settings.ResetHeadings = true;
-            settings.ResetParagraphs = true;
-            settings.ResetLists = true;
-            settings.ResetCheckboxes = true;
-            settings.ResetAnchors = true;
-        }
-        else
-        {
-            disabled = "";
-            globalReset = false;
-            settings.ResetHeadings = false;
-            settings.ResetParagraphs = false;
-            settings.ResetLists = false;
-            settings.ResetCheckboxes = false;
-            settings.ResetAnchors = false;
-        }
+        globalReset = !globalReset;
+        Model.Settings.ResetHeadings = globalReset;
+        Model.Settings.ResetParagraphs = globalReset;
+        Model.Settings.ResetLists = globalReset;
+        Model.Settings.ResetCheckboxes = globalReset;
+        Model.Settings.ResetAnchors = globalReset;
     }
 
     private void SetKodekit()
     {
-        @if (kodekitStyleReset == false)
-        {
-            disabledKodekit = "disabled";
-            kodekitStyleReset = true;
-            settings.KodekitTypography = true;
-            settings.KodekitColors = true;
-            settings.KodekitIcons = true;
-            settings.KodekitLayout = true;
-            settings.KodekitButtons = true;
-            settings.KodekitInputs = true;
-            settings.KodekitCheckboxes = true;
-            settings.KodekitDropdowns = true;
-            settings.KodekitAnchors = true;
-            settings.KodekitImages = true;
-        }
-        else
-        {
-            disabledKodekit = "";
-            kodekitStyleReset = false;
-            settings.KodekitTypography = false;
-            settings.KodekitColors = false;
-            settings.KodekitIcons = false;
-            settings.KodekitLayout = false;
-            settings.KodekitButtons = false;
-            settings.KodekitInputs = false;
-            settings.KodekitCheckboxes = false;
-            settings.KodekitDropdowns = false;
-            settings.KodekitAnchors = false;
-            settings.KodekitImages = false;
-        }
+        kodekitStyleReset = !kodekitStyleReset;
+        Model.Settings.KodekitTypography = kodekitStyleReset;
+        Model.Settings.KodekitColors = kodekitStyleReset;
+        Model.Settings.KodekitIcons = kodekitStyleReset;
+        Model.Settings.KodekitLayout = kodekitStyleReset;
+        Model.Settings.KodekitButtons = kodekitStyleReset;
+        Model.Settings.KodekitInputs = kodekitStyleReset;
+        Model.Settings.KodekitCheckboxes = kodekitStyleReset;
+        Model.Settings.KodekitDropdowns = kodekitStyleReset;
+        Model.Settings.KodekitAnchors = kodekitStyleReset;
+        Model.Settings.KodekitImages = kodekitStyleReset;
     }
 
     private async Task Submit()
     {
-        Nav.NavigateTo("/typography/" + kit.KitId);
-    }
-
-    public class KitSettings
-    {
-        public string KitId { get; set; }
-        public bool? ResetEverything { get; set; }
-        public bool? ResetHeadings { get; set; }
-        public bool? ResetParagraphs { get; set; }
-        public bool? ResetLists { get; set; }
-        public bool? ResetCheckboxes { get; set; }
-        public bool? ResetAnchors { get; set; }
-        public bool? AllKodekitElements { get; set; }
-        public bool? KodekitTypography { get; set; }
-        public bool? KodekitColors { get; set; }
-        public bool? KodekitIcons { get; set; }
-        public bool? KodekitLayout { get; set; }
-        public bool? KodekitButtons { get; set; }
-        public bool? KodekitInputs { get; set; }
-        public bool? KodekitCheckboxes { get; set; }
-        public bool? KodekitDropdowns { get; set; }
-        public bool? KodekitAnchors { get; set; }
-        public bool? KodekitImages { get; set; }
+        await PublicApi().UpdateSettingsAsync(Model);
     }
 }

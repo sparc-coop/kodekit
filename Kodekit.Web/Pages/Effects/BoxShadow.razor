@@ -46,53 +46,51 @@
                         </div>
                     </div>
                     <pre>
-    <code class="language-scss">
-    //use box-shadows as their own class
-    .shadow-small {
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
-            0px 0px 2px rgba(0, 0, 0, 0.06),
-            0px 0px 1px rgba(0, 0, 0, 0.04);
-    }
+                    <code class="language-scss">
+        //use box-shadows as their own class
+        .shadow-small {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
+                0px 0px 2px rgba(0, 0, 0, 0.06),
+                0px 0px 1px rgba(0, 0, 0, 0.04);
+        }
 
-    .shadow-medium {
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 
-            0px 2px 6px rgba(0, 0, 0, 0.04), 
-            0px 0px 1px rgba(0, 0, 0, 0.04);
-    }
+        .shadow-medium {
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 
+                0px 2px 6px rgba(0, 0, 0, 0.04), 
+                0px 0px 1px rgba(0, 0, 0, 0.04);
+        }
 
-    .shadow-large {
-        box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 
-            0px 2px 6px rgba(0, 0, 0, 0.04), 
-            0px 0px 1px rgba(0, 0, 0, 0.04);
-    }
+        .shadow-large {
+            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 
+                0px 2px 6px rgba(0, 0, 0, 0.04), 
+                0px 0px 1px rgba(0, 0, 0, 0.04);
+        }
 
-    .shadow-x-large {
-        box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 
-            0px 16px 24px rgba(0, 0, 0, 0.04), 
-            0px 4px 8px rgba(0, 0, 0, 0.04), 
-            0px 0px 1px rgba(0, 0, 0, 0.04);
-    }
+        .shadow-x-large {
+            box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 
+                0px 16px 24px rgba(0, 0, 0, 0.04), 
+                0px 4px 8px rgba(0, 0, 0, 0.04), 
+                0px 0px 1px rgba(0, 0, 0, 0.04);
+        }
 
-    //or, use mixins to add to your own classes
-    //declared mixin
-    @@mixin shadow-small function {
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
-            0px 0px 2px rgba(0, 0, 0, 0.06),
-            0px 0px 1px rgba(0, 0, 0, 0.04);   
-    }
+        //or, use mixins to add to your own classes
+        //declared mixin
+        @@mixin shadow-small function {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
+                0px 0px 2px rgba(0, 0, 0, 0.06),
+                0px 0px 1px rgba(0, 0, 0, 0.04);   
+        }
 
-    //use mixin within class
-    .box {
-        background-color: white;
-        @@include shadow-small; 
-    }
-    </code>
-                            </pre>
+        //use mixin within class
+        .box {
+            background-color: white;
+            @@include shadow-small; 
+        }
+        </code>
+                                </pre>
 
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="layout" />
+
                 </EditForm>
             }
         </div>
