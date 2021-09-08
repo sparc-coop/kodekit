@@ -23,6 +23,18 @@ namespace Kodekit.Features
             SelectorSettings = new Selector();
         }
 
+        public Color GetColor(ColorTypes colorType)
+        {
+            var weight = colorType switch
+            {
+                ColorTypes.Lightest => 100,
+                ColorTypes.Darkest => 900,
+                _ => 500
+            };
+
+            return Colors.FirstOrDefault(x => x.InternalName == $"{colorType.ToString().ToLower()}-{weight}")?.Value;
+        }
+
         public void SetColor(ColorTypes colorType, string hexValue, string? toHexValue = null)
         {
             var colors = hexValue == null
