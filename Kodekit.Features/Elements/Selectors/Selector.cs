@@ -12,6 +12,8 @@ namespace Kodekit.Features.Elements
         {
         }
 
+        public Selector()
+
         [Css("font-size")]
         public Size FontSize { get; set; }
         [Css("font-weight")]

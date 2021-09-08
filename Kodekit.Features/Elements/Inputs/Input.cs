@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Kodekit.Features.Elements
+﻿namespace Kodekit.Features.Elements
 {
     public class Input : Element
     {
         public Input() : base("input")
         {
+        }
+
+        public Input(double fontSize, string fontWeight, double verticalPadding, double horizontalPadding, double cornerRadius,
+            double borderWidth) : this()
+        {
+            FontSize = new(fontSize);
+            FontWeight = new(fontWeight);
+            VerticalPadding = new(verticalPadding);
+            HorizontalPadding = new(horizontalPadding);
+            CornerRadius = new(cornerRadius);
+            BorderWidth = new(borderWidth);
         }
 
         [Css("font-size")]
