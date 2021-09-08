@@ -39,6 +39,11 @@
                             </select>
                         </label>
                         <label>
+                            Default Heading Weight
+                            <FontWeights @bind-Value="Model.Heading.FontWeight" Weights="Model.HeadingWeights" />
+                        </label>
+
+                        <label>
                             Base Font Size (px)
                             <InputNumber @bind-Value="Model.Heading.FontSize" class="small" />
                         </label>

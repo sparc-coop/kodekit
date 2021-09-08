@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record UpdateButtonsModel(string KitId, double FontSize, int FontWeight, double VerticalPadding, double HorizontalPadding, double CornerRadius, double BorderWidth, double IconWidth, double IconHeight, bool RemoveSecondaryBorder);
+    public record UpdateButtonsModel(string KitId, double FontSize, string FontWeight, double VerticalPadding, double HorizontalPadding, double CornerRadius, double BorderWidth, double IconWidth, double IconHeight, bool RemoveSecondaryBorder);
     public class UpdateButtons : Feature<UpdateButtonsModel, Kit>
     {
         public UpdateButtons(IRepository<Kit> kits)

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<int, string> HeadingWeights, Dictionary<double, string> TypeScales);
-    public record TypographyModel(string FontFamily, int FontWeight, double FontSize, double TypeScale, double LineHeight);
+    public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<double, string> TypeScales);
+    public record TypographyModel(string FontFamily, string FontWeight, double FontSize, double TypeScale, double LineHeight);
     public class GetTypography : Feature<string, GetTypographyResponse>
     {
         public GetTypography(IRepository<Kit> kits)
@@ -36,7 +36,7 @@ namespace Kodekit.Features.Elements
                 kit.Paragraphs.LineHeight.Value
             );
 
-            return new(heading, paragraph, Weight.ValidValues, TypeScale.ValidValues);
+            return new(heading, paragraph, TypeScale.ValidValues);
         }
     }
 }

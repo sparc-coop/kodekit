@@ -1,13 +1,13 @@
 ﻿namespace Kodekit.Features.Elements
 {
-    public class Button : Element
+    public class Dropdown : Element
     {
-        public Button() : base("button")
+        public Dropdown() : base("select")
         {
         }
 
-        public Button(double fontSize, string fontWeight, double verticalPadding, double horizontalPadding, double cornerRadius,
-            double borderWidth, double iconWidth, double iconHeight, bool removeSecondaryBorder) : this()
+        public Dropdown(double fontSize, string fontWeight, double verticalPadding, double horizontalPadding, double cornerRadius,
+            double borderWidth) : this()
         {
             FontSize = new(fontSize);
             FontWeight = new(fontWeight);
@@ -15,9 +15,6 @@
             HorizontalPadding = new(horizontalPadding);
             CornerRadius = new(cornerRadius);
             BorderWidth = new(borderWidth);
-            IconWidth = new(iconWidth);
-            IconHeight = new(iconHeight);
-            RemoveSecondaryBorder = removeSecondaryBorder;
         }
 
         [Css("font-size")]
@@ -32,9 +29,5 @@
         public Size CornerRadius { get; set; }
         [Css("border-width")]
         public Size BorderWidth { get; set; }
-        public Size IconWidth { get; set; }
-        public Size IconHeight { get; set; }
-        public bool RemoveSecondaryBorder { get; set; }
-
     }
 }

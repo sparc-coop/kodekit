@@ -450,6 +450,54 @@
         }
       }
     },
+    "/api/GetDropdowns": {
+      "post": {
+        "tags": [
+          "GetDropdowns"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDropdownsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDropdownsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDropdownsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetGoogleFonts": {
       "post": {
         "tags": [
@@ -814,6 +862,35 @@
         }
       }
     },
+    "/api/GetWeights": {
+      "post": {
+        "tags": [
+          "GetWeights"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWeightsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWeightsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWeightsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/PublishKit": {
       "post": {
         "tags": [
@@ -964,6 +1041,66 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/ColorsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateDropdowns": {
+      "post": {
+        "tags": [
+          "UpdateDropdowns"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateDropdownsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateDropdownsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateDropdownsModel"
                   }
                 ]
               }
@@ -1510,6 +1647,71 @@
         },
         "additionalProperties": false
       },
+      "Dropdown": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "variations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Variation"
+            },
+            "nullable": true
+          },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "verticalPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "horizontalPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "cornerRadius": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "borderWidth": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Font": {
         "type": "object",
         "properties": {
@@ -1592,14 +1794,20 @@
             ],
             "nullable": true
           },
-          "headingWeights": {
+          "typeScales": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
             },
             "nullable": true
-          },
-          "typeScales": {
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetWeightsModel": {
+        "type": "object",
+        "properties": {
+          "weights": {
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -1844,6 +2052,14 @@
           },
           "isDeleted": {
             "type": "boolean",
+            "nullable": true
+          },
+          "dropdowns": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Dropdown"
+              }
+            ],
             "nullable": true
           }
         },
@@ -2139,8 +2355,8 @@
             "nullable": true
           },
           "fontWeight": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "fontSize": {
             "type": "number",
@@ -2169,8 +2385,8 @@
             "format": "double"
           },
           "fontWeight": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "verticalPadding": {
             "type": "number",
@@ -2198,6 +2414,40 @@
           },
           "removeSecondaryBorder": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateDropdownsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double"
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "verticalPadding": {
+            "type": "number",
+            "format": "double"
+          },
+          "horizontalPadding": {
+            "type": "number",
+            "format": "double"
+          },
+          "cornerRadius": {
+            "type": "number",
+            "format": "double"
+          },
+          "borderWidth": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false
@@ -2300,8 +2550,8 @@
         "type": "object",
         "properties": {
           "value": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "placeholder": {
             "type": "string",

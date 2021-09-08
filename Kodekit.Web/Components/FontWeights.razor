@@ -1,0 +1,21 @@
+﻿<select class="medium" @bind=Value>
+    @if (Weights != null)
+    {
+        @foreach (var weight in Weights)
+        {
+            <option value="@weight.Key">
+                @weight.Value
+            </option>
+        }
+    }
+</select>
+
+@code {
+    IDictionary<string, string> Weights;
+    [Parameter] public string Value { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Weights = (await PublicApi().GetWeightsAsync()).Weights;
+    }
+}
