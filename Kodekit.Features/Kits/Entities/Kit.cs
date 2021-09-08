@@ -47,7 +47,12 @@ namespace Kodekit.Features
 
             return Colors.FirstOrDefault(x => x.InternalName == $"{colorType.ToString().ToLower()}-{weight}")?.Value;
         }
-        
+
+        internal void UpdateButtons(Button buttons)
+        {
+            Buttons = buttons;
+        }
+
         public Shadow GetShadow(string shadowSize)
         {
             return Shadows.FirstOrDefault(x => x.InternalName == shadowSize.ToLower())?.Value;
