@@ -20,10 +20,7 @@ namespace Kodekit.Features.Elements
             var smallShadow = kit.GetShadow("small");
             var xlargeShadow = kit.GetShadow("xlarge");
 
-            var smallShadowModel = new ShadowModel(smallShadow.X, smallShadow.Y, smallShadow.Blur, smallShadow.Spread, smallShadow.Color, smallShadow.Opacity);
-            var xlargeShadowModel = new ShadowModel(xlargeShadow.X, xlargeShadow.Y, xlargeShadow.Blur, xlargeShadow.Spread, xlargeShadow.Color, xlargeShadow.Opacity);
-
-            return new(id, smallShadowModel, xlargeShadowModel);
+            return new(id, smallShadow, xlargeShadow);
         }
     }
 }
