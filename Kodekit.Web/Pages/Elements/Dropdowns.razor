@@ -1,6 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/dropdowns"
-@page  "/dropdowns/{kitId}"
+@page  "/{kitId}/dropdowns"
 
 <div class="dropdowns page">
     <div class="page__container">
@@ -24,36 +23,33 @@
                 </label>
                 Overwrite inherited styling
             </div>
-            @if (kit != null)
+            @if (Model != null)
             {
-                <EditForm Model="@kit">
+                <EditForm Model="@Model">
                     <div class="section">
                         <label>
-                            Input Font Size
-                            <input placeholder="16px">
+                            Font Size
+                            <InputNumber @bind-Value="Model.FontSize" />
                         </label>
                         <label>
-                            Input Font Weight
-                            <select>
-                                <option selected>Regular (400)</option>
-                                <option>Bold (500)</option>
-                            </select>
+                            Font Weight
+                           <FontWeights @bind-Value=Model.FontWeight />
                         </label>
                         <label>
                             Vertical Padding
-                            <input placeholder="10px">
+                            <InputNumber @bind-Value="Model.VerticalPadding" />
                         </label>
                         <label>
                             Horizontal Padding
-                            <input placeholder="16px">
+                            <InputNumber @bind-Value="Model.HorizontalPadding" />
                         </label>
                         <label>
                             Corner Radius
-                            <input placeholder="4px">
+                            <InputNumber @bind-Value="Model.CornerRadius" />
                         </label>
                         <label>
                             Border Width
-                            <input placeholder="1px">
+                            <InputNumber @bind-Value="Model.BorderWidth" />
                         </label>
                     </div>
 
@@ -93,10 +89,7 @@
 &lt;/select&gt;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="anchors" />
                 </EditForm>
             }
         </div>
@@ -104,19 +97,16 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    UpdateDropdownsModel Model;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-
+        Model = await PublicApi().GetDropdownsAsync(kitId);
     }
 
     private async Task Submit()
     {
-        //string newCss = new CreateCss().Execute(kit);
-
-        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
-        //SaveColors();
+        await PublicApi().UpdateDropdownsAsync(Model);
     }
 }

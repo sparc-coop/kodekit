@@ -4,26 +4,26 @@ namespace Kodekit.Features.Elements
 {
     public record Weight
     {
-        public int Value { get; set; }
+        public string Value { get; set; }
         public string Placeholder { get; set; }
 
-        public Weight(int weight)
+        public Weight(string weight)
         {
             Value = weight;
             Placeholder = ValidValues.ContainsKey(weight) ? ValidValues[weight] : string.Empty;
         }
 
-        public static Dictionary<int, string> ValidValues = new()
+        public static Dictionary<string, string> ValidValues = new()
         {
-            { 100, "Thin" },
-            { 200, "Extra-Light" },
-            { 300, "Light" },
-            { 400, "Regular" },
-            { 500, "Medium" },
-            { 600, "Semi-Bold" },
-            { 700, "Bold" },
-            { 800, "Extra-Bold" },
-            { 900, "Black" }
+            { "100", "Thin" },
+            { "200", "Extra-Light" },
+            { "300", "Light" },
+            { "400", "Regular" },
+            { "500", "Medium" },
+            { "600", "Semi-Bold" },
+            { "700", "Bold" },
+            { "800", "Extra-Bold" },
+            { "900", "Black" }
         };
 
         public override string ToString() => Value.ToString();

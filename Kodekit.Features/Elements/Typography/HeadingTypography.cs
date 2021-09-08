@@ -9,7 +9,7 @@ namespace Kodekit.Features.Elements
             Name = "h6";
         }
 
-        public HeadingTypography(string name, string fontFamily, int fontWeight, double fontSize, double typeScale, double lineHeight) 
+        public HeadingTypography(string name, string fontFamily, string fontWeight, double fontSize, double typeScale, double lineHeight) 
             : base(name, fontFamily, fontWeight, fontSize, typeScale, lineHeight)
         {
         }

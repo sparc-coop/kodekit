@@ -36,6 +36,11 @@ namespace Kodekit.Features
             Settings = settings;
         }
 
+        internal void UpdateDropdowns(Dropdown dropdowns)
+        {
+            Dropdowns = dropdowns;
+        }
+
         public Color GetColor(ColorTypes colorType)
         {
             var weight = colorType switch
@@ -92,6 +97,7 @@ namespace Kodekit.Features
         public bool? IsPublished { get; set; }
         public bool? IsAutoPublish { get; set; }
         public bool? IsDeleted { get; set; }
+        public Dropdown Dropdowns { get; set; }
 
         public string ToCss()
         {
