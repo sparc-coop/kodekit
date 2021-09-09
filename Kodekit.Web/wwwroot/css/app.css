@@ -84,7 +84,7 @@
     margin: -20px 0 50px 0;
     overflow: hidden;
     background: #282c34;
-    padding: 0 0 20px 20px; }
+    padding: 0 0 0 20px; }
   .page .section, .page section {
     display: flex;
     flex-wrap: wrap;
@@ -451,7 +451,8 @@
   .inputs .preview-example span {
     font-size: 12px;
     line-height: 120%;
-    color: #787980; }
+    color: #787980;
+    margin-top: 6px; }
   .inputs .preview-example .selected input {
     border: 1px solid #0B5FFF; }
   .inputs .preview-example .disabled {
@@ -469,9 +470,14 @@
 
 .lists .preview-example {
   display: flex;
-  padding-bottom: 20px; }
+  padding: 25px 32px 40px;
+  color: #6F788B; }
   .lists .preview-example ul {
-    list-style-type: none; }
+    list-style-type: none;
+    padding: 0 20px; }
+  .lists .preview-example ol {
+    list-style-type: decimal;
+    padding: 0 20px; }
   .lists .preview-example li {
     padding: 4px 0; }
 
@@ -512,13 +518,15 @@
 .selectors .preview-example {
   display: flex;
   flex-wrap: wrap;
-  padding: 25px 32px; }
+  padding: 25px 32px 40px 32px; }
   .selectors .preview-example > div {
     padding-right: 50px; }
   .selectors .preview-example label {
     display: flex;
+    flex-direction: unset;
     padding: 5px 0;
-    font-size: 16px; }
+    font-size: 16px;
+    justify-content: left; }
   .selectors .preview-example input {
     margin: 5px 12px 0 0;
     height: 20px;
@@ -719,6 +727,13 @@
 .colors .preview-mockup .button-secondary {
   background: none;
   color: #00BFB2; }
+
+.icons section {
+  padding-bottom: 15px; }
+
+.icons .preview-example {
+  min-height: 100px;
+  padding: 32px; }
 
 .layout .switch {
   vertical-align: middle; }

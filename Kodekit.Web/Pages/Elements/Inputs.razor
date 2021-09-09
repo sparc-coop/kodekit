@@ -20,35 +20,39 @@
             {
                 <EditForm Model="@kit">
                     <div class="section">
-                        <label>
-                            Input Font Size
-                            <input placeholder="16px" />
-                        </label>
-                        <label>
-                            Input Font Weight
-                            <select>
-                                <option>Light (300)</option>
-                                <option selected>Regular (400)</option>
-                                <option>Medium (500)</option>
-                                <option>Bold (700)</option>
-                            </select>
-                        </label>
-                        <label>
-                            Vertical Padding
-                            <input placeholder="10px" />
-                        </label>
-                        <label>
-                            Horizontal Padding
-                            <InputText @bind-Value="kit.BodyFontSize" />
-                        </label>
-                        <label>
-                            Corner Radius
-                            <InputText @bind-Value="kit.BodyFontSize" />
-                        </label>
-                        <label>
-                            Border Width
-                            <InputText @bind-Value="kit.BodyLineHeight" />
-                        </label>
+                        <div>
+                            <label>
+                                Input Font Size
+                                <input placeholder="16px" />
+                            </label>
+                            <label>
+                                Input Font Weight
+                                <select>
+                                    <option>Light (300)</option>
+                                    <option selected>Regular (400)</option>
+                                    <option>Medium (500)</option>
+                                    <option>Bold (700)</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Vertical Padding
+                                <input placeholder="10px" />
+                            </label>
+                            <label>
+                                Horizontal Padding
+                                <InputText @bind-Value="kit.BodyFontSize" />
+                            </label>
+                            <label>
+                                Corner Radius
+                                <InputText @bind-Value="kit.BodyFontSize" />
+                            </label>
+                            <label>
+                                Border Width
+                                <InputText @bind-Value="kit.BodyLineHeight" />
+                            </label>
+                        </div>
                     </div>
                     <div class="preview-example">
                         <input placeholder="Placeholder" />
@@ -56,19 +60,20 @@
                             <img src="/images/person-icon.svg" alt="Person Icon" />
                             <input placeholder="Placeholder" />
                         </label>
-                        <select>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
                         <textarea>Placeholder</textarea>
                     </div>
-                    <div class="code-example">
+                    <pre>
                         <code>
+&lt;input placeholder="Placeholder" /&gt;
 
+&lt;label&gt;
+    &lt;img src="icon.svg" alt="Icon" /&gt;
+    &lt;input placeholder="Placeholder" /&gt;
+&lt;/label&gt;
+
+&lt;textarea&gt;Placeholder&lt;/textarea&gt;
                         </code>
-                    </div>
-
+                    </pre>
                     <h3>Input & Textarea states</h3>
                     <p class="subheader">
                        Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
@@ -96,7 +101,7 @@
                             Error
                             <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
                             <input value="username" />
-                            <span>Enter your username.</span>
+                            <span>Username is taken.</span>
                         </label>
                         <label class="disabled icon-space">
                             Disabled
@@ -107,10 +112,10 @@
                     <pre>
                     <code>
 &lt;label class="icon-space"&gt;
-Placeholder
-&lt;img src="/images/person-icon.svg" alt="Person Icon" /&gt;
-&lt;input placeholder="username" /&gt;
-&lt;span&gt;Enter your username.&lt;/span&gt;
+    Placeholder
+    &lt;img src="/images/person-icon.svg" alt="Person Icon" /&gt;
+    &lt;input placeholder="username" /&gt;
+    &lt;span&gt;Enter your username.&lt;/span&gt;
 &lt;/label&gt;
                 </code>
             </pre>
