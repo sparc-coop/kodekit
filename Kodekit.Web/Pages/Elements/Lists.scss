@@ -3,10 +3,18 @@
 .lists {
     .preview-example {
         display: flex;
-        padding-bottom: 20px;
+        padding: 25px 32px 40px;
+        color: #6F788B;
+
 
         ul {
             list-style-type: none;
+            padding: 0 20px;
+        }
+
+        ol {
+            list-style-type: decimal;
+            padding: 0 20px;
         }
 
         li {

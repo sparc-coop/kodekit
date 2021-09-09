@@ -67,9 +67,14 @@
                         </div>
                     </div>
                     <pre>
-                    <code class="language-html">
+                        <code class="language-html">
 &lt;input type="checkbox"/&gt;
+&lt;input type="checkbox" active /&gt;
+&lt;input type="checkbox" disabled /&gt;
+
 &lt;input type="radio"/&gt;
+&lt;input type="radio" checked /&gt;
+&lt;input type="radio" disabled /&gt;
                         </code>
                     </pre>
                     <button @onclick="Submit">
@@ -93,9 +98,7 @@
 
     private async Task Submit()
     {
-        //string newCss = new CreateCss().Execute(kit);
-
-        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
-        //SaveColors();
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/dropdowns/" + kit.KitId);
     }
 }
