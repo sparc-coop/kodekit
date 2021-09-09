@@ -31,4 +31,8 @@
             }
         }
     }
+
+    input[type="checkbox"]:disabled + .slider {
+        opacity: 0.5;
+    }
 }
