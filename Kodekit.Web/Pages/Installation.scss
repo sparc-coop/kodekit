@@ -21,6 +21,10 @@
             color: $gray500;
             margin-top: 0;
         }
+
+        button:hover {
+            color: $gray300;
+        }
     }
 
     .download {

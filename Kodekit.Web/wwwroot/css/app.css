@@ -79,6 +79,8 @@
     height: 40px;
     color: #3A3A40;
     cursor: pointer; }
+  .page input {
+    cursor: text; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: -20px 0 50px 0;
@@ -518,7 +520,9 @@
   .selectors .preview-example label {
     display: flex;
     padding: 5px 0;
-    font-size: 16px; }
+    font-size: 16px;
+    flex-direction: row;
+    justify-content: flex-start; }
   .selectors .preview-example input {
     margin: 5px 12px 0 0;
     height: 20px;
@@ -1036,6 +1040,8 @@
     border-radius: 8px;
     color: #787980;
     margin-top: 0; }
+  .installation .instructions button:hover {
+    color: #D2D4D9; }
 
 .installation .download {
   margin-bottom: 40px; }
