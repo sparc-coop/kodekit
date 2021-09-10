@@ -13,7 +13,9 @@ namespace Kodekit.Features.Elements
         public Weight(string weight)
         {
             Value = weight;
-            Placeholder = ValidValues.ContainsKey(weight) ? ValidValues[weight] : string.Empty;
+            Placeholder = !string.IsNullOrWhiteSpace(weight) && ValidValues.ContainsKey(weight) 
+                ? ValidValues[weight] 
+                : string.Empty;
         }
 
         public static Dictionary<string, string> ValidValues = new()

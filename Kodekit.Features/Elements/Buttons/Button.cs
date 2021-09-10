@@ -6,8 +6,8 @@
         {
         }
 
-        public Button(double fontSize, string fontWeight, double verticalPadding, double horizontalPadding, double cornerRadius,
-            double borderWidth, double iconWidth, double iconHeight, bool removeSecondaryBorder) : this()
+        public Button(double? fontSize, string fontWeight, double? verticalPadding, double? horizontalPadding, double? cornerRadius,
+            double? borderWidth, double? iconWidth, double? iconHeight, bool removeSecondaryBorder) : this()
         {
             FontSize = new(fontSize);
             FontWeight = new(fontWeight);

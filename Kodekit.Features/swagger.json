@@ -2270,72 +2270,55 @@
         "type": "object",
         "properties": {
           "resetEverything": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "resetHeadings": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "resetParagraphs": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "resetLists": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "resetCheckboxes": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "resetAnchors": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "allKodekitElements": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitTypography": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitColors": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitIcons": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitLayout": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitButtons": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitInputs": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitCheckboxes": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitDropdowns": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitAnchors": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "kodekitImages": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2509,15 +2492,18 @@
           },
           "fontSize": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "typeScale": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "lineHeight": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2531,7 +2517,8 @@
           },
           "fontSize": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fontWeight": {
             "type": "string",
@@ -2539,27 +2526,33 @@
           },
           "verticalPadding": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "horizontalPadding": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "cornerRadius": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "borderWidth": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "iconWidth": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "iconHeight": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "removeSecondaryBorder": {
             "type": "boolean"

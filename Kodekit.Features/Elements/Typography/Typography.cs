@@ -6,7 +6,7 @@
         {
         }
 
-        public Typography(string name, string fontFamily, string fontWeight, double fontSize, double typeScale, double lineHeight) : base(name)
+        public Typography(string name, string fontFamily, string fontWeight, double? fontSize, double? typeScale, double? lineHeight) : base(name)
         {
             FontFamily = new FontFamily(fontFamily);
             FontWeight = new Weight(fontWeight);

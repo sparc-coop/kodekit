@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Kodekit.Features.Elements
 {
@@ -8,9 +9,9 @@ namespace Kodekit.Features.Elements
         { 
         }
         
-        public TypeScale(double typeScale)
+        public TypeScale(double? typeScale)
         {
-            Value = typeScale;
+            Value = typeScale ?? ValidValues.Keys.First();
         }
 
         public double Value { get; set; }

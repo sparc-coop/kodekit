@@ -19,9 +19,9 @@ namespace Kodekit.Features.Elements
             Placeholder = ValidUnits.ContainsKey(Unit) ? ValidUnits[Unit] : string.Empty;
         }
 
-        public Size(double size)
+        public Size(double? size)
         {
-            Value = size;
+            Value = size ?? 0;
             Unit = "px";
             Placeholder = ValidUnits["px"];
         }

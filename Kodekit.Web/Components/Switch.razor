@@ -8,6 +8,18 @@
 
 @code {
     [Parameter] public string Title { get; set; }
-    [Parameter] public bool? Value { get; set; }
+     private bool _value;
+    [Parameter] public bool Value
+    {
+        get => _value;
+        set
+        {
+            if (_value == value ) return;
+            _value = value;
+            ValueChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
+
     [Parameter] public bool IsDisabled { get; set; }
 }
