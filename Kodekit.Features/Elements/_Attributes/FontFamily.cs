@@ -2,6 +2,9 @@
 {
     public record FontFamily
     {
+        public FontFamily()
+        { }
+        
         public FontFamily(string fontFamily)
         {
             FriendlyName = fontFamily;

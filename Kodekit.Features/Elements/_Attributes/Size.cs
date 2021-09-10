@@ -9,6 +9,8 @@ namespace Kodekit.Features.Elements
         public string Unit { get; set; }
         public string Placeholder { get; set; }
 
+        public Size()
+        { }
         public Size(string sizeString)
         {
             var digits = new string(sizeString.Where(char.IsDigit).ToArray());

@@ -7,6 +7,9 @@ namespace Kodekit.Features.Elements
         public string Value { get; set; }
         public string Placeholder { get; set; }
 
+        public Weight()
+        { }
+        
         public Weight(string weight)
         {
             Value = weight;
