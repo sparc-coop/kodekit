@@ -26,21 +26,21 @@
                         </label>
                         <label>
                             Heading Font
-                            <select class="medium" @bind=Model.Heading.FontFamily>
-                                @if (Fonts.Items != null)
-                                {
+                            @if (Fonts.Items != null)
+                            {
+                                <select class="medium" @bind=Model.Heading.FontFamily>
                                     @foreach (var font in Fonts.Items)
                                     {
                                         <option value="@font.Family">
                                             @font.Family
                                         </option>
                                     }
-                                }
-                            </select>
+                                </select>
+                            }
                         </label>
                         <label>
                             Default Heading Weight
-                            <FontWeights @bind-Value="Model.Heading.FontWeight" Weights="Model.HeadingWeights" />
+                            <FontWeights @bind-Value="Model.Heading.FontWeight" />
                         </label>
 
                         <label>
@@ -95,19 +95,19 @@
                     </div>
                     <pre>
                     <code>
-        &lt;h1&gt;@(previewText)&lt;/h1&gt;
-        &lt;h2&gt;@(previewText)&lt;/h2&gt;
-        &lt;h3&gt;@(previewText)&lt;/h3&gt;
-        &lt;h4&gt;@(previewText)&lt;/h4&gt;
-        &lt;h5&gt;@(previewText)&lt;/h5&gt;
-        &lt;h6&gt;@(previewText)&lt;/h6&gt;
-        &lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
+            &lt;h1&gt;@(previewText)&lt;/h1&gt;
+            &lt;h2&gt;@(previewText)&lt;/h2&gt;
+            &lt;h3&gt;@(previewText)&lt;/h3&gt;
+            &lt;h4&gt;@(previewText)&lt;/h4&gt;
+            &lt;h5&gt;@(previewText)&lt;/h5&gt;
+            &lt;h6&gt;@(previewText)&lt;/h6&gt;
+            &lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
 
-        &lt;!-- combine with other HTML elements --&gt;
-        &lt;h1&gt;@(previewText)&lt;/h1&gt;
-        &lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
-            </code>
-        </pre>
+            &lt;!-- combine with other HTML elements --&gt;
+            &lt;h1&gt;@(previewText)&lt;/h1&gt;
+            &lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
+                </code>
+            </pre>
                     <h3>Paragraph Settings</h3>
 
                     <div class="section">
@@ -118,7 +118,7 @@
                         <label>
                             Choose Body font
                             <select class="medium" @bind=Model.Paragraph.FontFamily>
-                               @if (Fonts.Items != null)
+                                @if (Fonts.Items != null)
                                 {
                                     @foreach (var font in Fonts.Items)
                                     {
@@ -165,13 +165,13 @@
                     </div>
                     <pre>
                     <code>
-        &lt;p class="sub-title"&gt;@(previewTextBody)&lt;/p&gt;
-        &lt;p&gt;@(previewTextBody).&lt;/p&gt;
-        &lt;p class="disclaimer"&gt;@(previewTextBody)&lt;/h3&gt;
-        &lt;!-- combine with other HTML elements --&gt;
-        &lt;h1&gt;&lt;strong&gt;@(previewTextBody)&lt;/strong&gt;&lt;h1&gt;
-                                </code>
-                            </pre>
+            &lt;p class="sub-title"&gt;@(previewTextBody)&lt;/p&gt;
+            &lt;p&gt;@(previewTextBody).&lt;/p&gt;
+            &lt;p class="disclaimer"&gt;@(previewTextBody)&lt;/h3&gt;
+            &lt;!-- combine with other HTML elements --&gt;
+            &lt;h1&gt;&lt;strong&gt;@(previewTextBody)&lt;/strong&gt;&lt;h1&gt;
+                                    </code>
+                                </pre>
                     <SaveAndContinue OnSubmit=Submit NextPage="colors" />
                 </EditForm>
             }
