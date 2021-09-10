@@ -11,7 +11,7 @@ namespace Kodekit.Features
         {
             builder.Entity<User>().HasNoKey();
             
-            var kit = builder.Entity<Kit>().HasPartitionKey(x => x.KitId);
+            var kit = builder.Entity<Kit>().HasPartitionKey(x => x.Id);
 
             var colors = kit.OwnsMany(x => x.Colors);
             colors.OwnsOne(x => x.Value);

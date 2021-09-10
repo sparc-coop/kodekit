@@ -12,7 +12,6 @@ namespace Kodekit.Features
         public Kit()
         {
             Id = Guid.NewGuid().ToString();
-            KitId = Guid.NewGuid().ToString();
 
             Colors = new();
             Shadows = new();
@@ -88,7 +87,6 @@ namespace Kodekit.Features
             Colors.Add(new Variable<Color>(colorType.ToString(), new Color(hexValue)));
         }
 
-        public string KitId { get; set; }
         public string UserId { get; set; }
         public string ParentId { get; set; }//For child elements/later versions
         public string Description { get; set; }
