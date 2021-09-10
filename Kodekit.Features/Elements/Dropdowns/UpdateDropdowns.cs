@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record UpdateDropdownsModel(string KitId, double FontSize, string FontWeight, double VerticalPadding, double HorizontalPadding, double CornerRadius, double BorderWidth);
-    public class UpdateDropdowns : Feature<UpdateDropdownsModel, Kit>
+    public class UpdateDropdowns : PublicFeature<UpdateDropdownsModel, Kit>
     {
         public UpdateDropdowns(IRepository<Kit> kits)
         {

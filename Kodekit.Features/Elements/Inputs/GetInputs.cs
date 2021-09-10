@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public class GetInputs : Feature<string, UpdateInputsModel>
+    public class GetInputs : PublicFeature<string, UpdateInputsModel>
     {
         public GetInputs(IRepository<Kit> kits)
         {

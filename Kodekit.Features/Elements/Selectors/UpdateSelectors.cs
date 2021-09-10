@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record UpdateSelectorsModel(string KitId, double FontSize, string FontWeight, string ActiveColor);
-    public class UpdateSelectors : Feature<UpdateSelectorsModel, Kit>
+    public class UpdateSelectors : PublicFeature<UpdateSelectorsModel, Kit>
     {
         public UpdateSelectors(IRepository<Kit> kits)
         {

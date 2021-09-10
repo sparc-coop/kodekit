@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public class GetSelectors : Feature<string, UpdateSelectorsModel>
+    public class GetSelectors : PublicFeature<string, UpdateSelectorsModel>
     {
         public GetSelectors(IRepository<Kit> kits)
         {

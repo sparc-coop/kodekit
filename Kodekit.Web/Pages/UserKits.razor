@@ -56,8 +56,8 @@
     {
         Kit newKit = new Kit();
         newKit.UserId = User.UserId;
-        newKit = await PublicApi().CreateKitAsync(newKit);
-        Nav.NavigateTo("/typography/" + newKit.KitId);
+        newKit.Id = (await PublicApi().CreateKitAsync()).KitId;
+        Nav.NavigateTo($"/{newKit.KitId}/typography/");
     }
 
     private void Sort(string filter)

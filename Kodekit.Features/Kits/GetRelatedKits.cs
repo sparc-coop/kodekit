@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Kodekit.Features
 {
-    public class GetRelatedKits : Feature<string, List<Kit>>
+    public class GetRelatedKits : PublicFeature<string, List<Kit>>
     {
         public GetRelatedKits(IRepository<Kit> kits)
         {

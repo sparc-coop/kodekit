@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public class GetColors : Feature<string, ColorsModel>
+    public class GetColors : PublicFeature<string, ColorsModel>
     {
         public GetColors(IRepository<Kit> kits)
         {

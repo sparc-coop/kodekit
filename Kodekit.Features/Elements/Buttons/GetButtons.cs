@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public class GetButtons : Feature<string, UpdateButtonsModel>
+    public class GetButtons : PublicFeature<string, UpdateButtonsModel>
     {
         public GetButtons(IRepository<Kit> kits)
         {

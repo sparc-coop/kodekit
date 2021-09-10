@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record UpdateTypographyModel(string KitId, TypographyModel Headings, TypographyModel Paragraphs);
-    public class UpdateTypography : Feature<UpdateTypographyModel, Kit>
+    public class UpdateTypography : PublicFeature<UpdateTypographyModel, Kit>
     {
         public UpdateTypography(IRepository<Kit> kits)
         {

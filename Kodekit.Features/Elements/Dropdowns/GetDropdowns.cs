@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public class GetDropdowns : Feature<string, UpdateDropdownsModel>
+    public class GetDropdowns : PublicFeature<string, UpdateDropdownsModel>
     {
         public GetDropdowns(IRepository<Kit> kits)
         {

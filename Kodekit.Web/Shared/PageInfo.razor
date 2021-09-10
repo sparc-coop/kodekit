@@ -165,7 +165,7 @@
         string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
         if(string.IsNullOrEmpty(currentKitId))
         {
-            kit = await PublicApi().CreateKitAsync(new Kit());
+            currentKitId = (await PublicApi().CreateKitAsync()).KitId;
         } else
         {
             kit = await PublicApi().GetKitAsync(currentKitId);
@@ -225,11 +225,10 @@
     private async Task CopyKit()
     {
         Kit newkit = kit;
-        newkit.Id = Guid.NewGuid().ToString();
         newkit.KitId = Guid.NewGuid().ToString();
         newkit.ParentId = kit.ParentId;
-        newkit = await PublicApi().CreateKitAsync(newkit);
-        Nav.NavigateTo("/typography/" + newkit.KitId);
+        newkit.Id = (await PublicApi().CreateKitAsync()).KitId;
+        Nav.NavigateTo($"/{newkit.KitId}/typography/");
     }
 
     private void DownloadKit()
