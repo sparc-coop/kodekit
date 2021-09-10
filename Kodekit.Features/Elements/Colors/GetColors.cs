@@ -17,14 +17,14 @@ namespace Kodekit.Features.Elements
         {
             var kit = await Kits.FindAsync(id);
             return new(id,
-                kit.GetColor(ColorTypes.Primary).HexValue,
-                kit.GetColor(ColorTypes.Secondary).HexValue,
-                kit.GetColor(ColorTypes.Tertiary).HexValue,
-                kit.GetColor(ColorTypes.Darkest).HexValue,
-                kit.GetColor(ColorTypes.Lightest).HexValue,
-                kit.GetColor(ColorTypes.Error).HexValue,
-                kit.GetColor(ColorTypes.Warning).HexValue,
-                kit.GetColor(ColorTypes.Success).HexValue);
+                kit.GetColor(ColorTypes.Primary)?.HexValue,
+                kit.GetColor(ColorTypes.Secondary)?.HexValue,
+                kit.GetColor(ColorTypes.Tertiary)?.HexValue,
+                kit.GetColor(ColorTypes.Darkest)?.HexValue,
+                kit.GetColor(ColorTypes.Lightest)?.HexValue,
+                kit.GetColor(ColorTypes.Error)?.HexValue,
+                kit.GetColor(ColorTypes.Warning)?.HexValue,
+                kit.GetColor(ColorTypes.Success)?.HexValue);
         }
     }
 }
