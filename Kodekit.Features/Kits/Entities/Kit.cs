@@ -25,6 +25,11 @@ namespace Kodekit.Features
             Settings = new();
         }
 
+        public void UpdateSelectors(Selector selectors)
+        {
+            Selectors = selectors;
+        }
+
         public void UpdateTypography(HeadingTypography headings, Typography paragraphs)
         {
             Headings = headings;

@@ -11,8 +11,13 @@ namespace Kodekit.Features.Elements
         public Selector() : base("input[type=checkbox]")
         {
         }
-
-        public Selector()
+        
+        public Selector(double fontSize, string fontWeight, string activeColor) : this()
+        {
+            FontSize = new(fontSize);
+            FontWeight = new(fontWeight);
+            ActiveColor = new(activeColor);
+        }
 
         [Css("font-size")]
         public Size FontSize { get; set; }
@@ -20,5 +25,5 @@ namespace Kodekit.Features.Elements
         public Weight FontWeight { get; set; }
         [Css("color")]
         public Color ActiveColor { get; set; }
-    }
+    } 
 }
