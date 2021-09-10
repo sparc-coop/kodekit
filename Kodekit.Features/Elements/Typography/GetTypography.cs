@@ -7,7 +7,7 @@ namespace Kodekit.Features.Elements
 {
     public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<double, string> TypeScales);
     public record TypographyModel(string FontFamily, string FontWeight, double FontSize, double TypeScale, double LineHeight);
-    public class GetTypography : Feature<string, GetTypographyResponse>
+    public class GetTypography : PublicFeature<string, GetTypographyResponse>
     {
         public GetTypography(IRepository<Kit> kits)
         {

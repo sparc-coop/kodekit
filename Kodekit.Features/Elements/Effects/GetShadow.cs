@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public class GetShadow : Feature<string, ShadowsModel>
+    public class GetShadow : PublicFeature<string, ShadowsModel>
     {
         public GetShadow(IRepository<Kit> kits)
         {

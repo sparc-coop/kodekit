@@ -210,54 +210,23 @@
         "tags": [
           "CreateKit"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
-              }
-            },
-            "text/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kit"
+                  "$ref": "#/components/schemas/CreateKitResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kit"
+                  "$ref": "#/components/schemas/CreateKitResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kit"
+                  "$ref": "#/components/schemas/CreateKitResponse"
                 }
               }
             }
@@ -1850,6 +1819,16 @@
             "nullable": true
           },
           "aaa": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateKitResponse": {
+        "type": "object",
+        "properties": {
+          "kitId": {
             "type": "string",
             "nullable": true
           }

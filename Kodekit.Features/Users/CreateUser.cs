@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Kodekit.Features
 {
-    public class CreateUser : Feature<bool>
+    public class CreateUser : PublicFeature<bool>
     {
         public CreateUser(IRepository<User> users)
         {

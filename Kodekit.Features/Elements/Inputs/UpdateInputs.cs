@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record UpdateInputsModel(string KitId, double FontSize, string FontWeight, double VerticalPadding, double HorizontalPadding, double CornerRadius, double BorderWidth);
-    public class UpdateInputs : Feature<UpdateInputsModel, Kit>
+    public class UpdateInputs : PublicFeature<UpdateInputsModel, Kit>
     {
         public UpdateInputs(IRepository<Kit> kits)
         {

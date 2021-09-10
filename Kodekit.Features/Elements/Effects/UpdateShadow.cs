@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record ShadowsModel(string KitId, Shadow Small, Shadow XLarge);
-    public class UpdateShadow : Feature<ShadowsModel, Kit>
+    public class UpdateShadow : PublicFeature<ShadowsModel, Kit>
     {
         public UpdateShadow(IRepository<Kit> kits)
         {

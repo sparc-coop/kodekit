@@ -222,6 +222,5 @@ $success-100
     private async Task Submit()
     {
         await PublicApi().UpdateColorsAsync(Model);
-        Nav.NavigateTo("/icons/" + Model.KitId);
     }
 }

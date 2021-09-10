@@ -9,14 +9,15 @@
                 This is where you can build your very own system, and at the end export it to use in your projects.
             </p>
         </header>
-        <button @onclick="GoTo">Get Started</button>
+        <button @onclick="CreateKit">Get Started</button>
     </div>
 </div>
 
 @code {
 
-    void GoTo()
+    async Task CreateKit()
     {
-        Nav.NavigateTo("/Typography");
+        var result = await PublicApi().CreateKitAsync();
+        Nav.NavigateTo($"/{result.KitId}/Typography");
     }
 }

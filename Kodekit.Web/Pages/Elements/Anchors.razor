@@ -76,10 +76,7 @@
 &lt;a href="#"&gt;Link&lt;/a&gt;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="lists" />
                 </EditForm>
             }
         </div>
@@ -123,6 +120,5 @@
     private async Task Submit()
     {
         await PublicApi().UpdateKitAsync(kit);
-        Nav.NavigateTo("/lists/" + kit.KitId);
     }
 }

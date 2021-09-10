@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record GetWeightsModel(Dictionary<string, string> Weights);
-    public class GetWeights : Feature<GetWeightsModel>
+    public class GetWeights : PublicFeature<GetWeightsModel>
     {
         public override Task<GetWeightsModel> ExecuteAsync()
         {
