@@ -1,6 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/selectors"
-@page  "/selectors/{kitId}"
+@page  "/{kitId}/selectors"
 
 <div class="selectors page">
     <div class="page__container">
@@ -16,30 +15,21 @@
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
-            @if (kit != null)
+            @if (Model != null)
             {
-                <EditForm Model="@kit">
+                <EditForm Model="@Model">
                     <div class="section">
                         <label>
                             Label Font Size
-                            <input placeholder="16px">
+                            <InputNumber @bind-Value="Model.FontSize" />
                         </label>
                         <label>
                             Label Font Weight
-                            <select>
-                                <option>Light (300)</option>
-                                <option selected>Regular (400)</option>
-                                <option>Medium (500)</option>
-                                <option>Bold (700)</option>
-                            </select>
+                            <FontWeights @bind-Value="Model.FontWeight" />
                         </label>
                         <label>
                             Active Color
-                            <select>
-                                <option>Primary (500)</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
+                            <Colors KitId="@kitId" @bind-Value="Model.ActiveColor" />
                         </label>
                     </div>
                     <div class="preview-example">
@@ -77,10 +67,7 @@
 &lt;input type="radio" disabled /&gt;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="dropdowns" />
                 </EditForm>
             }
         </div>
@@ -88,17 +75,16 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    UpdateSelectorsModel Model;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-
+        Model = await PublicApi().GetSelectorsAsync(kitId);
     }
 
     private async Task Submit()
     {
-        await PublicApi().UpdateKitAsync(kit);
-        Nav.NavigateTo("/dropdowns/" + kit.KitId);
+        await PublicApi().UpdateSelectorsAsync(Model);
     }
 }

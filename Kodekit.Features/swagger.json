@@ -2709,12 +2709,16 @@
             "type": "string",
             "nullable": true
           },
-          "selectors": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Selector"
-              }
-            ],
+          "fontSize": {
+            "type": "number",
+            "format": "double"
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeColor": {
+            "type": "string",
             "nullable": true
           }
         },

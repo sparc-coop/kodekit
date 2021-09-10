@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record UpdateSelectorsModel(string KitId, Selector Selectors);
+    public record UpdateSelectorsModel(string KitId, double FontSize, string FontWeight, string ActiveColor);
     public class UpdateSelectors : Feature<UpdateSelectorsModel, Kit>
     {
         public UpdateSelectors(IRepository<Kit> kits)
@@ -17,7 +17,7 @@ namespace Kodekit.Features.Elements
         public override async Task<Kit> ExecuteAsync(UpdateSelectorsModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
-            kit.UpdateSelectors(request.Selectors);
+            kit.UpdateSelectors(new Selector(request.FontSize, request.FontWeight, request.ActiveColor));
             await Kits.UpdateAsync(kit);
 
             return kit;
