@@ -17,7 +17,7 @@
             </p>
             <div class="steps">1. Add Script</div>
             <div class="instructions">
-                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.KitId + "\">")" />
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.Id + "\">")" />
                 <button @onclick="StepOneCopy">Copy</button>
                 <br />
                 <pre>
@@ -46,7 +46,7 @@
             using the theme script will auto-update, allowing you to make changes to your live project.
         </p>
         <div class="instructions">
-            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.KitId + "\">")" />
+            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.Id + "\">")" />
             <button @onclick="StepTwoCopy">Copy</button>
             <br />
             <pre>

@@ -26,7 +26,7 @@
             <div class="dashboard-container">
                 @foreach (var kit in Kits)
                 {
-                    <a href="kits/@kit.KitId" class="dashboard-card">
+                    <a href="kits/@kit.Id" class="dashboard-card">
                         <img src="/images/dash-icon.svg" alt="Dashboard Icon"/>
                         <div>
                             <div class="title">Project Name</div>
@@ -57,7 +57,7 @@
         Kit newKit = new Kit();
         newKit.UserId = User.UserId;
         newKit.Id = (await PublicApi().CreateKitAsync()).KitId;
-        Nav.NavigateTo($"/{newKit.KitId}/typography/");
+        Nav.NavigateTo($"/{newKit.Id}/typography/");
     }
 
     private void Sort(string filter)

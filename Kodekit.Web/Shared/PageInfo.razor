@@ -19,7 +19,7 @@
                         <ul class="user-kits--dropdown">
                             @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
                             {
-                                <li @onclick="@(e => SelectKit(item.KitId))">
+                                <li @onclick="@(e => SelectKit(item.Id))">
                                     <img class="img-left" src="/images/ellipse_open_icon.svg" alt="More Options"/>
                                     @(item.Name ?? "Untitled Styleguide")
                                     <span>
@@ -91,14 +91,14 @@
                     <ul>
                         @foreach (var item in Kits)
                         {
-                            <li @onclick="@(e => ShowOptions(item.KitId))">
+                            <li @onclick="@(e => ShowOptions(item.Id))">
                                 @if(!String.IsNullOrEmpty(item.Name))
                                 {
-                                    @if(EditName == item.KitId)
+                                    @if(EditName == item.Id)
                                     {
                                         <span>
                                             <input placeholder="@item.Name" @bind-value="@item.Name"/>
-                                            <button @onclick="@(e => UpdateKitName(item.KitId))">Save</button>
+                                            <button @onclick="@(e => UpdateKitName(item.Id))">Save</button>
                                         </span>
                                     } else
                                     {
@@ -106,10 +106,10 @@
                                     }
                                 } else
                                 {
-                                    @if(EditName == item.KitId)
+                                    @if(EditName == item.Id)
                                     {
                                         <input placeholder="@item.Name" @bind-value="@item.Name"/>
-                                        <button @onclick="@(e => UpdateKitName(item.KitId))">Save</button>
+                                        <button @onclick="@(e => UpdateKitName(item.Id))">Save</button>
 
                                     } else
                                     {
@@ -117,15 +117,15 @@
                                     }
                                 }
                                 <span class="material-icons">more_vert</span>
-                                @if (ShowKitOptions == item.KitId)
+                                @if (ShowKitOptions == item.Id)
                                 {
                                     <div class="publish-options">
                                         <ul>
-                                            <li @onclick="@(e => Publish(item.KitId))">Push Live</li>
-                                            <li @onclick="@(e => ShowEditName(item.KitId))">Rename Version</li>
-                                            <li @onclick="@(e => GoToPreview(item.KitId))">Preview Version</li>
+                                            <li @onclick="@(e => Publish(item.Id))">Push Live</li>
+                                            <li @onclick="@(e => ShowEditName(item.Id))">Rename Version</li>
+                                            <li @onclick="@(e => GoToPreview(item.Id))">Preview Version</li>
                                             <li>Revert to Version</li>
-                                            <li @onclick="@(e => GoToPreview(item.KitId))">Delete Version</li>
+                                            <li @onclick="@(e => GoToPreview(item.Id))">Delete Version</li>
                                         </ul>
                                     </div>
                                 }
@@ -206,7 +206,7 @@
             var user = authState.User;
             if (user.Identity.IsAuthenticated)
             {
-                Kits = await Api.GetRelatedKitsAsync(kit.KitId);
+                Kits = await Api.GetRelatedKitsAsync(kit.Id);
             }
         }
     }
@@ -225,10 +225,10 @@
     private async Task CopyKit()
     {
         Kit newkit = kit;
-        newkit.KitId = Guid.NewGuid().ToString();
+        newkit.Id = Guid.NewGuid().ToString();
         newkit.ParentId = kit.ParentId;
         newkit.Id = (await PublicApi().CreateKitAsync()).KitId;
-        Nav.NavigateTo($"/{newkit.KitId}/typography/");
+        Nav.NavigateTo($"/{newkit.Id}/typography/");
     }
 
     private void DownloadKit()
@@ -263,7 +263,7 @@
 
     private async Task UpdateKitName(string kitId)
     {
-        Kit selectedKit = Kits.Where(x => x.KitId == kitId).FirstOrDefault();
+        Kit selectedKit = Kits.Where(x => x.Id == kitId).FirstOrDefault();
         EditName = "";
         Console.WriteLine(kitId);
         await PublicApi().UpdateKitAsync(selectedKit);
@@ -300,7 +300,7 @@
     private void SelectKit(string kitid)
     {
         KitsList = !KitsList;
-        kit = UserKits.Where(x => x.KitId == kitid).FirstOrDefault();
+        kit = UserKits.Where(x => x.Id == kitid).FirstOrDefault();
         ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
             : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
     }
