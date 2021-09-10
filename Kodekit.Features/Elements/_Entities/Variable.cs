@@ -2,6 +2,9 @@
 {
     public class Variable<T>
     {
+        public Variable()
+        { }
+        
         public Variable(string friendlyName, string internalName, T value)
         {
             FriendlyName = friendlyName;

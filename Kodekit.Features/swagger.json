@@ -1686,13 +1686,6 @@
             "type": "string",
             "nullable": true
           },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
-            },
-            "nullable": true
-          },
           "fontSize": {
             "allOf": [
               {
@@ -1870,13 +1863,6 @@
             "type": "string",
             "nullable": true
           },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
-            },
-            "nullable": true
-          },
           "fontSize": {
             "allOf": [
               {
@@ -2040,13 +2026,6 @@
             "type": "string",
             "nullable": true
           },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
-            },
-            "nullable": true
-          },
           "fontFamily": {
             "allOf": [
               {
@@ -2095,13 +2074,6 @@
         "properties": {
           "name": {
             "type": "string",
-            "nullable": true
-          },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
-            },
             "nullable": true
           },
           "fontSize": {
@@ -2243,7 +2215,7 @@
           "settings": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/KitSettings"
+                "$ref": "#/components/schemas/Settings"
               }
             ],
             "nullable": true
@@ -2281,13 +2253,43 @@
         },
         "additionalProperties": false
       },
-      "KitSettings": {
+      "Selector": {
         "type": "object",
         "properties": {
-          "kitId": {
+          "name": {
             "type": "string",
             "nullable": true
           },
+          "fontSize": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "fontWeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Weight"
+              }
+            ],
+            "nullable": true
+          },
+          "activeColor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Settings": {
+        "type": "object",
+        "properties": {
           "resetEverything": {
             "type": "boolean",
             "nullable": true
@@ -2354,47 +2356,6 @@
           },
           "kodekitImages": {
             "type": "boolean",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Selector": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
-            },
-            "nullable": true
-          },
-          "fontSize": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "fontWeight": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Weight"
-              }
-            ],
-            "nullable": true
-          },
-          "activeColor": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Color"
-              }
-            ],
             "nullable": true
           }
         },
@@ -2511,13 +2472,6 @@
         "properties": {
           "name": {
             "type": "string",
-            "nullable": true
-          },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
-            },
             "nullable": true
           },
           "fontFamily": {
@@ -2734,7 +2688,7 @@
           "settings": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/KitSettings"
+                "$ref": "#/components/schemas/Settings"
               }
             ],
             "nullable": true
@@ -2795,23 +2749,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Kit"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Variation": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "variations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Variation"
             },
             "nullable": true
           }

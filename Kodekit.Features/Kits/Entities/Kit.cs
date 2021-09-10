@@ -36,7 +36,7 @@ namespace Kodekit.Features
             Paragraphs = paragraphs;
         }
 
-        public void UpdateSettings(KitSettings settings)
+        public void UpdateSettings(Settings settings)
         {
             Settings = settings;
         }
@@ -101,7 +101,7 @@ namespace Kodekit.Features
         public Button Buttons { get; set; } 
         public Input Inputs { get; set; }
         public Selector Selectors { get; set; }
-        public KitSettings Settings { get; set; }
+        public Settings Settings { get; set; }
         public DateTime? DateCreated { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public bool? IsPublished { get; set; }

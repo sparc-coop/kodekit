@@ -1,8 +1,7 @@
 ﻿namespace Kodekit.Features
 {
-    public class KitSettings
+    public class Settings
     {
-        public string KitId { get; set; }
         public bool? ResetEverything { get; set; }
         public bool? ResetHeadings { get; set; }
         public bool? ResetParagraphs { get; set; }

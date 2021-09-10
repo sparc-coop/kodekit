@@ -10,7 +10,7 @@ namespace Kodekit.Features.Elements
         
         public string Name { get; set; }
 
-        public List<Variation> Variations { get; set; }
+        //public List<Variation> Variations { get; set; }
 
         public StringBuilder ToCss(StringBuilder css)
         {
@@ -27,9 +27,9 @@ namespace Kodekit.Features.Elements
 
             css.AppendLine("}");
 
-            if (Variations != null)
-                foreach (var variation in Variations)
-                    css = variation.ToCss(css);
+            //if (Variations != null)
+            //    foreach (var variation in Variations)
+            //        css = variation.ToCss(css);
 
             return css;
         }
