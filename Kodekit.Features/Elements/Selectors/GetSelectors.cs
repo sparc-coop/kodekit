@@ -16,7 +16,7 @@ namespace Kodekit.Features.Elements
         public override async Task<UpdateSelectorsModel> ExecuteAsync(string id)
         {
             var kit = await Kits.FindAsync(id);
-            return new(id, kit.Selectors);
+            return new(id, kit.Selectors.FontSize.Value, kit.Selectors.FontWeight.Value, kit.Selectors.ActiveColor.HexValue);
         }
     }
 }
