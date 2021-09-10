@@ -42,7 +42,7 @@
     &lt;div class="container"&gt;All content goes inside here&lt;/div&gt;
 &lt;/section&gt;
                         </code>
-                    <code class="language-scss">
+                    <code class="language-scss" style="margin-top: -50px;">
 // Breakpoints
 $large-desktop: 1440px;
 $desktop: 1000px;
@@ -55,10 +55,6 @@ $mobile: 320px;
                     <button @onclick="Save">
                         Save
                         <img src="/images/eyecon.svg" />
-                    </button>
-                    <button @onclick="Publish">
-                        Save & Publish
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
@@ -78,11 +74,6 @@ $mobile: 320px;
     private async Task Save()
     {
         await PublicApi().UpdateKitAsync(kit);
-    }
-
-    private async Task Publish()
-    {
-        await PublicApi().PublishKitAsync(kit);
-        Nav.NavigateTo("/my-kits");
+        Nav.NavigateTo("/box-shadow/" + kit.KitId);
     }
 }

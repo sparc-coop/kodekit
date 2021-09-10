@@ -1,4 +1,5 @@
-﻿@page  "/lists"
+﻿@inherits HighlightPageBase
+@page  "/lists"
 @page  "/lists/{kitId}"
 
 <div class="lists page">
@@ -35,14 +36,14 @@
                         </label>
                         <label>
                             Vertical Padding
-                            <input placeholder="0px"/>
+                            <input placeholder="0px" />
                         </label>
                         <label>
                             Horizontal Padding
                             <input placeholder="0px">
                         </label>
                     </div>
-                     <h4>List Item Styling</h4>
+                    <h4>List Item Styling</h4>
                     <div class="section">
                         <label>
                             List Item Font Size
@@ -66,7 +67,7 @@
                     </div>
                     <div class="preview-example">
                         <ol>
-                            <li>List Item</li>  
+                            <li>List Item</li>
                             <li>List Item</li>
                             <li>List Item</li>
                             <li>List Item</li>
@@ -78,17 +79,25 @@
                             <li>List Item</li>
                         </ul>
                     </div>
-                    <div class="code-example">
+                    <pre>
                         <code>
- 
-                        </code> 
-                    </div>
+&lt;ol&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+    &lt;li&gt;List Item&lt;/li&gt;
+&lt;/ul&gt;
+                        </code>
+                    </pre>
                     <button @onclick="Submit">
-                        Save
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
-                    <button @onclick="Submit">
-                        Save & Publish
+                        Save & Continue
                         <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
@@ -108,11 +117,6 @@
 
     private async Task Submit()
     {
-        Nav.NavigateTo("/box-shadow/" + kit.KitId);
-    }
-
-    private async Task Publish()
-    {
-        await PublicApi().PublishKitAsync(kit);
+        Nav.NavigateTo("/layout/" + kit.KitId);
     }
 }

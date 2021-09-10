@@ -4,7 +4,7 @@
     .preview-example {
         display: flex;
         flex-wrap: wrap;
-        padding: 25px 32px;
+        padding: 25px 32px 40px 32px;;
 
         > div {
             padding-right: 50px;
@@ -12,10 +12,10 @@
 
         label {
             display: flex;
+            flex-direction: unset;
             padding: 5px 0;
             font-size: 16px;
-            flex-direction: row;
-            justify-content: flex-start;
+            justify-content: left;
         }
 
         input {

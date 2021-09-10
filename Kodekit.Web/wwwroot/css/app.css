@@ -79,14 +79,12 @@
     height: 40px;
     color: #3A3A40;
     cursor: pointer; }
-  .page input {
-    cursor: text; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: -20px 0 50px 0;
     overflow: hidden;
     background: #282c34;
-    padding: 0 0 20px 20px; }
+    padding: 0 0 0 20px; }
   .page .section, .page section {
     display: flex;
     flex-wrap: wrap;
@@ -453,7 +451,8 @@
   .inputs .preview-example span {
     font-size: 12px;
     line-height: 120%;
-    color: #787980; }
+    color: #787980;
+    margin-top: 6px; }
   .inputs .preview-example .selected input {
     border: 1px solid #0B5FFF; }
   .inputs .preview-example .disabled {
@@ -471,9 +470,14 @@
 
 .lists .preview-example {
   display: flex;
-  padding-bottom: 20px; }
+  padding: 25px 32px 40px;
+  color: #6F788B; }
   .lists .preview-example ul {
-    list-style-type: none; }
+    list-style-type: none;
+    padding: 0 20px; }
+  .lists .preview-example ol {
+    list-style-type: decimal;
+    padding: 0 20px; }
   .lists .preview-example li {
     padding: 4px 0; }
 
@@ -514,15 +518,15 @@
 .selectors .preview-example {
   display: flex;
   flex-wrap: wrap;
-  padding: 25px 32px; }
+  padding: 25px 32px 40px 32px; }
   .selectors .preview-example > div {
     padding-right: 50px; }
   .selectors .preview-example label {
     display: flex;
+    flex-direction: unset;
     padding: 5px 0;
     font-size: 16px;
-    flex-direction: row;
-    justify-content: flex-start; }
+    justify-content: left; }
   .selectors .preview-example input {
     margin: 5px 12px 0 0;
     height: 20px;
@@ -724,6 +728,13 @@
   background: none;
   color: #00BFB2; }
 
+.icons section {
+  padding-bottom: 15px; }
+
+.icons .preview-example {
+  min-height: 100px;
+  padding: 32px; }
+
 .layout .switch {
   vertical-align: middle; }
 
@@ -830,8 +841,7 @@
     display: flex;
     font-size: 16px;
     line-height: 150%;
-    cursor: pointer;
-    margin: 0 30px 20px 0; }
+    cursor: pointer; }
     .effects-page .section label span input {
       border: none;
       border-radius: 4px;
@@ -1041,8 +1051,6 @@
     border-radius: 8px;
     color: #787980;
     margin-top: 0; }
-  .installation .instructions button:hover {
-    color: #D2D4D9; }
 
 .installation .download {
   margin-bottom: 40px; }
@@ -1398,8 +1406,6 @@
       font-size: 14px;
       margin: 0 16px;
       padding: 8px 0; }
-    .sidebar .menu a:hover {
-      color: #0B5FFF; }
     .sidebar .menu .heading {
       padding: 32px 16px 8px 16px;
       color: #17171A;
