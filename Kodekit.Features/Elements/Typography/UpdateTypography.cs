@@ -17,8 +17,11 @@ namespace Kodekit.Features.Elements
         public override async Task<Kit> ExecuteAsync(UpdateTypographyModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
 
-            var headings = new HeadingTypography("h6",
+
+            var headings = new Typography(
                 request.Headings.FontFamily,
                 request.Headings.FontWeight,
                 request.Headings.FontSize,
@@ -26,7 +29,7 @@ namespace Kodekit.Features.Elements
                 request.Headings.LineHeight);
 
 
-            var paragraphs = new Typography("p",
+            var paragraphs = new Typography(
                 request.Paragraphs.FontFamily,
                 request.Paragraphs.FontWeight,
                 request.Paragraphs.FontSize,

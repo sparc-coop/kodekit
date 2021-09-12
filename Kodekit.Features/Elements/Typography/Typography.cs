@@ -2,28 +2,21 @@
 
 namespace Kodekit.Features.Elements
 {
-    public class Typography : Element
+    public class Typography : ISerializable
     {
-        public Typography() : base("p")
+        public Typography()
         {
+            Font = new();
         }
 
-        public Typography(string name, string fontFamily, string fontWeight, double? fontSize, double? typeScale, double? lineHeight) : base(name)
+        public Typography(string? fontFamily, string? fontWeight, double? fontSize, double? typeScale, double? lineHeight) : this()
         {
-            FontFamily = new(fontFamily);
-            FontWeight = new(fontWeight);
-            FontSize = new(fontSize);
-            TypeScale = new(typeScale);
-            LineHeight = new(lineHeight);
-
+            Font = new(fontSize, fontWeight, fontFamily, lineHeight);
+            TypeScale = typeScale;
         }
 
-        public Font FontFamily { get; set; }
-        public FontWeight FontWeight { get; set; }
-        public FontSize FontSize { get; set; }
-        
-        public TypeScale TypeScale { get; set; }
-        public Size LineHeight { get; set; }
+        public Font Font { get; set; }
+        public double? TypeScale { get; set; }
 
         public static Dictionary<double, string> TypeScales = new()
         {
@@ -36,5 +29,28 @@ namespace Kodekit.Features.Elements
             { 1.500, "Perfect Fifth" },
             { 1.618, "Golden Ratio" }
         };
+
+        public Dictionary<string, string> Serialize()
+        {
+            if (TypeScale == null)
+                return Font.Serialize();
+
+            var size = Font.Size ?? new Size(16);
+            var scale = TypeScale.Value;
+
+            return new Dictionary<string, string>
+            {
+                { $"type-50", size.Scale(scale, -4).ToString() },
+                { $"type-100", size.Scale(scale, -3).ToString() },
+                { $"type-200", size.Scale(scale, -2).ToString() },
+                { $"type-300", size.Scale(scale, -1).ToString() },
+                { $"type-400", size.ToString() },
+                { $"type-500", size.Scale(scale, 1).ToString() },
+                { $"type-600", size.Scale(scale, 2).ToString() },
+                { $"type-700", size.Scale(scale, 3).ToString() },
+                { $"type-800", size.Scale(scale, 4).ToString() },
+                { $"type-900", size.Scale(scale, 5).ToString() }
+            };
+        }
     }
 }

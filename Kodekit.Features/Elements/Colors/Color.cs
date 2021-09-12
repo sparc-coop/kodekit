@@ -5,12 +5,14 @@ using System.Linq;
 
 namespace Kodekit.Features.Elements
 {
-    public class Color
+    public class Color : ISerializable
     {
         public Color()
-        { }
+        {
+            HexValue = ColorTranslator.ToHtml(System.Drawing.Color.White);
+        }
         
-        public Color(string hex)
+        public Color(string hex) : this()
         {
             if (string.IsNullOrWhiteSpace(hex) || hex[0] == '$')
                 return;
@@ -33,22 +35,20 @@ namespace Kodekit.Features.Elements
 
         public override string ToString() => $"{HexValue}";
 
-        public Dictionary<string, Color> Expand(string name)
+        public Dictionary<string, string> Serialize()
         {
-            name = name.ToLower();
-
-            return new Dictionary<string, Color>
+            return new Dictionary<string, string>
             {
-                { $"{name}-50", ChangeBrightness(0.52f) },
-                { $"{name}-100", ChangeBrightness(0.37f) },
-                { $"{name}-200", ChangeBrightness(0.26f) },
-                { $"{name}-300", ChangeBrightness(0.12f) },
-                { $"{name}-400", ChangeBrightness(0.06f) },
-                { $"{name}-500", this },
-                { $"{name}-600", ChangeBrightness(-0.06f) },
-                { $"{name}-700", ChangeBrightness(-0.12f) },
-                { $"{name}-800", ChangeBrightness(-0.18f) },
-                { $"{name}-900", ChangeBrightness(-0.24f) }
+                { $"50", ChangeBrightness(0.52f).HexValue },
+                { $"100", ChangeBrightness(0.37f).HexValue },
+                { $"200", ChangeBrightness(0.26f).HexValue },
+                { $"300", ChangeBrightness(0.12f).HexValue },
+                { $"400", ChangeBrightness(0.06f).HexValue },
+                { $"500", HexValue },
+                { $"600", ChangeBrightness(-0.06f).HexValue },
+                { $"700", ChangeBrightness(-0.12f).HexValue },
+                { $"800", ChangeBrightness(-0.18f).HexValue },
+                { $"900", ChangeBrightness(-0.24f).HexValue }
             };
         }
 

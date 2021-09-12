@@ -16,7 +16,9 @@ namespace Kodekit.Features.Elements
         public override async Task<ShadowsModel> ExecuteAsync(string id)
         {
             var kit = await Kits.FindAsync(id);
-            
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
+
             var smallShadow = kit.GetShadow("small");
             var xlargeShadow = kit.GetShadow("xlarge");
 

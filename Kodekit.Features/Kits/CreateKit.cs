@@ -16,7 +16,7 @@ namespace Kodekit.Features
             var kit = new Kit
             {
                 DateCreated = DateTime.Now,
-                UserId = User?.Id()
+                UserId = User.Id()
             };
 
             await Kit.AddAsync(kit);

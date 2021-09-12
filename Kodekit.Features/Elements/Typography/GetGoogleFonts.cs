@@ -29,7 +29,7 @@ namespace Kodekit.Features
                 var responseBody = await response.Content.ReadAsStringAsync();
 
                 fonts = JsonConvert.DeserializeObject<FontListResponse>(responseBody);
-                fonts.Items = fonts.Items.Where(x => x.Category == "serif" || x.Category == "sans-serif").ToList();
+                fonts.Items = fonts.Items?.Where(x => x.Category == "serif" || x.Category == "sans-serif").ToList();
                //fonts.Items.RemoveAll(x => x.Category == "handwriting");
                    // .Where(x => x.Category != "handwriting").ToList();
                 client.Dispose();
@@ -48,21 +48,21 @@ namespace Kodekit.Features
 
     public class FontListResponse
     {
-        public List<Font> Items { get; set; }
+        public List<Font>? Items { get; set; }
     }
 
     public class Font
     {
-        public string Family { get; set; }
-        public string Category { get; set; }
-        public FontFile Files { get; set; }
+        public string? Family { get; set; }
+        public string? Category { get; set; }
+        public FontFile? Files { get; set; }
         
     }
 
 
     public class FontFile
     {
-        public string Regular { get; set; }
+        public string? Regular { get; set; }
     }
 
 }

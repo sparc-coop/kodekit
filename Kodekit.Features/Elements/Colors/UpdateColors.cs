@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record ColorsModel(string KitId, string Primary, string Secondary, string Tertiary, string Darkest, string Lightest, string Error, string Warning, string Success);
+    public record ColorsModel(string KitId, string? Primary, string? Secondary, string? Tertiary, string? Darkest, string? Lightest, string? Error, string? Warning, string? Success);
     public class UpdateColors : PublicFeature<ColorsModel, Kit>
     {
         public UpdateColors(IRepository<Kit> kits)
@@ -17,6 +17,9 @@ namespace Kodekit.Features.Elements
         public override async Task<Kit> ExecuteAsync(ColorsModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
+
 
             kit.UpdateColor(ColorTypes.Primary, request.Primary);
             kit.UpdateColor(ColorTypes.Secondary, request.Secondary);

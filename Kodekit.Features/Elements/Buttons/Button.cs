@@ -1,52 +1,54 @@
-﻿namespace Kodekit.Features.Elements
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Kodekit.Features.Elements
 {
-    public class Button : Element
+    public class Button : ISerializable
     {
         public Button() : base()
         {
+            Font = new();
+            Padding = new();
+            Border = new();
         }
 
         public Button(double? fontSize, string? fontWeight, double? verticalPadding, double? horizontalPadding, double? cornerRadius,
             double? borderWidth, double? iconWidth, double? iconHeight, bool removeSecondaryBorder) : this()
         {
-            Font = new(Variables.Serif, fontSize, fontWeight);
-            Padding = new(horizontalPadding ?? 16, verticalPadding ?? 8);
-            Border = new(borderWidth ?? 0, cornerRadius ?? 4);
-            IconWidth = new(iconWidth ?? 16);
-            IconHeight = new(iconHeight ?? 16);
+            Font = new(fontSize, fontWeight);
+            Padding = new(horizontalPadding, verticalPadding);
+            Border = new(borderWidth, cornerRadius);
+            
+            if (iconWidth.HasValue)
+                IconWidth = new(iconWidth.Value);
+
+            if (iconHeight.HasValue)
+                IconHeight = new(iconHeight.Value);
+
             RemoveSecondaryBorder = removeSecondaryBorder;
         }
 
         public Font Font { get; set; }
         public Padding Padding { get; set; }
         public Border Border { get; set; }
-        public Size IconWidth { get; set; }
-        public Size IconHeight { get; set; }
+        public Size? IconWidth { get; set; }
+        public Size? IconHeight { get; set; }
         public bool RemoveSecondaryBorder { get; set; }
 
-        public override string ToString()
+        public Dictionary<string, string> Serialize()
         {
-            return
-                ToCss("button",
-                Border,
-                Padding,
-                Font,
-                new Background("$primary-500"),
-                new Foreground(System.Drawing.Color.White),
-                new Attribute("cursor", "pointer"))
+            var dict = Font.Concat(Padding).Concat(Border);
 
-            + ToCss("button:hover", new Background("$primary-300"))
+            if (IconWidth != null)
+                dict.Add("icon-width", IconWidth.ToString());
 
-            + ToCss("button.secondary",
-                new Background(System.Drawing.Color.White),
-                Border with { Width = new(RemoveSecondaryBorder ? 0 : 1), Color = new("$secondary-500") },
-                new Foreground("$secondary-500"))
+            if (IconHeight != null)
+                dict.Add("icon-height", IconHeight.ToString());
 
-            + ToCss("button.secondary:hover",
-                Border with { Color = new("$secondary-300") },
-                new Foreground("$secondary-300"))
+            if (RemoveSecondaryBorder)
+                dict.Add("secondary-border-width", "0");
 
-            + ToCss("button > :first-child", new Attribute("margin-right", "14px"));
+            return dict;
         }
     }
 }
