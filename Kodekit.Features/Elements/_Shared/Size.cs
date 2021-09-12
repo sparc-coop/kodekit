@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Kodekit.Features.Elements
@@ -10,13 +11,15 @@ namespace Kodekit.Features.Elements
         public string Placeholder { get; set; }
 
         public Size()
-        { }
-
-        public Size(double size)
         {
-            Value = size;
+            Value = 0;
             Unit = "px";
             Placeholder = ValidUnits["px"];
+        }
+
+        public Size(double size) : this()
+        {
+            Value = size;
         }
 
         public static Dictionary<string, string> ValidUnits = new()
@@ -31,5 +34,12 @@ namespace Kodekit.Features.Elements
         };
 
         public override string ToString() => $"{Value}{Unit}";
+
+        public Size Scale(double typeScale, int power)
+        {
+            return power > 0
+                ? this with { Value = Value * Math.Pow(typeScale, power) }
+                : this with { Value = Value / Math.Pow(typeScale, power * -1) };
+        }
     }
 }

@@ -17,6 +17,8 @@ namespace Kodekit.Features.Elements
         public override async Task<Kit> ExecuteAsync(UpdateButtonsModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
 
             var buttons = new Button(request.FontSize, request.FontWeight, request.VerticalPadding, request.HorizontalPadding, request.CornerRadius, request.BorderWidth, request.IconWidth, request.IconHeight, request.RemoveSecondaryBorder);
 

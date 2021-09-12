@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record ShadowsModel(string KitId, Shadow Small, Shadow XLarge);
+    public record ShadowsModel(string KitId, Shadow? Small, Shadow? XLarge);
     public class UpdateShadow : PublicFeature<ShadowsModel, Kit>
     {
         public UpdateShadow(IRepository<Kit> kits)
@@ -17,8 +17,11 @@ namespace Kodekit.Features.Elements
         public override async Task<Kit> ExecuteAsync(ShadowsModel request)
         {
             var kit = await Kits.FindAsync(request.KitId);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
 
-            kit.UpdateShadows(request.Small, request.XLarge);
+            if (request.Small != null && request.XLarge != null)
+                kit.UpdateShadows(request.Small, request.XLarge);
 
             await Kits.UpdateAsync(kit);
             return kit;

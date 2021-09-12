@@ -16,6 +16,9 @@ namespace Kodekit.Features.Elements
         public override async Task<UpdateButtonsModel> ExecuteAsync(string id)
         {
             var kit = await Kits.FindAsync(id);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
+
             return new(
                 id,
                 kit.Buttons.Font.Size?.Value,

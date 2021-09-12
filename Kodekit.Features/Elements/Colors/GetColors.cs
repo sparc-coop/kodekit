@@ -16,6 +16,9 @@ namespace Kodekit.Features.Elements
         public override async Task<ColorsModel> ExecuteAsync(string id)
         {
             var kit = await Kits.FindAsync(id);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
+
             return new(id,
                 kit.GetColor(ColorTypes.Primary)?.HexValue,
                 kit.GetColor(ColorTypes.Secondary)?.HexValue,

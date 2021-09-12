@@ -20,52 +20,33 @@ namespace Kodekit.Features
             shadows.OwnsOne(x => x.Value);
 
             var headings = kit.OwnsOne(x => x.Headings);
-            headings.OwnsOne(x => x.FontFamily);
-            headings.OwnsOne(x => x.FontWeight);
-            headings.OwnsOne(x => x.FontSize);
-            headings.OwnsOne(x => x.TypeScale);
-            headings.OwnsOne(x => x.LineHeight);
-
+            headings.OwnsOne(x => x.Font);
 
             var paragraphs = kit.OwnsOne(x => x.Paragraphs);
-            paragraphs.OwnsOne(x => x.FontFamily);
-            paragraphs.OwnsOne(x => x.FontWeight);
-            paragraphs.OwnsOne(x => x.FontSize);
-            paragraphs.OwnsOne(x => x.TypeScale);
-            paragraphs.OwnsOne(x => x.LineHeight);
+            paragraphs.OwnsOne(x => x.Font);
 
             var buttons = kit.OwnsOne(x => x.Buttons);
-            buttons.OwnsOne(x => x.FontWeight);
-            buttons.OwnsOne(x => x.FontSize);
-            buttons.OwnsOne(x => x.VerticalPadding);
-            buttons.OwnsOne(x => x.HorizontalPadding);
-            buttons.OwnsOne(x => x.CornerRadius);
-            buttons.OwnsOne(x => x.BorderWidth);
+            buttons.OwnsOne(x => x.Font);
+            buttons.OwnsOne(x => x.Border);
+            buttons.OwnsOne(x => x.Padding);
             buttons.OwnsOne(x => x.IconHeight);
             buttons.OwnsOne(x => x.IconWidth);
 
             var inputs = kit.OwnsOne(x => x.Inputs);
-            inputs.OwnsOne(x => x.FontWeight);
-            inputs.OwnsOne(x => x.FontSize);
-            inputs.OwnsOne(x => x.VerticalPadding);
-            inputs.OwnsOne(x => x.HorizontalPadding);
-            inputs.OwnsOne(x => x.CornerRadius);
-            inputs.OwnsOne(x => x.BorderWidth);
+            inputs.OwnsOne(x => x.Font);
+            inputs.OwnsOne(x => x.Border);
+            inputs.OwnsOne(x => x.Padding);
 
             var selectors = kit.OwnsOne(x => x.Selectors);
-            selectors.OwnsOne(x => x.FontWeight);
-            selectors.OwnsOne(x => x.FontSize);
+            selectors.OwnsOne(x => x.Font);
             selectors.OwnsOne(x => x.ActiveColor);
 
             var settings = kit.OwnsOne(x => x.Settings);
 
             var dropdowns = kit.OwnsOne(x => x.Dropdowns);
-            dropdowns.OwnsOne(x => x.FontWeight);
-            dropdowns.OwnsOne(x => x.FontSize);
-            dropdowns.OwnsOne(x => x.VerticalPadding);
-            dropdowns.OwnsOne(x => x.HorizontalPadding);
-            dropdowns.OwnsOne(x => x.CornerRadius);
-            dropdowns.OwnsOne(x => x.BorderWidth);
+            dropdowns.OwnsOne(x => x.Font);
+            dropdowns.OwnsOne(x => x.Border);
+            dropdowns.OwnsOne(x => x.Padding);
         }
     }
 }

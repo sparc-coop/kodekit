@@ -21,7 +21,7 @@ namespace Kodekit.Features
                 await Users.UpdateAsync(user);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

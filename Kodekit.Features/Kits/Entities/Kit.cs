@@ -3,7 +3,6 @@ using Sparc.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Kodekit.Features
 {
@@ -22,6 +21,7 @@ namespace Kodekit.Features
             Inputs = new();
             Selectors = new();
             Settings = new();
+            Dropdowns = new();
         }
 
         public void UpdateSelectors(Selector selectors)
@@ -29,7 +29,7 @@ namespace Kodekit.Features
             Selectors = selectors;
         }
 
-        public void UpdateTypography(HeadingTypography headings, Typography paragraphs)
+        public void UpdateTypography(Typography headings, Typography paragraphs)
         {
             Headings = headings;
             Paragraphs = paragraphs;
@@ -50,7 +50,7 @@ namespace Kodekit.Features
             Dropdowns = dropdowns;
         }
 
-        public Color GetColor(ColorTypes colorType)
+        public Color? GetColor(ColorTypes colorType)
         {
             var weight = colorType switch
             {
@@ -59,7 +59,7 @@ namespace Kodekit.Features
                 _ => 500
             };
 
-            return Colors.FirstOrDefault(x => x.InternalName == $"{colorType.ToString().ToLower()}-{weight}")?.Value;
+            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}-{weight}")?.Value;
         }
 
         internal void UpdateButtons(Button buttons)
@@ -67,9 +67,9 @@ namespace Kodekit.Features
             Buttons = buttons;
         }
 
-        public Shadow GetShadow(string shadowSize)
+        public Shadow? GetShadow(string shadowSize)
         {
-            return Shadows.FirstOrDefault(x => x.InternalName == shadowSize.ToLower())?.Value;
+            return Shadows.FirstOrDefault(x => x.Name == shadowSize.ToLower())?.Value;
         }
 
         public void UpdateShadows(Shadow smallShadow, Shadow xLargeShadow)
@@ -78,23 +78,25 @@ namespace Kodekit.Features
             var shadows = smallShadow.Expand(xLargeShadow);
 
             foreach (var shadow in shadows)
-                Shadows.Add(new Variable<Shadow>(shadow.Key, shadow.Key, shadow.Value));
+                Shadows.Add(new Variable<Shadow>(shadow.Key, shadow.Value));
         }
 
-        public void UpdateColor(ColorTypes colorType, string hexValue)
+        public void UpdateColor(ColorTypes colorType, string? hexValue)
         {
-            Colors.RemoveAll(x => colorType.ToString() == x.InternalName);
-            Colors.Add(new Variable<Color>(colorType.ToString(), new Color(hexValue)));
+            Colors.RemoveAll(x => colorType.ToString() == x.Name);
+
+            if (hexValue != null)
+                Colors.Add(new Variable<Color>(colorType.ToString(), new Color(hexValue)));
         }
 
-        public string UserId { get; set; }
-        public string ParentId { get; set; }//For child elements/later versions
-        public string Description { get; set; }
-        public string Url { get; set; }
-        public string Name { get; set; }
+        public string? UserId { get; set; }
+        public string? ParentId { get; set; }//For child elements/later versions
+        public string? Description { get; set; }
+        public string? Url { get; set; }
+        public string? Name { get; set; }
         public List<Variable<Color>> Colors { get; set; }
         public List<Variable<Shadow>> Shadows { get; set; }
-        public HeadingTypography Headings { get; set; }
+        public Typography Headings { get; set; }
         public Typography Paragraphs { get; set; }
         public Button Buttons { get; set; } 
         public Input Inputs { get; set; }
@@ -106,29 +108,5 @@ namespace Kodekit.Features
         public bool? IsAutoPublish { get; set; }
         public bool? IsDeleted { get; set; }
         public Dropdown Dropdowns { get; set; }
-
-        public string ToCss()
-        {
-            var css = new StringBuilder();
-
-            var headings = Headings.Expand();
-            foreach (var heading in headings)
-                Write(css, heading);
-
-            Write(css, Paragraphs);
-            Write(css, Buttons);
-            Write(css, Inputs);
-            Write(css, Selectors);
-
-            return css.ToString();
-        }
-
-        private StringBuilder Write(StringBuilder css, Element element)
-        {
-            css.AppendLine(element.ToString());
-            css.AppendLine();
-            
-            return css;
-        }
     }
 }

@@ -3,8 +3,18 @@ using System.Collections.Generic;
 
 namespace Kodekit.Features.Elements
 {
-    public class Shadow
+    public class Shadow : ISerializable
     {
+        public Shadow()
+        {
+            X = 0;
+            Y = 0;
+            Blur = 0;
+            Spread = 0;
+            Opacity = 0;
+            Color = string.Empty;
+        }
+        
         public Shadow(double x, double y, double blur, double spread, string color, double opacity)
         {
             X = x;
@@ -32,6 +42,19 @@ namespace Kodekit.Features.Elements
                 { "large", Interpolate(xLargeShadow, 0.66) },
                 { "xlarge", xLargeShadow }
             };
+        }
+
+        public Dictionary<string, string> Serialize()
+        {
+            return new Dictionary<string, string>();
+            
+            //return new Dictionary<string, string>
+            //{
+            //    { "small", this },
+            //    { "medium", Interpolate(xLargeShadow, 0.33) },
+            //    { "large", Interpolate(xLargeShadow, 0.66) },
+            //    { "xlarge", xLargeShadow }
+            //};
         }
 
         private Shadow Interpolate(Shadow other, double percentage)

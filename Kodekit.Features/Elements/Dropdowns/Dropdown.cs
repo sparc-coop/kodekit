@@ -6,8 +6,8 @@
         {
         }
 
-        public Dropdown(double fontSize, string fontWeight, double verticalPadding, double horizontalPadding, double cornerRadius,
-            double borderWidth) : base(fontSize, fontWeight, verticalPadding, horizontalPadding, cornerRadius, borderWidth)
+        public Dropdown(double? fontSize, string? fontWeight, double? verticalPadding, double? horizontalPadding, double? cornerRadius,
+            double? borderWidth) : base(fontSize, fontWeight, verticalPadding, horizontalPadding, cornerRadius, borderWidth)
         {
         }
     }

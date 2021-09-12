@@ -16,14 +16,17 @@ namespace Kodekit.Features.Elements
         public override async Task<UpdateInputsModel> ExecuteAsync(string id)
         {
             var kit = await Kits.FindAsync(id);
+            if (kit == null)
+                throw new NotFoundException("Kit not found!");
+
             return new(
                 id,
-                kit.Inputs.FontSize.Value,
-                kit.Inputs.FontWeight.Value,
-                kit.Inputs.VerticalPadding.Value,
-                kit.Inputs.HorizontalPadding.Value,
-                kit.Inputs.CornerRadius.Value,
-                kit.Inputs.BorderWidth.Value
+                kit.Inputs.Font.Size?.Value,
+                kit.Inputs.Font.Weight,
+                kit.Inputs.Padding.Vertical?.Value,
+                kit.Inputs.Padding.Horizontal?.Value,
+                kit.Inputs.Border.Radius?.Value,
+                kit.Inputs.Border.Width?.Value
             );
         }
     }

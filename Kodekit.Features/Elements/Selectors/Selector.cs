@@ -1,23 +1,30 @@
-﻿namespace Kodekit.Features.Elements
+﻿using System.Collections.Generic;
+
+namespace Kodekit.Features.Elements
 {
-    public class Selector : Element
+    public class Selector : ISerializable
     {
-        public Selector() : base("input[type=checkbox]")
+        public Selector()
         {
+            Font = new();
         }
         
-        public Selector(double fontSize, string fontWeight, string activeColor) : this()
+        public Selector(double? fontSize, string? fontWeight, string? activeColor) : this()
         {
-            FontSize = new(fontSize);
-            FontWeight = new(fontWeight);
-            ActiveColor = new(activeColor);
+            Font = new(fontSize, fontWeight);
+            
+            if (!string.IsNullOrWhiteSpace(activeColor))
+                ActiveColor = new(activeColor);
         }
 
-        [Css("font-size")]
-        public Size FontSize { get; set; }
-        [Css("font-weight")]
-        public Weight FontWeight { get; set; }
-        [Css("color")]
-        public Color ActiveColor { get; set; }
+        public Font Font { get; set; }
+        public Color? ActiveColor { get; set; }
+
+        public Dictionary<string, string> Serialize()
+        {
+            return ActiveColor == null 
+                ? Font.Serialize()
+                : Font.Concat(ActiveColor);
+        }
     } 
 }
