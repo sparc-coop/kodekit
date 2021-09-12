@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
   
   <ItemGroup>
@@ -15,10 +16,6 @@
     <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="2.0.3" />
     <PackageReference Include="Sparc.Storage.Azure" Version="2.0.2" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Elements\HtmlElements\" />
   </ItemGroup>
 
 </Project>

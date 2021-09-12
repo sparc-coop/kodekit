@@ -11,17 +11,10 @@ namespace Kodekit.Features.Elements
 
         public Size()
         { }
-        public Size(string sizeString)
-        {
-            var digits = new string(sizeString.Where(char.IsDigit).ToArray());
-            Value = double.Parse(digits);
-            Unit = sizeString.Replace(digits, "").Trim().ToLower();
-            Placeholder = ValidUnits.ContainsKey(Unit) ? ValidUnits[Unit] : string.Empty;
-        }
 
-        public Size(double? size)
+        public Size(double size)
         {
-            Value = size ?? 0;
+            Value = size;
             Unit = "px";
             Placeholder = ValidUnits["px"];
         }
