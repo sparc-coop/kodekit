@@ -323,6 +323,28 @@
         }
       }
     },
+    "/{kitId}.css": {
+      "get": {
+        "tags": [
+          "GenerateKit"
+        ],
+        "parameters": [
+          {
+            "name": "kitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/GetButtons": {
       "post": {
         "tags": [
@@ -1648,57 +1670,64 @@
   },
   "components": {
     "schemas": {
+      "Border": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "radius": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "color": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          },
+          "scope": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Button": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "fontSize": {
+          "font": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Font"
               }
             ],
             "nullable": true
           },
-          "fontWeight": {
+          "padding": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Weight"
+                "$ref": "#/components/schemas/Padding"
               }
             ],
             "nullable": true
           },
-          "verticalPadding": {
+          "border": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "horizontalPadding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "cornerRadius": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "borderWidth": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Border"
               }
             ],
             "nullable": true
@@ -1780,11 +1809,7 @@
       "ColorVariable": {
         "type": "object",
         "properties": {
-          "friendlyName": {
-            "type": "string",
-            "nullable": true
-          },
-          "internalName": {
+          "name": {
             "type": "string",
             "nullable": true
           },
@@ -1838,54 +1863,26 @@
       "Dropdown": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "fontSize": {
+          "font": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Font"
               }
             ],
             "nullable": true
           },
-          "fontWeight": {
+          "padding": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Weight"
+                "$ref": "#/components/schemas/Padding"
               }
             ],
             "nullable": true
           },
-          "verticalPadding": {
+          "border": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "horizontalPadding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "cornerRadius": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "borderWidth": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Border"
               }
             ],
             "nullable": true
@@ -1900,34 +1897,28 @@
             "type": "string",
             "nullable": true
           },
-          "category": {
+          "familyUrl": {
             "type": "string",
             "nullable": true
           },
-          "files": {
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/FontFile"
+                "$ref": "#/components/schemas/Size"
               }
             ],
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "FontFamily": {
-        "type": "object",
-        "properties": {
-          "friendlyName": {
-            "type": "string",
-            "nullable": true
           },
-          "internalName": {
-            "type": "string",
-            "nullable": true
-          },
-          "sourceUrl": {
-            "type": "string",
+          "lineHeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
             "nullable": true
           }
         },
@@ -1949,7 +1940,7 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Font"
+              "$ref": "#/components/schemas/GoogleFont"
             },
             "nullable": true
           }
@@ -1998,49 +1989,21 @@
         },
         "additionalProperties": false
       },
-      "HeadingTypography": {
+      "GoogleFont": {
         "type": "object",
         "properties": {
-          "name": {
+          "family": {
             "type": "string",
             "nullable": true
           },
-          "fontFamily": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FontFamily"
-              }
-            ],
+          "category": {
+            "type": "string",
             "nullable": true
           },
-          "fontWeight": {
+          "files": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Weight"
-              }
-            ],
-            "nullable": true
-          },
-          "fontSize": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "typeScale": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TypeScale"
-              }
-            ],
-            "nullable": true
-          },
-          "lineHeight": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/FontFile"
               }
             ],
             "nullable": true
@@ -2051,54 +2014,26 @@
       "Input": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "fontSize": {
+          "font": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Font"
               }
             ],
             "nullable": true
           },
-          "fontWeight": {
+          "padding": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Weight"
+                "$ref": "#/components/schemas/Padding"
               }
             ],
             "nullable": true
           },
-          "verticalPadding": {
+          "border": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "horizontalPadding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "cornerRadius": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
-            "nullable": true
-          },
-          "borderWidth": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Border"
               }
             ],
             "nullable": true
@@ -2150,7 +2085,7 @@
           "headings": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/HeadingTypography"
+                "$ref": "#/components/schemas/Typography"
               }
             ],
             "nullable": true
@@ -2228,14 +2163,10 @@
         },
         "additionalProperties": false
       },
-      "Selector": {
+      "Padding": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "fontSize": {
+          "vertical": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Size"
@@ -2243,10 +2174,24 @@
             ],
             "nullable": true
           },
-          "fontWeight": {
+          "horizontal": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Weight"
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Selector": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
               }
             ],
             "nullable": true
@@ -2378,11 +2323,7 @@
       "ShadowVariable": {
         "type": "object",
         "properties": {
-          "friendlyName": {
-            "type": "string",
-            "nullable": true
-          },
-          "internalName": {
+          "name": {
             "type": "string",
             "nullable": true
           },
@@ -2415,61 +2356,20 @@
         },
         "additionalProperties": false
       },
-      "TypeScale": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
       "Typography": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "fontFamily": {
+          "font": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/FontFamily"
-              }
-            ],
-            "nullable": true
-          },
-          "fontWeight": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Weight"
-              }
-            ],
-            "nullable": true
-          },
-          "fontSize": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
+                "$ref": "#/components/schemas/Font"
               }
             ],
             "nullable": true
           },
           "typeScale": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/TypeScale"
-              }
-            ],
-            "nullable": true
-          },
-          "lineHeight": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Size"
-              }
-            ],
+            "type": "number",
+            "format": "double",
             "nullable": true
           }
         },
@@ -2565,7 +2465,8 @@
           },
           "fontSize": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fontWeight": {
             "type": "string",
@@ -2573,19 +2474,23 @@
           },
           "verticalPadding": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "horizontalPadding": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "cornerRadius": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "borderWidth": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2599,7 +2504,8 @@
           },
           "fontSize": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fontWeight": {
             "type": "string",
@@ -2607,19 +2513,23 @@
           },
           "verticalPadding": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "horizontalPadding": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "cornerRadius": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "borderWidth": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2633,7 +2543,8 @@
           },
           "fontSize": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
           "fontWeight": {
             "type": "string",
@@ -2710,27 +2621,6 @@
             "nullable": true
           },
           "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "kits": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Kit"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Weight": {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "nullable": true
-          },
-          "placeholder": {
             "type": "string",
             "nullable": true
           }

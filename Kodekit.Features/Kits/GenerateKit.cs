@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodekit.Features.Elements;
+using Microsoft.AspNetCore.Mvc;
 using Sparc.Core;
-using Sparc.Features;
 
 namespace Kodekit.Features
 {
-    public class GenerateKit : PublicFeature<string, CreateKitResponse>
+    public class GenerateKit : Controller
     {
         public IRepository<Kit> Kits { get; }
         public GenerateKit(IRepository<Kit> kit) => Kits = kit;
 
-        public override async Task<CreateKitResponse> ExecuteAsync(string kitId)
+        [HttpGet("/{kitId}.css")]
+        public async Task<IActionResult> HandleAsync(string kitId)
         {
             var kit = await Kits.FindAsync(kitId);
             if (kit == null)
@@ -32,9 +33,13 @@ namespace Kodekit.Features
 
             var css = Write(variables);
 
-            return null;
+            return new ContentResult
+            {
+                ContentType = "text/css",
+                Content = css,
+                StatusCode = 200
+            };
         }
-
 
         private void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, ISerializable element)
         {
