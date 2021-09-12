@@ -1,26 +1,34 @@
-﻿namespace Kodekit.Features.Elements
+﻿using System.Linq;
+
+namespace Kodekit.Features.Elements
 {
     public class Variable<T>
     {
         public Variable()
         { }
         
-        public Variable(string friendlyName, string internalName, T value)
-        {
-            FriendlyName = friendlyName;
-            InternalName = internalName;
-            Value = value;
-        }
-
         public Variable(string name, T value)
         {
-            FriendlyName = name;
-            InternalName = name.ToLower();
+            Name = name.ToLower();
             Value = value;
         }
 
-        public string FriendlyName { get; set; }
-        public string InternalName { get; set; }
+        public string Name { get; set; }
         public T Value { get; set; }
+
+        public override string ToString()
+        {
+            var cleanValue = Value!.ToString();
+            
+            if (cleanValue.Contains(":"))
+                cleanValue = cleanValue.Split(":").Last().Trim();
+
+            return $"{Name}: ${cleanValue};";
+        }
+    }
+
+    public class Variables
+    {
+        public const string Serif = "$serif";
     }
 }

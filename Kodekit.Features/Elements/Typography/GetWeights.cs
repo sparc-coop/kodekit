@@ -9,7 +9,7 @@ namespace Kodekit.Features.Elements
     {
         public override Task<GetWeightsModel> ExecuteAsync()
         {
-            return Task.FromResult(new GetWeightsModel(Weight.ValidValues));
+            return Task.FromResult(new GetWeightsModel(Font.ValidWeights));
         }
     }
 }

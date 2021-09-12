@@ -125,7 +125,10 @@ namespace Kodekit.Features
 
         private StringBuilder Write(StringBuilder css, Element element)
         {
-            return element.ToCss(css).AppendLine().AppendLine();
+            css.AppendLine(element.ToString());
+            css.AppendLine();
+            
+            return css;
         }
     }
 }

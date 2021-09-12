@@ -18,12 +18,12 @@ namespace Kodekit.Features.Elements
             var kit = await Kits.FindAsync(id);
             return new(
                 id,
-                kit.Buttons.FontSize?.Value,
-                kit.Buttons.FontWeight?.Value,
-                kit.Buttons.VerticalPadding?.Value,
-                kit.Buttons.HorizontalPadding?.Value,
-                kit.Buttons.CornerRadius?.Value,
-                kit.Buttons.BorderWidth?.Value,
+                kit.Buttons.Font.Size?.Value,
+                kit.Buttons.Font.Weight,
+                kit.Buttons.Padding.Vertical?.Value,
+                kit.Buttons.Padding.Horizontal?.Value,
+                kit.Buttons.Border.Radius?.Value,
+                kit.Buttons.Border.Width?.Value,
                 kit.Buttons.IconWidth?.Value,
                 kit.Buttons.IconHeight?.Value,
                 kit.Buttons.RemoveSecondaryBorder

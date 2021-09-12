@@ -4,7 +4,6 @@
     {
         public Dropdown() : base()
         {
-            Name = "select";
         }
 
         public Dropdown(double fontSize, string fontWeight, double verticalPadding, double horizontalPadding, double cornerRadius,

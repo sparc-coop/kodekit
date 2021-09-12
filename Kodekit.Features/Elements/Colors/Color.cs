@@ -12,6 +12,9 @@ namespace Kodekit.Features.Elements
         
         public Color(string hex)
         {
+            if (string.IsNullOrWhiteSpace(hex) || hex[0] == '$')
+                return;
+            
             if (hex.Length < 6 || hex.Length > 7 || !hex.All("#0123456789abcdefABCDEF".Contains))
                 throw new ArgumentOutOfRangeException(nameof(hex), "Hex value is not valid");
 
