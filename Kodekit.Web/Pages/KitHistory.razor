@@ -56,8 +56,7 @@
 
     private async Task Publish()
     {
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        Kit kit = await PublicApi().GetKitAsync(result);
+        Kit kit = await PublicApi().GetKitAsync(kitId);
 
         if (User != null)
         {

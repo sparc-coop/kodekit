@@ -14,71 +14,74 @@
     <LoginDisplay />
 </div>
 
-<div class="sidebar @Show">
-    <div class="menu">
-        <div class="heading">Overview</div>
-        <NavLink href="@Link("")")" Match="NavLinkMatch.All">
-            Introduction
-        </NavLink>
-        <NavLink href="@Link("installation")" Match="NavLinkMatch.All">
-            Installation
-        </NavLink>
-        <NavLink href="@Link("themes")" Match="NavLinkMatch.All">
-            Themes
-        </NavLink>
-        <NavLink href="@Link("release-notes")" Match="NavLinkMatch.All">
-            Release Notes
-        </NavLink>
-        <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
-            Global Reset
-        </NavLink>
-        <NavLink href="@Link("preview")" Match="NavLinkMatch.All">
-            Preview
-        </NavLink>
+@if (kitId != null)
+{
+    <div class="sidebar @Show">
+        <div class="menu">
+            <div class="heading">Overview</div>
+            <NavLink href="@Link("")" Match="NavLinkMatch.All">
+                Introduction
+            </NavLink>
+            <NavLink href="@Link("installation")" Match="NavLinkMatch.All">
+                Installation
+            </NavLink>
+            <NavLink href="@Link("themes")" Match="NavLinkMatch.All">
+                Themes
+            </NavLink>
+            <NavLink href="@Link("release-notes")" Match="NavLinkMatch.All">
+                Release Notes
+            </NavLink>
+            <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
+                Global Reset
+            </NavLink>
+            <NavLink href="@Link("preview")" Match="NavLinkMatch.All">
+                Preview
+            </NavLink>
 
-        <div class="heading">Base Styles</div>
-        <NavLink href="@Link("typography")" Match="NavLinkMatch.All">
-            Typography
-        </NavLink>
-        <NavLink href="@Link("colors")" Match="NavLinkMatch.All">
-            Colors
-        </NavLink>
-        <NavLink href="@Link("icons")" Match="NavLinkMatch.All">
-            Icons
-        </NavLink>
-        <NavLink href="@Link("effects")" Match="NavLinkMatch.All">
-            Effects
-        </NavLink>
+            <div class="heading">Base Styles</div>
+            <NavLink href="@Link("typography")" Match="NavLinkMatch.All">
+                Typography
+            </NavLink>
+            <NavLink href="@Link("colors")" Match="NavLinkMatch.All">
+                Colors
+            </NavLink>
+            <NavLink href="@Link("icons")" Match="NavLinkMatch.All">
+                Icons
+            </NavLink>
+            <NavLink href="@Link("effects")" Match="NavLinkMatch.All">
+                Effects
+            </NavLink>
 
-        <div class="heading">HTML Elements</div>
-        <NavLink href="@Link("buttons")" Match="NavLinkMatch.All">
-            Buttons
-        </NavLink>
-        <NavLink href="@Link("inputs")" Match="NavLinkMatch.All">
-            Inputs & Textareas
-        </NavLink>
-        <NavLink href="@Link("selectors")" Match="NavLinkMatch.All">
-            Selectors & Toggles
-        </NavLink>
-        <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All">
-            Dropdowns
-        </NavLink>
-        <NavLink href="@Link("anchors")" Match="NavLinkMatch.All">
-            Anchors
-        </NavLink>
-        <NavLink href="@Link("lists")" Match="NavLinkMatch.All">
-            Lists
-        </NavLink>
-        <NavLink href="@Link("layout")" Match="NavLinkMatch.All">
-            Structure
-        </NavLink>
+            <div class="heading">HTML Elements</div>
+            <NavLink href="@Link("buttons")" Match="NavLinkMatch.All">
+                Buttons
+            </NavLink>
+            <NavLink href="@Link("inputs")" Match="NavLinkMatch.All">
+                Inputs & Textareas
+            </NavLink>
+            <NavLink href="@Link("selectors")" Match="NavLinkMatch.All">
+                Selectors & Toggles
+            </NavLink>
+            <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All">
+                Dropdowns
+            </NavLink>
+            <NavLink href="@Link("anchors")" Match="NavLinkMatch.All">
+                Anchors
+            </NavLink>
+            <NavLink href="@Link("lists")" Match="NavLinkMatch.All">
+                Lists
+            </NavLink>
+            <NavLink href="@Link("layout")" Match="NavLinkMatch.All">
+                Structure
+            </NavLink>
 
-        <div class="heading">Utility</div>
-        <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All">
-            Box Shadow
-        </NavLink>
+            <div class="heading">Utility</div>
+            <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All">
+                Box Shadow
+            </NavLink>
+        </div>
     </div>
-</div>
+}
 
 @code {
     bool ShowMobileMenu = false;

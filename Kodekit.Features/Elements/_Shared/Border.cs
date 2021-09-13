@@ -29,7 +29,16 @@ namespace Kodekit.Features.Elements
 
         public Dictionary<string, string> Serialize()
         {
-            throw new System.NotImplementedException();
+            var dict = new Dictionary<string, string>();
+
+            if (Width != null)
+                dict.Add("border-width", Width.ToString());
+            if (Radius != null)
+                dict.Add("border-radius", Radius.ToString());
+            if (Color != null)
+                dict.Add("border-color", Color.HexValue);
+
+            return dict;
         }
     }
 }
