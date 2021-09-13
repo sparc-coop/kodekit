@@ -31,21 +31,10 @@
     color: #3A3A40;
     max-width: 496px;
     font-size: 16px; }
-  .page button {
-    color: #17171A;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19.2px;
-    border-radius: 4px;
-    border: 1px solid #17171A;
-    background: #F5F7FA;
-    padding: 8px 16px;
-    margin-top: 20px;
-    cursor: pointer; }
-    .page button img {
-      margin-left: 10px;
-      vertical-align: middle;
-      margin-top: -2px; }
+  .page button img {
+    margin-left: 10px;
+    vertical-align: middle;
+    margin-top: -2px; }
   .page label {
     font-size: 14px;
     line-height: 180%;
@@ -261,38 +250,10 @@
         background-color: #0B5FFF; }
 
 .buttons .preview-example {
-  padding: 32px;
+  padding: 32px 32px 8px 32px;
   height: 180px; }
-  .buttons .preview-example button {
-    background: #0B5FFF;
-    border: 1px solid #0B5FFF;
-    color: #FFFFFF;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    padding: 8px 16px;
-    border-radius: 4px;
-    margin-top: 0;
+  .buttons .preview-example > div {
     margin-bottom: 24px; }
-  .buttons .preview-example .button-secondary {
-    color: #00BFB2;
-    background: #FFFFFF;
-    border: 1px solid #00BFB2; }
-  .buttons .preview-example .hover {
-    background: #3C7FFF;
-    color: #FFFFFF; }
-    .buttons .preview-example .hover-secondary {
-      background: #FFFFFF;
-      border: 1px solid #2AD2C6;
-      color: #2AD2C6; }
-  .buttons .preview-example .disabled {
-    color: #D2D4D9;
-    background: #F5F7FA;
-    border: 1px solid #D2D4D9; }
-    .buttons .preview-example .disabled-secondary {
-      background: #FFFFFF;
-      color: #D2D4D9;
-      border: 1px solid #D2D4D9; }
   .buttons .preview-example svg {
     vertical-align: middle;
     margin: 0;
