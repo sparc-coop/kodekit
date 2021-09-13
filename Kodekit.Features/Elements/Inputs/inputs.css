@@ -32,33 +32,6 @@
             color: var(--error-500);
         }
 
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-    /* Div that contains the Input, Label and Icon label */
-    form label {
-        display: flex;
-        align-content: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: left;
-        position: relative;
-        /* Selecting the image inside of the input div. */
-    }
-
-        form label i {
-            position: absolute;
-            top: 40%;
-            transform: translateY(-50%);
-            z-index: 2;
-            left: 5%;
-        }
-
-
 /* Controlling the color of checkbox and color when clicked. */
 input[type=checkbox] {
     border-radius: var(--border-radius, 2px);

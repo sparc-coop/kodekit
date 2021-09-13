@@ -65,10 +65,12 @@
     cursor: pointer; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
-    margin: -20px 0 50px 0;
+    margin: 0px 0 50px 0;
     overflow: hidden;
     background: #282c34;
-    padding: 0 0 0 20px; }
+    padding: 0 0 0 20px;
+    width: 100%;
+    max-width: 1024px; }
   .page .section, .page section {
     display: flex;
     flex-wrap: wrap;
@@ -530,23 +532,35 @@
   max-width: 1024px;
   width: 100%; }
   .colors .preview-example label {
-    padding: 8px 15px; }
+    padding: 0;
+    margin-bottom: 8px; }
+  .colors .preview-example--colors {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 24px 32px; }
   .colors .preview-example .color-display {
-    width: 293px;
+    width: auto;
     height: 142px;
-    border-radius: 4px;
-    margin: 6px 15px 0; }
-  .colors .preview-example--grayscale .color-display {
-    width: 106px;
-    height: 102px;
-    margin: 20px 0 0 0;
-    border-radius: 0; }
-    .colors .preview-example--grayscale .color-display.first {
-      border-radius: 4px 0px 0px 4px;
-      margin: 20px 0 0 15px; }
-    .colors .preview-example--grayscale .color-display.last {
-      border-radius: 0px 4px 4px 0px;
-      margin: 20px 15px 0 0; }
+    border-radius: 4px 4px 0 0;
+    margin: 6px 0 0; }
+  .colors .preview-example .subcolor-display {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    height: 28px; }
+  .colors .preview-example--grayscale {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    padding: 24px 32px; }
+    .colors .preview-example--grayscale .color-display {
+      width: auto;
+      height: 102px;
+      margin: 20px 0 0 0;
+      border-radius: 0; }
+    .colors .preview-example--grayscale > div:first-child .color-display {
+      border-radius: 4px 0px 0px 4px; }
+    .colors .preview-example--grayscale > div:last-child .color-display {
+      border-radius: 0px 4px 4px 0px; }
 
 .colors .section {
   display: flex;
@@ -740,24 +754,6 @@
         -ms-transform: translateX(12px);
         transform: translateX(12px);
         background-color: #A9ACB2; }
-
-.colors .preview-example .color-display {
-  width: 293px;
-  height: 142px;
-  border-radius: 4px;
-  margin: 6px 15px 0; }
-
-.colors .preview-example--grayscale .color-display {
-  width: 106px;
-  height: 102px;
-  margin: 20px 0 0 0;
-  border-radius: 0; }
-  .colors .preview-example--grayscale .color-display.first {
-    border-radius: 4px 0px 0px 4px;
-    margin: 20px 0 0 15px; }
-  .colors .preview-example--grayscale .color-display.last {
-    border-radius: 0px 4px 4px 0px;
-    margin: 20px 15px 0 0; }
 
 .preview p.subtitle {
   color: #6DAEFF; }
@@ -1683,42 +1679,6 @@
         color: #787980;
         margin-left: 25px; }
 
-.colors .preview-example .color-display {
-  width: 293px;
-  height: 142px;
-  border-radius: 4px;
-  margin: 6px 15px 0; }
-
-.colors .preview-example--grayscale .color-display {
-  width: 106px;
-  height: 102px;
-  margin: 20px 0 0 0;
-  border-radius: 0; }
-  .colors .preview-example--grayscale .color-display.first {
-    border-radius: 4px 0px 0px 4px;
-    margin: 20px 0 0 15px; }
-  .colors .preview-example--grayscale .color-display.last {
-    border-radius: 0px 4px 4px 0px;
-    margin: 20px 15px 0 0; }
-
-.colors .preview-example .color-display {
-  width: 293px;
-  height: 142px;
-  border-radius: 4px;
-  margin: 6px 15px 0; }
-
-.colors .preview-example--grayscale .color-display {
-  width: 106px;
-  height: 102px;
-  margin: 20px 0 0 0;
-  border-radius: 0; }
-  .colors .preview-example--grayscale .color-display.first {
-    border-radius: 4px 0px 0px 4px;
-    margin: 20px 0 0 15px; }
-  .colors .preview-example--grayscale .color-display.last {
-    border-radius: 0px 4px 4px 0px;
-    margin: 20px 15px 0 0; }
-
 section {
   display: flex;
   flex-wrap: wrap; }
@@ -2157,24 +2117,6 @@ template {
 [hidden] {
   display: none; }
 
-.colors .preview-example .color-display {
-  width: 293px;
-  height: 142px;
-  border-radius: 4px;
-  margin: 6px 15px 0; }
-
-.colors .preview-example--grayscale .color-display {
-  width: 106px;
-  height: 102px;
-  margin: 20px 0 0 0;
-  border-radius: 0; }
-  .colors .preview-example--grayscale .color-display.first {
-    border-radius: 4px 0px 0px 4px;
-    margin: 20px 0 0 15px; }
-  .colors .preview-example--grayscale .color-display.last {
-    border-radius: 0px 4px 4px 0px;
-    margin: 20px 15px 0 0; }
-
 button {
   background: inherit;
   border-radius: 4px;
@@ -2229,24 +2171,6 @@ button.card-button-secondary {
       margin-right: 13px; }
   .page .checkboxes label:last-child, .page .radios label:last-child {
     margin-right: 0; }
-
-.colors .preview-example .color-display {
-  width: 293px;
-  height: 142px;
-  border-radius: 4px;
-  margin: 6px 15px 0; }
-
-.colors .preview-example--grayscale .color-display {
-  width: 106px;
-  height: 102px;
-  margin: 20px 0 0 0;
-  border-radius: 0; }
-  .colors .preview-example--grayscale .color-display.first {
-    border-radius: 4px 0px 0px 4px;
-    margin: 20px 0 0 15px; }
-  .colors .preview-example--grayscale .color-display.last {
-    border-radius: 0px 4px 4px 0px;
-    margin: 20px 15px 0 0; }
 
 .page input, .page select {
   background: #FFFFFF;

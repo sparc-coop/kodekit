@@ -52,7 +52,7 @@ namespace Kodekit.Features
 
         public Color? GetColor(ColorTypes colorType)
         {
-            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}-500")?.Value;
+            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}")?.Value;
         }
 
         internal void UpdateButtons(Button buttons)
@@ -76,7 +76,7 @@ namespace Kodekit.Features
 
         public void UpdateColor(ColorTypes colorType, string? hexValue)
         {
-            Colors.RemoveAll(x => colorType.ToString() == x.Name);
+            Colors.RemoveAll(x => colorType.ToString().ToLower() == x.Name.ToLower());
 
             if (hexValue != null)
                 Colors.Add(new Variable<Color>(colorType.ToString(), new Color(hexValue)));

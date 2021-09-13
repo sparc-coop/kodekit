@@ -45,18 +45,36 @@
                         </label>
 
                     </div>
-                    <div class="preview-example">
+                    <div class="preview-example preview-example--colors">
                         <div>
                             <label>Primary</label>
-                            <div class="color-display" style="background-color: var(--primary-500)"></div>
+                            <div class="color-display" style="background-color: @Model.Primary"></div>
+                            <div class="subcolor-display">
+                                @foreach (var weight in Weights)
+                                {
+                                    <span style="background-color: var(--primary-@weight)"></span>
+                                }
+                            </div>
                         </div>
                         <div>
                             <label>Secondary</label>
                             <div class="color-display" style="background-color: @Model.Secondary"></div>
+                            <div class="subcolor-display">
+                                @foreach (var weight in Weights)
+                                {
+                                    <span style="background-color: var(--secondary-@weight)"></span>
+                                }
+                            </div>
                         </div>
                         <div>
                             <label>Tertiary</label>
                             <div class="color-display" style="background-color: @Model.Tertiary"></div>
+                            <div class="subcolor-display">
+                                @foreach (var weight in Weights)
+                                {
+                                    <span style="background-color: var(--tertiary-@weight)"></span>
+                                }
+                            </div>
                         </div>
                     </div>
                     <pre>
@@ -98,11 +116,11 @@
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
-                        @for (int weight = 900; weight <= 100; weight -= 100)
+                        @foreach (var weight in Weights)
                         {
                             <div>
                                 <label>@weight</label>
-                                <div class="color-display @(weight == 900 ? "first" : weight == 100 ? "last" : "") bg-grey-@weight"></div>
+                                <div class="color-display" style="background-color: var(--greyscale-@weight)"></div>
                             </div>
                         }
                     </div>
@@ -141,21 +159,21 @@ $greyscale-700
                             </span>
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <div class="preview-example preview-example--colors">
                         <div class="bg-error"></div>
                         <div class="bg-warning"></div>
                         <div class="bg-success"></div>
                         <div>
                             <label>Error</label>
-                            <div class="color-display bg-error"></div>
+                            <div class="color-display" style="background-color: var(--error-500)"></div>
                         </div>
                         <div>
                             <label>Warning</label>
-                            <div class="color-display bg-warning"></div>
+                            <div class="color-display" style="background-color: var(--warning-500)"></div>
                         </div>
                         <div>
                             <label>Success</label>
-                            <div class="color-display bg-success"></div>
+                            <div class="color-display" style="background-color: var(--success-500)"></div>
                         </div>
                     </div>
                     <pre>
@@ -213,6 +231,7 @@ $success-100
 @code {
     [Parameter] public string kitId { get; set; }
     ColorsModel Model;
+    List<string> Weights = new List<string> { "900", "800", "700", "600", "500", "400", "300", "200", "100", "50" };
 
     protected override async Task OnInitializedAsync()
     {

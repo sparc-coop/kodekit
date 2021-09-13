@@ -90,10 +90,12 @@
 
     pre {
         border-radius: 0px 0px 8px 8px;
-        margin: -20px 0 50px 0;
+        margin: 0px 0 50px 0;
         overflow: hidden;
         background: #282c34;
         padding: 0 0 0 20px;
+        width: 100%;
+        max-width: 1024px;
     }
 
     .section, section {
