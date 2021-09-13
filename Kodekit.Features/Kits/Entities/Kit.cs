@@ -101,5 +101,19 @@ namespace Kodekit.Features
         public bool? IsAutoPublish { get; set; }
         public bool? IsDeleted { get; set; }
         public Dropdown Dropdowns { get; set; }
+        public List<string?> Imports()
+        {
+            return new List<string?>
+            {
+                Headings.Font.FamilyUrl,
+                Paragraphs.Font.FamilyUrl,
+                Buttons.Font.FamilyUrl,
+                Inputs.Font.FamilyUrl,
+                Selectors.Font.FamilyUrl
+            }
+            .Distinct()
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .ToList();
+        }
     }
 }

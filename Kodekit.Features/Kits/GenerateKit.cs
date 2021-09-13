@@ -32,8 +32,12 @@ namespace Kodekit.Features
 
 
             var css = new StringBuilder();
-            css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
+
+            foreach (var url in kit.Imports())
+                css.AppendLine($"@import url('{url}');");
+
             css.AppendLine(CompileVariables(kit));
+            css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
             css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
             css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
             css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));

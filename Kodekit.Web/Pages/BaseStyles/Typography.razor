@@ -59,7 +59,7 @@
                             </select>
                         </label>
                         <label>
-                            Line Height
+                            Base Line Height (px)
                             <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" />
                         </label>
                     </div>
@@ -122,7 +122,7 @@
                                 {
                                     @foreach (var font in Fonts.Items)
                                     {
-                                        <option value="@font.Family" selected="@(Model.Paragraph.FontFamily == font.Family ? "selected" : "")">
+                                        <option value="@font.Family">
                                             @font.Family
                                         </option>
                                     }
@@ -145,7 +145,7 @@
                             </select>
                         </label>
                         <label>
-                            Line Height
+                            Base Line Height (px)
                             <InputNumber @bind-Value="Model.Paragraph.LineHeight" class="small" />
                         </label>
                     </div>
