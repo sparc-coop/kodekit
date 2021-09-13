@@ -52,15 +52,15 @@ namespace Kodekit.Features.Elements
             };
         }
 
-        public Dictionary<string, Color> Expand(Color color)
+        public Dictionary<string, string> Expand(Color color)
         {
-            var type = "grey";
-            var colors = new Dictionary<string, Color>();
+            var type = "greyscale";
+            var colors = new Dictionary<string, string>();
             
-            colors.Add($"{type}-50", Interpolate(color, 0.05f));
+            colors.Add($"{type}-50", Interpolate(color, 0.05f).HexValue);
 
             for (var i = 0.1f; i < 1f; i += 0.1f)
-                colors.Add($"{type}-{Math.Round(i * 1000)}", Interpolate(color, i));
+                colors.Add($"{type}-{Math.Round(i * 1000)}", Interpolate(color, i).HexValue);
 
             return colors;
         }

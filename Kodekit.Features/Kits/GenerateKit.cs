@@ -50,11 +50,18 @@ namespace Kodekit.Features
             };
         }
 
-        private string CompileVariables(Kit? kit)
+        private string CompileVariables(Kit kit)
         {
             var variables = new Dictionary<string, Dictionary<string, string>>();
 
-            Compile(variables, ":root", kit.Colors);
+            Compile(variables, ":root", kit.Colors.Where(x => x.Name != "lightest" && x.Name != "darkest").ToList());
+
+            // Hack for greyscale calculation, I hate it
+            var lightest = kit.GetColor(ColorTypes.Lightest);
+            var darkest = kit.GetColor(ColorTypes.Darkest);
+            if (lightest != null && darkest != null)
+                Compile(variables, ":root", lightest.Expand(darkest));
+
             Compile(variables, "body", kit.Paragraphs);
             Compile(variables, "h1, h2, h3, h4, h5, h6", kit.Headings);
             Compile(variables, "button", kit.Buttons);
@@ -74,13 +81,17 @@ namespace Kodekit.Features
         private void Compile<T>(Dictionary<string, Dictionary<string, string>> variables, string scope, List<Variable<T>> values) where T : ISerializable, new()
         {
             foreach (var value in values)
+            {
                 Compile(variables, scope, value.Serialize());
+            }
         }
 
         private void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, Dictionary<string, string> values)
         {
             if (variables.ContainsKey(scope))
-                variables[scope] = variables[scope].Concat(values).ToDictionary(x => x.Key, x => x.Value);
+            {
+                variables[scope] = variables[scope].Concat(values.Where(x => !variables[scope].ContainsKey(x.Key))).ToDictionary(x => x.Key, x => x.Value);
+            }
             else
                 variables.Add(scope, values);
         }
