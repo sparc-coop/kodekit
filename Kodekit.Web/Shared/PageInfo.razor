@@ -1,4 +1,4 @@
-﻿@if (ShowPage == true)
+﻿@if (kitId != null)
 {
     <div class="page-info">
         <div class="breadcrumbs">
@@ -150,7 +150,6 @@
     [Parameter] public string kitId { get; set; }
     
     bool ShowDropdown = false;
-    bool ShowPage = true;
     string ShowKitOptions = "";
     string Show = "";
     string SelectedVersion = "";
@@ -162,14 +161,17 @@
     private ICollection<Kit> UserKits;
     Kit kit;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
-        kit = await PublicApi().GetKitAsync(kitId);
+        if (kitId != null)
+        {
+            kit = await PublicApi().GetKitAsync(kitId);
 
-        ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
-            : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
+            ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
+                : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
 
-        await LoginSucceeded();
+            await LoginSucceeded();
+        }
     }
 
     private async Task LoginSucceeded()
