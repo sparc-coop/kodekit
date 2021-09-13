@@ -79,10 +79,10 @@
                             <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
-                        <label class="selected icon-space">
+                        <label class="icon-space">
                             Selected
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="username" />
+                            <input class="selected" placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
                         <label class="icon-space">
@@ -91,10 +91,10 @@
                             <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
-                        <label class="error icon-space">
+                        <label class="icon-space">
                             Error
                             <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
-                            <input value="username" />
+                            <input class="invalid" value="username" />
                             <span>Username is taken.</span>
                         </label>
                         <label class="disabled icon-space">
@@ -124,7 +124,7 @@
     [Parameter] public string kitId { get; set; }
     UpdateInputsModel Model;
 
-    protected override async void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetInputsAsync(kitId);
     }

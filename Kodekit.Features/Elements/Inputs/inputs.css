@@ -1,8 +1,8 @@
-﻿input {
+﻿input, textarea {
     padding: var(--padding-vertical) var(--padding-horizontal);
     border-radius: var(--border-radius, 4px);
-    border: var(--border-width, 1px) solid var(--grey-300);
-    color: var(--grey-900);
+    border: var(--border-width, 1px) solid var(--greyscale-300);
+    color: var(--greyscale-900);
     letter-spacing: 0.02em;
     /* is this for icons? */
     /* padding: 10px 16px 10px 40px; */
@@ -10,25 +10,25 @@
     line-height: 120%;
 }
 
-    input::placeholder {
-        color: var(--grey-300);
+    input::placeholder, textarea::placeholder {
+        color: var(--greyscale-300);
     }
 
-    input:focus {
+    input:focus, textarea:focus, input.focus, textarea.focus {
         border-color: var(--primary-500);
     }
 
-    input:disabled {
-        border-color: var(--grey-300);
-        color: var(--grey-300);
+    input:disabled, textarea:disabled {
+        border-color: var(--greyscale-300);
+        color: var(--greyscale-300);
     }
 
-    input:invalid {
+    input:invalid, textarea:invalid, input.invalid, textarea.invalid {
         border-color: var(--error-500);
         color: var(--error-500);
     }
 
-        input:invalid::placeholder {
+        input:invalid::placeholder, textarea:invalid::placeholder, input.invalid::placeholder, textarea.invalid::placeholder{
             color: var(--error-500);
         }
 
@@ -43,7 +43,7 @@ input[type=checkbox] {
     }
 
 input[type=radio] {
-    background: var(--grey-300);
+    background: var(--greyscale-300);
 }
 
     input [type=radio]:checked {

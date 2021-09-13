@@ -1,8 +1,7 @@
 ﻿@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 .page {
   background: #F5F7FA;
-  padding: 10px 80px 100px 80px;
-  font-family: 'Inter', sans-serif; }
+  padding: 10px 80px 100px 80px; }
   @media screen and (max-width: 780px) {
     .page {
       padding: 0 40px 100px 40px; } }
@@ -40,18 +39,7 @@
     line-height: 180%;
     color: #3A3A40; }
   .page input, .page select {
-    background: #FFFFFF;
-    border: 1px solid #D2D4D9;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 8px 16px;
-    display: block;
-    margin: 0 30px 20px 0;
-    font-size: 16px;
-    line-height: 160%;
-    height: 40px;
-    color: #3A3A40;
-    cursor: pointer; }
+    margin: 0 30px 20px 0; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: 0px 0 50px 0;
@@ -70,21 +58,6 @@
       max-width: 496px;
       width: 100%;
       min-height: 87px; }
-    .page .section textarea, .page section textarea {
-      font-family: 'Inter';
-      max-width: 496px;
-      width: 100%;
-      min-height: 87px;
-      padding: 10px 16px;
-      box-sizing: border-box;
-      background: #FFFFFF;
-      border: 1px solid #D2D4D9;
-      border-radius: 4px;
-      display: block;
-      margin: 0 30px 20px 0;
-      font-size: 16px;
-      line-height: 160%;
-      color: #3A3A40; }
     .page .section .large, .page section .large {
       width: 486px; }
     .page .section .medium, .page section .medium {
@@ -312,9 +285,6 @@
   padding: 32px 32px 50px; }
   .inputs .preview-example input, .inputs .preview-example select {
     width: 200px;
-    background: #FFFFFF;
-    border: 1px solid #D2D4D9;
-    color: #17171A;
     margin: 6px 30px 0 0; }
   .inputs .preview-example label {
     color: #3A3A40;
@@ -323,41 +293,20 @@
     width: 100%;
     max-width: 664px;
     height: 122px;
-    border: 1px solid #D2D4D9;
     box-sizing: border-box;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #787980;
-    font-family: 'Inter';
-    padding: 10px 16px;
     margin-top: 30px; }
   .inputs .preview-example .icon-space input {
-    padding: 10px 16px 10px 40px; }
+    padding-left: 40px; }
   .inputs .preview-example .icon-space img {
     position: absolute;
-    top: 40px;
+    top: 50%;
+    margin-top: -6px;
     left: 13px; }
-  .inputs .preview-example .icon-space--nolabel img {
-    top: 15px; }
   .inputs .preview-example span {
     font-size: 12px;
     line-height: 120%;
     color: #787980;
     margin-top: 6px; }
-  .inputs .preview-example .selected input {
-    border: 1px solid #0B5FFF; }
-  .inputs .preview-example .disabled {
-    color: #D2D4D9; }
-    .inputs .preview-example .disabled input {
-      border: 1px solid #D2D4D9;
-      color: #D2D4D9; }
-  .inputs .preview-example .error {
-    color: #F96464; }
-    .inputs .preview-example .error span {
-      color: #F96464; }
-    .inputs .preview-example .error input {
-      border: 1px solid #F96464;
-      color: #F96464; }
 
 .lists .preview-example {
   display: flex;
@@ -2133,48 +2082,6 @@ button.card-button-secondary {
   .page .checkboxes label:last-child, .page .radios label:last-child {
     margin-right: 0; }
 
-.page input, .page select {
-  background: #FFFFFF;
-  border: 1px solid #CDCED9;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 8px 16px;
-  display: block;
-  margin: 0 30px 20px 0;
-  font-size: 16px;
-  line-height: 160%;
-  height: 40px;
-  color: #787980; }
-  .page input::placeholder, .page select::placeholder {
-    color: #CDCED9; }
-  .page input:focus, .page select:focus {
-    border-color: #0B5FFF; }
-  .page input:disabled, .page select:disabled {
-    border-color: #CDCED9;
-    color: #CDCED9; }
-  .page input:invalid, .page select:invalid {
-    border-color: #F96464;
-    color: #F96464; }
-    .page input:invalid::placeholder, .page select:invalid::placeholder {
-      color: #F96464; }
-
-.page .selected input {
-  border: 1px solid #0B5FFF; }
-
-.page .error {
-  color: #F96464; }
-  .page .error span {
-    color: #F96464; }
-  .page .error input {
-    border: 1px solid #F96464;
-    color: #F96464; }
-
-.page .disabled {
-  color: #CDCED9; }
-  .page .disabled input {
-    border: 1px solid #CDCED9;
-    color: #CDCED9; }
-
 .page form label {
   display: flex;
   align-content: center;
@@ -2199,22 +2106,6 @@ button.card-button-secondary {
   background: #CDCED9; }
   .page form input[type=radio]:checked {
     background: #0B5FFF; }
-
-.page form textarea {
-  font-family: 'Inter';
-  max-width: 496px;
-  width: 100%;
-  min-height: 87px;
-  padding: 10px 16px;
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border: 1px solid #D2D4D9;
-  border-radius: 4px;
-  display: block;
-  margin: 0 30px 20px 0;
-  font-size: 16px;
-  line-height: 160%;
-  color: #787980; }
 
 body {
   margin: 0;
