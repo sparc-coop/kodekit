@@ -52,7 +52,7 @@ namespace Kodekit.Features
 
         public Color? GetColor(ColorTypes colorType)
         {
-            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}")?.Value;
+            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}-500")?.Value;
         }
 
         internal void UpdateButtons(Button buttons)

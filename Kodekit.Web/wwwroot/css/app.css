@@ -104,13 +104,7 @@
       display: flex; }
   .page .content {
     padding-bottom: 100px; }
-    .page .content h3 {
-      margin-bottom: 8px;
-      font-weight: 500;
-      font-size: 20px; }
     .page .content p {
-      font-size: 16px;
-      color: #787980;
       margin: 0 0 32px; }
   .page .preview-example {
     background: #FFFFFF;
