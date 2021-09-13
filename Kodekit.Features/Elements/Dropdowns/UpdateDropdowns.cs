@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record UpdateDropdownsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth);
+    public record UpdateDropdownsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth, bool OverwriteInherited);
     public class UpdateDropdowns : PublicFeature<UpdateDropdownsModel, Kit>
     {
         public UpdateDropdowns(IRepository<Kit> kits)
@@ -20,7 +20,7 @@ namespace Kodekit.Features.Elements
             if (kit == null)
                 throw new NotFoundException("Kit not found!");
 
-            var Dropdowns = new Dropdown(request.FontSize, request.FontWeight, request.VerticalPadding, request.HorizontalPadding, request.CornerRadius, request.BorderWidth);
+            var Dropdowns = new Dropdown(request.FontSize, request.FontWeight, request.VerticalPadding, request.HorizontalPadding, request.CornerRadius, request.BorderWidth, request.OverwriteInherited);
 
             kit.UpdateDropdowns(Dropdowns);
             await Kits.UpdateAsync(kit);

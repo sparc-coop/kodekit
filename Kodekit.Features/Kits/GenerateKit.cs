@@ -65,9 +65,11 @@ namespace Kodekit.Features
             Compile(variables, "body", kit.Paragraphs);
             Compile(variables, "h1, h2, h3, h4, h5, h6", kit.Headings);
             Compile(variables, "button", kit.Buttons);
-            Compile(variables, "input, textarea", kit.Inputs);
             Compile(variables, "input[type=checkbox]", kit.Selectors);
-            Compile(variables, "select", kit.Dropdowns);
+
+            Compile(variables, "input, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
+            if (kit.Dropdowns.OverwriteInherited)
+                Compile(variables, "select", kit.Dropdowns);
 
             var css = Write(variables);
             return css;
