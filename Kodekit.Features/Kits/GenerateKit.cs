@@ -73,7 +73,7 @@ namespace Kodekit.Features
                 foreach (var item in variables[key])
                 {
                     css.Append(indent);
-                    css.AppendLine($"--{item.Key.ToLower()}: {item.Value}");
+                    css.AppendLine($"--{item.Key.ToLower()}: {item.Value};");
                 }
 
                 css.AppendLine("}");
