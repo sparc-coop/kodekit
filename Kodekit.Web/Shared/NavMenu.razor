@@ -17,64 +17,64 @@
 <div class="sidebar @Show">
     <div class="menu">
         <div class="heading">Overview</div>
-        <NavLink href="/@(kitId)/" Match="NavLinkMatch.All">
+        <NavLink href="@Link("")")" Match="NavLinkMatch.All">
             Introduction
         </NavLink>
-        <NavLink href="/@(kitId)/installation" Match="NavLinkMatch.All">
+        <NavLink href="@Link("installation")" Match="NavLinkMatch.All">
             Installation
         </NavLink>
-        <NavLink href="/@(kitId)/themes" Match="NavLinkMatch.All">
+        <NavLink href="@Link("themes")" Match="NavLinkMatch.All">
             Themes
         </NavLink>
-        <NavLink href="/@(kitId)/release-notes" Match="NavLinkMatch.All">
+        <NavLink href="@Link("release-notes")" Match="NavLinkMatch.All">
             Release Notes
         </NavLink>
-        <NavLink href="/@(kitId)/global-settings" Match="NavLinkMatch.All">
+        <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
             Global Reset
         </NavLink>
-        <NavLink href="/@(kitId)/preview" Match="NavLinkMatch.All">
+        <NavLink href="@Link("preview")" Match="NavLinkMatch.All">
             Preview
         </NavLink>
 
         <div class="heading">Base Styles</div>
-        <NavLink href="/@(kitId)/typography" Match="NavLinkMatch.All">
+        <NavLink href="@Link("typography")" Match="NavLinkMatch.All">
             Typography
         </NavLink>
-        <NavLink href="/@(kitId)/colors" Match="NavLinkMatch.All">
+        <NavLink href="@Link("colors")" Match="NavLinkMatch.All">
             Colors
         </NavLink>
-        <NavLink href="/@(kitId)/icons" Match="NavLinkMatch.All">
+        <NavLink href="@Link("icons")" Match="NavLinkMatch.All">
             Icons
         </NavLink>
-        <NavLink href="/@(kitId)/effects" Match="NavLinkMatch.All">
+        <NavLink href="@Link("effects")" Match="NavLinkMatch.All">
             Effects
         </NavLink>
 
         <div class="heading">HTML Elements</div>
-        <NavLink href="/@(kitId)/buttons" Match="NavLinkMatch.All">
+        <NavLink href="@Link("buttons")" Match="NavLinkMatch.All">
             Buttons
         </NavLink>
-        <NavLink href="/@(kitId)/inputs" Match="NavLinkMatch.All">
+        <NavLink href="@Link("inputs")" Match="NavLinkMatch.All">
             Inputs & Textareas
         </NavLink>
-        <NavLink href="/@(kitId)/selectors" Match="NavLinkMatch.All">
+        <NavLink href="@Link("selectors")" Match="NavLinkMatch.All">
             Selectors & Toggles
         </NavLink>
-        <NavLink href="/@(kitId)/dropdowns" Match="NavLinkMatch.All">
+        <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All">
             Dropdowns
         </NavLink>
-        <NavLink href="/@(kitId)/anchors" Match="NavLinkMatch.All">
+        <NavLink href="@Link("anchors")" Match="NavLinkMatch.All">
             Anchors
         </NavLink>
-        <NavLink href="/@(kitId)/lists" Match="NavLinkMatch.All">
+        <NavLink href="@Link("lists")" Match="NavLinkMatch.All">
             Lists
         </NavLink>
-        <NavLink href="/@(kitId)/layout" Match="NavLinkMatch.All">
+        <NavLink href="@Link("layout")" Match="NavLinkMatch.All">
             Structure
         </NavLink>
 
         <div class="heading">Utility</div>
-        <NavLink href="/@(kitId)/box-shadow" Match="NavLinkMatch.All">
+        <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All">
             Box Shadow
         </NavLink>
     </div>
@@ -94,4 +94,6 @@
         else
             Show = "";
     }
+
+    private string Link(string page) => $"/{kitId}/{page}";
 }
