@@ -3,8 +3,6 @@
 .page {
     background: $background;
     padding: 10px 80px 100px 80px;
-    font-family: 'Inter', sans-serif;
-
 
     @media screen and (max-width: 780px) {
         padding: 0 40px 100px 40px;
@@ -63,18 +61,7 @@
     }
 
     input, select {
-        background: $white;
-        border: 1px solid $gray300;
-        box-sizing: border-box;
-        border-radius: 4px;
-        padding: 8px 16px;
-        display: block;
         margin: 0 30px 20px 0;
-        font-size: 16px;
-        line-height: 160%;
-        height: 40px;
-        color: $gray700;
-        cursor: pointer;
     }
 
     pre {
@@ -100,23 +87,6 @@
             max-width: 496px;
             width: 100%;
             min-height: 87px;
-        }
-
-        textarea {
-            font-family: 'Inter';
-            max-width: 496px;
-            width: 100%;
-            min-height: 87px;
-            padding: 10px 16px;
-            box-sizing: border-box;
-            background: $white;
-            border: 1px solid $gray300;
-            border-radius: 4px;
-            display: block;
-            margin: 0 30px 20px 0;
-            font-size: 16px;
-            line-height: 160%;
-            color: $gray700;
         }
 
         .large {
