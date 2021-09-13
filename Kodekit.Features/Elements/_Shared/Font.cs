@@ -13,7 +13,7 @@ namespace Kodekit.Features.Elements
             {
                 Family = family;
                 var cleanFamily = family.Replace(" ", "+");
-                FamilyUrl = $"https://fonts.googleapis.com/css?family={cleanFamily}";
+                FamilyUrl = $"https://fonts.googleapis.com/css2?family={cleanFamily}&display=swap";
             }
 
             Size = size.HasValue ? new(size.Value) : null;
@@ -46,7 +46,7 @@ namespace Kodekit.Features.Elements
         {
             var dict = new Dictionary<string, string>();
             if (Family != null)
-                dict.Add("font-family", Family);
+                dict.Add("font-family", $"'{Family}'");
             if (Weight != null)
                 dict.Add("font-weight", Weight);
             if (Size != null)

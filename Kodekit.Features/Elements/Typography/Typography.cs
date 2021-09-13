@@ -38,7 +38,7 @@ namespace Kodekit.Features.Elements
             var size = Font.Size ?? new Size(16);
             var scale = TypeScale.Value;
 
-            return new Dictionary<string, string>
+            var scales = new Dictionary<string, string>
             {
                 { $"type-50", size.Scale(scale, -4).ToString() },
                 { $"type-100", size.Scale(scale, -3).ToString() },
@@ -51,6 +51,14 @@ namespace Kodekit.Features.Elements
                 { $"type-800", size.Scale(scale, 4).ToString() },
                 { $"type-900", size.Scale(scale, 5).ToString() }
             };
+
+            var result = scales.Concat(Font);
+
+            // Calculate line height percentage
+            if (Font.LineHeight != null)
+                result["line-height"] = $"{Font.LineHeight.Value / size.Value * 100}%";
+
+            return result;
         }
     }
 }
