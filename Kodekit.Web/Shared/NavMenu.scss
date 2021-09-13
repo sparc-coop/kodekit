@@ -129,6 +129,7 @@
             border: none;
             background: none;
             margin-bottom: 0;
+            font-size: 14px;
 
             span {
                 vertical-align: middle;
@@ -165,12 +166,12 @@
             background: $white;
             border-radius: 4px;
             padding: 12px 20px;
-            width: 122px;
+            width: 150px;
             display: flex;
             flex-wrap: wrap;
             position: absolute;
             top: 55px;
-            right: -11px;
+            right: 80px;
         }
     }
 
