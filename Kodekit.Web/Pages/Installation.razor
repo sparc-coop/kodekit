@@ -1,6 +1,7 @@
-﻿@page "/installation"
+﻿@inherits HighlightPageBase
+@page "/installation"
 
-<div class="page">
+<div class="page installation">
     <div class="page__container">
         <header>
             <div class="title">Getting Started</div>
@@ -15,9 +16,15 @@
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
             <div class="steps">1. Add Script</div>
-            <pre>
-<code></code>
+            <div class="instructions">
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.KitId + "\">")" />
+                <button @onclick="StepOneCopy">Copy</button>
+                <br />
+                <pre>
+<code>&lt;link rel="stylesheet" href="YOUR GENERATED KODEKIT FILE"&gt;</code>
             </pre>
+            </div>
+
             <div class="steps">2. Auto Update</div>
             <p>
                 Each time you change, update or save your Kodekit theme, your projects
@@ -29,11 +36,50 @@
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
         </p>
         <div class="steps">1. Download your .scss file</div>
-        <button>Download .scss file</button>
+        <button class="download">
+            Download .scss file
+            <img src="/images/filedownload-icon.svg" alt="File Download"/>
+        </button>
         <div class="steps">2. Install & Link</div>
         <p>
             Each time you change, update or save your Kodekit theme, your projects
             using the theme script will auto-update, allowing you to make changes to your live project.
         </p>
+        <div class="instructions">
+            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.KitId + "\">")" />
+            <button @onclick="StepTwoCopy">Copy</button>
+            <br />
+            <pre>
+<code>&lt;link rel="stylesheet" href="css/stylesheet.min.css"&gt;</code>
+            </pre>
+        </div>
     </div>
 </div>
+
+@code {
+    public string currentKitId;
+    private Kit kit = new Kit();
+
+    protected override async Task OnInitializedAsync()
+    {
+        //get current kit from local storage
+        string result = await localStorage.GetItemAsync<string>("kodekitId");
+        currentKitId = result;
+
+        if (currentKitId != null)
+        {
+            kit = await PublicApi().GetKitAsync(currentKitId);
+        }
+    }
+    private async Task StepOneCopy()
+    {
+        //copy to clipboard step one link
+        await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-one");
+    }
+
+    private async Task StepTwoCopy()
+    {
+        //copy to clipboard step two link
+        await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-two");
+    }
+}

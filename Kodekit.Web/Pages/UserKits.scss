@@ -4,6 +4,7 @@
 
     .page__container {
         max-width: 1056px;
+        margin-top: 100px;
     }
 
     h2 {
@@ -20,7 +21,7 @@
     }
 
     &-container {
-        margin: 20px -16px;
+        margin:20px -16px;
         width: 100%;
         max-width: 1240px;
         display: flex;
@@ -32,23 +33,20 @@
     }
 
     .sort {
-        position: absolute;
-        top: 0;
-        right: 0;
         width: 150px;
         height: 27px;
         padding: 6px 12px;
         font-size: 12px;
         color: $gray700;
         background: $background;
-        border: 1px solid $gray300;
+        border: none !important;
         box-sizing: border-box;
         border-radius: 4px;
     }
 
     &-card {
         margin: 16px;
-        height: 341px;
+        height: 329px;
         width: 320px;
         border-radius: 8px;
         padding: 24px;
@@ -65,12 +63,32 @@
             color: $gray900;
             font-size: 20px;
             line-height: 24px;
+            padding-top: 16px;
         }
 
         .date {
             color: $gray400;
             font-size: 12px;
             line-height: 14.4px;
+        }
+    }
+
+    &--header {
+        display: flex;
+
+        button {
+            width: 138px;
+            height: 31px;
+            font-size: 12px;
+            padding: 6px 11px;
+            margin-top: 0;
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+            width: 358px;
+            display: flex;
         }
     }
 }

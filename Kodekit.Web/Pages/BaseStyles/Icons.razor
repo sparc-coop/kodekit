@@ -1,11 +1,12 @@
-﻿@page  "/icons"
+﻿@inherits HighlightPageBase
+@page  "/icons"
 @page  "/icons/{kitId}"
 
 <style type="text/css" scoped>
       @@import url('@icon.Url');
 </style>
 
-<div class="effects page">
+<div class="icons page">
     <div class="page__container">
         <header>
             <div class="title">Base Styles</div>
@@ -21,43 +22,47 @@
             </p>
             @if (kit != null)
             {
-                <EditForm Model="@kit">
-                    <section>
-                        <label>
-                            Icon Set
-                            <select @onchange="@SelectIcons">
-                                <option>Select:</option>
-                                <option value="Material">Material</option>
-                                <option value="Remix">Remix</option>
-                                <option value="CSS">CSS</option>
-                                <option value="FontAwesome">FontAwesome</option>
-                            </select>
-                        </label>
-                        @*@if (icon.Name == "Material" || icon.Name == "Remix")
-                        {
-                            <label>
-                                Set Variation
-                                <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
-                                    <option value="Solid">Solid</option>
-                                    <option value="Outline">Outline</option>
-                                </select>
-                            </label>
-                        }*@
+        <EditForm Model="@kit">
+            <section>
+                <label>
+                    Icon Set
+                    <select @onchange="@SelectIcons">
+                        <option>Select:</option>
+                        <option value="Material">Material</option>
+                        <option value="Remix">Remix</option>
+                        <option value="CSS">CSS</option>
+                        <option value="FontAwesome">FontAwesome</option>
+                    </select>
+                </label>
+                @*@if (icon.Name == "Material" || icon.Name == "Remix")
+            {
+                <label>
+                    Set Variation
+                    <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
+                        <option value="Solid">Solid</option>
+                        <option value="Outline">Outline</option>
+                    </select>
+                </label>
+            }*@
 
-                    </section>
-                    <div class="preview-example">
-                        @((MarkupString)icon.Markup)
-                    </div>
-                    <div class="code-example">
-                        <code>
-
-                        </code>
-                    </div>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" />
-                    </button>
-                </EditForm>
+            </section>
+            <div class="preview-example">
+                @((MarkupString)icon.Markup)
+            </div>
+            <br />
+                <pre>
+                    <code class="language-html">
+&lt;!-- Material --&gt; &lt;span class="material-icons"&gt;home&lt;/span&gt;
+&lt;!-- Remix --&gt; &lt;i class="ri-home-line"&gt;&lt;/i&gt;
+&lt;!-- CSS --&gt; &lt;i class="gg-home"&gt;&lt;/i&gt;
+&lt;!-- FontAwesome --&gt; &lt;i class="fas fa-home"&gt;&lt;/i&gt;
+                    </code>
+                </pre>
+            <button @onclick="Submit">
+                Save & Continue
+                <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
+            </button>
+        </EditForm>
             }
         </div>
     </div>
@@ -89,21 +94,21 @@
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
     }
 
     private async Task Submit()
     {
-        await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/buttons/" + kit.Id);
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/buttons/" + kit.KitId);
     }
 
-    void SelectIcons(ChangeEventArgs e)
+    async Task SelectIcons(ChangeEventArgs e)
     {
         var materialUrl = ""; // commenting out due to existing script in index "https://fonts.googleapis.com/icon?family=Material+Icons";
         var remixUrl = "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css";
@@ -132,11 +137,15 @@
                 break;
 
                 //default:
-                //    icon.Url = materialUrl;
+                //    icon.Url = icon.Url;
+                //    icon.Markup = icon.Markup;
                 //    break;
         }
 
         StateHasChanged();
+        //await JS.InvokeVoidAsync("showHighlight");
+
+
     }
 
     public class IconLibrary

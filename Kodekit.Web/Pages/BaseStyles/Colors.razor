@@ -13,7 +13,7 @@
         </header>
         <div class="content">
             <aside class="accessibility-checker">
-                <p class="large">Contrast Checker</p>
+                <p class="title">Contrast Checker</p>
                 @if (colorResult != null)
                 {
                     <h3>@colorResult.Contrast</h3>
@@ -80,11 +80,10 @@
 
             </aside>
             <h3>Brand Colors</h3>
-            <section>
-                <p class="subheader">
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-                </p>
-            </section>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            </p>
+  
             @if (kit != null)
             {
                 <EditForm Model="@kit">
@@ -133,8 +132,8 @@
 &lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
 &lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
                             </code>
-                    <code class="language-scss">
-&lt;!-- however it is best to use them as variables within your classes --&gt;
+                    <code class="language-scss" style="margin-top: -50px;">
+//however it is best to use them as variables within your classes
 
 .box {
     background-color: $primary-500;
@@ -205,7 +204,7 @@
                     </div>
                     <pre>
                     <code class="language-scss">
-&lt;!--System Variables--&gt;
+//System Variables
 $greyscale-900
 $greyscale-800
 $greyscale-700
@@ -257,7 +256,7 @@ $greyscale-700
                     </div>
                     <pre>
                     <code class="language-scss">
-&lt;!--System Variables--&gt;
+//System Variables
 $error-900
 $error-500
 $error-100
@@ -278,31 +277,30 @@ $success-100
                             <div class="preview-mockup--left">
                                 <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-
-                                    <h4>Brand Colors</h4>
-                                    <h5>Information</h5>
+                                    <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
+                                    <h5 style="color: @(kit.TertiaryColor)">Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button>Primary CTA</button>
+                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h4>Brand Colors</h4>
-                                <h5>Information</h5>
+                                <h4 style="color: @(kit.DarkColor)">Brand Colors</h4>
+                                <h5 style="color: @(kit.TertiaryColor)">Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
                                 <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="button-secondary">Secondary CTA</button>
+                                    <button style="background-color: @(kit.PrimaryColor)">Primary CTA</button>
+                                    <button class="button-secondary" style="color: @(kit.SecondaryColor)">Secondary CTA</button>
                                 </div>
                             </div>
                         </section>
                     </div>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit logo" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
@@ -311,7 +309,6 @@ $success-100
 </div>
 
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject IJSRuntime JS
 
 @code {
     private Kit kit = new Kit();
@@ -329,8 +326,8 @@ $success-100
 
     private async Task Submit()
     {
-        await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/icons/" + kit.Id);
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/icons/" + kit.KitId);
     }
 
     private async Task GetKit()
@@ -341,11 +338,11 @@ $success-100
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
 
         kit.PrimaryColor = "#0B5FFF";
@@ -368,7 +365,7 @@ $success-100
         //api method
         var strToSend = pair.BGColor.Substring(1) + "+" + pair.FGColor.Substring(1);
 
-        var contrastApiResults = await Api.ColorContrastCheckerAsync(strToSend);
+        var contrastApiResults = await PublicApi().ColorContrastCheckerAsync(strToSend);
 
         colorResult.AaText = contrastApiResults.Aa;
         colorResult.AaHeadline = contrastApiResults.AaLarge;
@@ -417,5 +414,4 @@ $success-100
         public string BGColor { get; set; }
         public string FGColor { get; set; }
     }
-
 }

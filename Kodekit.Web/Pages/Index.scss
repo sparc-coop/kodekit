@@ -81,7 +81,7 @@
             }
 
             label {
-                color: $gray500;
+                color: $gray700;
                 font-family: Roboto;
                 font-size: 14px;
                 line-height: 180%;
@@ -102,6 +102,7 @@
                 input {
                     display: block;
                     font-family: Roboto Mono;
+                    color: $gray700;
                     padding: 8px 16px 8px 44px;
                     border: 1px solid #E7E7ED;
                     background: #F7F8F9;
@@ -125,6 +126,7 @@
                     width: 290px;
                     border-radius: 4px;
                     box-sizing: border-box;
+                    color: $gray700;
                 }
             }
         }

@@ -1,0 +1,56 @@
+﻿@import "../Core/Colors.scss";
+
+button {
+    background: inherit;
+    border-radius: 4px;
+    color: $grey-900;
+    border: 1px solid $grey-900;
+    padding: 8px 16px;
+    cursor: pointer;
+
+    &:hover {
+        background: $grey-200;
+    }
+}
+
+button.primary {
+    background: $primary-500;
+    border: 1px solid $primary-500;
+    color: $white;
+    max-height: 40px;
+
+    &:hover {
+        border-color: $primary-300;
+        color: $primary-300;
+    }
+}
+
+button.secondary {
+    background: white;
+    border: 1px solid $secondary-500;
+    color: $secondary-500;
+
+    &:hover {
+        border-color: $secondary-300;
+        color: $secondary-300;
+    }
+}
+
+button.card-button-primary {
+    background: $white;
+    color: $primary-500;
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-align: center;
+    font-weight: 500;
+}
+
+button.card-button-secondary {
+    background: $white;
+    color: $primary-500;
+    border: 1px solid $primary-500;
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-align: center;
+    font-weight: 500;
+}

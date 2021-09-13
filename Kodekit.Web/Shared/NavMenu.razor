@@ -8,8 +8,8 @@
         <span class="material-icons mobile" @onclick="@ToggleMobile">close</span>
     }
     <a class="logo" href="/">
-        <img src="/images/logo.svg" />
-        KODEKIT.CSS
+        <img src="/images/logo.svg" alt="Kodekit Logo" />
+        KODEKIT
     </a>
     <LoginDisplay />
 </div>
@@ -26,11 +26,14 @@
         <NavLink href="themes" Match="NavLinkMatch.Prefix">
             Themes
         </NavLink>
-        <NavLink href="#" Match="NavLinkMatch.Prefix">
+        <NavLink href="release-notes" Match="NavLinkMatch.Prefix">
             Release Notes
         </NavLink>
         <NavLink href="global-settings" Match="NavLinkMatch.Prefix">
             Global Reset
+        </NavLink>
+        <NavLink href="preview" Match="NavLinkMatch.Prefix">
+            Preview
         </NavLink>
 
         <div class="heading">Base Styles</div>
@@ -42,9 +45,6 @@
         </NavLink>
         <NavLink href="icons" Match="NavLinkMatch.Prefix">
             Icons
-        </NavLink>
-        <NavLink href="layout" Match="NavLinkMatch.Prefix">
-            Layout
         </NavLink>
         <NavLink href="effects" Match="NavLinkMatch.Prefix">
             Effects
@@ -68,6 +68,9 @@
         </NavLink>
         <NavLink href="lists" Match="NavLinkMatch.Prefix">
             Lists
+        </NavLink>
+        <NavLink href="layout" Match="NavLinkMatch.Prefix">
+            Structure
         </NavLink>
 
         <div class="heading">Utility</div>

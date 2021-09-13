@@ -22,7 +22,7 @@
                     <section>
                         <label>
                             Presets
-                            <select>
+                            <select style="display: inline">
                                 <option selected>Default (1000px)</option>
                             </select>
                             <label class="switch">
@@ -42,7 +42,7 @@
     &lt;div class="container"&gt;All content goes inside here&lt;/div&gt;
 &lt;/section&gt;
                         </code>
-                    <code class="language-scss">
+                    <code class="language-scss" style="margin-top: -50px;">
 // Breakpoints
 $large-desktop: 1440px;
 $desktop: 1000px;
@@ -52,8 +52,8 @@ $large-mobile: 480px;
 $mobile: 320px;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
+                    <button @onclick="Save">
+                        Save
                         <img src="/images/eyecon.svg" />
                     </button>
                 </EditForm>
@@ -71,9 +71,9 @@ $mobile: 320px;
 
     }
 
-    private async Task Submit()
+    private async Task Save()
     {
-        //save
-        Nav.NavigateTo("/effects/" + kit.Id);
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/box-shadow/" + kit.KitId);
     }
 }

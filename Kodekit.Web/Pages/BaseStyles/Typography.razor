@@ -19,7 +19,7 @@
         </header>
         <div class="content">
             <aside class="accessibility-checker">
-                <p class="large">Contrast Checker</p>
+                <p class="title">Contrast Checker</p>
 
                 <h3>@totalScore%</h3>
 
@@ -76,11 +76,8 @@
                         {
                             <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
                         }
-
                     </section>
                 }
-
-
 
             </aside>
             <h3>Heading Settings</h3>
@@ -96,7 +93,7 @@
                             <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
                         </label>
                         <label>
-                            Choose heading font
+                            Heading Font
                             <select class="medium" @onchange='args => SelectFonts(args, "head")'>
                                 @if (fontList.Items != null)
                                 {
@@ -153,24 +150,26 @@
                         </div>
                     </div>
 <pre>
-<code>
+    <code>
 &lt;h1&gt;The power of small steps&lt;/h1&gt;
 &lt;h2&gt;The power of small steps&lt;/h2&gt;
 &lt;h3&gt;The power of small steps&lt;/h3&gt;
 &lt;h4&gt;The power of small steps&lt;/h4&gt;
 &lt;h5&gt;The power of small steps&lt;/h5&gt;
+&lt;h6&gt;The power of small steps&lt;/h6&gt;
 &lt;span class="subtitle"&gt;The power of small steps&lt;/span&gt;
+
 &lt;!-- combine with other HTML elements --&gt;
 &lt;h1&gt;The power of small steps&lt;/h1&gt;
 &lt;h1&gt;&lt;strong&gt;The power of small steps&lt;/strong&gt;&lt;h1&gt;
-</code>
+    </code>
 </pre>
                     <h3>Paragraph Settings</h3>
 
                     <div class="section">
-                        <label class="preview">
+                        <label class="preview" style="margin-right: 32px;">
                             Preview Text
-                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
+                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput"/>
                         </label>
                         <label>
                             Choose Body font
@@ -216,16 +215,16 @@
                     </div>
                     <pre>
                     <code>
-    &lt;p class="sub-title"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
-    &lt;p&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
-    &lt;p class="disclaimer"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/h3&gt;
-    &lt;!-- combine with other HTML elements --&gt;
-    &lt;h1&gt;&lt;strong&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/strong&gt;&lt;h1&gt;
+&lt;p class="sub-title"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
+&lt;p&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/p&gt;
+&lt;p class="disclaimer"&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/h3&gt;
+&lt;!-- combine with other HTML elements --&gt;
+&lt;h1&gt;&lt;strong&gt;What you do makes a difference. And you have to decide what kind of difference you want to make.&lt;/strong&gt;&lt;h1&gt;
                         </code>
                     </pre>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
@@ -233,7 +232,6 @@
     </div>
 </div>
 
-@inject IJSRuntime JS
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 @code {
@@ -265,7 +263,7 @@
         CheckAccessibility();
 
         bodyFont.Family = "Roboto Mono";
-        headingFont.Family = "Open Sans";
+        headingFont.Family = "Roboto Mono";
 
         var fontSelection = await localStorage.GetItemAsync<FontListResponse>("googleFonts");
 
@@ -275,7 +273,7 @@
         }
         else
         {
-            fontList = await Api.GoogleFontsAsync("");
+            fontList = await PublicApi().GoogleFontsAsync("");
             await localStorage.SetItemAsync<FontListResponse>("googleFonts", fontList);
         }
 
@@ -310,18 +308,18 @@
 
         newKit.HeaderFontSize = kit.HeaderFontSize;
 
-        if (kit.Id != null)
+        if (kit.KitId != null)
         {
-            newKit.ParentId = kit.Id;
+            newKit.ParentId = kit.KitId;
         }
 
         kit = await PublicApi().CreateKitAsync(newKit);
 
         //save to local storage
-        if (currentKitId == null) { currentKitId = kit.Id; }
+        if (currentKitId == null) { currentKitId = kit.KitId; }
         await localStorage.SetItemAsync("kodekitId", currentKitId);
 
-        Nav.NavigateTo("/Colors/" + kit.Id);
+        Nav.NavigateTo("/Colors/" + kit.KitId);
     }
 
     private async Task GetKit()
@@ -332,11 +330,11 @@
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
     }
 

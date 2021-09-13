@@ -1,0 +1,86 @@
+﻿@import "Colors.scss";
+
+//Header Tags
+.page {
+
+    h1, h2, h3, h4, h5, h6, .subtitle {
+        line-height: 120%;
+        //Padding and margin here until reset has been applied
+        margin: 0;
+        padding: 0;
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 48px;
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 39px;
+        font-size: 2.43rem;
+    }
+
+    h3 {
+        font-size: 31px;
+        font-size: 1.93rem;
+    }
+
+    h4 {
+        font-size: 25px;
+        font-size: 1.56rem;
+    }
+
+    h5 {
+        font-size: 20px;
+        font-size: 1.25rem;
+    }
+
+    h6 {
+        font-size: 16px;
+        font-size: 1rem;
+    }
+    //Class for a 7th header. Do we make this link to element? for example <h6 class="subtitle"></h6> or would a span work fine.
+    .subtitle {
+        font-size: 12px;
+    }
+    //Paragraph Tags
+    p {
+        line-height: 160%;
+        font-size: 16px;
+        color: $grey-500;
+        margin-bottom: 32px;
+    }
+
+    p.large {
+        font-size: 20px;
+    }
+
+    p.medium {
+        font-size: 17px;
+    }
+
+    p.small {
+        font-size: 14px;
+    }
+    //Bold tag
+    strong {
+        font-weight: 700;
+    }
+    //light tag (For now)
+    span.light {
+        font-weight: 300;
+    }
+    //Label
+    label {
+        font-size: 14px;
+        line-height: 180%;
+        color: $grey-500;
+    }
+
+    header {
+        .subtitle {
+            color: $primary-500;
+        }
+    }
+}

@@ -8,7 +8,7 @@
             {
                 <button @onclick="GoTo">Edit Current Verison</button>
             }
-            else if(Kits.Where(x => x.Id == kitId).First().IsPublished == null)
+            else if (Kits.Where(x => x.Id == kitId).First().IsPublished == null)
             {
                 <button @onclick="Publish">Publish Current Version</button>
             }
@@ -17,7 +17,7 @@
                 Kit Name:
             </p>
             <h4>
-                Kit Link: 
+                Kit Link:
                 <code class="show-link">&lt;link rel="stylesheet" type="text/css" href="https://ui-kit.azurewebsites.net/kit/@kitId"&gt;</code>
             </h4>
             <h4>Version History</h4>
@@ -57,14 +57,14 @@
     private async Task Publish()
     {
         string result = await localStorage.GetItemAsync<string>("kodekitId");
-        Kit kit = await Api.GetKitAsync(result);
+        Kit kit = await PublicApi().GetKitAsync(result);
 
         if (User != null)
         {
             kit.UserId = User.Id;
         }
 
-        await Api.PublishKitAsync(kit);
+        await PublicApi().PublishKitAsync(kit);
     }
 
     private void GoTo()

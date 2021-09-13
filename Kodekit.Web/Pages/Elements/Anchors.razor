@@ -72,13 +72,13 @@
                         <a href="#" class="active" style="color: @activeColor;">Active</a>
                     </div>
                     <pre>
-                    <code>
- 
+                        <code>
+&lt;a href="#"&gt;Link&lt;/a&gt;
                         </code>
                     </pre>
                     <button @onclick="Submit">
                         Save & Continue
-                        <img src="/images/eyecon.svg" />
+                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
                     </button>
                 </EditForm>
             }
@@ -112,17 +112,17 @@
 
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
         else if (currentKitId != null)
         {
-            kit = await Api.GetKitAsync(currentKitId);
+            kit = await PublicApi().GetKitAsync(currentKitId);
         }
     }
 
     private async Task Submit()
     {
-        await Api.UpdateKitAsync(kit);
-        Nav.NavigateTo("/lists/" + kit.Id);
+        await PublicApi().UpdateKitAsync(kit);
+        Nav.NavigateTo("/lists/" + kit.KitId);
     }
 }
