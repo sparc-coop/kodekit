@@ -1941,6 +1941,9 @@
               }
             ],
             "nullable": true
+          },
+          "overwriteInherited": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2546,6 +2549,9 @@
             "type": "number",
             "format": "double",
             "nullable": true
+          },
+          "overwriteInherited": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

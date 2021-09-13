@@ -26,7 +26,8 @@ namespace Kodekit.Features.Elements
                 kit.Dropdowns.Padding.Vertical?.Value,
                 kit.Dropdowns.Padding.Horizontal?.Value,
                 kit.Dropdowns.Border.Radius?.Value,
-                kit.Dropdowns.Border.Width?.Value
+                kit.Dropdowns.Border.Width?.Value,
+                kit.Dropdowns.OverwriteInherited
             );
         }
     }

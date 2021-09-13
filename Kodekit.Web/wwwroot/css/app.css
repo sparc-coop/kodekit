@@ -328,8 +328,7 @@
   .dropdowns .preview-example select {
     background: url("/images/dropdown-icon.svg") no-repeat right;
     -webkit-appearance: none;
-    background-position-x: 144px;
-    padding: 8px 40px 8px 16px; }
+    background-position-x: 144px; }
 
 .dropdowns aside {
   font-size: 12px;
@@ -344,8 +343,7 @@
   background: url("/images/dropdown-icon.svg") no-repeat right;
   background-color: white;
   -webkit-appearance: none;
-  background-position-x: 125px;
-  padding: 8px 40px 8px 16px; }
+  background-position-x: 125px; }
 
 .dropdowns .section-container {
   padding: 34px 0;

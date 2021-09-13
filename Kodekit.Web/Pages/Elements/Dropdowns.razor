@@ -15,10 +15,10 @@
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
-            <aside>This element inherits direct styling from <a href="/inputs">Inputs & Textareas</a> as defaults.</aside>
+            <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
             <div class="section-container">
                 <label class="switch">
-                    <input type="checkbox" @bind=Model.OverwriteInherited>
+                    <input type="checkbox" @* bind=Model.OverwriteInherited *@>
                     <span class="slider"></span>
                 </label>
                 Overwrite inherited styling
