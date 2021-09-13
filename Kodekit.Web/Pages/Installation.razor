@@ -1,5 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page "/installation"
+@page "/{kitId}/installation"
 
 <div class="page installation">
     <div class="page__container">
@@ -17,7 +17,7 @@
             </p>
             <div class="steps">1. Add Script</div>
             <div class="instructions">
-                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.Id + "\">")" />
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.io/" + kitId + ".css\">")" />
                 <button @onclick="StepOneCopy">Copy</button>
                 <br />
                 <pre>
@@ -46,7 +46,7 @@
             using the theme script will auto-update, allowing you to make changes to your live project.
         </p>
         <div class="instructions">
-            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.azurewebsites.net/uikit/" + kit.Id + "\">")" />
+            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.io/" + kitId + ".css\">")" />
             <button @onclick="StepTwoCopy">Copy</button>
             <br />
             <pre>
@@ -57,20 +57,8 @@
 </div>
 
 @code {
-    public string currentKitId;
-    private Kit kit = new Kit();
+    [Parameter] public string kitId { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        //get current kit from local storage
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        currentKitId = result;
-
-        if (currentKitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-    }
     private async Task StepOneCopy()
     {
         //copy to clipboard step one link

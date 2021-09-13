@@ -1,6 +1,5 @@
 ﻿@layout SimplifiedLayout
-@page "/my-kits"
-@attribute [Authorize]
+@page "/"
 
 <div class="dashboard page">
     <div class="page__container">
@@ -54,10 +53,8 @@
 
     private async Task CreateNew()
     {
-        Kit newKit = new Kit();
-        newKit.UserId = User.UserId;
-        newKit.Id = (await PublicApi().CreateKitAsync()).KitId;
-        Nav.NavigateTo($"/{newKit.Id}/typography/");
+        var kit = await PublicApi().CreateKitAsync();
+        Nav.NavigateTo($"/{kit.KitId}/introduction");
     }
 
     private void Sort(string filter)
