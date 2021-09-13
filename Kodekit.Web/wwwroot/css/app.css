@@ -813,6 +813,9 @@
         transform: translateX(12px);
         background-color: #A9ACB2; }
 
+.global-page input[type="checkbox"]:disabled + .slider {
+  opacity: 0.5; }
+
 .effects-page .preview-example {
   display: flex;
   flex-wrap: wrap;
@@ -1474,7 +1477,8 @@
       color: #787980;
       border: none;
       background: none;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      font-size: 14px; }
       .header .login-display .logout span {
         vertical-align: middle;
         font-size: 16px;
@@ -1500,12 +1504,12 @@
       background: #FFFFFF;
       border-radius: 4px;
       padding: 12px 20px;
-      width: 122px;
+      width: 150px;
       display: flex;
       flex-wrap: wrap;
       position: absolute;
       top: 55px;
-      right: -11px; }
+      right: 80px; }
   .header .mobile {
     display: none;
     cursor: pointer;
@@ -1597,8 +1601,23 @@
     .page-info .kit-select img {
       vertical-align: middle;
       margin-left: 2px; }
-  .page-info .actions img {
-    margin: 0 4px;
+  .page-info .actions svg {
+    fill: #A9ACB2;
+    border-radius: 100%;
+    height: 18px;
+    width: 18px;
+    vertical-align: bottom;
+    border: 1px solid #A9ACB2;
+    padding: 2px; }
+  .page-info .actions svg:hover {
+    fill: #0B5FFF;
+    -webkit-transition: .4s;
+    transition: .4s;
+    cursor: pointer; }
+  .page-info .actions #delete:hover {
+    fill: #F96464;
+    -webkit-transition: .4s;
+    transition: .4s;
     cursor: pointer; }
   .page-info .info {
     position: absolute;
