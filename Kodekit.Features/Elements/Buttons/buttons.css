@@ -13,7 +13,7 @@ button:hover
 
 button.secondary {
     background: white;
-    border: 1px solid var(--secondary-500);
+    border: var(--secondary-border-width, 1px) solid var(--secondary-500);
     color: var(--secondary-500);
 }
 button.secondary:hover
