@@ -52,14 +52,7 @@ namespace Kodekit.Features
 
         public Color? GetColor(ColorTypes colorType)
         {
-            var weight = colorType switch
-            {
-                ColorTypes.Lightest => 100,
-                ColorTypes.Darkest => 900,
-                _ => 500
-            };
-
-            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}-{weight}")?.Value;
+            return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}")?.Value;
         }
 
         internal void UpdateButtons(Button buttons)

@@ -21,26 +21,10 @@
     color: #0B5FFF;
     padding-bottom: 6px; }
   .page p {
-    max-width: 672px;
-    line-height: 160%;
-    font-size: 18px; }
-  .page h2 {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 120%;
-    color: #17171A;
-    margin: 0; }
-  .page h4 {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19.2px;
-    color: #3A3A40; }
+    max-width: 672px; }
   .page header {
     padding-bottom: 25px; }
-    .page header h2 {
-      font-weight: 700; }
     .page header p {
-      font-size: 18px;
       color: #3A3A40;
       padding-top: 12px; }
   .page .subheader {
@@ -135,56 +119,6 @@
     border-radius: 8px 8px 0px 0px;
     color: #17171A;
     font-family: 'Inter'; }
-    .page .preview-example h1 {
-      font-weight: 400;
-      font-size: 48px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .page .preview-example h2 {
-      font-weight: 400;
-      font-size: 39px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .page .preview-example h3 {
-      font-weight: 400;
-      font-size: 31px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .page .preview-example h4 {
-      font-weight: 400;
-      font-size: 25px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .page .preview-example h5 {
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .page .preview-example h6 {
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
-    .page .preview-example label {
-      font-size: 14px;
-      line-height: 180%;
-      color: #787980;
-      padding-bottom: 32px;
-      font-family: 'Inter', sans-serif; }
-    .page .preview-example p {
-      color: #17171A;
-      font-family: Roboto Mono;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 120%;
-      padding: 0;
-      margin: 0; }
     .page .preview-example--body p {
       width: 100%; }
     .page .preview-example--body .large {
@@ -2228,86 +2162,6 @@ template {
  */
 [hidden] {
   display: none; }
-
-.colors .preview-example .color-display {
-  width: 293px;
-  height: 142px;
-  border-radius: 4px;
-  margin: 6px 15px 0; }
-
-.colors .preview-example--grayscale .color-display {
-  width: 106px;
-  height: 102px;
-  margin: 20px 0 0 0;
-  border-radius: 0; }
-  .colors .preview-example--grayscale .color-display.first {
-    border-radius: 4px 0px 0px 4px;
-    margin: 20px 0 0 15px; }
-  .colors .preview-example--grayscale .color-display.last {
-    border-radius: 0px 4px 4px 0px;
-    margin: 20px 15px 0 0; }
-
-.page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .page .subtitle {
-  line-height: 120%;
-  margin: 0;
-  padding: 0;
-  font-weight: 400; }
-
-.page h1 {
-  font-size: 48px;
-  font-size: 3rem; }
-
-.page h2 {
-  font-size: 39px;
-  font-size: 2.43rem; }
-
-.page h3 {
-  font-size: 31px;
-  font-size: 1.93rem; }
-
-.page h4 {
-  font-size: 25px;
-  font-size: 1.56rem; }
-
-.page h5 {
-  font-size: 20px;
-  font-size: 1.25rem; }
-
-.page h6 {
-  font-size: 16px;
-  font-size: 1rem; }
-
-.page .subtitle {
-  font-size: 12px; }
-
-.page p {
-  line-height: 160%;
-  font-size: 16px;
-  color: #787980;
-  margin-bottom: 32px; }
-
-.page p.large {
-  font-size: 20px; }
-
-.page p.medium {
-  font-size: 17px; }
-
-.page p.small {
-  font-size: 14px; }
-
-.page strong {
-  font-weight: 700; }
-
-.page span.light {
-  font-weight: 300; }
-
-.page label {
-  font-size: 14px;
-  line-height: 180%;
-  color: #787980; }
-
-.page header .subtitle {
-  color: #0B5FFF; }
 
 .colors .preview-example .color-display {
   width: 293px;

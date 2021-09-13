@@ -22,7 +22,7 @@ namespace Kodekit.Features
         }
 
         [HttpGet("/{kitId}.css")]
-        public async Task<IActionResult> HandleAsync(string kitId)
+        public async Task<IActionResult> HandleAsync(string kitId, bool? preview)
         {
             var kit = await Kits.FindAsync(kitId);
             if (kit == null)

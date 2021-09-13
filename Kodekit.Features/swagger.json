@@ -384,6 +384,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "preview",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
