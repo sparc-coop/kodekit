@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/{kitId}/Introduction"
 
 <div class="page">
     <div class="page__container">
@@ -9,15 +9,15 @@
                 This is where you can build your very own system, and at the end export it to use in your projects.
             </p>
         </header>
-        <button @onclick="CreateKit">Get Started</button>
+        <button @onclick="Go">Get Started</button>
     </div>
 </div>
 
 @code {
+    [Parameter] public string kitId { get; set; }
 
-    async Task CreateKit()
+    void Go()
     {
-        var result = await PublicApi().CreateKitAsync();
-        Nav.NavigateTo($"/{result.KitId}/Typography");
+        Nav.NavigateTo($"/{kitId}/Typography");
     }
 }

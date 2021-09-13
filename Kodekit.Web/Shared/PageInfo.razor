@@ -147,6 +147,8 @@
 }
 
 @code {
+    [Parameter] public string kitId { get; set; }
+    
     bool ShowDropdown = false;
     bool ShowPage = true;
     string ShowKitOptions = "";
@@ -162,37 +164,21 @@
 
     protected override async Task OnInitializedAsync()
     {
-        string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
-        if(string.IsNullOrEmpty(currentKitId))
-        {
-            currentKitId = (await PublicApi().CreateKitAsync()).KitId;
-        } else
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
+        kit = await PublicApi().GetKitAsync(kitId);
 
         ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
             : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
 
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        if (user.Identity.IsAuthenticated)
-        {
-            Kits = await Api.GetRelatedKitsAsync(currentKitId);
-            UserKits = await Api.GetUserKitsAsync();
-        }
+        await LoginSucceeded();
     }
 
     private async Task LoginSucceeded()
     {
-        //base.OnParametersSet();
-        Console.WriteLine("test");
-        string currentKitId = await localStorage.GetItemAsync<string>("kodekitId");
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
         {
-            //Kits = await Api.GetRelatedKitsAsync(currentKitId);
+            Kits = await Api.GetRelatedKitsAsync(kitId);
             UserKits = await Api.GetUserKitsAsync();
         }
     }

@@ -8,13 +8,26 @@
 }
 
 
-<NavMenu />
+<NavMenu kitId="@kitId" />
 
 <div class="main">
-    <PageInfo />
+    <PageInfo kitId="@kitId" />
     @Body
 </div>
 
 @code {
+    string kitId;
+    
     string ImportUrl;
+
+    protected override void OnParametersSet()
+    {
+        object result = null;
+        if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out result) == true)
+        {
+            kitId = result?.ToString();
+        }
+    }
+
+
 }
