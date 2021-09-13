@@ -210,11 +210,8 @@
 
     private async Task CopyKit()
     {
-        Kit newkit = kit;
-        newkit.Id = Guid.NewGuid().ToString();
-        newkit.ParentId = kit.ParentId;
-        newkit.Id = (await PublicApi().CreateKitAsync()).KitId;
-        Nav.NavigateTo($"/{newkit.Id}/typography/");
+        var newKit = await PublicApi().CopyKitAsync(kit.Id);
+        Nav.NavigateTo($"/{newKit.KitId}/introduction/");
     }
 
     private void DownloadKit()
