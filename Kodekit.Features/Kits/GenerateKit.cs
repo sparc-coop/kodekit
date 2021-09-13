@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kodekit.Features.Elements;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Sparc.Core;
 
@@ -12,7 +13,13 @@ namespace Kodekit.Features
     public class GenerateKit : Controller
     {
         public IRepository<Kit> Kits { get; }
-        public GenerateKit(IRepository<Kit> kit) => Kits = kit;
+        public string RootPath { get; }
+
+        public GenerateKit(IRepository<Kit> kits, IWebHostEnvironment env)
+        {
+            Kits = kits;
+            RootPath = env.ContentRootPath;
+        }
 
         [HttpGet("/{kitId}.css")]
         public async Task<IActionResult> HandleAsync(string kitId)
@@ -21,6 +28,23 @@ namespace Kodekit.Features
             if (kit == null)
                 throw new Exception("Kit not found!");
 
+            var css = new StringBuilder();
+            css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
+            css.AppendLine(CompileVariables(kit));
+            css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
+            css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
+            css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
+
+            return new ContentResult
+            {
+                ContentType = "text/css",
+                Content = css.ToString(),
+                StatusCode = 200
+            };
+        }
+
+        private string CompileVariables(Kit? kit)
+        {
             var variables = new Dictionary<string, Dictionary<string, string>>();
 
             Compile(variables, ":root", kit.Colors);
@@ -32,13 +56,7 @@ namespace Kodekit.Features
             Compile(variables, "select", kit.Dropdowns);
 
             var css = Write(variables);
-
-            return new ContentResult
-            {
-                ContentType = "text/css",
-                Content = css,
-                StatusCode = 200
-            };
+            return css;
         }
 
         private void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, ISerializable element)
@@ -86,5 +104,7 @@ namespace Kodekit.Features
 
             return css.ToString();
         }
+
+        private string GetLocalFile(string filename) => System.IO.File.ReadAllText(System.IO.Path.Combine(RootPath, filename));
     }
 }

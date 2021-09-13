@@ -146,6 +146,7 @@
     <DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@kit" SelectedKit="@SelectedVersion"/>
 }
 
+@inject IConfiguration Config
 @code {
     [Parameter] public string kitId { get; set; }
     
@@ -218,7 +219,8 @@
 
     private void DownloadKit()
     {
-
+        var apiUrl = Config["ApiUrl"];
+        Nav.NavigateTo($"{apiUrl}/{kitId}.css");
     }
 
     private async Task Publish(string kitId)

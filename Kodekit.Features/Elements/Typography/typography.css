@@ -1,0 +1,40 @@
+﻿h1, h2, h3, h4, h5, h6, .subtitle {
+    line-height: var(--line-height, 120%);
+}
+
+h1 {
+    font-size: var(--type-900);
+}
+
+h2 {
+    font-size: var(--type-800);
+}
+
+h3 {
+    font-size: var(--type-700);
+}
+
+h4 {
+    font-size: var(--type-600);
+}
+
+h5 {
+    font-size: var(--type-500);
+}
+
+h6 {
+    font-size: var(--type-400);
+}
+
+.subtitle {
+    font-size: var(--type-300);
+}
+
+strong {
+    font-weight: 700;
+}
+
+span.light {
+    font-weight: 300;
+}
+

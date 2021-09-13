@@ -1,0 +1,28 @@
+﻿button {
+    background: var(--primary-500);
+    border-radius: var(--border-radius, 4px);
+    color: var(--border-color, transparent);
+    padding: var(--padding-vertical) var(--padding-horizontal);
+    cursor: pointer;
+}
+
+button:hover
+{
+    background: var(--primary-300);
+}
+
+button.secondary {
+    background: white;
+    border: 1px solid var(--secondary-500);
+    color: var(--secondary-500);
+}
+button.secondary:hover
+{
+    border-color: var(--primary-300);
+    color: var(--primary-300);
+}
+
+button > :first-child {
+    margin-right: 14px;
+}
+
