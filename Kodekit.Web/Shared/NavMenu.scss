@@ -9,6 +9,7 @@
     height: 100vh;
     bottom: 0;
     z-index: 10;
+    overflow-y: auto;
 
     @media screen and (max-width: 780px) {
         transform: translateX(-256px);
