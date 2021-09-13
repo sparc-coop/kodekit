@@ -1,4 +1,8 @@
-﻿.bg {
+﻿.sign-in {
+    font-family: 'Inter', sans-serif;
+}
+
+.bg {
     background: #F5F7FA;
     height: 100%;
     width: 100%;
