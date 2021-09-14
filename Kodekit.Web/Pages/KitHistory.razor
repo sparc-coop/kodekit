@@ -1,4 +1,4 @@
-﻿@page "/kits/{kitId}"
+﻿@page "/{kitId}/kits"
 
 <div class="page">
     <div class="page__container">
@@ -56,8 +56,7 @@
 
     private async Task Publish()
     {
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        Kit kit = await PublicApi().GetKitAsync(result);
+        Kit kit = await PublicApi().GetKitAsync(kitId);
 
         if (User != null)
         {
@@ -69,7 +68,7 @@
 
     private void GoTo()
     {
-        Nav.NavigateTo("/Typography/" + kitId);
+        Nav.NavigateTo($"{kitId}/introduction/");
     }
 
     private void ShowDeleteModal()

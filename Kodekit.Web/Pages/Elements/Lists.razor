@@ -96,10 +96,7 @@
 &lt;/ul&gt;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="layout" />
                 </EditForm>
             }
         </div>
@@ -117,6 +114,5 @@
 
     private async Task Submit()
     {
-        Nav.NavigateTo("/layout/" + kit.KitId);
     }
 }

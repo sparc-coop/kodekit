@@ -9,13 +9,11 @@ namespace Kodekit.Features
         {
             Id = string.Empty;
             UserId = Id;
-            //Kits = new List<Kit>();
         }
 
         public string UserId { get; set; }
-        public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public ICollection<Kit> Kits { get; set; }
+        public string? Email { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
     }
 }

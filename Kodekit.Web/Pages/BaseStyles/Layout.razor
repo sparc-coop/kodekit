@@ -52,10 +52,7 @@ $large-mobile: 480px;
 $mobile: 320px;
                         </code>
                     </pre>
-                    <button @onclick="Save">
-                        Save
-                        <img src="/images/eyecon.svg" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="box-shadow" />
                 </EditForm>
             }
         </div>
@@ -71,9 +68,8 @@ $mobile: 320px;
 
     }
 
-    private async Task Save()
+    private async Task Submit()
     {
         await PublicApi().UpdateKitAsync(kit);
-        Nav.NavigateTo("/box-shadow/" + kit.KitId);
     }
 }

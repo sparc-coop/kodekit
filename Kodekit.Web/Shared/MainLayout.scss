@@ -6,4 +6,8 @@
     @media screen and (max-width: 780px) {
         margin-left: 0;
     }
+
+    &.no-sidebar {
+        margin-left: 0;
+    }
 }

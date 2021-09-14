@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Kodekit.Features
 {
-    public class GetRelatedKits : Feature<string, List<Kit>>
+    public class GetRelatedKits : PublicFeature<string, List<Kit>>
     {
         public GetRelatedKits(IRepository<Kit> kits)
         {
@@ -18,7 +18,7 @@ namespace Kodekit.Features
         public override async Task<List<Kit>> ExecuteAsync(string kitId)
         {
             return await Kits.Query.Where(x => x.UserId == User.Id() 
-                && (x.ParentId == kitId || x.KitId == kitId) 
+                && (x.ParentId == kitId || x.Id == kitId) 
                 && x.IsDeleted != true)
                 .OrderByDescending(x => x.DateCreated)
                 .ToListAsync();

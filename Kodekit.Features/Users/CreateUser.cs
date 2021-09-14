@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Kodekit.Features
 {
-    public class CreateUser : Feature<bool>
+    public class CreateUser : PublicFeature<bool>
     {
         public CreateUser(IRepository<User> users)
         {
@@ -26,15 +26,15 @@ namespace Kodekit.Features
                     User user = new User();
 
                     user.Id = User.Id();
-                    user.FirstName = claims.SingleOrDefault(x => x.Type == ClaimTypes.GivenName).Value;
-                    user.LastName = claims.SingleOrDefault(x => x.Type == ClaimTypes.Surname).Value;
-                    user.Email = claims.SingleOrDefault(x => x.Type == "emails").Value;
+                    user.FirstName = claims.Single(x => x.Type == ClaimTypes.GivenName).Value;
+                    user.LastName = claims.Single(x => x.Type == ClaimTypes.Surname).Value;
+                    user.Email = claims.Single(x => x.Type == "emails").Value;
                     await Users.AddAsync(user);
 
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 //return false;
             }

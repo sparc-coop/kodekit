@@ -1,6 +1,5 @@
 ﻿@layout SimplifiedLayout
-@page "/my-kits"
-@attribute [Authorize]
+@page "/"
 
 <div class="dashboard page">
     <div class="page__container">
@@ -10,14 +9,27 @@
                 <select class="sort">
                     <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
                 </select>
-                <button @onclick="@(CreateNew)">
-                    New Styleguide
-                    <img src="/images/add-icon.svg" />
-                </button>
+                <AuthorizeView>
+                    <Authorized>
+                        <button @onclick="@(CreateNew)">
+                            New Styleguide
+                            <img src="/images/add-icon.svg" />
+                        </button>
+                    </Authorized>
+                    <NotAuthorized>
+                        @if (Kits != null && !Kits.Any())
+                        {
+                            <button @onclick="@(CreateNew)">
+                                New Styleguide
+                                <img src="/images/add-icon.svg" />
+                            </button>
+                        }
+                    </NotAuthorized>
+                </AuthorizeView>
             </div>
         </div>
 
-        @if (Kits == null)
+        @if (Kits == null || !Kits.Any())
         {
             <p>Create a new kit to get started!</p>
         }
@@ -26,13 +38,14 @@
             <div class="dashboard-container">
                 @foreach (var kit in Kits)
                 {
-                    <a href="kits/@kit.KitId" class="dashboard-card">
-                        <img src="/images/dash-icon.svg" alt="Dashboard Icon"/>
+                    <a href="/@kit.Id/introduction" class="dashboard-card">
+                        <img src="/images/dash-icon.svg" alt="Dashboard Icon" />
                         <div>
                             <div class="title">Project Name</div>
-                            <div class="date">Last Updated:
-                             @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy") 
-                                : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
+                            <div class="date">
+                                Last Updated:
+                                @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy")
+                        : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
                             </div>
                         </div>
                     </a>
@@ -48,21 +61,32 @@
 
     protected override async Task OnInitializedAsync()
     {
-        User = await Api.GetUserAsync();
-        Kits = await Api.GetUserKitsAsync();
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+            Kits = await Api.GetUserKitsAsync();
+        }
+        else
+        {
+            Kits = new List<Kit>();
+            string result = await localStorage.GetItemAsync<string>("kodekitId");
+            if (result != null)
+                Kits.Add(await PublicApi().GetKitAsync(result));
+        }
     }
 
     private async Task CreateNew()
     {
-        Kit newKit = new Kit();
-        newKit.UserId = User.UserId;
-        newKit = await PublicApi().CreateKitAsync(newKit);
-        Nav.NavigateTo("/typography/" + newKit.KitId);
+        var kit = await PublicApi().CreateKitAsync();
+        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+        Nav.NavigateTo($"/{kit.KitId}/introduction");
     }
 
     private void Sort(string filter)
     {
-        if(filter == "date-mod")
+        if (filter == "date-mod")
         {
             Kits = Kits.OrderByDescending(x => x.ModifiedDate).ToList();
         }

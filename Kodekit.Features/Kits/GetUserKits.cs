@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Cosmos.Linq;
-using Sparc.Core;
+﻿using Sparc.Core;
 using Sparc.Features;
 using System.Collections.Generic;
 using System.Linq;
