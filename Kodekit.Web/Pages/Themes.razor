@@ -1,4 +1,4 @@
-﻿@page "/themes"
+﻿@page "/{kitId}/themes"
 
 <div class="page theme-page">
     <div class="page__container">
@@ -28,5 +28,10 @@
 
 
 @code {
+    [Parameter] public string kitId { get; set; }
 
+    void Go()
+    {
+        Nav.NavigateTo($"/{kitId}/Preview");
+    }
 }
