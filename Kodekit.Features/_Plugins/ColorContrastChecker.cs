@@ -101,11 +101,11 @@ namespace Kodekit.Features
 
     public class ContrastColorResponse
     {
-        public string Ratio { get; set; }
-        public string AA { get; set; }
-        public string AALarge { get; set; }
-        public string AAALarge { get; set; }
-        public string AAA { get; set; }
+        public string? Ratio { get; set; }
+        public string? AA { get; set; }
+        public string? AALarge { get; set; }
+        public string? AAALarge { get; set; }
+        public string? AAA { get; set; }
     }
 
 }

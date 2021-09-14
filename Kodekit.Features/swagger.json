@@ -205,38 +205,26 @@
         }
       }
     },
-    "/api/CreateKit": {
+    "/api/CopyKit": {
       "post": {
         "tags": [
-          "CreateKit"
+          "CopyKit"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
+                "type": "string"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
+                "type": "string"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
+                "type": "string"
               }
             }
           }
@@ -247,17 +235,46 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kit"
+                  "$ref": "#/components/schemas/CreateKitResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kit"
+                  "$ref": "#/components/schemas/CreateKitResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Kit"
+                  "$ref": "#/components/schemas/CreateKitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CreateKit": {
+      "post": {
+        "tags": [
+          "CreateKit"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateKitResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateKitResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateKitResponse"
                 }
               }
             }
@@ -347,6 +364,275 @@
               "text/json": {
                 "schema": {
                   "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{kitId}.css": {
+      "get": {
+        "tags": [
+          "GenerateKit"
+        ],
+        "parameters": [
+          {
+            "name": "kitId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "preview",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/GetButtons": {
+      "post": {
+        "tags": [
+          "GetButtons"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateButtonsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateButtonsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateButtonsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetColors": {
+      "post": {
+        "tags": [
+          "GetColors"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ColorsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ColorsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ColorsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetDropdowns": {
+      "post": {
+        "tags": [
+          "GetDropdowns"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDropdownsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDropdownsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateDropdownsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetGoogleFonts": {
+      "post": {
+        "tags": [
+          "GetGoogleFonts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FontListResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FontListResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FontListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetInputs": {
+      "post": {
+        "tags": [
+          "GetInputs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateInputsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateInputsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateInputsModel"
                 }
               }
             }
@@ -459,6 +745,198 @@
         }
       }
     },
+    "/api/GetSelectors": {
+      "post": {
+        "tags": [
+          "GetSelectors"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSelectorsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSelectorsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSelectorsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetSettings": {
+      "post": {
+        "tags": [
+          "GetSettings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSettingsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSettingsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateSettingsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetShadow": {
+      "post": {
+        "tags": [
+          "GetShadow"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShadowsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/GetTypography": {
+      "post": {
+        "tags": [
+          "GetTypography"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTypographyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTypographyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTypographyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetUser": {
       "post": {
         "tags": [
@@ -526,47 +1004,28 @@
         }
       }
     },
-    "/api/GoogleFonts": {
+    "/api/GetWeights": {
       "post": {
         "tags": [
-          "GoogleFonts"
+          "GetWeights"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FontListResponse"
+                  "$ref": "#/components/schemas/GetWeightsModel"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FontListResponse"
+                  "$ref": "#/components/schemas/GetWeightsModel"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FontListResponse"
+                  "$ref": "#/components/schemas/GetWeightsModel"
                 }
               }
             }
@@ -634,6 +1093,246 @@
         }
       }
     },
+    "/api/UpdateButtons": {
+      "post": {
+        "tags": [
+          "UpdateButtons"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateButtonsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateButtonsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateButtonsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateColors": {
+      "post": {
+        "tags": [
+          "UpdateColors"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ColorsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ColorsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ColorsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateDropdowns": {
+      "post": {
+        "tags": [
+          "UpdateDropdowns"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateDropdownsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateDropdownsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateDropdownsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateInputs": {
+      "post": {
+        "tags": [
+          "UpdateInputs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateInputsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateInputsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateInputsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/UpdateKit": {
       "post": {
         "tags": [
@@ -664,6 +1363,246 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/Kit"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateSelectors": {
+      "post": {
+        "tags": [
+          "UpdateSelectors"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSelectorsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSelectorsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSelectorsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateSettings": {
+      "post": {
+        "tags": [
+          "UpdateSettings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSettingsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSettingsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateSettingsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateShadow": {
+      "post": {
+        "tags": [
+          "UpdateShadow"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ShadowsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ShadowsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ShadowsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateTypography": {
+      "post": {
+        "tags": [
+          "UpdateTypography"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateTypographyModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateTypographyModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateTypographyModel"
                   }
                 ]
               }
@@ -786,6 +1725,160 @@
   },
   "components": {
     "schemas": {
+      "Border": {
+        "type": "object",
+        "properties": {
+          "width": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "radius": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "color": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          },
+          "scope": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Button": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
+              }
+            ],
+            "nullable": true
+          },
+          "padding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Padding"
+              }
+            ],
+            "nullable": true
+          },
+          "border": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Border"
+              }
+            ],
+            "nullable": true
+          },
+          "iconWidth": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "iconHeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "removeSecondaryBorder": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Color": {
+        "type": "object",
+        "properties": {
+          "hexValue": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ColorsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "primary": {
+            "type": "string",
+            "nullable": true
+          },
+          "secondary": {
+            "type": "string",
+            "nullable": true
+          },
+          "tertiary": {
+            "type": "string",
+            "nullable": true
+          },
+          "darkest": {
+            "type": "string",
+            "nullable": true
+          },
+          "lightest": {
+            "type": "string",
+            "nullable": true
+          },
+          "error": {
+            "type": "string",
+            "nullable": true
+          },
+          "warning": {
+            "type": "string",
+            "nullable": true
+          },
+          "success": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ColorVariable": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ContrastColorResponse": {
         "type": "object",
         "properties": {
@@ -812,6 +1905,49 @@
         },
         "additionalProperties": false
       },
+      "CreateKitResponse": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Dropdown": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
+              }
+            ],
+            "nullable": true
+          },
+          "padding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Padding"
+              }
+            ],
+            "nullable": true
+          },
+          "border": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Border"
+              }
+            ],
+            "nullable": true
+          },
+          "overwriteInherited": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Font": {
         "type": "object",
         "properties": {
@@ -819,14 +1955,26 @@
             "type": "string",
             "nullable": true
           },
-          "category": {
+          "familyUrl": {
             "type": "string",
             "nullable": true
           },
-          "files": {
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/FontFile"
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "lineHeight": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
               }
             ],
             "nullable": true
@@ -850,8 +1998,102 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Font"
+              "$ref": "#/components/schemas/GoogleFont"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTypographyResponse": {
+        "type": "object",
+        "properties": {
+          "heading": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
+            "nullable": true
+          },
+          "paragraph": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
+            "nullable": true
+          },
+          "typeScales": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetWeightsModel": {
+        "type": "object",
+        "properties": {
+          "weights": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GoogleFont": {
+        "type": "object",
+        "properties": {
+          "family": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "files": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FontFile"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Input": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
+              }
+            ],
+            "nullable": true
+          },
+          "padding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Padding"
+              }
+            ],
+            "nullable": true
+          },
+          "border": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Border"
+              }
+            ],
             "nullable": true
           }
         },
@@ -861,10 +2103,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "kitId": {
             "type": "string",
             "nullable": true
           },
@@ -888,72 +2126,66 @@
             "type": "string",
             "nullable": true
           },
-          "primaryColor": {
-            "type": "string",
+          "colors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ColorVariable"
+            },
             "nullable": true
           },
-          "secondaryColor": {
-            "type": "string",
+          "shadows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShadowVariable"
+            },
             "nullable": true
           },
-          "tertiaryColor": {
-            "type": "string",
+          "headings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Typography"
+              }
+            ],
             "nullable": true
           },
-          "darkColor": {
-            "type": "string",
+          "paragraphs": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Typography"
+              }
+            ],
             "nullable": true
           },
-          "lightColor": {
-            "type": "string",
+          "buttons": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Button"
+              }
+            ],
             "nullable": true
           },
-          "errorColor": {
-            "type": "string",
+          "inputs": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Input"
+              }
+            ],
             "nullable": true
           },
-          "warningColor": {
-            "type": "string",
+          "selectors": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Selector"
+              }
+            ],
             "nullable": true
           },
-          "successColor": {
-            "type": "string",
-            "nullable": true
-          },
-          "typeScale": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerFont": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerFontSize": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerTypeScale": {
-            "type": "string",
-            "nullable": true
-          },
-          "headerLineHeight": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyFont": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyFontSize": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyTypeScale": {
-            "type": "string",
-            "nullable": true
-          },
-          "bodyLineHeight": {
-            "type": "string",
+          "settings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Settings"
+              }
+            ],
             "nullable": true
           },
           "dateCreated": {
@@ -976,6 +2208,455 @@
           },
           "isDeleted": {
             "type": "boolean",
+            "nullable": true
+          },
+          "dropdowns": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Dropdown"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Padding": {
+        "type": "object",
+        "properties": {
+          "vertical": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          },
+          "horizontal": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Size"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Selector": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
+              }
+            ],
+            "nullable": true
+          },
+          "activeColor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Settings": {
+        "type": "object",
+        "properties": {
+          "resetEverything": {
+            "type": "boolean"
+          },
+          "resetHeadings": {
+            "type": "boolean"
+          },
+          "resetParagraphs": {
+            "type": "boolean"
+          },
+          "resetLists": {
+            "type": "boolean"
+          },
+          "resetCheckboxes": {
+            "type": "boolean"
+          },
+          "resetAnchors": {
+            "type": "boolean"
+          },
+          "allKodekitElements": {
+            "type": "boolean"
+          },
+          "kodekitTypography": {
+            "type": "boolean"
+          },
+          "kodekitColors": {
+            "type": "boolean"
+          },
+          "kodekitIcons": {
+            "type": "boolean"
+          },
+          "kodekitLayout": {
+            "type": "boolean"
+          },
+          "kodekitButtons": {
+            "type": "boolean"
+          },
+          "kodekitInputs": {
+            "type": "boolean"
+          },
+          "kodekitCheckboxes": {
+            "type": "boolean"
+          },
+          "kodekitDropdowns": {
+            "type": "boolean"
+          },
+          "kodekitAnchors": {
+            "type": "boolean"
+          },
+          "kodekitImages": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Shadow": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "format": "double"
+          },
+          "y": {
+            "type": "number",
+            "format": "double"
+          },
+          "blur": {
+            "type": "number",
+            "format": "double"
+          },
+          "spread": {
+            "type": "number",
+            "format": "double"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "opacity": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShadowsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "small": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Shadow"
+              }
+            ],
+            "nullable": true
+          },
+          "xLarge": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Shadow"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ShadowVariable": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Shadow"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Size": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "double"
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
+          },
+          "placeholder": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Typography": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
+              }
+            ],
+            "nullable": true
+          },
+          "typeScale": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TypographyModel": {
+        "type": "object",
+        "properties": {
+          "fontFamily": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "typeScale": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "lineHeight": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateButtonsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "verticalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "horizontalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "cornerRadius": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "borderWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "iconWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "iconHeight": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "removeSecondaryBorder": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateDropdownsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "verticalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "horizontalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "cornerRadius": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "borderWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "overwriteInherited": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateInputsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "verticalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "horizontalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "cornerRadius": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "borderWidth": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSelectorsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "activeColor": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSettingsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "settings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Settings"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTypographyModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "headings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
+            "nullable": true
+          },
+          "paragraphs": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TypographyModel"
+              }
+            ],
             "nullable": true
           }
         },
@@ -1002,13 +2683,6 @@
           },
           "lastName": {
             "type": "string",
-            "nullable": true
-          },
-          "kits": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Kit"
-            },
             "nullable": true
           }
         },

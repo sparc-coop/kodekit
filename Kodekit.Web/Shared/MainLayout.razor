@@ -1,8 +1,41 @@
 ﻿@inherits LayoutComponentBase
 
-<NavMenu />
+@if (ImportUrl != null)
+{
+    <style type="text/css">
+        @@import url('@ImportUrl');
+    </style>
+}
+
+
+<NavMenu kitId="@kitId" />
 
 <div class="main">
-    <PageInfo />
+    <PageInfo kitId="@kitId" />
     @Body
 </div>
+
+@inject IConfiguration Config
+@code {
+    string kitId;
+    
+    string ImportUrl;
+    int version;
+
+    protected override void OnParametersSet()
+    {
+        object result = null;
+        if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out result) == true)
+        {
+            kitId = result?.ToString();
+            ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?v={version}";
+            version++;
+        }
+        else
+        {
+            ImportUrl = null;
+        }
+    }
+
+
+}

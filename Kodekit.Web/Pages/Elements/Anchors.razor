@@ -1,6 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/anchors"
-@page  "/anchors/{kitId}"
+@page  "/{kitId}/anchors"
 
 <div class="anchors page">
     <div class="page__container">
@@ -76,10 +75,7 @@
 &lt;a href="#"&gt;Link&lt;/a&gt;
                         </code>
                     </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="lists" />
                 </EditForm>
             }
         </div>
@@ -87,9 +83,8 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
+    private Kit kit;
     [Parameter] public string kitId { get; set; }
-    string currentKitId;
     string defaultColor;
     string hoverColor;
     string visitedColor;
@@ -97,32 +92,16 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await GetKit();
+        kit = await PublicApi().GetKitAsync(kitId);
         defaultColor = "#17171A";
         hoverColor = "#0B5FFF";
         visitedColor = "#7FABFF";
         activeColor = "#00BFB2";
     }
 
-    private async Task GetKit()
-    {
-        //get from local storage
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        currentKitId = result;
-
-        if (kitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-        else if (currentKitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-    }
-
+    
     private async Task Submit()
     {
         await PublicApi().UpdateKitAsync(kit);
-        Nav.NavigateTo("/lists/" + kit.KitId);
     }
 }

@@ -5,16 +5,23 @@ using Sparc.Features;
 
 namespace Kodekit.Features
 {
-    public class CreateKit : PublicFeature<Kit, Kit>
+    public record CreateKitResponse(string KitId);
+    public class CreateKit : PublicFeature<CreateKitResponse>
     {
         public IRepository<Kit> Kit { get; }
         public CreateKit(IRepository<Kit> kit) => Kit = kit;
 
-        public override async Task<Kit> ExecuteAsync(Kit kit)
+        public override async Task<CreateKitResponse> ExecuteAsync()
         {
-            kit.DateCreated = DateTime.Now;
+            var kit = new Kit
+            {
+                DateCreated = DateTime.Now,
+                UserId = User.Id()
+            };
+
             await Kit.AddAsync(kit);
-            return kit;
+            
+            return new(kit.Id);
         }
     }
 }

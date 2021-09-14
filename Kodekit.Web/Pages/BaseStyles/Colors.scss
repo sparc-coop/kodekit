@@ -91,33 +91,49 @@
         width: 100%;
 
         label {
-            padding: 8px 15px;
+            padding: 0;
+            margin-bottom: 8px;
+        }
+
+        &--colors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            padding: 24px 32px;
         }
 
         .color-display {
-            width: 293px;
+            width: auto;
             height: 142px;
-            border-radius: 4px;
-            margin: 6px 15px 0;
+            border-radius: 4px 4px 0 0;
+            margin: 6px 0 0;
+        }
+
+        .subcolor-display {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            height: 28px;
         }
 
         &--grayscale {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            padding: 24px 32px;
 
             .color-display {
-                width: 106px;
+                width: auto;
                 height: 102px;
                 margin: 20px 0 0 0;
                 border-radius: 0;
+            }
 
-                &.first {
-                    border-radius: 4px 0px 0px 4px;
-                    margin: 20px 0 0 15px;
-                }
 
-                &.last {
-                    border-radius: 0px 4px 4px 0px;
-                    margin: 20px 15px 0 0;
-                }
+            > div:first-child .color-display {
+                border-radius: 4px 0px 0px 4px;
+            }
+
+            > div:last-child .color-display {
+                border-radius: 0px 4px 4px 0px;
             }
         }
     }

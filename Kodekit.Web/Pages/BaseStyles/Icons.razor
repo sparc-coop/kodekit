@@ -1,6 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/icons"
-@page  "/icons/{kitId}"
+@page  "/{kitId}/icons"
 
 <style type="text/css" scoped>
       @@import url('@icon.Url');
@@ -58,10 +57,7 @@
 &lt;!-- FontAwesome --&gt; &lt;i class="fas fa-home"&gt;&lt;/i&gt;
                     </code>
                 </pre>
-            <button @onclick="Submit">
-                Save & Continue
-                <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-            </button>
+            <SaveAndContinue OnSubmit=Submit NextPage="buttons" />
         </EditForm>
             }
         </div>
@@ -69,15 +65,14 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
+    Kit kit;
     [Parameter] public string kitId { get; set; }
-    string currentKitId;
     string importUrl = "";
     IconLibrary icon = new IconLibrary();
 
     protected override async Task OnInitializedAsync()
     {
-        await GetKit();
+        kit = await PublicApi().GetKitAsync(kitId);
 
         //icon.Name = "Material";
 
@@ -85,27 +80,10 @@
         //icon.Markup = "<span class='material-icons'>home</span>";
         //icon.Type = "Solid";
     }
-
-    private async Task GetKit()
-    {
-        //get from local storage
-        string result = await localStorage.GetItemAsync<string>("kodekitId");
-        currentKitId = result;
-
-        if (kitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-        else if (currentKitId != null)
-        {
-            kit = await PublicApi().GetKitAsync(currentKitId);
-        }
-    }
-
+    
     private async Task Submit()
     {
         await PublicApi().UpdateKitAsync(kit);
-        Nav.NavigateTo("/buttons/" + kit.KitId);
     }
 
     async Task SelectIcons(ChangeEventArgs e)

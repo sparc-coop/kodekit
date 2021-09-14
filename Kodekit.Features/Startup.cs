@@ -29,6 +29,7 @@ namespace Kodekit.Features
             services.AddRazorPages();
             services.Sparcify<Startup>();
             services.AddCosmos<KodekitContext>(Configuration["ConnectionStrings:CosmosDb"], "kodekit-dev");
+            //services.BuildServiceProvider().GetRequiredService<KodekitContext>().Database.EnsureCreated();
             services.AddAzureStorage(Configuration["BlobStorage:ConnectionString"]);
             services.AddAzureADB2CAuthentication(Configuration);
             services.AddBlazoredLocalStorage();           

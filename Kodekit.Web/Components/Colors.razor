@@ -1,0 +1,40 @@
+﻿    @if (Model != null)
+{
+    <select class="medium" @bind=Value>
+        @foreach (var color in Model)
+        {
+            <option value="@color.Key">
+                @color.Value
+            </option>
+        }
+    </select>
+}
+
+@code {
+    IDictionary<string, string> Model;
+    [Parameter] public string KitId { get; set; }
+    private string _value;
+    [Parameter] public string Value
+    {
+        get => _value;
+        set
+        {
+            if (_value == value ) return;
+            _value = value;
+            ValueChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var colors = await PublicApi().GetColorsAsync(KitId);
+
+        Model = new Dictionary<string, string>
+    {
+        { colors.Primary, "Primary (500)" },
+        { colors.Secondary, "Secondary (500)" },
+        { colors.Tertiary, "Tertiary (500)" },
+    };
+    }
+}

@@ -1,6 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/inputs"
-@page "/inputs/{kitId}"
+@page "/{kitId}/inputs"
 
 <div class="inputs page">
     <div class="page__container">
@@ -16,41 +15,36 @@
             <p class="subheader">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
             </p>
-            @if (kit != null)
+            @if (Model != null)
             {
-                <EditForm Model="@kit">
+                <EditForm Model="@Model">
                     <div class="section">
                         <div>
                             <label>
                                 Input Font Size
-                                <input placeholder="16px" />
+                                <InputNumber @bind-Value="Model.FontSize" />
                             </label>
                             <label>
                                 Input Font Weight
-                                <select>
-                                    <option>Light (300)</option>
-                                    <option selected>Regular (400)</option>
-                                    <option>Medium (500)</option>
-                                    <option>Bold (700)</option>
-                                </select>
+                                <FontWeights @bind-Value="Model.FontWeight" />
                             </label>
                         </div>
                         <div>
                             <label>
                                 Vertical Padding
-                                <input placeholder="10px" />
+                                <InputNumber @bind-Value="Model.VerticalPadding" />
                             </label>
                             <label>
                                 Horizontal Padding
-                                <InputText @bind-Value="kit.BodyFontSize" />
+                                <InputNumber @bind-Value="Model.HorizontalPadding" />
                             </label>
                             <label>
                                 Corner Radius
-                                <InputText @bind-Value="kit.BodyFontSize" />
+                                <InputNumber @bind-Value="Model.CornerRadius" />
                             </label>
                             <label>
                                 Border Width
-                                <InputText @bind-Value="kit.BodyLineHeight" />
+                                <InputNumber @bind-Value="Model.BorderWidth" />
                             </label>
                         </div>
                     </div>
@@ -85,10 +79,10 @@
                             <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
-                        <label class="selected icon-space">
+                        <label class="icon-space">
                             Selected
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="username" />
+                            <input class="selected" placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
                         <label class="icon-space">
@@ -97,10 +91,10 @@
                             <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
-                        <label class="error icon-space">
+                        <label class="icon-space">
                             Error
                             <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
-                            <input value="username" />
+                            <input class="invalid" value="username" />
                             <span>Username is taken.</span>
                         </label>
                         <label class="disabled icon-space">
@@ -119,10 +113,7 @@
 &lt;/label&gt;
                 </code>
             </pre>
-                    <button @onclick="Submit">
-                        Save & Continue
-                        <img src="/images/eyecon.svg" alt="Kodekit Eye Logo" />
-                    </button>
+                    <SaveAndContinue OnSubmit=Submit NextPage="selectors" /> 
                 </EditForm>
             }
         </div>
@@ -130,19 +121,16 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
     [Parameter] public string kitId { get; set; }
+    UpdateInputsModel Model;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-
+        Model = await PublicApi().GetInputsAsync(kitId);
     }
 
     private async Task Submit()
     {
-        //string newCss = new CreateCss().Execute(kit);
-
-        //kit.Url = await new StorageContext().UploadString(newCss, kit.GUID.ToString() + ".css");
-        //SaveColors();
+        await PublicApi().UpdateInputsAsync(Model);
     }
 }

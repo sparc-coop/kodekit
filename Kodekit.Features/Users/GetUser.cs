@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features
 {
-    public class GetUser : Feature<User>
+    public class GetUser : PublicFeature<User>
     {
         public GetUser(IRepository<User> users)
         {
@@ -15,15 +15,18 @@ namespace Kodekit.Features
 
         public IRepository<User> Users { get; }
 
-        public override async Task<User> ExecuteAsync()
+        public override Task<User> ExecuteAsync()
         {
             var claims = User.Claims;
-            User user = new User();
-            user.Id = User.Id();
-            user.FirstName = claims.SingleOrDefault(x => x.Type == ClaimTypes.GivenName).Value;
-            user.LastName = claims.SingleOrDefault(x => x.Type == ClaimTypes.Surname).Value;
-            user.Email = claims.SingleOrDefault(x => x.Type == "emails").Value;
-            return user;
+            User user = new()
+            {
+                Id = User.Id(),
+                FirstName = claims.Single(x => x.Type == ClaimTypes.GivenName).Value,
+                LastName = claims.Single(x => x.Type == ClaimTypes.Surname).Value,
+                Email = claims.Single(x => x.Type == "emails").Value
+            };
+
+            return Task.FromResult(user);
         }
     }
 }

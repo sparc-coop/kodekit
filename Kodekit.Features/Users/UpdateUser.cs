@@ -5,7 +5,7 @@ using Sparc.Core;
 
 namespace Kodekit.Features
 {
-    public class UpdateUser : Feature<User, bool>
+    public class UpdateUser : PublicFeature<User, bool>
     {
         public UpdateUser(IRepository<User> users)
         {
@@ -21,7 +21,7 @@ namespace Kodekit.Features
                 await Users.UpdateAsync(user);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
