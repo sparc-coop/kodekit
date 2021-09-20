@@ -13,9 +13,7 @@
         <div class="content">
             <!-- Accessibility Checker -->
             <h3>Heading Settings</h3>
-            <p>
-                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
-            </p>
+
             @if (Model != null)
             {
                 <EditForm Model="@Model">
@@ -94,19 +92,19 @@
                         </div>
                     </div>
                     <pre>
-                    <code>
-            &lt;h1&gt;@(previewText)&lt;/h1&gt;
-            &lt;h2&gt;@(previewText)&lt;/h2&gt;
-            &lt;h3&gt;@(previewText)&lt;/h3&gt;
-            &lt;h4&gt;@(previewText)&lt;/h4&gt;
-            &lt;h5&gt;@(previewText)&lt;/h5&gt;
-            &lt;h6&gt;@(previewText)&lt;/h6&gt;
-            &lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
+        <code>
+&lt;h1&gt;@(previewText)&lt;/h1&gt;
+&lt;h2&gt;@(previewText)&lt;/h2&gt;
+&lt;h3&gt;@(previewText)&lt;/h3&gt;
+&lt;h4&gt;@(previewText)&lt;/h4&gt;
+&lt;h5&gt;@(previewText)&lt;/h5&gt;
+&lt;h6&gt;@(previewText)&lt;/h6&gt;
+&lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
 
-            &lt;!-- combine with other HTML elements --&gt;
-            &lt;h1&gt;@(previewText)&lt;/h1&gt;
-            &lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
-                </code>
+&lt;!-- combine with other HTML elements --&gt;
+&lt;h1&gt;@(previewText)&lt;/h1&gt;
+&lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
+    </code>
             </pre>
                     <h3>Paragraph Settings</h3>
 
@@ -165,11 +163,21 @@
                     </div>
                     <pre>
                     <code>
-            &lt;p class="sub-title"&gt;@(previewTextBody)&lt;/p&gt;
-            &lt;p&gt;@(previewTextBody).&lt;/p&gt;
-            &lt;p class="disclaimer"&gt;@(previewTextBody)&lt;/h3&gt;
-            &lt;!-- combine with other HTML elements --&gt;
-            &lt;h1&gt;&lt;strong&gt;@(previewTextBody)&lt;/strong&gt;&lt;h1&gt;
+&lt;p class="sub-title"&gt;
+    @(previewTextBody)
+&lt;/p&gt;
+&lt;p&gt;
+    @(previewTextBody)
+&lt;/p&gt;
+&lt;p class="disclaimer"&gt;
+    @(previewTextBody)
+&lt;/p&gt;
+&lt;!-- combine with other HTML elements --&gt;
+&lt;h1&gt;
+    &lt;strong&gt;
+        @(previewTextBody)
+    &lt;/strong&gt;
+&lt;h1&gt;
                                     </code>
                                 </pre>
                     <SaveAndContinue OnSubmit=Submit NextPage="colors" />
