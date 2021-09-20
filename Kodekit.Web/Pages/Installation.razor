@@ -7,13 +7,13 @@
             <div class="title">Getting Started</div>
             <h2>Installation</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                Use Kodekit in any project as a link or download the CSS file.
             </p>
         </header>
         <div class="content">
             <h3>Import & Auto Update</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Add the link to the &lt;head&gt; section of your <span>index.html</span> file.
             </p>
             <div class="steps">1. Add Script</div>
             <div class="instructions">
@@ -33,26 +33,13 @@
         </div>
         <h3>Manual Download</h3>
         <p class="subheader">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+            Add the generated .css file directly to your project.
         </p>
-        <div class="steps">1. Download your .scss file</div>
+        <div class="steps">1. Download your .css file</div>
         <button class="download">
-            Download .scss file
+            Download .css file
             <img src="/images/filedownload-icon.svg" alt="File Download"/>
         </button>
-        <div class="steps">2. Install & Link</div>
-        <p>
-            Each time you change, update or save your Kodekit theme, your projects
-            using the theme script will auto-update, allowing you to make changes to your live project.
-        </p>
-        <div class="instructions">
-            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.io/" + kitId + ".css\">")" />
-            <button @onclick="StepTwoCopy">Copy</button>
-            <br />
-            <pre>
-<code>&lt;link rel="stylesheet" href="css/stylesheet.min.css"&gt;</code>
-            </pre>
-        </div>
     </div>
 </div>
 
@@ -63,11 +50,5 @@
     {
         //copy to clipboard step one link
         await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-one");
-    }
-
-    private async Task StepTwoCopy()
-    {
-        //copy to clipboard step two link
-        await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-two");
     }
 }

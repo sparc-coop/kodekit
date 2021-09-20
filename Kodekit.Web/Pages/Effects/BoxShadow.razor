@@ -6,14 +6,12 @@
             <div class="title">Effects</div>
             <h2>Box Shadow</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Add box shadows to different elements.
             </p>
         </header>
         <div class="content">
             <h3>Drop Shadows</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
+
             @if (Model.Small != null)
             {
                 <EditForm Model="@Model.Small">
@@ -46,47 +44,47 @@
                         </div>
                     </div>
                     <pre>
-                    <code class="language-scss">
-        //use box-shadows as their own class
-        .shadow-small {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
-                0px 0px 2px rgba(0, 0, 0, 0.06),
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+            <code class="language-scss">
+//use box-shadows as their own class
+.shadow-small {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 2px rgba(0, 0, 0, 0.06),
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        .shadow-medium {
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 
-                0px 2px 6px rgba(0, 0, 0, 0.04), 
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+.shadow-medium {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 
+        0px 2px 6px rgba(0, 0, 0, 0.04), 
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        .shadow-large {
-            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 
-                0px 2px 6px rgba(0, 0, 0, 0.04), 
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+.shadow-large {
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 
+        0px 2px 6px rgba(0, 0, 0, 0.04), 
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        .shadow-x-large {
-            box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 
-                0px 16px 24px rgba(0, 0, 0, 0.04), 
-                0px 4px 8px rgba(0, 0, 0, 0.04), 
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+.shadow-x-large {
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 
+        0px 16px 24px rgba(0, 0, 0, 0.04), 
+        0px 4px 8px rgba(0, 0, 0, 0.04), 
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        //or, use mixins to add to your own classes
-        //declared mixin
-        @@mixin shadow-small function {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
-                0px 0px 2px rgba(0, 0, 0, 0.06),
-                0px 0px 1px rgba(0, 0, 0, 0.04);   
-        }
+//or, use mixins to add to your own classes
+//declared mixin
+@@mixin shadow-small function {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 2px rgba(0, 0, 0, 0.06),
+        0px 0px 1px rgba(0, 0, 0, 0.04);   
+}
 
-        //use mixin within class
-        .box {
-            background-color: white;
-            @@include shadow-small; 
-        }
-        </code>
+//use mixin within class
+.box {
+    background-color: white;
+    @@include shadow-small; 
+}
+</code>
                                 </pre>
 
                     <SaveAndContinue OnSubmit=Submit NextPage="layout" />
