@@ -6,17 +6,17 @@ using Sparc.Features;
 namespace Kodekit.Features
 {
     public record CreateKitResponse(string KitId);
-    public class CreateKit : PublicFeature<CreateKitResponse>
+    public class CreateKit : PublicFeature<string, CreateKitResponse>
     {
         public IRepository<Kit> Kit { get; }
         public CreateKit(IRepository<Kit> kit) => Kit = kit;
 
-        public override async Task<CreateKitResponse> ExecuteAsync()
+        public override async Task<CreateKitResponse> ExecuteAsync(string userId)
         {
             var kit = new Kit
             {
                 DateCreated = DateTime.Now,
-                UserId = User.Id()
+                UserId = userId
             };
 
             await Kit.AddAsync(kit);

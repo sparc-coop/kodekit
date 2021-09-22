@@ -31,7 +31,7 @@
 
         @if (Kits == null || !Kits.Any())
         {
-            <p>Create a new kit to get started!</p>
+            <p>Create a new styleguide to get started!</p>
         }
         else
         {
@@ -79,7 +79,7 @@
 
     private async Task CreateNew()
     {
-        var kit = await PublicApi().CreateKitAsync();
+        var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
         Nav.NavigateTo($"/{kit.KitId}/introduction");
     }

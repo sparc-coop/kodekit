@@ -6,7 +6,6 @@
         border-radius: 8px;
         position: relative;
         overflow: hidden;
-        padding-top: 20px;
         margin: 16px 0 40px 0;
         height: 84px;
 
@@ -23,7 +22,22 @@
         }
     }
 
+    pre {
+        margin-top: -8px;
+    }
+
     .download {
-        margin-bottom: 40px;
+        margin: 30px 0;
+        color: $gray900;
+        font-size: 16px;
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid $gray900;
+
+        img {
+            margin-left: 10px;
+            vertical-align: middle;
+            margin-top: -2px;
+        }
     }
 }

@@ -26,7 +26,7 @@
                             Heading Font
                             @if (Fonts.Items != null)
                             {
-                                <select class="medium" @bind=Model.Heading.FontFamily>
+                                <select class="medium" @bind=Model.Heading.FontFamily @oninput="Submit">
                                     @foreach (var font in Fonts.Items)
                                     {
                                         <option value="@font.Family">
@@ -115,7 +115,7 @@
                         </label>
                         <label>
                             Choose Body font
-                            <select class="medium" @bind=Model.Paragraph.FontFamily>
+                            <select class="medium" @bind="Model.Paragraph.FontFamily" @oninput="Submit">
                                 @if (Fonts.Items != null)
                                 {
                                     @foreach (var font in Fonts.Items)
@@ -190,7 +190,7 @@
 @code {
     [Parameter] public string kitId { get; set; }
     private string previewText = "The power of small steps";
-    private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
+    private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
     FontListResponse Fonts;
     GetTypographyResponse Model;
 

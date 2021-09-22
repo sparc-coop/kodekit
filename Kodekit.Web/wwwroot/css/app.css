@@ -30,16 +30,38 @@
     color: #3A3A40;
     max-width: 496px;
     font-size: 16px; }
-  .page button img {
-    margin-left: 10px;
-    vertical-align: middle;
-    margin-top: -2px; }
+  .page .button--save {
+    color: #17171A;
+    font-size: 16px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #17171A; }
+    .page .button--save img, .page .button--save svg {
+      margin-left: 10px;
+      vertical-align: middle;
+      margin-top: -2px; }
+    .page .button--save svg path {
+      fill: #17171A; }
   .page label {
     font-size: 14px;
     line-height: 180%;
     color: #3A3A40; }
   .page input, .page select {
-    margin: 0 30px 20px 0; }
+    margin: 0 30px 20px 0;
+    background: #FFFFFF;
+    border: 1px solid #D2D4D9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 16px;
+    display: block;
+    margin: 0 30px 20px 0;
+    font-size: 16px;
+    line-height: 160%;
+    height: 40px;
+    color: #3A3A40;
+    cursor: pointer; }
+  .page input {
+    cursor: text; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: 0px 0 50px 0;
@@ -583,7 +605,8 @@
 
 .icons .preview-example {
   min-height: 100px;
-  padding: 32px; }
+  padding: 32px;
+  margin-bottom: -30px; }
 
 .layout .switch {
   vertical-align: middle; }
@@ -672,30 +695,26 @@
   color: #6DAEFF; }
 
 .preview .hero {
-  margin-left: -8%;
-  margin-top: -8%;
-  margin-right: -8%;
-  padding: 8%; }
-  .preview .hero div {
-    width: 48%;
-    display: block; }
-    .preview .hero div img {
-      width: 100%; }
-  .preview .hero div:first-child {
-    width: 52%; }
+  background: #FFFFFF;
+  margin: -12% -8% 160px -8%;
+  padding: 200px 8% 0 8%;
+  display: flex;
+  flex-wrap: wrap; }
+  .preview .hero > div {
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap; }
+  .preview .hero img {
+    max-width: 500px;
+    width: 100%; }
   .preview .hero .get-started {
     width: 100%;
     display: flex;
     justify-content: flex-start; }
-  .preview .hero div:first-child h1 {
-    margin-bottom: 24px; }
   .preview .hero .get-started button {
     position: relative;
     margin-top: 0;
     bottom: 0; }
-
-.preview section {
-  margin-bottom: 160px; }
 
 .preview header {
   display: flex;
@@ -707,25 +726,28 @@
   .preview header h2 {
     margin-bottom: 16px; }
 
-.preview div {
+.preview .features {
+  max-width: 1024px;
+  margin: 0 auto; }
+
+.preview .feature {
+  background: #FFFFFF;
+  padding: 40px 32px;
+  border-radius: 12px;
+  margin: 0 32px;
+  border: 1px solid #E5E7EB;
   display: flex;
-  justify-content: space-between;
-  width: 100%; }
-  .preview div .feature {
-    width: 32%;
-    background: #FFFFFF;
-    padding: 40px 32px;
-    border-radius: 12px;
-    border: 1px solid #E5E7EB;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center; }
-    .preview div .feature h5 {
-      margin-top: 24px;
-      margin-bottom: 10px; }
-    .preview div .feature p {
-      margin-bottom: 0px; }
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 379px;
+  width: 100%;
+  box-sizing: border-box; }
+  .preview .feature h5 {
+    margin-top: 24px;
+    margin-bottom: 10px; }
+  .preview .feature p {
+    margin-bottom: 0px; }
 
 .preview .card-section {
   flex-direction: column; }
@@ -838,7 +860,6 @@
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  padding-top: 20px;
   margin: 16px 0 40px 0;
   height: 84px; }
   .installation .instructions button {
@@ -852,8 +873,20 @@
     color: #787980;
     margin-top: 0; }
 
+.installation pre {
+  margin-top: -8px; }
+
 .installation .download {
-  margin-bottom: 40px; }
+  margin: 30px 0;
+  color: #17171A;
+  font-size: 16px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #17171A; }
+  .installation .download img {
+    margin-left: 10px;
+    vertical-align: middle;
+    margin-top: -2px; }
 
 .theme-page section {
   width: 1060px; }
@@ -976,7 +1009,8 @@
   position: fixed;
   height: 100vh;
   bottom: 0;
-  z-index: 10; }
+  z-index: 10;
+  overflow-y: auto; }
   @media screen and (max-width: 780px) {
     .sidebar {
       transform: translateX(-256px);
@@ -998,6 +1032,8 @@
       font-size: 14px;
       margin: 0 16px;
       padding: 8px 0; }
+    .sidebar .menu a:hover {
+      color: #0B5FFF; }
     .sidebar .menu .heading {
       padding: 32px 16px 8px 16px;
       color: #17171A;
