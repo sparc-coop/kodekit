@@ -1,4 +1,5 @@
-﻿@page "/{kitId}/box-shadow"
+﻿@inherits HighlightPageBase
+@page "/{kitId}/box-shadow"
 
 <div class="effects-page page">
     <div class="page__container">
@@ -44,7 +45,7 @@
                         </div>
                     </div>
                     <pre>
-            <code class="language-scss">
+                    <code class="language-scss">
 //use box-shadows as their own class
 .shadow-small {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),

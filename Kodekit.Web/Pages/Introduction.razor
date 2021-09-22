@@ -1,4 +1,4 @@
-﻿@page "/{kitId}/Introduction"
+﻿@page "/{kitId}/introduction"
 
 <div class="page">
     <div class="page__container">
@@ -9,15 +9,9 @@
                 This is where you can build your very own system, and at the end export it to use in your projects.
             </p>
         </header>
-        <button @onclick="Go">Get Started</button>
     </div>
 </div>
 
 @code {
     [Parameter] public string kitId { get; set; }
-
-    void Go()
-    {
-        Nav.NavigateTo($"/{kitId}/Typography");
-    }
 }

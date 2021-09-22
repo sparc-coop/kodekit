@@ -40,7 +40,7 @@
     private async Task DeleteKit()
     {
         await PublicApi().DeleteKitAsync(Kit);
-        Nav.NavigateTo("/my-kits");
+        Nav.NavigateTo("/");
         await CloseModal.InvokeAsync();
     }
 }

@@ -46,11 +46,21 @@
         font-size: 16px;
     }
 
-    button {
-        img {
+    .button--save {
+        color: $gray900;
+        font-size: 16px;
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid $gray900;
+
+        img, svg {
             margin-left: 10px;
             vertical-align: middle;
             margin-top: -2px;
+        }
+
+        svg path {
+            fill: $gray900;
         }
     }
 
@@ -62,6 +72,22 @@
 
     input, select {
         margin: 0 30px 20px 0;
+        background: $white;
+        border: 1px solid $gray300;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 8px 16px;
+        display: block;
+        margin: 0 30px 20px 0;
+        font-size: 16px;
+        line-height: 160%;
+        height: 40px;
+        color: $gray700;
+        cursor: pointer;
+    }
+
+    input {
+        cursor: text;
     }
 
     pre {

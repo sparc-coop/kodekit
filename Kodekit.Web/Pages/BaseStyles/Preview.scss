@@ -1,45 +1,32 @@
 ﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
 
-
-
-
 .preview {
     p.subtitle {
         color: $secondary-300;
     }
 
     .hero {
-        margin-left: -8%;
-        margin-top: -8%;
-        margin-right: -8%;
-        padding: 8%;
+        background: $white;
+        margin: -12% -8% 160px -8%;
+        padding: 200px 8% 0 8%;
+        display: flex;
+        flex-wrap: wrap;
 
-        div {
-            width: 48%;
-            display: block;
-
-            img {
-                width: 100%;
-            }
+        > div {
+            max-width: 500px;
+            display: flex;
+            flex-wrap: wrap;
         }
 
-        div:first-child {
-            width: 52%;
+        img {
+            max-width: 500px;
+            width: 100%;
         }
 
         .get-started {
             width: 100%;
             display: flex;
             justify-content: flex-start;
-        }
-
-        div:first-child {
-            div {
-            }
-
-            h1 {
-                margin-bottom: 24px;
-            }
         }
 
         .get-started {
@@ -49,10 +36,6 @@
                 bottom: 0;
             }
         }
-    }
-
-    section {
-        margin-bottom: 160px;
     }
 
     header {
@@ -68,32 +51,36 @@
         }
     }
 
-    div {
+    .features {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    .feature {
+        //width: 32%;
+        background: $white;
+        padding: 40px 32px;
+        border-radius: 12px;
+        margin: 0 32px;
+        border: 1px solid #E5E7EB;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 379px;
         width: 100%;
+        box-sizing: border-box;
 
-        .feature {
-            width: 32%;
-            background: $white;
-            padding: 40px 32px;
-            border-radius: 12px;
-            border: 1px solid #E5E7EB;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        h5 {
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
 
-            h5 {
-                margin-top: 24px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                margin-bottom: 0px;
-            }
+        p {
+            margin-bottom: 0px;
         }
     }
+
 
     .card-section {
         flex-direction: column;
@@ -107,7 +94,7 @@
             display: flex;
             justify-content: center;
 
-            p:first-child{
+            p:first-child {
                 margin-right: 10px;
             }
         }
@@ -158,7 +145,6 @@
         }
 
         .line {
-            ;
             width: 100%;
         }
     }
