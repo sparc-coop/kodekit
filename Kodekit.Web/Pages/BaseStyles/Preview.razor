@@ -1,5 +1,12 @@
 ﻿@page  "/{kitId}/preview"
 
+@if (ImportUrl != null)
+{
+    <style type="text/css">
+        @@import url('@ImportUrl');
+    </style>
+}
+
 <div class="preview page">
     <section class="hero">
         <div>
@@ -104,11 +111,25 @@
     </section>
 </div>
 
+@inject IConfiguration Config
 @code {
     [Parameter] public string kitId { get; set; }
 
-    protected override void OnInitialized()
-    {
+    string ImportUrl;
+    int version;
 
+    protected override void OnParametersSet()
+    {
+        if (kitId != null)
+        {
+            ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?v={version}";
+            version++;
+        }
+        else
+        {
+            ImportUrl = null;
+        }
     }
+
+
 }

@@ -70,7 +70,7 @@
         color: $gray700;
     }
 
-    input, select {
+    input, select, textarea {
         margin: 0 30px 20px 0;
         background: $white;
         border: 1px solid $gray300;
@@ -84,6 +84,10 @@
         height: 40px;
         color: $gray700;
         cursor: pointer;
+    }
+
+    textarea {
+        min-height: 100px;
     }
 
     input {
@@ -134,10 +138,10 @@
 
     .content {
         padding-bottom: 100px;
-
+/*
         p {
             margin: 0 0 32px;
-        }
+        }*/
     }
 
     .preview-example {

@@ -1,0 +1,73 @@
+﻿<aside class="accessibility-checker">
+    <p class="title">Contrast Checker</p>
+    <h3>@totalScore%</h3>
+    <section>
+        <label>Header Size</label>
+        @if (headerFontSize)
+        {
+            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+        }
+        else
+        {
+            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+        }
+    </section>
+    <section>
+        <label>Header Height</label>
+        @if (headerHeight)
+        {
+            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+        }
+        else
+        {
+            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+        }
+    </section>
+    <section>
+        <label>Body Size</label>
+        @if (bodySize)
+        {
+            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+        }
+        else
+        {
+            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+        }
+    </section>
+    <section>
+        <label>Body Height</label>
+        @if (bodyHeight)
+        {
+            <div style="width: 10px; height: 10px; background-color: green; border-radius: 2px;"></div>
+        }
+        else
+        {
+            <div style="width: 10px; height: 10px; background-color: red; border-radius: 2px;"></div>
+        }
+    </section>
+</aside>
+
+
+@code {
+    [Parameter] public GetTypographyResponse Model { get; set; }
+    int totalScore = 0;
+    bool headerHeight;
+    bool headerFontSize;
+    bool bodyHeight;
+    bool bodySize;
+
+    protected override async Task OnInitializedAsync()
+    {
+        headerFontSize = Model.Heading.FontSize >= 24;
+        headerHeight = 120 >= 100; //Model.Heading.LineHeight(0, Model.Heading.LineHeight.Length - 1) >= 100;
+        bodySize = Model.Paragraph.FontSize >= 16;
+        bodyHeight = 100 >= 150;//Model.Paragraph.LineHeight.ToString().Substring(0, Model.Paragraph.LineHeight.ToString().Length - 1) >= 150;
+
+        if (headerFontSize) totalScore += 25;
+        if (headerHeight) totalScore += 25;
+        if (bodySize) totalScore += 25;
+        if (bodyHeight) totalScore += 25;
+
+        StateHasChanged();
+    }
+}

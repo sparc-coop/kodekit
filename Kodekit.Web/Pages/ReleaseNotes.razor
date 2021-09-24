@@ -1,4 +1,4 @@
-﻿@page "/release-notes"
+﻿@page "/{kitId}/release-notes"
 
 <div class="page">
     <div class="page__container">
@@ -16,10 +16,14 @@
             <div class="content release-right">
                 <h3>Kodekit V1.0 Launch</h3>
                 <p>
-                    Kodekit is officially live! Whilst we have managed to implement 
+                    Kodekit is officially live! Whilst we have managed to implement
                     a lot of features for our launch, there are still many to come over the following months.
                 </p>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
+
+@code {
+    [Parameter] public string kitId { get; set; }
+}

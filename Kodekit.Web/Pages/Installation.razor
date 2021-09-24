@@ -35,10 +35,14 @@
                 Add the generated .css file directly to your project.
             </p>
             <div class="steps">1. Download your CSS file</div>
-            <button class="download">
+@*            <a class="download" href="https://api.kodekit.io/@(kitId).css" download>
                 Download .css file
                 <img src="/images/filedownload-icon.svg" alt="File Download" />
-            </button>
+            </a>*@
+            <a class="download" href="https://localhost:5101/@(kitId).css" download="https://localhost:5101/@(kitId).css">
+                Download .css file
+                <img src="/images/filedownload-icon.svg" alt="File Download" />
+            </a>
         </div>
     </div>
 </div>

@@ -11,11 +11,11 @@
             </p>
         </header>
         <div class="content">
-            <!-- Accessibility Checker -->
             <h3>Heading Settings</h3>
 
             @if (Model != null)
             {
+@*                <AccessibilityChecker Model="Model"/>*@ 
                 <EditForm Model="@Model">
                     <div class="section">
                         <label>
@@ -26,7 +26,7 @@
                             Heading Font
                             @if (Fonts.Items != null)
                             {
-                                <select class="medium" @bind=Model.Heading.FontFamily @oninput="Submit">
+                                <select class="medium" @bind="Model.Heading.FontFamily" @oninput="Submit">
                                     @foreach (var font in Fonts.Items)
                                     {
                                         <option value="@font.Family">
@@ -38,7 +38,7 @@
                         </label>
                         <label>
                             Default Heading Weight
-                            <FontWeights @bind-Value="Model.Heading.FontWeight" />
+                            <FontWeights @bind-Value="Model.Heading.FontWeight" @bind-Value:event="onchange"/>
                         </label>
 
                         <label>
@@ -47,7 +47,7 @@
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium" @bind=Model.Heading.TypeScale>
+                            <select class="medium" @bind="Model.Heading.TypeScale" @oninput="Submit">
                                 @foreach (var scale in Model.TypeScales)
                                 {
                                     <option value="@scale.Key">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <pre>
-        <code>
+                    <code>
 &lt;h1&gt;@(previewText)&lt;/h1&gt;
 &lt;h2&gt;@(previewText)&lt;/h2&gt;
 &lt;h3&gt;@(previewText)&lt;/h3&gt;
@@ -198,6 +198,11 @@
     {
         Fonts = await PublicApi().GetGoogleFontsAsync("");
         Model = await PublicApi().GetTypographyAsync(kitId);
+    }
+
+    private async Task UpdateFontWeights()
+    {
+        await Submit();
     }
 
     private async Task Submit()

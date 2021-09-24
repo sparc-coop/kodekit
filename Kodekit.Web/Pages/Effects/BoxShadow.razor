@@ -11,10 +11,9 @@
             </p>
         </header>
         <div class="content">
-            <h3>Drop Shadows</h3>
-
-            @if (Model.Small != null)
+            @if (Model != null)
             {
+                <h3>Drop Shadows</h3>
                 <EditForm Model="@Model.Small">
                     <h4>Small Shadow Settings</h4>
                     <ShadowEditor @bind-Shadow=Model.Small />
@@ -88,7 +87,7 @@
 </code>
                                 </pre>
 
-                    <SaveAndContinue OnSubmit=Submit NextPage="layout" />
+                    <SaveAndContinue OnSubmit=Submit NextPage="introduction" />
 
                 </EditForm>
             }
@@ -103,6 +102,16 @@
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetShadowAsync(kitId);
+
+        if(Model.Small == null)
+        {
+            Model.Small = new Shadow();
+        }
+
+        if (Model.XLarge == null)
+        {
+            Model.XLarge = new Shadow();
+        }
     }
 
     private async Task Submit()

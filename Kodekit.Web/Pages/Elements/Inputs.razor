@@ -22,7 +22,7 @@
                         <div>
                             <label>
                                 Input Font Size
-                                <InputNumber @bind-Value="Model.FontSize" />
+                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit"/>
                             </label>
                             <label>
                                 Input Font Weight
@@ -32,19 +32,19 @@
                         <div>
                             <label>
                                 Vertical Padding
-                                <InputNumber @bind-Value="Model.VerticalPadding" />
+                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit"/>
                             </label>
                             <label>
                                 Horizontal Padding
-                                <InputNumber @bind-Value="Model.HorizontalPadding" />
+                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit"/>
                             </label>
                             <label>
                                 Corner Radius
-                                <InputNumber @bind-Value="Model.CornerRadius" />
+                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit"/>
                             </label>
                             <label>
                                 Border Width
-                                <InputNumber @bind-Value="Model.BorderWidth" />
+                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit"/>
                             </label>
                         </div>
                     </div>
