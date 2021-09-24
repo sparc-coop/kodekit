@@ -17,7 +17,7 @@ namespace Kodekit.Features
                 throw new NotFoundException("Couldn't find kit!");
 
             kit.Id = Guid.NewGuid().ToString();
-            kit.UserId = User.Id();
+            //kit.UserId = User.Id();
             kit.DateCreated = DateTime.Now;
             kit.ParentId = kitId;
 

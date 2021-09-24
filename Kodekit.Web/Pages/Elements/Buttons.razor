@@ -21,35 +21,35 @@
                     <div class="section">
                         <label>
                             Font Size
-                            <InputNumber @bind-Value="Model.FontSize" />
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1"/>
                         </label>
                         <label>
                             Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" />
+                            <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="ValueChanged" />
                         </label>
                         <label>
                             Vertical Padding
-                            <InputNumber @bind-Value="Model.VerticalPadding" />
+                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Horizontal Padding
-                            <InputNumber @bind-Value="Model.HorizontalPadding" />
+                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Corner Radius
-                            <InputNumber @bind-Value="Model.CornerRadius" />
+                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Border Width
-                            <InputNumber @bind-Value="Model.BorderWidth" />
+                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Icon Width
-                            <InputNumber @bind-Value="Model.IconWidth" />
+                            <InputNumber @bind-Value="Model.IconWidth" @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Icon Height
-                            <InputNumber @bind-Value="Model.IconHeight" />
+                            <InputNumber @bind-Value="Model.IconHeight" @oninput="Submit" min="0"/>
                         </label>
                     </div>
 
@@ -146,8 +146,6 @@
 &lt;button class="secondary-btn" disabled&gt;Button Label&lt;/button&gt;
                         </code>
                     </pre>
-
-                    <SaveAndContinue OnSubmit=Submit NextPage="inputs" />
                 </EditForm>
             }
         </div>
@@ -162,7 +160,12 @@
     {
         Model = await PublicApi().GetButtonsAsync(kitId);
     }
-    
+
+    private async Task ValueChanged()
+    {
+        await Submit();
+    }
+
     private async Task Submit()
     {
         await PublicApi().UpdateButtonsAsync(Model);

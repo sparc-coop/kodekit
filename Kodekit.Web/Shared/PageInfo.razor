@@ -222,13 +222,13 @@
 
     private async Task CopyKit()
     {
-        var newKit = await PublicApi().CopyKitAsync(kit.Id);
-        Nav.NavigateTo($"/{newKit.KitId}/introduction/");
+        CreateKitResponse newKitId = await PublicApi().CopyKitAsync(kit.Id);
+        Nav.NavigateTo($"/{newKitId}/introduction");
     }
 
     private void DownloadKit()
     {
-        var apiUrl = Config["ApiUrl"];
+        string apiUrl = Config["ApiUrl"];
         Nav.NavigateTo($"{apiUrl}/{kitId}.css");
     }
 

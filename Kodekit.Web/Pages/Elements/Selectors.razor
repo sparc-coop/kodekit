@@ -21,11 +21,11 @@
                     <div class="section">
                         <label>
                             Label Font Size
-                            <InputNumber @bind-Value="Model.FontSize" />
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" placeholder="16"/>
                         </label>
                         <label>
                             Label Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" />
+                            <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="onchange" />
                         </label>
                         <label>
                             Active Color

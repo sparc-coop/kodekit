@@ -29,7 +29,7 @@
                     <div class="section">
                         <label>
                             Font Size
-                            <InputNumber @bind-Value="Model.FontSize" />
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1"/>
                         </label>
                         <label>
                             Font Weight
@@ -37,19 +37,19 @@
                         </label>
                         <label>
                             Vertical Padding
-                            <InputNumber @bind-Value="Model.VerticalPadding" />
+                            <InputNumber @bind-Value="Model.VerticalPadding"  @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Horizontal Padding
-                            <InputNumber @bind-Value="Model.HorizontalPadding" />
+                            <InputNumber @bind-Value="Model.HorizontalPadding"  @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Corner Radius
-                            <InputNumber @bind-Value="Model.CornerRadius" />
+                            <InputNumber @bind-Value="Model.CornerRadius"  @oninput="Submit" min="0"/>
                         </label>
                         <label>
                             Border Width
-                            <InputNumber @bind-Value="Model.BorderWidth" />
+                            <InputNumber @bind-Value="Model.BorderWidth"  @oninput="Submit" min="0"/>
                         </label>
                     </div>
 
@@ -89,7 +89,6 @@
 &lt;/select&gt;
                         </code>
                     </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="anchors" />
                 </EditForm>
             }
         </div>

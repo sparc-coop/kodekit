@@ -15,7 +15,7 @@
         Spread(px)
         <InputNumber @bind-Value="Shadow.Spread" />
     </label>
-    <label>
+    <label class="color-picker">
         Shadow Color
         <span>
             <input type="color" @bind=Shadow.Color @bind:event="oninput">
@@ -30,4 +30,18 @@
 
 @code {
     [Parameter] public Shadow Shadow { get; set; }
+    private Shadow _value;
+    [Parameter]
+    public Shadow Value
+    {
+        get => _value;
+        set
+        {
+            if (_value == value) return;
+            _value = value;
+            ShadowChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter] public EventCallback<Shadow> ShadowChanged { get; set; }
+
 }

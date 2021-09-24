@@ -6,9 +6,9 @@
         <div class="dashboard--header">
             <h2>Your Styleguides</h2>
             <div class="right">
-                <select class="sort">
+@*                <select class="sort">
                     <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-                </select>
+                </select>*@
                 <AuthorizeView>
                     <Authorized>
                         <button @onclick="@(CreateNew)">
@@ -17,13 +17,10 @@
                         </button>
                     </Authorized>
                     <NotAuthorized>
-                        @if (Kits != null && !Kits.Any())
-                        {
-                            <button @onclick="@(CreateNew)">
-                                New Styleguide
-                                <img src="/images/add-icon.svg" />
-                            </button>
-                        }
+                        <button @onclick="@(CreateNew)">
+                            New Styleguide
+                            <img src="/images/add-icon.svg" />
+                        </button>
                     </NotAuthorized>
                 </AuthorizeView>
             </div>
@@ -39,7 +36,7 @@
                 @foreach (var kit in Kits)
                 {
                     <a href="/@kit.Id/introduction" class="dashboard-card">
-                        <img src="/images/dash-icon.svg" alt="Dashboard Icon" />
+                        <img src="/images/dash-example.svg" alt="Dashboard Icon" />
                         <div>
                             <div class="title">Project Name</div>
                             <div class="date">
