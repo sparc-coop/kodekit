@@ -17,10 +17,13 @@
                         </button>
                     </Authorized>
                     <NotAuthorized>
-                        <button @onclick="@(CreateNew)">
-                            New Styleguide
-                            <img src="/images/add-icon.svg" />
-                        </button>
+                        @if (Kits == null && !Kits.Any())
+                        {
+                            <button @onclick="@(CreateNew)">
+                                New Styleguide
+                                <img src="/images/add-icon.svg" />
+                            </button>
+                        }
                     </NotAuthorized>
                 </AuthorizeView>
             </div>

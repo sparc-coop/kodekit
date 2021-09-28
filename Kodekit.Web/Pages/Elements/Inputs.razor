@@ -22,34 +22,36 @@
                         <div>
                             <label>
                                 Input Font Size
-                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit"/>
+                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1"/>
                             </label>
                             <label>
                                 Input Font Weight
-                                <FontWeights @bind-Value="Model.FontWeight" />
+                                <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="Submit"/>
                             </label>
                         </div>
                         <div>
                             <label>
                                 Vertical Padding
-                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit"/>
+                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0"/>
                             </label>
                             <label>
                                 Horizontal Padding
-                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit"/>
+                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0"/>
                             </label>
                             <label>
                                 Corner Radius
-                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit"/>
+                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0"/>
                             </label>
                             <label>
                                 Border Width
-                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit"/>
+                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0"/>
                             </label>
                         </div>
                     </div>
                     <div class="preview-example">
-                        <input placeholder="Placeholder" />
+                        <label>
+                            <input placeholder="Placeholder" />
+                        </label>
                         <label class="icon-space icon-space--nolabel">
                             <img src="/images/person-icon.svg" alt="Person Icon" />
                             <input placeholder="Placeholder" />
@@ -91,7 +93,7 @@
                             <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
-                        <label class="icon-space">
+                        <label class="error icon-space">
                             Error
                             <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
                             <input class="invalid" value="username" />
@@ -101,6 +103,7 @@
                             Disabled
                             <img src="/images/person-disabled-icon.svg" alt="Person Input Disabled Icon" />
                             <input value="enter username" disabled />
+                            <span></span>
                         </label>
                     </div>
                     <pre>
@@ -113,7 +116,6 @@
 &lt;/label&gt;
                 </code>
             </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="selectors" /> 
                 </EditForm>
             }
         </div>

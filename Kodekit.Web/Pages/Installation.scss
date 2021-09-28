@@ -7,7 +7,7 @@
         position: relative;
         overflow: hidden;
         margin: 16px 0 40px 0;
-        height: 84px;
+        height: 92px;
 
         button {
             font-size: 12px;
@@ -23,8 +23,15 @@
         }
     }
 
+    .subheader span {
+        background: $gray300;
+        padding: 1px 6px;
+        border-radius: 4px;
+        color: $gray700;
+    }
+
     pre {
-        margin-top: -8px;
+        margin-top: 6px;
     }
 
     .download {

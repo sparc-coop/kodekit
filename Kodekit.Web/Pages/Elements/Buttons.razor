@@ -25,7 +25,7 @@
                         </label>
                         <label>
                             Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="ValueChanged" />
+                            <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="Submit" />
                         </label>
                         <label>
                             Vertical Padding
@@ -159,11 +159,6 @@
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetButtonsAsync(kitId);
-    }
-
-    private async Task ValueChanged()
-    {
-        await Submit();
     }
 
     private async Task Submit()

@@ -17,7 +17,7 @@
     .preview-example {
         display: flex;
         flex-wrap: wrap;
-        padding: 32px 32px 50px;
+        padding: 22px 32px 50px;
 
         input, select {
             width: 200px;
@@ -27,6 +27,7 @@
         label {
             color: $gray700;
             position: relative;
+            margin-top: 10px;
         }
 
         textarea {
@@ -38,7 +39,7 @@
         }
 
         .icon-space {
-            input { 
+            input {
                 padding-left: 40px;
             }
 
@@ -47,6 +48,28 @@
                 top: 50%;
                 margin-top: -6px;
                 left: 13px;
+            }
+        }
+
+        .error {
+            color: $error;
+
+            input {
+                border: 1px solid $error;
+
+                &::placeholder {
+                    color: $error;
+                }
+            }
+
+            span {
+                color: $error;
+            }
+        }
+
+        .disabled {
+            span {
+                min-height: 14px;
             }
         }
 

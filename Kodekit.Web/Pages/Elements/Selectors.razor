@@ -21,11 +21,11 @@
                     <div class="section">
                         <label>
                             Label Font Size
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" placeholder="16"/>
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" placeholder="16" min="1"/>
                         </label>
                         <label>
                             Label Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="onchange" />
+                            <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="Submit" />
                         </label>
                         <label>
                             Active Color
@@ -67,7 +67,6 @@
 &lt;input type="radio" disabled /&gt;
                         </code>
                     </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="dropdowns" />
                 </EditForm>
             }
         </div>

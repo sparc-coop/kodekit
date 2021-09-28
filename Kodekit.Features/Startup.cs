@@ -42,8 +42,7 @@ namespace Kodekit.Features
             app.UseCors(policy =>
                 policy.WithOrigins("http://localhost:5000", "https://localhost:5001",  
                     "https://kodekit-test.azurewebsites.net",
-                    "https://app.kodekit.io",
-                    "https://www.kodekit.io")
+                    "https://app.kodekit.io")
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
