@@ -13,11 +13,11 @@
         <div class="content">
             <h3>Import & Auto Update</h3>
             <p class="subheader">
-                Add the link to the &lt;head&gt; section of your <span>index.html</span> file.
+                Add the link to the <span>&lt;head&gt;</span> section of your "index.html" file.
             </p>
             <div class="steps">1. Add Script</div>
             <div class="instructions">
-                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.io/" + kitId + ".css\">")" />
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://api.kodekit.io/" + kitId + ".css\">")" />
                 <button @onclick="StepOneCopy">Copy</button>
                 <br />
                 <pre>
@@ -35,11 +35,7 @@
                 Add the generated .css file directly to your project.
             </p>
             <div class="steps">1. Download your CSS file</div>
-@*            <a class="download" href="https://api.kodekit.io/@(kitId).css" download>
-                Download .css file
-                <img src="/images/filedownload-icon.svg" alt="File Download" />
-            </a>*@
-            <a class="download" href="https://localhost:5101/@(kitId).css" download="https://localhost:5101/@(kitId).css">
+            <a class="download" href="https://api.kodekit.io/@(kitId).css" download="https://api.kodekit.io/@(kitId).css">
                 Download .css file
                 <img src="/images/filedownload-icon.svg" alt="File Download" />
             </a>

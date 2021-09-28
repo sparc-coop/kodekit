@@ -46,7 +46,6 @@
         }
     }
 
-
     .actions svg {
         fill: $gray400;
         border-radius: 100%;
@@ -204,15 +203,20 @@
             }
 
             .current {
+                cursor: pointer;
+
                 .img-left {
                     margin-right: 16px;
                     vertical-align: middle;
                 }
 
                 .img-right {
-                    float: right;
-                    height: 14px;
-                    vertical-align: middle;
+                    font-size: 17px;
+                    right: 25px;
+                }
+
+                input {
+
                 }
             }
 
@@ -311,7 +315,7 @@
         padding: 15px 20px 15px 15px;
         position: absolute;
         left: -15px;
-        top: 10px;
+        top: 22px;
         display: block;
         z-index: 10;
 

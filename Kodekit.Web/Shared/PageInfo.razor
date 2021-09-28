@@ -48,9 +48,6 @@
             </AuthorizeView>
 
             <div class="actions">
-                @*<img @onclick="@(e => ShowDeleteModal(kit.Id))" src="/images/delete-icon.png" title="Delete" />
-        <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
-        <img @onclick="DownloadKit" src="/images/download-icon.png" title="Download" />*@
                 <svg id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
                 </svg>
@@ -89,10 +86,38 @@
         {
             <div class="history--dropdown">
                 <div class="title">Version History</div>
-                <div class="current">
-                    <img class="img-left" src="/images/ellipse_open_icon.svg"/>
-                    Current Version
-                    <img class="img-right" @onclick="UpdateKit" src="/images/save_icon.svg"/>
+                <div class="current" @onclick="@(e => ShowOptions(kit.Id))">
+                    <img class="img-left" src="/images/ellipse_open_icon.svg" />
+                    @if (EditName == kit.Id)
+                    {
+                        <span>
+                            <input placeholder="@kit.Name" @bind-value="@kit.Name" />
+                            <button @onclick="@(e => UpdateKitName(kit.Id))">Save</button>
+                        </span>
+                    }
+                    else
+                    {
+                        @if (kit.Name != null)
+                        {
+                            <span>@kit.Name</span>
+                        }
+                        else
+                        {
+                            <span>Current Version</span>
+                        }
+                    }
+                    <span class="material-icons img-right">more_vert</span>
+                    @if (ShowKitOptions == kit.Id)
+                    {
+                        <div class="publish-options">
+                            <ul>
+                                <li @onclick="@(e => ShowEditName(kit.Id))">Rename Version</li>
+                                <li @onclick="@(e => GoToPreview(kit.Id))">Preview Version</li>
+                                @*<li>Revert to Version</li>*@
+                                <li @onclick="@(e => ShowDeleteModal(kit.Id))">Delete Version</li>
+                            </ul>
+                        </div>
+                    }
                 </div>
                 @if(Kits.Count > 0)
                 {
@@ -133,8 +158,8 @@
                                             <li @onclick="@(e => Publish(item.Id))">Push Live</li>
                                             <li @onclick="@(e => ShowEditName(item.Id))">Rename Version</li>
                                             <li @onclick="@(e => GoToPreview(item.Id))">Preview Version</li>
-                                            <li>Revert to Version</li>
-                                            <li @onclick="@(e => GoToPreview(item.Id))">Delete Version</li>
+                                            @*<li>Revert to Version</li>*@
+                                            <li @onclick="@(e => ShowDeleteModal(item.Id))">Delete Version</li>
                                         </ul>
                                     </div>
                                 }
@@ -158,7 +183,7 @@
 @inject IConfiguration Config
 @code {
     [Parameter] public string kitId { get; set; }
-    
+
     bool ShowDropdown = false;
     string ShowKitOptions = "";
     string Show = "";
@@ -190,6 +215,7 @@
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
         {
+            Console.WriteLine(kitId);
             Kits = await Api.GetRelatedKitsAsync(kitId);
             UserKits = await Api.GetUserKitsAsync();
         }
@@ -239,15 +265,15 @@
         await PublicApi().PublishKitAsync(publishKit);
     }
 
-    private void ShowOptions(string kitId)
+    private void ShowOptions(string selectedId)
     {
-        if (ShowKitOptions == kitId)
+        if (ShowKitOptions == selectedId)
         {
             ShowKitOptions = "";
         }
         else
         {
-            ShowKitOptions = kitId;
+            ShowKitOptions = selectedId;
         }
     }
 
@@ -265,9 +291,10 @@
         await PublicApi().UpdateKitAsync(selectedKit);
     }
 
-    private void GoToPreview(string kitId)
+    private void GoToPreview(string id)
     {
-        Nav.NavigateTo("/preview/" + kitId);
+        ShowKitOptions = "";
+        Nav.NavigateTo("/" + id + "/preview");
     }
 
     private async Task SetAutoPublish()

@@ -38,12 +38,12 @@
                         </label>
                         <label>
                             Default Heading Weight
-                            <FontWeights @bind-Value="Model.Heading.FontWeight" @bind-Value:event="onchange"/>
+                            <FontWeights @bind-Value="Model.Heading.FontWeight" OnValueChanged="Submit"/>
                         </label>
 
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" />
+                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" min="0"/>
                         </label>
                         <label>
                             Choose a Type Scale
@@ -58,7 +58,7 @@
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" />
+                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" min="1"/>
                         </label>
                     </div>
                     <div class="preview-example">
@@ -129,7 +129,7 @@
                         </label>
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Paragraph.FontSize" class="small" />
+                            <InputNumber @bind-Value="Model.Paragraph.FontSize" class="small" min="1"/>
                         </label>
                         <label>
                             Choose a Type Scale
@@ -144,7 +144,7 @@
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" class="small" />
+                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" class="small" min="1"/>
                         </label>
                     </div>
                     <div class="preview-example preview-example--body">
@@ -178,9 +178,8 @@
         @(previewTextBody)
     &lt;/strong&gt;
 &lt;h1&gt;
-                                    </code>
-                                </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="colors" />
+                        </code>
+                    </pre>
                 </EditForm>
             }
         </div>

@@ -20,6 +20,10 @@
         }
     }
 
+    p {
+        margin-top: 40px;
+    }
+
     &-container {
         margin:20px -16px;
         width: 100%;
@@ -82,12 +86,15 @@
             font-size: 12px;
             padding: 6px 11px;
             margin-top: 0;
+
+            img {
+                margin-left: 10px;
+            }
         }
 
         .right {
             position: absolute;
             right: 0;
-            width: 358px;
             display: flex;
         }
     }
