@@ -17,25 +17,25 @@
             </p>
             <div class="steps">1. Add Script</div>
             <div class="instructions">
-                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://api.kodekit.io/" + kitId + ".css\">")" />
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
                 <button @onclick="StepOneCopy">Copy</button>
                 <br />
                 <pre>
-<code>&lt;link rel="stylesheet" href="https://api.kodekit.io/@(kitId).css"&gt;</code>
+<code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
             </pre>
             </div>
 
             <div class="steps">2. Auto Update</div>
-            <p>
+            <p class="subheader">
                 Each time you change, update or save your Kodekit theme, your projects
                 using the theme script will auto-update, allowing you to make changes to your live project.
             </p>
-            <h3>Manual Download</h3>
+            <h3 class="installation--title">Manual Download</h3>
             <p class="subheader">
                 Add the generated .css file directly to your project.
             </p>
             <div class="steps">1. Download your CSS file</div>
-            <a class="download" href="https://api.kodekit.io/@(kitId).css" download="https://api.kodekit.io/@(kitId).css">
+            <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
                 Download .css file
                 <img src="/images/filedownload-icon.svg" alt="File Download" />
             </a>
@@ -43,8 +43,15 @@
     </div>
 </div>
 
+@inject IConfiguration Config
 @code {
     [Parameter] public string kitId { get; set; }
+    string ImportUrl;
+
+    protected override void OnInitialized()
+    {
+        ImportUrl = Config["ApiUrl"] + $"/{kitId}.css";
+    }
 
     private async Task StepOneCopy()
     {

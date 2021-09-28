@@ -33,17 +33,6 @@
                         <option value="FontAwesome">FontAwesome</option>
                     </select>
                 </label>
-                @*@if (icon.Name == "Material" || icon.Name == "Remix")
-            {
-                <label>
-                    Set Variation
-                    <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
-                        <option value="Solid">Solid</option>
-                        <option value="Outline">Outline</option>
-                    </select>
-                </label>
-            }*@
-
             </section>
             <div class="preview-example">
                 @((MarkupString)icon.Markup)
@@ -57,7 +46,6 @@
 &lt;!-- FontAwesome --&gt; &lt;i class="fas fa-home"&gt;&lt;/i&gt;
                     </code>
                 </pre>
-            <SaveAndContinue OnSubmit=Submit NextPage="buttons" />
         </EditForm>
             }
         </div>
@@ -67,18 +55,11 @@
 @code {
     Kit kit;
     [Parameter] public string kitId { get; set; }
-    string importUrl = "";
     IconLibrary icon = new IconLibrary();
 
     protected override async Task OnInitializedAsync()
     {
         kit = await PublicApi().GetKitAsync(kitId);
-
-        //icon.Name = "Material";
-
-        //icon.Url = "https://fonts.googleapis.com/icon?family=Material+Icons";
-        //icon.Markup = "<span class='material-icons'>home</span>";
-        //icon.Type = "Solid";
     }
     
     private async Task Submit()

@@ -17,7 +17,7 @@
                         </button>
                     </Authorized>
                     <NotAuthorized>
-                        @if (Kits == null && !Kits.Any())
+                        @if (Kits == null || !Kits.Any())
                         {
                             <button @onclick="@(CreateNew)">
                                 New Styleguide
@@ -41,11 +41,11 @@
                     <a href="/@kit.Id/introduction" class="dashboard-card">
                         <img src="/images/dash-example.svg" alt="Dashboard Icon" />
                         <div>
-                            <div class="title">Project Name</div>
+                            <div class="title">@(kit.Name != null ? kit.Name : "Untitled Styleguide" )</div>
                             <div class="date">
                                 Last Updated:
                                 @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy")
-                        : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
+                                    : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
                             </div>
                         </div>
                     </a>
@@ -79,9 +79,9 @@
 
     private async Task CreateNew()
     {
-        var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
-        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
-        Nav.NavigateTo($"/{kit.KitId}/introduction");
+        CreateKitResponse kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
+        await localStorage.SetItemAsStringAsync("kodekitId", kit.ToString());
+        Nav.NavigateTo($"/{kit}/introduction");
     }
 
     private void Sort(string filter)

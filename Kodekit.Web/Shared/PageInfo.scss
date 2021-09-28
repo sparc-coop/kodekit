@@ -204,6 +204,7 @@
 
             .current {
                 cursor: pointer;
+                display: flex;
 
                 .img-left {
                     margin-right: 16px;
@@ -216,7 +217,23 @@
                 }
 
                 input {
+                    max-width: 120px;
+                    padding: 2px 5px;
+                    border: 1px solid $gray700;
+                    border-radius: 4px;
+                    margin-right: 3px;
+                }
 
+                span {
+                    display: flex;
+                }
+
+                button {
+                    padding: 2px 5px;
+                }
+
+                .publish-options {
+                    height: 100px;
                 }
             }
 
