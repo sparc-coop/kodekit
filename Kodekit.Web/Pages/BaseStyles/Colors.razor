@@ -24,7 +24,7 @@
                         <label>
                             Primary
                             <span>
-                                <input type="color" @bind=Model.Primary @bind:event="oninput">
+                                <input type="color" @bind="Model.Primary" @oninput="Submit">
                                 @Model.Primary
                             </span>
                         </label>
@@ -32,18 +32,17 @@
                         <label>
                             Secondary
                             <span>
-                                <input type="color" @bind=Model.Secondary @bind:event="oninput">
+                                <input type="color" @bind-value=Model.Secondary @oninput="Submit">
                                 @Model.Secondary
                             </span>
                         </label>
                         <label>
                             Tertiary
                             <span>
-                                <input type="color" @bind=Model.Tertiary @bind:event="oninput">
+                                <input type="color" @bind-value=Model.Tertiary @oninput="Submit">
                                 @Model.Tertiary
                             </span>
                         </label>
-
                     </div>
                     <div class="preview-example preview-example--colors">
                         <div>
@@ -160,10 +159,7 @@ $greyscale-700
                         </label>
                     </div>
                     <div class="preview-example preview-example--colors">
-                        <div class="bg-error"></div>
-                        <div class="bg-warning"></div>
-                        <div class="bg-success"></div>
-                        <div>
+                        @*<div>
                             <label>Error</label>
                             <div class="color-display" style="background-color: var(--error-500)"></div>
                         </div>
@@ -174,6 +170,18 @@ $greyscale-700
                         <div>
                             <label>Success</label>
                             <div class="color-display" style="background-color: var(--success-500)"></div>
+                        </div>*@
+                        <div>
+                            <label>Error</label>
+                            <div class="color-display" style="background-color: @Model.Error"></div>
+                        </div>
+                        <div>
+                            <label>Warning</label>
+                            <div class="color-display" style="background-color: @Model.Warning"></div>
+                        </div>
+                        <div>
+                            <label>Success</label>
+                            <div class="color-display" style="background-color: @Model.Success"></div>
                         </div>
                     </div>
                     <pre>
@@ -196,23 +204,23 @@ $success-100
                             <div class="preview-mockup--left">
                                 <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-                                    <h4 class="color-dark">Brand Colors</h4>
-                                    <h5 class="color-tertiary">Information</h5>
+                                    <h4 class="color-dark" style="color: @Model.Darkest;">Brand Colors</h4>
+                                    <h5 class="color-tertiary" style="color: @Model.Tertiary;">Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button>Primary CTA</button>
+                                    <button style="background: @Model.Primary; color: @Model.Lightest;">Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h4 class="color-dark">Brand Colors</h4>
-                                <h5 class="color-tertiary">Information</h5>
+                                <h4 class="color-dark" style="color: @Model.Darkest;">Brand Colors</h4>
+                                <h5 class="color-tertiary" style="color: @Model.Tertiary;">Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
                                 <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="secondary">Secondary CTA</button>
+                                    <button style="background: @Model.Primary; color: @Model.Lightest;">Primary CTA</button>
+                                    <button style="color: @Model.Secondary;" class="secondary">Secondary CTA</button>
                                 </div>
                             </div>
                         </section>

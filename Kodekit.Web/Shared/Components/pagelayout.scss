@@ -38,6 +38,7 @@
             color: $gray700;
             padding-top: 12px;
             font-size: 18px;
+            line-height: 28.8px;
         }
 
         h2 {
@@ -187,6 +188,11 @@
                 font-size: 14px;
                 line-height: 160%;
             }
+        }
+
+        h3 {
+            font-size: unset;
+            font-weight: unset;
         }
     }
 

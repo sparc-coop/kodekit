@@ -26,7 +26,8 @@
     .page header p {
       color: #3A3A40;
       padding-top: 12px;
-      font-size: 18px; }
+      font-size: 18px;
+      line-height: 28.8px; }
     .page header h2 {
       font-weight: 700;
       font-size: 42px; }
@@ -124,6 +125,9 @@
       color: #17171A;
       font-size: 14px;
       line-height: 160%; }
+    .page .preview-example h3 {
+      font-size: unset;
+      font-weight: unset; }
   .page .show-link {
     background: #FFFFFF;
     padding: 8px 14px;
@@ -541,6 +545,9 @@
 .colors .comment {
   color: #A3A60E; }
 
+.colors .preview-mockup h3 {
+  margin-bottom: 20px; }
+
 .colors .preview-mockup section {
   width: 1080px; }
   @media screen and (max-width: 780px) {
@@ -587,7 +594,8 @@
     color: #17171A; }
   .colors .preview-mockup--left p {
     margin: 0;
-    padding-top: 15px; }
+    padding-top: 15px;
+    padding-bottom: 32px; }
 
 .colors .preview-mockup--right {
   display: block; }
@@ -605,7 +613,8 @@
     color: #17171A; }
   .colors .preview-mockup--right p {
     margin: 0;
-    padding-top: 20px; }
+    padding-top: 20px;
+    padding-bottom: 32px; }
 
 .colors .preview-mockup button {
   background: #0B5FFF;
@@ -615,7 +624,7 @@
   font-size: 14px;
   padding: 3px 24px; }
 
-.colors .preview-mockup .button-secondary {
+.colors .preview-mockup .secondary {
   background: none;
   color: #00BFB2; }
 
@@ -924,6 +933,9 @@
   padding: 1px 6px;
   border-radius: 4px;
   color: #3A3A40; }
+
+.installation--title {
+  margin-top: 40px; }
 
 .installation pre {
   margin-top: 6px; }
@@ -1405,13 +1417,26 @@
         font-weight: 500;
         padding: 10px 0; }
       .page-info .history--dropdown .current {
-        cursor: pointer; }
+        cursor: pointer;
+        display: flex; }
         .page-info .history--dropdown .current .img-left {
           margin-right: 16px;
           vertical-align: middle; }
         .page-info .history--dropdown .current .img-right {
           font-size: 17px;
           right: 25px; }
+        .page-info .history--dropdown .current input {
+          max-width: 120px;
+          padding: 2px 5px;
+          border: 1px solid #3A3A40;
+          border-radius: 4px;
+          margin-right: 3px; }
+        .page-info .history--dropdown .current span {
+          display: flex; }
+        .page-info .history--dropdown .current button {
+          padding: 2px 5px; }
+        .page-info .history--dropdown .current .publish-options {
+          height: 100px; }
       .page-info .history--dropdown .title {
         font-size: 11px;
         color: #A9ACB2;
