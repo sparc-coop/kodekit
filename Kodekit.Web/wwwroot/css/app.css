@@ -963,7 +963,8 @@
       width: auto; } }
   .theme-page section > div {
     margin-bottom: 30px;
-    display: block; }
+    display: block;
+    cursor: pointer; }
     .theme-page section > div label {
       display: block;
       color: #17171A;
@@ -1207,7 +1208,7 @@
       flex-wrap: wrap;
       position: absolute;
       top: 55px;
-      right: 80px; }
+      right: 10px; }
   .header .mobile {
     display: none;
     cursor: pointer;

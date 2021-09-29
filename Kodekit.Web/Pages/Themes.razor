@@ -15,11 +15,13 @@
                 The Kodekit default theme adds some basic styling, whereas the blank slate theme lets you make all the design decisions.
             </p>
             <section>
-                <div>
-                    <div class="theme-card"></div>
+                <div @onclick="@(e => SelectTheme("kodekit"))">
+                    <div class="theme-card">
+                        <img src="/images/dash-example.svg" alt="Theme Icon" />
+                    </div>
                     <label>Kodekit Default</label>
                 </div>
-                <div>
+                <div @onclick="@(e => SelectTheme("blank"))">
                     <div class="theme-card"></div>
                     <label>Kodekit Blank Slate</label>
                 </div>
@@ -31,4 +33,10 @@
 
 @code {
     [Parameter] public string kitId { get; set; }
+
+    private async Task SelectTheme(string theme)
+    {
+        //await PublicApi().AddThemeAsync(theme);
+        Nav.NavigateTo($"/{kitId}/preview");
+    }
 }
