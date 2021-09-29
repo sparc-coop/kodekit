@@ -1,5 +1,5 @@
 ﻿@layout SimplifiedLayout
-@page "/"
+@page "/dashboard"
 
 <div class="dashboard page">
     <div class="page__container">
@@ -79,9 +79,9 @@
 
     private async Task CreateNew()
     {
-        CreateKitResponse kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
-        await localStorage.SetItemAsStringAsync("kodekitId", kit.ToString());
-        Nav.NavigateTo($"/{kit}/introduction");
+        var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
+        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+        Nav.NavigateTo($"/{kit.KitId}/introduction");
     }
 
     private void Sort(string filter)

@@ -18,22 +18,51 @@
 @inject IConfiguration Config
 @code {
     string kitId;
-    
+    private User User;
     string ImportUrl;
     int version;
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
+        await GetUser();
         object result = null;
         if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out result) == true)
         {
             kitId = result?.ToString();
             ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?v={version}";
             version++;
+            Console.WriteLine("test0 " + kitId);
         }
-        else
+
+        if(kitId == null)
         {
-            ImportUrl = null;
+            //ImportUrl = null;
+            Console.WriteLine("test1" + kitId);
+            string id = await localStorage.GetItemAsync<string>("kodekitId");
+            if (id != null)
+            {
+                kitId = id;
+                Console.WriteLine("test2 " + id);
+            }
+            else
+            {
+                var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
+                await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+                kitId = kit.KitId;
+                Console.WriteLine("test3 " + kit.KitId);
+            }
+
+        }
+        Console.WriteLine("test4 " + kitId);
+    }
+
+    private async Task GetUser()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
         }
     }
 }

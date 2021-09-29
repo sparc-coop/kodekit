@@ -1,4 +1,5 @@
-﻿@page "/{kitId}/introduction"
+﻿@page "/"
+@page "/{kitId}/introduction"
 
 <div class="page">
     <div class="page__container">
@@ -14,4 +15,20 @@
 
 @code {
     [Parameter] public string kitId { get; set; }
+@*
+    protected override async Task OnInitializedAsync()
+    {
+        if (kitId == null)
+        {
+            string result = await localStorage.GetItemAsync<string>("kodekitId");
+            if (result != null)
+            {
+                kitId = result;
+            } else
+            {
+                var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
+                await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+            }
+        }
+    }*@
 }
