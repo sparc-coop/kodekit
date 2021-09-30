@@ -25,7 +25,7 @@
     }
 
     &-container {
-        margin:20px -16px;
+        margin-top: 20px;
         width: 100%;
         max-width: 1240px;
         display: flex;
@@ -79,6 +79,8 @@
 
     &--header {
         display: flex;
+        max-width: 1024px;
+        margin: 0 auto;
 
         button {
             width: 140px;
@@ -94,7 +96,7 @@
 
         .right {
             position: absolute;
-            right: 0;
+            right: 16px;
             display: flex;
         }
     }

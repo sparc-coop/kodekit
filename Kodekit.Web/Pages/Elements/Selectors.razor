@@ -19,9 +19,9 @@
             {
                 <EditForm Model="@Model">
                     <div class="section">
-                        <label>
-                            Label Font Size
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" placeholder="16" min="1"/>
+                        <label class="small">
+                            Label Font Size (px)
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" placeholder="16" min="1" />
                         </label>
                         <label>
                             Label Font Weight
@@ -32,7 +32,7 @@
                             <Colors KitId="@kitId" @bind-Value="Model.ActiveColor" />
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <div class="preview-example" style="font-size: @(Model.FontSize)px; font-weight: @Model.FontWeight;">
                         <div>
                             <label>
                                 <input type="checkbox" /> Default

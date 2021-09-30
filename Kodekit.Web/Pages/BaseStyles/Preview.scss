@@ -1,21 +1,35 @@
 ﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
 
 .preview {
-    p.subtitle {
-        color: $secondary-300;
-    }
 
     .hero {
         background: $white;
-        margin: -12% -8% 160px -8%;
+        margin: -16% -8% 160px -8%;
         padding: 200px 8% 0 8%;
-        display: flex;
-        flex-wrap: wrap;
 
-        > div {
-            max-width: 500px;
+        .container {
+            margin: 0 auto;
+            max-width: 1024px;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
+
+            > div {
+                max-width: 500px;
+
+                h1 {
+                    margin-top: 30px;
+                    font-size: 48px;
+                    line-height: 55px;
+                }
+
+                p {
+                    padding: 24px 0 56px 0;
+                }
+            }
+        }
+
+        .img--container {
+            height: 500px;
         }
 
         img {
@@ -26,10 +40,11 @@
         .get-started {
             width: 100%;
             display: flex;
-            justify-content: flex-start;
-        }
 
-        .get-started {
+            input {
+                margin: 0 16px 0 0;
+            }
+
             button {
                 position: relative;
                 margin-top: 0;
@@ -45,6 +60,7 @@
         width: 55%;
         text-align: center;
         margin: 0 auto;
+        padding-bottom: 0;
 
         h2 {
             margin-bottom: 16px;
@@ -54,10 +70,10 @@
     .features {
         max-width: 1024px;
         margin: 0 auto;
+        padding-top: 70px;
     }
 
     .feature {
-        //width: 32%;
         background: $white;
         padding: 40px 32px;
         border-radius: 12px;
@@ -84,10 +100,12 @@
 
     .card-section {
         flex-direction: column;
+        margin-top: 160px;
 
         div {
-            width: 80%;
+            width: 68%;
             margin: 0 auto;
+            margin-top: 33px;
         }
 
         .section-container {
@@ -132,7 +150,7 @@
 
         div {
             margin: 0;
-            justify-content: flex-start;
+            display: flex;
             margin-bottom: 16px;
 
             img {
@@ -146,6 +164,12 @@
 
         .line {
             width: 100%;
+        }
+
+        button {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
         }
     }
 

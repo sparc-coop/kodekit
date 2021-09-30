@@ -20,70 +20,70 @@
                 <EditForm Model="@Model">
                     <div class="section">
                         <label>
-                            Font Size
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1"/>
+                            Font Size (px)
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small"/>
                         </label>
                         <label>
                             Font Weight
                             <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="Submit" />
                         </label>
                         <label>
-                            Vertical Padding
-                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0"/>
+                            Vertical Padding (px)
+                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Horizontal Padding
-                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0"/>
+                            Horizontal Padding (px)
+                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Corner Radius
-                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0"/>
+                            Corner Radius (px)
+                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Border Width
-                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0"/>
+                            Border Width (px)
+                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Icon Width
-                            <InputNumber @bind-Value="Model.IconWidth" @oninput="Submit" min="0"/>
+                            Icon Width (px)
+                            <InputNumber @bind-Value="Model.IconWidth" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Icon Height
-                            <InputNumber @bind-Value="Model.IconHeight" @oninput="Submit" min="0"/>
+                            Icon Height (px)
+                            <InputNumber @bind-Value="Model.IconHeight" @oninput="Submit" min="0" class="small" />
                         </label>
                     </div>
 
                     <label style="padding-bottom: 15px;">Secondary Button</label>
                     <div class="section">
-                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button Border" />
+                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Remove Secondary Button Border"/>
                     </div>
 
                     <div class="preview-example">
                         <div>
-                            <button>Button</button>
-                            <button>
+                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">Button</button>
+                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 <KodekitLogoSvg />
                                 Button
                             </button>
-                            <button>
+                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Button
                                 <KodekitLogoSvg />
                             </button>
-                            <button>
+                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 <KodekitLogoSvg />
                             </button>
                         </div>
                         <div>
-                            <button class="secondary">Button</button>
-                            <button class="secondary">
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Button</button>
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 <KodekitLogoSvg />
                                 Button
                             </button>
-                            <button class="secondary">
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Button
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="secondary">
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 <KodekitLogoSvg />
                             </button>
                         </div>
@@ -103,35 +103,35 @@
                     </p>
                     <div class="preview-example">
                         <div>
-                            <button>Default</button>
-                            <button>
+                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">Default</button>
+                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Default
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="hover">Hover</button>
-                            <button class="hover">
+                            <button class="hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Hover</button>
+                            <button class="hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Hover
                                 <KodekitLogoSvg />
                             </button>
-                            <button disabled="disabled">Disabled</button>
-                            <button disabled="disabled">
+                            <button disabled="disabled" class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">Disabled</button>
+                            <button disabled="disabled" class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Disabled
                                 <KodekitLogoSvg />
                             </button>
                         </div>
                         <div>
-                            <button class="secondary">Default</button>
-                            <button class="secondary">
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Default</button>
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Default
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="secondary hover">Hover</button>
-                            <button class="secondary hover">
+                            <button class="secondary hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Hover</button>
+                            <button class="secondary hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
                                 Hover
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="secondary" disabled="disabled">Disabled</button>
-                            <button class="secondary" disabled="disabled">
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")" disabled="disabled">Disabled</button>
+                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")" disabled="disabled">
                                 Disabled
                                 <KodekitLogoSvg />
                             </button>
