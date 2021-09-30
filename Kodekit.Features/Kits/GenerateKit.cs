@@ -25,11 +25,14 @@ namespace Kodekit.Features
         public async Task<IActionResult> HandleAsync(string kitId, bool? preview)
         {
             var kit = await Kits.FindAsync(kitId);
-            // Todo: lookup the kit that is actually published
-            
+
             if (kit == null)
                 throw new Exception("Kit not found!");
 
+            //if (kit.IsPublished != true)
+            //{
+                // Todo: lookup the kit that is actually published
+            //}
 
             var css = new StringBuilder();
 

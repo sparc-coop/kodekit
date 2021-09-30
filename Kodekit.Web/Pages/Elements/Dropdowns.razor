@@ -28,56 +28,45 @@
                 <EditForm Model="@Model">
                     <div class="section">
                         <label>
-                            Font Size
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1"/>
+                            Font Size (px)
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small"/>
                         </label>
                         <label>
                             Font Weight
                            <FontWeights @bind-Value=Model.FontWeight />
                         </label>
                         <label>
-                            Vertical Padding
-                            <InputNumber @bind-Value="Model.VerticalPadding"  @oninput="Submit" min="0"/>
+                            Vertical Padding (px)
+                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" class="small"/>
+                        </label>
+                    </div>
+                    <div class="section">
+                        <label>
+                            Horizontal Padding (px)
+                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Horizontal Padding
-                            <InputNumber @bind-Value="Model.HorizontalPadding"  @oninput="Submit" min="0"/>
+                            Corner Radius (px)
+                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Corner Radius
-                            <InputNumber @bind-Value="Model.CornerRadius"  @oninput="Submit" min="0"/>
-                        </label>
-                        <label>
-                            Border Width
-                            <InputNumber @bind-Value="Model.BorderWidth"  @oninput="Submit" min="0"/>
+                            Border Width (px)
+                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" class="small" />
                         </label>
                     </div>
 
                     <div class="preview-example">
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
+                        @for (int i = 1; i < 5; i++)
+                        {
+                            <select style="font-size: @(Model.FontSize)px; font-weight: @Model.FontWeight;
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px; 
+                                        border-radius: @(Model.CornerRadius)px; border: @(Model.BorderWidth)px solid #D2D4D9">
+                                <option selected>Dropdown Menu</option>
+                                <option>Default Row</option>
+                                <option>Default Row</option>
+                                <option>Default Row</option>
+                            </select>
+                        }
                     </div>
                     <pre>
                     <code class="language-html">
@@ -96,8 +85,8 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    UpdateDropdownsModel Model;
+        [Parameter] public string kitId { get; set; }
+        UpdateDropdownsModel Model;
 
     protected override async Task OnInitializedAsync()
     {

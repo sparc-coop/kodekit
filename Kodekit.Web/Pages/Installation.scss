@@ -20,6 +20,11 @@
             color: $gray500;
             margin-top: 0;
             padding: 6px 10px;
+
+            &:hover {
+                border: 1px solid $primary500;
+                color: $primary500;
+            }
         }
     }
 

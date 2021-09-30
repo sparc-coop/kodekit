@@ -38,7 +38,7 @@
             <div class="dashboard-container">
                 @foreach (var kit in Kits)
                 {
-                    <a href="/@kit.Id/introduction" class="dashboard-card">
+                    <div @onclick="@(e => GoToKit(kit.Id))" class="dashboard-card">
                         <img src="/images/dash-example.svg" alt="Dashboard Icon" />
                         <div>
                             <div class="title">@(kit.Name != null ? kit.Name : "Untitled Styleguide" )</div>
@@ -48,7 +48,7 @@
                                     : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
                             </div>
                         </div>
-                    </a>
+                    </div>
                 }
             </div>
         }
@@ -90,5 +90,11 @@
         {
             Kits = Kits.OrderByDescending(x => x.ModifiedDate).ToList();
         }
+    }
+
+    private async Task GoToKit(string kit)
+    {
+        await localStorage.SetItemAsStringAsync("kodekitId", kit);
+        Nav.NavigateTo($"/{kit}/introduction");
     }
 }

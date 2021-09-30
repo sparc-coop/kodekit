@@ -56,7 +56,7 @@
     bool bodyHeight;
     bool bodySize;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         headerFontSize = Model.Heading.FontSize >= 24;
         headerHeight = 120 >= 100; //Model.Heading.LineHeight(0, Model.Heading.LineHeight.Length - 1) >= 100;

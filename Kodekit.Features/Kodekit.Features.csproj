@@ -6,18 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Elements\Buttons\buttons.css" />
-    <None Remove="Elements\Inputs\inputs.css" />
-    <None Remove="Elements\Typography\typography.css" />
-    <None Remove="Elements\_Shared\destyle-reset.css" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Content Include=".config\dotnet-tools.json" />
-    <Content Include="Elements\Buttons\buttons.css" />
-    <Content Include="Elements\Inputs\inputs.css" />
-    <Content Include="Elements\Typography\typography.css" />
-    <Content Include="Elements\_Shared\destyle-reset.css" />
+    <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest"/>
+    <Content Include="Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest"/>
+    <Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest"/>
+    <Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest"/>
+    <Content Include="Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest"/>
   </ItemGroup>
 
   <ItemGroup>

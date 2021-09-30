@@ -32,7 +32,7 @@ namespace Kodekit.Features.Elements
             );
 
             var paragraph = new TypographyModel(
-               kit.Paragraphs.Font.Family,
+                kit.Paragraphs.Font.Family,
                 kit.Paragraphs.Font.Weight,
                 kit.Paragraphs.Font.Size?.Value,
                 kit.Paragraphs.TypeScale,

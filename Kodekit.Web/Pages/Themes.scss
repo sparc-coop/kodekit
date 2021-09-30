@@ -20,6 +20,7 @@
                 font-size: 16px;
                 font-weight: 500;
                 margin-top: 16px;
+                cursor: pointer;
             }
 
             h5 {
@@ -39,6 +40,18 @@
         background: $white;
         margin-right: 32px;
         margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background: $gray300;
+
+            img {
+                border: 1px solid $gray500;
+                border-radius: 4px;
+            }
+        }
 
         @media screen and (max-width: 1410px) {
             width: 370px;

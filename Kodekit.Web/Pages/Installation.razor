@@ -19,7 +19,7 @@
             <div class="steps">1. Add Script</div>
             <div class="instructions">
                 <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
-                <button @onclick="StepOneCopy">Copy</button>
+                <button @onclick="StepOneCopy">@CopyText</button>
                 <br />
                 <pre>
 <code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
@@ -48,6 +48,7 @@
 @code {
     [Parameter] public string kitId { get; set; }
     string ImportUrl;
+    string CopyText = "Copy";
 
     protected override void OnInitialized()
     {
@@ -56,7 +57,10 @@
 
     private async Task StepOneCopy()
     {
-        //copy to clipboard step one link
+        CopyText = "Copied";
+        await Task.Delay(2000);
+        CopyText = "Copy";
+        //copy to clipboard link
         await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-one");
     }
 }
