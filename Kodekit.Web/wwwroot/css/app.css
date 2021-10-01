@@ -323,34 +323,41 @@
   padding: 22px 32px 50px; }
   .inputs .preview-example input, .inputs .preview-example select {
     width: 200px;
-    margin: 6px 30px 0 0; }
+    margin: 6px 30px 0 0;
+    font-weight: unset; }
   .inputs .preview-example label {
     color: #3A3A40;
     position: relative;
-    margin-top: 10px; }
+    margin-top: 10px;
+    font-size: unset; }
   .inputs .preview-example textarea {
     width: 100%;
     max-width: 664px;
     height: 122px;
     box-sizing: border-box;
-    margin-top: 30px; }
+    margin-top: 30px;
+    font-size: unset; }
   .inputs .preview-example .icon-space input {
     padding-left: 40px; }
   .inputs .preview-example .icon-space img {
     position: absolute;
     top: 50%;
-    margin-top: -6px;
-    left: 13px; }
+    left: 13px;
+    width: 20px;
+    height: 20px; }
   .inputs .preview-example .error {
     color: #F96464; }
     .inputs .preview-example .error input {
-      border: 1px solid #F96464; }
-      .inputs .preview-example .error input::placeholder {
-        color: #F96464; }
+      border: 1px solid #F96464;
+      color: #F96464; }
     .inputs .preview-example .error span {
       color: #F96464; }
-  .inputs .preview-example .disabled span {
-    min-height: 14px; }
+  .inputs .preview-example .disabled {
+    color: #D2D4D9; }
+    .inputs .preview-example .disabled span {
+      min-height: 14px; }
+    .inputs .preview-example .disabled input {
+      color: #D2D4D9; }
   .inputs .preview-example span {
     font-size: 12px;
     line-height: 120%;
@@ -1095,6 +1102,33 @@
     position: absolute;
     right: 16px;
     display: flex; }
+
+.release section {
+  display: flex;
+  flex-wrap: wrap; }
+
+.release-left {
+  max-width: 200px;
+  width: 100%;
+  color: #0B5FFF; }
+  .release-left svg {
+    vertical-align: middle;
+    margin-right: 15px; }
+
+.release-right {
+  display: block !important; }
+  .release-right h3 {
+    font-size: 20px; }
+  .release-right .subheader {
+    color: #3A3A40;
+    padding: 8px 0 16px 0; }
+  .release-right ul {
+    margin: 0;
+    padding: 0 20px;
+    color: #787980;
+    list-style-type: circle; }
+    .release-right ul li {
+      padding: 5px 0; }
 
 .main {
   margin-left: 256px; }

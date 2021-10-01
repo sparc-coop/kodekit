@@ -38,12 +38,12 @@
                         </label>
                         <label>
                             Default Heading Weight
-                            <FontWeights @bind-Value="Model.Heading.FontWeight" OnValueChanged="Submit"/>
+                            <FontWeights @bind-Value="Model.Heading.FontWeight" @bind-Value:event="OnValueChanged"/>
                         </label>
 
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" min="0"/>
+                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" min="0" placeholder="14"/>
                         </label>
                         <label>
                             Choose a Type Scale
@@ -58,7 +58,7 @@
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" min="1"/>
+                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" min="1" placeholder="18"/>
                         </label>
                     </div>
                     <div class="preview-example">

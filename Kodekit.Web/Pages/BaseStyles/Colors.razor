@@ -24,7 +24,7 @@
                         <label>
                             Primary
                             <span>
-                                <input type="color" @bind="Model.Primary" @oninput="Submit">
+                                <input type="color" value="@Model.Primary" @onchange="@(e => { Model.Primary = e.Value.ToString(); Submit(); })">
                                 @Model.Primary
                             </span>
                         </label>
@@ -32,14 +32,14 @@
                         <label>
                             Secondary
                             <span>
-                                <input type="color" @bind-value=Model.Secondary @oninput="Submit">
+                                <input type="color" value="@Model.Secondary" @onchange="@(e => { Model.Secondary = e.Value.ToString(); Submit(); })">
                                 @Model.Secondary
                             </span>
                         </label>
                         <label>
                             Tertiary
                             <span>
-                                <input type="color" @bind-value=Model.Tertiary @oninput="Submit">
+                                <input type="color" value=@Model.Tertiary @onchange="@(e => { Model.Tertiary = e.Value.ToString(); Submit(); })">
                                 @Model.Tertiary
                             </span>
                         </label>
@@ -102,33 +102,79 @@
                         <label>
                             Darkest
                             <span>
-                                <input type="color" @bind=Model.Darkest @bind:event="oninput">
+                                <input type="color" value="@Model.Darkest" @onchange="@(e => { Model.Darkest = e.Value.ToString(); Submit(); })">
                                 @Model.Darkest
                             </span>
                         </label>
                         <label>
                             Lightest
                             <span>
-                                <input type="color" @bind=Model.Lightest @bind:event="oninput">
+                                <input type="color" value="@Model.Lightest" @onchange="@(e => { Model.Lightest = e.Value.ToString(); Submit(); })">
                                 @Model.Lightest
                             </span>
                         </label>
                     </div>
                     <div class="preview-example preview-example--grayscale">
-@*                        @foreach (var weight in Weights)
-                        {
-                            <div>
-                                <label>@weight</label>
-                                <div class="color-display" style="background-color: var(--greyscale-@weight)"></div>
-                            </div>
-                        }*@
+                        @*@foreach (var weight in Weights)
+        {
+            <div>
+                <label>@weight</label>
+                <div class="color-display" style="background-color: var(--greyscale-@weight)"></div>
+            </div>
+        }*@
+                        <div>
+                            <label>900</label>
+                            <div class="color-display" style="background-color: @Model.Darkest"></div>
+                        </div>
+                        <div>
+                            <label>800</label>
+                            <div class="color-display" style="background-color: #2B2D39"></div>
+                        </div>
+                        <div>
+                            <label>700</label>
+                            <div class="color-display" style="background-color: #30313F"></div>
+                        </div>
+                        <div>
+                            <label>600</label>
+                            <div class="color-display" style="background-color: #393A4A"></div>
+                        </div>
+                        <div>
+                            <label>500</label>
+                            <div class="color-display" style="background-color: #6B6C7E"></div>
+                        </div>
+                        <div>
+                            <label>400</label>
+                            <div class="color-display" style="background-color: #A7A9BC"></div>
+                        </div>
+                        <div>
+                            <label>300</label>
+                            <div class="color-display" style="background-color: #CDCED9"></div>
+                        </div>
+                        <div>
+                            <label>200</label>
+                            <div class="color-display" style="background-color: #E7E7ED"></div>
+                        </div>
+                        <div>
+                            <label>100</label>
+                            <div class="color-display" style="background-color: #f7f7f7"></div>
+                        </div>
+                        <div>
+                            <label>50</label>
+                            <div class="color-display" style="background-color: @Model.Lightest"></div>
+                        </div>
                     </div>
                     <pre>
-                    <code class="language-scss">
+                        <code class="language-scss">
 //System Variables
 $greyscale-900
 $greyscale-800
 $greyscale-700
+$greyscale-600
+$greyscale-500
+$greyscale-400
+$greyscale-300
+$greyscale-200
+$greyscale-100
                         </code>
                     </pre>
                     <h3>System Colors</h3>
@@ -139,21 +185,21 @@ $greyscale-700
                         <label>
                             Error
                             <span>
-                                <input type="color" @bind=Model.Error @bind:event="oninput">
+                                <input type="color" value="@Model.Error" @onchange="@(e => { Model.Error = e.Value.ToString(); Submit(); })">
                                 @Model.Error
                             </span>
                         </label>
                         <label>
                             Warning
                             <span>
-                                <input type="color" @bind=Model.Warning @bind:event="oninput">
+                                <input type="color" value="@Model.Warning" @onchange="@(e => { Model.Warning = e.Value.ToString(); Submit(); })">
                                 @Model.Warning
                             </span>
                         </label>
                         <label>
                             Success
                             <span>
-                                <input type="color" @bind=Model.Success @bind:event="oninput">
+                                <input type="color" value="@Model.Success" @onchange="@(e => { Model.Success = e.Value.ToString(); Submit(); })">
                                 @Model.Success
                             </span>
                         </label>

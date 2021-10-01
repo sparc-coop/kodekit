@@ -16,10 +16,10 @@
                 <h3>Drop Shadows</h3>
                 <EditForm Model="@Model.Small">
                     <h4>Small Shadow Settings</h4>
-                    <ShadowEditor @bind-Shadow=Model.Small />
+                    <ShadowEditor @bind-Shadow=Model.XLarge @bind-Shadow:event="ShadowChanged"/>
 
                     <h4>X-Large Shadow Settings</h4>
-                    <ShadowEditor @bind-Shadow=Model.XLarge />
+                    <ShadowEditor @bind-Shadow=Model.XLarge @bind-Shadow:event="ShadowChanged"/>
 
                     <div class="preview-example">
                         <div>
