@@ -1,1 +1,44 @@
-﻿
+﻿@import "../_variables";
+
+.release {
+
+    section {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-left {
+        max-width: 200px;
+        width: 100%;
+        color: $primary500;
+
+        svg {
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+    }
+
+    &-right {
+        display: block !important;
+
+        h3 {
+            font-size: 20px;
+        }
+
+        .subheader {
+            color: $gray700;
+            padding: 8px 0 16px 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0 20px;
+            color: $gray500;
+            list-style-type: circle;
+
+            li {
+                padding: 5px 0;
+            }
+        }
+    }
+}

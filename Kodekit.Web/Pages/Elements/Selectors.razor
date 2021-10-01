@@ -25,7 +25,7 @@
                         </label>
                         <label>
                             Label Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="Submit" />
+                            <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged" />
                         </label>
                         <label>
                             Active Color

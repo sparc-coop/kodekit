@@ -22,41 +22,43 @@
                         <div>
                             <label>
                                 Input Font Size (px)
-                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1"/>
+                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" placeholder="16"/>
                             </label>
                             <label>
                                 Input Font Weight
-                                <FontWeights @bind-Value="Model.FontWeight" OnValueChanged="Submit"/>
+                                <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged"/>
                             </label>
                         </div>
                         <div>
                             <label>
                                 Vertical Padding (px)
-                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" />
+                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" placeholder="8"/>
                             </label>
                             <label>
                                 Horizontal Padding (px)
-                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" />
+                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" placeholder="16"/>
                             </label>
                             <label>
                                 Corner Radius (px)
-                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" />
+                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" placeholder="4"/>
                             </label>
                             <label>
                                 Border Width (px)
-                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" />
+                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" placeholder="1"/>
                             </label>
                         </div>
                     </div>
-                    <div class="preview-example">
-                        <label>
-                            <input placeholder="Placeholder" />
+                    <div class="preview-example" style="font-size: @(Model.FontSize)px; font-weight: @(Model.FontWeight);">
+                        <label class="icon-space icon-space--nolabel">
+                            <input placeholder="Placeholder" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                            padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                         </label>
                         <label class="icon-space icon-space--nolabel">
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="Placeholder" />
+                            <input placeholder="Placeholder" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                         </label>
-                        <textarea>Placeholder</textarea>
+                        <textarea style="border: @(Model.BorderWidth)px solid #D2D4D9; padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;">Placeholder</textarea>
                     </div>
                     <pre>
                         <code>
@@ -74,35 +76,40 @@
                     <p class="subheader">
                        Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
                     </p>
-                    <div class="preview-example">
+                    <div class="preview-example" style="font-size: @(Model.FontSize)px; font-weight: @(Model.FontWeight)px;">
                         <label class="icon-space">
                             Placeholder
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="username" />
+                            <input placeholder="username" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                             <span>Enter your username.</span>
                         </label>
                         <label class="icon-space">
                             Selected
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input class="selected" placeholder="username" />
+                            <input class="selected" placeholder="username" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                             <span>Enter your username.</span>
                         </label>
                         <label class="icon-space">
                             Entered
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="username" />
+                            <input value="Kodekit" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                             <span>Enter your username.</span>
                         </label>
                         <label class="error icon-space">
                             Error
                             <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
-                            <input class="invalid" value="username" />
+                            <input class="invalid" value="username" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                             <span>Username is taken.</span>
                         </label>
                         <label class="disabled icon-space">
                             Disabled
                             <img src="/images/person-disabled-icon.svg" alt="Person Input Disabled Icon" />
-                            <input value="enter username" disabled />
+                            <input value="enter username" disabled style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
                             <span></span>
                         </label>
                     </div>
