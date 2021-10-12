@@ -1,0 +1,19 @@
+﻿<div class="preview-example" @ref=PreviewBlock>
+    @ChildContent
+</div>
+                    
+<pre>
+    <code class="language-html" @ref=CodeBlock>
+    </code>
+</pre>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    ElementReference PreviewBlock;
+    ElementReference CodeBlock;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("populatePreviewCode", PreviewBlock, CodeBlock);
+    }
+}
