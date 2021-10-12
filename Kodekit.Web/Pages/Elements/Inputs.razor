@@ -22,107 +22,81 @@
                         <div>
                             <label>
                                 Input Font Size (px)
-                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" placeholder="16"/>
+                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" placeholder="16" />
                             </label>
                             <label>
                                 Input Font Weight
-                                <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged"/>
+                                <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged" />
                             </label>
                         </div>
                         <div>
                             <label>
                                 Vertical Padding (px)
-                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" placeholder="8"/>
+                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" placeholder="8" />
                             </label>
                             <label>
                                 Horizontal Padding (px)
-                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" placeholder="16"/>
+                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" placeholder="16" />
                             </label>
                             <label>
                                 Corner Radius (px)
-                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" placeholder="4"/>
+                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" placeholder="4" />
                             </label>
                             <label>
                                 Border Width (px)
-                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" placeholder="1"/>
+                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" placeholder="1" />
                             </label>
                         </div>
                     </div>
-                    <div class="preview-example" style="font-size: @(Model.FontSize)px; font-weight: @(Model.FontWeight);">
-                        <label class="icon-space icon-space--nolabel">
-                            <input placeholder="Placeholder" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                            padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+
+                    <Preview>
+                        <label>
+                            <input placeholder="Placeholder" />
                         </label>
-                        <label class="icon-space icon-space--nolabel">
+                        <label>
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="Placeholder" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+                            <input placeholder="Placeholder" />
                         </label>
-                        <textarea style="border: @(Model.BorderWidth)px solid #D2D4D9; padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;">Placeholder</textarea>
-                    </div>
-                    <pre>
-                        <code>
-&lt;input placeholder="Placeholder" /&gt;
+                        <textarea>Placeholder</textarea>
+                    </Preview>
 
-&lt;label&gt;
-    &lt;img src="icon.svg" alt="Icon" /&gt;
-    &lt;input placeholder="Placeholder" /&gt;
-&lt;/label&gt;
-
-&lt;textarea&gt;Placeholder&lt;/textarea&gt;
-                        </code>
-                    </pre>
                     <h3>Input & Textarea states</h3>
                     <p class="subheader">
-                       Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
+                        Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
                     </p>
-                    <div class="preview-example" style="font-size: @(Model.FontSize)px; font-weight: @(Model.FontWeight)px;">
+
+                    <Preview>
                         <label class="icon-space">
                             Placeholder
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input placeholder="username" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+                            <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
                         <label class="icon-space">
                             Selected
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input class="selected" placeholder="username" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+                            <input class="selected" placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
                         <label class="icon-space">
                             Entered
                             <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input value="Kodekit" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+                            <input value="Kodekit" />
                             <span>Enter your username.</span>
                         </label>
                         <label class="error icon-space">
                             Error
                             <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
-                            <input class="invalid" value="username" style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+                            <input class="invalid" value="username" />
                             <span>Username is taken.</span>
                         </label>
                         <label class="disabled icon-space">
                             Disabled
                             <img src="/images/person-disabled-icon.svg" alt="Person Input Disabled Icon" />
-                            <input value="enter username" disabled style="font-size:@(Model.FontSize)px; border: @(Model.BorderWidth)px solid #D2D4D9; 
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px;"/>
+                            <input value="enter username" disabled />
                             <span></span>
                         </label>
-                    </div>
-                    <pre>
-                    <code>
-&lt;label class="icon-space"&gt;
-    Placeholder
-    &lt;img src="/images/person-icon.svg" alt="Person Icon" /&gt;
-    &lt;input placeholder="username" /&gt;
-    &lt;span&gt;Enter your username.&lt;/span&gt;
-&lt;/label&gt;
-                </code>
-            </pre>
+                    </Preview>
                 </EditForm>
             }
         </div>
