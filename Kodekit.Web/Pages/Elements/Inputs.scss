@@ -17,74 +17,10 @@
     .preview-example {
         display: flex;
         flex-wrap: wrap;
-        padding: 22px 32px 50px;
+        padding: 24px 32px;
 
-        input, select {
-            width: 200px;
-            margin: 6px 30px 0 0;
-            font-weight: unset;
-        }
-
-        label {
-            color: $gray700;
-            position: relative;
-            margin-top: 10px;
-            font-size: unset;
-        }
-
-        textarea {
-            width: 100%;
-            max-width: 664px;
-            height: 122px;
-            box-sizing: border-box;
-            margin-top: 30px;
-            font-size: unset;
-        }
-
-        .icon-space {
-            input {
-                padding-left: 40px;
-            }
-
-            img {
-                position: absolute;
-                top: 50%;
-                left: 13px;
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        .error {
-            color: $error;
-
-            input {
-                border: 1px solid $error;
-                color: $error;
-            }
-
-            span {
-                color: $error;
-            }
-        }
-
-        .disabled {
-            color: $gray300;
-
-            span {
-                min-height: 14px;
-            }
-
-            input {
-                color: $gray300;
-            }
-        }
-
-        span {
-            font-size: 12px;
-            line-height: 120%;
-            color: $gray500;
-            margin-top: 6px;
+        > * {
+            margin: 0px 30px 30px 0;
         }
     }
 }
