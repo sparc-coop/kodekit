@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Kodekit.Features.Elements;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using SharpScss;
 using Sparc.Core;
 
 namespace Kodekit.Features
@@ -22,9 +23,12 @@ namespace Kodekit.Features
         }
 
         [HttpGet("/{kitId}.css")]
-        public async Task<IActionResult> HandleAsync(string kitId, bool? preview)
+        public async Task<IActionResult> HandleAsync(string kitId, bool? preview, string? scope)
         {
             var kit = await Kits.FindAsync(kitId);
+
+            if (!string.IsNullOrWhiteSpace(scope) && !scope.StartsWith("."))
+                scope = $".{scope}";
 
             if (kit == null)
                 throw new Exception("Kit not found!");
@@ -39,38 +43,49 @@ namespace Kodekit.Features
             foreach (var url in kit.Imports())
                 css.AppendLine($"@import url('{url}');");
 
-            css.AppendLine(CompileVariables(kit));
+            css.AppendLine(CompileVariables(kit, scope));
             css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
             css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
             css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
             css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
 
+            var result = css.ToString();
+            if (!string.IsNullOrWhiteSpace(scope))
+            {
+                result = Scss.ConvertToCss(scope + " { " + result + " }").Css;
+            }
+
             return new ContentResult
             {
                 ContentType = "text/css",
-                Content = css.ToString(),
+                Content = result,
                 StatusCode = 200
             };
         }
 
-        private string CompileVariables(Kit kit)
+        private string CompileVariables(Kit kit, string scope)
         {
+            if (scope == null)
+                scope = ":root";
+            else
+                scope = "*";
+
             var variables = new Dictionary<string, Dictionary<string, string>>();
 
-            Compile(variables, ":root", kit.Colors.Where(x => x.Name != "lightest" && x.Name != "darkest").ToList());
+            Compile(variables, scope, kit.Colors.Where(x => x.Name != "lightest" && x.Name != "darkest").ToList());
 
             // Hack for greyscale calculation, I hate it
             var lightest = kit.GetColor(ColorTypes.Lightest);
             var darkest = kit.GetColor(ColorTypes.Darkest);
             if (lightest != null && darkest != null)
-                Compile(variables, ":root", lightest.Expand(darkest));
+                Compile(variables, scope, lightest.Expand(darkest));
 
             Compile(variables, "body", kit.Paragraphs);
             Compile(variables, "h1, h2, h3, h4, h5, h6", kit.Headings);
             Compile(variables, "button", kit.Buttons);
             Compile(variables, "input[type=checkbox]", kit.Selectors);
 
-            Compile(variables, "input, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
+            Compile(variables, "input, label, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
             if (kit.Dropdowns.OverwriteInherited)
                 Compile(variables, "select", kit.Dropdowns);
 

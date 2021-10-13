@@ -410,6 +410,13 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
