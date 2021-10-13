@@ -109,8 +109,11 @@
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 8px 8px 0px 0px;
-    color: #17171A;
-    font-family: 'Inter'; }
+    display: flex;
+    flex-wrap: wrap;
+    padding: 24px 32px; }
+    .page .preview-example > * {
+      margin: 0px 30px 30px 0; }
     .page .preview-example--body p {
       width: 100%; }
     .page .preview-example--body .large {
@@ -320,49 +323,9 @@
 .inputs .preview-example {
   display: flex;
   flex-wrap: wrap;
-  padding: 22px 32px 50px; }
-  .inputs .preview-example input, .inputs .preview-example select {
-    width: 200px;
-    margin: 6px 30px 0 0;
-    font-weight: unset; }
-  .inputs .preview-example label {
-    color: #3A3A40;
-    position: relative;
-    margin-top: 10px;
-    font-size: unset; }
-  .inputs .preview-example textarea {
-    width: 100%;
-    max-width: 664px;
-    height: 122px;
-    box-sizing: border-box;
-    margin-top: 30px;
-    font-size: unset; }
-  .inputs .preview-example .icon-space input {
-    padding-left: 40px; }
-  .inputs .preview-example .icon-space img {
-    position: absolute;
-    top: 50%;
-    left: 13px;
-    width: 20px;
-    height: 20px; }
-  .inputs .preview-example .error {
-    color: #F96464; }
-    .inputs .preview-example .error input {
-      border: 1px solid #F96464;
-      color: #F96464; }
-    .inputs .preview-example .error span {
-      color: #F96464; }
-  .inputs .preview-example .disabled {
-    color: #D2D4D9; }
-    .inputs .preview-example .disabled span {
-      min-height: 14px; }
-    .inputs .preview-example .disabled input {
-      color: #D2D4D9; }
-  .inputs .preview-example span {
-    font-size: 12px;
-    line-height: 120%;
-    color: #787980;
-    margin-top: 6px; }
+  padding: 24px 32px; }
+  .inputs .preview-example > * {
+    margin: 0px 30px 30px 0; }
 
 .lists .preview-example {
   display: flex;
