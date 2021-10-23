@@ -10,7 +10,7 @@ namespace Kodekit.Features
     {
         private KitRevision()
         {
-            Id = Guid.NewGuid().ToString();
+            Id = string.Empty;
             KitId = string.Empty;
             DateCreated = DateTime.UtcNow;
 
@@ -30,10 +30,14 @@ namespace Kodekit.Features
         public KitRevision(Kit kit) : this()
         {
             KitId = kit.Id;
+            Id = "1";
         }
 
         public KitRevision(KitRevision revision) : this()
         {
+            // Auto-incrementing integer version IDs
+            Id = (int.Parse(revision.Id) + 1).ToString();
+
             KitId = revision.KitId;
             ParentRevisionId = revision.Id;
 
