@@ -393,7 +393,7 @@
     "/{kitId}.css": {
       "get": {
         "tags": [
-          "GenerateKit"
+          "GenerateCss"
         ],
         "parameters": [
           {
@@ -405,7 +405,7 @@
             }
           },
           {
-            "name": "revisionId",
+            "name": "v",
             "in": "query",
             "schema": {
               "type": "string"
@@ -2638,6 +2638,9 @@
           "name": {
             "type": "string",
             "nullable": true
+          },
+          "isAutoPublish": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

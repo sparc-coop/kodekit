@@ -24,9 +24,7 @@
                                     <img class="img-left" src="/images/ellipse_open_icon.svg" alt="More Options" />
                                     @(item.Name ?? "Untitled Styleguide")
                                     <span>
-                                        @(item.ModifiedDate != null ?
-                                            item.ModifiedDate.Value.ToString("MM/dd/yy hh:mm tt") :
-                                            item.DateCreated.Value.ToString("MM/dd/yy hh:mm tt"))
+                                        @item.DateModified.ToString("MM/dd/yy hh:mm tt")
                                     </span>
                                 </li>
                             }
@@ -38,10 +36,7 @@
         <div class="info">
             <AuthorizeView>
                 <Authorized>
-                    @if (!string.IsNullOrEmpty(ModifiedDate))
-                    {
-                        <div class="info--time">Last Saved: @ModifiedDate</div>
-                    }
+                    <div class="info--time">Last Saved: @kit.DateModified.ToString("MM/dd/yy hh:mm tt")</div>
                     <div class="actions">
                         <svg id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
@@ -162,7 +157,7 @@
                                     }
                                     else
                                     {
-                                        <span>@item.DateCreated.Value.ToString("MMM dd, yyyy hh:mm tt")</span>
+                                        <span>@item.DateCreated.ToString("MMM dd, yyyy hh:mm tt")</span>
                                     }
                                 }
                                 <span class="material-icons">more_vert</span>
@@ -207,8 +202,7 @@
     string EditName = "";
     bool SelectAutoPublish = false;
     bool KitsList = false;
-    string ModifiedDate = "";
-    private ICollection<Kit> Kits;
+    private ICollection<KitRevision> Kits;
     private ICollection<Kit> UserKits;
     Kit kit;
 
@@ -217,9 +211,7 @@
         if (kitId != null)
         {
             kit = await PublicApi().GetKitAsync(kitId);
-
-            ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
-                : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
+            SelectAutoPublish = kit.IsAutoPublish ?? false;
 
             await LoginSucceeded();
         }
@@ -297,9 +289,7 @@
     {
         Kit selectedKit = UserKits.Where(x => x.Id == id).FirstOrDefault();
         selectedKit.Name = name;
-        EditName = "";
-        ShowKitOptions = "";
-        await PublicApi().UpdateKitAsync(selectedKit);
+        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
     }
 
     private void GoToPreview(string id)
@@ -310,20 +300,15 @@
 
     private async Task SetAutoPublish()
     {
-        if (SelectAutoPublish == false)
-            SelectAutoPublish = true;
-        else
-            SelectAutoPublish = false;
-
+        SelectAutoPublish = !SelectAutoPublish;
         kit.IsAutoPublish = SelectAutoPublish;
 
-        await PublicApi().UpdateKitAsync(kit);
+        await UpdateKit();
     }
 
     private async Task UpdateKit()
     {
-        await PublicApi().UpdateKitAsync(kit);
-        ModifiedDate = "JUST NOW";
+        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
     }
 
     private void ShowKitsList()
@@ -335,8 +320,6 @@
     {
         KitsList = !KitsList;
         kit = UserKits.Where(x => x.Id == id).FirstOrDefault();
-        ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
-            : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
         await localStorage.SetItemAsStringAsync("kodekitId", kit.ToString());
     }
 }

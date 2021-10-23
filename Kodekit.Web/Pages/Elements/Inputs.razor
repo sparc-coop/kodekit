@@ -49,7 +49,7 @@
                         </div>
                     </div>
 
-                    <Preview KitId=@kitId>
+                    <Preview KitId=@kitId RevisionId=@revisionId>
                         <label>
                             <input placeholder="Placeholder" />
                         </label>
@@ -65,7 +65,7 @@
                         Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
                     </p>
 
-                    <Preview KitId=@kitId>
+                    <Preview KitId=@kitId RevisionId=@revisionId>
                         <label>
                             Placeholder
                             <img src="/images/person-icon.svg" alt="Person Icon" />
@@ -105,6 +105,7 @@
 
 @code {
     [Parameter] public string kitId { get; set; }
+    string revisionId { get; set; }
     UpdateInputsModel Model;
     EditContext Context;
 
@@ -117,6 +118,7 @@
 
     private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        await PublicApi().UpdateInputsAsync(Model);
+        var result = await PublicApi().UpdateInputsAsync(Model);
+        revisionId = result.CurrentRevisionId;
     }
 }

@@ -44,8 +44,7 @@
                             <div class="title">@(kit.Name != null ? kit.Name : "Untitled Styleguide" )</div>
                             <div class="date">
                                 Last Updated:
-                                @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy")
-                                    : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
+                                @kit.DateModified.ToString("MM/dd/yyyy")
                             </div>
                         </div>
                     </div>
@@ -88,7 +87,7 @@
     {
         if (filter == "date-mod")
         {
-            Kits = Kits.OrderByDescending(x => x.ModifiedDate).ToList();
+            Kits = Kits.OrderByDescending(x => x.DateModified).ToList();
         }
     }
 
