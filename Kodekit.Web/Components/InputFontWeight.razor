@@ -1,13 +1,13 @@
 ﻿@if (Weights != null)
 {
-    <select @bind=Value>
+    <InputSelect @bind-Value=Value>
         @foreach (var weight in Weights)
         {
             <option value="@weight.Key">
                 @weight.Value (@weight.Key)
             </option>
         }
-    </select>
+    </InputSelect>
 }
 
 @code {
