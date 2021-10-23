@@ -80,6 +80,11 @@
     padding: 0 0 0 20px;
     width: 100%;
     max-width: 1024px; }
+    .page pre code {
+      max-height: 400px;
+      overflow-x: hidden !important;
+      overflow-y: auto;
+      white-space: pre-wrap; }
   .page .section, .page section {
     display: flex;
     flex-wrap: wrap;
