@@ -2105,8 +2105,7 @@
           },
           "kitId": {
             "type": "string",
-            "nullable": true,
-            "readOnly": true
+            "nullable": true
           },
           "name": {
             "type": "string",
