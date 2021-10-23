@@ -7,31 +7,29 @@ namespace Kodekit.Features.Elements
     public record ColorsModel(string KitId, string? Primary, string? Secondary, string? Tertiary, string? Darkest, string? Lightest, string? Error, string? Warning, string? Success);
     public class UpdateColors : PublicFeature<ColorsModel, Kit>
     {
-        public UpdateColors(IRepository<Kit> kits)
+        public UpdateColors(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(ColorsModel request)
         {
-            var kit = await Kits.FindAsync(request.KitId);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
+            var kit = await Kits.GetCurrentAsync(request.KitId);
+            var revision = kit.Revision;
 
-
-            kit.UpdateColor(ColorTypes.Primary, request.Primary);
-            kit.UpdateColor(ColorTypes.Secondary, request.Secondary);
-            kit.UpdateColor(ColorTypes.Tertiary, request.Tertiary);
-            kit.UpdateColor(ColorTypes.Error, request.Error);
-            kit.UpdateColor(ColorTypes.Warning, request.Warning);
-            kit.UpdateColor(ColorTypes.Success, request.Success);
-            kit.UpdateColor(ColorTypes.Lightest, request.Lightest);
-            kit.UpdateColor(ColorTypes.Darkest, request.Darkest);
+            revision.UpdateColor(ColorTypes.Primary, request.Primary);
+            revision.UpdateColor(ColorTypes.Secondary, request.Secondary);
+            revision.UpdateColor(ColorTypes.Tertiary, request.Tertiary);
+            revision.UpdateColor(ColorTypes.Error, request.Error);
+            revision.UpdateColor(ColorTypes.Warning, request.Warning);
+            revision.UpdateColor(ColorTypes.Success, request.Success);
+            revision.UpdateColor(ColorTypes.Lightest, request.Lightest);
+            revision.UpdateColor(ColorTypes.Darkest, request.Darkest);
 
             await Kits.UpdateAsync(kit);
-            return kit;
+            return kit.Kit;
         }
     }
 }

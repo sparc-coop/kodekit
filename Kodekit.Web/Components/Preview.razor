@@ -24,7 +24,7 @@
     string Scope;
     int version = 0;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         Scope = $"preview-{Guid.NewGuid()}";
         CssUrl = Config["ApiUrl"] + $"/{KitId}.css?v={version}&scope={Scope}";

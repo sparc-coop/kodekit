@@ -6,19 +6,16 @@ namespace Kodekit.Features.Elements
 {
     public class GetSettings : PublicFeature<string, UpdateSettingsModel>
     {
-        public GetSettings(IRepository<Kit> kits)
+        public GetSettings(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<UpdateSettingsModel> ExecuteAsync(string id)
         {
-            var kit = await Kits.FindAsync(id);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
-
+            var kit = await Kits.GetCurrentRevisionAsync(id);
             return new(id, kit.Settings);
         }
     }

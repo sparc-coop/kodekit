@@ -1,5 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/{kitId}/buttons"
+@page "/{kitId}/buttons"
 
 <div class="buttons page">
     <div class="page__container">
@@ -13,7 +13,7 @@
         <div class="content">
             <h3>Core Buttons</h3>
             <p class="subheader">
-                 Primary and secondary button stylings are inherited from selected base style colors.  
+                Primary and secondary button stylings are inherited from selected base style colors.
             </p>
             @if (Model != null)
             {
@@ -21,11 +21,11 @@
                     <div class="section">
                         <label>
                             Font Size (px)
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small"/>
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small" />
                         </label>
                         <label>
                             Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged"/>
+                            <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged" />
                         </label>
                         <label>
                             Vertical Padding (px)
@@ -55,83 +55,79 @@
 
                     <label style="padding-bottom: 15px;">Secondary Button</label>
                     <div class="section">
-                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Remove Secondary Button Border"/>
+                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Remove Secondary Button Border" />
                     </div>
 
-                    <div class="preview-example">
-                        <div>
-                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">Button</button>
-                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
-                                <KodekitLogoSvg />
-                                Button
-                            </button>
-                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
-                                Button
-                                <KodekitLogoSvg />
-                            </button>
-                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
-                                <KodekitLogoSvg />
-                            </button>
-                        </div>
-                        <div>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Button</button>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
-                                <KodekitLogoSvg />
-                                Button
-                            </button>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
-                                Button
-                                <KodekitLogoSvg />
-                            </button>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
-                                <KodekitLogoSvg />
-                            </button>
-                        </div>
-                    </div>
+                    <Preview>
+                        <button>Button</button>
+                        <button>
+                            <KodekitLogoSvg />
+                            Button
+                        </button>
+                        <button>
+                            Button
+                            <KodekitLogoSvg />
+                        </button>
+                        <button>
+                            <KodekitLogoSvg />
+                        </button>
+                        <button class="secondary">Button</button>
+                        <button class="secondary">
+                            <KodekitLogoSvg />
+                            Button
+                        </button>
+                        <button class="secondary">
+                            Button
+                            <KodekitLogoSvg />
+                        </button>
+                        <button class="secondary">
+                            <KodekitLogoSvg />
+                        </button>
+                    </Preview>
                     <pre>
                     <code>
-&lt;button&gt;Button Label&lt;/button&gt; &lt;!--default--&gt;
-&lt;!-- the button contents will adapt as you add labels, svgs, pngs or jpegs --&gt;
-&lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye" /&gt;Button Label&lt;/button&gt;
-&lt;button&gt;Button Label &lt;img src="icon_eye" alt="Image of Kodekit Eye"&gt;&lt;/button&gt;
-&lt;button&gt;&lt;img src="icon_eye" alt="Image of Kodekit Eye" /&gt;&lt;/button&gt;
-                        </code>
-                    </pre>
+    &lt;button&gt;Button Label&lt;/button&gt; &lt;!--default--&gt;
+    &lt;!-- the button contents will adapt as you add labels, svgs, pngs or jpegs --&gt;
+    &lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye" /&gt;Button Label&lt;/button&gt;
+    &lt;button&gt;Button Label &lt;img src="icon_eye" alt="Image of Kodekit Eye"&gt;&lt;/button&gt;
+    &lt;button&gt;&lt;img src="icon_eye" alt="Image of Kodekit Eye" /&gt;&lt;/button&gt;
+                            </code>
+                        </pre>
                     <h3>Button Variations & States</h3>
                     <p class="subheader">
-                        Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.  
+                        Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
                     </p>
                     <div class="preview-example">
                         <div>
-                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">Default</button>
-                            <button class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
+                            <button>Default</button>
+                            <button>
                                 Default
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Hover</button>
-                            <button class="hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
+                            <button class="hover">Hover</button>
+                            <button class="hover">
                                 Hover
                                 <KodekitLogoSvg />
                             </button>
-                            <button disabled="disabled" class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">Disabled</button>
-                            <button disabled="disabled" class="@(Model.RemoveSecondaryBorder == true ? "remove" : "")">
+                            <button disabled="disabled">Disabled</button>
+                            <button disabled="disabled">
                                 Disabled
                                 <KodekitLogoSvg />
                             </button>
                         </div>
                         <div>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Default</button>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
+                            <button class="secondary">Default</button>
+                            <button class="secondary">
                                 Default
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="secondary hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">Hover</button>
-                            <button class="secondary hover @(Model.RemoveSecondaryBorder == true ? "remove" : "")">
+                            <button class="secondary hover">Hover</button>
+                            <button class="secondary hover">
                                 Hover
                                 <KodekitLogoSvg />
                             </button>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")" disabled="disabled">Disabled</button>
-                            <button class="secondary @(Model.RemoveSecondaryBorder == true ? "remove" : "")" disabled="disabled">
+                            <button class="secondary" disabled="disabled">Disabled</button>
+                            <button class="secondary" disabled="disabled">
                                 Disabled
                                 <KodekitLogoSvg />
                             </button>
@@ -139,13 +135,13 @@
                     </div>
                     <pre>
                     <code>
-&lt;!-- control button state with html attributes --&gt;
-&lt;button&gt;Button Label&lt;/button&gt;  &lt;!--default--&gt;
-&lt;button disabled&gt;Button Label&lt;/button&gt;
-&lt;button class="secondary-btn"&gt;Button Label&lt;/button&gt;
-&lt;button class="secondary-btn" disabled&gt;Button Label&lt;/button&gt;
-                        </code>
-                    </pre>
+    &lt;!-- control button state with html attributes --&gt;
+    &lt;button&gt;Button Label&lt;/button&gt;  &lt;!--default--&gt;
+    &lt;button disabled&gt;Button Label&lt;/button&gt;
+    &lt;button class="secondary-btn"&gt;Button Label&lt;/button&gt;
+    &lt;button class="secondary-btn" disabled&gt;Button Label&lt;/button&gt;
+                            </code>
+                        </pre>
                 </EditForm>
             }
         </div>

@@ -6,16 +6,16 @@ namespace Kodekit.Features.Elements
 {
     public class GetShadow : PublicFeature<string, ShadowsModel>
     {
-        public GetShadow(IRepository<Kit> kits)
+        public GetShadow(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<ShadowsModel> ExecuteAsync(string id)
         {
-            var kit = await Kits.FindAsync(id);
+            var kit = await Kits.GetCurrentRevisionAsync(id);
             if (kit == null)
                 throw new NotFoundException("Kit not found!");
 
