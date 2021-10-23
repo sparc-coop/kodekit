@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,31 +6,30 @@ using Kodekit.Features.Elements;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SharpScss;
-using Sparc.Core;
 using Sparc.Features;
 
 namespace Kodekit.Features
 {
-    public class GenerateKit : Controller
+    public class GenerateCss : Controller
     {
         public KitRepository Kits { get; }
         public string RootPath { get; }
 
-        public GenerateKit(KitRepository kits, IWebHostEnvironment env)
+        public GenerateCss(KitRepository kits, IWebHostEnvironment env)
         {
             Kits = kits;
             RootPath = env.ContentRootPath;
         }
 
         [HttpGet("/{kitId}.css")]
-        public async Task<IActionResult> HandleAsync(string kitId, string? revisionId, string? scope)
+        public async Task<IActionResult> HandleAsync(string kitId, string? v, string? scope)
         {
-            var kit = revisionId == null
+            var kit = v == null
                 ? await Kits.GetPublishedAsync(kitId)
-                : await Kits.GetKitAndRevisionAsync(kitId, revisionId);
+                : await Kits.GetKitAndRevisionAsync(kitId, v);
 
             if (kit.Revision == null)
-                throw new NotFoundException($"Revision {revisionId} does not exist!");
+                throw new NotFoundException($"Revision {v} does not exist!");
 
             if (!string.IsNullOrWhiteSpace(scope) && !scope.StartsWith("."))
                 scope = $".{scope}";
@@ -91,12 +89,12 @@ namespace Kodekit.Features
             return css;
         }
 
-        private void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, ISerializable element)
+        private static void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, ISerializable element)
         {
             Compile(variables, scope, element.Serialize());
         }
 
-        private void Compile<T>(Dictionary<string, Dictionary<string, string>> variables, string scope, List<Variable<T>> values) where T : ISerializable, new()
+        private static void Compile<T>(Dictionary<string, Dictionary<string, string>> variables, string scope, List<Variable<T>> values) where T : ISerializable, new()
         {
             foreach (var value in values)
             {
@@ -104,7 +102,7 @@ namespace Kodekit.Features
             }
         }
 
-        private void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, Dictionary<string, string> values)
+        private static void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, Dictionary<string, string> values)
         {
             if (variables.ContainsKey(scope))
             {
