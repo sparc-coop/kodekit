@@ -4,11 +4,11 @@
     <div class="page__container">
         @if (Kits != null)
         {
-            @if (Kits.Where(x => x.Id == kitId).First().IsPublished != null && Kits.Where(x => x.Id == kitId).First().IsPublished == true)
+            @if (Kit.PublishedRevisionId != null)
             {
-                <button @onclick="GoTo">Edit Current Verison</button>
+                <button @onclick="GoTo">Edit Current Version</button>
             }
-            else if (Kits.Where(x => x.Id == kitId).First().IsPublished == null)
+            else 
             {
                 <button @onclick="Publish">Publish Current Version</button>
             }
@@ -23,7 +23,7 @@
             <h4>Version History</h4>
             <ul>
                 <li>
-                    Current Version: @Kits.Where(x => x.Id == kitId).First().DateCreated.Value.ToString("dddd, MMMM dd yyyy")
+                    Current Version: @Kits.Where(x => x.Id == kitId).First().DateCreated.ToString("dddd, MMMM dd yyyy")
                     <span class="material-icons delete" @onclick="ShowDeleteModal">delete</span>
                 </li>
                 @if (Kits.Count() > 1)
@@ -31,7 +31,7 @@
                     @foreach (var item in Kits)
                     {
                         <li>
-                            @item.DateCreated.Value.ToString("dd MMMM yyyy")
+                            @item.DateCreated.ToString("dd MMMM yyyy")
                             <span class="material-icons delete" @onclick="ShowDeleteModal">delete</span>
                         </li>
                     }
@@ -45,7 +45,8 @@
 @code {
     [Parameter] public string kitId { get; set; }
     private User User;
-    private ICollection<Kit> Kits;
+    private Kit Kit;
+    private ICollection<KitRevision> Kits;
     string Show = "";
 
     protected override async Task OnInitializedAsync()
@@ -56,14 +57,14 @@
 
     private async Task Publish()
     {
-        Kit kit = await PublicApi().GetKitAsync(kitId);
+        Kit = await PublicApi().GetKitAsync(kitId);
 
         if (User != null)
         {
-            kit.UserId = User.Id;
+            Kit.UserId = User.Id;
         }
 
-        await PublicApi().PublishKitAsync(kit);
+        await PublicApi().PublishKitAsync(Kit);
     }
 
     private void GoTo()

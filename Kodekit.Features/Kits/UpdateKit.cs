@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Sparc.Core;
+﻿using System.Threading.Tasks;
 using Sparc.Features;
 
 namespace Kodekit.Features
 {
-    public record UpdateKitRequest(string KitId, string Name);
+    public record UpdateKitRequest(string KitId, string Name, bool IsAutoPublish);
     public class UpdateKit : PublicFeature<UpdateKitRequest, Kit>
     {
         public KitRepository Kits { get; }
@@ -14,7 +12,7 @@ namespace Kodekit.Features
         public override async Task<Kit> ExecuteAsync(UpdateKitRequest request)
         {
             var kit = await Kits.GetKitAsync(request.KitId);
-            kit.UpdateName(request.Name);
+            kit.Update(request.Name, request.IsAutoPublish);
             await Kits.UpdateAsync(kit);
             return kit;
         }

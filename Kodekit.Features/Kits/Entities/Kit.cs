@@ -1,8 +1,5 @@
-﻿using Kodekit.Features.Elements;
-using Sparc.Core;
+﻿using Sparc.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Kodekit.Features
 {
@@ -28,9 +25,10 @@ namespace Kodekit.Features
             UserId = kit.UserId;
         }
 
-        internal void UpdateName(string name)
+        internal void Update(string name, bool isAutoPublish)
         {
             Name = name;
+            IsAutoPublish = isAutoPublish;
             DateModified = DateTime.UtcNow;
         }
 

@@ -18,17 +18,16 @@
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public string KitId { get; set; }
+    [Parameter] public string RevisionId { get;  set; }
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;
     string Scope;
-    int version = 0;
 
     protected override void OnInitialized()
     {
         Scope = $"preview-{Guid.NewGuid()}";
-        CssUrl = Config["ApiUrl"] + $"/{KitId}.css?v={version}&scope={Scope}";
-        version++;
+        CssUrl = Config["ApiUrl"] + $"/{KitId}.css?v={RevisionId}&scope={Scope}";
     }
 
 
