@@ -662,25 +662,7 @@
         cursor: pointer; }
 
 .typography .preview-example {
-  padding: 0 32px 40px 32px; }
-  .typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
-    margin-top: 40px; }
-  .typography .preview-example label {
-    padding-bottom: 0; }
-  .typography .preview-example h1 {
-    font-size: 48px; }
-  .typography .preview-example h2 {
-    font-size: 39px; }
-  .typography .preview-example h3 {
-    font-size: 31px; }
-  .typography .preview-example h4 {
-    font-size: 25px; }
-  .typography .preview-example h5 {
-    font-size: 20px; }
-  .typography .preview-example h6 {
-    font-size: 14px; }
-  .typography .preview-example .subtitle {
-    font-size: 12px; }
+  display: block; }
 
 @media screen and (max-width: 500px) {
   .typography .large {
