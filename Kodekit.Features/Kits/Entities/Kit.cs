@@ -8,6 +8,7 @@ namespace Kodekit.Features
         private Kit()
         {
             Id = Guid.NewGuid().ToString();
+            KitId = Id;
             Name = "Untitled Kit";
             DateCreated = DateTime.UtcNow;
             DateModified = DateTime.UtcNow;
@@ -32,7 +33,7 @@ namespace Kodekit.Features
             DateModified = DateTime.UtcNow;
         }
 
-        public string KitId => Id;
+        public string KitId { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
         public string? UserId { get; set; }
@@ -54,9 +55,13 @@ namespace Kodekit.Features
         public string? PreviousRevisionId { get; set; }
         public string? NextRevisionId { get; set; }
 
-        internal KitRevision AddRevision(KitRevision revision)
+        internal KitRevision AddRevision(KitRevision? previousRevision = null)
         {
-            revision = new KitRevision(revision);
+            var revision = 
+                previousRevision == null
+                ? new KitRevision(this)
+                : new KitRevision(previousRevision);
+
             PreviousRevisionId = CurrentRevisionId;
             CurrentRevisionId = revision.Id;
 

@@ -1,33 +1,35 @@
-﻿@if (CssUrl != null)
+﻿@if (Kit != null)
 {
-    <style type="text/css">
-        @@import url('@CssUrl');
-    </style>
-}
+    @if (CssUrl != null)
+    {
+        <style type="text/css">
+            @@import url('@(CssUrl)&v=@Kit.CurrentRevisionId');
+        </style>
+    }
 
-<div class="preview-example @Scope" @ref=PreviewBlock>
-    @ChildContent
-</div>
-                    
-<pre>
+    <div class="preview-example @Scope" @ref=PreviewBlock>
+        @ChildContent
+    </div>
+
+    <pre>
     <code class="language-html" @ref=CodeBlock>
-    </code>
-</pre>
+            </code>
+        </pre>
+}
 
 @inject IConfiguration Config
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
-    [Parameter] public string KitId { get; set; }
-    [Parameter] public string RevisionId { get;  set; }
+    [Parameter] public Kit Kit { get; set; }
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;
     string Scope;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         Scope = $"preview-{Guid.NewGuid()}";
-        CssUrl = Config["ApiUrl"] + $"/{KitId}.css?v={RevisionId}&scope={Scope}";
+        CssUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
     }
 
 

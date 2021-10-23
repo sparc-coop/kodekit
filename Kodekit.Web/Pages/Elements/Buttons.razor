@@ -17,39 +17,39 @@
             </p>
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <label>
                             Font Size (px)
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small" />
+                            <InputNumber @bind-Value="Model.FontSize" min="1" />
                         </label>
                         <label>
                             Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged" />
+                            <FontWeights @bind-Value="Model.FontWeight" />
                         </label>
                         <label>
                             Vertical Padding (px)
-                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" class="small" />
+                            <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
                         </label>
                         <label>
                             Horizontal Padding (px)
-                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" class="small" />
+                            <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
                         </label>
                         <label>
                             Corner Radius (px)
-                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" class="small" />
+                            <InputNumber @bind-Value="Model.CornerRadius" min="0" />
                         </label>
                         <label>
                             Border Width (px)
-                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" class="small" />
+                            <InputNumber @bind-Value="Model.BorderWidth" min="0" />
                         </label>
                         <label>
                             Icon Width (px)
-                            <InputNumber @bind-Value="Model.IconWidth" @oninput="Submit" min="0" class="small" />
+                            <InputNumber @bind-Value="Model.IconWidth" min="0" />
                         </label>
                         <label>
                             Icon Height (px)
-                            <InputNumber @bind-Value="Model.IconHeight" @oninput="Submit" min="0" class="small" />
+                            <InputNumber @bind-Value="Model.IconHeight" min="0" />
                         </label>
                     </div>
 
@@ -58,7 +58,7 @@
                         <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Remove Secondary Button Border" />
                     </div>
 
-                    <Preview>
+                    <Preview Kit=kit>
                         <button>Button</button>
                         <button>
                             <KodekitLogoSvg />
@@ -84,20 +84,12 @@
                             <KodekitLogoSvg />
                         </button>
                     </Preview>
-                    <pre>
-                    <code>
-    &lt;button&gt;Button Label&lt;/button&gt; &lt;!--default--&gt;
-    &lt;!-- the button contents will adapt as you add labels, svgs, pngs or jpegs --&gt;
-    &lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye" /&gt;Button Label&lt;/button&gt;
-    &lt;button&gt;Button Label &lt;img src="icon_eye" alt="Image of Kodekit Eye"&gt;&lt;/button&gt;
-    &lt;button&gt;&lt;img src="icon_eye" alt="Image of Kodekit Eye" /&gt;&lt;/button&gt;
-                            </code>
-                        </pre>
+                    
                     <h3>Button Variations & States</h3>
                     <p class="subheader">
                         Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
                     </p>
-                    <div class="preview-example">
+                    <Preview Kit=kit>
                         <div>
                             <button>Default</button>
                             <button>
@@ -132,16 +124,7 @@
                                 <KodekitLogoSvg />
                             </button>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-    &lt;!-- control button state with html attributes --&gt;
-    &lt;button&gt;Button Label&lt;/button&gt;  &lt;!--default--&gt;
-    &lt;button disabled&gt;Button Label&lt;/button&gt;
-    &lt;button class="secondary-btn"&gt;Button Label&lt;/button&gt;
-    &lt;button class="secondary-btn" disabled&gt;Button Label&lt;/button&gt;
-                            </code>
-                        </pre>
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -150,15 +133,20 @@
 
 @code {
     [Parameter] public string kitId { get; set; }
+    Kit kit;
     UpdateButtonsModel Model;
+    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
+        kit = await PublicApi().GetKitAsync(kitId);
         Model = await PublicApi().GetButtonsAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
     }
 
-    private async Task Submit()
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        await PublicApi().UpdateButtonsAsync(Model);
+        kit = await PublicApi().UpdateButtonsAsync(Model);
     }
 }

@@ -73,13 +73,13 @@ namespace Kodekit.Features
         }
 
 
-        internal async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
+        internal async Task UpdateAsync((Kit Kit, KitRevision? Revision) kit)
         {
             // update revision links
             var revision = kit.Kit.AddRevision(kit.Revision);
 
             await Kits.UpdateAsync(kit.Kit);
-            await Revisions.AddAsync(kit.Revision);
+            await Revisions.AddAsync(revision);
         }
     }
 }
