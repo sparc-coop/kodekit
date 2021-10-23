@@ -111,8 +111,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        kit = await PublicApi().GetKitAsync(kitId);
         Model = await PublicApi().GetInputsAsync(kitId);
+        kit = await PublicApi().GetKitAsync(kitId);
         Context = new EditContext(Model);
         Context.OnFieldChanged += HandleFieldChanged;
     }
