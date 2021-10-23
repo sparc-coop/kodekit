@@ -16,7 +16,7 @@
             @if (Model != null)
             {
 @*                <AccessibilityChecker Model="Model"/>*@ 
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <label>
                             Preview Text
@@ -26,42 +26,42 @@
                             Heading Font
                             @if (Fonts.Items != null)
                             {
-                                <select class="medium" @bind="Model.Heading.FontFamily" @oninput="Submit">
+                                <InputSelect class="medium" @bind-Value="Model.Heading.FontFamily">
                                     @foreach (var font in Fonts.Items)
                                     {
                                         <option value="@font.Family">
                                             @font.Family
                                         </option>
                                     }
-                                </select>
+                                </InputSelect>
                             }
                         </label>
                         <label>
                             Default Heading Weight
-                            <FontWeights @bind-Value="Model.Heading.FontWeight" @bind-Value:event="OnValueChanged"/>
+                            <FontWeights @bind-Value="Model.Heading.FontWeight" />
                         </label>
 
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" min="0" placeholder="14"/>
+                            <InputNumber @bind-Value="Model.Heading.FontSize" min="0" placeholder="14"/>
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium" @bind="Model.Heading.TypeScale" @oninput="Submit">
+                            <InputSelect class="medium" @bind-Value="Model.Heading.TypeScale">
                                 @foreach (var scale in Model.TypeScales)
                                 {
                                     <option value="@scale.Key">
                                         @scale.Key (@scale.Value)
                                     </option>
                                 }
-                            </select>
+                            </InputSelect>
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" min="1" placeholder="18"/>
+                            <InputNumber @bind-Value="Model.Heading.LineHeight" min="1" placeholder="18"/>
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <Preview Kit=kit>
                         <div>
                             <h1>@previewText</h1>
                             <label>H1 - Font Size: 48px (3em) / Line Height: 120%</label>
@@ -90,22 +90,8 @@
                             <p class="subtitle">@previewText</p>
                             <label>Subtitle - Font Size: xxpx (xem)</label>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-&lt;h1&gt;@(previewText)&lt;/h1&gt;
-&lt;h2&gt;@(previewText)&lt;/h2&gt;
-&lt;h3&gt;@(previewText)&lt;/h3&gt;
-&lt;h4&gt;@(previewText)&lt;/h4&gt;
-&lt;h5&gt;@(previewText)&lt;/h5&gt;
-&lt;h6&gt;@(previewText)&lt;/h6&gt;
-&lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
-
-&lt;!-- combine with other HTML elements --&gt;
-&lt;h1&gt;@(previewText)&lt;/h1&gt;
-&lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
-    </code>
-            </pre>
+                    </Preview>
+                    
                     <h3>Paragraph Settings</h3>
 
                     <div class="section">
@@ -115,7 +101,7 @@
                         </label>
                         <label>
                             Choose Body font
-                            <select class="medium" @bind="Model.Paragraph.FontFamily" @oninput="Submit">
+                            <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
                                 @if (Fonts.Items != null)
                                 {
                                     @foreach (var font in Fonts.Items)
@@ -125,29 +111,29 @@
                                         </option>
                                     }
                                 }
-                            </select>
+                            </InputSelect>
                         </label>
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Paragraph.FontSize" class="small" min="1"/>
+                            <InputNumber @bind-Value="Model.Paragraph.FontSize" min="1"/>
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium" @bind=Model.Paragraph.TypeScale>
+                            <InputSelect class="medium" @bind-Value=Model.Paragraph.TypeScale>
                                 @foreach (var scale in Model.TypeScales)
                                 {
                                     <option value="@scale.Key">
                                         @scale.Key (@scale.Value)
                                     </option>
                                 }
-                            </select>
+                            </InputSelect>
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" class="small" min="1"/>
+                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" min="1"/>
                         </label>
                     </div>
-                    <div class="preview-example preview-example--body">
+                    <Preview Kit=kit>
                         <div>
                             <p class="large">@previewTextBody</p>
                             <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
@@ -160,26 +146,7 @@
                             <p class="small">@previewTextBody</p>
                             <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-&lt;p class="sub-title"&gt;
-    @(previewTextBody)
-&lt;/p&gt;
-&lt;p&gt;
-    @(previewTextBody)
-&lt;/p&gt;
-&lt;p class="disclaimer"&gt;
-    @(previewTextBody)
-&lt;/p&gt;
-&lt;!-- combine with other HTML elements --&gt;
-&lt;h1&gt;
-    &lt;strong&gt;
-        @(previewTextBody)
-    &lt;/strong&gt;
-&lt;h1&gt;
-                        </code>
-                    </pre>
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -192,19 +159,19 @@
     private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
     FontListResponse Fonts;
     GetTypographyResponse Model;
+    Kit kit;
+    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
         Fonts = await PublicApi().GetGoogleFontsAsync("");
         Model = await PublicApi().GetTypographyAsync(kitId);
+        kit = await PublicApi().GetKitAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
     }
 
-    private async Task UpdateFontWeights()
-    {
-        await Submit();
-    }
-
-    private async Task Submit()
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
         var result = new UpdateTypographyModel
         {
@@ -213,7 +180,8 @@
             Paragraphs = Model.Paragraph
         };
 
-        await PublicApi().UpdateTypographyAsync(result);
+        kit = await PublicApi().UpdateTypographyAsync(result);
+        StateHasChanged();
     }
 }
 
