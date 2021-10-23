@@ -89,18 +89,16 @@
         flex-wrap: wrap;
         max-width: 1024px;
         width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        padding: 24px 32px;
 
         label {
             padding: 0;
             margin-bottom: 8px;
         }
 
-        &--colors {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 20px;
-            padding: 24px 32px;
-        }
 
         .color-display {
             width: auto;

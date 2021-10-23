@@ -461,15 +461,14 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 1024px;
-  width: 100%; }
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  padding: 24px 32px; }
   .colors .preview-example label {
     padding: 0;
     margin-bottom: 8px; }
-  .colors .preview-example--colors {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    padding: 24px 32px; }
   .colors .preview-example .color-display {
     width: auto;
     height: 142px;
