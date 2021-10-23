@@ -9,16 +9,16 @@ namespace Kodekit.Features.Elements
     public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, double? LineHeight);
     public class GetTypography : PublicFeature<string, GetTypographyResponse>
     {
-        public GetTypography(IRepository<Kit> kits)
+        public GetTypography(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<GetTypographyResponse> ExecuteAsync(string id)
         {
-            var kit = await Kits.FindAsync(id);
+            var kit = await Kits.GetCurrentRevisionAsync(id);
             if (kit == null)
                 throw new NotFoundException("Kit not found!");
 

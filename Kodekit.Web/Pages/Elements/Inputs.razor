@@ -17,34 +17,34 @@
             </p>
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context"> 
                     <div class="section">
                         <div>
                             <label>
                                 Input Font Size (px)
-                                <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" placeholder="16" />
+                                <InputNumber @bind-Value="Model.FontSize" min="1" placeholder="16" />
                             </label>
                             <label>
                                 Input Font Weight
-                                <FontWeights @bind-Value="Model.FontWeight" @bind-Value:event="OnValueChanged" />
+                                <FontWeights @bind-Value="Model.FontWeight" />
                             </label>
                         </div>
                         <div>
                             <label>
                                 Vertical Padding (px)
-                                <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" placeholder="8" />
+                                <InputNumber @bind-Value="Model.VerticalPadding" min="0" placeholder="8" />
                             </label>
                             <label>
                                 Horizontal Padding (px)
-                                <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" placeholder="16" />
+                                <InputNumber @bind-Value="Model.HorizontalPadding" min="0" placeholder="16" />
                             </label>
                             <label>
                                 Corner Radius (px)
-                                <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" placeholder="4" />
+                                <InputNumber @bind-Value="Model.CornerRadius" min="0" placeholder="4" />
                             </label>
                             <label>
                                 Border Width (px)
-                                <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" placeholder="1" />
+                                <InputNumber @bind-Value="Model.BorderWidth" min="0" placeholder="1" />
                             </label>
                         </div>
                     </div>
@@ -106,13 +106,16 @@
 @code {
     [Parameter] public string kitId { get; set; }
     UpdateInputsModel Model;
+    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetInputsAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
     }
 
-    private async Task Submit()
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
         await PublicApi().UpdateInputsAsync(Model);
     }

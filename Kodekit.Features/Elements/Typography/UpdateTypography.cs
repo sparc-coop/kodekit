@@ -7,19 +7,16 @@ namespace Kodekit.Features.Elements
     public record UpdateTypographyModel(string KitId, TypographyModel Headings, TypographyModel Paragraphs);
     public class UpdateTypography : PublicFeature<UpdateTypographyModel, Kit>
     {
-        public UpdateTypography(IRepository<Kit> kits)
+        public UpdateTypography(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(UpdateTypographyModel request)
         {
-            var kit = await Kits.FindAsync(request.KitId);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
-
+            var kit = await Kits.GetCurrentAsync(request.KitId);
 
             var headings = new Typography(
                 request.Headings.FontFamily,
@@ -37,10 +34,10 @@ namespace Kodekit.Features.Elements
                 request.Paragraphs.LineHeight);
 
 
-            kit.UpdateTypography(headings, paragraphs);
+            kit.Revision.UpdateTypography(headings, paragraphs);
             await Kits.UpdateAsync(kit);
 
-            return kit;
+            return kit.Kit;
         }
     }
 }

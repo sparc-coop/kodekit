@@ -7,21 +7,16 @@ namespace Kodekit.Features
 {
     public class GetKit : PublicFeature<string, Kit>
     {
-        public GetKit(IRepository<Kit> kits)
+        public GetKit(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(string kitId) 
         {
-            var kit = await Kits.FindAsync(kitId);
-            if (kit == null || (string.IsNullOrEmpty(kit.UserId) && kit.IsPublished == true))
-            {
-                kit = new Kit();
-            }
-            return kit;
+            return await Kits.GetKitAsync(kitId);
         }
     }
 }

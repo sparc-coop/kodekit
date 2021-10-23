@@ -7,25 +7,23 @@ namespace Kodekit.Features.Elements
     public record UpdateDropdownsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth, bool OverwriteInherited);
     public class UpdateDropdowns : PublicFeature<UpdateDropdownsModel, Kit>
     {
-        public UpdateDropdowns(IRepository<Kit> kits)
+        public UpdateDropdowns(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(UpdateDropdownsModel request)
         {
-            var kit = await Kits.FindAsync(request.KitId);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
+            var kit = await Kits.GetCurrentAsync(request.KitId);
 
             var Dropdowns = new Dropdown(request.FontSize, request.FontWeight, request.VerticalPadding, request.HorizontalPadding, request.CornerRadius, request.BorderWidth, request.OverwriteInherited);
 
-            kit.UpdateDropdowns(Dropdowns);
+            kit.Revision.UpdateDropdowns(Dropdowns);
             await Kits.UpdateAsync(kit);
 
-            return kit;
+            return kit.Kit;
         }
     }
 }

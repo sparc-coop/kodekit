@@ -7,24 +7,22 @@ namespace Kodekit.Features.Elements
     public record ShadowsModel(string KitId, Shadow? Small, Shadow? XLarge);
     public class UpdateShadow : PublicFeature<ShadowsModel, Kit>
     {
-        public UpdateShadow(IRepository<Kit> kits)
+        public UpdateShadow(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(ShadowsModel request)
         {
-            var kit = await Kits.FindAsync(request.KitId);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
+            var kit = await Kits.GetCurrentAsync(request.KitId);
 
             if (request.Small != null && request.XLarge != null)
-                kit.UpdateShadows(request.Small, request.XLarge);
+                kit.Revision.UpdateShadows(request.Small, request.XLarge);
 
             await Kits.UpdateAsync(kit);
-            return kit;
+            return kit.Kit;
         }
     }
 }

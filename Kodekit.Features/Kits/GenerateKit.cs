@@ -8,42 +8,40 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SharpScss;
 using Sparc.Core;
+using Sparc.Features;
 
 namespace Kodekit.Features
 {
     public class GenerateKit : Controller
     {
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
         public string RootPath { get; }
 
-        public GenerateKit(IRepository<Kit> kits, IWebHostEnvironment env)
+        public GenerateKit(KitRepository kits, IWebHostEnvironment env)
         {
             Kits = kits;
             RootPath = env.ContentRootPath;
         }
 
         [HttpGet("/{kitId}.css")]
-        public async Task<IActionResult> HandleAsync(string kitId, bool? preview, string? scope)
+        public async Task<IActionResult> HandleAsync(string kitId, string? revisionId, string? scope)
         {
-            var kit = await Kits.FindAsync(kitId);
+            var kit = revisionId == null
+                ? await Kits.GetPublishedAsync(kitId)
+                : await Kits.GetKitAndRevisionAsync(kitId, revisionId);
+
+            if (kit.Revision == null)
+                throw new NotFoundException($"Revision {revisionId} does not exist!");
 
             if (!string.IsNullOrWhiteSpace(scope) && !scope.StartsWith("."))
                 scope = $".{scope}";
 
-            if (kit == null)
-                throw new Exception("Kit not found!");
-
-            //if (kit.IsPublished != true)
-            //{
-                // Todo: lookup the kit that is actually published
-            //}
-
             var css = new StringBuilder();
 
-            foreach (var url in kit.Imports())
+            foreach (var url in kit.Revision.Imports())
                 css.AppendLine($"@import url('{url}');");
 
-            css.AppendLine(CompileVariables(kit, scope));
+            css.AppendLine(CompileVariables(kit.Revision, scope));
             css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
             css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
             css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
@@ -63,7 +61,7 @@ namespace Kodekit.Features
             };
         }
 
-        private string CompileVariables(Kit kit, string scope)
+        private string CompileVariables(KitRevision kit, string? scope)
         {
             if (scope == null)
                 scope = ":root";

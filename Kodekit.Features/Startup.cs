@@ -32,7 +32,8 @@ namespace Kodekit.Features
             //services.BuildServiceProvider().GetRequiredService<KodekitContext>().Database.EnsureCreated();
             //services.AddAzureStorage(Configuration["BlobStorage:ConnectionString"]);
             services.AddAzureADB2CAuthentication(Configuration);
-            services.AddBlazoredLocalStorage();           
+            services.AddBlazoredLocalStorage();
+            services.AddScoped<KitRepository>();
 
         }
 

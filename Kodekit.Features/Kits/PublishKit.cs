@@ -21,15 +21,14 @@ namespace Kodekit.Features
             try
             {
                 //Verify kit can be published
-                if (kit.IsPublished == true && string.IsNullOrEmpty(kit.UserId))
+                if (kit.PublishedRevisionId != null && string.IsNullOrEmpty(kit.UserId))
                 {
                     //return sorry cannot publish a new version unless you sign in.
                     return false;
                 }
                 else
                 {
-                    kit.IsPublished = true;
-                    kit.ModifiedDate = DateTime.Now;
+                    kit.Publish();
                     await Kits.UpdateAsync(kit);
                     return true;
                 }
