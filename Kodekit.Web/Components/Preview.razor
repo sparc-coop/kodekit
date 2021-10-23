@@ -7,20 +7,21 @@
         </style>
     }
 
-    <div class="preview-example @Scope" @ref=PreviewBlock>
+    <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
         @ChildContent
     </div>
 
     <pre>
-    <code class="language-html" @ref=CodeBlock>
-            </code>
-        </pre>
+        <code class="language-html" @ref=CodeBlock>
+        </code>
+    </pre>
 }
 
 @inject IConfiguration Config
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public Kit Kit { get; set; }
+    [Parameter] public string AdditionalClass { get; set; }
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;
@@ -30,6 +31,8 @@
     protected override void OnParametersSet()
     {
         Scope = $"preview-{Guid.NewGuid()}";
+        if (Kit == null) return;
+
         CssUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
         if (CurrentVersion != Kit.CurrentRevisionId)
         {
