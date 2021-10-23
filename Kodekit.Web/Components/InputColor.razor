@@ -1,13 +1,13 @@
 ﻿    @if (Model != null)
 {
-    <select class="medium" @bind=Value>
+    <InputSelect class="medium" @bind-Value=Value>
         @foreach (var color in Model)
         {
             <option value="@color.Key">
                 @color.Value
             </option>
         }
-    </select>
+    </InputSelect>
 }
 
 @code {

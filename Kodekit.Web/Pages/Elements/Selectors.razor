@@ -26,11 +26,11 @@
                         </label>
                         <label>
                             Label Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" />
+                            <InputFontWeight @bind-Value="Model.FontWeight" />
                         </label>
                         <label>
                             Active Color
-                            <Colors KitId="@kitId" @bind-Value="Model.ActiveColor" />
+                            <InputColor KitId="@kitId" @bind-Value="Model.ActiveColor" />
                         </label>
                     </div>
                     <Preview Kit=kit>
