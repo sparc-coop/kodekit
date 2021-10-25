@@ -7,80 +7,69 @@
             <div class="title">Elements</div>
             <h2>Dropdowns</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Use to select from a series of choices.
             </p>
         </header>
         <div class="content">
             <h3>Dropdown Styling</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                The &lt;select&gt; element defines a dropdown list. The &lt;option&gt; elements define options that can be selected. To define a pre-selected option, add the selected attribute to the option.
             </p>
             <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
             <div class="section-container">
-                <label class="switch">
-                    <input type="checkbox" @* bind=Model.OverwriteInherited *@>
+@*                <label class="switch">
+                    <input type="checkbox" bind=Model.OverwriteInherited>
                     <span class="slider"></span>
                 </label>
-                Overwrite inherited styling
+                Overwrite inherited styling*@
             </div>
             @if (Model != null)
             {
                 <EditForm Model="@Model">
                     <div class="section">
                         <label>
-                            Font Size
-                            <InputNumber @bind-Value="Model.FontSize" />
+                            Font Size (px)
+                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small"/>
                         </label>
                         <label>
                             Font Weight
-                           <FontWeights @bind-Value=Model.FontWeight />
+                           <InputFontWeight @bind-Value=Model.FontWeight @bind-Value:event="OnValueChanged"/>
                         </label>
                         <label>
-                            Vertical Padding
-                            <InputNumber @bind-Value="Model.VerticalPadding" />
+                            Vertical Padding (px)
+                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" class="small"/>
+                        </label>
+                    </div>
+                    <div class="section">
+                        <label>
+                            Horizontal Padding (px)
+                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Horizontal Padding
-                            <InputNumber @bind-Value="Model.HorizontalPadding" />
+                            Corner Radius (px)
+                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" class="small" />
                         </label>
                         <label>
-                            Corner Radius
-                            <InputNumber @bind-Value="Model.CornerRadius" />
-                        </label>
-                        <label>
-                            Border Width
-                            <InputNumber @bind-Value="Model.BorderWidth" />
+                            Border Width (px)
+                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" class="small" />
                         </label>
                     </div>
 
                     <div class="preview-example">
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
-                        <select>
-                            <option selected>Dropdown Menu</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                            <option>Default Row</option>
-                        </select>
+                        @for (int i = 1; i < 5; i++)
+                        {
+                            <select style="font-size: @(Model.FontSize)px; font-weight: @Model.FontWeight;
+                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px; 
+                                        border-radius: @(Model.CornerRadius)px; border: @(Model.BorderWidth)px solid #D2D4D9">
+                                <option selected>Dropdown Menu</option>
+                                <option>Default Row</option>
+                                <option>Default Row</option>
+                                <option>Default Row</option>
+                            </select>
+                        }
                     </div>
                     <pre>
-                    <code>
+                    <code class="language-html">
 &lt;select&gt;
     &lt;option selected&gt;Dropdown Menu&lt;/option&gt;
     &lt;option&gt;Default Row&lt;/option&gt;
@@ -89,7 +78,6 @@
 &lt;/select&gt;
                         </code>
                     </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="anchors" />
                 </EditForm>
             }
         </div>
@@ -97,8 +85,8 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    UpdateDropdownsModel Model;
+        [Parameter] public string kitId { get; set; }
+        UpdateDropdownsModel Model;
 
     protected override async Task OnInitializedAsync()
     {

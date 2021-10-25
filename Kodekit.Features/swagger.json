@@ -258,6 +258,25 @@
         "tags": [
           "CreateKit"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -374,7 +393,7 @@
     "/{kitId}.css": {
       "get": {
         "tags": [
-          "GenerateKit"
+          "GenerateCss"
         ],
         "parameters": [
           {
@@ -386,10 +405,17 @@
             }
           },
           {
-            "name": "preview",
+            "name": "v",
             "in": "query",
             "schema": {
-              "type": "boolean"
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -720,7 +746,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Kit"
+                    "$ref": "#/components/schemas/KitRevision"
                   }
                 }
               },
@@ -728,7 +754,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Kit"
+                    "$ref": "#/components/schemas/KitRevision"
                   }
                 }
               },
@@ -736,7 +762,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Kit"
+                    "$ref": "#/components/schemas/KitRevision"
                   }
                 }
               }
@@ -1344,7 +1370,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Kit"
+                    "$ref": "#/components/schemas/UpdateKitRequest"
                   }
                 ]
               }
@@ -1353,7 +1379,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Kit"
+                    "$ref": "#/components/schemas/UpdateKitRequest"
                   }
                 ]
               }
@@ -1362,7 +1388,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Kit"
+                    "$ref": "#/components/schemas/UpdateKitRequest"
                   }
                 ]
               }
@@ -1686,35 +1712,6 @@
               "text/json": {
                 "schema": {
                   "type": "boolean"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/UploadKit": {
-      "post": {
-        "tags": [
-          "UploadKit"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
                 }
               }
             }
@@ -2106,11 +2103,11 @@
             "type": "string",
             "nullable": true
           },
-          "userId": {
+          "kitId": {
             "type": "string",
             "nullable": true
           },
-          "parentId": {
+          "name": {
             "type": "string",
             "nullable": true
           },
@@ -2118,7 +2115,61 @@
             "type": "string",
             "nullable": true
           },
-          "url": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isAutoPublish": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "currentRevisionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "publishedRevisionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "previousRevisionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "nextRevisionId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KitRevision": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "parentRevisionId": {
             "type": "string",
             "nullable": true
           },
@@ -2188,28 +2239,6 @@
             ],
             "nullable": true
           },
-          "dateCreated": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "modifiedDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "isPublished": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "isAutoPublish": {
-            "type": "boolean",
-            "nullable": true
-          },
-          "isDeleted": {
-            "type": "boolean",
-            "nullable": true
-          },
           "dropdowns": {
             "allOf": [
               {
@@ -2217,6 +2246,9 @@
               }
             ],
             "nullable": true
+          },
+          "isDeleted": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2591,6 +2623,23 @@
             "type": "number",
             "format": "double",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateKitRequest": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "isAutoPublish": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

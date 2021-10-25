@@ -7,24 +7,22 @@ namespace Kodekit.Features.Elements
     public record UpdateSelectorsModel(string KitId, double? FontSize, string? FontWeight, string? ActiveColor);
     public class UpdateSelectors : PublicFeature<UpdateSelectorsModel, Kit>
     {
-        public UpdateSelectors(IRepository<Kit> kits)
+        public UpdateSelectors(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(UpdateSelectorsModel request)
         {
-            var kit = await Kits.FindAsync(request.KitId);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
+            var kit = await Kits.GetCurrentAsync(request.KitId);
 
-            kit.UpdateSelectors(new Selector(request.FontSize, request.FontWeight, request.ActiveColor));
+            kit.Revision.UpdateSelectors(new Selector(request.FontSize, request.FontWeight, request.ActiveColor));
 
             await Kits.UpdateAsync(kit);
 
-            return kit;
+            return kit.Kit;
         }
     }
 }

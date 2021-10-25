@@ -1,25 +1,18 @@
-﻿using System;
-using System.Threading.Tasks;
-using Sparc.Core;
+﻿using System.Threading.Tasks;
 using Sparc.Features;
 
 namespace Kodekit.Features
 {
     public record CreateKitResponse(string KitId);
-    public class CreateKit : PublicFeature<CreateKitResponse>
+    public class CreateKit : PublicFeature<string, CreateKitResponse>
     {
-        public IRepository<Kit> Kit { get; }
-        public CreateKit(IRepository<Kit> kit) => Kit = kit;
+        public KitRepository Kits { get; }
+        public CreateKit(KitRepository kits) => Kits = kits;
 
-        public override async Task<CreateKitResponse> ExecuteAsync()
+        public override async Task<CreateKitResponse> ExecuteAsync(string userId)
         {
-            var kit = new Kit
-            {
-                DateCreated = DateTime.Now,
-                UserId = User.Id()
-            };
-
-            await Kit.AddAsync(kit);
+            var kit = new Kit("Untitled", userId);
+            await Kits.UpdateAsync((kit, null));
             
             return new(kit.Id);
         }

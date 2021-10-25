@@ -1,0 +1,8 @@
+﻿@page "/authentication/logged-out"
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("redirectLogout");
+    }
+}

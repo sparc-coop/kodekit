@@ -1,4 +1,5 @@
-﻿@page "/{kitId}/box-shadow"
+﻿@inherits HighlightPageBase
+@page "/{kitId}/box-shadow"
 
 <div class="effects-page page">
     <div class="page__container">
@@ -6,91 +7,85 @@
             <div class="title">Effects</div>
             <h2>Box Shadow</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Add box shadows to different elements.
             </p>
         </header>
         <div class="content">
-            <h3>Drop Shadows</h3>
-            <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-            </p>
-            @if (Model.Small != null)
+            @if (Model != null)
             {
+                <h3>Drop Shadows</h3>
                 <EditForm Model="@Model.Small">
                     <h4>Small Shadow Settings</h4>
-                    <ShadowEditor @bind-Shadow=Model.Small />
+                    <ShadowEditor @bind-Shadow=Model.XLarge @bind-Shadow:event="ShadowChanged"/>
 
                     <h4>X-Large Shadow Settings</h4>
-                    <ShadowEditor @bind-Shadow=Model.XLarge />
+                    <ShadowEditor @bind-Shadow=Model.XLarge @bind-Shadow:event="ShadowChanged"/>
 
                     <div class="preview-example">
                         <div>
                             <label>Small Shadow</label>
-                            <div class="example-shadow shadow-small">
+                            <div class="example-shadow" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);">
                             </div>
                         </div>
                         <div>
                             <label>Medium Shadow</label>
-                            <div class="example-shadow shadow-medium">
+                            <div class="example-shadow" style="box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
                             </div>
                         </div>
                         <div>
                             <label>Large Shadow</label>
-                            <div class="example-shadow shadow-large">
+                            <div class="example-shadow" style="box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
                             </div>
                         </div>
                         <div>
                             <label>X-Large Shadow</label>
-                            <div class="example-shadow shadow-xlarge">
+                            <div class="example-shadow" style="box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);">
                             </div>
                         </div>
                     </div>
                     <pre>
                     <code class="language-scss">
-        //use box-shadows as their own class
-        .shadow-small {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
-                0px 0px 2px rgba(0, 0, 0, 0.06),
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+//use box-shadows as their own class
+.shadow-small {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 2px rgba(0, 0, 0, 0.06),
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        .shadow-medium {
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 
-                0px 2px 6px rgba(0, 0, 0, 0.04), 
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+.shadow-medium {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 
+        0px 2px 6px rgba(0, 0, 0, 0.04), 
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        .shadow-large {
-            box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 
-                0px 2px 6px rgba(0, 0, 0, 0.04), 
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+.shadow-large {
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 
+        0px 2px 6px rgba(0, 0, 0, 0.04), 
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        .shadow-x-large {
-            box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 
-                0px 16px 24px rgba(0, 0, 0, 0.04), 
-                0px 4px 8px rgba(0, 0, 0, 0.04), 
-                0px 0px 1px rgba(0, 0, 0, 0.04);
-        }
+.shadow-x-large {
+    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04), 
+        0px 16px 24px rgba(0, 0, 0, 0.04), 
+        0px 4px 8px rgba(0, 0, 0, 0.04), 
+        0px 0px 1px rgba(0, 0, 0, 0.04);
+}
 
-        //or, use mixins to add to your own classes
-        //declared mixin
-        @@mixin shadow-small function {
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
-                0px 0px 2px rgba(0, 0, 0, 0.06),
-                0px 0px 1px rgba(0, 0, 0, 0.04);   
-        }
+//or, use mixins to add to your own classes
+//declared mixin
+@@mixin shadow-small function {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04),
+        0px 0px 2px rgba(0, 0, 0, 0.06),
+        0px 0px 1px rgba(0, 0, 0, 0.04);   
+}
 
-        //use mixin within class
-        .box {
-            background-color: white;
-            @@include shadow-small; 
-        }
-        </code>
-                                </pre>
-
-                    <SaveAndContinue OnSubmit=Submit NextPage="layout" />
-
+//use mixin within class
+.box {
+    background-color: white;
+    @@include shadow-small; 
+}
+</code>
+                    </pre>
                 </EditForm>
             }
         </div>
@@ -104,6 +99,16 @@
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetShadowAsync(kitId);
+
+        if(Model.Small == null)
+        {
+            Model.Small = new Shadow();
+        }
+
+        if (Model.XLarge == null)
+        {
+            Model.XLarge = new Shadow();
+        }
     }
 
     private async Task Submit()

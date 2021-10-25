@@ -1,5 +1,5 @@
 ﻿@inherits HighlightPageBase
-@page  "/{kitId}/buttons"
+@page "/{kitId}/buttons"
 
 <div class="buttons page">
     <div class="page__container">
@@ -7,101 +7,89 @@
             <div class="title">Elements</div>
             <h2>Buttons</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                A clickable button. Most often for use in forms, to submit entered information.
             </p>
         </header>
         <div class="content">
             <h3>Core Buttons</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Primary and secondary button stylings are inherited from selected base style colors.
             </p>
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <label>
-                            Font Size
-                            <InputNumber @bind-Value="Model.FontSize" />
+                            Font Size (px)
+                            <InputNumber @bind-Value="Model.FontSize" min="1" />
                         </label>
                         <label>
                             Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" />
+                            <InputFontWeight @bind-Value="Model.FontWeight" />
                         </label>
                         <label>
-                            Vertical Padding
-                            <InputNumber @bind-Value="Model.VerticalPadding" />
+                            Vertical Padding (px)
+                            <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
                         </label>
                         <label>
-                            Horizontal Padding
-                            <InputNumber @bind-Value="Model.HorizontalPadding" />
+                            Horizontal Padding (px)
+                            <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
                         </label>
                         <label>
-                            Corner Radius
-                            <InputNumber @bind-Value="Model.CornerRadius" />
+                            Corner Radius (px)
+                            <InputNumber @bind-Value="Model.CornerRadius" min="0" />
                         </label>
                         <label>
-                            Border Width
-                            <InputNumber @bind-Value="Model.BorderWidth" />
+                            Border Width (px)
+                            <InputNumber @bind-Value="Model.BorderWidth" min="0" />
                         </label>
                         <label>
-                            Icon Width
-                            <InputNumber @bind-Value="Model.IconWidth" />
+                            Icon Width (px)
+                            <InputNumber @bind-Value="Model.IconWidth" min="0" />
                         </label>
                         <label>
-                            Icon Height
-                            <InputNumber @bind-Value="Model.IconHeight" />
+                            Icon Height (px)
+                            <InputNumber @bind-Value="Model.IconHeight" min="0" />
                         </label>
                     </div>
 
                     <label style="padding-bottom: 15px;">Secondary Button</label>
                     <div class="section">
-                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button Border" />
+                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Remove Secondary Button Border" />
                     </div>
 
-                    <div class="preview-example">
-                        <div>
-                            <button>Button</button>
-                            <button>
-                                <KodekitLogoSvg />
-                                Button
-                            </button>
-                            <button>
-                                Button
-                                <KodekitLogoSvg />
-                            </button>
-                            <button>
-                                <KodekitLogoSvg />
-                            </button>
-                        </div>
-                        <div>
-                            <button class="secondary">Button</button>
-                            <button class="secondary">
-                                <KodekitLogoSvg />
-                                Button
-                            </button>
-                            <button class="secondary">
-                                Button
-                                <KodekitLogoSvg />
-                            </button>
-                            <button class="secondary">
-                                <KodekitLogoSvg />
-                            </button>
-                        </div>
-                    </div>
-                    <pre>
-                    <code>
-&lt;button&gt;Button Label&lt;/button&gt; &lt;!--default--&gt;
-&lt;!-- the button contents will adapt as you add labels, svgs, pngs or jpegs --&gt;
-&lt;button&gt;&lt;img src="icon_eye.svg" alt="Image of Kodekit Eye" /&gt;Button Label&lt;/button&gt;
-&lt;button&gt;Button Label &lt;img src="icon_eye" alt="Image of Kodekit Eye"&gt;&lt;/button&gt;
-&lt;button&gt;&lt;img src="icon_eye" alt="Image of Kodekit Eye" /&gt;&lt;/button&gt;
-                        </code>
-                    </pre>
+                    <Preview Kit=kit>
+                        <button>Button</button>
+                        <button>
+                            <KodekitLogoSvg />
+                            Button
+                        </button>
+                        <button>
+                            Button
+                            <KodekitLogoSvg />
+                        </button>
+                        <button>
+                            <KodekitLogoSvg />
+                        </button>
+                        <button class="secondary">Button</button>
+                        <button class="secondary">
+                            <KodekitLogoSvg />
+                            Button
+                        </button>
+                        <button class="secondary">
+                            Button
+                            <KodekitLogoSvg />
+                        </button>
+                        <button class="secondary">
+                            <KodekitLogoSvg />
+                        </button>
+                    </Preview>
+                    
                     <h3>Button Variations & States</h3>
                     <p class="subheader">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                        Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
                     </p>
-                    <div class="preview-example">
+                    <Preview Kit=kit>
                         <div>
                             <button>Default</button>
                             <button>
@@ -136,18 +124,7 @@
                                 <KodekitLogoSvg />
                             </button>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-&lt;!-- control button state with html attributes --&gt;
-&lt;button&gt;Button Label&lt;/button&gt;  &lt;!--default--&gt;
-&lt;button disabled&gt;Button Label&lt;/button&gt;
-&lt;button class="secondary-btn"&gt;Button Label&lt;/button&gt;
-&lt;button class="secondary-btn" disabled&gt;Button Label&lt;/button&gt;
-                        </code>
-                    </pre>
-
-                    <SaveAndContinue OnSubmit=Submit NextPage="inputs" />
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -156,15 +133,20 @@
 
 @code {
     [Parameter] public string kitId { get; set; }
+    Kit kit;
     UpdateButtonsModel Model;
+    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
+        kit = await PublicApi().GetKitAsync(kitId);
         Model = await PublicApi().GetButtonsAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
     }
-    
-    private async Task Submit()
+
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        await PublicApi().UpdateButtonsAsync(Model);
+        kit = await PublicApi().UpdateButtonsAsync(Model);
     }
 }

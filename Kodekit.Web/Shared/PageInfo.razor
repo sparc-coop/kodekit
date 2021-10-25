@@ -1,9 +1,10 @@
-﻿@if (kitId != null)
-{
-    <div class="page-info">
+﻿
+<div class="page-info">
+    @if (kitId != null)
+    {
         <div class="breadcrumbs">
             <div class="title">
-                <a href="/my-kits">My Styleguides</a>
+                <a href="/">My Styleguides</a>
                 <img src="/images/right-icon.svg" alt="Right" />
             </div>
             <div class="kit-select">
@@ -13,19 +14,17 @@
                 }
                 @if (UserKits != null && UserKits.Count > 1)
                 {
-                    <img src="/images/dropdown-icon.svg" @onclick="ShowKitsList" alt="Dropdown"/>
+                    <img src="/images/dropdown-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
                     @if (KitsList == true)
                     {
                         <ul class="user-kits--dropdown">
                             @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
                             {
                                 <li @onclick="@(e => SelectKit(item.Id))">
-                                    <img class="img-left" src="/images/ellipse_open_icon.svg" alt="More Options"/>
+                                    <img class="img-left" src="/images/ellipse_open_icon.svg" alt="More Options" />
                                     @(item.Name ?? "Untitled Styleguide")
                                     <span>
-                                        @(item.ModifiedDate != null ? 
-                                            item.ModifiedDate.Value.ToString("MM/dd/yy hh:mm tt") : 
-                                            item.DateCreated.Value.ToString("MM/dd/yy hh:mm tt"))
+                                        @item.DateModified.ToString("MM/dd/yy hh:mm tt")
                                     </span>
                                 </li>
                             }
@@ -37,49 +36,54 @@
         <div class="info">
             <AuthorizeView>
                 <Authorized>
-                    @if (!string.IsNullOrEmpty(ModifiedDate))
-                    {
-                        <div class="info--time">Last Saved: @ModifiedDate</div>
-                    }
+                    <div class="info--time">Last Saved: @kit.DateModified.ToString("MM/dd/yy hh:mm tt")</div>
+                    <div class="actions">
+                        <svg id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
+                        </svg>
+@*                        <svg @onclick="CopyKit" title="Copy" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4V1C4 0.734784 4.10536 0.48043 4.29289 0.292893C4.48043 0.105357 4.73478 0 5 0H17C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1V15C18 15.2652 17.8946 15.5196 17.7071 15.7071C17.5196 15.8946 17.2652 16 17 16H14V19C14 19.552 13.55 20 12.993 20H1.007C0.875127 20.0008 0.744397 19.9755 0.622322 19.9256C0.500247 19.8757 0.389233 19.8022 0.295659 19.7093C0.202084 19.6164 0.127793 19.5059 0.0770543 19.3841C0.0263156 19.2624 0.000129374 19.1319 0 19L0.00300002 5C0.00300002 4.448 0.453 4 1.01 4H4ZM2.003 6L2 18H12V6H2.003ZM6 4H14V14H16V2H6V4Z" />
+                        </svg>*@
+                        <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
+                            <svg viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 12H16L12 16L8 12H11V8H13V12ZM15 4H5V20H19V8H15V4ZM3 2.992C3 2.444 3.447 2 3.999 2H16L21 7V20.993C21.0009 21.1243 20.976 21.2545 20.9266 21.3762C20.8772 21.4979 20.8043 21.6087 20.7121 21.7022C20.6199 21.7957 20.5101 21.8701 20.3892 21.9212C20.2682 21.9723 20.1383 21.9991 20.007 22H3.993C3.73038 21.9982 3.47902 21.8931 3.29322 21.7075C3.10742 21.5219 3.00209 21.2706 3 21.008V2.992Z" />
+                            </svg>
+                        </a>
+                    </div>
                 </Authorized>
                 <NotAuthorized>
                     <div class="info--time">Please <a href="authentication/login">Log In</a> to save changes</div>
+                    <div class="actions">
+                        <svg id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
+                        </svg>
+                        <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
+                            <svg viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 12H16L12 16L8 12H11V8H13V12ZM15 4H5V20H19V8H15V4ZM3 2.992C3 2.444 3.447 2 3.999 2H16L21 7V20.993C21.0009 21.1243 20.976 21.2545 20.9266 21.3762C20.8772 21.4979 20.8043 21.6087 20.7121 21.7022C20.6199 21.7957 20.5101 21.8701 20.3892 21.9212C20.2682 21.9723 20.1383 21.9991 20.007 22H3.993C3.73038 21.9982 3.47902 21.8931 3.29322 21.7075C3.10742 21.5219 3.00209 21.2706 3 21.008V2.992Z" />
+                            </svg>
+                        </a>
+                    </div>
                 </NotAuthorized>
             </AuthorizeView>
-
-            <div class="actions">
-                @*<img @onclick="@(e => ShowDeleteModal(kit.Id))" src="/images/delete-icon.png" title="Delete" />
-        <img @onclick="CopyKit" src="/images/copy-icon.png" title="Copy" />
-        <img @onclick="DownloadKit" src="/images/download-icon.png" title="Download" />*@
-                <svg id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
-                </svg>
-                <svg @onclick="CopyKit" title="Copy" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 4V1C4 0.734784 4.10536 0.48043 4.29289 0.292893C4.48043 0.105357 4.73478 0 5 0H17C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1V15C18 15.2652 17.8946 15.5196 17.7071 15.7071C17.5196 15.8946 17.2652 16 17 16H14V19C14 19.552 13.55 20 12.993 20H1.007C0.875127 20.0008 0.744397 19.9755 0.622322 19.9256C0.500247 19.8757 0.389233 19.8022 0.295659 19.7093C0.202084 19.6164 0.127793 19.5059 0.0770543 19.3841C0.0263156 19.2624 0.000129374 19.1319 0 19L0.00300002 5C0.00300002 4.448 0.453 4 1.01 4H4ZM2.003 6L2 18H12V6H2.003ZM6 4H14V14H16V2H6V4Z" />
-                </svg>
-                <svg @onclick="DownloadKit" title="Download" viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 12H16L12 16L8 12H11V8H13V12ZM15 4H5V20H19V8H15V4ZM3 2.992C3 2.444 3.447 2 3.999 2H16L21 7V20.993C21.0009 21.1243 20.976 21.2545 20.9266 21.3762C20.8772 21.4979 20.8043 21.6087 20.7121 21.7022C20.6199 21.7957 20.5101 21.8701 20.3892 21.9212C20.2682 21.9723 20.1383 21.9991 20.007 22H3.993C3.73038 21.9982 3.47902 21.8931 3.29322 21.7075C3.10742 21.5219 3.00209 21.2706 3 21.008V2.992Z" />
-                </svg>
-            </div>
             <AuthorizeView>
                 <Authorized>
                     <div class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown">
                         @if (ShowDropdown == false)
                         {
-                            <img class="icon-left" src="/images/history-icon.svg" alt="History Icon"/>
+                            <img class="icon-left" src="/images/history-icon.svg" alt="History Icon" />
                         }
                         else
                         {
-                            <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon"/>
+                            <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon" />
                         }
                         Version History
                         @if (ShowDropdown == false)
                         {
-                            <img class="icon-right" src="/images/dropdown-icon.svg" alt="Dropdown"/>
+                            <img class="icon-right" src="/images/dropdown-icon.svg" alt="Dropdown" />
                         }
                         else
                         {
-                            <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close"/>
+                            <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close" />
                         }
                     </div>
                 </Authorized>
@@ -90,39 +94,70 @@
             <div class="history--dropdown">
                 <div class="title">Version History</div>
                 <div class="current">
-                    <img class="img-left" src="/images/ellipse_open_icon.svg"/>
-                    Current Version
-                    <img class="img-right" @onclick="UpdateKit" src="/images/save_icon.svg"/>
+                    <img class="img-left" src="/images/ellipse_open_icon.svg" />
+                    @if (EditName == kit.Id)
+                    {
+                        <span>
+                            <input placeholder="@kit.Name" @bind-value="@kit.Name" />
+                            <button @onclick="@(e => UpdateKitName(kit.Id, kit.Name))">Save</button>
+                        </span>
+                    }
+                    else
+                    {
+                        @if (kit.Name != null)
+                        {
+                            <span>@kit.Name</span>
+                        }
+                        else
+                        {
+                            <span>Current Version</span>
+                        }
+                    }
+                    <span class="material-icons img-right" @onclick="@(e => ShowOptions(kit.Id))">more_vert</span>
+                    @if (ShowKitOptions == kit.Id)
+                    {
+                        <div class="publish-options">
+                            <ul>
+                                <li @onclick="@(e => ShowEditName(kit.Id))">Rename Version</li>
+                                <li @onclick="@(e => GoToPreview(kit.Id))">Preview Version</li>
+                                @*<li>Revert to Version</li>*@
+                                <li @onclick="@(e => ShowDeleteModal(kit.Id))">Delete Version</li>
+                            </ul>
+                        </div>
+                    }
                 </div>
-                @if(Kits.Count > 0)
+                @if (Kits.Count > 0)
                 {
                     <div class="title">Past Versions</div>
                     <ul>
                         @foreach (var item in Kits)
                         {
                             <li @onclick="@(e => ShowOptions(item.Id))">
-                                @if(!String.IsNullOrEmpty(item.Name))
+                                @if (!String.IsNullOrEmpty(item.Name))
                                 {
-                                    @if(EditName == item.Id)
+                                    @if (EditName == item.Id)
                                     {
                                         <span>
-                                            <input placeholder="@item.Name" @bind-value="@item.Name"/>
-                                            <button @onclick="@(e => UpdateKitName(item.Id))">Save</button>
+                                            <input placeholder="@item.Name" @bind-value="@item.Name" />
+                                            <button @onclick="@(e => UpdateKitName(item.Id, item.Name))">Save</button>
                                         </span>
-                                    } else
+                                    }
+                                    else
                                     {
                                         <span>@item.Name</span>
                                     }
-                                } else
+                                }
+                                else
                                 {
-                                    @if(EditName == item.Id)
+                                    @if (EditName == item.Id)
                                     {
-                                        <input placeholder="@item.Name" @bind-value="@item.Name"/>
-                                        <button @onclick="@(e => UpdateKitName(item.Id))">Save</button>
+                                        <input placeholder="@item.Name" @bind-value="@item.Name" />
+                                        <button @onclick="@(e => UpdateKitName(item.Id, item.Name))">Save</button>
 
-                                    } else
+                                    }
+                                    else
                                     {
-                                        <span>@item.DateCreated.Value.ToString("MMM dd, yyyy hh:mm tt")</span>
+                                        <span>@item.DateCreated.ToString("MMM dd, yyyy hh:mm tt")</span>
                                     }
                                 }
                                 <span class="material-icons">more_vert</span>
@@ -133,8 +168,8 @@
                                             <li @onclick="@(e => Publish(item.Id))">Push Live</li>
                                             <li @onclick="@(e => ShowEditName(item.Id))">Rename Version</li>
                                             <li @onclick="@(e => GoToPreview(item.Id))">Preview Version</li>
-                                            <li>Revert to Version</li>
-                                            <li @onclick="@(e => GoToPreview(item.Id))">Delete Version</li>
+                                            @*<li>Revert to Version</li>*@
+                                            <li @onclick="@(e => ShowDeleteModal(item.Id))">Delete Version</li>
                                         </ul>
                                     </div>
                                 }
@@ -151,14 +186,15 @@
                 </div>
             </div>
         }
-    </div>
-    <DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@kit" SelectedKit="@SelectedVersion"/>
-}
+    }
+</div>
+<DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@kit" SelectedKit="@SelectedVersion"/>
+
 
 @inject IConfiguration Config
 @code {
     [Parameter] public string kitId { get; set; }
-    
+
     bool ShowDropdown = false;
     string ShowKitOptions = "";
     string Show = "";
@@ -166,8 +202,7 @@
     string EditName = "";
     bool SelectAutoPublish = false;
     bool KitsList = false;
-    string ModifiedDate = "";
-    private ICollection<Kit> Kits;
+    private ICollection<KitRevision> Kits;
     private ICollection<Kit> UserKits;
     Kit kit;
 
@@ -176,9 +211,7 @@
         if (kitId != null)
         {
             kit = await PublicApi().GetKitAsync(kitId);
-
-            ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
-                : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
+            SelectAutoPublish = kit.IsAutoPublish ?? false;
 
             await LoginSucceeded();
         }
@@ -190,6 +223,7 @@
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
         {
+            Console.WriteLine(kitId);
             Kits = await Api.GetRelatedKitsAsync(kitId);
             UserKits = await Api.GetUserKitsAsync();
         }
@@ -223,13 +257,7 @@
     private async Task CopyKit()
     {
         var newKit = await PublicApi().CopyKitAsync(kit.Id);
-        Nav.NavigateTo($"/{newKit.KitId}/introduction/");
-    }
-
-    private void DownloadKit()
-    {
-        var apiUrl = Config["ApiUrl"];
-        Nav.NavigateTo($"{apiUrl}/{kitId}.css");
+        Nav.NavigateTo($"/{newKit.KitId}/introduction");
     }
 
     private async Task Publish(string kitId)
@@ -239,15 +267,15 @@
         await PublicApi().PublishKitAsync(publishKit);
     }
 
-    private void ShowOptions(string kitId)
+    private void ShowOptions(string selectedId)
     {
-        if (ShowKitOptions == kitId)
+        if (ShowKitOptions == selectedId)
         {
             ShowKitOptions = "";
         }
         else
         {
-            ShowKitOptions = kitId;
+            ShowKitOptions = selectedId;
         }
     }
 
@@ -257,35 +285,30 @@
         ShowKitOptions = "";
     }
 
-    private async Task UpdateKitName(string kitId)
+    private async Task UpdateKitName(string id, string name)
     {
-        Kit selectedKit = Kits.Where(x => x.Id == kitId).FirstOrDefault();
-        EditName = "";
-        Console.WriteLine(kitId);
-        await PublicApi().UpdateKitAsync(selectedKit);
+        Kit selectedKit = UserKits.Where(x => x.Id == id).FirstOrDefault();
+        selectedKit.Name = name;
+        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
     }
 
-    private void GoToPreview(string kitId)
+    private void GoToPreview(string id)
     {
-        Nav.NavigateTo("/preview/" + kitId);
+        ShowKitOptions = "";
+        Nav.NavigateTo("/" + id + "/preview");
     }
 
     private async Task SetAutoPublish()
     {
-        if (SelectAutoPublish == false)
-            SelectAutoPublish = true;
-        else
-            SelectAutoPublish = false;
-
+        SelectAutoPublish = !SelectAutoPublish;
         kit.IsAutoPublish = SelectAutoPublish;
 
-        await PublicApi().UpdateKitAsync(kit);
+        await UpdateKit();
     }
 
     private async Task UpdateKit()
     {
-        await PublicApi().UpdateKitAsync(kit);
-        ModifiedDate = "JUST NOW";
+        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
     }
 
     private void ShowKitsList()
@@ -293,11 +316,10 @@
         KitsList = !KitsList;
     }
 
-    private void SelectKit(string kitid)
+    private async Task SelectKit(string id)
     {
         KitsList = !KitsList;
-        kit = UserKits.Where(x => x.Id == kitid).FirstOrDefault();
-        ModifiedDate = kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MMM dd, hh:mm tt")
-            : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MMM dd, hh:mm tt") : "";
+        kit = UserKits.Where(x => x.Id == id).FirstOrDefault();
+        await localStorage.SetItemAsStringAsync("kodekitId", kit.ToString());
     }
 }

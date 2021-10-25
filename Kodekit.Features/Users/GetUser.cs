@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features
 {
-    public class GetUser : PublicFeature<User>
+    public class GetUser : Feature<User>
     {
         public GetUser(IRepository<User> users)
         {

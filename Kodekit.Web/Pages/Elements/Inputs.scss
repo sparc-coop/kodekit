@@ -17,44 +17,10 @@
     .preview-example {
         display: flex;
         flex-wrap: wrap;
-        padding: 32px 32px 50px;
+        padding: 24px 32px;
 
-        input, select {
-            width: 200px;
-            margin: 6px 30px 0 0;
-        }
-
-        label {
-            color: $gray700;
-            position: relative;
-        }
-
-        textarea {
-            width: 100%;
-            max-width: 664px;
-            height: 122px;
-            box-sizing: border-box;
-            margin-top: 30px;
-        }
-
-        .icon-space {
-            input { 
-                padding-left: 40px;
-            }
-
-            img {
-                position: absolute;
-                top: 50%;
-                margin-top: -6px;
-                left: 13px;
-            }
-        }
-
-        span {
-            font-size: 12px;
-            line-height: 120%;
-            color: $gray500;
-            margin-top: 6px;
+        > * {
+            margin: 0px 30px 30px 0;
         }
     }
 }

@@ -1,58 +1,56 @@
 ﻿@import "../../wwwroot/CoreStyles/Core/Colors.scss";
 
-
-
-
 .preview {
-    p.subtitle {
-        color: $secondary-300;
-    }
 
     .hero {
-        margin-left: -8%;
-        margin-top: -8%;
-        margin-right: -8%;
-        padding: 8%;
+        background: $white;
+        margin: -16% -8% 160px -8%;
+        padding: 200px 8% 0 8%;
 
-        div {
-            width: 48%;
-            display: block;
+        .container {
+            margin: 0 auto;
+            max-width: 1024px;
+            display: flex;
+            align-items: center;
 
-            img {
-                width: 100%;
+            > div {
+                max-width: 500px;
+
+                h1 {
+                    margin-top: 30px;
+                    font-size: 48px;
+                    line-height: 55px;
+                }
+
+                p {
+                    padding: 24px 0 56px 0;
+                }
             }
         }
 
-        div:first-child {
-            width: 52%;
+        .img--container {
+            height: 500px;
+        }
+
+        img {
+            max-width: 500px;
+            width: 100%;
         }
 
         .get-started {
             width: 100%;
             display: flex;
-            justify-content: flex-start;
-        }
 
-        div:first-child {
-            div {
+            input {
+                margin: 0 16px 0 0;
             }
 
-            h1 {
-                margin-bottom: 24px;
-            }
-        }
-
-        .get-started {
             button {
                 position: relative;
                 margin-top: 0;
                 bottom: 0;
             }
         }
-    }
-
-    section {
-        margin-bottom: 160px;
     }
 
     header {
@@ -62,52 +60,59 @@
         width: 55%;
         text-align: center;
         margin: 0 auto;
+        padding-bottom: 0;
 
         h2 {
             margin-bottom: 16px;
         }
     }
 
-    div {
+    .features {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding-top: 70px;
+    }
+
+    .feature {
+        background: $white;
+        padding: 40px 32px;
+        border-radius: 12px;
+        margin: 0 32px;
+        border: 1px solid #E5E7EB;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 379px;
         width: 100%;
+        box-sizing: border-box;
 
-        .feature {
-            width: 32%;
-            background: $white;
-            padding: 40px 32px;
-            border-radius: 12px;
-            border: 1px solid #E5E7EB;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        h5 {
+            margin-top: 24px;
+            margin-bottom: 10px;
+        }
 
-            h5 {
-                margin-top: 24px;
-                margin-bottom: 10px;
-            }
-
-            p {
-                margin-bottom: 0px;
-            }
+        p {
+            margin-bottom: 0px;
         }
     }
 
+
     .card-section {
         flex-direction: column;
+        margin-top: 160px;
 
         div {
-            width: 80%;
+            width: 68%;
             margin: 0 auto;
+            margin-top: 33px;
         }
 
         .section-container {
             display: flex;
             justify-content: center;
 
-            p:first-child{
+            p:first-child {
                 margin-right: 10px;
             }
         }
@@ -145,7 +150,7 @@
 
         div {
             margin: 0;
-            justify-content: flex-start;
+            display: flex;
             margin-bottom: 16px;
 
             img {
@@ -158,8 +163,13 @@
         }
 
         .line {
-            ;
             width: 100%;
+        }
+
+        button {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
         }
     }
 

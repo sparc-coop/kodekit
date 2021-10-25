@@ -1,25 +1,42 @@
-﻿@page "/release-notes"
+﻿@page "/{kitId}/release-notes"
+@page "/release-notes"
 
-<div class="page">
+<div class="release page">
     <div class="page__container">
         <header>
             <div class="title">Overview</div>
             <h2>Release Notes</h2>
             <p>
-                This is where you can build your very own system, and at the end export it to use in your projects.
+                We are constantly updating kodekit and adding requested features. If you have any 
+                feedback or feature requests please contact us via <a href="mailto:hello@kodekit.io">hello@kodekit.io</a>.
             </p>
         </header>
-        <div>
+        <section>
             <div class="release-left">
-
+                <div class="date">
+                    <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="4" cy="4" r="4" fill="#0B5FFF" />
+                    </svg>
+                    October 1, 2021
+                </div>
             </div>
-            <div class="content release-right">
+            <div class="release-right">
                 <h3>Kodekit V1.0 Launch</h3>
-                <p>
-                    Kodekit is officially live! Whilst we have managed to implement 
+                <p class="subheader">
+                    Kodekit is officially live! Whilst we have managed to implement
                     a lot of features for our launch, there are still many to come over the following months.
+                    <ul>
+                        <li>Default Themes</li>
+                        <li>Accessibility Checker</li>
+                        <li>Global Settings</li>
+                        <li>Preview Example Page</li>
+                    </ul>
                 </p>
             </div>
-        </div> 
+        </section>
     </div>
 </div>
+
+@code {
+    [Parameter] public string kitId { get; set; }
+}

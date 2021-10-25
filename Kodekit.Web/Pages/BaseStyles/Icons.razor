@@ -11,13 +11,13 @@
             <div class="title">Base Styles</div>
             <h2>Icons</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Provide visual symbols and logos.
             </p>
         </header>
         <div class="content">
             <h3>Icon Sets</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
             </p>
             @if (kit != null)
             {
@@ -33,17 +33,6 @@
                         <option value="FontAwesome">FontAwesome</option>
                     </select>
                 </label>
-                @*@if (icon.Name == "Material" || icon.Name == "Remix")
-            {
-                <label>
-                    Set Variation
-                    <select @onchange="@(args => {icon.Type = args.Value.ToString(); StateHasChanged();})">
-                        <option value="Solid">Solid</option>
-                        <option value="Outline">Outline</option>
-                    </select>
-                </label>
-            }*@
-
             </section>
             <div class="preview-example">
                 @((MarkupString)icon.Markup)
@@ -57,7 +46,6 @@
 &lt;!-- FontAwesome --&gt; &lt;i class="fas fa-home"&gt;&lt;/i&gt;
                     </code>
                 </pre>
-            <SaveAndContinue OnSubmit=Submit NextPage="buttons" />
         </EditForm>
             }
         </div>
@@ -67,23 +55,16 @@
 @code {
     Kit kit;
     [Parameter] public string kitId { get; set; }
-    string importUrl = "";
     IconLibrary icon = new IconLibrary();
 
     protected override async Task OnInitializedAsync()
     {
         kit = await PublicApi().GetKitAsync(kitId);
-
-        //icon.Name = "Material";
-
-        //icon.Url = "https://fonts.googleapis.com/icon?family=Material+Icons";
-        //icon.Markup = "<span class='material-icons'>home</span>";
-        //icon.Type = "Solid";
     }
     
     private async Task Submit()
     {
-        await PublicApi().UpdateKitAsync(kit);
+        //await PublicApi().UpdateKitAsync(kit);
     }
 
     async Task SelectIcons(ChangeEventArgs e)

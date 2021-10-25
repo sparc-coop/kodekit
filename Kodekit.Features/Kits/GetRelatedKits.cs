@@ -6,20 +6,19 @@ using System.Collections.Generic;
 
 namespace Kodekit.Features
 {
-    public class GetRelatedKits : PublicFeature<string, List<Kit>>
+    public class GetRelatedKits : PublicFeature<string, List<KitRevision>>
     {
-        public GetRelatedKits(IRepository<Kit> kits)
+        public GetRelatedKits(IRepository<KitRevision> revisions)
         {
-            Kits = kits;
+            Revisions = revisions;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public IRepository<KitRevision> Revisions { get; }
 
-        public override async Task<List<Kit>> ExecuteAsync(string kitId)
+        public override async Task<List<KitRevision>> ExecuteAsync(string kitId)
         {
-            return await Kits.Query.Where(x => x.UserId == User.Id() 
-                && (x.ParentId == kitId || x.Id == kitId) 
-                && x.IsDeleted != true)
+            return await Revisions.Query(kitId)
+                .Where(x => x.Name != null && x.IsDeleted != true)
                 .OrderByDescending(x => x.DateCreated)
                 .ToListAsync();
         }
