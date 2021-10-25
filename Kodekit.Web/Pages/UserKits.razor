@@ -3,6 +3,8 @@
 
 <div class="dashboard page">
     <div class="page__container">
+        @if (!IsLoading)
+        {
         <div class="dashboard--header">
             <h2>Your Styleguides</h2>
             <div class="right">
@@ -74,6 +76,7 @@
                 }
             </div>
         }
+        }
     </div>
 </div>
 
@@ -81,9 +84,11 @@
 @code {
     private User User;
     private ICollection<Kit> Kits;
+    bool IsLoading;
 
     protected override async Task OnInitializedAsync()
     {
+        IsLoading = true;
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
@@ -97,7 +102,10 @@
             string result = await localStorage.GetItemAsync<string>("kodekitId");
             if (result != null)
                 Kits.Add(await PublicApi().GetKitAsync(result));
+            else
+                await CreateNew();
         }
+        IsLoading = false;
     }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
