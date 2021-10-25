@@ -1,12 +1,12 @@
 ﻿@inherits LayoutComponentBase
-
+@*
 @if (ImportUrl != null)
 {
     <style type="text/css">
         @@import url('@ImportUrl');
     </style>
 }
-
+*@
 
 <NavMenu kitId="@kitId" />
 
@@ -18,12 +18,13 @@
 @inject IConfiguration Config
 @code {
     string kitId;
-    
+    private User User;
     string ImportUrl;
     int version;
 
-    protected override void OnParametersSet()
+    protected override async Task OnParametersSetAsync()
     {
+        await GetUser();
         object result = null;
         if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out result) == true)
         {
@@ -31,11 +32,32 @@
             ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?v={version}";
             version++;
         }
-        else
+
+        if(kitId == null)
         {
-            ImportUrl = null;
+            //ImportUrl = null;
+            string id = await localStorage.GetItemAsync<string>("kodekitId");
+            if (id != null)
+            {
+                kitId = id;
+            }
+            else
+            {
+                var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
+                await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+                kitId = kit.KitId;
+            }
+
         }
     }
 
-
+    private async Task GetUser()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+        }
+    }
 }

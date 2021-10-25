@@ -7,18 +7,17 @@
             <div class="title">Base Styles</div>
             <h2>Typography</h2>
             <p>
-                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
+                Select your font family, weight, size, line-height and typescale. 
+                This will then be applied to the <span>&lt;h1&gt;</span> - <span>&lt;h6&gt;</span> html tags.
             </p>
         </header>
         <div class="content">
-            <!-- Accessibility Checker -->
             <h3>Heading Settings</h3>
-            <p>
-                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
-            </p>
+
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+@*                <AccessibilityChecker Model="Model"/>*@ 
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <label>
                             Preview Text
@@ -28,42 +27,42 @@
                             Heading Font
                             @if (Fonts.Items != null)
                             {
-                                <select class="medium" @bind=Model.Heading.FontFamily>
+                                <InputSelect class="medium" @bind-Value="Model.Heading.FontFamily">
                                     @foreach (var font in Fonts.Items)
                                     {
                                         <option value="@font.Family">
                                             @font.Family
                                         </option>
                                     }
-                                </select>
+                                </InputSelect>
                             }
                         </label>
                         <label>
                             Default Heading Weight
-                            <FontWeights @bind-Value="Model.Heading.FontWeight" />
+                            <InputFontWeight @bind-Value="Model.Heading.FontWeight" />
                         </label>
 
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Heading.FontSize" class="small" />
+                            <InputNumber @bind-Value="Model.Heading.FontSize" min="0" placeholder="14"/>
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium" @bind=Model.Heading.TypeScale>
+                            <InputSelect class="medium" @bind-Value="Model.Heading.TypeScale">
                                 @foreach (var scale in Model.TypeScales)
                                 {
                                     <option value="@scale.Key">
                                         @scale.Key (@scale.Value)
                                     </option>
                                 }
-                            </select>
+                            </InputSelect>
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Heading.LineHeight" class="small" />
+                            <InputNumber @bind-Value="Model.Heading.LineHeight" min="1" placeholder="18"/>
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <Preview Kit=kit>
                         <div>
                             <h1>@previewText</h1>
                             <label>H1 - Font Size: 48px (3em) / Line Height: 120%</label>
@@ -89,25 +88,11 @@
                             <label>H6 - Font Size: xxpx (xem)</label>
                         </div>
                         <div>
-                            <p>@previewText</p>
+                            <p class="subtitle">@previewText</p>
                             <label>Subtitle - Font Size: xxpx (xem)</label>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-            &lt;h1&gt;@(previewText)&lt;/h1&gt;
-            &lt;h2&gt;@(previewText)&lt;/h2&gt;
-            &lt;h3&gt;@(previewText)&lt;/h3&gt;
-            &lt;h4&gt;@(previewText)&lt;/h4&gt;
-            &lt;h5&gt;@(previewText)&lt;/h5&gt;
-            &lt;h6&gt;@(previewText)&lt;/h6&gt;
-            &lt;span class="subtitle"&gt;@(previewText)&lt;/span&gt;
-
-            &lt;!-- combine with other HTML elements --&gt;
-            &lt;h1&gt;@(previewText)&lt;/h1&gt;
-            &lt;h1&gt;&lt;strong&gt;@(previewText)&lt;/strong&gt;&lt;h1&gt;
-                </code>
-            </pre>
+                    </Preview>
+                    
                     <h3>Paragraph Settings</h3>
 
                     <div class="section">
@@ -117,7 +102,7 @@
                         </label>
                         <label>
                             Choose Body font
-                            <select class="medium" @bind=Model.Paragraph.FontFamily>
+                            <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
                                 @if (Fonts.Items != null)
                                 {
                                     @foreach (var font in Fonts.Items)
@@ -127,29 +112,29 @@
                                         </option>
                                     }
                                 }
-                            </select>
+                            </InputSelect>
                         </label>
                         <label>
                             Base Font Size (px)
-                            <InputNumber @bind-Value="Model.Paragraph.FontSize" class="small" />
+                            <InputNumber @bind-Value="Model.Paragraph.FontSize" min="1"/>
                         </label>
                         <label>
                             Choose a Type Scale
-                            <select class="medium" @bind=Model.Paragraph.TypeScale>
+                            <InputSelect class="medium" @bind-Value=Model.Paragraph.TypeScale>
                                 @foreach (var scale in Model.TypeScales)
                                 {
                                     <option value="@scale.Key">
                                         @scale.Key (@scale.Value)
                                     </option>
                                 }
-                            </select>
+                            </InputSelect>
                         </label>
                         <label>
                             Base Line Height (px)
-                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" class="small" />
+                            <InputNumber @bind-Value="Model.Paragraph.LineHeight" min="1"/>
                         </label>
                     </div>
-                    <div class="preview-example preview-example--body">
+                    <Preview Kit=kit>
                         <div>
                             <p class="large">@previewTextBody</p>
                             <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
@@ -162,17 +147,7 @@
                             <p class="small">@previewTextBody</p>
                             <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-            &lt;p class="sub-title"&gt;@(previewTextBody)&lt;/p&gt;
-            &lt;p&gt;@(previewTextBody).&lt;/p&gt;
-            &lt;p class="disclaimer"&gt;@(previewTextBody)&lt;/h3&gt;
-            &lt;!-- combine with other HTML elements --&gt;
-            &lt;h1&gt;&lt;strong&gt;@(previewTextBody)&lt;/strong&gt;&lt;h1&gt;
-                                    </code>
-                                </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="colors" />
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -182,17 +157,22 @@
 @code {
     [Parameter] public string kitId { get; set; }
     private string previewText = "The power of small steps";
-    private string previewTextBody = "What you do makes a difference. And you have to decide what kind of difference you want to make.";
+    private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
     FontListResponse Fonts;
     GetTypographyResponse Model;
+    Kit kit;
+    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
         Fonts = await PublicApi().GetGoogleFontsAsync("");
         Model = await PublicApi().GetTypographyAsync(kitId);
+        kit = await PublicApi().GetKitAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
     }
 
-    private async Task Submit()
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
         var result = new UpdateTypographyModel
         {
@@ -201,7 +181,8 @@
             Paragraphs = Model.Paragraph
         };
 
-        await PublicApi().UpdateTypographyAsync(result);
+        kit = await PublicApi().UpdateTypographyAsync(result);
+        StateHasChanged();
     }
 }
 

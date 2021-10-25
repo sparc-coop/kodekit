@@ -1,0 +1,50 @@
+﻿@if (Kit != null)
+{
+    @if (CssUrl != null)
+    {
+        <style type="text/css">
+            @@import url('@(CssUrl)&v=@CurrentVersion');
+        </style>
+    }
+
+    <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
+        @ChildContent
+    </div>
+
+    <pre>
+        <code class="language-html" @ref=CodeBlock>
+        </code>
+    </pre>
+}
+
+@inject IConfiguration Config
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public Kit Kit { get; set; }
+    [Parameter] public string AdditionalClass { get; set; }
+    ElementReference PreviewBlock;
+    ElementReference CodeBlock;
+    string CssUrl;
+    string Scope;
+    string CurrentVersion;
+
+    protected override void OnParametersSet()
+    {
+        Scope = $"preview-{Guid.NewGuid()}";
+        if (Kit == null) return;
+
+        CssUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
+        if (CurrentVersion != Kit.CurrentRevisionId)
+        {
+            CurrentVersion = Kit.CurrentRevisionId;
+            StateHasChanged();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        
+
+        await JSRuntime.InvokeVoidAsync("populatePreviewCode", PreviewBlock, CodeBlock);
+    }
+}

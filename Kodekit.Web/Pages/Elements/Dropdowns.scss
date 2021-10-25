@@ -7,9 +7,7 @@
         padding: 32px;
 
         select {
-            background: url("/images/dropdown-icon.svg") no-repeat right;
-            -webkit-appearance: none;
-            background-position-x: 144px;
+            height: unset;
         }
     }
 

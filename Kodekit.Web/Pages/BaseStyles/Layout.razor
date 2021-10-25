@@ -1,20 +1,19 @@
 ﻿@inherits HighlightPageBase
-@page  "/layout"
-@page  "/layout/{kitId}"
+@*@page  "/{kitId}/layout"*@
 
 <div class="layout page">
     <div class="page__container">
         <header>
-            <div class="title">Base Styles</div>
+            <div class="title">Structure</div>
             <h2>Layout</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                The layout is the main structure for your kit.
             </p>
         </header>
         <div class="content">
             <h3>Container Width</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Set a container width to define the maximum width the content container can be. 
             </p>
             @if (kit != null)
             {
@@ -70,6 +69,6 @@ $mobile: 320px;
 
     private async Task Submit()
     {
-        await PublicApi().UpdateKitAsync(kit);
+        //await PublicApi().UpdateKitAsync(kit);
     }
 }

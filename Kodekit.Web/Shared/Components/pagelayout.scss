@@ -32,25 +32,50 @@
     }
 
     header {
-        padding-bottom: 25px;
+        padding-bottom: 64px;
 
         p {
             color: $gray700;
             padding-top: 12px;
+            font-size: 18px;
+            line-height: 28.8px;
+        }
+
+        h2 {
+            font-weight: 700;
+            font-size: 42px;
         }
     }
 
     .subheader {
-        color: $gray700;
+        color: $gray500;
         max-width: 496px;
         font-size: 16px;
+        font-weight: 400;
+        padding: 8px 0 32px 0;
+        line-height: 160%;
     }
 
-    button {
-        img {
+    .button--save {
+        color: $gray900;
+        font-size: 16px;
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid $gray900;
+        transition: transform 0.3s ease-in-out;
+
+        img, svg {
             margin-left: 10px;
             vertical-align: middle;
             margin-top: -2px;
+        }
+
+        svg path {
+            fill: $gray900;
+        }
+
+        &:hover {
+            transform: scale(1.05, 1.05);
         }
     }
 
@@ -60,8 +85,28 @@
         color: $gray700;
     }
 
-    input, select {
+    input, select, textarea {
         margin: 0 30px 20px 0;
+        background: $white;
+        border: 1px solid $gray300;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 8px 16px;
+        display: block;
+        margin: 0 30px 20px 0;
+        font-size: 16px;
+        line-height: 160%;
+        height: 40px;
+        color: $gray700;
+        cursor: pointer;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+    input {
+        cursor: text;
     }
 
     pre {
@@ -72,6 +117,13 @@
         padding: 0 0 0 20px;
         width: 100%;
         max-width: 1024px;
+
+        code {
+            max-height: 400px;
+            overflow-x: hidden !important;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
     }
 
     .section, section {
@@ -109,9 +161,34 @@
     .content {
         padding-bottom: 100px;
 
-        p {
-            margin: 0 0 32px;
+        h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: $gray900;
         }
+    }
+
+    .documentation {
+        margin-bottom: 64px;
+        margin-top: -64px;
+
+        h3 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 120%;
+            letter-spacing: 0.02em;
+            color: $gray900;
+            margin-bottom: 8px;
+            margin-top: 32px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 160%;
+            color: $gray500;
+            margin-bottom: 24px;
+        }
+
     }
 
     .preview-example {
@@ -119,8 +196,13 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        color: $gray900;
-        font-family: 'Inter';
+        display: flex;
+        flex-wrap: wrap;
+        padding: 24px 32px;
+
+        > * {
+            margin: 0px 30px 30px 0;
+        }
 
         &--body {
 
@@ -145,6 +227,11 @@
                 font-size: 14px;
                 line-height: 160%;
             }
+        }
+
+        h3 {
+            font-size: unset;
+            font-weight: unset;
         }
     }
 

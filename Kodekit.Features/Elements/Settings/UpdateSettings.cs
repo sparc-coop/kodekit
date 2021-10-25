@@ -7,24 +7,21 @@ namespace Kodekit.Features.Elements
     public record UpdateSettingsModel(string KitId, Settings Settings);
     public class UpdateSettings : PublicFeature<UpdateSettingsModel, Kit>
     {
-        public UpdateSettings(IRepository<Kit> kits)
+        public UpdateSettings(KitRepository kits)
         {
             Kits = kits;
         }
 
-        public IRepository<Kit> Kits { get; }
+        public KitRepository Kits { get; }
 
         public override async Task<Kit> ExecuteAsync(UpdateSettingsModel request)
         {
-            var kit = await Kits.FindAsync(request.KitId);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
+            var kit = await Kits.GetCurrentAsync(request.KitId);
 
-            kit.UpdateSettings(request.Settings);
-
+            kit.Revision.UpdateSettings(request.Settings);
             await Kits.UpdateAsync(kit);
 
-            return kit;
+            return kit.Kit;
         }
     }
 }

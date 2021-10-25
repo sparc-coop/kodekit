@@ -7,45 +7,37 @@
             <div class="title">Base Styles</div>
             <h2>Colors</h2>
             <p>
-                When working with typography, using a type scale can help keep a subtle rhythm throughout your designs.
+                Colors selected here will be applied throughout the kit. They will be 
+                applied to their respective elements (such as primary and secondary buttons)
+                &amp; system colors, as well as accessed via css variables.
             </p>
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
             <h3>Brand Colors</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                The brand colors are the three main colors that will be used to accent your site.
             </p>
 
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <label>
                             Primary
-                            <span>
-                                <input type="color" @bind=Model.Primary @bind:event="oninput">
-                                @Model.Primary
-                            </span>
+                            <InputColor @bind-Value="Model.Primary" />
                         </label>
 
                         <label>
                             Secondary
-                            <span>
-                                <input type="color" @bind=Model.Secondary @bind:event="oninput">
-                                @Model.Secondary
-                            </span>
+                            <InputColor @bind-Value="Model.Secondary" />
                         </label>
                         <label>
                             Tertiary
-                            <span>
-                                <input type="color" @bind=Model.Tertiary @bind:event="oninput">
-                                @Model.Tertiary
-                            </span>
+                            <InputColor @bind-Value="Model.Tertiary" />
                         </label>
-
                     </div>
-                    <div class="preview-example preview-example--colors">
+                    <Preview Kit=kit>
                         <div>
                             <label>Primary</label>
                             <div class="color-display" style="background-color: @Model.Primary"></div>
@@ -76,46 +68,24 @@
                                 }
                             </div>
                         </div>
-                    </div>
-                    <pre>
-                    <code>
-&lt;!-- use directly as colors or background properties --&gt;
-&lt;div class="color-primary"&gt;The power of small steps&lt;/div&gt;
-&lt;div class="bg-primary"&gt;The power of small steps&lt;/div&gt;
-                            </code>
-                    <code class="language-scss" style="margin-top: -50px;">
-//however it is best to use them as variables within your classes
+                    </Preview>
 
-.box {
-    background-color: $primary-500;
-}
-
-.box-alt {
-    background-color: $secondary-100;
-}
-                            </code>
-                        </pre>
-                    <h3>Greyscale</h3>
+                    <h3>Grayscale</h3>
                     <p class="subheader">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                        The grayscale colors will primarily be used for text.
                     </p>
                     <div class="section">
                         <label>
                             Darkest
-                            <span>
-                                <input type="color" @bind=Model.Darkest @bind:event="oninput">
-                                @Model.Darkest
-                            </span>
+                            <InputColor @bind-Value="Model.Darkest" />
                         </label>
                         <label>
                             Lightest
-                            <span>
-                                <input type="color" @bind=Model.Lightest @bind:event="oninput">
-                                @Model.Lightest
-                            </span>
+                            <InputColor @bind-Value="Model.Lightest" />
                         </label>
                     </div>
-                    <div class="preview-example preview-example--grayscale">
+
+                    <Preview Kit=kit AdditionalClass="greyscale">
                         @foreach (var weight in Weights)
                         {
                             <div>
@@ -123,46 +93,27 @@
                                 <div class="color-display" style="background-color: var(--greyscale-@weight)"></div>
                             </div>
                         }
-                    </div>
-                    <pre>
-                    <code class="language-scss">
-//System Variables
-$greyscale-900
-$greyscale-800
-$greyscale-700
-                        </code>
-                    </pre>
+                    </Preview>
+
                     <h3>System Colors</h3>
                     <p class="subheader">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                        The system colors are used to highlight alerts.
                     </p>
                     <div class="section">
                         <label>
                             Error
-                            <span>
-                                <input type="color" @bind=Model.Error @bind:event="oninput">
-                                @Model.Error
-                            </span>
+                            <InputColor @bind-Value="Model.Error" />
                         </label>
                         <label>
                             Warning
-                            <span>
-                                <input type="color" @bind=Model.Warning @bind:event="oninput">
-                                @Model.Warning
-                            </span>
+                            <InputColor @bind-Value="Model.Warning" />
                         </label>
                         <label>
                             Success
-                            <span>
-                                <input type="color" @bind=Model.Success @bind:event="oninput">
-                                @Model.Success
-                            </span>
+                            <InputColor @bind-Value="Model.Success" />
                         </label>
                     </div>
-                    <div class="preview-example preview-example--colors">
-                        <div class="bg-error"></div>
-                        <div class="bg-warning"></div>
-                        <div class="bg-success"></div>
+                    <Preview Kit=kit>
                         <div>
                             <label>Error</label>
                             <div class="color-display" style="background-color: var(--error-500)"></div>
@@ -175,53 +126,35 @@ $greyscale-700
                             <label>Success</label>
                             <div class="color-display" style="background-color: var(--success-500)"></div>
                         </div>
-                    </div>
-                    <pre>
-                    <code class="language-scss">
-//System Variables
-$error-900
-$error-500
-$error-100
-$warning-900
-$warning-500
-$warning-100
-$success-900
-$success-500
-$success-100
-                        </code>
-                        </pre>
-                    <div class="preview-mockup">
+                    </Preview>
+
+                    <Preview Kit=kit>
                         <h3>Preview</h3>
-                        <p class="subheader">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-                        </p>
                         <section>
                             <div class="preview-mockup--left">
                                 <img src="/images/example1.png" alt="Example mockup" />
                                 <div>
-                                    <h4 class="color-dark">Brand Colors</h4>
-                                    <h5 class="color-tertiary">Information</h5>
+                                    <h4 class="color-dark" style="color: @Model.Darkest;">Brand Colors</h4>
+                                    <h5 class="color-tertiary" style="color: @Model.Tertiary;">Information</h5>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                     </p>
-                                    <button>Primary CTA</button>
+                                    <button style="background: @Model.Primary; color: @Model.Lightest;">Primary CTA</button>
                                 </div>
                             </div>
                             <div class="preview-mockup--right">
-                                <h4 class="color-dark">Brand Colors</h4>
-                                <h5 class="color-tertiary">Information</h5>
+                                <h4 class="color-dark" style="color: @Model.Darkest;">Brand Colors</h4>
+                                <h5 class="color-tertiary" style="color: @Model.Tertiary;">Information</h5>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
                                 <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="secondary">Secondary CTA</button>
+                                    <button style="background: @Model.Primary; color: @Model.Lightest;">Primary CTA</button>
+                                    <button style="color: @Model.Secondary;" class="secondary">Secondary CTA</button>
                                 </div>
                             </div>
                         </section>
-                    </div>
-                    
-                    <SaveAndContinue OnSubmit=Submit NextPage="icons" />
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -231,15 +164,22 @@ $success-100
 @code {
     [Parameter] public string kitId { get; set; }
     ColorsModel Model;
+    Kit kit;
+    EditContext Context;
+
     List<string> Weights = new List<string> { "900", "800", "700", "600", "500", "400", "300", "200", "100", "50" };
 
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetColorsAsync(kitId);
+        kit = await PublicApi().GetKitAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
+
     }
 
-    private async Task Submit()
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        await PublicApi().UpdateColorsAsync(Model);
+        kit = await PublicApi().UpdateColorsAsync(Model);
     }
 }

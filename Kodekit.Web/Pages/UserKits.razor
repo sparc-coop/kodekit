@@ -3,12 +3,14 @@
 
 <div class="dashboard page">
     <div class="page__container">
+        @if (!IsLoading)
+        {
         <div class="dashboard--header">
             <h2>Your Styleguides</h2>
             <div class="right">
-                <select class="sort">
+                @*                <select class="sort">
                     <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-                </select>
+                    </select>*@
                 <AuthorizeView>
                     <Authorized>
                         <button @onclick="@(CreateNew)">
@@ -17,7 +19,7 @@
                         </button>
                     </Authorized>
                     <NotAuthorized>
-                        @if (Kits != null && !Kits.Any())
+                        @if (Kits == null || !Kits.Any())
                         {
                             <button @onclick="@(CreateNew)">
                                 New Styleguide
@@ -31,36 +33,62 @@
 
         @if (Kits == null || !Kits.Any())
         {
-            <p>Create a new kit to get started!</p>
+            <p>Create a new styleguide to get started!</p>
         }
         else
         {
             <div class="dashboard-container">
                 @foreach (var kit in Kits)
                 {
-                    <a href="/@kit.Id/introduction" class="dashboard-card">
-                        <img src="/images/dash-icon.svg" alt="Dashboard Icon" />
-                        <div>
-                            <div class="title">Project Name</div>
-                            <div class="date">
-                                Last Updated:
-                                @(kit.ModifiedDate != null ? kit.ModifiedDate.Value.ToString("MM/dd/yyyy")
-                        : kit.DateCreated != null ? kit.DateCreated.Value.ToString("MM/dd/yyyy") : "")
+                    <div @onclick="@(e => GoToKit(kit.Id))" class="dashboard-card">
+                        <div class="dashboard-preview preview-@kit.Id">
+                            <style type="text/css">
+                                @@import url('@CssUrl(kit)');
+                            </style>
+                            <header>
+                                <div class="button-red"></div>
+                                <div class="button-yellow"></div>
+                                <div class="button-green"></div>
+                            </header>
+                            <div class="typography">
+                                <h1>Aa</h1>
+                                <label>Header</label>
+                            </div>
+                            <div class="typography">
+                                <p>Aa</p>
+                                <label>Body</label>
+                            </div>
+                            <div class="colors">
+                                <div style="background-color: var(--primary-500)"></div>
+                                <div style="background-color: var(--secondary-500)"></div>
+                                <div style="background-color: var(--greyscale-50)"></div>
+                                <div style="background-color: var(--greyscale-900)"></div>
                             </div>
                         </div>
-                    </a>
+                        <div>
+                            <div class="title">@(kit.Name != null ? kit.Name : "Untitled Styleguide" )</div>
+                            <div class="date">
+                                Last Updated:
+                                @kit.DateModified.ToString("MM/dd/yyyy")
+                            </div>
+                        </div>
+                    </div>
                 }
             </div>
+        }
         }
     </div>
 </div>
 
+@inject IConfiguration Config
 @code {
     private User User;
     private ICollection<Kit> Kits;
+    bool IsLoading;
 
     protected override async Task OnInitializedAsync()
     {
+        IsLoading = true;
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
@@ -74,12 +102,17 @@
             string result = await localStorage.GetItemAsync<string>("kodekitId");
             if (result != null)
                 Kits.Add(await PublicApi().GetKitAsync(result));
+            else
+                await CreateNew();
         }
+        IsLoading = false;
     }
+
+    private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 
     private async Task CreateNew()
     {
-        var kit = await PublicApi().CreateKitAsync();
+        var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
         Nav.NavigateTo($"/{kit.KitId}/introduction");
     }
@@ -88,7 +121,13 @@
     {
         if (filter == "date-mod")
         {
-            Kits = Kits.OrderByDescending(x => x.ModifiedDate).ToList();
+            Kits = Kits.OrderByDescending(x => x.DateModified).ToList();
         }
+    }
+
+    private async Task GoToKit(string kit)
+    {
+        await localStorage.SetItemAsStringAsync("kodekitId", kit);
+        Nav.NavigateTo($"/{kit}/introduction");
     }
 }

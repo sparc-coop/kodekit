@@ -1,29 +1,23 @@
-﻿using System;
-using System.Threading.Tasks;
-using Sparc.Core;
+﻿using System.Threading.Tasks;
 using Sparc.Features;
 
 namespace Kodekit.Features
 {
     public class CopyKit : PublicFeature<string, CreateKitResponse>
     {
-        public IRepository<Kit> Kits { get; }
-        public CopyKit(IRepository<Kit> kit) => Kits = kit;
+        public KitRepository Kits { get; }
+        public CopyKit(KitRepository kit) => Kits = kit;
 
         public override async Task<CreateKitResponse> ExecuteAsync(string kitId)
         {
-            var kit = await Kits.FindAsync(kitId);
-            if (kit == null)
-                throw new NotFoundException("Couldn't find kit!");
+            var kit = await Kits.GetCurrentAsync(kitId);
 
-            kit.Id = Guid.NewGuid().ToString();
-            kit.UserId = User.Id();
-            kit.DateCreated = DateTime.Now;
-            kit.ParentId = kitId;
+            var newKit = new Kit(kit.Kit);
+            var newRevision = new KitRevision(kit.Revision);
 
-            await Kits.AddAsync(kit);
-            
-            return new(kit.Id);
+            await Kits.UpdateAsync((newKit, newRevision));
+
+            return new(newKit.Id);
         }
     }
 }

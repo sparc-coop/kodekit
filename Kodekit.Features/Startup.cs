@@ -30,9 +30,10 @@ namespace Kodekit.Features
             services.Sparcify<Startup>();
             services.AddCosmos<KodekitContext>(Configuration["ConnectionStrings:CosmosDb"], "kodekit-dev");
             //services.BuildServiceProvider().GetRequiredService<KodekitContext>().Database.EnsureCreated();
-            services.AddAzureStorage(Configuration["BlobStorage:ConnectionString"]);
+            //services.AddAzureStorage(Configuration["BlobStorage:ConnectionString"]);
             services.AddAzureADB2CAuthentication(Configuration);
-            services.AddBlazoredLocalStorage();           
+            services.AddBlazoredLocalStorage();
+            services.AddScoped<KitRepository>();
 
         }
 
@@ -40,7 +41,9 @@ namespace Kodekit.Features
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(policy =>
-                policy.WithOrigins("http://localhost:5000", "https://localhost:5001", "https://kodekit.azurewebsites.net")
+                policy.WithOrigins("http://localhost:5000", "https://localhost:5001",  
+                    "https://kodekit-test.azurewebsites.net",
+                    "https://app.kodekit.io")
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 

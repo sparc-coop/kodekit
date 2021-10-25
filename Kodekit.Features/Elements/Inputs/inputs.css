@@ -4,33 +4,41 @@
     border: var(--border-width, 1px) solid var(--greyscale-300);
     color: var(--greyscale-900);
     letter-spacing: 0.02em;
-    /* is this for icons? */
-    /* padding: 10px 16px 10px 40px; */
     /* Do we need these styles, because it is the same as h6 font-size: 16px; */
     line-height: 120%;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
 }
 
-    input::placeholder, textarea::placeholder, select::placeholder {
-        color: var(--greyscale-300);
-    }
+input::placeholder, textarea::placeholder, select::placeholder {
+    color: var(--greyscale-300);
+}
 
-    input:focus, textarea:focus, input.focus, textarea.focus, select:focus, select.focus {
+    input:focus, textarea:focus, input.selected, textarea.selected, select:focus, select.selected {
         border-color: var(--primary-500);
     }
 
-    input:disabled, textarea:disabled, select:disabled {
-        border-color: var(--greyscale-300);
-        color: var(--greyscale-300);
-    }
+input:disabled, textarea:disabled, select:disabled, .disabled input {
+    border-color: var(--greyscale-300);
+    color: var(--greyscale-300);
+}
 
-    input:invalid, textarea:invalid, input.invalid, textarea.invalid, select:invalid, select.invalid {
-        border-color: var(--error-500);
+label.disabled {
+    color: var(--greyscale-300);
+}
+
+label.error {
+    color: var(--error-500)
+}
+
+input:invalid, textarea:invalid, input.error, textarea.error, select:invalid, select.error, label.error input, label.error textarea, label.error select {
+    border-color: var(--error-500);
+    color: var(--error-500);
+}
+
+    input:invalid::placeholder, textarea:invalid::placeholder, input.invalid::placeholder, textarea.invalid::placeholder {
         color: var(--error-500);
     }
-
-        input:invalid::placeholder, textarea:invalid::placeholder, input.invalid::placeholder, textarea.invalid::placeholder {
-            color: var(--error-500);
-        }
 
 /* Controlling the color of checkbox and color when clicked. */
 input[type=checkbox] {
@@ -50,6 +58,22 @@ input[type=radio] {
         background: var(--primary-500);
     }
 
+label img {
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    left: var(--padding-horizontal);
+    width: 20px;
+    height: 20px;
+}
+
+label input {
+    padding-left: 40px;
+}
+
+    label input:only-child {
+        padding-left: var(--padding-horizontal);
+    }
 
 .checkboxes, .radios {
     display: flex;

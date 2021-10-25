@@ -38,7 +38,10 @@ button.secondary:hover, button.secondary.hover
         fill: var(--primary-300);
     }
 
-button > :first-child {
-    margin-right: 14px;
-}
+    button > svg, button > img {
+        margin-right: 14px;
+        vertical-align: middle;
+        margin: 0;
+        margin-top: -4px;
+    }
 

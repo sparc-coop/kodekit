@@ -7,32 +7,33 @@
             <div class="title">Elements</div>
             <h2>Selectors & Toggles</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Radio and checkbox inputs allow for selection from a list of options. Radio allows a single selection of one option while checkbox allows for multiple selections.
             </p>
         </header>
         <div class="content">
             <h3>Style & States</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Active styling is applied when an option has been selected. Disabled styling is applied when a user cannot interact with or select a particular option.
             </p>
+
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context">
                     <div class="section">
-                        <label>
-                            Label Font Size
-                            <InputNumber @bind-Value="Model.FontSize" />
+                        <label class="small">
+                            Label Font Size (px)
+                            <InputNumber @bind-Value="Model.FontSize" placeholder="16" min="1" />
                         </label>
                         <label>
                             Label Font Weight
-                            <FontWeights @bind-Value="Model.FontWeight" />
+                            <InputFontWeight @bind-Value="Model.FontWeight" />
                         </label>
                         <label>
                             Active Color
-                            <Colors KitId="@kitId" @bind-Value="Model.ActiveColor" />
+                            <InputColorSelector KitId="@kitId" @bind-Value="Model.ActiveColor" />
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <Preview Kit=kit>
                         <div>
                             <label>
                                 <input type="checkbox" /> Default
@@ -55,19 +56,7 @@
                                 <input type="radio" disabled /> Disabled
                             </label>
                         </div>
-                    </div>
-                    <pre>
-                        <code class="language-html">
-&lt;input type="checkbox"/&gt;
-&lt;input type="checkbox" active /&gt;
-&lt;input type="checkbox" disabled /&gt;
-
-&lt;input type="radio"/&gt;
-&lt;input type="radio" checked /&gt;
-&lt;input type="radio" disabled /&gt;
-                        </code>
-                    </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="dropdowns" />
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -76,15 +65,20 @@
 
 @code {
     [Parameter] public string kitId { get; set; }
+    Kit kit;
     UpdateSelectorsModel Model;
+    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetSelectorsAsync(kitId);
+        kit = await PublicApi().GetKitAsync(kitId);
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
     }
 
-    private async Task Submit()
+    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
-        await PublicApi().UpdateSelectorsAsync(Model);
+        kit = await PublicApi().UpdateSelectorsAsync(Model);
     }
 }

@@ -1,0 +1,11 @@
+﻿@inherits InputText
+
+<span>
+    <input @attributes="AdditionalAttributes"
+           class="@CssClass"
+           type="color"
+           @bind="CurrentValueAsString"
+           @bind:event="oninput" />
+    @CurrentValueAsString
+</span>
+

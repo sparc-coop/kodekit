@@ -1,4 +1,5 @@
 ﻿@inherits HighlightPageBase
+@page "/installation"
 @page "/{kitId}/installation"
 
 <div class="page installation">
@@ -7,67 +8,65 @@
             <div class="title">Getting Started</div>
             <h2>Installation</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+                There are two ways to install Kodekit into your project, both of which are extremely easy to set up.
             </p>
         </header>
         <div class="content">
-            <h3>Import & Auto Update</h3>
+            <h3>Option One: Import & Auto Update</h3>
             <p class="subheader">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
+                Importing Kodekit into your project is as easy as adding the link to the 
+                <span>&lt;head&gt;</span> section of your "index.html" file.  It allows for quickly 
+                linking your theme to your project, and allows for auto-updating.
             </p>
             <div class="steps">1. Add Script</div>
             <div class="instructions">
-                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.io/" + kitId + ".css\">")" />
-                <button @onclick="StepOneCopy">Copy</button>
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
+                <button @onclick="StepOneCopy">@CopyText</button>
                 <br />
                 <pre>
-<code>&lt;link rel="stylesheet" href="https://kodekit.io/@(kitId).css"&gt;</code>
+<code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
             </pre>
             </div>
 
             <div class="steps">2. Auto Update</div>
-            <p>
+            <p class="subheader">
                 Each time you change, update or save your Kodekit theme, your projects
                 using the theme script will auto-update, allowing you to make changes to your live project.
             </p>
-        </div>
-        <h3>Manual Download</h3>
-        <p class="subheader">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus.
-        </p>
-        <div class="steps">1. Download your .scss file</div>
-        <button class="download">
-            Download .scss file
-            <img src="/images/filedownload-icon.svg" alt="File Download"/>
-        </button>
-        <div class="steps">2. Install & Link</div>
-        <p>
-            Each time you change, update or save your Kodekit theme, your projects
-            using the theme script will auto-update, allowing you to make changes to your live project.
-        </p>
-        <div class="instructions">
-            <input type="hidden" id="step-two" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"https://kodekit.io/" + kitId + ".css\">")" />
-            <button @onclick="StepTwoCopy">Copy</button>
-            <br />
-            <pre>
-<code>&lt;link rel="stylesheet" href="css/stylesheet.min.css"&gt;</code>
-            </pre>
+            <h3 class="installation--title">Option Two: Manual Download</h3>
+            <p class="subheader">
+                If you would rather take a more manual approach, you can instead download the .css file, 
+                and add that directly to your project folder. 
+            </p>
+            <p class="subheader">
+                Make sure you re-download and add this file every time you update the Kodekit Theme.
+            </p>
+            <div class="steps">1. Download your CSS file</div>
+            <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
+                Download .css file
+                <img src="/images/filedownload-icon.svg" alt="File Download" />
+            </a>
         </div>
     </div>
 </div>
 
+@inject IConfiguration Config
 @code {
     [Parameter] public string kitId { get; set; }
+    string ImportUrl;
+    string CopyText = "Copy";
+
+    protected override void OnInitialized()
+    {
+        ImportUrl = Config["ApiUrl"] + $"/{kitId}.css";
+    }
 
     private async Task StepOneCopy()
     {
-        //copy to clipboard step one link
+        CopyText = "Copied";
+        await Task.Delay(2000);
+        CopyText = "Copy";
+        //copy to clipboard link
         await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-one");
-    }
-
-    private async Task StepTwoCopy()
-    {
-        //copy to clipboard step two link
-        await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-two");
     }
 }

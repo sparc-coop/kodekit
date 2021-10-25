@@ -1,6 +1,5 @@
 ﻿@import "_variables";
 
-
 //Components
 @import "Shared/Components/pagelayout";
 @import "Shared/Components/modal";
@@ -17,13 +16,13 @@
 @import "Pages/BaseStyles/Layout";
 @import "Pages/BaseStyles/Typography";
 @import "Pages/BaseStyles/GlobalSettings";
-@import "Pages/BaseStyles/Preview";
+@import "Pages/BaseStyles/PreviewPage";
 @import "Pages/Effects/BoxShadow";
 @import "Pages/Introduction";
 @import "Pages/Installation";
 @import "Pages/Themes";
-@import "Pages/Index";
 @import "Pages/UserKits";
+@import "Pages/ReleaseNotes";
 
 @import "Shared/MainLayout";
 @import "Shared/NavMenu";
@@ -35,8 +34,6 @@
 @import "wwwroot/CoreStyles/Core/Layout.scss";
 @import "wwwroot/CoreStyles/Core/Reset.scss";
 @import "wwwroot/CoreStyles/Core/Typography.scss";
-
-//Effect Imports
 
 //Elements Imports
 @import "wwwroot/CoreStyles/Elements/Buttons.scss";
