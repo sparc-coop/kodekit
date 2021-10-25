@@ -67,6 +67,8 @@ namespace Kodekit.Features
             var kit = await GetKitAsync(kitId);
             var revision = kit.PublishedRevisionId != null
                 ? await GetRevisionAsync(kitId, kit.PublishedRevisionId)
+                : kit.CurrentRevisionId != null
+                ? await GetRevisionAsync(kitId, kit.CurrentRevisionId)
                 : null;
 
             return (kit, revision);

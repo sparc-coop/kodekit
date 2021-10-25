@@ -6,9 +6,9 @@
         <div class="dashboard--header">
             <h2>Your Styleguides</h2>
             <div class="right">
-@*                <select class="sort">
+                @*                <select class="sort">
                     <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-                </select>*@
+                    </select>*@
                 <AuthorizeView>
                     <Authorized>
                         <button @onclick="@(CreateNew)">
@@ -39,7 +39,30 @@
                 @foreach (var kit in Kits)
                 {
                     <div @onclick="@(e => GoToKit(kit.Id))" class="dashboard-card">
-                        <img src="/images/dash-example.svg" alt="Dashboard Icon" />
+                        <div class="dashboard-preview preview-@kit.Id">
+                            <style type="text/css">
+                                @@import url('@CssUrl(kit)');
+                            </style>
+                            <header>
+                                <div class="button-red"></div>
+                                <div class="button-yellow"></div>
+                                <div class="button-green"></div>
+                            </header>
+                            <div class="typography">
+                                <h1>Aa</h1>
+                                <label>Header</label>
+                            </div>
+                            <div class="typography">
+                                <p>Aa</p>
+                                <label>Body</label>
+                            </div>
+                            <div class="colors">
+                                <div style="background-color: var(--primary-500)"></div>
+                                <div style="background-color: var(--secondary-500)"></div>
+                                <div style="background-color: var(--greyscale-50)"></div>
+                                <div style="background-color: var(--greyscale-900)"></div>
+                            </div>
+                        </div>
                         <div>
                             <div class="title">@(kit.Name != null ? kit.Name : "Untitled Styleguide" )</div>
                             <div class="date">
@@ -54,6 +77,7 @@
     </div>
 </div>
 
+@inject IConfiguration Config
 @code {
     private User User;
     private ICollection<Kit> Kits;
@@ -75,6 +99,8 @@
                 Kits.Add(await PublicApi().GetKitAsync(result));
         }
     }
+
+    private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 
     private async Task CreateNew()
     {
