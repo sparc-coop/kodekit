@@ -76,7 +76,7 @@ namespace Kodekit.Features
             if (lightest != null && darkest != null)
                 Compile(variables, scope, lightest.Expand(darkest));
 
-            Compile(variables, "body", kit.Paragraphs);
+            Compile(variables, scope, kit.Paragraphs);
             Compile(variables, "h1, h2, h3, h4, h5, h6", kit.Headings);
             Compile(variables, "button", kit.Buttons);
             Compile(variables, "input[type=checkbox]", kit.Selectors);
