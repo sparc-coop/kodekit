@@ -62,6 +62,7 @@
         padding: 8px 16px;
         background: transparent;
         border: 1px solid $gray900;
+        transition: transform 0.3s ease-in-out;
 
         img, svg {
             margin-left: 10px;
@@ -71,6 +72,10 @@
 
         svg path {
             fill: $gray900;
+        }
+
+        &:hover {
+            transform: scale(1.05, 1.05);
         }
     }
 
@@ -161,6 +166,29 @@
             font-weight: 500;
             color: $gray900;
         }
+    }
+
+    .documentation {
+        margin-bottom: 64px;
+        margin-top: -64px;
+
+        h3 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 120%;
+            letter-spacing: 0.02em;
+            color: $gray900;
+            margin-bottom: 8px;
+            margin-top: 32px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 160%;
+            color: $gray500;
+            margin-bottom: 24px;
+        }
+
     }
 
     .preview-example {

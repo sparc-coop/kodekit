@@ -1,4 +1,5 @@
 ﻿@page  "/{kitId}/preview"
+@layout EmptyLayout
 
 @if (ImportUrl != null)
 {
@@ -7,7 +8,7 @@
     </style>
 }
 
-<div class="preview page">
+<div class="preview page preview-@kitId">
     <section class="hero">
         <div class="container">
             <div>
@@ -120,18 +121,9 @@
     [Parameter] public string kitId { get; set; }
 
     string ImportUrl;
-    int version;
 
     protected override void OnParametersSet()
     {
-        if (kitId != null)
-        {
-            ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?v={version}";
-            version++;
-        }
-        else
-        {
-            ImportUrl = null;
-        }
+        ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?scope=preview-{kitId}";
     }
 }
