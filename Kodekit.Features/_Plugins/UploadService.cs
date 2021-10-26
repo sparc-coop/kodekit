@@ -10,7 +10,7 @@ namespace Kodekit.Features
 {
     public class UploadService
     {
-        private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=kodekit;AccountKey=1C/QtEYejRDLCOinYPFO2J7KRMIZzocBIlh4LkdEzMSvE/fq2Olk4oZj0oL0ji6Xv6wgIYs15LL3Qf9ZyaduyQ==;EndpointSuffix=core.windows.net";
+        private readonly string connectionString = "";
         private readonly string containerName = "kits";
         private readonly string baseUrl = "https://kodekit.blob.core.windows.net/";
 
