@@ -56,7 +56,7 @@ namespace Kodekit.Features.Elements
 
             // Calculate line height percentage
             if (Font.LineHeight != null)
-                result["line-height"] = $"{Font.LineHeight.Value / size.Value * 100}%";
+                result["line-height"] = $"{Font.LineHeight.Value}%";
 
             return result;
         }
