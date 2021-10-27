@@ -7,17 +7,19 @@
             <div class="title">Base Styles</div>
             <h2>Colors</h2>
             <p>
-                Colors selected here will be applied throughout the kit. They will be 
+                Colors selected here will be applied throughout the kit. They will be
                 applied to their respective elements (such as primary and secondary buttons)
                 &amp; system colors, as well as accessed via css variables.
             </p>
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
-            <h3>Brand Colors</h3>
-            <p>
-                The brand colors are the three main colors that will be used to accent your site.
-            </p>
+            <header>
+                <h3>Brand Colors</h3>
+                <p>
+                    The brand colors are the three main colors that will be used to accent your site.
+                </p>
+            </header>
 
             @if (Model != null)
             {
@@ -40,7 +42,7 @@
                     <Preview Kit=kit>
                         <div>
                             <label>Primary</label>
-                            <div class="color-display" style="background-color: @Model.Primary"></div>
+                            <div class="color-display" style="background-color: var(--primary-400)"></div>
                             <div class="subcolor-display">
                                 @foreach (var weight in Weights)
                                 {
@@ -50,7 +52,7 @@
                         </div>
                         <div>
                             <label>Secondary</label>
-                            <div class="color-display" style="background-color: @Model.Secondary"></div>
+                            <div class="color-display" style="background-color: var(--secondary-400)"></div>
                             <div class="subcolor-display">
                                 @foreach (var weight in Weights)
                                 {
@@ -60,7 +62,7 @@
                         </div>
                         <div>
                             <label>Tertiary</label>
-                            <div class="color-display" style="background-color: @Model.Tertiary"></div>
+                            <div class="color-display" style="background-color: var(--tertiary-400)"></div>
                             <div class="subcolor-display">
                                 @foreach (var weight in Weights)
                                 {
@@ -181,5 +183,6 @@
     private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
         kit = await PublicApi().UpdateColorsAsync(Model);
+        StateHasChanged();
     }
 }

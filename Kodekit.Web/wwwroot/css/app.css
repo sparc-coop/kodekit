@@ -113,6 +113,18 @@
       font-weight: 500;
       color: #17171A;
       margin-bottom: 32px; }
+    .page .content header {
+      padding-bottom: 32px; }
+      .page .content header h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #17171A;
+        margin-bottom: 8px; }
+      .page .content header p {
+        font-size: 16px;
+        font-weight: 400;
+        color: #787980;
+        padding: 0; }
   .page .documentation {
     margin-bottom: 64px;
     margin-top: -64px; }
@@ -481,7 +493,8 @@
   padding: 24px 32px; }
   .colors .preview-example label {
     padding: 0;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    color: #787980; }
   .colors .preview-example .color-display {
     width: auto;
     height: 142px;
@@ -491,18 +504,19 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     height: 28px; }
-  .colors .preview-example--grayscale {
+  .colors .preview-example--greyscale {
     display: grid;
+    grid-gap: 0;
     grid-template-columns: repeat(10, 1fr);
     padding: 24px 32px; }
-    .colors .preview-example--grayscale .color-display {
+    .colors .preview-example--greyscale .color-display {
       width: auto;
       height: 102px;
-      margin: 20px 0 0 0;
+      margin: 0;
       border-radius: 0; }
-    .colors .preview-example--grayscale > div:first-child .color-display {
+    .colors .preview-example--greyscale > div:first-child .color-display {
       border-radius: 4px 0px 0px 4px; }
-    .colors .preview-example--grayscale > div:last-child .color-display {
+    .colors .preview-example--greyscale > div:last-child .color-display {
       border-radius: 0px 4px 4px 0px; }
 
 .colors .section {

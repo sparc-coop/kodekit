@@ -97,6 +97,7 @@
         label {
             padding: 0;
             margin-bottom: 8px;
+            color: $gray500;
         }
 
 
@@ -113,15 +114,16 @@
             height: 28px;
         }
 
-        &--grayscale {
+        &--greyscale {
             display: grid;
+            grid-gap: 0;
             grid-template-columns: repeat(10, 1fr);
             padding: 24px 32px;
 
             .color-display {
                 width: auto;
                 height: 102px;
-                margin: 20px 0 0 0;
+                margin: 0;
                 border-radius: 0;
             }
 
