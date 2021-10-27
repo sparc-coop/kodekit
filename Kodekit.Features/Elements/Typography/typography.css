@@ -5,12 +5,14 @@
 p {
     line-height: var(--line-height, 160%);
     font-size: var(--type-400);
+    color: var(--grey-700);
 }
 
 h1, h2, h3, h4, h5, h6, .subtitle {
     line-height: var(--line-height, 120%);
     font-family: var(--font-family);
     font-weight: var(--font-weight);
+    color: var(--grey-900);
 }
 
 h1 {
@@ -55,5 +57,13 @@ strong {
 
 span.light {
     font-weight: 300;
+}
+
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary {
+    color: var(--secondary-500);
+}
+
+h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, p.tertiary {
+    color: var(--tertiary-500);
 }
 

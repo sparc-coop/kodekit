@@ -54,7 +54,7 @@ namespace Kodekit.Features.Elements
 
         public Dictionary<string, string> Expand(Color color)
         {
-            var type = "greyscale";
+            var type = "grey";
             var colors = new Dictionary<string, string>();
             
             colors.Add($"{type}-50", Interpolate(color, 0.05f).HexValue);
