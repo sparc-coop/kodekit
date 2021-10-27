@@ -64,19 +64,19 @@
                 </div>
                 <Preview Kit=kit>
                     <h1>@previewText</h1>
-                    <label>Header 1 (H1)</label>
+                    <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
                     <h2>@previewText</h2>
-                    <label>Header 2 (H2)</label>
+                    <label>Header 1 (H2) - Font Size: @HeadingScale("800")</label>
                     <h3>@previewText</h3>
-                    <label>Header 3 (H3)</label>
+                    <label>Header 1 (H3) - Font Size: @HeadingScale("700")</label>
                     <h4>@previewText</h4>
-                    <label>Header 4 (H4)</label>
+                    <label>Header 1 (H4) - Font Size: @HeadingScale("600")</label>
                     <h5>@previewText</h5>
-                    <label>Header 5 (H5)</label>
+                    <label>Header 1 (H5) - Font Size: @HeadingScale("500")</label>
                     <h6>@previewText</h6>
-                    <label>Header 6 (H6)</label>
+                    <label>Header 1 (H6) - Font Size: @HeadingScale("400")</label>
                     <p class="subtitle">@previewText</p>
-                    <label>Subtitle (.subtitle)</label>
+                    <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
                 </Preview>
 
                 <h3>Paragraph Settings</h3>
@@ -123,15 +123,15 @@
                 <Preview Kit=kit>
                     <div>
                         <p class="large">@previewTextBody</p>
-                        <label>Body Large - Font Size: xxpx (xem) / Line Height: 160%</label>
+                        <label>Body Large - Font Size: @BodyScale("500")</label>
                     </div>
                     <div>
                         <p class="medium">@previewTextBody</p>
-                        <label>Body - Font Size: xxpx (xem) / Line Height: 160%</label>
+                        <label>Body - Font Size: @BodyScale("400")</label>
                     </div>
                     <div>
                         <p class="small">@previewTextBody</p>
-                        <label>Body Small - Font Size: xxpx (xem) / Line Height: 160%</label>
+                        <label>Body Small - Font Size: @BodyScale("300")</label>
                     </div>
                 </Preview>
             </EditForm>
@@ -168,7 +168,22 @@
             };
 
         kit = await PublicApi().UpdateTypographyAsync(result);
+        Model = await PublicApi().GetTypographyAsync(kitId);
         StateHasChanged();
+    }
+
+    private string HeadingScale(string scale)
+    {
+        return Model?.Heading?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
+            ? Model.Heading.TypeScaleValues[$"type-{scale}"]
+            : string.Empty;
+    }
+
+    private string BodyScale(string scale)
+    {
+        return Model?.Paragraph?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
+            ? Model.Paragraph.TypeScaleValues[$"type-{scale}"]
+            : string.Empty;
     }
 }
 

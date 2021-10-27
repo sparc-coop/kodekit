@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Kodekit.Features.Elements
 {
     public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<double, string> TypeScales);
-    public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, double? LineHeight);
+    public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, double? LineHeight, Dictionary<string, string> TypeScaleValues);
     public class GetTypography : PublicFeature<string, GetTypographyResponse>
     {
         public GetTypography(KitRepository kits)
@@ -28,7 +28,8 @@ namespace Kodekit.Features.Elements
                 kit.Headings.Font.Weight,
                 kit.Headings.Font.Size?.Value,
                 kit.Headings.TypeScale,
-                kit.Headings.Font.LineHeight?.Value
+                kit.Headings.Font.LineHeight?.Value,
+                kit.Headings.Serialize() // to show on preview example
             );
 
             var paragraph = new TypographyModel(
@@ -36,7 +37,8 @@ namespace Kodekit.Features.Elements
                 kit.Paragraphs.Font.Weight,
                 kit.Paragraphs.Font.Size?.Value,
                 kit.Paragraphs.TypeScale,
-                kit.Paragraphs.Font.LineHeight?.Value
+                kit.Paragraphs.Font.LineHeight?.Value,
+                kit.Paragraphs.Serialize() // to show on preview example
             );
 
             return new(heading, paragraph, Typography.TypeScales);

@@ -2490,6 +2490,13 @@
             "type": "number",
             "format": "double",
             "nullable": true
+          },
+          "typeScaleValues": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

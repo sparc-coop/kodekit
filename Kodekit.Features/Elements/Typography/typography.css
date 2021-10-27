@@ -4,6 +4,7 @@
 
 p {
     line-height: var(--line-height, 160%);
+    font-size: var(--type-400);
 }
 
 h1, h2, h3, h4, h5, h6, .subtitle {
@@ -37,6 +38,14 @@ h6 {
 }
 
 .subtitle {
+    font-size: var(--type-300);
+}
+
+.large {
+    font-size: var(--type-500);
+}
+
+.small {
     font-size: var(--type-300);
 }
 
