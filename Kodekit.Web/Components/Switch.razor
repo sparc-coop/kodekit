@@ -1,6 +1,8 @@
-﻿<div class="section-container @(IsDisabled ? "disabled" : "")">
+﻿@inherits InputCheckbox
+
+<div class="section-container @(IsDisabled ? "disabled" : "")">
     <label class="switch">
-        <input type="checkbox" @bind="Value" disabled="@IsDisabled">
+        <input type="checkbox" @bind="CurrentValue" disabled="@IsDisabled">
         <span class="slider"></span>
     </label>
     @Title
@@ -8,18 +10,6 @@
 
 @code {
     [Parameter] public string Title { get; set; }
-     private bool _value;
-    [Parameter] public bool Value
-    {
-        get => _value;
-        set
-        {
-            if (_value == value ) return;
-            _value = value;
-            ValueChanged.InvokeAsync(value);
-        }
-    }
-    [Parameter] public EventCallback<bool> ValueChanged { get; set; }
 
     [Parameter] public bool IsDisabled { get; set; }
 }

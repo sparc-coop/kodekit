@@ -46,7 +46,14 @@ namespace Kodekit.Features.Elements
                 dict.Add("icon-height", IconHeight.ToString());
 
             if (RemoveSecondaryBorder)
-                dict.Add("secondary-border-width", "0");
+            {
+                dict.Add("secondary-border-width", Border?.Width?.ToString() ?? "0");
+                dict.Add("secondary-button-background", "transparent");
+            }
+            else
+            {
+                dict.Add("secondary-button-color", "white");
+            }
 
             return dict;
         }

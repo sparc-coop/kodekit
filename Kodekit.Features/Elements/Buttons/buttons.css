@@ -2,10 +2,14 @@
     background: var(--primary-500);
     border-radius: var(--border-radius, 4px);
     border-width: var(--border-width, 0);
+    border-color: var(--primary-700);
     font-size: var(--font-size);
     font-weight: var(--font-weight);
     color: white;
-    padding: var(--padding-vertical) var(--padding-horizontal);
+    padding-top: var(--padding-vertical);
+    padding-bottom: var(--padding-vertical);
+    padding-left: var(--padding-horizontal);
+    padding-right: var(--padding-horizontal);
     cursor: pointer;
 }
 
@@ -19,23 +23,23 @@ button:hover, button.hover
 }
 
 button.secondary {
-    background: white;
-    border: var(--secondary-border-width, 1px) solid var(--secondary-500);
-    color: var(--secondary-500);
+    background: var(--secondary-button-background, var(--secondary-500));
+    border: var(--secondary-border-width, 0) solid var(--secondary-500);
+    color: var(--secondary-button-color, var(--secondary-500));
 }
 
-button.secondary:hover, button.secondary.hover
-{
-    border-color: var(--primary-300);
-    color: var(--primary-300);
-}
+    button.secondary:hover, button.secondary.hover {
+        border-color: var(--secondary-300);
+        color: var(--secondary-button-color, var(--secondary-300));
+        background: var(--secondary-button-background, var(--secondary-300));
+    }
 
     button.secondary svg path {
-        fill: var(--secondary-500);
+        fill: var(--secondary-button-color, var(--secondary-500));
     }
 
     button.secondary:hover svg path, button.secondary.hover svg path {
-        fill: var(--primary-300);
+        fill: var(--secondary-button-color, var(--secondary-300));
     }
 
     button > svg, button > img {

@@ -55,7 +55,7 @@
 
                     <label style="padding-bottom: 15px;">Secondary Button</label>
                     <div class="section">
-                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Remove Secondary Button Border" />
+                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button Outline" />
                     </div>
 
                     <Preview Kit=kit>
@@ -148,5 +148,6 @@
     private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
         kit = await PublicApi().UpdateButtonsAsync(Model);
+        StateHasChanged();
     }
 }
