@@ -14,7 +14,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
     color: var(--grey-300);
 }
 
-    input:focus, textarea:focus, input.selected, textarea.selected, select:focus, select.selected {
+    input:focus, textarea:focus, input.selected, textarea.selected, select:focus, select.selected, .selected input {
         border-color: var(--primary-500);
     }
 
@@ -28,7 +28,7 @@ label.disabled {
 }
 
 label.error {
-    color: var(--error-500)
+    color: var(--error-500);
 }
 
 input:invalid, textarea:invalid, input.error, textarea.error, select:invalid, select.error, label.error input, label.error textarea, label.error select {
@@ -58,13 +58,22 @@ input[type=radio] {
         background: var(--primary-500);
     }
 
-label img {
+label > svg {
+    fill: var(--grey-300);
     position: absolute;
     top: 50%;
     margin-top: -10px;
     left: var(--padding-horizontal);
     width: 20px;
     height: 20px;
+}
+
+label.error > svg {
+    fill: var(--error-500);
+}
+
+label.disabled > svg {
+    fill: var(--grey-300);
 }
 
 label input {

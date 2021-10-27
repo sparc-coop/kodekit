@@ -54,10 +54,10 @@
                             <input placeholder="Placeholder" />
                         </label>
                         <label>
-                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <PersonSvg />
                             <input placeholder="Placeholder" />
                         </label>
-                        <textarea>Placeholder</textarea>
+                        <textarea placeholder="Placeholder"></textarea>
                     </Preview>
 
                     <h3>Input & Textarea states</h3>
@@ -68,33 +68,33 @@
                     <Preview Kit=kit>
                         <label>
                             Placeholder
-                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <PersonSvg />
+                            <input placeholder="username" />
+                            <span>Enter your username.</span>
+                        </label>
+                        <label class="selected">
+                            Selected
+                            <PersonSvg />
                             <input placeholder="username" />
                             <span>Enter your username.</span>
                         </label>
                         <label>
-                            Selected
-                            <img src="/images/person-icon.svg" alt="Person Icon" />
-                            <input class="selected" placeholder="username" />
-                            <span>Enter your username.</span>
-                        </label>
-                        <label>
                             Entered
-                            <img src="/images/person-icon.svg" alt="Person Icon" />
+                            <PersonSvg />
                             <input value="Kodekit" />
                             <span>Enter your username.</span>
                         </label>
                         <label class="error">
                             Error
-                            <img src="/images/person-error-icon.svg" alt="Person Input Error Icon" />
+                            <PersonSvg />
                             <input class="invalid" value="username" />
                             <span>Username is taken.</span>
                         </label>
                         <label class="disabled">
                             Disabled
-                            <img src="/images/person-disabled-icon.svg" alt="Person Input Disabled Icon" />
+                            <PersonSvg />
                             <input value="enter username" disabled />
-                            <span></span>
+                            <span>Enter your name first.</span>
                         </label>
                     </Preview>
                 </EditForm>
@@ -120,5 +120,6 @@
     private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
     {
         kit = await PublicApi().UpdateInputsAsync(Model);
+        StateHasChanged();
     }
 }

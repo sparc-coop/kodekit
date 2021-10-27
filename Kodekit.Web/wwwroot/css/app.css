@@ -356,6 +356,8 @@
   padding: 24px 32px; }
   .inputs .preview-example > * {
     margin: 0px 30px 30px 0; }
+  .inputs .preview-example input {
+    height: unset; }
 
 .lists .preview-example {
   display: flex;
