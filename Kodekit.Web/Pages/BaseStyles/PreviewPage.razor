@@ -124,6 +124,8 @@
 
     protected override void OnParametersSet()
     {
-        ImportUrl = Config["ApiUrl"] + $"/{kitId}.css?scope=preview-{kitId}";
+        var newImportUrl = Config["ApiUrl"] + $"/{kitId}.css?scope=preview-{kitId}";
+        if (newImportUrl != ImportUrl)
+            ImportUrl = newImportUrl;
     }
 }
