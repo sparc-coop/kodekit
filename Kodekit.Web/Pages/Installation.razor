@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<object>
 @page "/installation"
 @page "/{kitId}/installation"
 
@@ -52,7 +52,6 @@
 
 @inject IConfiguration Config
 @code {
-    [Parameter] public string kitId { get; set; }
     string ImportUrl;
     string CopyText = "Copy";
 

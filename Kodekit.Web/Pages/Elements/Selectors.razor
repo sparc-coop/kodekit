@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<UpdateSelectorsModel>
 @page  "/{kitId}/selectors"
 
 <div class="selectors page">
@@ -64,21 +64,14 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    Kit kit;
-    UpdateSelectorsModel Model;
-    EditContext Context;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task<UpdateSelectorsModel> GetAsync()
     {
-        Model = await PublicApi().GetSelectorsAsync(kitId);
-        kit = await PublicApi().GetKitAsync(kitId);
-        Context = new EditContext(Model);
-        Context.OnFieldChanged += HandleFieldChanged;
+        return await PublicApi().GetSelectorsAsync(kitId);
     }
-
-    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    
+    protected override async Task<Kit> UpdateAsync()
     {
-        kit = await PublicApi().UpdateSelectorsAsync(Model);
+        return await PublicApi().UpdateSelectorsAsync(Model);
     }
 }

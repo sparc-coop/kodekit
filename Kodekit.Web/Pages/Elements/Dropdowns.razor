@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<UpdateDropdownsModel>
 @page  "/{kitId}/dropdowns"
 
 <div class="dropdowns page">
@@ -85,9 +85,6 @@
 </div>
 
 @code {
-        [Parameter] public string kitId { get; set; }
-        UpdateDropdownsModel Model;
-
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetDropdownsAsync(kitId);
