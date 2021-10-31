@@ -37,18 +37,28 @@ namespace Kodekit.Features.Elements
 
         public Dictionary<string, string> Serialize()
         {
+            return Serialize(null);
+        }
+
+        public Dictionary<string, string> Serialize(string? type)
+        {
+            if (!string.IsNullOrWhiteSpace(type))
+                type = type.ToLower() + "-";
+            else
+                type = string.Empty;
+            
             return new Dictionary<string, string>
             {
-                { $"50", ChangeBrightness(0.52f).HexValue },
-                { $"100", ChangeBrightness(0.37f).HexValue },
-                { $"200", ChangeBrightness(0.26f).HexValue },
-                { $"300", ChangeBrightness(0.12f).HexValue },
-                { $"400", ChangeBrightness(0.06f).HexValue },
-                { $"500", HexValue },
-                { $"600", ChangeBrightness(-0.06f).HexValue },
-                { $"700", ChangeBrightness(-0.12f).HexValue },
-                { $"800", ChangeBrightness(-0.18f).HexValue },
-                { $"900", ChangeBrightness(-0.24f).HexValue }
+                { $"{type}50", ChangeBrightness(0.52f).HexValue },
+                { $"{type}100", ChangeBrightness(0.37f).HexValue },
+                { $"{type}200", ChangeBrightness(0.26f).HexValue },
+                { $"{type}300", ChangeBrightness(0.12f).HexValue },
+                { $"{type}400", ChangeBrightness(0.06f).HexValue },
+                { $"{type}500", HexValue },
+                { $"{type}600", ChangeBrightness(-0.06f).HexValue },
+                { $"{type}700", ChangeBrightness(-0.12f).HexValue },
+                { $"{type}800", ChangeBrightness(-0.18f).HexValue },
+                { $"{type}900", ChangeBrightness(-0.24f).HexValue }
             };
         }
 

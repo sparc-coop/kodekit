@@ -41,14 +41,56 @@ input:invalid, textarea:invalid, input.error, textarea.error, select:invalid, se
     }
 
 /* Controlling the color of checkbox and color when clicked. */
-input[type=checkbox] {
-    border-radius: var(--border-radius, 2px);
+input[type=checkbox]:focus {
+    outline: 1px solid var(--active-200, rgba(0,0,0,0.2));
 }
 
-    input[type=checkbox]:checked {
-        /*outline: 1px solid var(--primary-500);*/
-        border-radius: var(--border-radius, 2px);
-    }
+input[type=checkbox] {
+    background-color: transparent;
+    border-color: var(--grey-300);
+    border-width: 2px;
+    border-radius: var(--border-radius, 4px);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: var(--font-size);
+    height: var(--font-size);
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]:focus {
+    border-color: var(--active-500);
+    outline: none;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: calc(var(--font-size) * 0.5);
+    height: calc(var(--font-size) * 0.5);
+    border-radius: calc(var(--border-radius, 2px) / 2);
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--active-500);
+}
+
+input[type=checkbox]:checked {
+    border-color: var(--active-500);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type=checkbox]:disabled {
+    border-color: var(--grey-100);
+    cursor: not-allowed;
+}
+
+input[type=checkbox]:checked:disabled::before {
+    box-shadow: inset 1em 1em var(--grey-100);
+}
 
 input[type=radio] {
     background: var(--grey-300);

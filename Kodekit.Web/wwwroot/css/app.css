@@ -2079,12 +2079,6 @@ button.card-button-secondary {
     z-index: 2;
     left: 5%; }
 
-.page form input[type=checkbox] {
-  border-radius: 2px; }
-  .page form input[type=checkbox]:checked {
-    /*outline: 1px solid $primary-500;*/
-    border-radius: 2px; }
-
 .page form input[type=radio] {
   background: #CDCED9; }
   .page form input[type=radio]:checked {
