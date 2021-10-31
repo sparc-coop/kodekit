@@ -19,13 +19,5 @@
                 left: 5%;
             }
         }
-
-        input[type=radio] {
-            background: $grey-300;
-
-            &:checked {
-                background: $primary-500;
-            }
-        }
     }
 }

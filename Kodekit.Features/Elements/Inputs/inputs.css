@@ -40,12 +40,7 @@ input:invalid, textarea:invalid, input.error, textarea.error, select:invalid, se
         color: var(--error-500);
     }
 
-/* Controlling the color of checkbox and color when clicked. */
-input[type=checkbox]:focus {
-    outline: 1px solid var(--active-200, rgba(0,0,0,0.2));
-}
-
-input[type=checkbox] {
+input[type=checkbox], input[type=radio] {
     background-color: transparent;
     border-color: var(--grey-300);
     border-width: 2px;
@@ -58,14 +53,20 @@ input[type=checkbox] {
     cursor: pointer;
     display: grid;
     place-content: center;
+    padding: 0;
+    transform: translateY(calc(var(--border-radius, 0) / -2));
 }
 
-input[type="checkbox"]:focus {
+input[type=checkbox]:only-child, input[type=radio]:only-child {
+    padding-left: 0;
+}
+
+input[type="checkbox"]:focus, input[type=radio]:focus {
     border-color: var(--active-500);
     outline: none;
 }
 
-input[type="checkbox"]::before {
+input[type="checkbox"]::before, input[type=radio]::before {
     content: "";
     width: calc(var(--font-size) * 0.5);
     height: calc(var(--font-size) * 0.5);
@@ -75,30 +76,30 @@ input[type="checkbox"]::before {
     box-shadow: inset 1em 1em var(--active-500);
 }
 
-input[type=checkbox]:checked {
+input[type=checkbox]:checked, input[type=radio]:checked {
     border-color: var(--active-500);
 }
 
-input[type="checkbox"]:checked::before {
+input[type="checkbox"]:checked::before, input[type=radio]:checked::before {
     transform: scale(1);
 }
 
-input[type=checkbox]:disabled {
-    border-color: var(--grey-100);
-    cursor: not-allowed;
-}
+    input[type=checkbox]:disabled, input[type=radio]:disabled {
+        border-color: var(--grey-100);
+        cursor: not-allowed;
+    }
 
-input[type=checkbox]:checked:disabled::before {
-    box-shadow: inset 1em 1em var(--grey-100);
-}
+    input[type=checkbox]:checked:disabled::before, input[type=radio]:checked:disabled::before {
+        box-shadow: inset 1em 1em var(--grey-100);
+    }
 
 input[type=radio] {
-    background: var(--grey-300);
+    border-radius: 50%;
 }
 
-    input [type=radio]:checked {
-        background: var(--primary-500);
-    }
+input[type=radio]::before {
+    border-radius: 50%;
+}
 
 label > svg {
     fill: var(--grey-300);
@@ -124,22 +125,4 @@ label input {
 
     label input:only-child {
         padding-left: var(--padding-horizontal);
-    }
-
-.checkboxes, .radios {
-    display: flex;
-}
-
-    .checkboxes label, .radios label {
-        flex-direction: row;
-        align-items: center;
-        margin-right: 20px;
-    }
-
-    .checkboxes input, .radios input {
-        margin-right: 13px;
-    }
-
-    .checkboxes label:last-child, .radios label:last-child {
-        margin-right: 0;
     }

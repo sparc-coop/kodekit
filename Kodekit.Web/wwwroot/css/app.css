@@ -2079,11 +2079,6 @@ button.card-button-secondary {
     z-index: 2;
     left: 5%; }
 
-.page form input[type=radio] {
-  background: #CDCED9; }
-  .page form input[type=radio]:checked {
-    background: #0B5FFF; }
-
 body {
   margin: 0;
   overflow-x: hidden;
