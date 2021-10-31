@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<UpdateInputsModel>
 @page "/{kitId}/inputs"
 
 <div class="inputs page">
@@ -104,22 +104,13 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    Kit kit;
-    UpdateInputsModel Model;
-    EditContext Context;
-
-    protected override async Task OnInitializedAsync()
+    protected override async Task<UpdateInputsModel> GetAsync()
     {
-        Model = await PublicApi().GetInputsAsync(kitId);
-        kit = await PublicApi().GetKitAsync(kitId);
-        Context = new EditContext(Model);
-        Context.OnFieldChanged += HandleFieldChanged;
+        return await PublicApi().GetInputsAsync(kitId);
     }
-
-    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    
+    protected override async Task<Kit> UpdateAsync()
     {
-        kit = await PublicApi().UpdateInputsAsync(Model);
-        StateHasChanged();
+        return await PublicApi().UpdateInputsAsync(Model);
     }
 }

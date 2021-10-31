@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<UpdateButtonsModel>
 @page "/{kitId}/buttons"
 
 <div class="buttons page">
@@ -132,22 +132,13 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    Kit kit;
-    UpdateButtonsModel Model;
-    EditContext Context;
-
-    protected override async Task OnInitializedAsync()
+    protected override async Task<UpdateButtonsModel> GetAsync()
     {
-        kit = await PublicApi().GetKitAsync(kitId);
-        Model = await PublicApi().GetButtonsAsync(kitId);
-        Context = new EditContext(Model);
-        Context.OnFieldChanged += HandleFieldChanged;
+        return await PublicApi().GetButtonsAsync(kitId);
     }
-
-    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    
+    protected override async Task<Kit> UpdateAsync()
     {
-        kit = await PublicApi().UpdateButtonsAsync(Model);
-        StateHasChanged();
+        return await PublicApi().UpdateButtonsAsync(Model);
     }
 }

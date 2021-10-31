@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<ColorsModel>
 @page "/{kitId}/colors"
 
 <div class="colors page">
@@ -164,47 +164,22 @@
     </div>
 </div>
 
-@implements IDisposable
 @code {
-    [Parameter] public string kitId { get; set; }
-    ColorsModel Model;
-    Kit kit;
-    EditContext Context;
-    System.Timers.Timer fieldChangedTimer;
-
     List<string> Weights = new List<string> { "900", "800", "700", "600", "500", "400", "300", "200", "100", "50" };
 
     protected override async Task OnInitializedAsync()
     {
-        Model = await PublicApi().GetColorsAsync(kitId);
-        kit = await PublicApi().GetKitAsync(kitId);
-        Context = new EditContext(Model);
-        Context.OnFieldChanged += HandleFieldChanged;
-
-        // To debounce color inputs
-        fieldChangedTimer = new System.Timers.Timer(300);
-        fieldChangedTimer.Elapsed += Update;
-        fieldChangedTimer.AutoReset = false;
-
+        DebounceInputs = true;
+        await base.OnInitializedAsync(); 
     }
 
-    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    protected override async Task<ColorsModel> GetAsync()
     {
-        fieldChangedTimer.Stop();
-        fieldChangedTimer.Start();
+        return await PublicApi().GetColorsAsync(kitId);
     }
 
-    private void Update(object source, System.Timers.ElapsedEventArgs e)
+    protected override async Task<Kit> UpdateAsync()
     {
-        InvokeAsync(async () =>
-        {
-            kit = await PublicApi().UpdateColorsAsync(Model);
-            StateHasChanged();
-        });
-    }
-
-    void IDisposable.Dispose()
-    {
-        fieldChangedTimer?.Dispose();
+        return await PublicApi().UpdateColorsAsync(Model);
     }
 }

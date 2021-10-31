@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<GetTypographyResponse>
 @page "/{kitId}/typography"
 
 <div class="typography page">
@@ -141,24 +141,22 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
     FontListResponse Fonts;
-    GetTypographyResponse Model;
-    Kit kit;
-    EditContext Context;
 
     protected override async Task OnInitializedAsync()
     {
+        await base.OnInitializedAsync();
         Fonts = await PublicApi().GetGoogleFontsAsync("");
-        Model = await PublicApi().GetTypographyAsync(kitId);
-        kit = await PublicApi().GetKitAsync(kitId);
-        Context = new EditContext(Model);
-        Context.OnFieldChanged += HandleFieldChanged;
     }
 
-    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    protected override async Task<GetTypographyResponse> GetAsync()
+    {
+        return await PublicApi().GetTypographyAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
     {
         var result = new UpdateTypographyModel
             {
@@ -167,9 +165,9 @@
                 Paragraphs = Model.Paragraph
             };
 
-        kit = await PublicApi().UpdateTypographyAsync(result);
+        var kit = await PublicApi().UpdateTypographyAsync(result);
         Model = await PublicApi().GetTypographyAsync(kitId);
-        StateHasChanged();
+        return kit;
     }
 
     private string HeadingScale(string scale)
