@@ -24,6 +24,7 @@ namespace Kodekit.Features
             Selectors = new();
             Settings = new();
             Dropdowns = new();
+            Anchors = new();
         }
 
 
@@ -50,6 +51,7 @@ namespace Kodekit.Features
             Selectors = revision.Selectors;
             Settings = revision.Settings;
             Dropdowns = revision.Dropdowns;
+            Anchors = revision.Anchors;
         }
 
         public string KitId { get; set; }
@@ -67,6 +69,7 @@ namespace Kodekit.Features
         public Selector Selectors { get; set; }
         public Settings Settings { get; set; }
         public Dropdown Dropdowns { get; set; }
+        public Anchor Anchors { get; set; }
         public bool IsDeleted { get; set; }
 
         public void UpdateSelectors(Selector selectors)
@@ -94,6 +97,12 @@ namespace Kodekit.Features
         {
             Dropdowns = dropdowns;
         }
+
+        internal void UpdateAnchors(Anchor anchor)
+        {
+            Anchors = anchor;
+        }
+
 
         public Color? GetColor(ColorTypes colorType)
         {

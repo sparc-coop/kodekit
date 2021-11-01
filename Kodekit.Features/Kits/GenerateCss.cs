@@ -44,6 +44,7 @@ namespace Kodekit.Features
             css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
             css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
             css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
+            css.AppendLine(GetLocalFile("Elements/Anchors/anchors.css"));
 
             var result = css.ToString();
             if (!string.IsNullOrWhiteSpace(scope))
@@ -80,6 +81,7 @@ namespace Kodekit.Features
             Compile(variables, "h1, h2, h3, h4, h5, h6, .subtitle", kit.Headings);
             Compile(variables, "button", kit.Buttons);
             Compile(variables, "input[type=checkbox], input[type=radio], label.switch", kit.Selectors);
+            Compile(variables, "a", kit.Anchors);
 
             Compile(variables, "input, label, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
             if (kit.Dropdowns.OverwriteInherited)

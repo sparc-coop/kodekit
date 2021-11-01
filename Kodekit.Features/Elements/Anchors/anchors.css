@@ -1,0 +1,16 @@
+﻿a {
+    color: var(--default-500);
+    font-weight: var(--font-weight);
+}
+
+    a:hover, a.hover {
+        color: var(--hover-500, var(--default-300));
+    }
+
+    a:visited, a.visited {
+        color: var(--visited-500, var(--default-700));
+    }
+
+    a:active, a.active {
+        color: var(--active-500, var(--hover-500));
+    }
