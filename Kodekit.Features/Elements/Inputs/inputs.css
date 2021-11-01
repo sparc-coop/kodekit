@@ -171,7 +171,27 @@ label.switch {
             border: 2px solid var(--active-500);
         }
 
-        label.switch input[type=checkbox]:checked + .slider:before {
-            transform: translateX(calc(var(--font-size) / 2));
-            background-color: var(--active-500);
-        }
+            label.switch input[type=checkbox]:checked + .slider:before {
+                transform: translateX(calc(var(--font-size) / 2));
+                background-color: var(--active-500);
+            }
+
+
+select {
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 100%;
+    outline: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23787980' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right var(--padding-horizontal, 1) center;
+}
+
+option:hover {
+    box-shadow: 0 0 10px 100px var(--grey-100) inset;
+}
+
+option:checked {
+    background-color: var(--grey-100);
+}

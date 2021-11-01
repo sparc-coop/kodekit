@@ -109,6 +109,10 @@
         cursor: text;
     }
 
+    input[type=number] {
+        max-width: 144px;
+    }
+
     pre {
         border-radius: 0px 0px 8px 8px;
         margin: 0px 0 50px 0;
