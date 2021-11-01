@@ -411,14 +411,13 @@
   .selectors .preview-example label {
     display: flex;
     flex-direction: unset;
-    padding: 5px 0;
+    margin: 5px 0;
     font-size: unset;
     justify-content: left; }
+    .selectors .preview-example label.switch {
+      margin-bottom: 15px; }
   .selectors .preview-example input {
-    margin: 5px 12px 0 0;
-    height: 20px;
-    width: 20px;
-    cursor: pointer; }
+    margin: 5px 12px 0 0; }
 
 .colors .content {
   position: relative; }

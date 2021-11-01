@@ -129,10 +129,8 @@ label input {
 
 label.switch {
     position: relative;
-    display: inline-block;
-    width: calc(var(--font-size) * 1.66);
-    height: var(--font-size);
-    margin-right: 14px;
+    display: flex;
+    padding-left: 33px;
 }
 
     label.switch .slider {
@@ -140,8 +138,8 @@ label.switch {
         cursor: pointer;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
+        width: calc(var(--font-size) * 1.66);
+        height: var(--font-size);
         background-color: transparent;
         border: 2px solid var(--grey-300);
         -webkit-transition: .4s;
