@@ -58,6 +58,11 @@ namespace Kodekit.Features
             anchors.OwnsOne(x => x.HoverColor);
             anchors.OwnsOne(x => x.VisitedColor);
             anchors.OwnsOne(x => x.ActiveColor);
+
+            var lists = revision.OwnsOne(x => x.Lists);
+            lists.OwnsOne(x => x.Font).Configure();
+            lists.OwnsOne(x => x.ItemPadding).Configure();
+            lists.OwnsOne(x => x.ListPadding).Configure();
         }
     }
 

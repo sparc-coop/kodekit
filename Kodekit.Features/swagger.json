@@ -762,6 +762,54 @@
         }
       }
     },
+    "/api/GetLists": {
+      "post": {
+        "tags": [
+          "GetLists"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateListsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateListsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateListsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetRelatedKits": {
       "post": {
         "tags": [
@@ -1497,6 +1545,66 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/UpdateKitRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateLists": {
+      "post": {
+        "tags": [
+          "UpdateLists"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateListsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateListsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateListsModel"
                   }
                 ]
               }
@@ -2409,8 +2517,54 @@
             ],
             "nullable": true
           },
+          "lists": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/List"
+              }
+            ],
+            "nullable": true
+          },
           "isDeleted": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "List": {
+        "type": "object",
+        "properties": {
+          "font": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Font"
+              }
+            ],
+            "nullable": true
+          },
+          "orderedListStyleType": {
+            "type": "string",
+            "nullable": true
+          },
+          "unorderedListStyleType": {
+            "type": "string",
+            "nullable": true
+          },
+          "listPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Padding"
+              }
+            ],
+            "nullable": true
+          },
+          "itemPadding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Padding"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2844,6 +2998,53 @@
           },
           "isAutoPublish": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateListsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fontSize": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fontWeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "olStyleType": {
+            "type": "string",
+            "nullable": true
+          },
+          "ulStyleType": {
+            "type": "string",
+            "nullable": true
+          },
+          "listHorizontalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "listVerticalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "itemHorizontalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "itemVerticalPadding": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
           }
         },
         "additionalProperties": false

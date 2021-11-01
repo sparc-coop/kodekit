@@ -332,17 +332,9 @@
     height: unset; }
 
 .lists .preview-example {
-  display: flex;
-  padding: 25px 32px 40px;
-  color: #6F788B; }
-  .lists .preview-example ul {
-    list-style-type: none;
-    padding: 0 20px; }
-  .lists .preview-example ol {
-    list-style-type: decimal;
-    padding: 0 20px; }
-  .lists .preview-example li {
-    padding: 4px 0; }
+  display: flex; }
+  .lists .preview-example > * {
+    margin: 16px; }
 
 .dropdowns .preview-example {
   display: flex;

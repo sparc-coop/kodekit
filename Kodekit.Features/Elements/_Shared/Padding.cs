@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Kodekit.Features.Elements
@@ -29,6 +30,18 @@ namespace Kodekit.Features.Elements
                 dict.Add("padding-vertical", Vertical.ToString());
             if (Horizontal != null)
                 dict.Add("padding-horizontal", Horizontal.ToString());
+
+            return dict;
+        }
+
+        public Dictionary<string, string> Serialize(string prefix)
+        {
+            var dict = new Dictionary<string, string>();
+
+            if (Vertical != null)
+                dict.Add($"{prefix}-padding-vertical", Vertical.ToString());
+            if (Horizontal != null)
+                dict.Add($"{prefix}-padding-horizontal", Horizontal.ToString());
 
             return dict;
         }
