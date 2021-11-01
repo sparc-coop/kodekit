@@ -8,11 +8,15 @@
 
   <ItemGroup>
     <None Remove="Elements\Anchors\anchors.css" />
+    <None Remove="Elements\Effects\shadows.css" />
     <None Remove="Elements\Lists\lists.css" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Elements\Effects\shadows.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Elements\Lists\lists.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
