@@ -4,7 +4,7 @@
     .preview-example {
         display: flex;
         flex-wrap: wrap;
-        padding: 25px 32px 40px 32px;;
+        padding: 25px 32px 40px 32px;
 
         > div {
             padding-right: 50px;
@@ -13,16 +13,17 @@
         label {
             display: flex;
             flex-direction: unset;
-            padding: 5px 0;
+            margin: 5px 0;
             font-size: unset;
             justify-content: left;
+
+            &.switch {
+                margin-bottom: 15px;
+            }
         }
 
         input {
             margin: 5px 12px 0 0;
-            height: 20px;
-            width: 20px;
-            cursor: pointer;
         }
     }
 }

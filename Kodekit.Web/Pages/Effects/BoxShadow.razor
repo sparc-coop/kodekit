@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<ShadowsModel>
 @page "/{kitId}/box-shadow"
 
 <div class="effects-page page">
@@ -93,9 +93,6 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    ShadowsModel Model;
-
     protected override async Task OnInitializedAsync()
     {
         Model = await PublicApi().GetShadowAsync(kitId);

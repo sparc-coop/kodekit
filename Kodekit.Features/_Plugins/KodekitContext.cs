@@ -51,6 +51,18 @@ namespace Kodekit.Features
             dropdowns.OwnsOne(x => x.Font).Configure();
             dropdowns.OwnsOne(x => x.Border).Configure();
             dropdowns.OwnsOne(x => x.Padding).Configure();
+
+            var anchors = revision.OwnsOne(x => x.Anchors);
+            anchors.OwnsOne(x => x.Font).Configure();
+            anchors.OwnsOne(x => x.DefaultColor);
+            anchors.OwnsOne(x => x.HoverColor);
+            anchors.OwnsOne(x => x.VisitedColor);
+            anchors.OwnsOne(x => x.ActiveColor);
+
+            var lists = revision.OwnsOne(x => x.Lists);
+            lists.OwnsOne(x => x.Font).Configure();
+            lists.OwnsOne(x => x.ItemPadding).Configure();
+            lists.OwnsOne(x => x.ListPadding).Configure();
         }
     }
 

@@ -75,6 +75,8 @@
     min-height: 100px; }
   .page input {
     cursor: text; }
+  .page input[type=number] {
+    max-width: 144px; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
     margin: 0px 0 50px 0;
@@ -108,10 +110,23 @@
       display: flex; }
   .page .content {
     padding-bottom: 100px; }
-    .page .content h3 {
+    .page .content > h3 {
       font-size: 20px;
       font-weight: 500;
-      color: #17171A; }
+      color: #17171A;
+      margin-bottom: 32px; }
+    .page .content header {
+      padding-bottom: 32px; }
+      .page .content header h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #17171A;
+        margin-bottom: 8px; }
+      .page .content header p {
+        font-size: 16px;
+        font-weight: 400;
+        color: #787980;
+        padding: 0; }
   .page .documentation {
     margin-bottom: 64px;
     margin-top: -64px; }
@@ -133,11 +148,12 @@
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     border-radius: 8px 8px 0px 0px;
-    display: flex;
-    flex-wrap: wrap;
     padding: 24px 32px; }
-    .page .preview-example > * {
-      margin: 0px 30px 30px 0; }
+    .page .preview-example-flex {
+      display: flex;
+      flex-wrap: wrap; }
+      .page .preview-example-flex > * {
+        margin: 0px 30px 30px 0; }
     .page .preview-example--body p {
       width: 100%; }
     .page .preview-example--body .large {
@@ -152,9 +168,6 @@
       color: #17171A;
       font-size: 14px;
       line-height: 160%; }
-    .page .preview-example h3 {
-      font-size: unset;
-      font-weight: unset; }
   .page .show-link {
     background: #FFFFFF;
     padding: 8px 14px;
@@ -294,42 +307,12 @@
   .buttons .preview-example .remove {
     border: 1px solid transparent !important; }
 
-.anchors .preview-example {
-  padding: 30px 30px 50px; }
-  .anchors .preview-example a {
-    font-size: 16px;
-    padding-right: 32px;
-    text-decoration: none;
-    color: #17171A; }
-    .anchors .preview-example a.hover {
-      color: #0B5FFF; }
-    .anchors .preview-example a.visited {
-      color: #7FABFF; }
-    .anchors .preview-example a.active {
-      color: #00BFB2; }
+.anchors .preview-example a {
+  display: inline-block;
+  margin: 16px; }
 
 .anchors .section label {
-  margin-right: 32px; }
-
-.anchors .section span {
-  background: #FFFFFF;
-  padding: 6px 10px;
-  width: 144px;
-  height: 40px;
-  border: 1px solid #D2D4D9;
-  box-sizing: border-box;
-  border-radius: 4px;
-  display: flex;
-  font-size: 16px;
-  line-height: 150%;
-  cursor: pointer; }
-  .anchors .section span input {
-    border: none;
-    border-radius: 4px;
-    width: 23px;
-    height: 26px;
-    margin: 0 10px 0 0;
-    padding: 0; }
+  margin-right: 16px; }
 
 .inputs .section input {
   box-sizing: border-box;
@@ -345,19 +328,13 @@
   padding: 24px 32px; }
   .inputs .preview-example > * {
     margin: 0px 30px 30px 0; }
+  .inputs .preview-example input {
+    height: unset; }
 
 .lists .preview-example {
-  display: flex;
-  padding: 25px 32px 40px;
-  color: #6F788B; }
-  .lists .preview-example ul {
-    list-style-type: none;
-    padding: 0 20px; }
-  .lists .preview-example ol {
-    list-style-type: decimal;
-    padding: 0 20px; }
-  .lists .preview-example li {
-    padding: 4px 0; }
+  display: flex; }
+  .lists .preview-example > * {
+    margin: 16px; }
 
 .dropdowns .preview-example {
   display: flex;
@@ -398,14 +375,13 @@
   .selectors .preview-example label {
     display: flex;
     flex-direction: unset;
-    padding: 5px 0;
+    margin: 5px 0;
     font-size: unset;
     justify-content: left; }
+    .selectors .preview-example label.switch {
+      margin-bottom: 15px; }
   .selectors .preview-example input {
-    margin: 5px 12px 0 0;
-    height: 20px;
-    width: 20px;
-    cursor: pointer; }
+    margin: 5px 12px 0 0; }
 
 .colors .content {
   position: relative; }
@@ -482,7 +458,8 @@
   padding: 24px 32px; }
   .colors .preview-example label {
     padding: 0;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    color: #787980; }
   .colors .preview-example .color-display {
     width: auto;
     height: 142px;
@@ -492,18 +469,19 @@
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     height: 28px; }
-  .colors .preview-example--grayscale {
+  .colors .preview-example--greyscale {
     display: grid;
+    grid-gap: 0;
     grid-template-columns: repeat(10, 1fr);
     padding: 24px 32px; }
-    .colors .preview-example--grayscale .color-display {
+    .colors .preview-example--greyscale .color-display {
       width: auto;
       height: 102px;
-      margin: 20px 0 0 0;
+      margin: 0;
       border-radius: 0; }
-    .colors .preview-example--grayscale > div:first-child .color-display {
+    .colors .preview-example--greyscale > div:first-child .color-display {
       border-radius: 4px 0px 0px 4px; }
-    .colors .preview-example--grayscale > div:last-child .color-display {
+    .colors .preview-example--greyscale > div:last-child .color-display {
       border-radius: 0px 4px 4px 0px; }
 
 .colors .section {
@@ -513,111 +491,66 @@
   .colors .section label {
     position: relative;
     margin-right: 32px; }
-    .colors .section label span {
-      background: #FFFFFF;
-      padding: 6px 10px;
-      width: 144px;
-      height: 40px;
-      border: 1px solid #D2D4D9;
-      box-sizing: border-box;
-      border-radius: 4px;
-      display: flex;
-      font-size: 16px;
-      line-height: 150%;
-      cursor: pointer; }
-      .colors .section label span input {
-        border: none;
-        border-radius: 4px;
-        width: 23px;
-        height: 26px;
-        margin: 0 10px 0 0;
-        padding: 0; }
 
 .colors .comment {
   color: #A3A60E; }
 
-.colors .preview-mockup h3 {
-  margin-bottom: 20px; }
-
-.colors .preview-mockup section {
-  width: 1080px; }
-  @media screen and (max-width: 780px) {
-    .colors .preview-mockup section {
-      width: unset; } }
-  .colors .preview-mockup section > div {
-    height: 227px;
-    width: 496px;
+.colors .preview-example--mockup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px; }
+  @media screen and (max-width: 1000px) {
+    .colors .preview-example--mockup {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr; } }
+  .colors .preview-example--mockup h3 {
+    margin-bottom: 20px; }
+  .colors .preview-example--mockup > div {
     box-sizing: border-box;
-    padding: 32px 40px;
     border-radius: 8px;
-    background: #FFFFFF;
-    margin-right: 32px; }
-    @media screen and (max-width: 780px) {
-      .colors .preview-mockup section > div {
-        margin: 10px auto; } }
-    .colors .preview-mockup section > div img {
-      margin: -32px -40px; }
-      @media screen and (max-width: 500px) {
-        .colors .preview-mockup section > div img {
-          width: 160px; } }
-    .colors .preview-mockup section > div p {
-      font-size: 14px;
-      color: #787980; }
-      @media screen and (max-width: 500px) {
-        .colors .preview-mockup section > div p {
-          line-height: unset; } }
+    background: #F5F7FA; }
+    .colors .preview-example--mockup > div h4 {
+      margin-bottom: 15px; }
+    .colors .preview-example--mockup > div p {
+      margin-bottom: 32px; }
+    .colors .preview-example--mockup > div button.secondary {
+      margin-left: 27px; }
 
-.colors .preview-mockup--left {
-  display: flex; }
-  .colors .preview-mockup--left > div {
-    margin-left: 70px; }
-  .colors .preview-mockup--left h5 {
-    margin: 0 0 5px 0;
-    color: #FFB46E;
-    font-size: 12px; }
-  .colors .preview-mockup--left h4 {
-    margin: 0;
-    font-family: Inter;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 22px;
-    letter-spacing: 0.02em;
-    color: #17171A; }
-  .colors .preview-mockup--left p {
-    margin: 0;
-    padding-top: 15px;
-    padding-bottom: 32px; }
+.colors .card-with-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 500px;
+  padding: 0; }
+  .colors .card-with-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+  .colors .card-with-image > div {
+    padding: 32px 40px; }
 
-.colors .preview-mockup--right {
+.colors .card {
+  padding: 32px 40px;
   display: block; }
-  .colors .preview-mockup--right h5 {
-    margin: 0 0 5px 0;
-    color: #FFB46E;
-    font-size: 14px; }
-  .colors .preview-mockup--right h4 {
-    margin: 0;
-    font-family: Inter;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    color: #17171A; }
-  .colors .preview-mockup--right p {
-    margin: 0;
-    padding-top: 20px;
-    padding-bottom: 32px; }
 
-.colors .preview-mockup button {
-  background: #0B5FFF;
-  color: #FFFFFF;
+.inputcolor {
+  background: #FFFFFF;
+  padding: 6px 10px;
+  width: 144px;
+  height: 40px;
+  border: 1px solid #D2D4D9;
+  box-sizing: border-box;
   border-radius: 4px;
-  border: none;
-  font-size: 14px;
-  padding: 3px 24px; }
-
-.colors .preview-mockup .secondary {
-  background: none;
-  color: #00BFB2; }
+  display: flex;
+  font-size: 16px;
+  line-height: 150%;
+  cursor: pointer; }
+  .inputcolor input {
+    border: none;
+    border-radius: 4px;
+    width: 23px;
+    height: 26px;
+    margin: 0 10px 0 0;
+    padding: 0; }
 
 .icons section {
   padding-bottom: 15px; }
@@ -674,8 +607,8 @@
         margin: 4px;
         cursor: pointer; }
 
-.typography .preview-example {
-  display: block; }
+.typography .preview-example label {
+  margin-bottom: 40px; }
 
 @media screen and (max-width: 500px) {
   .typography .large {
@@ -2109,17 +2042,6 @@ button.card-button-secondary {
     transform: translateY(-50%);
     z-index: 2;
     left: 5%; }
-
-.page form input[type=checkbox] {
-  border-radius: 2px; }
-  .page form input[type=checkbox]:checked {
-    /*outline: 1px solid $primary-500;*/
-    border-radius: 2px; }
-
-.page form input[type=radio] {
-  background: #CDCED9; }
-  .page form input[type=radio]:checked {
-    background: #0B5FFF; }
 
 body {
   margin: 0;

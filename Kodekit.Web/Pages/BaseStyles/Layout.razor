@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<object>
 @*@page  "/{kitId}/layout"*@
 
 <div class="layout page">
@@ -59,9 +59,6 @@ $mobile: 320px;
 </div>
 
 @code {
-    private Kit kit = new Kit();
-    [Parameter] public string kitId { get; set; }
-
     protected override void OnInitialized()
     {
 

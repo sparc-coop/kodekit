@@ -1,8 +1,8 @@
 ﻿input, textarea, select {
     padding: var(--padding-vertical) var(--padding-horizontal);
     border-radius: var(--border-radius, 4px);
-    border: var(--border-width, 1px) solid var(--greyscale-300);
-    color: var(--greyscale-900);
+    border: var(--border-width, 1px) solid var(--grey-300);
+    color: var(--grey-900);
     letter-spacing: 0.02em;
     /* Do we need these styles, because it is the same as h6 font-size: 16px; */
     line-height: 120%;
@@ -10,61 +10,113 @@
     font-weight: var(--font-weight);
 }
 
-input::placeholder, textarea::placeholder, select::placeholder {
-    color: var(--greyscale-300);
-}
+    input::placeholder, textarea::placeholder, select::placeholder {
+        color: var(--grey-300);
+    }
 
-    input:focus, textarea:focus, input.selected, textarea.selected, select:focus, select.selected {
+    input:focus, textarea:focus, input.selected, textarea.selected, select:focus, select.selected, .selected input {
         border-color: var(--primary-500);
     }
 
-input:disabled, textarea:disabled, select:disabled, .disabled input {
-    border-color: var(--greyscale-300);
-    color: var(--greyscale-300);
-}
+    input:disabled, textarea:disabled, select:disabled, .disabled input {
+        border-color: var(--grey-300);
+        color: var(--grey-300);
+    }
 
 label.disabled {
-    color: var(--greyscale-300);
+    color: var(--grey-300);
 }
 
 label.error {
-    color: var(--error-500)
-}
-
-input:invalid, textarea:invalid, input.error, textarea.error, select:invalid, select.error, label.error input, label.error textarea, label.error select {
-    border-color: var(--error-500);
     color: var(--error-500);
 }
 
-    input:invalid::placeholder, textarea:invalid::placeholder, input.invalid::placeholder, textarea.invalid::placeholder {
+    input:invalid, textarea:invalid, input.error, textarea.error, select:invalid, select.error, label.error input, label.error textarea, label.error select {
+        border-color: var(--error-500);
         color: var(--error-500);
     }
 
-/* Controlling the color of checkbox and color when clicked. */
-input[type=checkbox] {
-    border-radius: var(--border-radius, 2px);
+        input:invalid::placeholder, textarea:invalid::placeholder, input.invalid::placeholder, textarea.invalid::placeholder {
+            color: var(--error-500);
+        }
+
+input[type=checkbox], input[type=radio] {
+    background-color: transparent;
+    border-color: var(--grey-300);
+    border-width: 2px;
+    border-radius: var(--border-radius, 4px);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: var(--font-size);
+    height: var(--font-size);
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    padding: 0;
+    transform: translateY(calc(var(--border-radius, 0) / -2));
 }
 
-    input[type=checkbox]:checked {
-        /*outline: 1px solid var(--primary-500);*/
-        border-radius: var(--border-radius, 2px);
+    input[type=checkbox]:only-child, input[type=radio]:only-child {
+        padding-left: 0;
+    }
+
+    input[type="checkbox"]:focus, input[type=radio]:focus {
+        border-color: var(--active-500);
+        outline: none;
+    }
+
+    input[type="checkbox"]::before, input[type=radio]::before {
+        content: "";
+        width: calc(var(--font-size) * 0.5);
+        height: calc(var(--font-size) * 0.5);
+        border-radius: calc(var(--border-radius, 2px) / 2);
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        box-shadow: inset 1em 1em var(--active-500);
+    }
+
+    input[type=checkbox]:checked, input[type=radio]:checked {
+        border-color: var(--active-500);
+    }
+
+        input[type="checkbox"]:checked::before, input[type=radio]:checked::before {
+            transform: scale(1);
+        }
+
+    input[type=checkbox]:disabled, input[type=radio]:disabled {
+        border-color: var(--grey-100);
+        cursor: not-allowed;
+    }
+
+    input[type=checkbox]:checked:disabled::before, input[type=radio]:checked:disabled::before {
+        box-shadow: inset 1em 1em var(--grey-100);
     }
 
 input[type=radio] {
-    background: var(--greyscale-300);
+    border-radius: 50%;
 }
 
-    input [type=radio]:checked {
-        background: var(--primary-500);
+    input[type=radio]::before {
+        border-radius: 50%;
     }
 
-label img {
+label > svg {
+    fill: var(--grey-300);
     position: absolute;
     top: 50%;
     margin-top: -10px;
     left: var(--padding-horizontal);
     width: 20px;
     height: 20px;
+}
+
+label.error > svg {
+    fill: var(--error-500);
+}
+
+label.disabled > svg {
+    fill: var(--grey-300);
 }
 
 label input {
@@ -75,20 +127,71 @@ label input {
         padding-left: var(--padding-horizontal);
     }
 
-.checkboxes, .radios {
+label.switch {
+    position: relative;
     display: flex;
+    padding-left: 33px;
 }
 
-    .checkboxes label, .radios label {
-        flex-direction: row;
-        align-items: center;
-        margin-right: 20px;
+    label.switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        width: calc(var(--font-size) * 1.66);
+        height: var(--font-size);
+        background-color: transparent;
+        border: 2px solid var(--grey-300);
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: var(--font-size);
     }
 
-    .checkboxes input, .radios input {
-        margin-right: 13px;
+        label.switch .slider:before {
+            position: absolute;
+            content: "";
+            height: calc(var(--font-size) * 0.62);
+            width: calc(var(--font-size) * 0.62);
+            left: 3px;
+            bottom: 2px;
+            border-radius: 50%;
+            background-color: var(--grey-300);
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    label.switch input[type=checkbox] {
+        opacity: 0;
+        width: 0;
+        height: 0;
     }
 
-    .checkboxes label:last-child, .radios label:last-child {
-        margin-right: 0;
-    }
+        label.switch input[type=checkbox]:checked + .slider {
+            background-color: transparent;
+            border: 2px solid var(--active-500);
+        }
+
+            label.switch input[type=checkbox]:checked + .slider:before {
+                transform: translateX(calc(var(--font-size) / 2));
+                background-color: var(--active-500);
+            }
+
+
+select {
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 100%;
+    outline: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23787980' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right var(--padding-horizontal, 1) center;
+}
+
+option:hover {
+    box-shadow: 0 0 10px 100px var(--grey-100) inset;
+}
+
+option:checked {
+    background-color: var(--grey-100);
+}

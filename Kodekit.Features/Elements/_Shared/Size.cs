@@ -37,9 +37,13 @@ namespace Kodekit.Features.Elements
 
         public Size Scale(double typeScale, int power)
         {
-            return power > 0
+            var result = power > 0
                 ? this with { Value = Value * Math.Pow(typeScale, power) }
                 : this with { Value = Value / Math.Pow(typeScale, power * -1) };
+
+            result.Value = Math.Round(result.Value, 2);
+
+            return result;
         }
     }
 }

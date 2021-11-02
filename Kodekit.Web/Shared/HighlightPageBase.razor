@@ -1,6 +1,70 @@
-﻿@code {
+﻿@typeparam TModel
+@implements IDisposable
+
+@code {
+    [Parameter] public string kitId { get; set; }
+    protected Kit kit;
+    protected TModel Model;
+    protected EditContext Context;
+    protected bool DebounceInputs;
+
+    System.Timers.Timer fieldChangedTimer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        kit = await PublicApi().GetKitAsync(kitId);
+        Model = await GetAsync();
+        Context = new EditContext(Model);
+        Context.OnFieldChanged += HandleFieldChanged;
+
+        if (DebounceInputs)
+        {
+            fieldChangedTimer = new System.Timers.Timer(300);
+            fieldChangedTimer.Elapsed += Update;
+            fieldChangedTimer.AutoReset = false;
+        }
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await JSRuntime.InvokeVoidAsync("showHighlight");
+    }
+
+    protected async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    {
+        if (DebounceInputs)
+        {
+            fieldChangedTimer.Stop();
+            fieldChangedTimer.Start();
+        }
+        else
+        {
+            kit = await UpdateAsync();
+            StateHasChanged();
+        }
+    }
+
+    protected void Update(object source, System.Timers.ElapsedEventArgs e)
+    {
+        InvokeAsync(async () => 
+        {
+            kit = await UpdateAsync();
+            StateHasChanged();
+        });
+    }
+
+    protected virtual Task<TModel> GetAsync()
+    {
+        return Task.FromResult(Model);
+    }
+
+    protected virtual Task<Kit> UpdateAsync()
+    {
+        return Task.FromResult(kit);
+    }
+
+    void IDisposable.Dispose()
+    {
+        fieldChangedTimer?.Dispose();
     }
 } 

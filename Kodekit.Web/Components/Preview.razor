@@ -28,12 +28,19 @@
     string Scope;
     string CurrentVersion;
 
-    protected override void OnParametersSet()
+    protected override void OnInitialized()
     {
         Scope = $"preview-{Guid.NewGuid()}";
+    }
+
+    protected override void OnParametersSet()
+    {
         if (Kit == null) return;
 
-        CssUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
+        var newUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
+        if (newUrl != CssUrl)
+            CssUrl = newUrl;
+
         if (CurrentVersion != Kit.CurrentRevisionId)
         {
             CurrentVersion = Kit.CurrentRevisionId;
@@ -43,8 +50,6 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        
-
         await JSRuntime.InvokeVoidAsync("populatePreviewCode", PreviewBlock, CodeBlock);
     }
 }

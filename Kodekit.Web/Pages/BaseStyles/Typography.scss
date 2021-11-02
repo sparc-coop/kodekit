@@ -61,7 +61,9 @@
     }
 
     .preview-example {
-        display: block;
+        label {
+            margin-bottom: 40px;
+        }
     }
 
     .large {

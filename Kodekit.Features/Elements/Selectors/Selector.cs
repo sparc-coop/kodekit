@@ -22,9 +22,13 @@ namespace Kodekit.Features.Elements
 
         public Dictionary<string, string> Serialize()
         {
-            return ActiveColor == null 
-                ? Font.Serialize()
-                : Font.Concat(ActiveColor);
+            var dict = Font.Serialize();
+
+            if (ActiveColor != null)
+                foreach (var shade in ActiveColor.Serialize("active"))
+                    dict.Add(shade.Key, shade.Value);
+
+            return dict;
         }
     } 
 }

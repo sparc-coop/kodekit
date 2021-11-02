@@ -1,5 +1,5 @@
-﻿@inherits HighlightPageBase
-@*@page  "/lists/{kitId}"*@
+﻿@inherits HighlightPageBase<UpdateListsModel>
+@page "/{kitId}/lists"
 
 <div class="lists page">
     <div class="page__container">
@@ -17,54 +17,61 @@
             </p>
             @if (kit != null)
             {
-                <EditForm Model="@kit">
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <label>
                             OL Style Type
-                            <select>
-                                <option selected>Upper-roman (IV)</option>
-                                <option>Bold (500)</option>
-                            </select>
+                            <InputSelect @bind-Value=Model.OlStyleType>
+                                <option value="none">None</option>
+                                <option value="decimal">Decimal</option>
+                                <option value="decimal-leading-zero">Decimal padded by initial zeros</option>
+                                <option value="lower-roman">Lowercase roman numerals</option>
+                                <option value="upper-roman">Uppercase roman numerals</option>
+                                <option value="lower-greek">Lowercase classical Greek</option>
+                                <option value="lower-alpha">Lowercase ASCII letters</option>
+                                <option value="upper-alpha">Uppercase ASCII letters</option>
+                                <option value="arabic-indic">Arabic-Indic numbers</option>
+                                <option value="armenian">Traditional Armenian</option>
+                            </InputSelect>
                         </label>
                         <label>
                             UL Style Type
-                            <select>
-                                <option selected>None</option>
-                                <option>Bold (500)</option>
-                            </select>
+                            <InputSelect @bind-Value=Model.UlStyleType>
+                                <option value="none">None</option>
+                                <option value="disc">Disc</option>
+                                <option value="circle">Circle</option>
+                                <option value="square">Square</option>
+                            </InputSelect>
                         </label>
                         <label>
                             Vertical Padding
-                            <input placeholder="0px" />
+                            <InputNumber @bind-Value="Model.ListVerticalPadding" min="0" />
                         </label>
                         <label>
                             Horizontal Padding
-                            <input placeholder="0px">
+                            <InputNumber @bind-Value="Model.ListHorizontalPadding" min="0" />
                         </label>
                     </div>
                     <h4>List Item Styling</h4>
                     <div class="section">
                         <label>
                             List Item Font Size
-                            <input placeholder="16px">
+                            <InputNumber @bind-Value="Model.FontSize" min="1" />
                         </label>
                         <label>
                             List Item Font Weight
-                            <select>
-                                <option selected>Regular (400)</option>
-                                <option>Bold (500)</option>
-                            </select>
+                            <InputFontWeight @bind-Value="Model.FontWeight" />
                         </label>
                         <label>
                             Vertical Padding
-                            <input placeholder="8px">
+                            <InputNumber @bind-Value="Model.ItemVerticalPadding" min="0" />
                         </label>
                         <label>
                             Horizontal Padding
-                            <input placeholder="0px">
+                            <InputNumber @bind-Value="Model.ItemHorizontalPadding" min="0" />
                         </label>
                     </div>
-                    <div class="preview-example">
+                    <Preview Kit=kit>
                         <ol>
                             <li>List Item</li>
                             <li>List Item</li>
@@ -77,25 +84,7 @@
                             <li>List Item</li>
                             <li>List Item</li>
                         </ul>
-                    </div>
-                    <pre>
-                        <code>
-&lt;ol&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-    &lt;li&gt;List Item&lt;/li&gt;
-&lt;/ul&gt;
-                        </code>
-                    </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="layout" />
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -103,15 +92,13 @@
 </div>
 
 @code {
-    private Kit kit = new Kit();
-    [Parameter] public string kitId { get; set; }
-
-    protected override void OnInitialized()
+    protected override async Task<UpdateListsModel> GetAsync()
     {
-
+        return await PublicApi().GetListsAsync(kitId);
     }
 
-    private async Task Submit()
+    protected override async Task<Kit> UpdateAsync()
     {
+        return await PublicApi().UpdateListsAsync(Model);
     }
 }

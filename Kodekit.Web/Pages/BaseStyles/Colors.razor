@@ -1,4 +1,4 @@
-﻿@inherits HighlightPageBase
+﻿@inherits HighlightPageBase<ColorsModel>
 @page "/{kitId}/colors"
 
 <div class="colors page">
@@ -7,17 +7,19 @@
             <div class="title">Base Styles</div>
             <h2>Colors</h2>
             <p>
-                Colors selected here will be applied throughout the kit. They will be 
+                Colors selected here will be applied throughout the kit. They will be
                 applied to their respective elements (such as primary and secondary buttons)
                 &amp; system colors, as well as accessed via css variables.
             </p>
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
-            <h3>Brand Colors</h3>
-            <p>
-                The brand colors are the three main colors that will be used to accent your site.
-            </p>
+            <header>
+                <h3>Brand Colors</h3>
+                <p>
+                    The brand colors are the three main colors that will be used to accent your site.
+                </p>
+            </header>
 
             @if (Model != null)
             {
@@ -40,7 +42,7 @@
                     <Preview Kit=kit>
                         <div>
                             <label>Primary</label>
-                            <div class="color-display" style="background-color: @Model.Primary"></div>
+                            <div class="color-display" style="background-color: var(--primary-400)"></div>
                             <div class="subcolor-display">
                                 @foreach (var weight in Weights)
                                 {
@@ -50,7 +52,7 @@
                         </div>
                         <div>
                             <label>Secondary</label>
-                            <div class="color-display" style="background-color: @Model.Secondary"></div>
+                            <div class="color-display" style="background-color: var(--secondary-400)"></div>
                             <div class="subcolor-display">
                                 @foreach (var weight in Weights)
                                 {
@@ -60,7 +62,7 @@
                         </div>
                         <div>
                             <label>Tertiary</label>
-                            <div class="color-display" style="background-color: @Model.Tertiary"></div>
+                            <div class="color-display" style="background-color: var(--tertiary-400)"></div>
                             <div class="subcolor-display">
                                 @foreach (var weight in Weights)
                                 {
@@ -90,7 +92,7 @@
                         {
                             <div>
                                 <label>@weight</label>
-                                <div class="color-display" style="background-color: var(--greyscale-@weight)"></div>
+                                <div class="color-display" style="background-color: var(--grey-@weight)"></div>
                             </div>
                         }
                     </Preview>
@@ -128,32 +130,33 @@
                         </div>
                     </Preview>
 
-                    <Preview Kit=kit>
+                    <header>
                         <h3>Preview</h3>
-                        <section>
-                            <div class="preview-mockup--left">
-                                <img src="/images/example1.png" alt="Example mockup" />
-                                <div>
-                                    <h4 class="color-dark" style="color: @Model.Darkest;">Brand Colors</h4>
-                                    <h5 class="color-tertiary" style="color: @Model.Tertiary;">Information</h5>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                    </p>
-                                    <button style="background: @Model.Primary; color: @Model.Lightest;">Primary CTA</button>
-                                </div>
-                            </div>
-                            <div class="preview-mockup--right">
-                                <h4 class="color-dark" style="color: @Model.Darkest;">Brand Colors</h4>
-                                <h5 class="color-tertiary" style="color: @Model.Tertiary;">Information</h5>
+                        <p>A small example of all colors, buttons, and typography applied to two cards.</p>
+                    </header>
+                    <Preview Kit=kit AdditionalClass="mockup">
+                        <div class="card-with-image">
+                            <img src="/images/example1.png" alt="Example mockup" />
+                            <div>
+                                <h6 class="tertiary">Information</h6>
+                                <h4>Brand Colors</h4>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
-                                <div class="buttons">
-                                    <button style="background: @Model.Primary; color: @Model.Lightest;">Primary CTA</button>
-                                    <button style="color: @Model.Secondary;" class="secondary">Secondary CTA</button>
-                                </div>
+                                <button>Primary CTA</button>
                             </div>
-                        </section>
+                        </div>
+                        <div class="card">
+                            <h6 class="tertiary">Information</h6>
+                            <h4>Brand Colors</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                            </p>
+                            <div class="buttons">
+                                <button>Primary CTA</button>
+                                <button class="secondary">Secondary CTA</button>
+                            </div>
+                        </div>
                     </Preview>
                 </EditForm>
             }
@@ -162,24 +165,21 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    ColorsModel Model;
-    Kit kit;
-    EditContext Context;
-
     List<string> Weights = new List<string> { "900", "800", "700", "600", "500", "400", "300", "200", "100", "50" };
 
     protected override async Task OnInitializedAsync()
     {
-        Model = await PublicApi().GetColorsAsync(kitId);
-        kit = await PublicApi().GetKitAsync(kitId);
-        Context = new EditContext(Model);
-        Context.OnFieldChanged += HandleFieldChanged;
-
+        DebounceInputs = true;
+        await base.OnInitializedAsync(); 
     }
 
-    private async void HandleFieldChanged(object sender, FieldChangedEventArgs e)
+    protected override async Task<ColorsModel> GetAsync()
     {
-        kit = await PublicApi().UpdateColorsAsync(Model);
+        return await PublicApi().GetColorsAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
+    {
+        return await PublicApi().UpdateColorsAsync(Model);
     }
 }

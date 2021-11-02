@@ -19,22 +19,5 @@
                 left: 5%;
             }
         }
-        //Controlling the color of checkbox and color when clicked.
-        input[type=checkbox] {
-            border-radius: 2px;
-
-            &:checked {
-                /*outline: 1px solid $primary-500;*/
-                border-radius: 2px;
-            }
-        }
-
-        input[type=radio] {
-            background: $grey-300;
-
-            &:checked {
-                background: $primary-500;
-            }
-        }
     }
 }

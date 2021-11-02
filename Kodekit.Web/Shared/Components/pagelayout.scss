@@ -109,6 +109,10 @@
         cursor: text;
     }
 
+    input[type=number] {
+        max-width: 144px;
+    }
+
     pre {
         border-radius: 0px 0px 8px 8px;
         margin: 0px 0 50px 0;
@@ -161,10 +165,29 @@
     .content {
         padding-bottom: 100px;
 
-        h3 {
+        > h3 {
             font-size: 20px;
             font-weight: 500;
             color: $gray900;
+            margin-bottom: 32px;
+        }
+
+        header {
+            padding-bottom: 32px;
+            
+            h3 {
+                font-size: 20px;
+                font-weight: 500;
+                color: $gray900;
+                margin-bottom: 8px;
+            }
+
+            p {
+                font-size: 16px;
+                font-weight: 400;
+                color: $gray500;
+                padding: 0;
+            }
         }
     }
 
@@ -188,7 +211,6 @@
             color: $gray500;
             margin-bottom: 24px;
         }
-
     }
 
     .preview-example {
@@ -196,12 +218,16 @@
         border: 1px solid $white;
         box-sizing: border-box;
         border-radius: 8px 8px 0px 0px;
-        display: flex;
-        flex-wrap: wrap;
         padding: 24px 32px;
 
-        > * {
-            margin: 0px 30px 30px 0;
+
+        &-flex {
+            display: flex;
+            flex-wrap: wrap;
+
+            > * {
+                margin: 0px 30px 30px 0;
+            }
         }
 
         &--body {
@@ -227,11 +253,6 @@
                 font-size: 14px;
                 line-height: 160%;
             }
-        }
-
-        h3 {
-            font-size: unset;
-            font-weight: unset;
         }
     }
 

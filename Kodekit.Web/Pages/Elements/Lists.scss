@@ -3,22 +3,8 @@
 .lists {
     .preview-example {
         display: flex;
-        padding: 25px 32px 40px;
-        color: #6F788B;
-
-
-        ul {
-            list-style-type: none;
-            padding: 0 20px;
-        }
-
-        ol {
-            list-style-type: decimal;
-            padding: 0 20px;
-        }
-
-        li {
-            padding: 4px 0;
+        > * {
+            margin: 16px;
         }
     }
 }

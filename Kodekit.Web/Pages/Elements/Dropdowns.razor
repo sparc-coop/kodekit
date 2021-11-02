@@ -1,5 +1,5 @@
-﻿@inherits HighlightPageBase
-@page  "/{kitId}/dropdowns"
+﻿@inherits HighlightPageBase<UpdateDropdownsModel>
+@page "/{kitId}/dropdowns"
 
 <div class="dropdowns page">
     <div class="page__container">
@@ -16,68 +16,50 @@
                 The &lt;select&gt; element defines a dropdown list. The &lt;option&gt; elements define options that can be selected. To define a pre-selected option, add the selected attribute to the option.
             </p>
             <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
-            <div class="section-container">
-@*                <label class="switch">
-                    <input type="checkbox" bind=Model.OverwriteInherited>
-                    <span class="slider"></span>
-                </label>
-                Overwrite inherited styling*@
-            </div>
             @if (Model != null)
             {
-                <EditForm Model="@Model">
+                <EditForm EditContext="@Context">
                     <div class="section">
-                        <label>
-                            Font Size (px)
-                            <InputNumber @bind-Value="Model.FontSize" @oninput="Submit" min="1" class="small"/>
-                        </label>
-                        <label>
-                            Font Weight
-                           <InputFontWeight @bind-Value=Model.FontWeight @bind-Value:event="OnValueChanged"/>
-                        </label>
-                        <label>
-                            Vertical Padding (px)
-                            <InputNumber @bind-Value="Model.VerticalPadding" @oninput="Submit" min="0" class="small"/>
-                        </label>
+                        <Switch @bind-Value=Model.OverwriteInherited Title="Overwrite inherited styling" />
                     </div>
-                    <div class="section">
-                        <label>
-                            Horizontal Padding (px)
-                            <InputNumber @bind-Value="Model.HorizontalPadding" @oninput="Submit" min="0" class="small" />
-                        </label>
-                        <label>
-                            Corner Radius (px)
-                            <InputNumber @bind-Value="Model.CornerRadius" @oninput="Submit" min="0" class="small" />
-                        </label>
-                        <label>
-                            Border Width (px)
-                            <InputNumber @bind-Value="Model.BorderWidth" @oninput="Submit" min="0" class="small" />
-                        </label>
-                    </div>
+                    @if (Model.OverwriteInherited)
+                    {
+                        <div class="section">
+                            <label>
+                                Font Size (px)
+                                <InputNumber @bind-Value="Model.FontSize" min="1" />
+                            </label>
+                            <label>
+                                Font Weight
+                                <InputFontWeight @bind-Value=Model.FontWeight />
+                            </label>
+                            <label>
+                                Vertical Padding (px)
+                                <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                            </label>
+                            <label>
+                                Horizontal Padding (px)
+                                <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                            </label>
+                            <label>
+                                Corner Radius (px)
+                                <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                            </label>
+                            <label>
+                                Border Width (px)
+                                <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                            </label>
+                        </div>
+                    }
 
-                    <div class="preview-example">
-                        @for (int i = 1; i < 5; i++)
-                        {
-                            <select style="font-size: @(Model.FontSize)px; font-weight: @Model.FontWeight;
-                                        padding: @(Model.VerticalPadding)px @(Model.HorizontalPadding)px; 
-                                        border-radius: @(Model.CornerRadius)px; border: @(Model.BorderWidth)px solid #D2D4D9">
-                                <option selected>Dropdown Menu</option>
+                    <Preview Kit=kit>
+                            <select>
+                                <option>Dropdown Menu</option>
                                 <option>Default Row</option>
-                                <option>Default Row</option>
+                                <option selected>Selected Row</option>
                                 <option>Default Row</option>
                             </select>
-                        }
-                    </div>
-                    <pre>
-                    <code class="language-html">
-&lt;select&gt;
-    &lt;option selected&gt;Dropdown Menu&lt;/option&gt;
-    &lt;option&gt;Default Row&lt;/option&gt;
-    &lt;option&gt;Default Row&lt;/option&gt;
-    &lt;option&gt;Default Row&lt;/option&gt;
-&lt;/select&gt;
-                        </code>
-                    </pre>
+                    </Preview>
                 </EditForm>
             }
         </div>
@@ -85,16 +67,13 @@
 </div>
 
 @code {
-        [Parameter] public string kitId { get; set; }
-        UpdateDropdownsModel Model;
-
-    protected override async Task OnInitializedAsync()
+    protected override async Task<UpdateDropdownsModel> GetAsync()
     {
-        Model = await PublicApi().GetDropdownsAsync(kitId);
+        return await PublicApi().GetDropdownsAsync(kitId);
     }
 
-    private async Task Submit()
+    protected override async Task<Kit> UpdateAsync()
     {
-        await PublicApi().UpdateDropdownsAsync(Model);
+        return await PublicApi().UpdateDropdownsAsync(Model);
     }
 }

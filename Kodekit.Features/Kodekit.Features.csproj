@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Elements\Anchors\anchors.css" />
+    <None Remove="Elements\Lists\lists.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Elements\Lists\lists.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Elements\Anchors\anchors.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
