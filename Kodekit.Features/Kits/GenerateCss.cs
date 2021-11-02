@@ -46,6 +46,7 @@ namespace Kodekit.Features
             css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
             css.AppendLine(GetLocalFile("Elements/Anchors/anchors.css"));
             css.AppendLine(GetLocalFile("Elements/Lists/lists.css"));
+            css.AppendLine(GetLocalFile("Elements/Effects/shadows.css"));
 
             var result = css.ToString();
             if (!string.IsNullOrWhiteSpace(scope))
@@ -71,12 +72,8 @@ namespace Kodekit.Features
             var variables = new Dictionary<string, Dictionary<string, string>>();
 
             Compile(variables, scope, kit.Colors.Where(x => x.Name != "lightest" && x.Name != "darkest").ToList());
-
-            // Hack for greyscale calculation, I hate it
-            var lightest = kit.GetColor(ColorTypes.Lightest);
-            var darkest = kit.GetColor(ColorTypes.Darkest);
-            if (lightest != null && darkest != null)
-                Compile(variables, scope, lightest.Expand(darkest));
+            Compile(variables, scope, kit.GetGreyscaleColors());
+            Compile(variables, scope, kit.GetShadows());
 
             Compile(variables, scope, kit.Paragraphs);
             Compile(variables, "h1, h2, h3, h4, h5, h6, .subtitle", kit.Headings);
@@ -106,8 +103,11 @@ namespace Kodekit.Features
             }
         }
 
-        private static void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, Dictionary<string, string> values)
+        private static void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, Dictionary<string, string>? values)
         {
+            if (values == null)
+                return;
+            
             if (variables.ContainsKey(scope))
             {
                 variables[scope] = variables[scope].Concat(values.Where(x => !variables[scope].ContainsKey(x.Key))).ToDictionary(x => x.Key, x => x.Value);

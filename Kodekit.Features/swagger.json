@@ -2689,7 +2689,7 @@
             "type": "number",
             "format": "double"
           },
-          "color": {
+          "hexColor": {
             "type": "string",
             "nullable": true
           },

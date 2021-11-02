@@ -116,6 +116,16 @@ namespace Kodekit.Features
             return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}")?.Value;
         }
 
+        public Dictionary<string, string>? GetGreyscaleColors()
+        {
+            var lightest = GetColor(ColorTypes.Lightest);
+            var darkest = GetColor(ColorTypes.Darkest);
+            if (lightest != null && darkest != null)
+                return lightest.Expand(darkest);
+
+            return null;
+        }
+
         internal void UpdateButtons(Button buttons)
         {
             Buttons = buttons;
@@ -126,13 +136,21 @@ namespace Kodekit.Features
             return Shadows.FirstOrDefault(x => x.Name == shadowSize.ToLower())?.Value;
         }
 
+        public Dictionary<string, string>? GetShadows()
+        {
+            var lightest = GetShadow("small");
+            var darkest = GetShadow("xlarge");
+            if (lightest != null && darkest != null)
+                return lightest.Expand(darkest);
+
+            return null;
+        }
+
         public void UpdateShadows(Shadow smallShadow, Shadow xLargeShadow)
         {
             Shadows.Clear();
-            var shadows = smallShadow.Expand(xLargeShadow);
-
-            foreach (var shadow in shadows)
-                Shadows.Add(new Variable<Shadow>(shadow.Key, shadow.Value));
+            Shadows.Add(new Variable<Shadow>("small", smallShadow));
+            Shadows.Add(new Variable<Shadow>("xlarge", xLargeShadow));
         }
 
         public void UpdateColor(ColorTypes colorType, string? hexValue)
