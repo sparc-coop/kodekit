@@ -19,27 +19,27 @@
                     <div class="section">
                         <label>
                             X Length (px)
-                            <InputNumber @bind-Value="Model.XLarge.X" class="small" />
+                            <InputNumber @bind-Value="Model.Small.X" class="small" />
                         </label>
                         <label>
                             Y Length (px)
-                            <InputNumber @bind-Value="Model.XLarge.Y" class="small" />
+                            <InputNumber @bind-Value="Model.Small.Y" class="small" />
                         </label>
                         <label>
                             Blur (px)
-                            <InputNumber @bind-Value="Model.XLarge.Blur" class="small" />
+                            <InputNumber @bind-Value="Model.Small.Blur" class="small" />
                         </label>
                         <label>
                             Spread (px)
-                            <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
+                            <InputNumber @bind-Value="Model.Small.Spread" class="small" />
                         </label>
-                        <label class="color-picker">
+                        <label>
                             Shadow Color
-                           <InputColor @bind-Value="Model.XLarge.Color" />
+                           <InputColor @bind-Value="Model.Small.HexColor" />
                         </label>
                         <label>
                             Shadow Opacity
-                            <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
+                            <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
                         </label>
                     </div>
 
@@ -62,9 +62,9 @@
                             Spread (px)
                             <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
                         </label>
-                        <label class="color-picker">
+                        <label>
                             Shadow Color
-                           <InputColor @bind-Value="Model.XLarge.Color" />
+                           <InputColor @bind-Value="Model.XLarge.HexColor" />
                         </label>
                         <label>
                             Shadow Opacity
@@ -78,17 +78,17 @@
                             <div class="shadow-100">
                             </div>
                         </div>
-                        <div class="shadow-300">
+                        <div>
                             <label>Medium Shadow</label>
                             <div class="shadow-300">
                             </div>
                         </div>
-                        <div class="shadow-600">
+                        <div>
                             <label>Large Shadow</label>
                             <div class="shadow-600">
                             </div>
                         </div>
-                        <div class="shadow-900">
+                        <div>
                             <label>X-Large Shadow</label>
                             <div class="shadow-1000">
                             </div>
@@ -101,23 +101,13 @@
 </div>
 
 @code {
-    protected override async Task OnInitializedAsync()
+    protected override async Task<ShadowsModel> GetAsync()
     {
-        Model = await PublicApi().GetShadowAsync(kitId);
-
-        if (Model.Small == null)
-        {
-            Model.Small = new Shadow();
-        }
-
-        if (Model.XLarge == null)
-        {
-            Model.XLarge = new Shadow();
-        }
+        return await PublicApi().GetShadowAsync(kitId);
     }
-
-    private async Task Submit()
+    
+    protected override async Task<Kit> UpdateAsync()
     {
-        await PublicApi().UpdateShadowAsync(Model);
+        return await PublicApi().UpdateShadowAsync(Model);
     }
 }

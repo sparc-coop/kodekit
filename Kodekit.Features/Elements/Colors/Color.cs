@@ -121,7 +121,7 @@ namespace Kodekit.Features.Elements
         public string RgbaValue(double opacity)
         {
             var color = ColorTranslator.FromHtml(HexValue);
-            return $"rgba({color.R}, {color.G}, {color.B}, opacity)";
+            return $"rgba({color.R}, {color.G}, {color.B}, {opacity})";
         }
 
         public Color Interpolate(Color secondColor, float percentage)

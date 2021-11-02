@@ -22,7 +22,7 @@ namespace Kodekit.Features.Elements
             var smallShadow = kit.GetShadow("small");
             var xlargeShadow = kit.GetShadow("xlarge");
 
-            return new(id, smallShadow, xlargeShadow);
+            return new(id, smallShadow ?? new Shadow(), xlargeShadow ?? new Shadow());
         }
     }
 }
