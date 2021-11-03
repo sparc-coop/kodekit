@@ -1,40 +1,20 @@
-﻿@page "/{kitId}/global-settings"
+﻿@inherits HighlightPageBase<UpdateSettingsModel>
+@page "/{kitId}/global-settings"
 
 <div class="page global-page">
     <div class="page__container">
         <header>
             <div class="title">Base Styles</div>
             <h2>Global Settings</h2>
-            <p>
-                Select the default options you want to keep in your kit.
-            </p>
         </header>
         <div class="content">
-            <h3>Global Resets</h3>
-            <p class="subheader">
-                
-            </p>
             @if (Model != null)
             {
-                <EditForm Model="@Model">
-                    <div>
-                        <div class="section-container">
-                            <label class="switch">
-                                <input type="checkbox" @onchange="SetDefault">
-                                <span class="slider"></span>
-                            </label>
-                            Reset Everything to Default
-                        </div>
-                        <Switch @bind-Value=Model.Settings.ResetHeadings Title="Headings" IsDisabled=globalReset />
-                        <Switch @bind-Value=Model.Settings.ResetParagraphs Title="Paragraphs" IsDisabled=globalReset />
-                        <Switch @bind-Value=Model.Settings.ResetLists Title="Lists" IsDisabled=globalReset />
-                        <Switch @bind-Value=Model.Settings.ResetCheckboxes Title="Checkboxes, Radios and Toggles" IsDisabled=globalReset />
-                        <Switch @bind-Value=Model.Settings.ResetAnchors Title="Anchors" IsDisabled=globalReset />
-                    </div>
-
-                    <h3>Kodekit Styling</h3>
+                <EditForm EditContext="@Context">
+                    <h3>Elements to Include</h3>
                     <p class="subheader">
-                        Use Kodekit styling to add initial styling for your elements
+                        Select the kit elements you'd like to use in your kit. Each element you choose will add a default reset
+                        stylesheet for that category to the kit's CSS file, along with the specific stylings you set in that element's page.
                     </p>
                     <div>
                         <div class="section-container">
@@ -44,19 +24,16 @@
                             </label>
                             All Kodekit Elements
                         </div>
-                        <Switch @bind-Value=Model.Settings.KodekitTypography Title="Typography" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitColors Title="Colors" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitIcons Title="Icons" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitLayout Title="Layout" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitButtons Title="Buttons" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitInputs Title="Inputs and Textareas" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitCheckboxes Title="Checkboxes and Radios" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitDropdowns Title="Dropdowns" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitAnchors Title="Anchors" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.KodekitImages Title="Images" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseTypography Title="Typography" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseColors Title="Colors" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseIcons Title="Icons" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseButtons Title="Buttons" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseInputs Title="Inputs and Textareas" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseCheckboxes Title="Checkboxes and Radios" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseDropdowns Title="Dropdowns" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseAnchors Title="Anchors" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseLists Title="Lists" IsDisabled=kodekitStyleReset />
                     </div>
-
-                    <SaveAndContinue OnSubmit=Submit NextPage="typography" />
                 </EditForm>
             }
         </div>
@@ -64,43 +41,31 @@
 </div>
 
 @code {
-    [Parameter] public string kitId { get; set; }
-    UpdateSettingsModel Model;
-    public bool globalReset = false;
     public bool kodekitStyleReset = false;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task<UpdateSettingsModel> GetAsync()
     {
-        Model = await PublicApi().GetSettingsAsync(kitId);
+        return await PublicApi().GetSettingsAsync(kitId);
     }
 
-    private void SetDefault()
+    protected override async Task<Kit> UpdateAsync()
     {
-        globalReset = !globalReset;
-        Model.Settings.ResetHeadings = globalReset;
-        Model.Settings.ResetParagraphs = globalReset;
-        Model.Settings.ResetLists = globalReset;
-        Model.Settings.ResetCheckboxes = globalReset;
-        Model.Settings.ResetAnchors = globalReset;
+        return await PublicApi().UpdateSettingsAsync(Model);
     }
 
-    private void SetKodekit()
+    private async Task SetKodekit()
     {
         kodekitStyleReset = !kodekitStyleReset;
-        Model.Settings.KodekitTypography = kodekitStyleReset;
-        Model.Settings.KodekitColors = kodekitStyleReset;
-        Model.Settings.KodekitIcons = kodekitStyleReset;
-        Model.Settings.KodekitLayout = kodekitStyleReset;
-        Model.Settings.KodekitButtons = kodekitStyleReset;
-        Model.Settings.KodekitInputs = kodekitStyleReset;
-        Model.Settings.KodekitCheckboxes = kodekitStyleReset;
-        Model.Settings.KodekitDropdowns = kodekitStyleReset;
-        Model.Settings.KodekitAnchors = kodekitStyleReset;
-        Model.Settings.KodekitImages = kodekitStyleReset;
-    }
+        Model.Settings.UseTypography = kodekitStyleReset;
+        Model.Settings.UseColors = kodekitStyleReset;
+        Model.Settings.UseIcons = kodekitStyleReset;
+        Model.Settings.UseButtons = kodekitStyleReset;
+        Model.Settings.UseInputs = kodekitStyleReset;
+        Model.Settings.UseCheckboxes = kodekitStyleReset;
+        Model.Settings.UseDropdowns = kodekitStyleReset;
+        Model.Settings.UseAnchors = kodekitStyleReset;
+        Model.Settings.UseLists = kodekitStyleReset;
 
-    private async Task Submit()
-    {
-        await PublicApi().UpdateSettingsAsync(Model);
+        await UpdateAsync();
     }
 }

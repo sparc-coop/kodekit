@@ -2616,55 +2616,34 @@
       "Settings": {
         "type": "object",
         "properties": {
-          "resetEverything": {
+          "useTypography": {
             "type": "boolean"
           },
-          "resetHeadings": {
+          "useColors": {
             "type": "boolean"
           },
-          "resetParagraphs": {
+          "useIcons": {
             "type": "boolean"
           },
-          "resetLists": {
+          "useButtons": {
             "type": "boolean"
           },
-          "resetCheckboxes": {
+          "useInputs": {
             "type": "boolean"
           },
-          "resetAnchors": {
+          "useCheckboxes": {
             "type": "boolean"
           },
-          "allKodekitElements": {
+          "useDropdowns": {
             "type": "boolean"
           },
-          "kodekitTypography": {
+          "useAnchors": {
             "type": "boolean"
           },
-          "kodekitColors": {
+          "useLists": {
             "type": "boolean"
           },
-          "kodekitIcons": {
-            "type": "boolean"
-          },
-          "kodekitLayout": {
-            "type": "boolean"
-          },
-          "kodekitButtons": {
-            "type": "boolean"
-          },
-          "kodekitInputs": {
-            "type": "boolean"
-          },
-          "kodekitCheckboxes": {
-            "type": "boolean"
-          },
-          "kodekitDropdowns": {
-            "type": "boolean"
-          },
-          "kodekitAnchors": {
-            "type": "boolean"
-          },
-          "kodekitImages": {
+          "useShadows": {
             "type": "boolean"
           }
         },

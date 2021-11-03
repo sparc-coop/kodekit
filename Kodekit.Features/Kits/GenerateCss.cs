@@ -41,12 +41,24 @@ namespace Kodekit.Features
 
             css.AppendLine(CompileVariables(kit.Revision, scope));
             css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
-            css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
-            css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
-            css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
-            css.AppendLine(GetLocalFile("Elements/Anchors/anchors.css"));
-            css.AppendLine(GetLocalFile("Elements/Lists/lists.css"));
-            css.AppendLine(GetLocalFile("Elements/Effects/shadows.css"));
+
+            if (kit.Revision.Settings.UseTypography)
+                css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
+
+            if (kit.Revision.Settings.UseButtons) 
+                css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
+
+            if (kit.Revision.Settings.UseInputs)
+                css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
+
+            if (kit.Revision.Settings.UseAnchors)
+                css.AppendLine(GetLocalFile("Elements/Anchors/anchors.css"));
+
+            if (kit.Revision.Settings.UseLists)
+                css.AppendLine(GetLocalFile("Elements/Lists/lists.css"));
+
+            if (kit.Revision.Settings.UseShadows)
+                css.AppendLine(GetLocalFile("Elements/Effects/shadows.css"));
 
             var result = css.ToString();
             if (!string.IsNullOrWhiteSpace(scope))
@@ -75,16 +87,28 @@ namespace Kodekit.Features
             Compile(variables, scope, kit.GetGreyscaleColors());
             Compile(variables, scope, kit.GetShadows());
 
-            Compile(variables, scope, kit.Paragraphs);
-            Compile(variables, "h1, h2, h3, h4, h5, h6, .subtitle", kit.Headings);
-            Compile(variables, "button", kit.Buttons);
-            Compile(variables, "input[type=checkbox], input[type=radio], label.switch", kit.Selectors);
-            Compile(variables, "a", kit.Anchors);
-            Compile(variables, "ol, ul, li", kit.Lists);
+            if (kit.Settings.UseTypography)
+            {
+                Compile(variables, scope, kit.Paragraphs);
+                Compile(variables, "h1, h2, h3, h4, h5, h6, .subtitle", kit.Headings);
+            }
 
-            Compile(variables, "input, label, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
-            if (kit.Dropdowns.OverwriteInherited)
-                Compile(variables, "select", kit.Dropdowns);
+            if (kit.Settings.UseButtons)
+                Compile(variables, "button", kit.Buttons);
+
+            if (kit.Settings.UseInputs)
+            {
+                Compile(variables, "input[type=checkbox], input[type=radio], label.switch", kit.Selectors);
+                Compile(variables, "input, label, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
+                if (kit.Dropdowns.OverwriteInherited)
+                    Compile(variables, "select", kit.Dropdowns);
+            }
+
+            if (kit.Settings.UseAnchors)
+                Compile(variables, "a", kit.Anchors);
+
+            if (kit.Settings.UseLists)
+                Compile(variables, "ol, ul, li", kit.Lists);
 
             var css = Write(variables);
             return css;

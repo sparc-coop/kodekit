@@ -39,10 +39,10 @@
             @*            <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
                 Global Reset
                 </NavLink>*@
-            <NavLink href="@Link("typography")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("typography")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseTypography)">
                 Typography
             </NavLink>
-            <NavLink href="@Link("colors")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("colors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseColors)">
                 Colors
             </NavLink>
             @*            <NavLink href="@Link("icons")" Match="NavLinkMatch.All">
@@ -50,22 +50,22 @@
                 </NavLink>*@
 
             <div class="heading">HTML Elements</div>
-            <NavLink href="@Link("buttons")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("buttons")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseButtons)">
                 Buttons
             </NavLink>
-            <NavLink href="@Link("inputs")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("inputs")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)">
                 Inputs & Textareas
             </NavLink>
-            <NavLink href="@Link("selectors")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("selectors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)">
                 Selectors & Toggles
             </NavLink>
-            <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseDropdowns)">
                 Dropdowns
             </NavLink>
-            <NavLink href="@Link("anchors")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("anchors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseAnchors)">
                 Anchors
             </NavLink>
-            <NavLink href="@Link("lists")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("lists")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseLists)">
                 Lists
             </NavLink>
             @*<NavLink href="@Link("layout")" Match="NavLinkMatch.All">
@@ -73,7 +73,7 @@
                 </NavLink>*@
 
             <div class="heading">Utility</div>
-            <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All">
+            <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseShadows)">
                 Box Shadow
             </NavLink>
         </div>
@@ -90,6 +90,12 @@
     bool ShowMobileMenu = false;
     string Show = "";
     [Parameter] public string kitId { get; set; }
+    Settings Settings;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Settings = (await PublicApi().GetSettingsAsync(kitId)).Settings;
+    }
 
     private void ToggleMobile()
     {
@@ -102,6 +108,8 @@
     }
 
     private string Link(string page) => $"/{kitId}/{page}";
+
+    private string EnabledIf(bool isEnabled) => isEnabled ? "" : "disabled";
 
     private async Task OpenPreview()
     {
