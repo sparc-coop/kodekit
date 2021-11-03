@@ -1,4 +1,25 @@
-﻿ol, ul {
+﻿/* Lists (enumeration) */
+/* ============================================ */
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+ol, ul {
     padding-top: var(--padding-vertical);
     padding-bottom: var(--padding-vertical);
     padding-left: var(--padding-horizontal);

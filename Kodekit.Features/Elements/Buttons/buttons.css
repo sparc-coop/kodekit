@@ -1,4 +1,89 @@
-﻿button {
+﻿/* Forms */
+/* ============================================ */
+
+/**
+ * Reset form fields to make them styleable
+ */
+
+button
+{
+    -webkit-appearance: none;
+    appearance: none;
+    vertical-align: middle;
+    color: inherit;
+    font: inherit;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border-radius: 0;
+    text-align: inherit;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button {
+    /* 1 */
+    overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button {
+    /* 1 */
+    text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+    button[disabled],
+    [type="button"][disabled],
+    [type="reset"][disabled],
+    [type="submit"][disabled] {
+        cursor: default;
+    }
+
+    /**
+ * Remove the inner border and padding in Firefox.
+ */
+
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+
+    /**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+    button:-moz-focusring,
+    [type="button"]:-moz-focusring,
+    [type="reset"]:-moz-focusring,
+    [type="submit"]:-moz-focusring {
+        outline: 1px dotted ButtonText;
+    }
+
+button {
     background: var(--primary-500);
     border-radius: var(--border-radius, 4px);
     border-width: var(--border-width, 0);
