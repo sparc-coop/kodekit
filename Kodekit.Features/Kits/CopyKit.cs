@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Sparc.Features;
 
 namespace Kodekit.Features
@@ -12,7 +13,7 @@ namespace Kodekit.Features
         {
             var kit = await Kits.GetCurrentAsync(kitId);
 
-            var newKit = new Kit(kit.Kit);
+            var newKit = new Kit(Guid.NewGuid().ToString(), kit.Kit);
             var newRevision = new KitRevision(kit.Revision);
 
             await Kits.UpdateAsync((newKit, newRevision));
@@ -20,4 +21,5 @@ namespace Kodekit.Features
             return new(newKit.Id);
         }
     }
+
 }

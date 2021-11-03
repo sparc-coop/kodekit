@@ -14,14 +14,18 @@ namespace Kodekit.Features
             DateModified = DateTime.UtcNow;
         }
 
-        public Kit(string name, string? userId = null) : this()
+        public Kit(string id, string name, string? userId = null) : this()
         {
+            Id = id;
+            KitId = id;
             Name = name;
             UserId = userId;
         }
 
-        public Kit(Kit kit) : this()
+        public Kit(string id, Kit kit) : this()
         {
+            Id = id;
+            KitId = id;
             Name = kit.Name;
             UserId = kit.UserId;
         }

@@ -10,6 +10,7 @@
     <None Remove="Elements\Anchors\anchors.css" />
     <None Remove="Elements\Effects\shadows.css" />
     <None Remove="Elements\Lists\lists.css" />
+    <None Remove="_Plugins\words_alpha.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +28,7 @@
     <Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="_Plugins\words_alpha.txt" />
   </ItemGroup>
 
   <ItemGroup>
