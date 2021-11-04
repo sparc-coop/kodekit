@@ -12,6 +12,7 @@
     <None Remove="Elements\Icons\icons.css" />
     <None Remove="Elements\Lists\lists.css" />
     <None Remove="_Plugins\words_alpha.txt" />
+    <None Remove="_Plugins\words_officesafe.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +33,12 @@
     <Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="_Plugins\words_alpha.txt" />
+    <Content Include="_Plugins\words_alpha.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_Plugins\words_officesafe.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
