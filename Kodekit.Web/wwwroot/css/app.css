@@ -555,10 +555,9 @@
 .icons section {
   padding-bottom: 15px; }
 
-.icons .preview-example {
-  min-height: 100px;
-  padding: 32px;
-  margin-bottom: -30px; }
+.icons .preview-example i {
+  display: inline-block;
+  margin: 5px; }
 
 .layout .switch {
   vertical-align: middle; }

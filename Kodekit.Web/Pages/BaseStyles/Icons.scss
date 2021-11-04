@@ -7,8 +7,9 @@
     }
 
     .preview-example {
-        min-height: 100px;
-        padding: 32px;
-        margin-bottom: -30px;
+        i {
+            display: inline-block;
+            margin: 5px;
+        }
     }
 }

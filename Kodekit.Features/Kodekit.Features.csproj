@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Elements\Anchors\anchors.css" />
     <None Remove="Elements\Effects\shadows.css" />
+    <None Remove="Elements\Icons\icons.css" />
     <None Remove="Elements\Lists\lists.css" />
     <None Remove="_Plugins\words_alpha.txt" />
   </ItemGroup>
@@ -16,6 +17,9 @@
   <ItemGroup>
     <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Elements\Effects\shadows.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Elements\Icons\icons.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="Elements\Lists\lists.css">

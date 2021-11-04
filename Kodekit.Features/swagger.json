@@ -666,6 +666,54 @@
         }
       }
     },
+    "/api/GetIcons": {
+      "post": {
+        "tags": [
+          "GetIcons"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateIconsModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateIconsModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateIconsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetInputs": {
       "post": {
         "tags": [
@@ -1425,6 +1473,66 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/UpdateDropdownsModel"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Kit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UpdateIcons": {
+      "post": {
+        "tags": [
+          "UpdateIcons"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateIconsModel"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateIconsModel"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/UpdateIconsModel"
                   }
                 ]
               }
@@ -2328,6 +2436,24 @@
         },
         "additionalProperties": false
       },
+      "IconLibrary": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "markup": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Input": {
         "type": "object",
         "properties": {
@@ -2521,6 +2647,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/List"
+              }
+            ],
+            "nullable": true
+          },
+          "icons": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/IconLibrary"
               }
             ],
             "nullable": true
@@ -2921,6 +3055,34 @@
           },
           "overwriteInherited": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateIconsModel": {
+        "type": "object",
+        "properties": {
+          "kitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "validIcons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IconLibrary"
+            },
+            "nullable": true
+          },
+          "iconsList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

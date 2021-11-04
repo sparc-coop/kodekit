@@ -26,9 +26,10 @@ namespace Kodekit.Features
             Dropdowns = new();
             Anchors = new();
             Lists = new();
+            Icons = new();
         }
 
-
+       
         public KitRevision(Kit kit) : this()
         {
             KitId = kit.Id;
@@ -54,6 +55,7 @@ namespace Kodekit.Features
             Dropdowns = revision.Dropdowns;
             Anchors = revision.Anchors;
             Lists = revision.Lists;
+            Icons = revision.Icons;
         }
 
         public string KitId { get; set; }
@@ -73,6 +75,7 @@ namespace Kodekit.Features
         public Dropdown Dropdowns { get; set; }
         public Anchor Anchors { get; set; }
         public List Lists { get; set; }
+        public IconLibrary Icons { get; set; }
         public bool IsDeleted { get; set; }
 
         public void UpdateSelectors(Selector selectors)
@@ -109,6 +112,11 @@ namespace Kodekit.Features
         internal void UpdateLists(List list)
         {
             Lists = list;
+        }
+
+        internal void UpdateIcons(IconLibrary icon)
+        {
+            Icons = icon;
         }
 
         public Color? GetColor(ColorTypes colorType)
@@ -169,7 +177,8 @@ namespace Kodekit.Features
                 Paragraphs.Font.FamilyUrl,
                 Buttons.Font.FamilyUrl,
                 Inputs.Font.FamilyUrl,
-                Selectors.Font.FamilyUrl
+                Selectors.Font.FamilyUrl,
+                Icons.Url
             }
             .Distinct()
             .Where(x => !string.IsNullOrWhiteSpace(x))

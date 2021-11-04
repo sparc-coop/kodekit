@@ -63,6 +63,8 @@ namespace Kodekit.Features
             lists.OwnsOne(x => x.Font).Configure();
             lists.OwnsOne(x => x.ItemPadding).Configure();
             lists.OwnsOne(x => x.ListPadding).Configure();
+
+            revision.OwnsOne(x => x.Icons);
         }
     }
 

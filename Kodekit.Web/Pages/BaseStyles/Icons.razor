@@ -1,9 +1,5 @@
-﻿@inherits HighlightPageBase<object>
+﻿@inherits HighlightPageBase<UpdateIconsModel>
 @page  "/{kitId}/icons"
-
-<style type="text/css" scoped>
-      @@import url('@icon.Url');
-</style>
 
 <div class="icons page">
     <div class="page__container">
@@ -19,97 +15,44 @@
             <p class="subheader">
                 There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
             </p>
-            @if (kit != null)
+            @if (kit != null && Model != null)
             {
-        <EditForm Model="@kit">
-            <section>
-                <label>
-                    Icon Set
-                    <select @onchange="@SelectIcons">
-                        <option>Select:</option>
-                        <option value="Material">Material</option>
-                        <option value="Remix">Remix</option>
-                        <option value="CSS">CSS</option>
-                        <option value="FontAwesome">FontAwesome</option>
-                    </select>
-                </label>
-            </section>
-            <div class="preview-example">
-                @((MarkupString)icon.Markup)
-            </div>
-            <br />
-                <pre>
-                    <code class="language-html">
-&lt;!-- Material --&gt; &lt;span class="material-icons"&gt;home&lt;/span&gt;
-&lt;!-- Remix --&gt; &lt;i class="ri-home-line"&gt;&lt;/i&gt;
-&lt;!-- CSS --&gt; &lt;i class="gg-home"&gt;&lt;/i&gt;
-&lt;!-- FontAwesome --&gt; &lt;i class="fas fa-home"&gt;&lt;/i&gt;
-                    </code>
-                </pre>
-        </EditForm>
+                <EditForm EditContext="@Context">
+                    <section>
+                        <label>
+                            Icon Set
+                            <InputSelect @bind-Value="Model.Name">
+                                <option>Select:</option>
+                                <option value="Material">Material</option>
+                                <option value="Remix">Remix</option>
+                                <option value="CSS">CSS</option>
+                                <option value="FontAwesome">FontAwesome</option>
+                            </InputSelect>
+                        </label>
+                    </section>
+                    <Preview Kit=kit>
+                        @foreach (var icon in Model.IconsList)
+                        {
+                            <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                        }
+                    </Preview>
+                </EditForm>
             }
         </div>
     </div>
 </div>
 
 @code {
-    IconLibrary icon = new IconLibrary();
-
-    protected override async Task OnInitializedAsync()
+    protected override async Task<UpdateIconsModel> GetAsync()
     {
-        kit = await PublicApi().GetKitAsync(kitId);
-    }
-    
-    private async Task Submit()
-    {
-        //await PublicApi().UpdateKitAsync(kit);
+        return await PublicApi().GetIconsAsync(kitId);
     }
 
-    async Task SelectIcons(ChangeEventArgs e)
+    protected override async Task<Kit> UpdateAsync()
     {
-        var materialUrl = ""; // commenting out due to existing script in index "https://fonts.googleapis.com/icon?family=Material+Icons";
-        var remixUrl = "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css";
-        var cssUrl = "https://css.gg/css";
-        var fontAwesomeUrl = "https://use.fontawesome.com/releases/v5.15.4/css/all.css";
+        var result = await PublicApi().UpdateIconsAsync(Model);
+        Model = await GetAsync();
+        return result;
 
-        icon.Name = e.Value.ToString();
-
-        switch (icon.Name)
-        {
-            case "Material":
-                icon.Url = materialUrl;
-                icon.Markup = "<span class='material-icons'>home</span>";
-                break;
-            case "Remix":
-                icon.Url = remixUrl;
-                icon.Markup = "<i class='ri-home-line'></i>";
-                break;
-            case "CSS":
-                icon.Url = cssUrl;
-                icon.Markup = "<i class='gg-home'></i>";
-                break;
-            case "FontAwesome":
-                icon.Url = fontAwesomeUrl;
-                icon.Markup = "<i class='fas fa-home'></i>";
-                break;
-
-                //default:
-                //    icon.Url = icon.Url;
-                //    icon.Markup = icon.Markup;
-                //    break;
-        }
-
-        StateHasChanged();
-        //await JS.InvokeVoidAsync("showHighlight");
-
-
-    }
-
-    public class IconLibrary
-    {
-        public string Name { get; set; }
-        public string Url { get; set; }
-        public string Markup { get; set; }
-        public string Type { get; set; }
     }
 }
