@@ -98,8 +98,8 @@ namespace Kodekit.Features
 
             if (kit.Settings.UseInputs)
             {
-                Compile(variables, "input[type=checkbox], input[type=radio], label.switch", kit.Selectors);
                 Compile(variables, "input, label, textarea" + (!kit.Dropdowns.OverwriteInherited ? ", select" : ""), kit.Inputs);
+                Compile(variables, "input[type=checkbox], input[type=radio], label.switch, label.switch .slider", kit.Selectors);
                 if (kit.Dropdowns.OverwriteInherited)
                     Compile(variables, "select", kit.Dropdowns);
             }
