@@ -2496,7 +2496,7 @@
           "settings": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Settings"
+                "$ref": "#/components/schemas/KitSettings"
               }
             ],
             "nullable": true
@@ -2526,6 +2526,42 @@
             "nullable": true
           },
           "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "KitSettings": {
+        "type": "object",
+        "properties": {
+          "useTypography": {
+            "type": "boolean"
+          },
+          "useColors": {
+            "type": "boolean"
+          },
+          "useIcons": {
+            "type": "boolean"
+          },
+          "useButtons": {
+            "type": "boolean"
+          },
+          "useInputs": {
+            "type": "boolean"
+          },
+          "useCheckboxes": {
+            "type": "boolean"
+          },
+          "useDropdowns": {
+            "type": "boolean"
+          },
+          "useAnchors": {
+            "type": "boolean"
+          },
+          "useLists": {
+            "type": "boolean"
+          },
+          "useShadows": {
             "type": "boolean"
           }
         },
@@ -2609,42 +2645,6 @@
               }
             ],
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Settings": {
-        "type": "object",
-        "properties": {
-          "useTypography": {
-            "type": "boolean"
-          },
-          "useColors": {
-            "type": "boolean"
-          },
-          "useIcons": {
-            "type": "boolean"
-          },
-          "useButtons": {
-            "type": "boolean"
-          },
-          "useInputs": {
-            "type": "boolean"
-          },
-          "useCheckboxes": {
-            "type": "boolean"
-          },
-          "useDropdowns": {
-            "type": "boolean"
-          },
-          "useAnchors": {
-            "type": "boolean"
-          },
-          "useLists": {
-            "type": "boolean"
-          },
-          "useShadows": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -3061,7 +3061,7 @@
           "settings": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Settings"
+                "$ref": "#/components/schemas/KitSettings"
               }
             ],
             "nullable": true

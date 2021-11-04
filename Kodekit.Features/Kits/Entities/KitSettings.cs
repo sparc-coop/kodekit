@@ -1,8 +1,8 @@
 ﻿namespace Kodekit.Features
 {
-    public class Settings
+    public class KitSettings
     {
-        public Settings()
+        public KitSettings()
         {
             UseTypography = true;
             UseColors = true;

@@ -14,7 +14,7 @@
     <LoginDisplay />
 </div>
 
-@if (kitId != null)
+@if (Settings != null)
 {
     <div class="sidebar @Show">
         <div class="menu">
@@ -36,9 +36,9 @@
             </NavLink>
 
             <div class="heading">Base Styles</div>
-            @*            <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
-                Global Reset
-                </NavLink>*@
+            <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
+                Global Settings
+            </NavLink>
             <NavLink href="@Link("typography")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseTypography)">
                 Typography
             </NavLink>
@@ -90,11 +90,12 @@
     bool ShowMobileMenu = false;
     string Show = "";
     [Parameter] public string kitId { get; set; }
-    Settings Settings;
+    KitSettings Settings;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
-        Settings = (await PublicApi().GetSettingsAsync(kitId)).Settings;
+        if (kitId != null)
+            Settings = (await PublicApi().GetSettingsAsync(kitId))?.Settings;
     }
 
     private void ToggleMobile()

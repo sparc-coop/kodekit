@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Kodekit.Features.Elements
 {
-    public record UpdateSettingsModel(string KitId, Settings Settings);
+    public record UpdateSettingsModel(string KitId, KitSettings Settings);
     public class UpdateSettings : PublicFeature<UpdateSettingsModel, Kit>
     {
         public UpdateSettings(KitRepository kits)

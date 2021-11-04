@@ -69,7 +69,7 @@ namespace Kodekit.Features
         public Button Buttons { get; set; }
         public Input Inputs { get; set; }
         public Selector Selectors { get; set; }
-        public Settings Settings { get; set; }
+        public KitSettings Settings { get; set; }
         public Dropdown Dropdowns { get; set; }
         public Anchor Anchors { get; set; }
         public List Lists { get; set; }
@@ -86,7 +86,7 @@ namespace Kodekit.Features
             Paragraphs = paragraphs;
         }
 
-        public void UpdateSettings(Settings settings)
+        public void UpdateSettings(KitSettings settings)
         {
             Settings = settings;
         }
