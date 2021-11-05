@@ -69,7 +69,8 @@
     font-size: 16px;
     line-height: 160%;
     height: 40px;
-    color: #3A3A40;
+    color: #3A3A40; }
+  .page select {
     cursor: pointer; }
   .page textarea {
     min-height: 100px; }
@@ -79,7 +80,7 @@
     max-width: 144px; }
   .page pre {
     border-radius: 0px 0px 8px 8px;
-    margin: 0px 0 50px 0;
+    margin: 0px 0 80px 0;
     overflow: hidden;
     background: #282c34;
     padding: 0 0 0 20px;
@@ -110,7 +111,7 @@
       display: flex; }
   .page .content {
     padding-bottom: 100px; }
-    .page .content > h3 {
+    .page .content > h3, .page .content form > h3 {
       font-size: 20px;
       font-weight: 500;
       color: #17171A;
@@ -483,6 +484,8 @@
       border-radius: 4px 0px 0px 4px; }
     .colors .preview-example--greyscale > div:last-child .color-display {
       border-radius: 0px 4px 4px 0px; }
+  .colors .preview-example--noscale .color-display {
+    border-radius: 4px; }
 
 .colors .section {
   display: flex;

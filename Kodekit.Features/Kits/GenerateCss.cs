@@ -94,7 +94,7 @@ namespace Kodekit.Features
             }
 
             if (kit.Settings.UseButtons)
-                Compile(variables, "button", kit.Buttons);
+                Compile(variables, "button, button svg, button img", kit.Buttons);
 
             if (kit.Settings.UseInputs)
             {

@@ -98,6 +98,11 @@ button {
     cursor: pointer;
 }
 
+button svg, button img {
+    height: var(--icon-width, 16px);
+    width: auto;
+}
+
 button svg path {
     fill: white;
 }
@@ -109,7 +114,7 @@ button:hover, button.hover
 
 button.secondary {
     background: var(--secondary-button-background, var(--secondary-500));
-    border: var(--secondary-border-width, 0) solid var(--secondary-500);
+    border: var(--secondary-border-width, var(--border-width)) solid var(--secondary-500);
     color: var(--secondary-button-color, var(--secondary-500));
 }
 
@@ -134,3 +139,12 @@ button.secondary {
         margin-top: -4px;
     }
 
+button[disabled], button[disabled].secondary:hover {
+    background: var(--grey-100);
+    color: var(--grey-300);
+    cursor: not-allowed;
+}
+
+button[disabled] svg path, button[disabled].secondary svg path {
+    fill: var(--grey-300);
+}
