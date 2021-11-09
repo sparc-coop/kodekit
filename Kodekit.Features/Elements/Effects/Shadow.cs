@@ -27,7 +27,7 @@ public class Shadow : ISerializable
     public double Y { get; set; }
     public double Blur { get; set; }
     public double Spread { get; set; }
-    protected Color Color => new(HexColor);
+    protected Color Color => new(HexColor, "#00000");
     public string HexColor { get; set; }
     public double Opacity { get; set; }
 
@@ -59,9 +59,10 @@ public class Shadow : ISerializable
 
     public override string ToString()
     {
-        return $"{X}px {Y}px {Blur}px {Spread}px {Color.RgbaValue(0.04)}, " +
-            $"{X * 0.25}px {Y * 0.25}px {Blur * 0.25}px {Spread * 0.25}px {Color.RgbaValue(0.04)}, " +
-            $"0px 0px {Blur * 0.1}px {Spread * 0.1} {Color.RgbaValue(0.04)}";
+        var opacity = Opacity == 0 ? 0.04 : Opacity / 100.0;
+        return $"{X}px {Y}px {Blur}px {Spread}px {Color.RgbaValue(opacity)}, " +
+            $"{X * 0.25}px {Y * 0.25}px {Blur * 0.25}px {Spread * 0.25}px {Color.RgbaValue(opacity)}, " +
+            $"0px 0px {Blur * 0.1}px {Spread * 0.1}px {Color.RgbaValue(opacity)}";
     }
 
     private Shadow Interpolate(Shadow other, double percentage)

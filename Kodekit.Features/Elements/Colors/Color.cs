@@ -9,8 +9,15 @@ public class Color : ISerializable
         HexValue = ColorTranslator.ToHtml(System.Drawing.Color.White);
     }
 
-    public Color(string hex) : this()
+    public Color(string hex) : this(hex, "")
     {
+    }
+
+    public Color(string hex, string defaultHexValue) : this()
+    {
+        if (string.IsNullOrWhiteSpace(hex))
+            hex = defaultHexValue;
+        
         if (string.IsNullOrWhiteSpace(hex) || hex[0] == '$')
             return;
 

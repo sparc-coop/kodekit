@@ -13,9 +13,8 @@
         <div class="content">
             @if (Model != null)
             {
-                <h3>Drop Shadows</h3>
                 <EditForm EditContext="@Context">
-                    <h4>Small Shadow Settings</h4>
+                    <h3>Small Shadow Settings</h3>
                     <div class="section">
                         <label>
                             X Length (px)
@@ -38,13 +37,13 @@
                            <InputColor @bind-Value="Model.Small.HexColor" />
                         </label>
                         <label>
-                            Shadow Opacity
+                            Shadow Opacity (%)
                             <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
                         </label>
                     </div>
 
 
-                    <h4>X-Large Shadow Settings</h4>
+                    <h3>X-Large Shadow Settings</h3>
                     <div class="section">
                         <label>
                             X Length (px)
@@ -67,7 +66,7 @@
                            <InputColor @bind-Value="Model.XLarge.HexColor" />
                         </label>
                         <label>
-                            Shadow Opacity
+                            Shadow Opacity (%)
                             <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
                         </label>
                     </div>
