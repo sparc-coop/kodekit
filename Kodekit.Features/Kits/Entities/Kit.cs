@@ -27,6 +27,12 @@ public class Kit : Root<string>
         UserId = kit.UserId;
     }
 
+    internal void SetUser(string id)
+    {
+        UserId = id;
+        DateModified = DateTime.UtcNow;
+    }
+
     internal void Update(string name, bool isAutoPublish)
     {
         Name = name;

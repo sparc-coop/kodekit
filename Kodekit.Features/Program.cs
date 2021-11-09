@@ -1,27 +1,16 @@
-using Kodekit.Features;
-using Sparc.Authentication.AzureADB2C;
-using Sparc.Plugins.Database.Cosmos;
+namespace Kodekit.Features;
 
-var builder = WebApplication.CreateBuilder(args);
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
 
-builder.Services.AddRazorPages();
-
-builder.Services.Sparcify<KodekitContext>()
-    .AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"], "kodekit")
-    .AddAzureADB2CAuthentication(builder.Configuration);
-
-builder.Services.AddScoped(typeof(IRepository<>), typeof(CosmosDbRepository<>));
-builder.Services.AddScoped<KitRepository>();
-
-var app = builder.Build();
-
-app.UseCors(policy =>
-    policy.WithOrigins("http://localhost:5000", "https://localhost:5001",
-        "https://kodekit-test.azurewebsites.net",
-        "https://app.kodekit.io")
-    .AllowAnyMethod()
-    .AllowAnyHeader());
-
-app.Sparcify<KodekitContext>(app.Environment);
-
-app.Run();
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+}

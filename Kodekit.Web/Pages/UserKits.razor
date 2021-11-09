@@ -5,77 +5,77 @@
     <div class="page__container">
         @if (!IsLoading)
         {
-        <div class="dashboard--header">
-            <h2>Your Styleguides</h2>
-            <div class="right">
-                @*                <select class="sort">
-                    <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-                    </select>*@
-                <AuthorizeView>
-                    <Authorized>
-                        <button @onclick="@(CreateNew)">
-                            New Styleguide
-                            <img src="/images/add-icon.svg" />
-                        </button>
-                    </Authorized>
-                    <NotAuthorized>
-                        @if (Kits == null || !Kits.Any())
-                        {
+            <div class="dashboard--header">
+                <h2>Your Styleguides</h2>
+                <div class="right">
+                    @*                <select class="sort">
+                        <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
+                        </select>*@
+                    <AuthorizeView>
+                        <Authorized>
                             <button @onclick="@(CreateNew)">
                                 New Styleguide
                                 <img src="/images/add-icon.svg" />
                             </button>
-                        }
-                    </NotAuthorized>
-                </AuthorizeView>
+                        </Authorized>
+                        <NotAuthorized>
+                            @if (Kits == null || !Kits.Any())
+                            {
+                                <button @onclick="@(CreateNew)">
+                                    New Styleguide
+                                    <img src="/images/add-icon.svg" />
+                                </button>
+                            }
+                        </NotAuthorized>
+                    </AuthorizeView>
+                </div>
             </div>
-        </div>
 
-        @if (Kits == null || !Kits.Any())
-        {
-            <p>Create a new styleguide to get started!</p>
-        }
-        else
-        {
-            <div class="dashboard-container">
-                @foreach (var kit in Kits)
-                {
-                    <div @onclick="@(e => GoToKit(kit.Id))" class="dashboard-card">
-                        <div class="dashboard-preview preview-@kit.Id">
-                            <style type="text/css">
-                                @@import url('@CssUrl(kit)');
-                            </style>
-                            <header>
-                                <div class="button-red"></div>
-                                <div class="button-yellow"></div>
-                                <div class="button-green"></div>
-                            </header>
-                            <div class="typography">
-                                <h1>Aa</h1>
-                                <label>Header</label>
+            @if (Kits == null || !Kits.Any())
+            {
+                <p>Create a new styleguide to get started!</p>
+            }
+            else
+            {
+                <div class="dashboard-container">
+                    @foreach (var kit in Kits)
+                    {
+                        <div @onclick="@(e => GoToKit(kit.Id))" class="dashboard-card">
+                            <div class="dashboard-preview preview-@kit.Id">
+                                <style type="text/css">
+                                    @@import url('@CssUrl(kit)');
+                                </style>
+                                <header>
+                                    <div class="button-red"></div>
+                                    <div class="button-yellow"></div>
+                                    <div class="button-green"></div>
+                                </header>
+                                <div class="typography">
+                                    <h1>Aa</h1>
+                                    <label>Header</label>
+                                </div>
+                                <div class="typography">
+                                    <p>Aa</p>
+                                    <label>Body</label>
+                                </div>
+                                <div class="colors">
+                                    <div style="background-color: var(--primary-500)"></div>
+                                    <div style="background-color: var(--secondary-500)"></div>
+                                    <div style="background-color: var(--grey-50)"></div>
+                                    <div style="background-color: var(--grey-900)"></div>
+                                </div>
                             </div>
-                            <div class="typography">
-                                <p>Aa</p>
-                                <label>Body</label>
-                            </div>
-                            <div class="colors">
-                                <div style="background-color: var(--primary-500)"></div>
-                                <div style="background-color: var(--secondary-500)"></div>
-                                <div style="background-color: var(--grey-50)"></div>
-                                <div style="background-color: var(--grey-900)"></div>
+                            <div>
+                                <div class="title">@kit.KitId</div>
+                                <div class="date">
+                                    Last Updated:
+                                    @kit.DateModified.ToString("MM/dd/yyyy")
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <div class="title">@(kit.Name != null ? kit.Name : "Untitled Styleguide" )</div>
-                            <div class="date">
-                                Last Updated:
-                                @kit.DateModified.ToString("MM/dd/yyyy")
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        }
+                    }
+                </div>
+            }
         }
     </div>
 </div>
@@ -95,6 +95,11 @@
         {
             User = await Api.GetUserAsync();
             Kits = await Api.GetUserKitsAsync();
+
+            // To import an existing kit into your account after first login
+            string result = await localStorage.GetItemAsync<string>("kodekitId");
+            if (result != null)
+                await CaptureExistingKit(result);
         }
         else
         {
@@ -115,6 +120,24 @@
         var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
         await GoToKit(kit.KitId);
+    }
+
+    private async Task CaptureExistingKit(string id)
+    {
+        var existingKit = await Api.GetKitAsync(id);
+        if (Kits.Any(x => x.Id == existingKit.Id))
+            return;
+
+        if (string.IsNullOrWhiteSpace(existingKit?.UserId))
+        {
+            await Api.UpdateKitAsync(new UpdateKitRequest
+                {
+                    KitId = existingKit.Id,
+                    Name = existingKit.Name,
+                    IsAutoPublish = existingKit.IsAutoPublish ?? false
+                });
+            Kits.Add(existingKit);
+        }
     }
 
     private void Sort(string filter)
