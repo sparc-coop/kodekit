@@ -8,12 +8,14 @@
         overflow: hidden;
         margin: 16px 0 40px 0;
         height: 92px;
+        max-width: 672px;
+        padding-right: 40px;
 
         button {
             font-size: 12px;
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 12px;
+            right: 12px;
             background: #282c34;
             border: 1px solid $gray500;
             border-radius: 8px;
@@ -26,6 +28,11 @@
                 color: $primary500;
             }
         }
+    }
+
+    ol {
+        list-style: decimal;
+        padding-left: 24px;
     }
 
     .subheader span {

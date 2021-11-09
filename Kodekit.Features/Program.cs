@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.Sparcify<KodekitContext>()
-    .AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"], "kodekit-dev")
+    .AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"], "kodekit")
     .AddAzureADB2CAuthentication(builder.Configuration);
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(CosmosDbRepository<>));

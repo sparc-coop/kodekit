@@ -12,40 +12,60 @@
             </p>
         </header>
         <div class="content">
-            <h3>Option One: Import & Auto Update</h3>
-            <p class="subheader">
-                Importing Kodekit into your project is as easy as adding the link to the 
-                <span>&lt;head&gt;</span> section of your "index.html" file.  It allows for quickly 
-                linking your theme to your project, and allows for auto-updating.
-            </p>
-            <div class="steps">1. Add Script</div>
-            <div class="instructions">
-                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
-                <button @onclick="StepOneCopy">@CopyText</button>
-                <br />
-                <pre>
+            <header>
+                <h3>Option One: Import & Auto Update</h3>
+                <p>
+                    Your kit's unique name is: <strong>@kitId</strong>
+                    <br />
+                    <br />
+                </p>
+                <p>
+                    Importing Kodekit into your project is as easy as adding the link to the
+                    <span>&lt;head&gt;</span> section of your "index.html" file.  It allows for quickly
+                    linking your theme to your project, and allows for auto-updating.
+                </p>
+            </header>
+            <ol>
+                <li>
+                    Add Script
+                    <div class="instructions">
+                        <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
+                        <button @onclick="StepOneCopy">@CopyText</button>
+                        <pre>
 <code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
             </pre>
-            </div>
+                    </div>
+                </li>
 
-            <div class="steps">2. Auto Update</div>
-            <p class="subheader">
-                Each time you change, update or save your Kodekit theme, your projects
-                using the theme script will auto-update, allowing you to make changes to your live project.
-            </p>
-            <h3 class="installation--title">Option Two: Manual Download</h3>
-            <p class="subheader">
-                If you would rather take a more manual approach, you can instead download the .css file, 
-                and add that directly to your project folder. 
-            </p>
+                <li>
+                    Auto Update
+                    <p class="subheader">
+                        Each time you change, update or save your Kodekit theme, your projects
+                        using the theme script will auto-update, allowing you to make changes to your live project.
+                    </p>
+                </li>
+            </ol>
+
+            <header style="margin-top: 40px">
+                <h3>Option Two: Manual Download</h3>
+                <p>
+                    If you would rather take a more manual approach, you can instead download the .css file,
+                    and add that directly to your project folder.
+                </p>
+            </header>
+
             <p class="subheader">
                 Make sure you re-download and add this file every time you update the Kodekit Theme.
             </p>
-            <div class="steps">1. Download your CSS file</div>
-            <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
-                Download .css file
-                <img src="/images/filedownload-icon.svg" alt="File Download" />
-            </a>
+            <ol>
+                <li>
+                    Download your generated CSS file
+                    <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
+                        Download .css file
+                        <img src="/images/filedownload-icon.svg" alt="File Download" />
+                    </a>
+                </li>
+            </ol>
         </div>
     </div>
 </div>

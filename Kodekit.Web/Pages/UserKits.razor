@@ -101,7 +101,7 @@
             Kits = new List<Kit>();
             string result = await localStorage.GetItemAsync<string>("kodekitId");
             if (result != null)
-                Kits.Add(await PublicApi().GetKitAsync(result));
+                await GoToKit(result);
             else
                 await CreateNew();
         }
@@ -114,7 +114,7 @@
     {
         var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
-        Nav.NavigateTo($"/{kit.KitId}/introduction");
+        await GoToKit(kit.KitId);
     }
 
     private void Sort(string filter)
@@ -127,7 +127,6 @@
 
     private async Task GoToKit(string kit)
     {
-        await localStorage.SetItemAsStringAsync("kodekitId", kit);
         Nav.NavigateTo($"/{kit}/introduction");
     }
 }

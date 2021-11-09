@@ -1,6 +1,7 @@
 ﻿@if (Weights != null)
 {
     <InputSelect @bind-Value=Value>
+        <option value="">Select a weight...</option>
         @foreach (var weight in Weights)
         {
         <option value="@weight.Key">

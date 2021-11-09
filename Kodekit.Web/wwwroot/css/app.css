@@ -144,6 +144,14 @@
       line-height: 160%;
       color: #787980;
       margin-bottom: 24px; }
+  .page .preview-example-container > header {
+    background: #FFFFFF;
+    padding: 24px 32px 0;
+    border-radius: 8px 8px 0 0;
+    font-size: 12px;
+    color: #787980; }
+    .page .preview-example-container > header a {
+      text-decoration: underline; }
   .page .preview-example {
     background: #FFFFFF;
     border: 1px solid #FFFFFF;
@@ -800,12 +808,14 @@
   position: relative;
   overflow: hidden;
   margin: 16px 0 40px 0;
-  height: 92px; }
+  height: 92px;
+  max-width: 672px;
+  padding-right: 40px; }
   .installation .instructions button {
     font-size: 12px;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 12px;
+    right: 12px;
     background: #282c34;
     border: 1px solid #787980;
     border-radius: 8px;
@@ -815,6 +825,10 @@
     .installation .instructions button:hover {
       border: 1px solid #0B5FFF;
       color: #0B5FFF; }
+
+.installation ol {
+  list-style: decimal;
+  padding-left: 24px; }
 
 .installation .subheader span {
   background: #D2D4D9;

@@ -1,20 +1,25 @@
 ﻿@if (Kit != null)
 {
-    @if (CssUrl != null)
-    {
-        <style type="text/css">
-            @@import url('@(CssUrl)&v=@CurrentVersion');
-        </style>
-    }
+    <div class="preview-example-container">
+        <header>
+            * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
+        </header>
+        @if (CssUrl != null)
+        {
+            <style type="text/css">
+                @@import url('@(CssUrl)&v=@CurrentVersion');
+            </style>
+        }
 
-    <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
-        @ChildContent
-    </div>
+        <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
+            @ChildContent
+        </div>
 
-    <pre>
+        <pre>
         <code class="language-html" @ref=CodeBlock>
-        </code>
-    </pre>
+            </code>
+        </pre>
+    </div>
 }
 
 @inject IConfiguration Config
@@ -25,6 +30,7 @@
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;
+    string CleanCssUrl;
     string Scope;
     string CurrentVersion;
 
@@ -39,7 +45,10 @@
 
         var newUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
         if (newUrl != CssUrl)
+        {
             CssUrl = newUrl;
+            CleanCssUrl = newUrl.Split("?")[0];
+        }
 
         if (CurrentVersion != Kit.CurrentRevisionId)
         {
