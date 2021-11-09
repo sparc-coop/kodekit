@@ -9,7 +9,6 @@ using Sparc.Storage.Azure;
 using Sparc.Plugins.Database.Cosmos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Net.Http.Headers;
-using Blazored.LocalStorage;
 using System;
 
 namespace Kodekit.Features
@@ -29,10 +28,7 @@ namespace Kodekit.Features
             services.AddRazorPages();
             services.Sparcify<Startup>();
             services.AddCosmos<KodekitContext>(Configuration["ConnectionStrings:CosmosDb"], "kodekit-dev");
-            //services.BuildServiceProvider().GetRequiredService<KodekitContext>().Database.EnsureCreated();
-            //services.AddAzureStorage(Configuration["BlobStorage:ConnectionString"]);
             services.AddAzureADB2CAuthentication(Configuration);
-            services.AddBlazoredLocalStorage();
             services.AddScoped<KitRepository>();
 
         }
