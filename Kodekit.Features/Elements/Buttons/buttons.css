@@ -142,6 +142,7 @@ button.secondary {
 button[disabled], button[disabled].secondary:hover {
     background: var(--grey-100);
     color: var(--grey-300);
+    border-color: var(--grey-100);
     cursor: not-allowed;
 }
 

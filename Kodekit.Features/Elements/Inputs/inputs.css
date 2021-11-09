@@ -185,8 +185,8 @@ input[type=checkbox], input[type=radio] {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: var(--font-size);
-    height: var(--font-size);
+    width: var(--font-size, 16px);
+    height: var(--font-size, 16px);
     cursor: pointer;
     display: grid;
     place-content: center;
@@ -199,22 +199,21 @@ input[type=checkbox], input[type=radio] {
     }
 
     input[type="checkbox"]:focus, input[type=radio]:focus {
-        border-color: var(--active-500);
+        border-color: var(--active-500, var(--grey-100));
         outline: none;
     }
 
     input[type="checkbox"]::before, input[type=radio]::before {
         content: "";
-        width: calc(var(--font-size) * 0.5);
-        height: calc(var(--font-size) * 0.5);
-        border-radius: calc(var(--border-radius, 2px) / 2);
+        width: calc(var(--font-size) * 0.4);
+        height: calc(var(--font-size) * 0.4);
         transform: scale(0);
         transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em var(--active-500);
+        box-shadow: inset 1em 1em var(--active-500, var(--grey-100));
     }
 
     input[type=checkbox]:checked, input[type=radio]:checked {
-        border-color: var(--active-500);
+        border-color: var(--active-500, var(--grey-100));
     }
 
         input[type="checkbox"]:checked::before, input[type=radio]:checked::before {
@@ -289,8 +288,8 @@ label.switch {
             content: "";
             height: calc(var(--font-size) * 0.62);
             width: calc(var(--font-size) * 0.62);
-            left: 3px;
-            bottom: 2px;
+            left: calc(var(--font-size) * 0.10);
+            bottom: calc(var(--font-size) * 0.10);
             border-radius: 50%;
             background-color: var(--grey-300);
             -webkit-transition: .4s;
@@ -305,12 +304,12 @@ label.switch {
 
         label.switch input[type=checkbox]:checked + .slider {
             background-color: transparent;
-            border: 2px solid var(--active-500);
+            border: 2px solid var(--active-500, var(--grey-100));
         }
 
             label.switch input[type=checkbox]:checked + .slider:before {
-                transform: translateX(calc(var(--font-size) / 2));
-                background-color: var(--active-500);
+                transform: translateX(calc(var(--font-size) * 0.62));
+                background-color: var(--active-500, var(--grey-100));
             }
 
 

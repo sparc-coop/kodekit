@@ -11,11 +11,13 @@
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <h3>Elements to Include</h3>
-                    <p class="subheader">
-                        Select the kit elements you'd like to use in your kit. Each element you choose will add a default reset
-                        stylesheet for that category to the kit's CSS file, along with the specific stylings you set in that element's page.
-                    </p>
+                    <header>
+                        <h3>Elements to Include</h3>
+                        <p>
+                            Select the kit elements you'd like to use in your kit. Each element you choose will add a default reset
+                            stylesheet for that category to the kit's CSS file, along with the specific stylings you set in that element's page.
+                        </p>
+                    </header>
                     <div>
                         <div class="section-container">
                             <label class="switch">

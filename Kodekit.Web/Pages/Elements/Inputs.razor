@@ -11,13 +11,15 @@
             </p>
         </header>
         <div class="content">
-            <h3>Form Styling</h3>
-            <p class="subheader">
-                Input collects a single line of text, while a textarea can receive multiple lines of text.
-            </p>
+            <header>
+                <h3>Form Styling</h3>
+                <p>
+                    Input collects a single line of text, while a textarea can receive multiple lines of text.
+                </p>
+            </header>
             @if (Model != null)
             {
-                <EditForm EditContext="@Context"> 
+                <EditForm EditContext="@Context">
                     <div class="section">
                         <div>
                             <label>
@@ -60,10 +62,12 @@
                         <textarea placeholder="Placeholder"></textarea>
                     </Preview>
 
-                    <h3>Input & Textarea states</h3>
-                    <p class="subheader">
-                        Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
-                    </p>
+                    <header>
+                        <h3>Input & Textarea states</h3>
+                        <p>
+                            Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
+                        </p>
+                    </header>
 
                     <Preview Kit=kit>
                         <label>
@@ -108,7 +112,7 @@
     {
         return await PublicApi().GetInputsAsync(kitId);
     }
-    
+
     protected override async Task<Kit> UpdateAsync()
     {
         return await PublicApi().UpdateInputsAsync(Model);

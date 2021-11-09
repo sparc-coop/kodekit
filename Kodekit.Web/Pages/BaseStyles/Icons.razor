@@ -1,5 +1,5 @@
 ﻿@inherits HighlightPageBase<UpdateIconsModel>
-@page  "/{kitId}/icons"
+@page "/{kitId}/icons"
 
 <div class="icons page">
     <div class="page__container">
@@ -11,10 +11,12 @@
             </p>
         </header>
         <div class="content">
-            <h3>Icon Sets</h3>
-            <p class="subheader">
-                There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
-            </p>
+            <header>
+                <h3>Icon Sets</h3>
+                <p>
+                    There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
+                </p>
+            </header>
             @if (kit != null && Model != null)
             {
                 <EditForm EditContext="@Context">

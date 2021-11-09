@@ -1,5 +1,5 @@
-﻿ @inherits HighlightPageBase<UpdateAnchorsModel>
-@page  "/{kitId}/anchors"
+﻿@inherits HighlightPageBase<UpdateAnchorsModel>
+@page "/{kitId}/anchors"
 
 <div class="anchors page">
     <div class="page__container">
@@ -11,10 +11,12 @@
             </p>
         </header>
         <div class="content">
-            <h3>Link Styling</h3>
-            <p class="subheader">
-                Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is applied when the link is being clicked on. Visited is applied once the link has been navigated to.
-            </p>
+            <header>
+                <h3>Link Styling</h3>
+                <p>
+                    Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is applied when the link is being clicked on. Visited is applied once the link has been navigated to.
+                </p>
+            </header>
             @if (kit != null)
             {
                 <EditForm EditContext="@Context">
@@ -60,7 +62,7 @@
     {
         return await PublicApi().GetAnchorsAsync(kitId);
     }
-    
+
     protected override async Task<Kit> UpdateAsync()
     {
         return await PublicApi().UpdateAnchorsAsync(Model);

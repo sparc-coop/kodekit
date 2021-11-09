@@ -72,10 +72,12 @@
                         </div>
                     </Preview>
 
-                    <h3>Grayscale</h3>
-                    <p class="subheader">
-                        The grayscale colors will primarily be used for text.
-                    </p>
+                    <header>
+                        <h3>Grayscale</h3>
+                        <p>
+                            The grayscale colors will primarily be used for text.
+                        </p>
+                    </header>
                     <div class="section">
                         <label>
                             Darkest
@@ -97,10 +99,12 @@
                         }
                     </Preview>
 
-                    <h3>System Colors</h3>
-                    <p class="subheader">
-                        The system colors are used to highlight alerts.
-                    </p>
+                    <header>
+                        <h3>System Colors</h3>
+                        <p>
+                            The system colors are used to highlight alerts.
+                        </p>
+                    </header>
                     <div class="section">
                         <label>
                             Error
@@ -170,7 +174,7 @@
     protected override async Task OnInitializedAsync()
     {
         DebounceInputs = true;
-        await base.OnInitializedAsync(); 
+        await base.OnInitializedAsync();
     }
 
     protected override async Task<ColorsModel> GetAsync()

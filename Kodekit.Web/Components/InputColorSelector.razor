@@ -1,6 +1,7 @@
 ﻿    @if (Model != null)
 {
     <InputSelect class="medium" @bind-Value=Value>
+        <option value="">Select a color...</option>
         @foreach (var color in Model)
         {
             <option value="@color.Key">

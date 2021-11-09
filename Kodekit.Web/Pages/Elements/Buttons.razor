@@ -11,10 +11,12 @@
             </p>
         </header>
         <div class="content">
-            <h3>Core Buttons</h3>
-            <p class="subheader">
-                Primary and secondary button stylings are inherited from selected base style colors.
-            </p>
+            <header>
+                <h3>Core Buttons</h3>
+                <p>
+                    Primary and secondary button stylings are inherited from selected base style colors.
+                </p>
+            </header>
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
@@ -80,11 +82,14 @@
                             <KodekitLogoSvg />
                         </button>
                     </Preview>
-                    
-                    <h3>Button Variations & States</h3>
-                    <p class="subheader">
-                        Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
-                    </p>
+
+                    <header>
+                        <h3>Button Variations & States</h3>
+                        <p>
+                            Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
+                        </p>
+                    </header>
+
                     <Preview Kit=kit>
                         <div>
                             <button>Default</button>
@@ -132,7 +137,7 @@
     {
         return await PublicApi().GetButtonsAsync(kitId);
     }
-    
+
     protected override async Task<Kit> UpdateAsync()
     {
         return await PublicApi().UpdateButtonsAsync(Model);

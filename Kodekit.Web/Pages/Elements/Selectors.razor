@@ -1,5 +1,5 @@
 ﻿@inherits HighlightPageBase<UpdateSelectorsModel>
-@page  "/{kitId}/selectors"
+@page "/{kitId}/selectors"
 
 <div class="selectors page">
     <div class="page__container">
@@ -11,10 +11,12 @@
             </p>
         </header>
         <div class="content">
-            <h3>Style & States</h3>
-            <p class="subheader">
-                Active styling is applied when an option has been selected. Disabled styling is applied when a user cannot interact with or select a particular option.
-            </p>
+            <header>
+                <h3>Style & States</h3>
+                <p>
+                    Active styling is applied when an option has been selected. Disabled styling is applied when a user cannot interact with or select a particular option.
+                </p>
+            </header>
 
             @if (Model != null)
             {
@@ -79,7 +81,7 @@
     {
         return await PublicApi().GetSelectorsAsync(kitId);
     }
-    
+
     protected override async Task<Kit> UpdateAsync()
     {
         return await PublicApi().UpdateSelectorsAsync(Model);
