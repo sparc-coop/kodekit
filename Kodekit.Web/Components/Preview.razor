@@ -4,16 +4,16 @@
         <header>
             * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
         </header>
-        @if (CssUrl != null)
+        @if (!IsLoading && CssUrl != null)
         {
             <style type="text/css">
-                @@import url('@(CssUrl)&v=@CurrentVersion');
+                @@import url('@CssUrl');
             </style>
-        }
 
-        <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
-            @ChildContent
-        </div>
+            <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
+                @ChildContent
+            </div>
+        }
 
         <pre>
         <code class="language-html" @ref=CodeBlock>
@@ -33,6 +33,7 @@
     string CleanCssUrl;
     string Scope;
     string CurrentVersion;
+    bool IsLoading;
 
     protected override void OnInitialized()
     {
@@ -43,17 +44,15 @@
     {
         if (Kit == null) return;
 
-        var newUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}";
+        var newUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}&v={Kit.CurrentRevisionId}";
+        Console.WriteLine("newurl " + newUrl);
+
         if (newUrl != CssUrl)
         {
             CssUrl = newUrl;
-            CleanCssUrl = newUrl.Split("?")[0];
-        }
+            Console.WriteLine("cssUrl " + CssUrl);
 
-        if (CurrentVersion != Kit.CurrentRevisionId)
-        {
-            CurrentVersion = Kit.CurrentRevisionId;
-            StateHasChanged();
+            CleanCssUrl = newUrl.Split("?")[0];
         }
     }
 
