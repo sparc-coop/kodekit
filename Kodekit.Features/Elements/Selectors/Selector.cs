@@ -1,34 +1,31 @@
-﻿using System.Collections.Generic;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public class Selector : ISerializable
 {
-    public class Selector : ISerializable
+    public Selector()
     {
-        public Selector()
-        {
-            Font = new();
-        }
-        
-        public Selector(double? fontSize, string? fontWeight, string? activeColor) : this()
-        {
-            Font = new(fontSize, fontWeight);
-            
-            if (!string.IsNullOrWhiteSpace(activeColor))
-                ActiveColor = new(activeColor);
-        }
+        Font = new();
+    }
 
-        public Font Font { get; set; }
-        public Color? ActiveColor { get; set; }
+    public Selector(double? fontSize, string? fontWeight, string? activeColor) : this()
+    {
+        Font = new(fontSize, fontWeight);
 
-        public Dictionary<string, string> Serialize()
-        {
-            var dict = Font.Serialize();
+        if (!string.IsNullOrWhiteSpace(activeColor))
+            ActiveColor = new(activeColor);
+    }
 
-            if (ActiveColor != null)
-                foreach (var shade in ActiveColor.Serialize("active"))
-                    dict.Add(shade.Key, shade.Value);
+    public Font Font { get; set; }
+    public Color? ActiveColor { get; set; }
 
-            return dict;
-        }
-    } 
-}
+    public Dictionary<string, string> Serialize()
+    {
+        var dict = Font.Serialize();
+
+        if (ActiveColor != null)
+            foreach (var shade in ActiveColor.Serialize("active"))
+                dict.Add(shade.Key, shade.Value);
+
+        return dict;
+    }
+} 

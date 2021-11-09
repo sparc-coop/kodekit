@@ -1,23 +1,18 @@
-﻿using Sparc.Core;
-using Sparc.Features;
-using System.Threading.Tasks;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public class GetSelectors : PublicFeature<string, UpdateSelectorsModel>
 {
-    public class GetSelectors : PublicFeature<string, UpdateSelectorsModel>
+    public GetSelectors(KitRepository kits)
     {
-        public GetSelectors(KitRepository kits)
-        {
-            Kits = kits;
-        }
+        Kits = kits;
+    }
 
-        public KitRepository Kits { get; }
+    public KitRepository Kits { get; }
 
-        public override async Task<UpdateSelectorsModel> ExecuteAsync(string id)
-        {
-            var kit = await Kits.GetCurrentRevisionAsync(id);
+    public override async Task<UpdateSelectorsModel> ExecuteAsync(string id)
+    {
+        var kit = await Kits.GetCurrentRevisionAsync(id);
 
-            return new(id, kit.Selectors.Font.Size?.Value, kit.Selectors.Font.Weight, kit.Selectors.ActiveColor?.HexValue);
-        }
+        return new(id, kit.Selectors.Font.Size?.Value, kit.Selectors.Font.Weight, kit.Selectors.ActiveColor?.HexValue);
     }
 }

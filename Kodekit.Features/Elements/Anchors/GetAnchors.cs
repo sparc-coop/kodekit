@@ -1,31 +1,26 @@
-﻿using Sparc.Core;
-using Sparc.Features;
-using System.Threading.Tasks;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public class GetAnchors : PublicFeature<string, UpdateAnchorsModel>
 {
-    public class GetAnchors : PublicFeature<string, UpdateAnchorsModel>
+    public GetAnchors(KitRepository kits)
     {
-        public GetAnchors(KitRepository kits)
-        {
-            Kits = kits;
-        }
+        Kits = kits;
+    }
 
-        public KitRepository Kits { get; }
+    public KitRepository Kits { get; }
 
-        public override async Task<UpdateAnchorsModel> ExecuteAsync(string id)
-        {
-            var kit = await Kits.GetCurrentRevisionAsync(id);
+    public override async Task<UpdateAnchorsModel> ExecuteAsync(string id)
+    {
+        var kit = await Kits.GetCurrentRevisionAsync(id);
 
-            return new(
-                id,
-                kit.Anchors.Font.Size?.Value,
-                kit.Anchors.Font.Weight,
-                kit.Anchors.DefaultColor?.HexValue,
-                kit.Anchors.HoverColor?.HexValue,
-                kit.Anchors.VisitedColor?.HexValue,
-                kit.Anchors.ActiveColor?.HexValue
-            );
-        }
+        return new(
+            id,
+            kit.Anchors.Font.Size?.Value,
+            kit.Anchors.Font.Weight,
+            kit.Anchors.DefaultColor?.HexValue,
+            kit.Anchors.HoverColor?.HexValue,
+            kit.Anchors.VisitedColor?.HexValue,
+            kit.Anchors.ActiveColor?.HexValue
+        );
     }
 }

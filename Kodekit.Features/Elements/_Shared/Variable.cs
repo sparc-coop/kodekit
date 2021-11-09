@@ -1,28 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public class Variable<T> : ISerializable where T : ISerializable, new()
 {
-    public class Variable<T> : ISerializable where T : ISerializable, new()
+    public Variable()
     {
-        public Variable()
-        {
-            Name = string.Empty;
-            Value = new();
-        }
-        
-        public Variable(string name, T value)
-        {
-            Name = name.ToLower();
-            Value = value;
-        }
+        Name = string.Empty;
+        Value = new();
+    }
 
-        public string Name { get; set; }
-        public T Value { get; set; }
+    public Variable(string name, T value)
+    {
+        Name = name.ToLower();
+        Value = value;
+    }
 
-        public Dictionary<string, string> Serialize()
-        {
-            return Value.Serialize().ToDictionary(x => $"{Name}-{x.Key}", x => x.Value);
-        }
+    public string Name { get; set; }
+    public T Value { get; set; }
+
+    public Dictionary<string, string> Serialize()
+    {
+        return Value.Serialize().ToDictionary(x => $"{Name}-{x.Key}", x => x.Value);
     }
 }

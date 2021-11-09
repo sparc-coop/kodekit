@@ -1,33 +1,28 @@
-﻿using Sparc.Core;
-using Sparc.Features;
-using System.Threading.Tasks;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public record UpdateListsModel(string KitId, double? FontSize, string? FontWeight, string? OlStyleType, string? UlStyleType,
+    double? ListHorizontalPadding, double? ListVerticalPadding,
+    double? ItemHorizontalPadding, double? ItemVerticalPadding);
+public class UpdateLists : PublicFeature<UpdateListsModel, Kit>
 {
-    public record UpdateListsModel(string KitId, double? FontSize, string? FontWeight, string? OlStyleType, string? UlStyleType, 
-        double? ListHorizontalPadding, double? ListVerticalPadding,
-        double? ItemHorizontalPadding, double? ItemVerticalPadding);
-    public class UpdateLists : PublicFeature<UpdateListsModel, Kit>
+    public UpdateLists(KitRepository kits)
     {
-        public UpdateLists(KitRepository kits)
-        {
-            Kits = kits;
-        }
+        Kits = kits;
+    }
 
-        public KitRepository Kits { get; }
+    public KitRepository Kits { get; }
 
-        public override async Task<Kit> ExecuteAsync(UpdateListsModel request)
-        {
-            var kit = await Kits.GetCurrentAsync(request.KitId);
+    public override async Task<Kit> ExecuteAsync(UpdateListsModel request)
+    {
+        var kit = await Kits.GetCurrentAsync(request.KitId);
 
-            var List = new List(request.FontSize, request.FontWeight, request.OlStyleType, request.UlStyleType,
-                request.ListHorizontalPadding, request.ListVerticalPadding,
-                request.ItemHorizontalPadding, request.ItemVerticalPadding);
+        var List = new List(request.FontSize, request.FontWeight, request.OlStyleType, request.UlStyleType,
+            request.ListHorizontalPadding, request.ListVerticalPadding,
+            request.ItemHorizontalPadding, request.ItemVerticalPadding);
 
-            kit.Revision.UpdateLists(List);
-            await Kits.UpdateAsync(kit);
+        kit.Revision.UpdateLists(List);
+        await Kits.UpdateAsync(kit);
 
-            return kit.Kit;
-        }
+        return kit.Kit;
     }
 }

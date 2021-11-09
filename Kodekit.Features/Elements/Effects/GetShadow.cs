@@ -1,28 +1,23 @@
-﻿using Sparc.Core;
-using Sparc.Features;
-using System.Threading.Tasks;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public class GetShadow : PublicFeature<string, ShadowsModel>
 {
-    public class GetShadow : PublicFeature<string, ShadowsModel>
+    public GetShadow(KitRepository kits)
     {
-        public GetShadow(KitRepository kits)
-        {
-            Kits = kits;
-        }
+        Kits = kits;
+    }
 
-        public KitRepository Kits { get; }
+    public KitRepository Kits { get; }
 
-        public override async Task<ShadowsModel> ExecuteAsync(string id)
-        {
-            var kit = await Kits.GetCurrentRevisionAsync(id);
-            if (kit == null)
-                throw new NotFoundException("Kit not found!");
+    public override async Task<ShadowsModel> ExecuteAsync(string id)
+    {
+        var kit = await Kits.GetCurrentRevisionAsync(id);
+        if (kit == null)
+            throw new NotFoundException("Kit not found!");
 
-            var smallShadow = kit.GetShadow("small");
-            var xlargeShadow = kit.GetShadow("xlarge");
+        var smallShadow = kit.GetShadow("small");
+        var xlargeShadow = kit.GetShadow("xlarge");
 
-            return new(id, smallShadow ?? new Shadow(), xlargeShadow ?? new Shadow());
-        }
+        return new(id, smallShadow ?? new Shadow(), xlargeShadow ?? new Shadow());
     }
 }

@@ -1,30 +1,24 @@
-﻿using System;
-using System.Threading.Tasks;
-using Sparc.Features;
-using Sparc.Core;
+﻿namespace Kodekit.Features;
 
-namespace Kodekit.Features
+public class UpdateUser : PublicFeature<User, bool>
 {
-    public class UpdateUser : PublicFeature<User, bool>
+    public UpdateUser(IRepository<User> users)
     {
-        public UpdateUser(IRepository<User> users)
+        Users = users;
+    }
+
+    public IRepository<User> Users { get; }
+
+    public override async Task<bool> ExecuteAsync(User user)
+    {
+        try
         {
-            Users = users;
+            await Users.UpdateAsync(user);
+            return true;
         }
-
-        public IRepository<User> Users { get; }
-
-        public override async Task<bool> ExecuteAsync(User user)
+        catch
         {
-            try
-            {
-                await Users.UpdateAsync(user);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

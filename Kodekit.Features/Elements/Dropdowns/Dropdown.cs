@@ -1,18 +1,17 @@
-﻿namespace Kodekit.Features.Elements
+﻿namespace Kodekit.Features.Elements;
+
+public class Dropdown : Input
 {
-    public class Dropdown : Input
+    public Dropdown() : base()
     {
-        public Dropdown() : base()
-        {
-            OverwriteInherited = false;
-        }
-
-        public Dropdown(double? fontSize, string? fontWeight, double? verticalPadding, double? horizontalPadding, double? cornerRadius,
-            double? borderWidth, bool overwriteInherited) : base(fontSize, fontWeight, verticalPadding, horizontalPadding, cornerRadius, borderWidth)
-        {
-            OverwriteInherited = overwriteInherited;
-        }
-
-        public bool OverwriteInherited { get; set; }
+        OverwriteInherited = false;
     }
+
+    public Dropdown(double? fontSize, string? fontWeight, double? verticalPadding, double? horizontalPadding, double? cornerRadius,
+        double? borderWidth, bool overwriteInherited) : base(fontSize, fontWeight, verticalPadding, horizontalPadding, cornerRadius, borderWidth)
+    {
+        OverwriteInherited = overwriteInherited;
+    }
+
+    public bool OverwriteInherited { get; set; }
 }

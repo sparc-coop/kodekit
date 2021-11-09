@@ -1,33 +1,28 @@
-﻿using Sparc.Core;
-using Sparc.Features;
-using System.Threading.Tasks;
+﻿namespace Kodekit.Features.Elements;
 
-namespace Kodekit.Features.Elements
+public class GetLists : PublicFeature<string, UpdateListsModel>
 {
-    public class GetLists : PublicFeature<string, UpdateListsModel>
+    public GetLists(KitRepository kits)
     {
-        public GetLists(KitRepository kits)
-        {
-            Kits = kits;
-        }
+        Kits = kits;
+    }
 
-        public KitRepository Kits { get; }
+    public KitRepository Kits { get; }
 
-        public override async Task<UpdateListsModel> ExecuteAsync(string id)
-        {
-            var kit = await Kits.GetCurrentRevisionAsync(id);
+    public override async Task<UpdateListsModel> ExecuteAsync(string id)
+    {
+        var kit = await Kits.GetCurrentRevisionAsync(id);
 
-            return new(
-                id,
-                kit.Lists.Font.Size?.Value,
-                kit.Lists.Font.Weight,
-                kit.Lists.OrderedListStyleType,
-                kit.Lists.UnorderedListStyleType,
-                kit.Lists.ListPadding?.Horizontal?.Value,
-                kit.Lists.ItemPadding?.Vertical?.Value,
-                kit.Lists.ListPadding?.Horizontal?.Value,
-                kit.Lists.ItemPadding?.Vertical?.Value
-            );
-        }
+        return new(
+            id,
+            kit.Lists.Font.Size?.Value,
+            kit.Lists.Font.Weight,
+            kit.Lists.OrderedListStyleType,
+            kit.Lists.UnorderedListStyleType,
+            kit.Lists.ListPadding?.Horizontal?.Value,
+            kit.Lists.ItemPadding?.Vertical?.Value,
+            kit.Lists.ListPadding?.Horizontal?.Value,
+            kit.Lists.ItemPadding?.Vertical?.Value
+        );
     }
 }

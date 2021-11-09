@@ -1,32 +1,27 @@
-﻿using Sparc.Core;
-using Sparc.Features;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 
-namespace Kodekit.Features
+namespace Kodekit.Features;
+
+public class GetUser : Feature<User>
 {
-    public class GetUser : Feature<User>
+    public GetUser(IRepository<User> users)
     {
-        public GetUser(IRepository<User> users)
+        Users = users;
+    }
+
+    public IRepository<User> Users { get; }
+
+    public override Task<User> ExecuteAsync()
+    {
+        var claims = User.Claims;
+        User user = new()
         {
-            Users = users;
-        }
+            Id = User.Id(),
+            FirstName = claims.Single(x => x.Type == ClaimTypes.GivenName).Value,
+            LastName = claims.Single(x => x.Type == ClaimTypes.Surname).Value,
+            Email = claims.Single(x => x.Type == "emails").Value
+        };
 
-        public IRepository<User> Users { get; }
-
-        public override Task<User> ExecuteAsync()
-        {
-            var claims = User.Claims;
-            User user = new()
-            {
-                Id = User.Id(),
-                FirstName = claims.Single(x => x.Type == ClaimTypes.GivenName).Value,
-                LastName = claims.Single(x => x.Type == ClaimTypes.Surname).Value,
-                Email = claims.Single(x => x.Type == "emails").Value
-            };
-
-            return Task.FromResult(user);
-        }
+        return Task.FromResult(user);
     }
 }

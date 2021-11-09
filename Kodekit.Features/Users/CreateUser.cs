@@ -1,63 +1,57 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Sparc.Features;
-using Sparc.Core;
-using System;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 
-namespace Kodekit.Features
+namespace Kodekit.Features;
+
+public class CreateUser : PublicFeature<bool>
 {
-    public class CreateUser : PublicFeature<bool>
+    public CreateUser(IRepository<User> users)
     {
-        public CreateUser(IRepository<User> users)
-        {
-            Users = users;
-        }
+        Users = users;
+    }
 
-        public IRepository<User> Users { get; }
+    public IRepository<User> Users { get; }
 
-        public override async Task<bool> ExecuteAsync()
+    public override async Task<bool> ExecuteAsync()
+    {
+        try
         {
-            try
+            if (!UserExists())
             {
-                if (!UserExists())
-                {
-                    var claims = User.Claims;
-                    User user = new User();
+                var claims = User.Claims;
+                User user = new User();
 
-                    user.Id = User.Id();
-                    user.FirstName = claims.Single(x => x.Type == ClaimTypes.GivenName).Value;
-                    user.LastName = claims.Single(x => x.Type == ClaimTypes.Surname).Value;
-                    user.Email = claims.Single(x => x.Type == "emails").Value;
-                    await Users.AddAsync(user);
+                user.Id = User.Id();
+                user.FirstName = claims.Single(x => x.Type == ClaimTypes.GivenName).Value;
+                user.LastName = claims.Single(x => x.Type == ClaimTypes.Surname).Value;
+                user.Email = claims.Single(x => x.Type == "emails").Value;
+                await Users.AddAsync(user);
 
-                    return true;
-                }
+                return true;
             }
-            catch
-            {
-                //return false;
-            }
-            return false;
         }
-
-        private bool UserExists()
+        catch
         {
-            if(User.Id() != null)
+            //return false;
+        }
+        return false;
+    }
+
+    private bool UserExists()
+    {
+        if (User.Id() != null)
+        {
+            if (Users.Query.Where(x => x.Id == User.Id()).Any())
             {
-                if(Users.Query.Where(x => x.Id == User.Id()).Any())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             else
             {
                 return false;
             }
+        }
+        else
+        {
+            return false;
         }
     }
 }

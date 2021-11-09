@@ -1,20 +1,18 @@
-﻿using Kodekit.Features.Elements;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Kodekit.Features
+namespace Kodekit.Features;
+
+public partial class KodekitContext : DbContext
 {
-    public partial class KodekitContext : DbContext
-    {
-        public KodekitContext(DbContextOptions<KodekitContext> options) : 
-            base(options) { }
+    public KodekitContext(DbContextOptions<KodekitContext> options) :
+        base(options)
+    { }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<User>().HasNoKey();
-            
-            var kit = builder.Entity<Kit>().HasPartitionKey(x => x.KitId);
-            var revision = builder.Entity<KitRevision>().HasPartitionKey(x => x.KitId);
-        }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<User>().HasNoKey();
+
+        var kit = builder.Entity<Kit>().HasPartitionKey(x => x.KitId);
+        var revision = builder.Entity<KitRevision>().HasPartitionKey(x => x.KitId);
     }
 }
