@@ -1,16 +1,20 @@
 ﻿namespace Kodekit.Features.Kits;
 
-public class DeleteKit : PublicFeature<Kit, bool>
+public class DeleteKit : Feature<string, bool>
 {
-    public IRepository<Kit> Kit { get; }
-    public DeleteKit(IRepository<Kit> kit) => Kit = kit;
+    public KitRepository Kits { get; }
+    public DeleteKit(KitRepository kits) => Kits = kits;
 
-    public override async Task<bool> ExecuteAsync(Kit kit)
+    public override async Task<bool> ExecuteAsync(string kitId)
     {
+        var kit = await Kits.GetKitAsync(kitId);
+        if (kit.UserId != User.Id())
+            throw new NotAuthorizedException("You do not own this kit!");
+
         try
         {
             kit.IsDeleted = true;
-            await Kit.UpdateAsync(kit);
+            await Kits.UpdateAsync(kit);
             return true;
         }
         catch

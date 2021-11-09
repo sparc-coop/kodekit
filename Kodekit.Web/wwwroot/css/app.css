@@ -1185,7 +1185,7 @@
       margin-bottom: 20px; }
     .header .login-display .user-menu {
       position: absolute;
-      right: 82px;
+      right: 24px;
       top: 4px;
       display: flex; }
       @media screen and (max-width: 780px) {

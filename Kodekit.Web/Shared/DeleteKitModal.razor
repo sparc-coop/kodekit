@@ -39,8 +39,8 @@
 
     private async Task DeleteKit()
     {
-        await PublicApi().DeleteKitAsync(Kit);
-        Nav.NavigateTo("/dashboard");
+        await Api.DeleteKitAsync(Kit.KitId);
+        Nav.NavigateTo("/");
         await CloseModal.InvokeAsync();
     }
 }

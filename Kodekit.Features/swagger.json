@@ -346,29 +346,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
+                "type": "string"
               }
             },
             "text/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
+                "type": "string"
               }
             },
             "application/*+json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Kit"
-                  }
-                ]
+                "type": "string"
               }
             }
           }

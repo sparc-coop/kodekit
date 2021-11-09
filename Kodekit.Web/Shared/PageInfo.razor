@@ -10,7 +10,7 @@
             <div class="kit-select">
                 @if (kit != null)
                 {
-                    @(kit.Name != null ? kit.Name : "Untitled Styleguide")
+                    @kit.KitId
                 }
                 @if (UserKits != null && UserKits.Count > 1)
                 {
@@ -22,7 +22,7 @@
                             {
                                 <li @onclick="@(e => SelectKit(item.Id))">
                                     <img class="img-left" src="/images/ellipse_open_icon.svg" alt="More Options" />
-                                    @(item.Name ?? "Untitled Styleguide")
+                                    @(item.KitId ?? "Untitled Styleguide")
                                     <span>
                                         @item.DateModified.ToString("MM/dd/yy hh:mm tt")
                                     </span>
@@ -93,7 +93,7 @@
         {
             <div class="history--dropdown">
                 <div class="title">Version History</div>
-                <div class="current">
+                <div class="current" style="opacity: 0.3">
                     <img class="img-left" src="/images/ellipse_open_icon.svg" />
                     @if (EditName == kit.Id)
                     {
@@ -104,14 +104,7 @@
                     }
                     else
                     {
-                        @if (kit.Name != null)
-                        {
-                            <span>@kit.Name</span>
-                        }
-                        else
-                        {
-                            <span>Current Version</span>
-                        }
+                        <span>Coming soon!</span>
                     }
                     <span class="material-icons img-right" @onclick="@(e => ShowOptions(kit.Id))">more_vert</span>
                     @if (ShowKitOptions == kit.Id)
@@ -269,6 +262,7 @@
 
     private void ShowOptions(string selectedId)
     {
+        return;
         if (ShowKitOptions == selectedId)
         {
             ShowKitOptions = "";
@@ -320,6 +314,6 @@
     {
         KitsList = !KitsList;
         kit = UserKits.Where(x => x.Id == id).FirstOrDefault();
-        await localStorage.SetItemAsStringAsync("kodekitId", kit.ToString());
+        Nav.NavigateTo($"/{id}/introduction");
     }
 }
