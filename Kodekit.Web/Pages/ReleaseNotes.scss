@@ -1,6 +1,9 @@
 ﻿@import "../_variables";
 
 .release {
+    a {
+        text-decoration: underline;
+    }
 
     section {
         display: flex;

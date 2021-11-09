@@ -629,9 +629,6 @@
   margin: 20px 0;
   color: #3A3A40; }
 
-.global-page h3 {
-  margin: 80px 0 8px 0; }
-
 .global-page .disabled {
   color: #A9ACB2; }
   .global-page .disabled input {
@@ -1030,6 +1027,9 @@
       height: 40px;
       width: 40px;
       border-radius: 40px; }
+
+.release a {
+  text-decoration: underline; }
 
 .release section {
   display: flex;
