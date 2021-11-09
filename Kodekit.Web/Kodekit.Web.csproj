@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>1c00dd6d-c22f-4f2b-b3ec-860a43b74a1d</UserSecretsId>
 
   </PropertyGroup>
 
@@ -23,6 +24,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
   </ItemGroup>
+
+	<ItemGroup>
+		<TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
+	</ItemGroup>
   
   <ItemGroup>
     <OpenApiReference Include="../Kodekit.Features/swagger.json" Namespace="Kodekit.Features">
