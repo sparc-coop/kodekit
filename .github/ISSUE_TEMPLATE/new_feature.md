@@ -1,8 +1,8 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: "[BUG]"
-labels: ''
+name: New Feature
+about: Create a feature
+title: "[FEATURE]"
+labels: 'feature'
 assignees: ''
 
 ---
