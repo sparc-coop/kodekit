@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: "[BUG]"
+labels: ''
+assignees: ''
+
+---
+
 # Description
 
 [Description of the feature]
@@ -14,6 +23,6 @@ Please provide detailed steps for reproducing the issue.
 2. [step 2]
 3. [you get it...]
 
-## Context
+## Additional Context
 
 [Please provide any relevant information about your context. ]
