@@ -19,7 +19,7 @@ public class Program
                 builder.Configuration["ApiUrl"]);
         builder.Services.AddBlazoredLocalStorage();
         builder.Services.AddGoogleAnalytics("UA-69755150-11");
-
+       
         var host = builder.Build();
         await host.RunAsync();
     }
