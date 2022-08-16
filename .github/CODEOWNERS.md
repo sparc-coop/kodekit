@@ -1,0 +1,1 @@
+* @sparc-coop/reviewers
