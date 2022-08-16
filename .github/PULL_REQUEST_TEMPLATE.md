@@ -1,5 +1,5 @@
 ---
-assignees: 'antoniocorreia,N7Layla,JParker443'
+reviewers: 'antoniocorreia,N7Layla,JParker443'
 ---
 
 ## Description
