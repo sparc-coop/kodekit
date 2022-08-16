@@ -1,8 +1,8 @@
 ---
 name: New Feature
-about: Create a feature
+about: Submit a description for the new feature
 title: "[FEATURE]"
-labels: 'feature'
+labels: 'enhancement'
 assignees: ''
 
 ---
@@ -17,7 +17,7 @@ assignees: ''
 
 ## Steps to Reproduce
 
-Please provide detailed steps for reproducing the issue.
+[Please provide detailed steps for reproducing the issue.]
 
 1. [step 1]
 2. [step 2]
