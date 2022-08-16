@@ -20,7 +20,7 @@ Please describe the tests that you ran to verify your changes. Please also note 
 - [ ] Test A
 - [ ] Test B
 
-## Checklist:
+## Checklist
 
 - [ ] My code follows the style and architectural guidelines of this project
 - [ ] I have performed a self-review of my own code
