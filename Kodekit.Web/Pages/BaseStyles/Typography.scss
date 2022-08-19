@@ -71,4 +71,26 @@
             width: 314px !important;
         }
     }
+
+    .edit-options {
+        padding: 8px;
+        margin: -44px 0 20px;
+
+        i {
+            vertical-align: middle;
+            font-size: 20px;
+            margin-top: -6px;
+            margin-left: 10px;
+        }
+    }
+
+    .toggle{
+        &-hide {
+            display: none;
+        }
+
+        &-show {
+            display: flex;
+        }
+    }
 }

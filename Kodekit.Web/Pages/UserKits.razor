@@ -13,7 +13,7 @@
                         </select>*@
                     <AuthorizeView>
                         <Authorized>
-                            <button @onclick="@(CreateNew)">
+                            <button @onclick="CreateNew">
                                 New Styleguide
                                 <img src="/images/add-icon.svg" />
                             </button>
@@ -21,7 +21,7 @@
                         <NotAuthorized>
                             @if (Kits == null || !Kits.Any())
                             {
-                                <button @onclick="@(CreateNew)">
+                                <button @onclick="CreateNew">
                                     New Styleguide
                                     <img src="/images/add-icon.svg" />
                                 </button>

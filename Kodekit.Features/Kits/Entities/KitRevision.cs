@@ -54,6 +54,40 @@ public class KitRevision : Root<string>
         Icons = revision.Icons;
     }
 
+    public KitRevision(bool isDefault, string kitId, string? revisionId)
+    {
+        Id = revisionId != null ? (int.Parse(revisionId) + 1).ToString() : "1";
+        KitId = kitId;
+        DateCreated = DateTime.UtcNow;
+
+        Colors = new List<Variable<Color>>
+        {
+            new Variable<Color>{ Name = "Primary", Value = new Color{ HexValue = "#0B5FFF" } },
+            new Variable<Color>{ Name = "Secondary", Value = new Color{ HexValue = "#72E5DD" } },
+            new Variable<Color>{ Name = "Tertiary", Value = new Color{ HexValue = "#FFB46E" } },
+            new Variable<Color>{ Name = "Darkest", Value = new Color{ HexValue = "#000000" } },
+            new Variable<Color>{ Name = "Lightest", Value = new Color{ HexValue = "#FFFFFF" } },
+            new Variable<Color>{ Name = "Error", Value = new Color{ HexValue = "#F96464" } },
+            new Variable<Color>{ Name = "Warning", Value = new Color{ HexValue = "#FF8F39" } },
+            new Variable<Color>{ Name = "Success", Value = new Color{ HexValue = "#5ACA75" } }
+        };
+        Shadows = new List<Variable<Shadow>>
+        {
+            new Variable<Shadow> {Name = "", Value = new Shadow{ Blur = 5, HexColor = "", Spread = 5}}
+        };
+        Headings = new Typography("Roboto", "400", 16, 1.250, 120, null);
+        Paragraphs = new Typography("Roboto", "500", 17, 1.200, 160, null);
+
+        Buttons = new Button(16, "500", 8, 8, 4, 0, 16, 16, false);
+        Inputs = new Input(16, "400", 10, 16, 4, 1);
+        Selectors = new Selector(16, "400", "#0B5FFF");
+        Settings = new();
+        Dropdowns = new Dropdown(16, "400", 10, 16, 4, 1, true);
+        Anchors = new Anchor(16, "400", "#17171A", "#0B5FFF", "#7FABFF", "#00BFB2");
+        Lists = new List (16, "400", "upper-roman", "None", 0, 0, 0, 8);
+        Icons = new IconLibrary("Material", "https://fonts.googleapis.com/icon?family=Material+Icons", "<span class='material-icons'>%</span>");
+    }
+
     public string KitId { get; set; }
     public DateTime DateCreated { get; set; }
     public string? ParentRevisionId { get; set; }//For child elements/later versions
