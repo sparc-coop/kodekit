@@ -39,7 +39,7 @@
                             <label>
                                 <input type="checkbox" checked /> Active
                             </label>
-                            <label>
+                            <label class="disabled">
                                 <input type="checkbox" disabled /> Disabled
                             </label>
                         </div>
@@ -50,22 +50,25 @@
                             <label>
                                 <input type="radio" name="example" checked /> Active
                             </label>
-                            <label>
+                            <label class="disabled">
                                 <input type="radio" disabled /> Disabled
                             </label>
                         </div>
-                        <div>
+                        <div class="selectors--switch">
                             <label class="switch">
-                                <input type="checkbox" /> Default
+                                <input type="checkbox" />
                                 <span class="slider" />
+                                Default
                             </label>
                             <label class="switch">
-                                <input type="checkbox" checked /> Active
+                                <input type="checkbox" checked />
                                 <span class="slider" />
+                                Active
                             </label>
-                            <label class="switch">
-                                <input type="checkbox" disabled /> Disabled
+                            <label class="switch disabled">
+                                <input type="checkbox" disabled />
                                 <span class="slider" />
+                                Disabled
                             </label>
                         </div>
                     </Preview>

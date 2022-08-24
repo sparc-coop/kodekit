@@ -4,26 +4,37 @@
     .preview-example {
         display: flex;
         flex-wrap: wrap;
-        padding: 25px 32px 40px 32px;
+        padding: 25px 32px 15px 32px;
 
         > div {
+            margin-bottom: 20px;
             padding-right: 50px;
         }
 
-        label {
-            display: flex;
-            flex-direction: unset;
-            margin: 5px 0;
-            font-size: unset;
-            justify-content: left;
-
-            &.switch {
-                margin-bottom: 15px;
-            }
+        .selectors--switch {
+            max-width: 100%;
         }
 
-        input {
-            margin: 5px 12px 0 0;
+        label {
+            min-height: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: unset;
+            gap: 15px;
+            align-items: center;
+            justify-content: left;
+            font-size: unset;
+            line-height: 100%;
+
+            &.switch {
+                margin-bottom: 20px;
+                padding-right: 20px;
+                padding-left: 100%;
+            }
+
+            &:last-child {
+                margin-bottom: 0px;
+            }
         }
     }
 }

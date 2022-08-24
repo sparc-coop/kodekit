@@ -41,7 +41,7 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 
-input {
+    input {
     /* 1 */
     overflow: visible;
 }
@@ -143,7 +143,7 @@ input, textarea, select {
     letter-spacing: 0.02em;
     /* Do we need these styles, because it is the same as h6 font-size: 16px; */
     line-height: 120%;
-    font-size: var(--font-size);
+    font-size: var(--font-size, 16px);
     font-weight: var(--font-weight);
 }
 
@@ -159,7 +159,6 @@ input, textarea, select {
         border-color: var(--grey-300);
         color: var(--grey-300);
     }
-
 label.disabled {
     color: var(--grey-300);
 }
@@ -205,8 +204,8 @@ input[type=checkbox], input[type=radio] {
 
     input[type="checkbox"]::before, input[type=radio]::before {
         content: "";
-        width: calc(var(--font-size) * 0.4);
-        height: calc(var(--font-size) * 0.4);
+        width: calc(var(--font-size) * 0.5);
+        height: calc(var(--font-size) * 0.5);
         transform: scale(0);
         transition: 120ms transform ease-in-out;
         box-shadow: inset 1em 1em var(--active-500, var(--grey-100));
@@ -251,6 +250,10 @@ label.error > svg {
     fill: var(--error-500);
 }
 
+label.disabled {
+    color: var(--grey-300);
+}
+
 label.disabled > svg {
     fill: var(--grey-300);
 }
@@ -263,9 +266,16 @@ label input {
         padding-left: var(--padding-horizontal);
     }
 
+label.checkbox, label.radio {
+    height: var(--font-size);
+}
+
 label.switch {
+    background: transparent;
     position: relative;
-    display: flex;
+    width: calc(var(--font-size) * 1.66);
+    height: var(--font-size);
+    margin: 0;
     padding-left: 33px;
 }
 
@@ -286,8 +296,8 @@ label.switch {
         label.switch .slider:before {
             position: absolute;
             content: "";
-            height: calc(var(--font-size) * 0.62);
-            width: calc(var(--font-size) * 0.62);
+            height: calc(var(--font-size) * 0.58);
+            width: calc(var(--font-size) * 0.58);
             left: calc(var(--font-size) * 0.10);
             bottom: calc(var(--font-size) * 0.10);
             border-radius: 50%;
@@ -304,14 +314,26 @@ label.switch {
 
         label.switch input[type=checkbox]:checked + .slider {
             background-color: transparent;
-            border: 2px solid var(--active-500, var(--grey-100));
+            border: 2px solid var(--active-500, var(--grey-300));
         }
 
             label.switch input[type=checkbox]:checked + .slider:before {
                 transform: translateX(calc(var(--font-size) * 0.62));
-                background-color: var(--active-500, var(--grey-100));
+                background-color: var(--active-500, var(--grey-300));
             }
 
+    label.switch.disabled {
+        background: transparent;
+    }
+
+    label.switch.disabled .slider {
+        border-color: var(--grey-100);
+        cursor: not-allowed;
+    }
+
+    label.switch input[type=checkbox]:disabled + .slider:before {
+        background-color: var(--grey-100);
+    }
 
 select {
     appearance: none;

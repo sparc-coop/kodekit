@@ -463,23 +463,33 @@
 .selectors .preview-example {
   display: flex;
   flex-wrap: wrap;
-  padding: 25px 32px 40px 32px;
+  padding: 25px 32px 15px 32px;
 }
 .selectors .preview-example > div {
+  margin-bottom: 20px;
   padding-right: 50px;
 }
+.selectors .preview-example .selectors--switch {
+  max-width: 100%;
+}
 .selectors .preview-example label {
+  min-height: 16px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: unset;
-  margin: 5px 0;
-  font-size: unset;
+  gap: 15px;
+  align-items: center;
   justify-content: left;
+  font-size: unset;
+  line-height: 100%;
 }
 .selectors .preview-example label.switch {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 100%;
 }
-.selectors .preview-example input {
-  margin: 5px 12px 0 0;
+.selectors .preview-example label:last-child {
+  margin-bottom: 0px;
 }
 
 .colors .content {
@@ -1375,9 +1385,16 @@
   position: absolute;
   bottom: 20px;
   left: 32px;
+  transition: transform 0.3s ease-in-out;
 }
 .sidebar .button--wrapper .button--save svg {
   width: 14px;
+  margin-left: 8px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.sidebar .button--wrapper .button--save:hover {
+  transform: scale(1.05, 1.05);
 }
 
 .header {
