@@ -55,6 +55,7 @@ public class Kit : Root<string>
     public DateTime DateModified { get; set; }
     public bool? IsAutoPublish { get; set; }
     public bool? IsDeleted { get; set; }
+    public int? ThemeId { get; set; }
 
     // Revision links
     public string? CurrentRevisionId { get; set; }

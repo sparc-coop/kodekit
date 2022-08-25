@@ -1258,6 +1258,54 @@
         }
       }
     },
+    "/api/SetKitTheme": {
+      "post": {
+        "tags": [
+          "SetKitTheme"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/UpdateAnchors": {
       "post": {
         "tags": [
@@ -2518,6 +2566,11 @@
             "type": "boolean",
             "nullable": true
           },
+          "themeId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "currentRevisionId": {
             "type": "string",
             "nullable": true
@@ -2885,6 +2938,13 @@
             "type": "number",
             "format": "double",
             "nullable": true
+          },
+          "fontSizeOverrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2913,6 +2973,13 @@
           "lineHeight": {
             "type": "number",
             "format": "double",
+            "nullable": true
+          },
+          "fontSizeOverrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
             "nullable": true
           },
           "typeScaleValues": {

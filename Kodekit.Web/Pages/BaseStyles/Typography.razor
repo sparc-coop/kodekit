@@ -31,11 +31,11 @@
                                     <option value="">Select a font...</option>
                                     @foreach (var font in Fonts.Items)
                                     {
-                                <option value="@font.Family">
-                                    @font.Family
-                                </option>
+                                        <option value="@font.Family">
+                                            @font.Family
+                                        </option>
                                     }
-                        </InputSelect>
+                                </InputSelect>
                             }
                         </label>
                         <label>
@@ -64,6 +64,45 @@
                         <InputNumber @bind-Value="Model.Heading.LineHeight" min="1" />
                     </label>
                 </div>
+                <button @onclick="Toggle" class="edit-options">Manually size fonts <i class="material-icons">edit</i></button>
+                <div class="section toggle-@ToggleOption">
+                    <label>
+                        h1 (px)
+                        <input type="number" min="0" value="@SetValue("type-900")" 
+                            @onchange="@(e => Overrides("type-900", e.Value.ToString()))" />
+                    </label>
+                    <label>
+                        h2 (px)
+                        <input type="number" min="0" value="@SetValue("type-800")"
+                            @onchange="@(e => Overrides("type-800", e.Value.ToString()))"/>
+                    </label>
+                    <label>
+                        h3 (px)
+                        <input type="number" min="0" value="@SetValue("type-700")"
+                            @onchange="@(e => Overrides("type-700", e.Value.ToString()))"/>
+                    </label>                      
+                    <label>
+                        h4 (px)
+                        <input type="number" min="0" value="@SetValue("type-600")"
+                            @onchange="@(e => Overrides("type-600", e.Value.ToString()))"/>
+                    </label>
+                    <label>
+                        h5 (px)
+                        <input type="number" min="0" value="@SetValue("type-500")"
+                            @onchange="@(e => Overrides("type-500", e.Value.ToString()))"/>
+                    </label>
+                    <label>
+                        h6 (px)
+                        <input type="number" min="0" value="@SetValue("type-400")"
+                            @onchange="@(e => Overrides("type-400", e.Value.ToString()))" />
+                    </label>                      
+                    <label>
+                        .subtitle (px)
+                        <input type="number" min="0" value="@SetValue("type-300")"
+                            @onchange="@(e => Overrides("type-300", e.Value.ToString()))" />
+                    </label>                  
+                </div>
+
                 <Preview Kit=kit>
                     <h1>@previewText</h1>
                     <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
@@ -112,11 +151,11 @@
                         <InputSelect class="medium" @bind-Value=Model.Paragraph.TypeScale>
                             <option value="">Select a type scale...</option>
                             @foreach (var scale in Model.TypeScales)
-                                {
-                                <option value="@scale.Key">
-                                    @scale.Key (@scale.Value)
-                                </option>
-                                }
+                             {
+                            <option value="@scale.Key">
+                                @scale.Key (@scale.Value)
+                            </option>
+                            }
                         </InputSelect>
                     </label>
                     <label>
@@ -148,6 +187,7 @@
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
     FontListResponse Fonts;
+    private string ToggleOption = "hide";
 
     protected override async Task OnInitializedAsync()
     {
@@ -186,6 +226,40 @@
         return Model?.Paragraph?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
             ? Model.Paragraph.TypeScaleValues[$"type-{scale}"]
             : string.Empty;
+    }
+
+    private async Task Overrides(string type, string value)
+    {
+        if (Model.Heading.FontSizeOverrides == null)
+            Model.Heading.FontSizeOverrides = new Dictionary<string, string>();
+
+        Model.Heading.FontSizeOverrides[type] = value;
+        await UpdateAsync();
+    }
+
+    private string SetValue(string typeValue)
+    {
+        if (Model.Heading.FontSizeOverrides == null)
+            return "";
+
+        if(Model.Heading.FontSizeOverrides.ContainsKey(typeValue))
+        {
+            return Model.Heading.FontSizeOverrides[typeValue];
+        } else
+        {
+            return "";
+        }
+    }
+
+    private void Toggle()
+    {
+        if(ToggleOption == "hide")
+        {
+            ToggleOption = "show";            
+        } else
+        {
+            ToggleOption = "hide";
+        }         
     }
 }
 

@@ -19,7 +19,8 @@ public class UpdateTypography : PublicFeature<UpdateTypographyModel, Kit>
             request.Headings.FontWeight,
             request.Headings.FontSize,
             request.Headings.TypeScale,
-            request.Headings.LineHeight);
+            request.Headings.LineHeight,
+            request.Headings.FontSizeOverrides);
 
 
         var paragraphs = new Typography(
@@ -27,7 +28,8 @@ public class UpdateTypography : PublicFeature<UpdateTypographyModel, Kit>
             request.Paragraphs.FontWeight,
             request.Paragraphs.FontSize,
             request.Paragraphs.TypeScale,
-            request.Paragraphs.LineHeight);
+            request.Paragraphs.LineHeight,
+            request.Paragraphs.FontSizeOverrides);
 
 
         kit.Revision.UpdateTypography(headings, paragraphs);

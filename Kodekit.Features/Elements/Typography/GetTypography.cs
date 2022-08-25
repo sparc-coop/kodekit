@@ -1,7 +1,8 @@
 ﻿namespace Kodekit.Features.Elements;
 
 public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<double, string> TypeScales);
-public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, double? LineHeight, Dictionary<string, string> TypeScaleValues);
+public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, 
+    double? LineHeight, Dictionary<string, string>? FontSizeOverrides, Dictionary<string, string> TypeScaleValues);
 public class GetTypography : PublicFeature<string, GetTypographyResponse>
 {
     public GetTypography(KitRepository kits)
@@ -24,6 +25,7 @@ public class GetTypography : PublicFeature<string, GetTypographyResponse>
             kit.Headings.Font.Size?.Value,
             kit.Headings.TypeScale,
             kit.Headings.Font.LineHeight?.Value,
+            kit.Headings.FontSizeOverrides,
             kit.Headings.Serialize() // to show on preview example
         );
 
@@ -33,6 +35,7 @@ public class GetTypography : PublicFeature<string, GetTypographyResponse>
             kit.Paragraphs.Font.Size?.Value,
             kit.Paragraphs.TypeScale,
             kit.Paragraphs.Font.LineHeight?.Value,
+            kit.Paragraphs.FontSizeOverrides,
             kit.Paragraphs.Serialize() // to show on preview example
         );
 

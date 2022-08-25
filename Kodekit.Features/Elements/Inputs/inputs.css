@@ -143,7 +143,7 @@ input, textarea, select {
     letter-spacing: 0.02em;
     /* Do we need these styles, because it is the same as h6 font-size: 16px; */
     line-height: 120%;
-    font-size: var(--font-size);
+    font-size: var(--font-size, 16px);
     font-weight: var(--font-weight);
 }
 
@@ -179,8 +179,7 @@ label.error {
 
 input[type=checkbox], input[type=radio] {
     background-color: transparent;
-    border-color: var(--grey-300);
-    border-width: 2px;
+    border: 2px solid var(--grey-300, #B2B2B2);
     border-radius: var(--border-radius, 4px);
     appearance: none;
     -webkit-appearance: none;
@@ -199,21 +198,21 @@ input[type=checkbox], input[type=radio] {
     }
 
     input[type="checkbox"]:focus, input[type=radio]:focus {
-        border-color: var(--active-500, var(--grey-100));
+        border: 2px solid var(--active-500, #191919);
         outline: none;
     }
 
     input[type="checkbox"]::before, input[type=radio]::before {
         content: "";
-        width: calc(var(--font-size) * 0.4);
-        height: calc(var(--font-size) * 0.4);
+        width: calc(var(--font-size, 16px) * 0.5);
+        height: calc(var(--font-size, 16px) * 0.5);
         transform: scale(0);
         transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em var(--active-500, var(--grey-100));
+        box-shadow: inset 1em 1em var(--active-500, #191919);
     }
 
     input[type=checkbox]:checked, input[type=radio]:checked {
-        border-color: var(--active-500, var(--grey-100));
+        border: 2px solid var(--active-500, #191919);
     }
 
         input[type="checkbox"]:checked::before, input[type=radio]:checked::before {
@@ -221,12 +220,12 @@ input[type=checkbox], input[type=radio] {
         }
 
     input[type=checkbox]:disabled, input[type=radio]:disabled {
-        border-color: var(--grey-100);
+        border: 2px solid var(--grey-300, #B2B2B2);
         cursor: not-allowed;
     }
 
     input[type=checkbox]:checked:disabled::before, input[type=radio]:checked:disabled::before {
-        box-shadow: inset 1em 1em var(--grey-100);
+        box-shadow: inset 1em 1em var(--grey-300, #B2B2B2);
     }
 
 input[type=radio] {
@@ -238,7 +237,7 @@ input[type=radio] {
     }
 
 label > svg {
-    fill: var(--grey-300);
+    fill: var(--grey-300, #B2B2B2);
     position: absolute;
     top: 50%;
     margin-top: -10px;
@@ -251,9 +250,13 @@ label.error > svg {
     fill: var(--error-500);
 }
 
-label.disabled > svg {
-    fill: var(--grey-300);
+label.disabled {
+    color: var(--grey-300, #B2B2B2);
 }
+
+    label.disabled > svg {
+        fill: var(--grey-300, #B2B2B2);
+    }
 
 label input {
     padding-left: 40px;
@@ -263,9 +266,16 @@ label input {
         padding-left: var(--padding-horizontal);
     }
 
+label.checkbox, label.radio {
+    height: var(--font-size, 16px);
+}
+
 label.switch {
+    background: transparent;
     position: relative;
-    display: flex;
+    width: calc(var(--font-size, 16px) * 1.66);
+    height: var(--font-size, 16px);
+    margin: 0;
     padding-left: 33px;
 }
 
@@ -274,24 +284,24 @@ label.switch {
         cursor: pointer;
         top: 0;
         left: 0;
-        width: calc(var(--font-size) * 1.66);
-        height: var(--font-size);
+        width: calc(var(--font-size, 16px) * 1.66);
+        height: var(--font-size, 16px);
         background-color: transparent;
-        border: 2px solid var(--grey-300);
+        border: 2px solid var(--grey-300, #B2B2B2);
         -webkit-transition: .4s;
         transition: .4s;
-        border-radius: var(--font-size);
+        border-radius: var(--font-size, 16px);
     }
 
         label.switch .slider:before {
             position: absolute;
             content: "";
-            height: calc(var(--font-size) * 0.62);
-            width: calc(var(--font-size) * 0.62);
-            left: calc(var(--font-size) * 0.10);
-            bottom: calc(var(--font-size) * 0.10);
+            height: calc(var(--font-size, 16px) * 0.58);
+            width: calc(var(--font-size, 16px) * 0.58);
+            left: calc(var(--font-size, 16px) * 0.10);
+            bottom: calc(var(--font-size, 16px) * 0.10);
             border-radius: 50%;
-            background-color: var(--grey-300);
+            background-color: var(--grey-300, #B2B2B2);
             -webkit-transition: .4s;
             transition: .4s;
         }
@@ -304,14 +314,26 @@ label.switch {
 
         label.switch input[type=checkbox]:checked + .slider {
             background-color: transparent;
-            border: 2px solid var(--active-500, var(--grey-100));
+            border: 2px solid var(--active-500, #191919);
         }
 
             label.switch input[type=checkbox]:checked + .slider:before {
-                transform: translateX(calc(var(--font-size) * 0.62));
-                background-color: var(--active-500, var(--grey-100));
+                transform: translateX(calc(var(--font-size, 16px) * 0.62));
+                background-color: var(--active-500, #191919);
             }
 
+    label.switch.disabled {
+        background: transparent;
+    }
+
+        label.switch.disabled .slider {
+            border-color: var(--grey-300, #B2B2B2);
+            cursor: not-allowed;
+        }
+
+    label.switch input[type=checkbox]:disabled + .slider:before {
+        background-color: var(--grey-300, #B2B2B2);
+    }
 
 select {
     appearance: none;
