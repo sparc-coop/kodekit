@@ -41,7 +41,7 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 
-    input {
+input {
     /* 1 */
     overflow: visible;
 }
@@ -180,7 +180,6 @@ label.error {
 input[type=checkbox], input[type=radio] {
     background-color: transparent;
     border: 2px solid var(--grey-300, #B2B2B2);
-/*    border-width: 2px;*/
     border-radius: var(--border-radius, 4px);
     appearance: none;
     -webkit-appearance: none;
@@ -221,12 +220,12 @@ input[type=checkbox], input[type=radio] {
         }
 
     input[type=checkbox]:disabled, input[type=radio]:disabled {
-        border: 2px solid var(--grey-100, #E5E5E5);
+        border: 2px solid var(--grey-300, #B2B2B2);
         cursor: not-allowed;
     }
 
     input[type=checkbox]:checked:disabled::before, input[type=radio]:checked:disabled::before {
-        box-shadow: inset 1em 1em var(--grey-100, #E5E5E5);
+        box-shadow: inset 1em 1em var(--grey-300, #B2B2B2);
     }
 
 input[type=radio] {
@@ -328,12 +327,12 @@ label.switch {
     }
 
         label.switch.disabled .slider {
-            border-color: var(--grey-100, #E5E5E5);
+            border-color: var(--grey-300, #B2B2B2);
             cursor: not-allowed;
         }
 
     label.switch input[type=checkbox]:disabled + .slider:before {
-        background-color: var(--grey-100, #E5E5E5);
+        background-color: var(--grey-300, #B2B2B2);
     }
 
 select {
