@@ -12,12 +12,8 @@
             </p>
         </header>
         <div class="content">
-            <h3>Premade Kodekit Styleguides</h3>
-            <p class="subheader">
-                Themes are coming soon! Stay tuned for an update.
-            </p>
-            <section style="opacity: 0.3">
-                <div @onclick="@(e => SelectTheme("kodekit"))">
+            <section>
+                <div @onclick="@(e => SelectTheme("default"))">
                     <div class="theme-card">
                         <img src="/images/dash-example.svg" alt="Theme Icon" />
                     </div>
@@ -40,8 +36,9 @@
 
     private async Task SelectTheme(string theme)
     {
-        return;
-        //await PublicApi().AddThemeAsync(theme);
-        Nav.NavigateTo($"/{kitId}/preview");
+        if(theme == "default")
+        {
+            await PublicApi().SetKitThemeAsync(kitId);
+        }
     }
 }
