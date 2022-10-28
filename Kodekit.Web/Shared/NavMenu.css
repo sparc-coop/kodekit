@@ -131,14 +131,14 @@
   }
 }
 .header .login-display a {
-  color: #787980;
+  color: #3A3A40;
   text-decoration: none;
   display: block;
   padding: 6px;
   font-size: 14px;
 }
 .header .login-display .logout {
-  color: #787980;
+  color: #3A3A40;
   border: none;
   background: none;
   margin-bottom: 0;
@@ -168,7 +168,7 @@
   }
 }
 .header .login-display .user-menu span {
-  color: #787980;
+  color: #3A3A40;
   cursor: pointer;
 }
 .header .login-display .dropdown-menu {

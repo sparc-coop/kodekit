@@ -40,7 +40,7 @@
                 <div class="dashboard-container">
                     @foreach (var kit in Kits)
                     {
-                        <div @onclick="@(e => GoToKit(kit.Id))" class="dashboard-card">
+                        <div tabindex="0" @onclick="@(e => GoToKit(kit.Id))" @onkeydown="@(e => GoToKit(kit.Id))" class="dashboard-card">
                             <div class="dashboard-preview preview-@kit.Id">
                                 <style type="text/css">
                                     @@import url('@CssUrl(kit)');

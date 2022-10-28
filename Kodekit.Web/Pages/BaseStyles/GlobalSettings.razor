@@ -22,22 +22,22 @@
                         </p>
                     </header>
                     <div>
-                        <div class="section-container">
-                            <label class="switch">
+                        <div class="section-container" tabindex="0">
+                            <label tabindex="0" class="switch">
                                 <input type="checkbox" @onchange="SetKodekit">
                                 <span class="slider"></span>
                             </label>
                             All Kodekit Elements
                         </div>
-                        <Switch @bind-Value=Model.Settings.UseTypography Title="Typography" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseColors Title="Colors" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseIcons Title="Icons" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseButtons Title="Buttons" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseInputs Title="Inputs and Textareas" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseCheckboxes Title="Checkboxes and Radios" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseDropdowns Title="Dropdowns" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseAnchors Title="Anchors" IsDisabled=kodekitStyleReset />
-                        <Switch @bind-Value=Model.Settings.UseLists Title="Lists" IsDisabled=kodekitStyleReset />
+                        <Switch @bind-Value=Model.Settings.UseTypography Title="Typography" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseColors Title="Colors" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseIcons Title="Icons" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseButtons Title="Buttons" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseInputs Title="Inputs and Textareas" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseCheckboxes Title="Checkboxes and Radios" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseDropdowns Title="Dropdowns" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseAnchors Title="Anchors" IsDisabled=kodekitStyleReset tabindex="0" />
+                        <Switch @bind-Value=Model.Settings.UseLists Title="Lists" IsDisabled=kodekitStyleReset tabindex="0" />
                     </div>
                 </EditForm>
             }

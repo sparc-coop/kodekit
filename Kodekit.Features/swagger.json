@@ -421,7 +421,7 @@
         }
       }
     },
-    "/api/GetAnchors": {
+    "/publicapi/GetAnchors": {
       "post": {
         "tags": [
           "GetAnchors"
@@ -469,7 +469,7 @@
         }
       }
     },
-    "/api/GetButtons": {
+    "/publicapi/GetButtons": {
       "post": {
         "tags": [
           "GetButtons"
@@ -517,7 +517,7 @@
         }
       }
     },
-    "/api/GetColors": {
+    "/publicapi/GetColors": {
       "post": {
         "tags": [
           "GetColors"
@@ -661,7 +661,7 @@
         }
       }
     },
-    "/api/GetIcons": {
+    "/publicapi/GetIcons": {
       "post": {
         "tags": [
           "GetIcons"
@@ -709,7 +709,7 @@
         }
       }
     },
-    "/api/GetInputs": {
+    "/publicapi/GetInputs": {
       "post": {
         "tags": [
           "GetInputs"
@@ -805,7 +805,7 @@
         }
       }
     },
-    "/api/GetLists": {
+    "/publicapi/GetLists": {
       "post": {
         "tags": [
           "GetLists"
@@ -853,7 +853,7 @@
         }
       }
     },
-    "/api/GetRelatedKits": {
+    "/publicapi/GetRelatedKits": {
       "post": {
         "tags": [
           "GetRelatedKits"
@@ -910,7 +910,7 @@
         }
       }
     },
-    "/api/GetSelectors": {
+    "/publicapi/GetSelectors": {
       "post": {
         "tags": [
           "GetSelectors"
@@ -958,7 +958,7 @@
         }
       }
     },
-    "/api/GetSettings": {
+    "/publicapi/GetSettings": {
       "post": {
         "tags": [
           "GetSettings"
@@ -1006,7 +1006,7 @@
         }
       }
     },
-    "/api/GetShadow": {
+    "/publicapi/GetShadow": {
       "post": {
         "tags": [
           "GetShadow"
@@ -1426,7 +1426,7 @@
         }
       }
     },
-    "/api/UpdateColors": {
+    "/publicapi/UpdateColors": {
       "post": {
         "tags": [
           "UpdateColors"
@@ -1486,7 +1486,7 @@
         }
       }
     },
-    "/api/UpdateDropdowns": {
+    "/publicapi/UpdateDropdowns": {
       "post": {
         "tags": [
           "UpdateDropdowns"
@@ -1546,7 +1546,7 @@
         }
       }
     },
-    "/api/UpdateIcons": {
+    "/publicapi/UpdateIcons": {
       "post": {
         "tags": [
           "UpdateIcons"
