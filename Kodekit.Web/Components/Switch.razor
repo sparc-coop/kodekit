@@ -2,7 +2,7 @@
 
 <div class="section-container @(IsDisabled ? "disabled" : "")">
     <label class="switch">
-        <input type="checkbox" @bind="CurrentValue" disabled="@IsDisabled">
+        <input type="checkbox" @bind="CurrentValue" disabled="@IsDisabled" aria-label="@Title">
         <span class="slider"></span>
     </label>
     @Title
