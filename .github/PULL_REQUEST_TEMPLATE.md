@@ -7,7 +7,7 @@ Fixes # (issue)
 ## Needs revision
 
 - [ ] Requires backend Architectural revision
-- [ ] Requires frontend Architectural revision 
+- [ ] Requires frontend Architectural revision ([You can see the reviewer checklist here](ACCESSIBILITY_CHECKLIST.md))
 
 ## Checklist
 
