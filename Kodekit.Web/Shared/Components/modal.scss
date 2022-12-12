@@ -55,7 +55,7 @@
             line-height: 26px;
             letter-spacing: 0em;
             text-align: left;
-            color: $gray500;
+            color: $gray700;
             padding: 20px 0 72px;
 
             @media screen and (max-width: 560px) {
@@ -69,7 +69,7 @@
         box-sizing: border-box;
         border-radius: 4px;
         font-size: 13px;
-        color: $gray500;
+        color: $gray700;
         background: $white;
         padding: 6px 12px;
 
@@ -90,7 +90,7 @@
         font-size: 20px;
         top: 20px;
         right: 20px;
-        color: $gray500;
+        color: $gray700;
         cursor: pointer;
     }
 }

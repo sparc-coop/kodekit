@@ -13,13 +13,13 @@
         </header>
         <div class="content">
             <section>
-                <div @onclick="@(e => SelectTheme("default"))">
+                <div tabindex="0" @onclick="@(e => SelectTheme("default"))">
                     <div class="theme-card">
                         <img src="/images/dash-example.svg" alt="Theme Icon" />
                     </div>
                     <label>Kodekit Default</label>
                 </div>
-                <div @onclick="@(e => SelectTheme("blank"))">
+                <div tabindex="0" @onclick="@(e => SelectTheme("blank"))">
                     <div class="theme-card">
                         <img src="/images/dash-example.svg" alt="Theme Icon" />
                     </div>

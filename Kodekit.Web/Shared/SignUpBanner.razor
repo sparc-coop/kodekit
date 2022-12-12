@@ -1,32 +1,44 @@
 ﻿@if (showBanner == true)
 {
-    <div class="banner">
-        <span class="material-icons button--close" @onclick="HideBanner">close</span>
-        <h3>
+    <div class="banner" @ref="tabBanner">
+        
+        <h1>
             <span class="material-icons">error_outline</span>
             This kit will only be accessible from this device
-        </h3>
+        </h1>
         <p>
             Please <a href="authentication/login" class="select-login">log in or create an account</a> to ensure changes are saved.
         </p>
+        <span tabindex="0" class="material-icons button--close" @onclick="HideBanner" @onkeydown="EnterHideBanner">close</span>
     </div>
 }
 
 @code {
     bool showBanner = true;
+    ElementReference tabBanner;
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
+
+        await tabBanner.FocusAsync();
         if (user.Identity.IsAuthenticated)
         {
             showBanner = false;
         }
     }
 
-    void HideBanner()
-    {
+    void HideBanner() {
         showBanner = false;
+    }
+
+    void EnterHideBanner(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter")
+        {
+            showBanner = false;
+        }
+        
     }
 }
