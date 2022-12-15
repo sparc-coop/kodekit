@@ -1,4 +1,6 @@
-﻿namespace Kodekit.Features.Elements;
+﻿using Sparc.Kernel;
+
+namespace Kodekit.Features.Elements;
 
 public class GetSettings : PublicFeature<string, UpdateSettingsModel>
 {

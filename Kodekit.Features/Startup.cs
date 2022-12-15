@@ -1,5 +1,10 @@
 ﻿using Sparc.Authentication.AzureADB2C;
-using Sparc.Plugins.Database.Cosmos;
+using Sparc.Kernel;
+using Sparc.Blossom;
+using Sparc.Data;
+using Sparc.Blossom.Authentication;
+using Sparc.Database.Cosmos;
+using Sparc.Core; 
 
 namespace Kodekit.Features;
 
@@ -16,9 +21,9 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddRazorPages();
-        services.Sparcify<Startup>();
+        //services.Sparcify<Startup>();
         services.AddCosmos<KodekitContext>(Configuration["ConnectionStrings:CosmosDb"], "kodekit");
-        services.AddAzureADB2CAuthentication(Configuration);
+        //services.AddAzureADB2CAuthentication(Configuration);
         services.AddScoped<KitRepository>();
 
     }

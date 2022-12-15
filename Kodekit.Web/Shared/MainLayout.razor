@@ -1,11 +1,14 @@
 ﻿@inherits LayoutComponentBase
 
-<NavMenu kitId="@kitId" />
+<@IbisTranslate ChannelId="kodekit">
+<@NavMenu kitId="@kitId" />
 
 <div class="main">
-    <PageInfo kitId="@kitId" />
+    <@PageInfo kitId="@kitId" />
     @Body
-</div>
+</div>    
+</@IbisTranslate>
+
 
 @inject IConfiguration Config
 @code {

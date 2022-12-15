@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Kodekit.Features;
-using Sparc.Authentication.Blazor;
+using Sparc.Kernel;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Blazor.Analytics;
+using Sparc.Ibis;
 
 namespace Kodekit.Web;
 
@@ -19,6 +20,7 @@ public class Program
                 builder.Configuration["ApiUrl"]);
         builder.Services.AddBlazoredLocalStorage();
         builder.Services.AddGoogleAnalytics("UA-69755150-11");
+        builder.Services.AddIbis();
        
         var host = builder.Build();
         await host.RunAsync();

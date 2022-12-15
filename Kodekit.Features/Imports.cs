@@ -4,4 +4,5 @@ global using System.Linq;
 global using System.Threading.Tasks;
 
 global using Sparc.Core;
-global using Sparc.Features;
+global using Sparc.Kernel;
+global using Sparc.Blossom;

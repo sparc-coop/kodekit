@@ -1,4 +1,6 @@
-﻿namespace Kodekit.Features;
+﻿using Sparc.Database.Cosmos;
+
+namespace Kodekit.Features;
 
 public class GetUserKits : Feature<List<Kit>>
 {
