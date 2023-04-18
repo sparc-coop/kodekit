@@ -329,3 +329,4 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /.config/dotnet-tools.json
+/Kodekit.Features/.config/dotnet-tools.json
