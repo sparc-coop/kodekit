@@ -1,4 +1,6 @@
-﻿namespace Kodekit.Features;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Kodekit.Features;
 
 public class KitRepository
 {
@@ -37,7 +39,7 @@ public class KitRepository
 
     public Task<KitRevision?> GetRevisionAsync(string kitId, string revisionId)
     {
-        return Task.FromResult(Revisions.Query(kitId).FirstOrDefault(x => x.Id == revisionId));
+        return Task.FromResult(Revisions.Query(kitId).AsNoTracking().FirstOrDefault(x => x.Id == revisionId));
     }
 
     public async Task<KitRevision> GetCurrentRevisionAsync(string kitId)
