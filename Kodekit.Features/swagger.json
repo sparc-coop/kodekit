@@ -164,7 +164,7 @@
         }
       }
     },
-    "/api/ColorContrastChecker": {
+    "/publicapi/ColorContrastChecker": {
       "post": {
         "tags": [
           "ColorContrastChecker"
@@ -212,7 +212,7 @@
         }
       }
     },
-    "/api/CopyKit": {
+    "/publicapi/CopyKit": {
       "post": {
         "tags": [
           "CopyKit"
@@ -260,7 +260,7 @@
         }
       }
     },
-    "/api/CreateKit": {
+    "/publicapi/CreateKit": {
       "post": {
         "tags": [
           "CreateKit"
@@ -308,7 +308,7 @@
         }
       }
     },
-    "/api/CreateUser": {
+    "/publicapi/CreateUser": {
       "post": {
         "tags": [
           "CreateUser"
@@ -382,7 +382,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
     "/{kitId}.css": {
@@ -565,7 +574,7 @@
         }
       }
     },
-    "/api/GetDropdowns": {
+    "/publicapi/GetDropdowns": {
       "post": {
         "tags": [
           "GetDropdowns"
@@ -613,7 +622,7 @@
         }
       }
     },
-    "/api/GetGoogleFonts": {
+    "/publicapi/GetGoogleFonts": {
       "post": {
         "tags": [
           "GetGoogleFonts"
@@ -757,7 +766,7 @@
         }
       }
     },
-    "/api/GetKit": {
+    "/publicapi/GetKit": {
       "post": {
         "tags": [
           "GetKit"
@@ -1054,7 +1063,7 @@
         }
       }
     },
-    "/api/GetTypography": {
+    "/publicapi/GetTypography": {
       "post": {
         "tags": [
           "GetTypography"
@@ -1128,7 +1137,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
     "/api/GetUserKits": {
@@ -1166,10 +1184,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
-    "/api/GetWeights": {
+    "/publicapi/GetWeights": {
       "post": {
         "tags": [
           "GetWeights"
@@ -1198,7 +1225,7 @@
         }
       }
     },
-    "/api/PublishKit": {
+    "/publicapi/PublishKit": {
       "post": {
         "tags": [
           "PublishKit"
@@ -1258,7 +1285,7 @@
         }
       }
     },
-    "/api/SetKitTheme": {
+    "/publicapi/SetKitTheme": {
       "post": {
         "tags": [
           "SetKitTheme"
@@ -1306,7 +1333,7 @@
         }
       }
     },
-    "/api/UpdateAnchors": {
+    "/publicapi/UpdateAnchors": {
       "post": {
         "tags": [
           "UpdateAnchors"
@@ -1366,7 +1393,7 @@
         }
       }
     },
-    "/api/UpdateButtons": {
+    "/publicapi/UpdateButtons": {
       "post": {
         "tags": [
           "UpdateButtons"
@@ -1606,7 +1633,7 @@
         }
       }
     },
-    "/api/UpdateInputs": {
+    "/publicapi/UpdateInputs": {
       "post": {
         "tags": [
           "UpdateInputs"
@@ -1666,7 +1693,7 @@
         }
       }
     },
-    "/api/UpdateKit": {
+    "/publicapi/UpdateKit": {
       "post": {
         "tags": [
           "UpdateKit"
@@ -1726,7 +1753,7 @@
         }
       }
     },
-    "/api/UpdateLists": {
+    "/publicapi/UpdateLists": {
       "post": {
         "tags": [
           "UpdateLists"
@@ -1786,7 +1813,7 @@
         }
       }
     },
-    "/api/UpdateSelectors": {
+    "/publicapi/UpdateSelectors": {
       "post": {
         "tags": [
           "UpdateSelectors"
@@ -1846,7 +1873,7 @@
         }
       }
     },
-    "/api/UpdateSettings": {
+    "/publicapi/UpdateSettings": {
       "post": {
         "tags": [
           "UpdateSettings"
@@ -1906,7 +1933,7 @@
         }
       }
     },
-    "/api/UpdateShadow": {
+    "/publicapi/UpdateShadow": {
       "post": {
         "tags": [
           "UpdateShadow"
@@ -1966,7 +1993,7 @@
         }
       }
     },
-    "/api/UpdateTypography": {
+    "/publicapi/UpdateTypography": {
       "post": {
         "tags": [
           "UpdateTypography"
@@ -2026,7 +2053,7 @@
         }
       }
     },
-    "/api/UpdateUser": {
+    "/publicapi/UpdateUser": {
       "post": {
         "tags": [
           "UpdateUser"
@@ -3348,6 +3375,14 @@
           }
         },
         "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "description": "Enter JWT Bearer token **_only_**",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
