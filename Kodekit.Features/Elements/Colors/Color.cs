@@ -38,11 +38,27 @@ public class Color : ISerializable
     public string HexValue { get; set; }
 
     public override string ToString() => $"{HexValue}";
+    
+    public Dictionary<string, string>? ColorOverrides { get; set; }
 
     public Dictionary<string, string> Serialize()
     {
         return Serialize(null);
     }
+
+    public static Dictionary<string, float> ColorGradients = new()
+    {
+        { "50", 0.52f },
+        { "100", 0.37f },
+        { "200", 0.26f },
+        { "300" , 0.12f },
+        { "400" , 0.06f },
+        { "500" , 0.00f },
+        { "600", -0.06f },
+        { "700" , -0.12f },
+        { "800" , -0.18f },
+        { "900" , -0.24f }
+    };
 
     public Dictionary<string, string> Serialize(string? type)
     {
@@ -53,16 +69,26 @@ public class Color : ISerializable
 
         return new Dictionary<string, string>
             {
-                { $"{type}50", ChangeBrightness(0.52f).HexValue },
-                { $"{type}100", ChangeBrightness(0.37f).HexValue },
-                { $"{type}200", ChangeBrightness(0.26f).HexValue },
-                { $"{type}300", ChangeBrightness(0.12f).HexValue },
-                { $"{type}400", ChangeBrightness(0.06f).HexValue },
-                { $"{type}500", HexValue },
-                { $"{type}600", ChangeBrightness(-0.06f).HexValue },
-                { $"{type}700", ChangeBrightness(-0.12f).HexValue },
-                { $"{type}800", ChangeBrightness(-0.18f).HexValue },
-                { $"{type}900", ChangeBrightness(-0.24f).HexValue }
+                //{ $"{type}50", ChangeBrightness(0.52f).HexValue },
+                //{ $"{type}100", ChangeBrightness(0.37f).HexValue },
+                //{ $"{type}200", ChangeBrightness(0.26f).HexValue },
+                //{ $"{type}300", ChangeBrightness(0.12f).HexValue },
+                //{ $"{type}400", ChangeBrightness(0.06f).HexValue },
+                //{ $"{type}500", HexValue },
+                //{ $"{type}600", ChangeBrightness(-0.06f).HexValue },
+                //{ $"{type}700", ChangeBrightness(-0.12f).HexValue },
+                //{ $"{type}800", ChangeBrightness(-0.18f).HexValue },
+                //{ $"{type}900", ChangeBrightness(-0.24f).HexValue }
+                { $"{type}50", CheckOverride(type, "50").ToString()},
+                { $"{type}100", CheckOverride(type, "100").ToString()},
+                { $"{type}200", CheckOverride(type, "200").ToString()},
+                { $"{type}300", CheckOverride(type, "300").ToString()},
+                { $"{type}400", CheckOverride(type, "400").ToString()},
+                { $"{type}500", CheckOverride(type, "500").ToString()},
+                { $"{type}600", CheckOverride(type, "600").ToString()},
+                { $"{type}700", CheckOverride(type, "700").ToString()},
+                { $"{type}800", CheckOverride(type, "800").ToString()},
+                { $"{type}900", CheckOverride(type, "900").ToString()}
             };
     }
 
@@ -77,6 +103,16 @@ public class Color : ISerializable
             colors.Add($"{type}-{Math.Round(i * 1000)}", Interpolate(color, i).HexValue);
 
         return colors;
+    }
+    public Color CheckOverride(string type, string gradient)
+    {
+        Color color;
+        if (ColorOverrides != null)
+            return ColorOverrides.ContainsKey(type)
+            ? color = new Color(ColorOverrides[type])
+            : color = ChangeBrightness(ColorGradients[type]);
+
+        return ChangeBrightness(ColorGradients[type]);
     }
 
     private Color ChangeBrightness(float correctionFactor)

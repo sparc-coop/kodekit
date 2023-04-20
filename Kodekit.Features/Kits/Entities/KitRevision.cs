@@ -191,7 +191,7 @@ public class KitRevision : Root<string>
         Shadows.Add(new Variable<Shadow>("xlarge", xLargeShadow));
     }
 
-    public void UpdateColor(ColorTypes colorType, string? hexValue)
+    public void UpdateColor(ColorTypes colorType, string? hexValue, string? gradient)
     {
         Colors.RemoveAll(x => colorType.ToString().ToLower() == x.Name.ToLower());
 

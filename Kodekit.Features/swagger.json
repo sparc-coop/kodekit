@@ -2252,6 +2252,13 @@
           "hexValue": {
             "type": "string",
             "nullable": true
+          },
+          "colorOverrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2293,6 +2300,27 @@
           },
           "success": {
             "type": "string",
+            "nullable": true
+          },
+          "primaryColorOverrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "secondaryColorOverrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "tertiaryColorOverrides": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
             "nullable": true
           }
         },

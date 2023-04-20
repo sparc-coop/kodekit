@@ -21,6 +21,10 @@ public class GetColors : PublicFeature<string, ColorsModel>
             kit.GetColor(ColorTypes.Lightest)?.HexValue,
             kit.GetColor(ColorTypes.Error)?.HexValue,
             kit.GetColor(ColorTypes.Warning)?.HexValue,
-            kit.GetColor(ColorTypes.Success)?.HexValue);
+            kit.GetColor(ColorTypes.Success)?.HexValue,
+            kit.GetColor(ColorTypes.Primary)?.ColorOverrides,
+            kit.GetColor(ColorTypes.Secondary)?.ColorOverrides,
+            kit.GetColor(ColorTypes.Tertiary)?.ColorOverrides
+            );
     }
 }
