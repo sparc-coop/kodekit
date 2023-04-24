@@ -15,10 +15,13 @@
             </div>
         }
 
-        <pre>
-        <code tabindex="0" class="language-html" @ref=CodeBlock style="background: #1C1C1C">
-            </code>
-        </pre>
+        @if (ShowCode)
+        {
+            <pre>
+            <code tabindex="0" class="language-html" @ref=CodeBlock style="background: #1C1C1C">
+                    </code>
+                </pre>
+        }
     </div>
 }
 
@@ -27,6 +30,7 @@
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public Kit Kit { get; set; }
     [Parameter] public string AdditionalClass { get; set; }
+    [Parameter] public bool ShowCode { get; set; } = true;
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;

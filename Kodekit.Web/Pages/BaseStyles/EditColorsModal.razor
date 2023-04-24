@@ -1,18 +1,18 @@
-﻿@inherits HighlightPageBase<ColorsModel>
-
-<div class="@Show">
-    <div class="modal">
+﻿<div class="@Show">
+    <div class="colors page modal">
         <div class="modal--container">
-            <Preview Kit=kit>
+            <Preview Kit=Kit ShowCode=false>
                 <h3>Edit Colors</h3>
-                <div class="subcolor-display">
-                    @if (Weights != null)
-                    {
-                        @foreach (var weight in Weights)
+                <div class="color-preview--container">
+                    <div class="subcolor-display">
+                        @if (Type != null && Weights != null)
                         {
-                            <span style="background-color: var(--@Type.ToLower()-@weight)"></span>
+                            @foreach (var weight in Weights)
+                            {
+                                <span style="background-color: var(--@Type.ToLower()-@weight)"></span>
+                            }
                         }
-                    }
+                    </div>
                 </div>
                 <button @onclick="Close">Cancel</button>
             </Preview>
@@ -29,6 +29,8 @@
     public string Type { get; set; }
     [Parameter]
     public List<string> Weights { get; set; }
+    [Parameter]
+    public Kit Kit { get; set; }
 
     private async Task Close()
     {
