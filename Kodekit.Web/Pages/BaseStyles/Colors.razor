@@ -1,5 +1,6 @@
 ﻿@inherits HighlightPageBase<ColorsModel>
 @page "/{kitId}/colors"
+@using Kodekit.Web.Shared.Icons
 
 <div class="colors page">
     <div class="page__container">
@@ -42,32 +43,56 @@
                     <Preview Kit=kit>
                         <div>
                             <label>Primary</label>
-                            <div class="color-display" style="background-color: var(--primary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    <span style="background-color: var(--primary-@weight)"></span>
-                                }
+                            <div class="color-preview--container">
+                                <div class="edit-colors" @onclick="@(e => ShowEditColorsModal("Primary"))">
+                                    <div class="edit-colors--wrapper">
+                                        <EditIcon />
+                                        <p>Edit Colors Manually</p>
+                                    </div>
+                                </div>
+                                <div class="color-display" style="background-color: var(--primary-500)"></div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        <span style="background-color: var(--primary-@weight)"></span>
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div>
                             <label>Secondary</label>
-                            <div class="color-display" style="background-color: var(--secondary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    <span style="background-color: var(--secondary-@weight)"></span>
-                                }
+                            <div class="color-preview--container">
+                                <div class="edit-colors" @onclick="@(e => ShowEditColorsModal("Secondary"))">
+                                    <div class="edit-colors--wrapper">
+                                        <EditIcon />
+                                        <p>Edit Colors Manually</p>
+                                    </div>
+                                </div>
+                                <div class="color-display" style="background-color: var(--secondary-500)"></div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        <span style="background-color: var(--secondary-@weight)"></span>
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div>
                             <label>Tertiary</label>
-                            <div class="color-display" style="background-color: var(--tertiary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    <span style="background-color: var(--tertiary-@weight)"></span>
-                                }
+                            <div class="color-preview--container">
+                                <div class="edit-colors" @onclick="@(e => ShowEditColorsModal("Tertiary"))">
+                                    <div class="edit-colors--wrapper">
+                                        <EditIcon />
+                                        <p>Edit Colors Manually</p>
+                                    </div>
+                                </div>
+                                <div class="color-display" style="background-color: var(--tertiary-500)"></div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        <span style="background-color: var(--tertiary-@weight)"></span>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </Preview>
@@ -167,9 +192,12 @@
         </div>
     </div>
 </div>
+<EditColorsModal Show="@Show" CloseModal="CloseModal" Type="@ColorTypeToEdit" Weights="@Weights"/>
 
 @code {
     List<string> Weights = new List<string> { "900", "800", "700", "600", "500", "400", "300", "200", "100", "50" };
+    string Show = "";
+    string ColorTypeToEdit;
 
     protected override async Task OnInitializedAsync()
     {
@@ -185,5 +213,16 @@
     protected override async Task<Kit> UpdateAsync()
     {
         return await PublicApi().UpdateColorsAsync(Model);
+    }
+
+    private void ShowEditColorsModal(string type)
+    {
+        Show = "active";
+        ColorTypeToEdit = type;
+    }
+
+    private void CloseModal()
+    {
+        Show = "";
     }
 }
