@@ -1,8 +1,21 @@
-﻿@inherits InputText
+﻿<div>
+    <label>@Name</label>
+    <div class="color-display" style="background-color: var(--@(LowercaseName)-400)"></div>
+    <div class="subcolor-display">
+        @foreach (var weight in Gradients.Keys)
+        {
+            string typeWeight = LowercaseName + "-" + weight;
+            <div style="background-color: var(--@(LowercaseName)-@weight)">
+                <InputColor @bind-value="Gradients[weight]" />
+            </div>
+        }
+    </div>
+</div>
 
-<span class="inputcolor-edit">
-    <input @attributes="AdditionalAttributes"
-           class="@CssClass"
-           type="color" />
-    @CurrentValueAsString
-</span>
+@code {
+    [Parameter] public string Name { get; set; }
+    [Parameter] public IDictionary<string, string> Gradients { get; set; }
+    string LowercaseName => Name.ToLower();
+
+    private string Value(string weight) => Gradients.ContainsKey(weight) ? Gradients[weight] : null;
+}

@@ -8,6 +8,7 @@ public class Color : ISerializable
     public Color()
     {
         HexValue = ColorTranslator.ToHtml(System.Drawing.Color.White);
+        CalculateGradients();
     }
 
     public Color(string hex) : this(hex, "")
@@ -29,6 +30,7 @@ public class Color : ISerializable
             hex = "#" + hex;
 
         HexValue = hex;
+        CalculateGradients();
     }
 
     public Color(System.Drawing.Color color)
@@ -104,6 +106,11 @@ public class Color : ISerializable
             : color = ChangeBrightness(ColorWeights[weight]);
 
         return ChangeBrightness(ColorWeights[weight]);
+    }
+
+    public void CalculateGradients()
+    {
+        ColorOverrides = ColorWeights.ToDictionary(x => x.Key, x => ChangeBrightness(ColorWeights[x.Key]).HexValue);
     }
 
     private Color ChangeBrightness(float correctionFactor)

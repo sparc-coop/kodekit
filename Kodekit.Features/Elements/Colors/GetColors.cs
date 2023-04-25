@@ -12,6 +12,9 @@ public class GetColors : PublicFeature<string, ColorsModel>
     public override async Task<ColorsModel> ExecuteAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
+        GenerateInitialColorOverrides(kit.GetColor(ColorTypes.Primary));
+        GenerateInitialColorOverrides(kit.GetColor(ColorTypes.Secondary));
+        GenerateInitialColorOverrides(kit.GetColor(ColorTypes.Tertiary));
 
         return new(id,
             kit.GetColor(ColorTypes.Primary)?.HexValue,
@@ -26,5 +29,11 @@ public class GetColors : PublicFeature<string, ColorsModel>
             kit.GetColor(ColorTypes.Secondary)?.ColorOverrides,
             kit.GetColor(ColorTypes.Tertiary)?.ColorOverrides
             );
+    }
+
+    private void GenerateInitialColorOverrides(Color? color)
+    {
+        if (color == null) return;
+        color.CalculateGradients();
     }
 }

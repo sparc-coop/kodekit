@@ -40,45 +40,9 @@
                         </label>
                     </div>
                     <Preview Kit=kit>
-                        <div>
-                            <label>Primary</label>
-                            <div class="color-display" style="background-color: var(--primary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    string typeWeight = "primary" + "-" + weight;
-                                    <div style="background-color: var(--primary-@weight)">
-                                        <EditColor value="@SetValue("primary", @weight)" @onchange="@(e => Overrides("primary", @weight, e.Value.ToString()))"/>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                        <div>
-                            <label>Secondary</label>
-                            <div class="color-display" style="background-color: var(--secondary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    string typeWeight = "secondary" + "-" + weight;
-                                    <div style="background-color: var(--secondary-@weight)">
-                                        <EditColor value="@SetValue("secondary", @weight)" @onchange="@(e => Overrides("secondary", @weight, e.Value.ToString()))"/>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                        <div>
-                            <label>Tertiary</label>
-                            <div class="color-display" style="background-color: var(--tertiary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    string typeWeight = "tertiary" + "-" + weight;
-                                    <div style="background-color: var(--tertiary-@weight)">
-                                        <EditColor value="@SetValue("tertiary", @weight)" @onchange="@(e => Overrides("tertiary", @weight, e.Value.ToString()))"/>
-                                    </div>
-                                }
-                            </div>
-                        </div>
+                        <EditColor Name="Primary" Gradients="Model.PrimaryColorOverrides" />
+                        <EditColor Name="Secondary" Gradients="Model.SecondaryColorOverrides" />
+                        <EditColor Name="Tertiary" Gradients="Model.TertiaryColorOverrides" />
                     </Preview>
 
                     <header>
@@ -220,58 +184,5 @@
         await UpdateAsync();
     }
 
-    private string SetValue(string type, string weight)
-    {
-        if (type.ToLower() == "primary") {
-            string typeWeight = type + "-" + weight;
-
-            if (Model.PrimaryColorOverrides == null)
-                Dictionary<string, string> PrimaryColors = Color.Serialize(type);
-                return Dictionary[typeWeight];
-
-            if(Model.PrimaryColorOverrides.ContainsKey(typeWeight))
-            {
-                return Model.PrimaryColorOverrides[typeWeight];
-            } else
-            {
-                return "";
-            }
-        }
-
-        if (type.ToLower() == "secondary")
-        {
-            string typeWeight = type + "-" + weight;
-
-            if (Model.SecondaryColorOverrides == null)
-                Dictionary<string, string> SecondaryColors = Color.Serialize(type);
-                return Dictionary[typeWeight];
-
-            if (Model.SecondaryColorOverrides.ContainsKey(typeWeight))
-            {
-                return Model.SecondaryColorOverrides[typeWeight];
-            }
-            else
-            {
-                return "";
-            }
-        }
-        if (type.ToLower() == "tertiary")
-        {
-            string typeWeight = type + "-" + weight;
-
-            if (Model.TertiaryColorOverrides == null)
-                Dictionary<string, string> TertiaryColors = Color.Serialize(type);
-                return Dictionary[typeWeight];
-
-            if (Model.TertiaryColorOverrides.ContainsKey(typeWeight))
-            {
-                return Model.TertiaryColorOverrides[typeWeight];
-            }
-            else
-            {
-                return "";
-            }
-        }
-        return "";
-    }
+    
 }
