@@ -15,7 +15,7 @@ public class UpdateColors : PublicFeature<ColorsModel, Kit>
         var kit = await Kits.GetCurrentAsync(request.KitId);
         var revision = kit.Revision;
 
-        // checks if any of the Color schemes that have automatically generated gradients
+        // checks if any of the Color schemes that have automatically generated gradient
         // (e.g., Primary, Secondary, Tertiary, Grayscale TBD)
         // have overrides and if so, calls UpdateColor() to update that color
         if (request.PrimaryColorOverrides != null)

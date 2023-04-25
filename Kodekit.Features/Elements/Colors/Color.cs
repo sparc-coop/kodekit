@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Runtime.CompilerServices;
 
 namespace Kodekit.Features.Elements;
 
@@ -39,14 +40,14 @@ public class Color : ISerializable
 
     public override string ToString() => $"{HexValue}";
     
-    public Dictionary<string, string>? ColorOverrides { get; set; }
+    public Dictionary<string, string>? ColorOverrides { get; set; } //<type-weight, hex>
 
     public Dictionary<string, string> Serialize()
     {
         return Serialize(null);
     }
 
-    public static Dictionary<string, float> ColorGradients = new()
+    public static Dictionary<string, float> ColorWeights = new()
     {
         { "50", 0.52f },
         { "100", 0.37f },
@@ -68,28 +69,18 @@ public class Color : ISerializable
             type = string.Empty;
 
         return new Dictionary<string, string>
-            {
-                //{ $"{type}50", ChangeBrightness(0.52f).HexValue },
-                //{ $"{type}100", ChangeBrightness(0.37f).HexValue },
-                //{ $"{type}200", ChangeBrightness(0.26f).HexValue },
-                //{ $"{type}300", ChangeBrightness(0.12f).HexValue },
-                //{ $"{type}400", ChangeBrightness(0.06f).HexValue },
-                //{ $"{type}500", HexValue },
-                //{ $"{type}600", ChangeBrightness(-0.06f).HexValue },
-                //{ $"{type}700", ChangeBrightness(-0.12f).HexValue },
-                //{ $"{type}800", ChangeBrightness(-0.18f).HexValue },
-                //{ $"{type}900", ChangeBrightness(-0.24f).HexValue }
-                { $"{type}50", CheckOverride(type, "50").ToString()},
-                { $"{type}100", CheckOverride(type, "100").ToString()},
-                { $"{type}200", CheckOverride(type, "200").ToString()},
-                { $"{type}300", CheckOverride(type, "300").ToString()},
-                { $"{type}400", CheckOverride(type, "400").ToString()},
-                { $"{type}500", CheckOverride(type, "500").ToString()},
-                { $"{type}600", CheckOverride(type, "600").ToString()},
-                { $"{type}700", CheckOverride(type, "700").ToString()},
-                { $"{type}800", CheckOverride(type, "800").ToString()},
-                { $"{type}900", CheckOverride(type, "900").ToString()}
-            };
+        {
+            { $"{type}-50", CheckOverride($"{type}-50", "50").ToString()},
+            { $"{type}-100", CheckOverride($"{type}-100", "100").ToString()},
+            { $"{type}-200", CheckOverride($"{type}-200", "200").ToString()},
+            { $"{type}-300", CheckOverride($"{type}-300", "300").ToString()},
+            { $"{type}-400", CheckOverride($"{type}-400", "400").ToString()},
+            { $"{type}-500", CheckOverride($"{type}-500", "500").ToString()},
+            { $"{type}-600", CheckOverride($"{type}-600", "600").ToString()},
+            { $"{type}-700", CheckOverride($"{type}-700", "700").ToString()},
+            { $"{type}-800", CheckOverride($"{type}-800", "800").ToString()},
+            { $"{type}-900", CheckOverride($"{type}-900", "900").ToString()}
+        };
     }
 
     public Dictionary<string, string> Expand(Color color)
@@ -104,15 +95,15 @@ public class Color : ISerializable
 
         return colors;
     }
-    public Color CheckOverride(string type, string gradient)
+    public Color CheckOverride(string typeWeight, string weight)
     {
         Color color;
         if (ColorOverrides != null)
-            return ColorOverrides.ContainsKey(type)
-            ? color = new Color(ColorOverrides[type])
-            : color = ChangeBrightness(ColorGradients[type]);
+            return ColorOverrides.ContainsKey(typeWeight)
+            ? color = new Color(ColorOverrides[typeWeight])
+            : color = ChangeBrightness(ColorWeights[weight]);
 
-        return ChangeBrightness(ColorGradients[type]);
+        return ChangeBrightness(ColorWeights[weight]);
     }
 
     private Color ChangeBrightness(float correctionFactor)
