@@ -1,12 +1,22 @@
-﻿<div>
+﻿@inherits HighlightPageBase<ColorsModel>
+
+<div>
     <label>@Name</label>
     <div class="color-display" style="background-color: var(--@(LowercaseName)-400)"></div>
     <div class="subcolor-display">
         @foreach (var weight in Gradients.Keys)
         {
-            string typeWeight = LowercaseName + "-" + weight;
+            typeWeight = LowercaseName + "-" + weight;
             <div style="background-color: var(--@(LowercaseName)-@weight)">
-                <InputColor @bind-value="Gradients[weight]" />
+                @if (Gradients[typeWeight] != null)
+                {
+                    <InputColor @bind-Value="Gradients[typeWeight]" />
+                } else
+                {
+                    int num = Convert.ToInt32(weight);
+                    defaultColor = Model.Primary[num].ToString();
+                    <InputColor @bind-Value="defaultColor" />
+                }
             </div>
         }
     </div>
@@ -16,6 +26,8 @@
     [Parameter] public string Name { get; set; }
     [Parameter] public IDictionary<string, string> Gradients { get; set; }
     string LowercaseName => Name.ToLower();
+    string typeWeight;
+    string defaultColor;
 
-    private string Value(string weight) => Gradients.ContainsKey(weight) ? Gradients[weight] : null;
+    private string Value(string weight) => Gradients.ContainsKey(typeWeight) ? Gradients[typeWeight] : null;
 }
