@@ -17,7 +17,7 @@
         top: 0;
         left: 0;
         z-index: 20;
-        opacity: 0;
+        mix-blend-mode: overlay;
     }
 
     &--shadow {
