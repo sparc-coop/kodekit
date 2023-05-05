@@ -1,0 +1,13 @@
+﻿@using Kodekit.Web.Components.ColorBlotch;
+
+<div class="color-blotch">
+    <ColorSvg Hex=@Hex />
+    <img class="color-blotch--shadow" src="/colors/Shadow.png" />
+    <img class="color-blotch--midtone" src="/colors/Midtone.png" />
+    <img class="color-blotch--highlight" src="/colors/Highlight.png" />
+</div>
+
+@code {
+    [Parameter]
+    public string Hex { get; set; }
+}

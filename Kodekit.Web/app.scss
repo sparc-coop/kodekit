@@ -1,6 +1,9 @@
 ﻿@import "_variables";
 
 //Components
+@import "Components/ColorBlotch/ColorPalette";
+@import "Components/ColorBlotch/ColorBlotch";
+
 @import "Shared/Components/pagelayout";
 @import "Shared/Components/modal";
 @import "Shared/Components/toggle-switch";

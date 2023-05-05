@@ -38,5 +38,9 @@
       <ClassName>KodekitApi</ClassName>
     </OpenApiReference>
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="wwwroot\colors\" />
+  </ItemGroup>
 
 </Project>

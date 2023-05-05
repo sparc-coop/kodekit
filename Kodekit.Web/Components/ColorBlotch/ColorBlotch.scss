@@ -1,0 +1,38 @@
+﻿.color-blotch {
+    width: 200px;
+    position: relative;
+
+    &--color {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: -2px;
+        left: -1px;
+        z-index: 10;
+    }
+
+    &--midtone {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        opacity: 0;
+    }
+
+    &--shadow {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 30;
+    }
+
+    &--highlight {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 40;
+    }
+}

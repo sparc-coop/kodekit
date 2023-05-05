@@ -1,4 +1,47 @@
 ﻿@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+.color-palette {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  justify-content: flex-start;
+}
+
+.color-blotch {
+  width: 200px;
+  position: relative;
+}
+.color-blotch--color {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: -2px;
+  left: -1px;
+  z-index: 10;
+}
+.color-blotch--midtone {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  opacity: 0;
+}
+.color-blotch--shadow {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+.color-blotch--highlight {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 40;
+}
+
 .page {
   background: #F5F7FA;
   padding: 10px 80px 100px 80px;
@@ -1937,12 +1980,9 @@ section.secondary {
  * 3. Remove gray overlay on links for iOS.
  */
 html {
-  line-height: 1.15;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-tap-highlight-color: transparent;
-  /* 3*/
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
 }
 
 /* Sections */
@@ -2015,12 +2055,9 @@ dd {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
   border-top-width: 1px;
   margin: 0;
   clear: both;
@@ -2032,10 +2069,8 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: inherit;
-  /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
 }
 
 address {
@@ -2058,10 +2093,8 @@ a {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 abbr[title] {
-  text-decoration: underline;
-  /* 2 */
-  text-decoration: underline dotted;
-  /* 2 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -2079,10 +2112,8 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
-  /* 1 */
-  font-size: inherit;
-  /* 2 */
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
 }
 
 /**
@@ -2250,16 +2281,11 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 legend {
-  color: inherit;
-  /* 2 */
-  display: table;
-  /* 1 */
-  max-width: 100%;
-  /* 1 */
-  padding: 0;
-  /* 3 */
-  white-space: normal;
-  /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
 }
 
 /**
@@ -2288,8 +2314,7 @@ textarea {
  * 1. Correct the outline style in Safari.
  */
 [type=search] {
-  outline-offset: -2px;
-  /* 1 */
+  outline-offset: -2px; /* 1 */
 }
 
 /**
@@ -2304,10 +2329,8 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
 }
 
 /**
