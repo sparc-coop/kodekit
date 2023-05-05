@@ -1,4 +1,4 @@
-﻿@using Kodekit.Web.Components.ColorBlotch;
+﻿@using Kodekit.Web.Components.Colors;
 
 <div class="color-blotch">
     <ColorSvg Hex=@Hex />
@@ -8,10 +8,6 @@
 </div>
 
 @code {
-    [Parameter]
-    public string Type { get; set; }
-    [Parameter] 
-    public string Weight { get; set; }
     [Parameter]
     public string Hex { get; set; }
 }

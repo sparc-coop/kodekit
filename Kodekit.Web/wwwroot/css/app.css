@@ -1,13 +1,69 @@
 ﻿@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 .color-palette {
+  background: #1E1E1E;
   width: 100%;
+  height: 100vh;
+  padding: 80px;
+}
+.color-palette .color-main {
+  margin-right: 58px;
+}
+.color-palette .color-main .color-blotch {
+  top: -100px;
+}
+.color-palette .primary, .color-palette .secondary, .color-palette .tertiary {
+  width: 100%;
+  height: 147px;
+  margin-bottom: 35px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  gap: 25px;
+  justify-content: flex-start;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.color-card {
+  width: 110px;
+  height: 147px;
+  font-family: "EncodeSans";
+  font-weight: 400;
+}
+.color-card--content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+.color-card--content label {
+  margin-bottom: 5px;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 120%;
+}
+.color-card--content .color-swatch {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  font-family: "EncodeSans";
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 100%;
+}
+.color-card--content .color-swatch aside {
+  width: 26px;
+  height: 14px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+.color-card--divider {
+  width: 100%;
+  border-top: 1px solid #FFFFFF;
+  margin-bottom: 6px;
 }
 
 .color-blotch {
-  width: 200px;
+  width: 98px;
   position: relative;
 }
 .color-blotch--color {
@@ -2480,6 +2536,16 @@ button.card-button-secondary {
   left: 5%;
 }
 
+@font-face {
+  font-family: "EncodeSans";
+  font-weight: 300;
+  src: url(../fonts/EncodeSans-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans";
+  font-weight: 400;
+  src: url(../fonts/EncodeSans-Regular.ttf) format("truetype");
+}
 body {
   margin: 0;
   overflow-x: hidden;
