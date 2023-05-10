@@ -1,15 +1,11 @@
 ﻿@import "../_variables.scss";
 
 .dashboard {
+    background: #0E0E0E;
 
     .page__container {
         max-width: 1056px;
         margin-top: 100px;
-    }
-
-    h2 {
-        font-size: 28px;
-        font-weight: 500;
     }
 
     a {
@@ -49,126 +45,59 @@
         border-radius: 4px;
     }
 
-    &-card {
-        margin: 16px;
-        height: 329px;
-        width: 320px;
-        border-radius: 8px;
-        padding: 24px;
-        background: $white;
-        cursor: pointer;
-        box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-        box-sizing: border-box;
-
-        img {
-            width: 272px;
-        }
-
-        .title {
-            color: $gray900;
-            font-size: 18px;
-            font-weight: 500;
-            line-height: 120%;
-            letter-spacing: 0.02em;
-            padding-top: 16px;
-        }
-
-        .date {
-            color: $gray400;
-            font-size: 12px;
-            line-height: 14.4px;
-        }
-    }
-
     &--header {
-        display: flex;
-        max-width: 1024px;
         margin: 0 auto;
 
-        button {
-            width: 140px;
-            height: 31px;
-            font-size: 12px;
-            padding: 6px 11px;
-            margin-top: 0;
+        p {
+            font-family: 'QuantaGroteskPro';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 120%;
+            color: $white;
+        }
 
-            img {
-                margin-left: 10px;
-            }
+        h2 {
+            font-family: 'QuantaGroteskPro';
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 120%;
+            color: $white;
+        }
+
+        h3 {
+            font-family: 'EncodeSans';
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 150%;
+            color: #B2B2B2;
+            margin-top: 20px;
+            margin-bottom: 40px;
         }
 
         .right {
-            position: absolute;
-            right: 16px;
+            width: 100%;
             display: flex;
-        }
-    }
-}
+            justify-content: end;
 
-.dashboard-preview {
-    height: 223px;
-    width: 100%;
-    background-color: #f5f7fa;
-    padding: 45px 32px 24px;
-    position: relative;
-    display: grid;
-    grid-template-columns: 93px 93px;
-    grid-template-rows: 78px 60px;
-    gap: 16px;
+            button {
+                padding: 6px 18px;
+                border: 1px solid $white;
+                border-radius: 6px;
+                font-family: 'EncodeSans';
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 150%;
+                color: $white;
+                text-align: center;
 
-    header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 21px;
-        background-color: #d2d4d9;
-        padding: 8px;
-        display: flex;
+                .icon-add {
+                    margin-left: 10px;
 
-        > div {
-            height: 5px;
-            width: 5px;
-            margin-right: 3px;
-            border-radius: 20px;
-
-            &.button-red {
-                background-color: #ff5f5c;
+                    path {
+                        fill: $white;
+                    }
+                }
             }
-
-            &.button-yellow {
-                background-color: #ffbc43;
-            }
-
-            &.button-green {
-                background-color: #00c84b;
-            }
-        }
-    }
-
-    .typography, .colors {
-        background: white;
-        box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-        border-radius: 8px;
-        padding: 12px;
-    }
-
-    .typography {
-        h1, p {
-            font-size: 32px !important;
-            line-height: 38px !important;
-        }
-    }
-
-    .colors {
-        grid-column: span 2;
-        display: grid;
-        grid-template-columns: repeat(4, 40px);
-        gap: 6px;
-        > div {
-            height: 40px;
-            width: 40px;
-            border-radius: 40px;
         }
     }
 }

@@ -1,0 +1,78 @@
+﻿@using Kodekit.Web.Components.Colors;
+
+<div class="kit-card--divider"></div>
+<div tabindex="0" @onclick="@(e => GoToKit(Kit.Id))" @onkeydown="@(e => GoToKit(Kit.Id))" class="kit-card">
+    <div class="kit-card--header">
+        <label>@Kit.KitId</label>
+        <div class="kit-info">
+            <span class="last-saved">
+                Last Saved: @Kit.DateModified.ToString("MM/dd/yyyy HH:MM tt")
+            </span>
+            <div class="kit-actions">
+                <button>
+                    <img src="images/preview-icon.svg" />
+                </button>
+                <button>
+                    <img src="images/download-icon.svg" />
+                </button>
+                <button>
+                    <img src="images/delete-icon2.svg" />
+                </button>
+                <button>
+                    <img src="images/more-icon.svg" class="more-actions" />
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="kit-card--preview preview-@Kit.Id">
+        <style type="text/css">
+            @@import url('@CssUrl(Kit)');
+        </style>
+        <div class="typography">
+            <label>Typography</label>
+            <div class="typography--preview">
+                <h5>Heading/H5/Font Family</h5>
+                <span>Body/Regular/Font Family</span>
+            </div>
+        </div>
+        <div class="preview--divider"></div>
+        <div class="colors">
+            <label>Base color</label>
+            <div class="colors--preview">
+                <ColorBlotch Hex="#E9C137" />
+                <ColorBlotch Hex="#E937C2" />
+                <ColorBlotch Hex="#3755E9" />
+            </div>
+        </div>
+        <div class="preview--divider"></div>
+        <div class="colors">
+            <label>Black and White</label>
+            <div class="colors--preview">
+                <ColorBlotch Hex="#FFFFFF" />
+                <ColorBlotch Hex="#000000" />
+            </div>
+        </div>
+        <div class="preview--divider"></div>
+        <div class="colors">
+            <label>System Color</label>
+            <div class="colors--preview">
+                <ColorBlotch Hex="#34CE97" />
+                <ColorBlotch Hex="#E82424" />
+                <ColorBlotch Hex="#12ABED" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@inject IConfiguration Config
+@code {
+    [Parameter]
+    public Kit Kit { get; set; }
+
+    private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
+
+    private async Task GoToKit(string kit)
+    {
+        Nav.NavigateTo($"/{kit}/introduction");
+    }
+}

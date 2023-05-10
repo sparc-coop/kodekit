@@ -26,6 +26,7 @@
 @import "Pages/Installation";
 @import "Pages/Themes";
 @import "Pages/UserKits";
+@import "Pages/KitCard";
 @import "Pages/ReleaseNotes";
 
 @import "Shared/MainLayout";
@@ -55,6 +56,24 @@
     font-family: 'EncodeSans';
     font-weight: 400;
     src: url(wwwroot/fonts/EncodeSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'QuantaGroteskPro';
+    font-weight: 400;
+    src: url(wwwroot/fonts/QuantaGroteskPro-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'QuantaGroteskPro';
+    font-weight: 500;
+    src: url(wwwroot/fonts/QuantaGroteskPro-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'QuantaGroteskPro';
+    font-weight: 700;
+    src: url(wwwroot/fonts/QuantaGroteskPro-Bold.ttf) format('truetype');
 }
 
 body {

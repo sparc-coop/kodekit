@@ -1,0 +1,97 @@
+﻿@import "../_variables.scss";
+
+.kit-card--divider {
+    border-top: 1px solid #C8C8C8;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.kit-card {
+    width: 100%;
+    height: 100%;
+    background: #0E0E0E;
+    padding-bottom: 40px;
+
+    &--header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: #1A1A1A;
+        border-radius: 0px 0px 8px 8px;
+        padding: 18px;
+
+        label {
+            font-family: 'EncodeSans';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+            color: $white;
+        }
+
+        .kit-info {
+            display: flex;
+            font-family: 'EncodeSans';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 150%;
+            color: $white;
+            text-transform: uppercase;
+        }
+
+        .kit-actions {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            button {
+                padding: 0;
+                border: none;
+            }
+
+            img {
+                vertical-align: middle;
+                margin-top: -5px;
+
+                svg {
+                    width: 15px;
+                    height: 15px;
+                }
+
+                .more-actions {
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+
+    &--preview {
+        width: 100%;
+        margin-top: 35px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        color: $white;
+
+        .preview--divider {
+            border-left: 1px solid $white;
+            opacity: 30%;
+        }
+
+        label {
+            color: $white;
+            font-family: 'EncodeSans';
+            font-weight: 300;
+        }
+
+        .typography--preview {
+            margin-top: 20px;
+        }
+
+        .colors--preview {
+            margin-top: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

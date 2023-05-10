@@ -1204,13 +1204,12 @@
   }
 }
 
+.dashboard {
+  background: #0E0E0E;
+}
 .dashboard .page__container {
   max-width: 1056px;
   margin-top: 100px;
-}
-.dashboard h2 {
-  font-size: 28px;
-  font-weight: 500;
 }
 .dashboard a {
   display: block;
@@ -1247,110 +1246,136 @@
   box-sizing: border-box;
   border-radius: 4px;
 }
-.dashboard-card {
-  margin: 16px;
-  height: 329px;
-  width: 320px;
-  border-radius: 8px;
-  padding: 24px;
-  background: #FFFFFF;
-  cursor: pointer;
-  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-  box-sizing: border-box;
-}
-.dashboard-card img {
-  width: 272px;
-}
-.dashboard-card .title {
-  color: #17171A;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 120%;
-  letter-spacing: 0.02em;
-  padding-top: 16px;
-}
-.dashboard-card .date {
-  color: #A9ACB2;
-  font-size: 12px;
-  line-height: 14.4px;
-}
 .dashboard--header {
-  display: flex;
-  max-width: 1024px;
   margin: 0 auto;
 }
-.dashboard--header button {
-  width: 140px;
-  height: 31px;
-  font-size: 12px;
-  padding: 6px 11px;
-  margin-top: 0;
+.dashboard--header p {
+  font-family: "QuantaGroteskPro";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: #FFFFFF;
 }
-.dashboard--header button img {
-  margin-left: 10px;
+.dashboard--header h2 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+.dashboard--header h3 {
+  font-family: "EncodeSans";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 150%;
+  color: #B2B2B2;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 .dashboard--header .right {
-  position: absolute;
-  right: 16px;
+  width: 100%;
   display: flex;
+  justify-content: end;
+}
+.dashboard--header .right button {
+  padding: 6px 18px;
+  border: 1px solid #FFFFFF;
+  border-radius: 6px;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #FFFFFF;
+  text-align: center;
+}
+.dashboard--header .right button .icon-add {
+  margin-left: 10px;
+}
+.dashboard--header .right button .icon-add path {
+  fill: #FFFFFF;
 }
 
-.dashboard-preview {
-  height: 223px;
+.kit-card--divider {
+  border-top: 1px solid #C8C8C8;
   width: 100%;
-  background-color: #f5f7fa;
-  padding: 45px 32px 24px;
-  position: relative;
-  display: grid;
-  grid-template-columns: 93px 93px;
-  grid-template-rows: 78px 60px;
-  gap: 16px;
+  margin-bottom: 6px;
 }
-.dashboard-preview header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 21px;
-  background-color: #d2d4d9;
-  padding: 8px;
+
+.kit-card {
+  width: 100%;
+  height: 100%;
+  background: #0E0E0E;
+  padding-bottom: 40px;
+}
+.kit-card--header {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #1A1A1A;
+  border-radius: 0px 0px 8px 8px;
+  padding: 18px;
 }
-.dashboard-preview header > div {
-  height: 5px;
-  width: 5px;
-  margin-right: 3px;
-  border-radius: 20px;
+.kit-card--header label {
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #FFFFFF;
 }
-.dashboard-preview header > div.button-red {
-  background-color: #ff5f5c;
+.kit-card--header .kit-info {
+  display: flex;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #FFFFFF;
+  text-transform: uppercase;
 }
-.dashboard-preview header > div.button-yellow {
-  background-color: #ffbc43;
+.kit-card--header .kit-actions {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.dashboard-preview header > div.button-green {
-  background-color: #00c84b;
+.kit-card--header .kit-actions button {
+  padding: 0;
+  border: none;
 }
-.dashboard-preview .typography, .dashboard-preview .colors {
-  background: white;
-  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-  border-radius: 8px;
-  padding: 12px;
+.kit-card--header .kit-actions img {
+  vertical-align: middle;
+  margin-top: -5px;
 }
-.dashboard-preview .typography h1, .dashboard-preview .typography p {
-  font-size: 32px !important;
-  line-height: 38px !important;
+.kit-card--header .kit-actions img svg {
+  width: 15px;
+  height: 15px;
 }
-.dashboard-preview .colors {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: repeat(4, 40px);
-  gap: 6px;
+.kit-card--header .kit-actions img .more-actions {
+  margin-top: 0px;
 }
-.dashboard-preview .colors > div {
-  height: 40px;
-  width: 40px;
-  border-radius: 40px;
+.kit-card--preview {
+  width: 100%;
+  margin-top: 35px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #FFFFFF;
+}
+.kit-card--preview .preview--divider {
+  border-left: 1px solid #FFFFFF;
+  opacity: 30%;
+}
+.kit-card--preview label {
+  color: #FFFFFF;
+  font-family: "EncodeSans";
+  font-weight: 300;
+}
+.kit-card--preview .typography--preview {
+  margin-top: 20px;
+}
+.kit-card--preview .colors--preview {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .release a {
@@ -2545,6 +2570,21 @@ button.card-button-secondary {
   font-family: "EncodeSans";
   font-weight: 400;
   src: url(../fonts/EncodeSans-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "QuantaGroteskPro";
+  font-weight: 400;
+  src: url(../fonts/QuantaGroteskPro-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  src: url(../fonts/QuantaGroteskPro-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "QuantaGroteskPro";
+  font-weight: 700;
+  src: url(../fonts/QuantaGroteskPro-Bold.ttf) format("truetype");
 }
 body {
   margin: 0;
