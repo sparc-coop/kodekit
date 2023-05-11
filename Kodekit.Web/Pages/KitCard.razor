@@ -6,7 +6,7 @@
         <label>@Kit.KitId</label>
         <div class="kit-info">
             <span class="last-saved">
-                Last Saved: @Kit.DateModified.ToString("MM/dd/yyyy HH:MM tt")
+                Last Saved: @Kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
             </span>
             <div class="kit-actions">
                 <button>
@@ -39,26 +39,26 @@
         <div class="colors">
             <label>Base color</label>
             <div class="colors--preview">
-                <ColorBlotch Hex="#E9C137" />
-                <ColorBlotch Hex="#E937C2" />
-                <ColorBlotch Hex="#3755E9" />
+                <ColorBlotch Hex="@GetHexValue("primary")" />
+                <ColorBlotch Hex="@GetHexValue("secondary")" />
+                <ColorBlotch Hex="@GetHexValue("tertiary")" />
             </div>
         </div>
         <div class="preview--divider"></div>
         <div class="colors">
             <label>Black and White</label>
             <div class="colors--preview">
-                <ColorBlotch Hex="#FFFFFF" />
-                <ColorBlotch Hex="#000000" />
+                <ColorBlotch Hex="@GetHexValue("lightest")" />
+                <ColorBlotch Hex="@GetHexValue("darkest")" />
             </div>
         </div>
         <div class="preview--divider"></div>
         <div class="colors">
             <label>System Color</label>
             <div class="colors--preview">
-                <ColorBlotch Hex="#34CE97" />
-                <ColorBlotch Hex="#E82424" />
-                <ColorBlotch Hex="#12ABED" />
+                <ColorBlotch Hex="@GetHexValue("error")" />
+                <ColorBlotch Hex="@GetHexValue("warning")" />
+                <ColorBlotch Hex="@GetHexValue("success")" />
             </div>
         </div>
     </div>
@@ -68,6 +68,23 @@
 @code {
     [Parameter]
     public Kit Kit { get; set; }
+
+    [Parameter]
+    public KitRevision KitRevision { get; set; }
+
+    private string GetHexValue(string type)
+    {
+        string hex;
+        if (KitRevision != null)
+        {
+            hex = KitRevision.Colors.First(x => x.Name.ToLower() == type).Value.ToString();
+        }
+        else
+        {
+            hex = "#FFFFFF";
+        }
+        return hex;
+    }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 
