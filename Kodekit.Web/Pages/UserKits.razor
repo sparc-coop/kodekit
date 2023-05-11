@@ -40,16 +40,7 @@
                 <div class="dashboard-container">
                     @foreach (var kit in Kits)
                     {
-                        @GetKitRevisions(kit.Id)
-                        ;
-                        @if (KitRevisions != null)
-                        {
-                            <KitCard Kit="kit" KitRevision="KitRevisions.Last()" />
-                        }
-                        else
-                        {
-                            <KitCard Kit="kit" KitRevision="new KitRevision()" />
-                        }       
+                        <KitCard Kit="kit" />
                     }
                 </div>
             }
@@ -84,20 +75,18 @@
             Kits = new List<Kit>();
             string result = await localStorage.GetItemAsync<string>("kodekitId");
             if (result != null)
-                await GoToKit(result);
+                GoToKit(result);
             else
                 await CreateNew();
         }
         IsLoading = false;
     }
 
-    private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
-
     private async Task CreateNew()
     {
         var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
-        await GoToKit(kit.KitId);
+        GoToKit(kit.KitId);
     }
 
     private async Task CaptureExistingKit(string id)
@@ -126,13 +115,8 @@
         }
     }
 
-    private async Task GoToKit(string kit)
+    private void GoToKit(string kit)
     {
         Nav.NavigateTo($"/{kit}/introduction");
-    }
-
-    private async Task GetKitRevisions(string kitId)
-    {
-        KitRevisions = await Api.GetRelatedKitsAsync(kitId);
     }
 }

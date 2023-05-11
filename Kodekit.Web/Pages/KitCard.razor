@@ -69,8 +69,12 @@
     [Parameter]
     public Kit Kit { get; set; }
 
-    [Parameter]
-    public KitRevision KitRevision { get; set; }
+    KitRevision KitRevision { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        KitRevision = (await Api.GetRelatedKitsAsync(Kit.Id)).LastOrDefault();
+    }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 
