@@ -3,7 +3,7 @@
         <rect x="0.599976" y="0.813965" width="112" height="114" fill="url(#pattern0)" />
     </mask>
     <g mask="url(#mask0_179_2073)">
-        <rect x="7.27185" y="4.59912" width="98.1094" height="100.195" fill="@Hex" />
+        <rect x="7.27185" y="4.59912" width="98.1094" height="100.195" style="fill: @FillColor" />
     </g>
     <defs>
         <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -16,4 +16,6 @@
 @code {
     [Parameter]
     public string Hex { get; set; }
+
+    string FillColor => Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
 }

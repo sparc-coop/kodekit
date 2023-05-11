@@ -39,26 +39,26 @@
         <div class="colors">
             <label>Base color</label>
             <div class="colors--preview">
-                <ColorBlotch Hex="@GetHexValue("primary")" />
-                <ColorBlotch Hex="@GetHexValue("secondary")" />
-                <ColorBlotch Hex="@GetHexValue("tertiary")" />
+                <ColorBlotch Hex="primary-500" />
+                <ColorBlotch Hex="secondary-500" />
+                <ColorBlotch Hex="tertiary-500" />
             </div>
         </div>
         <div class="preview--divider"></div>
         <div class="colors">
             <label>Black and White</label>
             <div class="colors--preview">
-                <ColorBlotch Hex="@GetHexValue("lightest")" />
-                <ColorBlotch Hex="@GetHexValue("darkest")" />
+                <ColorBlotch Hex="grey-100" />
+                <ColorBlotch Hex="grey-900" />
             </div>
         </div>
         <div class="preview--divider"></div>
         <div class="colors">
             <label>System Color</label>
             <div class="colors--preview">
-                <ColorBlotch Hex="@GetHexValue("error")" />
-                <ColorBlotch Hex="@GetHexValue("warning")" />
-                <ColorBlotch Hex="@GetHexValue("success")" />
+                <ColorBlotch Hex="error-500" />
+                <ColorBlotch Hex="warning-500" />
+                <ColorBlotch Hex="success-500" />
             </div>
         </div>
     </div>
@@ -71,20 +71,6 @@
 
     [Parameter]
     public KitRevision KitRevision { get; set; }
-
-    private string GetHexValue(string type)
-    {
-        string hex;
-        if (KitRevision != null)
-        {
-            hex = KitRevision.Colors.First(x => x.Name.ToLower() == type).Value.ToString();
-        }
-        else
-        {
-            hex = "#FFFFFF";
-        }
-        return hex;
-    }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 
