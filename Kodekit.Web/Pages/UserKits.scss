@@ -89,6 +89,7 @@
                 line-height: 150%;
                 color: $white;
                 text-align: center;
+                transition: 250ms ease-in-out;
 
                 .icon-add {
                     margin-left: 10px;
@@ -96,6 +97,10 @@
                     path {
                         fill: $white;
                     }
+                }
+
+                &:hover {
+                    transform: scale(103%);
                 }
             }
         }

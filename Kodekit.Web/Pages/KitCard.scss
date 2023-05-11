@@ -9,7 +9,6 @@
 
 .kit-card {
     width: 100%;
-    height: 100%;
     background: #0E0E0E;
     padding-bottom: 40px;
 
@@ -20,6 +19,11 @@
         background: #1A1A1A;
         border-radius: 0px 0px 8px 8px;
         padding: 18px;
+        transition: 200ms ease-in-out;
+
+        &:hover {
+            filter: brightness(150%);
+        }
 
         label {
             font-family: 'EncodeSans';
@@ -27,6 +31,12 @@
             font-size: 14px;
             line-height: 150%;
             color: $white;
+            transition: 250ms ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(104%);
+            }
         }
 
         .kit-info {
@@ -48,6 +58,11 @@
             button {
                 padding: 0;
                 border: none;
+                transition: 250ms ease-in-out;
+
+                &:hover {
+                    transform: scale(120%);
+                }
             }
 
             img {
@@ -72,6 +87,7 @@
         display: flex;
         justify-content: space-between;
         gap: 16px;
+        flex-wrap: wrap;
         color: $white;
 
         .preview--divider {
@@ -81,18 +97,40 @@
 
         label {
             color: $white;
-            font-family: 'EncodeSans';
+            font-family: 'EncodeSans_Expanded';
             font-weight: 300;
+            font-size: 11px;
+            line-height: 100%;
         }
 
         .typography--preview {
             margin-top: 20px;
+
+            h5 {
+                margin-bottom: 8px;
+            }
+
+            h5, p {
+                color: $white;
+                line-height: 100%;
+            }
         }
 
         .colors--preview {
-            margin-top: 6px;
+            margin-top: 12px;
             display: flex;
             justify-content: space-between;
+            gap: 5px;
+
+            .color-blotch {
+                display: block;
+                width: 57px;
+                height: 57px;
+            }
+        }
+
+        &:last-child {
+            padding-right: 35px;
         }
     }
 }

@@ -64,6 +64,7 @@
 
 .color-blotch {
   width: 98px;
+  height: 98px;
   position: relative;
 }
 .color-blotch--color {
@@ -345,7 +346,7 @@
 
 .modal {
   position: fixed;
-  z-index: 10;
+  z-index: 50;
   top: 0;
   left: 0;
   right: 0;
@@ -1287,12 +1288,16 @@
   line-height: 150%;
   color: #FFFFFF;
   text-align: center;
+  transition: 250ms ease-in-out;
 }
 .dashboard--header .right button .icon-add {
   margin-left: 10px;
 }
 .dashboard--header .right button .icon-add path {
   fill: #FFFFFF;
+}
+.dashboard--header .right button:hover {
+  transform: scale(103%);
 }
 
 .kit-card--divider {
@@ -1304,7 +1309,6 @@
 
 .kit-card {
   width: 100%;
-  height: 100%;
   background: #0E0E0E;
   padding-bottom: 40px;
 }
@@ -1315,6 +1319,10 @@
   background: #1A1A1A;
   border-radius: 0px 0px 8px 8px;
   padding: 18px;
+  transition: 200ms ease-in-out;
+}
+.kit-card--header:hover {
+  filter: brightness(150%);
 }
 .kit-card--header label {
   font-family: "EncodeSans";
@@ -1322,6 +1330,11 @@
   font-size: 14px;
   line-height: 150%;
   color: #FFFFFF;
+  transition: 250ms ease-in-out;
+}
+.kit-card--header label:hover {
+  cursor: pointer;
+  transform: scale(104%);
 }
 .kit-card--header .kit-info {
   display: flex;
@@ -1341,6 +1354,10 @@
 .kit-card--header .kit-actions button {
   padding: 0;
   border: none;
+  transition: 250ms ease-in-out;
+}
+.kit-card--header .kit-actions button:hover {
+  transform: scale(120%);
 }
 .kit-card--header .kit-actions img {
   vertical-align: middle;
@@ -1359,6 +1376,7 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
   color: #FFFFFF;
 }
 .kit-card--preview .preview--divider {
@@ -1367,16 +1385,34 @@
 }
 .kit-card--preview label {
   color: #FFFFFF;
-  font-family: "EncodeSans";
+  font-family: "EncodeSans_Expanded";
   font-weight: 300;
+  font-size: 11px;
+  line-height: 100%;
 }
 .kit-card--preview .typography--preview {
   margin-top: 20px;
 }
+.kit-card--preview .typography--preview h5 {
+  margin-bottom: 8px;
+}
+.kit-card--preview .typography--preview h5, .kit-card--preview .typography--preview p {
+  color: #FFFFFF;
+  line-height: 100%;
+}
 .kit-card--preview .colors--preview {
-  margin-top: 6px;
+  margin-top: 12px;
   display: flex;
   justify-content: space-between;
+  gap: 5px;
+}
+.kit-card--preview .colors--preview .color-blotch {
+  display: block;
+  width: 57px;
+  height: 57px;
+}
+.kit-card--preview:last-child {
+  padding-right: 35px;
 }
 
 .release a {
@@ -2571,6 +2607,11 @@ button.card-button-secondary {
   font-family: "EncodeSans";
   font-weight: 400;
   src: url(../fonts/EncodeSans-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  src: url(../fonts/EncodeSans_Expanded-Light.ttf) format("truetype");
 }
 @font-face {
   font-family: "QuantaGroteskPro";
