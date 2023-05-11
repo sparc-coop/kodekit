@@ -795,71 +795,135 @@
   border-radius: 8px;
 }
 
+.typography {
+  background: #0E0E0E;
+}
+.typography header {
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+  padding-bottom: 100px;
+}
+.typography header .title {
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: #CCCCCC;
+}
+.typography header h2 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+.typography header p {
+  margin-top: 20px;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #B2B2B2;
+}
 .typography .content {
+  padding-top: 40px;
   position: relative;
 }
-.typography aside {
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding: 16px;
-  background: #FFFFFF;
-  width: 150px;
-  position: absolute;
-  top: -150px;
-  right: 0;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+.typography .content h3 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  color: #FFFFFF;
 }
-.typography aside .title {
-  font-size: 10px;
-  color: #A9ACB2;
+.typography .content span {
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 100%;
+}
+.typography .content .section input, .typography .content .section select, .typography .content .section textarea {
+  padding: 5px 12px;
+  border-radius: 4px;
   margin: 0;
+  margin-bottom: 5px;
+  background: #292929;
+  border: none;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #FFFFFF;
 }
-.typography aside h3 {
-  font-size: 24px;
-  color: #17171A;
-  margin: 2px 0 10px;
+.typography .content .section input:focus, .typography .content .section select:focus, .typography .content .section textarea:focus {
+  box-shadow: none;
 }
-.typography aside section {
+.typography .content .section input.large {
+  width: 100%;
+}
+.typography .content .section label {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+.typography .content .section select {
+  background: url(../../images/expand-icon.svg) no-repeat right/14px #292929;
+}
+.typography .content .section .preview-text {
+  width: 100%;
+}
+.typography .content .section .wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-bottom: 2px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
-.typography aside section label {
-  font-size: 11px;
-  color: #3A3A40;
-}
-.typography aside section label div {
-  cursor: pointer;
-}
-.typography aside section .set-colors {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+.typography .content .section.paragraph-settings {
   width: 100%;
-  font-size: 12px;
 }
-.typography aside section .set-colors div {
-  margin: 4px;
-  cursor: pointer;
+.typography .content .section.paragraph-settings form h3 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+.typography .content .section.paragraph-settings textarea {
+  width: 100%;
+  padding: 13px;
+  resize: none;
 }
 .typography .preview-example label {
   margin-bottom: 40px;
 }
-@media screen and (max-width: 500px) {
-  .typography .large {
-    width: 314px !important;
-  }
+.typography .large {
+  width: 100%;
+  /*@media screen and (max-width: 500px) {
+      width: 314px !important;
+  }*/
 }
 .typography .edit-options {
-  padding: 8px;
   margin: -44px 0 20px;
+  padding: 6px 18px;
+  border: 1px solid #FFFFFF;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  transition: 250ms ease-in-out;
 }
 .typography .edit-options i {
   vertical-align: middle;
   font-size: 20px;
   margin-top: -6px;
   margin-left: 10px;
+}
+.typography .edit-options:hover {
+  transform: scale(103%);
 }
 .typography .toggle-hide {
   display: none;
