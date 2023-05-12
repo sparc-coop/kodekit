@@ -109,14 +109,14 @@ sup {
 p {
     line-height: var(--line-height, 160%);
     font-size: var(--type-400);
-    color: var(--grey-700);
+    color: var(--grey-200);
 }
 
 h1, h2, h3, h4, h5, h6, .subtitle {
     line-height: var(--line-height, 120%);
     font-family: var(--font-family);
     font-weight: var(--font-weight);
-    color: var(--grey-900);
+    color: var(--grey-100);
 }
 
 h1 {

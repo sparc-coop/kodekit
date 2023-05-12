@@ -12,7 +12,7 @@
             </p>
         </header>
         <div class="content">
-            <h3><span>01</span>Heading Settings</h3>
+            <h3 class="section-header"><span>01</span>Heading Settings</h3>
 
             @if (Model != null)
             {
@@ -109,23 +109,23 @@
                     </div>
 
                     <Preview Kit=kit>
-                        <h1>@previewText</h1>
                         <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
-                        <h2>@previewText</h2>
+                        <h1>@previewText</h1>
                         <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
-                        <h3>@previewText</h3>
+                        <h2>@previewText</h2>
                         <label>Header 3 (H3) - Font Size: @HeadingScale("700")</label>
-                        <h4>@previewText</h4>
+                        <h3>@previewText</h3>
                         <label>Header 4 (H4) - Font Size: @HeadingScale("600")</label>
-                        <h5>@previewText</h5>
+                        <h4>@previewText</h4>
                         <label>Header 5 (H5) - Font Size: @HeadingScale("500")</label>
-                        <h6>@previewText</h6>
+                        <h5>@previewText</h5>
                         <label>Header 6 (H6) - Font Size: @HeadingScale("400")</label>
-                        <p class="subtitle">@previewText</p>
+                        <h6>@previewText</h6>
                         <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
+                        <p class="subtitle">@previewText</p>
                     </Preview>
 
-                    <h3 style="color: #FFFFFF;"><span>02</span> Paragraph Settings</h3>
+                    <h3 class="section-header" style="color: #FFFFFF;"><span>02</span> Paragraph Settings</h3>
 
                     <div class="section paragraph-settings">
                         <label class="preview">
@@ -172,16 +172,16 @@
                     </div>
                     <Preview Kit=kit>
                         <div>
-                            <p class="large">@previewTextBody</p>
                             <label>Body Large - Font Size: @BodyScale("500")</label>
+                            <p class="large">@previewTextBody</p>
                         </div>
                         <div>
-                            <p class="medium">@previewTextBody</p>
                             <label>Body - Font Size: @BodyScale("400")</label>
+                            <p class="medium">@previewTextBody</p>
                         </div>
                         <div>
-                            <p class="small">@previewTextBody</p>
                             <label>Body Small - Font Size: @BodyScale("300")</label>
+                            <p class="small">@previewTextBody</p>
                         </div>
                     </Preview>
                 </EditForm>

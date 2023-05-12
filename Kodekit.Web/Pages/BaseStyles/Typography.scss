@@ -38,7 +38,7 @@
         padding-top: 40px;
         position: relative;
 
-        h3 {
+        h3.section-header {
             font-family: 'QuantaGroteskPro';
             font-weight: 500;
             font-size: 20px;
@@ -54,6 +54,8 @@
         }
 
         .section {
+            max-width: 996px;
+
             input, select, textarea {
                 padding: 5px 12px;
                 border-radius: 4px;
@@ -102,15 +104,6 @@
 
             &.paragraph-settings {
                 width: 100%;
-                form {
-                    h3 {
-                        font-family: 'QuantaGroteskPro';
-                        font-weight: 500;
-                        font-size: 20px;
-                        line-height: 120%;
-                        color: $white;
-                    }
-                }
 
                 textarea {
                     width: 100%;
@@ -122,8 +115,18 @@
     }
 
     .preview-example {
+        padding-bottom: 0px;
+
         label {
+            margin-bottom: 10px;
+        }
+
+        h1, h2, h3, h4, h5, h6, p {
             margin-bottom: 40px;
+        }
+
+        &:last-child {
+            margin-bottom: 0px;
         }
     }
 

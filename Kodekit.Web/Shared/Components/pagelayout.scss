@@ -80,9 +80,11 @@
     }
 
     label {
-        font-size: 14px;
-        line-height: 180%;
-        color: $gray700;
+        font-family: 'EncodeSans_Expanded';
+        font-weight: 300;
+        font-size: 11px;
+        line-height: 100%;
+        color: $white;
     }
 
     input, select, textarea {
@@ -114,23 +116,6 @@
 
     input[type=number] {
         max-width: 144px;
-    }
-
-    pre {
-        border-radius: 0px 0px 8px 8px;
-        margin: 0px 0 80px 0;
-        overflow: hidden;
-        background: #282c34;
-        padding: 0 0 0 20px;
-        width: 100%;
-        max-width: 1024px;
-
-        code {
-            max-height: 400px;
-            overflow-x: hidden !important;
-            overflow-y: auto;
-            white-space: pre-wrap;
-        }
     }
 
     .section, section {
@@ -217,12 +202,16 @@
     }
 
     .preview-example-container {
-        > header {
-            background: $white;
-            padding: 24px 32px 0;
-            border-radius: 8px 8px 0 0;
-            font-size: 12px;
-            color: $gray700;
+        .preview-info {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-family: 'EncodeSans';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 14px;
+            line-height: 160%;
+            color: $white;
+
             a {
                 text-decoration: underline;
             }
@@ -230,12 +219,11 @@
     }
 
     .preview-example {
-        background: $white;
-        border: 1px solid $white;
+        padding: 44px;
         box-sizing: border-box;
-        border-radius: 8px 8px 0px 0px;
-        padding: 24px 32px;
-
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 48px;
+        color: $white;
 
         &-flex {
             display: flex;
@@ -269,6 +257,25 @@
                 font-size: 14px;
                 line-height: 160%;
             }
+        }
+    }
+
+    pre {
+        width: 100%;
+        max-width: 1024px;
+        margin: 0px 0 80px 0;
+        padding: 0 0 0 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        overflow: hidden;
+        background: #17171A;
+
+        code {
+            background: #17171A;
+            max-height: 304px;
+            overflow-x: hidden !important;
+            overflow-y: auto;
+            white-space: pre-wrap;
         }
     }
 

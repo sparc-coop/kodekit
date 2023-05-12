@@ -1,9 +1,6 @@
 ﻿@if (Kit != null)
 {
     <div class="preview-example-container">
-        <header>
-            * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
-        </header>
         @if (!IsLoading && CssUrl != null)
         {
             <style type="text/css">
@@ -14,9 +11,11 @@
                 @ChildContent
             </div>
         }
-
-        <pre>
-        <code tabindex="0" class="language-html" @ref=CodeBlock style="background: #1C1C1C">
+        <div class="preview-info">
+            * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
+        </div>
+        <pre class="preview-code">
+            <code tabindex="0" class="language-html" @ref=CodeBlock style="background: #17171A">
             </code>
         </pre>
     </div>

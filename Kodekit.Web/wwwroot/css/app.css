@@ -169,9 +169,11 @@
   transform: scale(1.05, 1.05);
 }
 .page label {
-  font-size: 14px;
-  line-height: 180%;
-  color: #3A3A40;
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 100%;
+  color: #FFFFFF;
 }
 .page input, .page select, .page textarea {
   margin: 0 30px 20px 0;
@@ -198,21 +200,6 @@
 }
 .page input[type=number] {
   max-width: 144px;
-}
-.page pre {
-  border-radius: 0px 0px 8px 8px;
-  margin: 0px 0 80px 0;
-  overflow: hidden;
-  background: #282c34;
-  padding: 0 0 0 20px;
-  width: 100%;
-  max-width: 1024px;
-}
-.page pre code {
-  max-height: 400px;
-  overflow-x: hidden !important;
-  overflow-y: auto;
-  white-space: pre-wrap;
 }
 .page .section, .page section {
   display: flex;
@@ -282,22 +269,25 @@
   color: #3A3A40;
   margin-bottom: 24px;
 }
-.page .preview-example-container > header {
-  background: #FFFFFF;
-  padding: 24px 32px 0;
-  border-radius: 8px 8px 0 0;
-  font-size: 12px;
-  color: #3A3A40;
+.page .preview-example-container .preview-info {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-family: "EncodeSans";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 160%;
+  color: #FFFFFF;
 }
-.page .preview-example-container > header a {
+.page .preview-example-container .preview-info a {
   text-decoration: underline;
 }
 .page .preview-example {
-  background: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  padding: 44px;
   box-sizing: border-box;
-  border-radius: 8px 8px 0px 0px;
-  padding: 24px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 48px;
+  color: #FFFFFF;
 }
 .page .preview-example-flex {
   display: flex;
@@ -323,6 +313,23 @@
   color: #17171A;
   font-size: 14px;
   line-height: 160%;
+}
+.page pre {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0px 0 80px 0;
+  padding: 0 0 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #17171A;
+}
+.page pre code {
+  background: #17171A;
+  max-height: 304px;
+  overflow-x: hidden !important;
+  overflow-y: auto;
+  white-space: pre-wrap;
 }
 .page .show-link {
   background: #FFFFFF;
@@ -828,7 +835,7 @@
   padding-top: 40px;
   position: relative;
 }
-.typography .content h3 {
+.typography .content h3.section-header {
   font-family: "QuantaGroteskPro";
   font-weight: 500;
   font-size: 20px;
@@ -840,6 +847,9 @@
   vertical-align: middle;
   font-size: 14px;
   line-height: 100%;
+}
+.typography .content .section {
+  max-width: 996px;
 }
 .typography .content .section input, .typography .content .section select, .typography .content .section textarea {
   padding: 5px 12px;
@@ -883,20 +893,22 @@
 .typography .content .section.paragraph-settings {
   width: 100%;
 }
-.typography .content .section.paragraph-settings form h3 {
-  font-family: "QuantaGroteskPro";
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 120%;
-  color: #FFFFFF;
-}
 .typography .content .section.paragraph-settings textarea {
   width: 100%;
   padding: 13px;
   resize: none;
 }
+.typography .preview-example {
+  padding-bottom: 0px;
+}
 .typography .preview-example label {
+  margin-bottom: 10px;
+}
+.typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
   margin-bottom: 40px;
+}
+.typography .preview-example:last-child {
+  margin-bottom: 0px;
 }
 .typography .large {
   width: 100%;
