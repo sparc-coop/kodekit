@@ -50,32 +50,51 @@
         }
 
         .kit-actions {
-            margin-left: 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
 
             button {
-                padding: 0;
+                width: 25px;
+                height: 25px;
                 border: none;
                 transition: 250ms ease-in-out;
-
-                &:hover {
-                    transform: scale(120%);
-                }
+                text-align: center;
             }
 
             img {
+                padding: 5px;
+                border: 1px solid transparent;
+                border-radius: 4px;
                 vertical-align: middle;
-                margin-top: -5px;
+                transition: 250ms ease-in-out;
+                margin-top: -20px;
 
                 svg {
                     width: 15px;
                     height: 15px;
                 }
 
-                .more-actions {
-                    margin-top: 0px;
+                &.more-actions {
+                    padding: 0px;
+                }
+
+                &:hover {
+                    border: 1px solid $white;
+                    border-radius: 4px;
+                }
+
+                &:active {
+                    background: $white;
+
+                    svg { //this isn't working
+                        path {
+                            stroke: $black;
+                        }
+
+                        circle {
+                            stroke: $black;
+                        }
+                    }
                 }
             }
         }
@@ -99,7 +118,7 @@
             color: $white;
             font-family: 'EncodeSans_Expanded';
             font-weight: 300;
-            font-size: 11px;
+            font-size: 13px;
             line-height: 100%;
         }
 

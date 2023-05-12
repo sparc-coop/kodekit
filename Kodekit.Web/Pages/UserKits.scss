@@ -100,7 +100,12 @@
                 }
 
                 &:hover {
-                    transform: scale(103%);
+                    background: rgba(26, 26, 26, 0.8);
+                }
+
+                &:active {
+                    background: $white;
+                    color: #1E1E1E;
                 }
             }
         }

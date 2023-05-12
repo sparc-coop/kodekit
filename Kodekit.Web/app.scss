@@ -65,6 +65,12 @@
 }
 
 @font-face {
+    font-family: 'FiraCode';
+    font-weight: 400;
+    src: url(wwwroot/fonts/FiraCode-Regular.ttf) format('truetype');
+}
+
+@font-face {
     font-family: 'QuantaGroteskPro';
     font-weight: 400;
     src: url(wwwroot/fonts/QuantaGroteskPro-Regular.ttf) format('truetype');
@@ -114,6 +120,18 @@ body {
     @media screen and (max-width: 500px) {
         padding-top: 45%;
     }
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #E5E5E5;
 }
 
 @keyframes bounce {

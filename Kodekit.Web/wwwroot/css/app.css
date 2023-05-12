@@ -330,6 +330,26 @@
   overflow-x: hidden !important;
   overflow-y: auto;
   white-space: pre-wrap;
+  font-family: "FiraCode";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: #CA9100;
+  /*&::-webkit-scrollbar {
+      width: 0px;
+  }*/
+}
+.page pre code .hljs-tag {
+  color: #979797;
+}
+.page pre code .hljs-name {
+  color: #875BBF;
+}
+.page pre code .hljs-attr {
+  color: #E46886;
+}
+.page pre code .hljs-string {
+  color: #A3A60E;
 }
 .page .show-link {
   background: #FFFFFF;
@@ -873,13 +893,13 @@
 .typography .content .section label {
   font-family: "EncodeSans_Expanded";
   font-weight: 300;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 100%;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 20px;
 }
 .typography .content .section select {
-  background: url(../../images/expand-icon.svg) no-repeat right/14px #292929;
+  background: url(../../images/expand-small.svg) no-repeat right #292929;
 }
 .typography .content .section .preview-text {
   width: 100%;
@@ -1373,7 +1393,11 @@
   fill: #FFFFFF;
 }
 .dashboard--header .right button:hover {
-  transform: scale(103%);
+  background: rgba(26, 26, 26, 0.8);
+}
+.dashboard--header .right button:active {
+  background: #FFFFFF;
+  color: #1E1E1E;
 }
 
 .kit-card--divider {
@@ -1422,29 +1446,43 @@
   text-transform: uppercase;
 }
 .kit-card--header .kit-actions {
-  margin-left: 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 .kit-card--header .kit-actions button {
-  padding: 0;
+  width: 25px;
+  height: 25px;
   border: none;
   transition: 250ms ease-in-out;
-}
-.kit-card--header .kit-actions button:hover {
-  transform: scale(120%);
+  text-align: center;
 }
 .kit-card--header .kit-actions img {
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 4px;
   vertical-align: middle;
-  margin-top: -5px;
+  transition: 250ms ease-in-out;
+  margin-top: -20px;
 }
 .kit-card--header .kit-actions img svg {
   width: 15px;
   height: 15px;
 }
-.kit-card--header .kit-actions img .more-actions {
-  margin-top: 0px;
+.kit-card--header .kit-actions img.more-actions {
+  padding: 0px;
+}
+.kit-card--header .kit-actions img:hover {
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+}
+.kit-card--header .kit-actions img:active {
+  background: #FFFFFF;
+}
+.kit-card--header .kit-actions img:active svg path {
+  stroke: #000000;
+}
+.kit-card--header .kit-actions img:active svg circle {
+  stroke: #000000;
 }
 .kit-card--preview {
   width: 100%;
@@ -1463,7 +1501,7 @@
   color: #FFFFFF;
   font-family: "EncodeSans_Expanded";
   font-weight: 300;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 100%;
 }
 .kit-card--preview .typography--preview {
@@ -2690,6 +2728,11 @@ button.card-button-secondary {
   src: url(../fonts/EncodeSans_Expanded-Light.ttf) format("truetype");
 }
 @font-face {
+  font-family: "FiraCode";
+  font-weight: 400;
+  src: url(../fonts/FiraCode-Regular.ttf) format("truetype");
+}
+@font-face {
   font-family: "QuantaGroteskPro";
   font-weight: 400;
   src: url(../fonts/QuantaGroteskPro-Regular.ttf) format("truetype");
@@ -2736,6 +2779,18 @@ body {
   .loading {
     padding-top: 45%;
   }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #E5E5E5;
 }
 
 @keyframes bounce {

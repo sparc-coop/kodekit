@@ -276,6 +276,30 @@
             overflow-x: hidden !important;
             overflow-y: auto;
             white-space: pre-wrap;
+            font-family: 'FiraCode';
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 24px;
+            color: #CA9100;
+            /*&::-webkit-scrollbar {
+                width: 0px;
+            }*/
+
+            .hljs-tag {
+                color: #979797;
+            }
+
+            .hljs-name {
+                color: #875BBF;
+            }
+
+            .hljs-attr {
+                color: #E46886;
+            }
+
+            .hljs-string {
+                color: #A3A60E;
+            }
         }
     }
 
