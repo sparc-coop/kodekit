@@ -939,13 +939,15 @@
 .typography .edit-options {
   margin: -44px 0 20px;
   padding: 6px 18px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid transparent;
   border-radius: 6px;
-  color: #FFFFFF;
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
+  background: #1E1E1E;
+  color: #FFFFFF;
+  text-align: center;
   transition: 250ms ease-in-out;
 }
 .typography .edit-options i {
@@ -955,7 +957,15 @@
   margin-left: 10px;
 }
 .typography .edit-options:hover {
-  transform: scale(103%);
+  border: 1px solid #FFFFFF;
+}
+.typography .edit-options:active {
+  background: #FFFFFF;
+  color: #1E1E1E;
+}
+.typography .fontsize-overrides {
+  display: flex;
+  gap: 20px;
 }
 .typography .toggle-hide {
   display: none;
@@ -1376,12 +1386,13 @@
 }
 .dashboard--header .right button {
   padding: 6px 18px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid transparent;
   border-radius: 6px;
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
+  background: #1E1E1E;
   color: #FFFFFF;
   text-align: center;
   transition: 250ms ease-in-out;
@@ -1393,7 +1404,7 @@
   fill: #FFFFFF;
 }
 .dashboard--header .right button:hover {
-  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid #FFFFFF;
 }
 .dashboard--header .right button:active {
   background: #FFFFFF;
@@ -1456,7 +1467,9 @@
   transition: 250ms ease-in-out;
   text-align: center;
 }
-.kit-card--header .kit-actions img {
+.kit-card--header .kit-actions .icon {
+  width: 25px;
+  height: 25px;
   padding: 5px;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -1464,25 +1477,47 @@
   transition: 250ms ease-in-out;
   margin-top: -20px;
 }
-.kit-card--header .kit-actions img svg {
-  width: 15px;
-  height: 15px;
+.kit-card--header .kit-actions .icon-preview path {
+  stroke: #FFFFFF !important;
 }
-.kit-card--header .kit-actions img.more-actions {
+.kit-card--header .kit-actions .icon-preview:active path {
+  stroke: #1E1E1E !important;
+}
+.kit-card--header .kit-actions .icon-download path {
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+.kit-card--header .kit-actions .icon-download line {
+  stroke: #FFFFFF !important;
+}
+.kit-card--header .kit-actions .icon-download:active path {
+  fill: #1E1E1E !important;
+  stroke: #1E1E1E !important;
+}
+.kit-card--header .kit-actions .icon-download:active line {
+  stroke: #1E1E1E !important;
+}
+.kit-card--header .kit-actions .icon-delete path, .kit-card--header .kit-actions .icon-delete circle {
+  stroke: #FFFFFF !important;
+}
+.kit-card--header .kit-actions .icon-delete:active path, .kit-card--header .kit-actions .icon-delete:active circle, .kit-card--header .kit-actions .icon-delete:active fill {
+  stroke: #1E1E1E !important;
+}
+.kit-card--header .kit-actions .icon-more {
   padding: 0px;
 }
-.kit-card--header .kit-actions img:hover {
+.kit-card--header .kit-actions .icon-more circle {
+  fill: #FFFFFF !important;
+}
+.kit-card--header .kit-actions .icon-more:active circle {
+  fill: #1E1E1E !important;
+}
+.kit-card--header .kit-actions .icon:hover {
   border: 1px solid #FFFFFF;
   border-radius: 4px;
 }
-.kit-card--header .kit-actions img:active {
+.kit-card--header .kit-actions .icon:active {
   background: #FFFFFF;
-}
-.kit-card--header .kit-actions img:active svg path {
-  stroke: #000000;
-}
-.kit-card--header .kit-actions img:active svg circle {
-  stroke: #000000;
 }
 .kit-card--preview {
   width: 100%;

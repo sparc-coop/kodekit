@@ -1,4 +1,5 @@
 ﻿@using Kodekit.Web.Components.Colors;
+@using Kodekit.Web.Shared.Icons
 
 <div class="kit-card--divider"></div>
 <div tabindex="0" class="kit-card">
@@ -13,16 +14,16 @@
 
                     <div class="kit-actions">
                         <button>
-                            <img src="images/preview-icon.svg" />
+                            <PreviewIcon />
                         </button>
                         <button>
-                            <img src="images/download-icon.svg" />
+                            <DownloadIcon />
                         </button>
                         <button class="delete-kit" @onclick="@(e => ShowDeleteModal(Kit.Id))">
-                            <img src="images/delete-icon2.svg" />
+                            <DeleteIcon />
                         </button>
                         <button>
-                            <img src="images/more-icon.svg" class="more-actions" />
+                            <MoreIcon />
                          </button>
                     </div>
                 </Authorized>

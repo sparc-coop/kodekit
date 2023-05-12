@@ -61,7 +61,9 @@
                 text-align: center;
             }
 
-            img {
+            .icon {
+                width: 25px;
+                height: 25px;
                 padding: 5px;
                 border: 1px solid transparent;
                 border-radius: 4px;
@@ -69,13 +71,64 @@
                 transition: 250ms ease-in-out;
                 margin-top: -20px;
 
-                svg {
-                    width: 15px;
-                    height: 15px;
+                &-preview {
+                    path {
+                        stroke: $white !important;
+                    }
+
+                    &:active {
+                        path {
+                            stroke: #1E1E1E !important;
+                        }
+                    }
                 }
 
-                &.more-actions {
+                &-download {
+                    path {
+                        fill: $white !important;
+                        stroke: $white !important;
+                    }
+
+                    line {
+                        stroke: $white !important;
+                    }
+
+                    &:active {
+                        path {
+                            fill: #1E1E1E !important;
+                            stroke: #1E1E1E !important;
+                        }
+
+                        line {
+                            stroke: #1E1E1E !important;
+                        }
+                    }
+                }
+
+                &-delete {
+                    path, circle {
+                        stroke: $white !important;
+                    }
+
+                    &:active {
+                        path, circle, fill {
+                            stroke: #1E1E1E !important;
+                        }
+                    }
+                }
+
+                &-more {
                     padding: 0px;
+
+                    circle {
+                        fill: $white !important;
+                    }
+
+                    &:active {
+                        circle {
+                            fill: #1E1E1E !important;
+                        }
+                    }
                 }
 
                 &:hover {
@@ -85,16 +138,6 @@
 
                 &:active {
                     background: $white;
-
-                    svg { //this isn't working
-                        path {
-                            stroke: $black;
-                        }
-
-                        circle {
-                            stroke: $black;
-                        }
-                    }
                 }
             }
         }
