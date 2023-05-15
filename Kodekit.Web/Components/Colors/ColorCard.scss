@@ -1,4 +1,6 @@
-﻿.color-card {
+﻿@import "../../_variables";
+
+.color-card {
     width: 110px;
     height: 147px;
     font-family: 'EncodeSans';
@@ -7,23 +9,29 @@
     &--content {
         display: flex;
         flex-direction: column;
-        margin-top: 100px;
 
         label {
             margin-bottom: 5px;
-            color: #FFFFFF;
+            color: $white;
             font-size: 16px;
-            line-height: 120%;
+            line-height: 150%;
+            margin-bottom: 5px;
         }
 
-        .color-swatch {
+        .color-info {
+            padding-top: 6px;
+            border-top: 1px solid #FFFFFF;
             display: flex;
             flex-direction: row;
             gap: 5px;
-            font-family: 'EncodeSans';
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 100%;
+            border-top: 1px solid #FFFFFF;
+
+            p {
+                font-family: 'EncodeSans';
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 100%;
+            }
 
             aside {
                 width: 26px;
@@ -33,11 +41,5 @@
                 vertical-align: middle;
             }
         }
-    }
-
-    &--divider {
-        width: 100%;
-        border-top: 1px solid #FFFFFF;
-        margin-bottom: 6px;
     }
 }

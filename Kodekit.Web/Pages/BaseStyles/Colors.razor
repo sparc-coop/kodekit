@@ -1,9 +1,10 @@
 ﻿@inherits HighlightPageBase<ColorsModel>
 @page "/{kitId}/colors"
+@using Kodekit.Web.Components.Colors
 
 <div class="colors page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Base Styles</div>
             <h2>Colors</h2>
             <p>
@@ -14,8 +15,8 @@
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
-            <header>
-                <h3>Brand Colors</h3>
+            <header class="section--header">
+                <h3><span>01</span>Brand Colors</h3>
                 <p>
                     The brand colors are the three main colors that will be used to accent your site.
                 </p>
@@ -24,56 +25,51 @@
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <div class="section">
-                        <label>
-                            Primary
-                            <InputColor @bind-Value="Model.Primary" />
-                        </label>
-
-                        <label>
-                            Secondary
-                            <InputColor @bind-Value="Model.Secondary" />
-                        </label>
-                        <label>
-                            Tertiary
-                            <InputColor @bind-Value="Model.Tertiary" />
-                        </label>
+                    <div class="section color-palette">
+                        <Preview Kit=kit>
+                            <div class="color-display primary">
+                                <div class="color-main">
+                                    <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "primary-" + weight;
+                                        <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
+                                    }
+                                </div>
+                            </div>
+@*                            <div class="colors--secondary">
+                                <label>Secondary</label>
+                                <div class="color-display">
+                                    <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "secondary-" + weight;
+                                        <ColorCard Type="Secondary" Weight="@weight" Hex="hex" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="colors--tertiary">
+                                <label>Tertiary</label>
+                                <div class="color-display">
+                                    <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "tertiary-" + weight;
+                                        <ColorCard Type="Tertiary" Weight="@weight" Hex="hex" />
+                                    }
+                                </div>
+                            </div>
+*@                        </Preview>
                     </div>
-                    <Preview Kit=kit>
-                        <div>
-                            <label>Primary</label>
-                            <div class="color-display" style="background-color: var(--primary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    <span style="background-color: var(--primary-@weight)"></span>
-                                }
-                            </div>
-                        </div>
-                        <div>
-                            <label>Secondary</label>
-                            <div class="color-display" style="background-color: var(--secondary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    <span style="background-color: var(--secondary-@weight)"></span>
-                                }
-                            </div>
-                        </div>
-                        <div>
-                            <label>Tertiary</label>
-                            <div class="color-display" style="background-color: var(--tertiary-400)"></div>
-                            <div class="subcolor-display">
-                                @foreach (var weight in Weights)
-                                {
-                                    <span style="background-color: var(--tertiary-@weight)"></span>
-                                }
-                            </div>
-                        </div>
-                    </Preview>
 
-                    <header>
-                        <h3>Grayscale</h3>
+@*                    <header class="section--header">
+                        <h3><span>02</span>Grayscale</h3>
                         <p>
                             The grayscale colors will primarily be used for text.
                         </p>
@@ -99,8 +95,8 @@
                         }
                     </Preview>
 
-                    <header>
-                        <h3>System Colors</h3>
+                    <header class="section--header">
+                        <h3><span>03</span>System Colors</h3>
                         <p>
                             The system colors are used to highlight alerts.
                         </p>
@@ -162,14 +158,14 @@
                             </div>
                         </div>
                     </Preview>
-                </EditForm>
+*@                </EditForm>
             }
         </div>
     </div>
 </div>
 
 @code {
-    List<string> Weights = new List<string> { "900", "800", "700", "600", "500", "400", "300", "200", "100", "50" };
+    List<string> Weights = new List<string> { "50", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
 
     protected override async Task OnInitializedAsync()
     {

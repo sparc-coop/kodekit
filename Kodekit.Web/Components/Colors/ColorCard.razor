@@ -1,15 +1,14 @@
 ﻿<div class="color-card">
     <ColorBlotch Hex="@Hex" />
     <div class="color-card--content">
-        <label>@Weight.ToString()</label>
-        <div class="color-card--divider"></div>
-        <div class="color-swatch">
+        <label>@Weight</label>
+        <div class="color-info">
             <p class="hex">@Hex</p>
-            <aside class="swatch" style="background: @Hex;"></aside>
+            <aside class="swatch" style="background: @FillColor;"></aside>
         </div>
     </div>
 </div>
-
+ 
 @code {
     [Parameter]
     public string Type { get; set; }
@@ -17,4 +16,6 @@
     public string Weight { get; set; }
     [Parameter]
     public string Hex { get; set; }
+
+    string FillColor => Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
 }

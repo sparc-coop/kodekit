@@ -1,28 +1,29 @@
-﻿@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-.color-palette {
-  background: #1E1E1E;
-  width: 100%;
-  height: 100vh;
-  padding: 80px;
-}
-.color-palette .color-main {
-  margin-right: 58px;
-}
-.color-palette .color-main .color-blotch {
-  top: -100px;
-}
-.color-palette .primary, .color-palette .secondary, .color-palette .tertiary {
-  width: 100%;
-  height: 147px;
-  margin-bottom: 35px;
-  display: flex;
-  flex-direction: row;
-  gap: 25px;
-  justify-content: flex-start;
-  color: #FFFFFF;
-  font-size: 16px;
-}
+﻿/*.color-palette {
+    width: 100%;
+    height: 100vh;
 
+    .color-main {
+        margin-right: 58px;
+
+        .color-blotch {
+            top: -100px;
+        }
+    }
+
+    .primary, .secondary, .tertiary {
+        width: 100%;
+        height: 147px;
+        margin-bottom: 35px;
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        justify-content: flex-start;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+}
+*/
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 .color-card {
   width: 110px;
   height: 147px;
@@ -32,34 +33,34 @@
 .color-card--content {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
 }
 .color-card--content label {
   margin-bottom: 5px;
   color: #FFFFFF;
   font-size: 16px;
-  line-height: 120%;
+  line-height: 150%;
+  margin-bottom: 5px;
 }
-.color-card--content .color-swatch {
+.color-card--content .color-info {
+  padding-top: 6px;
+  border-top: 1px solid #FFFFFF;
   display: flex;
   flex-direction: row;
   gap: 5px;
+  border-top: 1px solid #FFFFFF;
+}
+.color-card--content .color-info p {
   font-family: "EncodeSans";
   font-weight: 300;
   font-size: 14px;
   line-height: 100%;
 }
-.color-card--content .color-swatch aside {
+.color-card--content .color-info aside {
   width: 26px;
   height: 14px;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
   vertical-align: middle;
-}
-.color-card--divider {
-  width: 100%;
-  border-top: 1px solid #FFFFFF;
-  margin-bottom: 6px;
 }
 
 .color-blotch {
@@ -99,8 +100,8 @@
 }
 
 .page {
-  background: #F5F7FA;
-  padding: 10px 80px 100px 80px;
+  background: #0E0E0E;
+  padding: 100px 80px;
 }
 @media screen and (max-width: 780px) {
   .page {
@@ -123,23 +124,34 @@
   line-height: 120%;
   letter-spacing: 0.02em;
   color: #0B5FFF;
-  padding-bottom: 6px;
+  margin-bottom: 5px;
 }
-.page p {
-  max-width: 672px;
+.page header.page--header {
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+  padding-bottom: 100px;
 }
-.page header {
-  padding-bottom: 64px;
-}
-.page header p {
-  color: #3A3A40;
-  padding-top: 12px;
-  font-size: 18px;
-  line-height: 28.8px;
+.page header .title {
+  font-family: "QuantaGroteskPro";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: #CCCCCC;
 }
 .page header h2 {
+  font-family: "QuantaGroteskPro";
   font-weight: 700;
-  font-size: 42px;
+  font-size: 40px;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+.page header p {
+  margin-top: 20px;
+  padding-top: 0px;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #B2B2B2;
 }
 .page .subheader {
   color: #3A3A40;
@@ -149,57 +161,27 @@
   padding: 8px 0 32px 0;
   line-height: 160%;
 }
-.page .button--save {
-  color: #17171A;
-  font-size: 16px;
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid #17171A;
-  transition: transform 0.3s ease-in-out;
+.page .content {
+  padding-top: 40px;
+  padding-bottom: 100px;
 }
-.page .button--save img, .page .button--save svg {
-  margin-left: 10px;
-  vertical-align: middle;
-  margin-top: -2px;
-}
-.page .button--save svg path {
-  fill: #17171A;
-}
-.page .button--save:hover {
-  transform: scale(1.05, 1.05);
-}
-.page label {
-  font-family: "EncodeSans_Expanded";
-  font-weight: 300;
-  font-size: 11px;
-  line-height: 100%;
+.page .content header {
+  padding-bottom: 40px;
   color: #FFFFFF;
 }
-.page input, .page select, .page textarea {
-  margin: 0 30px 20px 0;
-  background: #FFFFFF;
-  border: 1px solid #D2D4D9;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 8px 16px;
-  display: block;
-  margin: 0 30px 20px 0;
+.page .content header h3 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  color: #FFFFFF;
+}
+.page .content header p {
+  font-family: "EncodeSans";
+  font-weight: 400;
   font-size: 16px;
-  line-height: 160%;
-  height: 40px;
-  color: #3A3A40;
-}
-.page select {
-  cursor: pointer;
-}
-.page textarea {
-  min-height: 100px;
-}
-.page input {
-  cursor: text;
-}
-.page input[type=number] {
-  max-width: 144px;
+  line-height: 150%;
+  color: #B2B2B2;
 }
 .page .section, .page section {
   display: flex;
@@ -223,32 +205,59 @@
 .page .section .small, .page section .small {
   width: 142px;
 }
-.page .section > div, .page section > div {
-  display: flex;
-}
-.page .content {
-  padding-bottom: 100px;
-}
-.page .content > h3, .page .content form > h3 {
-  font-size: 20px;
-  font-weight: 500;
+.page .button--save {
   color: #17171A;
-  margin-bottom: 32px;
-}
-.page .content header {
-  padding-bottom: 32px;
-}
-.page .content header h3 {
-  font-size: 20px;
-  font-weight: 500;
-  color: #17171A;
-  margin-bottom: 8px;
-}
-.page .content header p {
   font-size: 16px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #17171A;
+  transition: transform 0.3s ease-in-out;
+}
+.page .button--save img, .page .button--save svg {
+  margin-left: 10px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.page .button--save svg path {
+  fill: #17171A;
+}
+.page .button--save:hover {
+  transform: scale(1.05, 1.05);
+}
+.page label {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+}
+.page input, .page select, .page textarea {
+  padding: 5px 12px;
+  border-radius: 4px;
+  margin: 0;
+  margin-bottom: 5px;
+  background: #292929;
+  border: none;
+  font-family: "EncodeSans";
   font-weight: 400;
-  color: #3A3A40;
-  padding: 0;
+  font-size: 14px;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+.page input:focus, .page select:focus, .page textarea:focus {
+  box-shadow: none;
+}
+.page select {
+  cursor: pointer;
+}
+.page textarea {
+  min-height: 100px;
+}
+.page input {
+  cursor: text;
+}
+.page input.large {
+  width: 100%;
+}
+.page input[type=number] {
+  max-width: 144px;
 }
 .page .documentation {
   margin-bottom: 64px;
@@ -268,6 +277,9 @@
   line-height: 160%;
   color: #3A3A40;
   margin-bottom: 24px;
+}
+.page .preview-example-container {
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 }
 .page .preview-example-container .preview-info {
   margin-top: 40px;
@@ -611,99 +623,53 @@
 .colors .content {
   position: relative;
 }
-.colors aside {
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding: 16px;
-  background: #FFFFFF;
-  width: 150px;
-  position: absolute;
-  top: -150px;
-  right: 0;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+.colors .content span {
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 100%;
 }
-.colors aside .title {
-  font-size: 10px;
-  color: #A9ACB2;
+.colors header.section--header {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 77px;
+}
+.colors header.section--header p {
   margin: 0;
 }
-.colors aside h3 {
-  font-size: 24px;
-  color: #17171A;
-  margin: 2px 0 10px;
-}
-.colors aside section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 2px;
-}
-.colors aside section label {
-  font-size: 11px;
-  color: #3A3A40;
-}
-.colors aside section label div {
-  cursor: pointer;
-}
-.colors aside section .set-colors {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+.colors .color-palette {
   width: 100%;
-  font-size: 12px;
 }
-.colors aside section .set-colors div {
-  margin: 4px;
-  cursor: pointer;
+.colors .color-palette .color-display {
+  display: flex;
 }
-.colors label {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 180%;
-  color: #3A3A40;
+.colors .color-palette .color-main {
+  margin-right: 58px;
 }
-.colors input {
-  background: #FFFFFF;
-  border: 1px solid #E7E7ED;
-  box-sizing: border-box;
-  border-radius: 4px;
-  padding: 4px 16px 4px 16px;
-  display: block;
-  margin: 0 30px 20px 0;
+.colors .color-palette .color-main {
+  width: 100%;
+  height: 147px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  justify-content: flex-start;
+  color: #FFFFFF;
   font-size: 16px;
-  line-height: 160%;
-  color: #3A3A40;
-  cursor: pointer;
-  width: 100px;
+}
+.colors .color-palette .subcolor-display {
+  display: flex;
+  gap: 25px;
 }
 .colors .preview-example {
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding: 24px 16px 50px 16px;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1024px;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 24px 32px;
-}
-.colors .preview-example label {
   padding: 0;
-  margin-bottom: 8px;
-  color: #3A3A40;
-}
-.colors .preview-example .color-display {
-  width: auto;
-  height: 142px;
-  border-radius: 4px 4px 0 0;
-  margin: 6px 0 0;
-}
-.colors .preview-example .subcolor-display {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  height: 28px;
+  border: none;
+  /*.subcolor-display {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      height: 28px;
+  }*/
 }
 .colors .preview-example--greyscale {
   display: grid;
@@ -727,8 +693,6 @@
   border-radius: 4px;
 }
 .colors .section {
-  display: flex;
-  flex-wrap: wrap;
   padding-bottom: 40px;
 }
 .colors .section label {
@@ -738,24 +702,12 @@
 .colors .comment {
   color: #A3A60E;
 }
-.colors .preview-example--mockup {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 40px;
-}
-@media screen and (max-width: 1000px) {
-  .colors .preview-example--mockup {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-}
 .colors .preview-example--mockup h3 {
   margin-bottom: 20px;
 }
 .colors .preview-example--mockup > div {
   box-sizing: border-box;
   border-radius: 8px;
-  background: #F5F7FA;
 }
 .colors .preview-example--mockup > div h4 {
   margin-bottom: 15px;
@@ -822,45 +774,8 @@
   border-radius: 8px;
 }
 
-.typography {
-  background: #0E0E0E;
-}
-.typography header {
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
-  padding-bottom: 100px;
-}
-.typography header .title {
-  font-family: "EncodeSans";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 120%;
-  color: #CCCCCC;
-}
-.typography header h2 {
-  font-family: "QuantaGroteskPro";
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 120%;
-  color: #FFFFFF;
-}
-.typography header p {
-  margin-top: 20px;
-  font-family: "EncodeSans";
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 150%;
-  color: #B2B2B2;
-}
 .typography .content {
-  padding-top: 40px;
   position: relative;
-}
-.typography .content h3.section-header {
-  font-family: "QuantaGroteskPro";
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 120%;
-  color: #FFFFFF;
 }
 .typography .content span {
   margin-right: 6px;
@@ -868,35 +783,11 @@
   font-size: 14px;
   line-height: 100%;
 }
+.typography .content .paragraph-settings--header {
+  padding: 40px 0;
+}
 .typography .content .section {
   max-width: 996px;
-}
-.typography .content .section input, .typography .content .section select, .typography .content .section textarea {
-  padding: 5px 12px;
-  border-radius: 4px;
-  margin: 0;
-  margin-bottom: 5px;
-  background: #292929;
-  border: none;
-  font-family: "EncodeSans";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  color: #FFFFFF;
-}
-.typography .content .section input:focus, .typography .content .section select:focus, .typography .content .section textarea:focus {
-  box-shadow: none;
-}
-.typography .content .section input.large {
-  width: 100%;
-}
-.typography .content .section label {
-  font-family: "EncodeSans_Expanded";
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 100%;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
 }
 .typography .content .section select {
   background: url(../../images/expand-small.svg) no-repeat right #292929;
@@ -922,6 +813,11 @@
   padding-bottom: 0px;
 }
 .typography .preview-example label {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 10px;
 }
 .typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
@@ -929,12 +825,6 @@
 }
 .typography .preview-example:last-child {
   margin-bottom: 0px;
-}
-.typography .large {
-  width: 100%;
-  /*@media screen and (max-width: 500px) {
-      width: 314px !important;
-  }*/
 }
 .typography .edit-options {
   margin: -44px 0 20px;
@@ -1429,13 +1319,15 @@
   justify-content: space-between;
   background: #1A1A1A;
   border-radius: 0px 0px 8px 8px;
-  padding: 18px;
+  padding: 18px 15px;
   transition: 200ms ease-in-out;
 }
 .kit-card--header:hover {
   filter: brightness(150%);
 }
 .kit-card--header label {
+  margin: 0;
+  padding: 0;
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
@@ -1448,6 +1340,7 @@
   transform: scale(104%);
 }
 .kit-card--header .kit-info {
+  height: 25px;
   display: flex;
   font-family: "EncodeSans";
   font-weight: 400;
@@ -1458,14 +1351,16 @@
 }
 .kit-card--header .kit-actions {
   display: flex;
+  gap: 3px;
   align-items: center;
+  margin-left: 10px;
+  margin-top: -3px;
 }
 .kit-card--header .kit-actions button {
   width: 25px;
   height: 25px;
   border: none;
   transition: 250ms ease-in-out;
-  text-align: center;
 }
 .kit-card--header .kit-actions .icon {
   width: 25px;
@@ -1473,9 +1368,7 @@
   padding: 5px;
   border: 1px solid transparent;
   border-radius: 4px;
-  vertical-align: middle;
   transition: 250ms ease-in-out;
-  margin-top: -20px;
 }
 .kit-card--header .kit-actions .icon-preview path {
   stroke: #FFFFFF !important;
@@ -2667,15 +2560,15 @@ template {
   display: none;
 }
 
-button {
-  background: inherit;
-  border-radius: 4px;
-  color: #272833;
-  border: 1px solid #272833;
-  padding: 8px 16px;
-  cursor: pointer;
+/*button {
+    background: inherit;
+    border-radius: 4px;
+    color: $grey-900;
+    border: 1px solid $grey-900;
+    padding: 8px 16px;
+    cursor: pointer;
 }
-
+*/
 button.primary {
   background: #0B5FFF;
   border: 1px solid #0B5FFF;
