@@ -3,7 +3,7 @@
 
 <div class="typography page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Base Styles</div>
             <h2>Typography</h2>
             <p>
@@ -12,8 +12,9 @@
             </p>
         </header>
         <div class="content">
-            <h3 class="section-header"><span>01</span>Heading Settings</h3>
-
+            <header>
+                <h3 class="section-header"><span>01</span>Heading Settings</h3>
+            </header>
             @if (Model != null)
             {
                 @*                <AccessibilityChecker Model="Model"/>*@
@@ -131,7 +132,9 @@
                         <p class="subtitle">@previewText</p>
                     </Preview>
 
-                    <h3 class="section-header" style="color: #FFFFFF;"><span>02</span> Paragraph Settings</h3>
+                    <header class="paragraph-settings--header">
+                        <h3 class="section-header" style="color: #FFFFFF;"><span>02</span> Paragraph Settings</h3>
+                    </header>
 
                     <div class="section paragraph-settings">
                         <label class="preview">

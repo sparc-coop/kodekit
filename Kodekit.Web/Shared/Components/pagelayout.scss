@@ -1,8 +1,8 @@
 ﻿@import "../../_variables.scss";
 
 .page {
-    background: $background;
-    padding: 10px 80px 100px 80px;
+    background: #0E0E0E;
+    padding: 100px 80px;
 
     @media screen and (max-width: 780px) {
         padding: 0 40px 100px 40px;
@@ -24,26 +24,39 @@
         line-height: 120%;
         letter-spacing: 0.02em;
         color: $primary500;
-        padding-bottom: 6px;
-    }
-
-    p {
-        max-width: 672px;
+        margin-bottom: 5px;
     }
 
     header {
-        padding-bottom: 64px;
+        &.page--header {
+            border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+            padding-bottom: 100px;
+        }
 
-        p {
-            color: $gray700;
-            padding-top: 12px;
-            font-size: 18px;
-            line-height: 28.8px;
+        .title {
+            font-family: 'QuantaGroteskPro';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 120%;
+            color: #CCCCCC;
         }
 
         h2 {
+            font-family: 'QuantaGroteskPro';
             font-weight: 700;
-            font-size: 42px;
+            font-size: 40px;
+            line-height: 120%;
+            color: $white;
+        }
+
+        p {
+            margin-top: 20px;
+            padding-top: 0px;
+            font-family: 'EncodeSans';
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            color: #B2B2B2;
         }
     }
 
@@ -56,66 +69,30 @@
         line-height: 160%;
     }
 
-    .button--save {
-        color: $gray900;
-        font-size: 16px;
-        padding: 8px 16px;
-        background: transparent;
-        border: 1px solid $gray900;
-        transition: transform 0.3s ease-in-out;
+    .content {
+        padding-top: 40px;
+        padding-bottom: 100px;
 
-        img, svg {
-            margin-left: 10px;
-            vertical-align: middle;
-            margin-top: -2px;
+        header {
+            padding-bottom: 40px;
+            color: $white;
+
+            h3 {
+                font-family: 'QuantaGroteskPro';
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 120%;
+                color: $white;
+            }
+
+            p {
+                font-family: 'EncodeSans';
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                color: #B2B2B2;
+            }
         }
-
-        svg path {
-            fill: $gray900;
-        }
-
-        &:hover {
-            transform: scale(1.05, 1.05);
-        }
-    }
-
-    label {
-        font-family: 'EncodeSans_Expanded';
-        font-weight: 300;
-        font-size: 11px;
-        line-height: 100%;
-        color: $white;
-    }
-
-    input, select, textarea {
-        margin: 0 30px 20px 0;
-        background: $white;
-        border: 1px solid $gray300;
-        box-sizing: border-box;
-        border-radius: 4px;
-        padding: 8px 16px;
-        display: block;
-        margin: 0 30px 20px 0;
-        font-size: 16px;
-        line-height: 160%;
-        height: 40px;
-        color: $gray700;
-    }
-
-    select {
-        cursor: pointer;
-    }
-
-    textarea {
-        min-height: 100px;
-    }
-
-    input {
-        cursor: text;
-    }
-
-    input[type=number] {
-        max-width: 144px;
     }
 
     .section, section {
@@ -144,39 +121,72 @@
         .small {
             width: 142px;
         }
+    }
 
-        > div {
-            display: flex;
+    .button--save {
+        color: $gray900;
+        font-size: 16px;
+        padding: 8px 16px;
+        background: transparent;
+        border: 1px solid $gray900;
+        transition: transform 0.3s ease-in-out;
+
+        img, svg {
+            margin-left: 10px;
+            vertical-align: middle;
+            margin-top: -2px;
+        }
+
+        svg path {
+            fill: $gray900;
+        }
+
+        &:hover {
+            transform: scale(1.05, 1.05);
         }
     }
 
-    .content {
-        padding-bottom: 100px;
+    label {
+        font-family: 'EncodeSans_Expanded';
+        font-weight: 300;
+    }
 
-        > h3, form > h3 {
-            font-size: 20px;
-            font-weight: 500;
-            color: $gray900;
-            margin-bottom: 32px;
+    input, select, textarea {
+        padding: 5px 12px;
+        border-radius: 4px;
+        margin: 0;
+        margin-bottom: 5px;
+        background: #292929;
+        border: none;
+        font-family: 'EncodeSans';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: $white;
+
+        &:focus {
+            box-shadow: none;
         }
+    }
 
-        header {
-            padding-bottom: 32px;
+    select {
+        cursor: pointer;
+    }
 
-            h3 {
-                font-size: 20px;
-                font-weight: 500;
-                color: $gray900;
-                margin-bottom: 8px;
-            }
+    textarea {
+        min-height: 100px;
+    }
 
-            p {
-                font-size: 16px;
-                font-weight: 400;
-                color: $gray700;
-                padding: 0;
-            }
+    input {
+        cursor: text;
+
+        &.large {
+            width: 100%;
         }
+    }
+
+    input[type=number] {
+        max-width: 144px;
     }
 
     .documentation {
@@ -202,6 +212,8 @@
     }
 
     .preview-example-container {
+        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+
         .preview-info {
             margin-top: 40px;
             margin-bottom: 20px;

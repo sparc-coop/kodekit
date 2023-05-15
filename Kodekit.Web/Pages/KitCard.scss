@@ -18,7 +18,7 @@
         justify-content: space-between;
         background: #1A1A1A;
         border-radius: 0px 0px 8px 8px;
-        padding: 18px;
+        padding: 18px 15px;
         transition: 200ms ease-in-out;
 
         &:hover {
@@ -26,6 +26,8 @@
         }
 
         label {
+            margin: 0;
+            padding: 0;
             font-family: 'EncodeSans';
             font-weight: 400;
             font-size: 14px;
@@ -40,6 +42,7 @@
         }
 
         .kit-info {
+            height: 25px;
             display: flex;
             font-family: 'EncodeSans';
             font-weight: 400;
@@ -51,14 +54,16 @@
 
         .kit-actions {
             display: flex;
+            gap: 3px;
             align-items: center;
+            margin-left: 10px;
+            margin-top: -3px;
 
             button {
                 width: 25px;
                 height: 25px;
                 border: none;
                 transition: 250ms ease-in-out;
-                text-align: center;
             }
 
             .icon {
@@ -67,9 +72,7 @@
                 padding: 5px;
                 border: 1px solid transparent;
                 border-radius: 4px;
-                vertical-align: middle;
                 transition: 250ms ease-in-out;
-                margin-top: -20px;
 
                 &-preview {
                     path {

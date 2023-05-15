@@ -2,49 +2,8 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .typography {
-    background: #0E0E0E;
-
-    header {
-        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
-        padding-bottom: 100px;
-
-        .title {
-            font-family: 'EncodeSans';
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 120%;
-            color: #CCCCCC;
-        }
-
-        h2 {
-            font-family: 'QuantaGroteskPro';
-            font-weight: 700;
-            font-size: 40px;
-            line-height: 120%;
-            color: $white;
-        }
-
-        p {
-            margin-top: 20px;
-            font-family: 'EncodeSans';
-            font-weight: 400;
-            font-size: 18px;
-            line-height: 150%;
-            color: #B2B2B2;
-        }
-    }
-
     .content {
-        padding-top: 40px;
         position: relative;
-
-        h3.section-header {
-            font-family: 'QuantaGroteskPro';
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 120%;
-            color: $white;
-        }
 
         span {
             margin-right: 6px;
@@ -53,39 +12,12 @@
             line-height: 100%;
         }
 
+        .paragraph-settings--header {
+            padding: 40px 0;
+        }
+
         .section {
             max-width: 996px;
-
-            input, select, textarea {
-                padding: 5px 12px;
-                border-radius: 4px;
-                margin: 0;
-                margin-bottom: 5px;
-                background: #292929;
-                border: none;
-                font-family: 'EncodeSans';
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 150%;
-                color: $white;
-
-                &:focus {
-                    box-shadow: none;
-                }
-            }
-
-            input.large {
-                width: 100%;
-            }
-
-            label {
-                font-family: 'EncodeSans_Expanded';
-                font-weight: 300;
-                font-size: 13px;
-                line-height: 100%;
-                color: rgba(255,255,255, 0.8);
-                margin-bottom: 20px;
-            }
 
             select {
                 background: url(images/expand-small.svg) no-repeat right #292929;
@@ -118,6 +50,11 @@
         padding-bottom: 0px;
 
         label {
+            font-family: 'EncodeSans_Expanded';
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 100%;
+            color: rgba(255,255,255, 0.8);
             margin-bottom: 10px;
         }
 
@@ -128,13 +65,6 @@
         &:last-child {
             margin-bottom: 0px;
         }
-    }
-
-    .large {
-        width: 100%;
-        /*@media screen and (max-width: 500px) {
-            width: 314px !important;
-        }*/
     }
 
     .edit-options {
