@@ -14,7 +14,6 @@
 
     &__container {
         width: 100%;
-        max-width: 1024px;
         margin: 0 auto;
         position: relative;
     }
@@ -187,28 +186,6 @@
 
     input[type=number] {
         max-width: 144px;
-    }
-
-    .documentation {
-        margin-bottom: 64px;
-        margin-top: -64px;
-
-        h3 {
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 120%;
-            letter-spacing: 0.02em;
-            color: $gray900;
-            margin-bottom: 8px;
-            margin-top: 32px;
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 160%;
-            color: $gray700;
-            margin-bottom: 24px;
-        }
     }
 
     .preview-example-container {

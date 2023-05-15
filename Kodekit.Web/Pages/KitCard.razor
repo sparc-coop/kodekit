@@ -16,9 +16,9 @@
                         <button>
                             <PreviewIcon />
                         </button>
-                        <button>
+                        <a href="@($"{Config["ApiUrl"]}/{Kit.KitId}.css")" title="Download" target="_blank">
                             <DownloadIcon />
-                        </button>
+                        </a>
                         <button class="delete-kit" @onclick="@(e => ShowDeleteModal(Kit.Id))">
                             <DeleteIcon />
                         </button>
