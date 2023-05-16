@@ -18,22 +18,93 @@
             display: flex;
             justify-content: start;
             gap: 53px;
+            margin-bottom: 20px;
         }
 
         .color-main {
-            height: 147px;
-            margin-bottom: 35px;
             display: flex;
             flex-direction: row;
             gap: 25px;
             justify-content: flex-start;
-            color: #FFFFFF;
             font-size: 16px;
+
+            .edit-color {
+                position: relative;
+                border: 2px solid transparent;
+                border-radius: 8px;
+
+                &:hover {
+                    cursor: pointer;
+                    border: 2px solid rgba(200, 200, 200, 0.8);
+                }
+
+                &:active {
+                    background: #292929;
+                    border: 2px solid rgba(200, 200, 200, 0.8);
+                }
+
+                .color-card {
+                    z-index: 1;
+                    color: $white;
+                    transition: 250ms ease-in-out;
+
+                    p.hex {
+                        display: none;
+                    }
+
+                    aside {
+                        position: absolute;
+                        bottom: 18px;
+                        right: 17px;
+                    }
+                }
+
+                .inputcolor {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                    background: transparent;
+                    border: transparent;
+
+                    input.valid {
+                        visibility: hidden;
+                    }
+
+                    .hex-value {
+                        position: absolute;
+                        bottom: 13px;
+                        left: 17px;
+                        color: $white;
+                        font-family: 'EncodeSans';
+                        font-size: 14px;
+                        line-height: 100%;
+                        margin-bottom: 5px;
+                    }
+                }
+                /*.color-selector {
+                    position: absolute;
+                    bottom: 40px;
+                    left: 40px;
+                }*/
+            }
         }
 
         .subcolor-display {
             display: flex;
             gap: 25px;
+        }
+
+        .color-card {
+            width: 100%;
+            height: 100%;
+            padding: 3px 15px 6px 15px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+
+            p.hex {
+                line-height: 100%;
+            }
         }
     }
 

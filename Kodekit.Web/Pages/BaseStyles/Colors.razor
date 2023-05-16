@@ -30,7 +30,10 @@
                             <KitStyle Kit=kit>
                                 <div class="color-display primary">
                                     <div class="color-main">
-                                        <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                        <label class="edit-color">
+                                            <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                            <InputColor @bind-Value="Model.Primary" />
+                                        </label>
                                     </div>
                                     <div class="subcolor-display">
                                         @foreach (var weight in Weights)
@@ -42,7 +45,10 @@
                                 </div>
                                 <div class="color-display secondary">
                                     <div class="color-main">
-                                        <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                        <label class ="edit-color">
+                                            <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                            <InputColor @bind-Value="Model.Secondary" />
+                                        </label>
                                     </div>
                                     <div class="subcolor-display">
                                         @foreach (var weight in Weights)
@@ -54,7 +60,10 @@
                                 </div>
                                 <div class="color-display tertiary">
                                     <div class="color-main">
-                                        <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                        <label class="edit-color">
+                                            <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                            <InputColor @bind-Value="Model.Tertiary" />
+                                        </label>
                                     </div>
                                     <div class="subcolor-display">
                                         @foreach (var weight in Weights)
