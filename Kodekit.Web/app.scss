@@ -91,8 +91,10 @@
 body {
     margin: 0;
     overflow-x: hidden;
-    background: $gray100;
-    font-family: 'Inter', sans-serif;
+    background: #0E0E0E;
+    font-family: 'EncodeSans', sans-serif;
+    font-weight: 400;
+    color: $white;
 }
 
 .loading {
