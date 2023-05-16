@@ -1,118 +1,73 @@
 ﻿@import "../../_variables";
 
 .colors {
-
     .content {
         position: relative;
+
+        span {
+            margin-right: 6px;
+            vertical-align: middle;
+            font-size: 14px;
+            line-height: 100%;
+        }
     }
 
-    aside {
-        box-sizing: border-box;
-        border-radius: 8px;
-        padding: 16px;
-        background: $white;
-        width: 150px;
-        position: absolute;
-        top: -150px;
-        right: 0;
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-
-        .title {
-            font-size: 10px;
-            color: $gray400;
-            margin: 0;
-        }
-
-        h3 {
-            font-size: 24px;
-            color: $gray900;
-            margin: 2px 0 10px;
-        }
-
-        section {
+    header {
+        &.section--header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 2px;
+            gap: 24px;
+            padding-bottom: 77px;
 
-            label {
-                font-size: 11px;
-                color: $gray700;
-
-                div {
-                    cursor: pointer;
-                }
-            }
-
-            .set-colors {
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                width: 100%;
-                font-size: 12px;
-
-                div {
-                    margin: 4px;
-                    cursor: pointer;
-                }
+            p {
+                margin: 0;
             }
         }
     }
 
-    label {
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 180%;
-        color: $gray700;
-    }
-
-    input {
-        background: $white;
-        border: 1px solid #E7E7ED;
-        box-sizing: border-box;
-        border-radius: 4px;
-        padding: 4px 16px 4px 16px;
-        display: block;
-        margin: 0 30px 20px 0;
-        font-size: 16px;
-        line-height: 160%;
-        color: $gray700;
-        cursor: pointer;
-        width: 100px;
-    }
-
-    .preview-example {
-        box-sizing: border-box;
-        border-radius: 8px;
-        padding: 24px 16px 50px 16px;
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 1024px;
+    .color-palette {
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 20px;
-        padding: 24px 32px;
-
-        label {
-            padding: 0;
-            margin-bottom: 8px;
-            color: $gray700;
-        }
-
 
         .color-display {
-            width: auto;
-            height: 142px;
-            border-radius: 4px 4px 0 0;
-            margin: 6px 0 0;
+            display: flex;
+        }
+
+        .color-main {
+            margin-right: 58px;
+
+            .color-blotch {
+            }
+        }
+
+        .color-main {
+            width: 100%;
+            height: 147px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            justify-content: flex-start;
+            color: #FFFFFF;
+            font-size: 16px;
         }
 
         .subcolor-display {
+            display: flex;
+            gap: 25px;
+        }
+    }
+
+    .preview-example {
+        width: 100%;
+        padding: 0;
+        border: none;
+
+        .color-display {
+        }
+        /*.subcolor-display {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
             height: 28px;
-        }
+        }*/
 
         &--greyscale {
             display: grid;
@@ -145,8 +100,6 @@
     }
 
     .section {
-        display: flex;
-        flex-wrap: wrap;
         padding-bottom: 40px;
 
         label {
@@ -160,15 +113,6 @@
     }
 
     .preview-example--mockup {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 40px;
-
-        @media screen and (max-width: 1000px) {
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr;
-        }
-
         h3 {
             margin-bottom: 20px;
         }
@@ -176,7 +120,6 @@
         > div {
             box-sizing: border-box;
             border-radius: 8px;
-            background: $gray100;
 
             h4 {
                 margin-bottom: 15px;
