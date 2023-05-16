@@ -1169,6 +1169,9 @@
 .theme-page section {
   width: 1060px;
 }
+.theme-page section header h3 {
+  margin-bottom: 40px;
+}
 @media screen and (max-width: 1410px) {
   .theme-page section {
     width: auto;

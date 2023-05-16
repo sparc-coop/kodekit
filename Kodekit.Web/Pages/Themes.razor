@@ -2,10 +2,10 @@
 
 <div class="page theme-page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Overview</div>
             <h2>Themes</h2>
-            <p>
+            <p class="subheader">
                 These themes are the foundation of the styleguide that you can edit or 
                 change to fit your needs. You can select a theme as a starting point or 
                 create your own from scratch.
@@ -13,7 +13,11 @@
         </header>
         <div class="content">
             <section>
-                <div tabindex="0" @onclick="@(e => SelectTheme("default"))">
+                <header>
+                    <h3>Premade Kodekit Styleguides</h3>
+                    <p class="subheader">Themes are coming soon! Stay tuned for an update.</p>
+                </header>
+                @*<div tabindex="0" @onclick="@(e => SelectTheme("default"))">
                     <div class="theme-card">
                         <img src="/images/dash-example.svg" alt="Theme Icon" />
                     </div>
@@ -24,7 +28,7 @@
                         <img src="/images/dash-example.svg" alt="Theme Icon" />
                     </div>
                     <label>Kodekit Blank Slate</label>
-                </div>
+                </div>*@
             </section>
         </div>
     </div>

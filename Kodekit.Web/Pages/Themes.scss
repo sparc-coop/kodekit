@@ -5,6 +5,12 @@
     section {
         width: 1060px;
 
+        header {
+            h3 {
+                margin-bottom: 40px;
+            }
+        }
+
         @media screen and (max-width: 1410px) {
             width: auto;
         }
