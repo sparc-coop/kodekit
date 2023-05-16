@@ -3,90 +3,97 @@
 
 <div class="lists page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Elements</div>
             <h2>Lists</h2>
-            <p>
+            <p class="subheader">
                 Use lists to group a set of related items.
             </p>
         </header>
         <div class="content">
-            <header>
-                <h3>Ordered & Unordered Styling</h3>
-                <p>
-                    Use the <code>&lt;ul&gt;</code> tag to start an unorderd list. Use the <code>&lt;ol&gt;</code> tag to start an ordered list.
-                </p>
-            </header>
             @if (kit != null)
             {
                 <EditForm EditContext="@Context">
-                    <div class="section">
-                        <label>
-                            OL Style Type
-                            <InputSelect @bind-Value=Model.OlStyleType>
-                                <option value="none">None</option>
-                                <option value="decimal">Decimal</option>
-                                <option value="decimal-leading-zero">Decimal padded by initial zeros</option>
-                                <option value="lower-roman">Lowercase roman numerals</option>
-                                <option value="upper-roman">Uppercase roman numerals</option>
-                                <option value="lower-greek">Lowercase classical Greek</option>
-                                <option value="lower-alpha">Lowercase ASCII letters</option>
-                                <option value="upper-alpha">Uppercase ASCII letters</option>
-                                <option value="arabic-indic">Arabic-Indic numbers</option>
-                                <option value="armenian">Traditional Armenian</option>
-                            </InputSelect>
-                        </label>
-                        <label>
-                            UL Style Type
-                            <InputSelect @bind-Value=Model.UlStyleType>
-                                <option value="none">None</option>
-                                <option value="disc">Disc</option>
-                                <option value="circle">Circle</option>
-                                <option value="square">Square</option>
-                            </InputSelect>
-                        </label>
-                        <label>
-                            Vertical Padding
-                            <InputNumber @bind-Value="Model.ListVerticalPadding" min="0" />
-                        </label>
-                        <label>
-                            Horizontal Padding
-                            <InputNumber @bind-Value="Model.ListHorizontalPadding" min="0" />
-                        </label>
-                    </div>
-                    <h4>List Item Styling</h4>
-                    <div class="section">
-                        <label>
-                            List Item Font Size
-                            <InputNumber @bind-Value="Model.FontSize" min="1" />
-                        </label>
-                        <label>
-                            List Item Font Weight
-                            <InputFontWeight @bind-Value="Model.FontWeight" />
-                        </label>
-                        <label>
-                            Vertical Padding
-                            <InputNumber @bind-Value="Model.ItemVerticalPadding" min="0" />
-                        </label>
-                        <label>
-                            Horizontal Padding
-                            <InputNumber @bind-Value="Model.ItemHorizontalPadding" min="0" />
-                        </label>
-                    </div>
-                    <Preview Kit=kit>
-                        <ol>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                        </ol>
-                        <ul>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                        </ul>
-                    </Preview>
+                    <section>
+                        <header>
+                            <h3>Ordered & Unordered Styling</h3>
+                            <p class="subheader">
+                                Use the <code>&lt;ul&gt;</code> tag to start an unorderd list. Use the <code>&lt;ol&gt;</code> tag to start an ordered list.
+                            </p>
+                        </header>
+                        <div class="list-style">
+                            <h4>List Styling</h4>
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputSelect @bind-Value=Model.OlStyleType>
+                                        <option value="none">None</option>
+                                        <option value="decimal">Decimal</option>
+                                        <option value="decimal-leading-zero">Decimal padded by initial zeros</option>
+                                        <option value="lower-roman">Lowercase roman numerals</option>
+                                        <option value="upper-roman">Uppercase roman numerals</option>
+                                        <option value="lower-greek">Lowercase classical Greek</option>
+                                        <option value="lower-alpha">Lowercase ASCII letters</option>
+                                        <option value="upper-alpha">Uppercase ASCII letters</option>
+                                        <option value="arabic-indic">Arabic-Indic numbers</option>
+                                        <option value="armenian">Traditional Armenian</option>
+                                    </InputSelect>
+                                    OL Style Type
+                                </label>
+                                <label>
+                                    <InputSelect @bind-Value=Model.UlStyleType>
+                                        <option value="none">None</option>
+                                        <option value="disc">Disc</option>
+                                        <option value="circle">Circle</option>
+                                        <option value="square">Square</option>
+                                    </InputSelect>
+                                    UL Style Type
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.ListVerticalPadding" min="0" />
+                                    Vertical Padding
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.ListHorizontalPadding" min="0" />
+                                    Horizontal Padding
+                                </label>
+                            </div>
+                        </div>
+                        <div class="list-items">
+                            <h4>List Item Styling</h4>
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    List Item Font Size
+                                </label>
+                                <label>
+                                    <InputFontWeight @bind-Value="Model.FontWeight" />
+                                    List Item Font Weight
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.ItemVerticalPadding" min="0" />
+                                    Vertical Padding
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.ItemHorizontalPadding" min="0" />
+                                    Horizontal Padding
+                                </label>
+                            </div>
+                        </div>
+                        <Preview Kit=kit>
+                            <ol>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                            </ol>
+                            <ul>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                                <li>List Item</li>
+                            </ul>
+                        </Preview>
+                    </section>
                 </EditForm>
             }
         </div>

@@ -1,16 +1,15 @@
 ﻿@import "../../_variables";
 
 .inputs {
+    section {
+        .inputs--wrapper {
+            gap: 20px;
 
-    .section {
-        input {
-            box-sizing: border-box;
-            width: 144px;
-            height: 40px;
-        }
-
-        select {
-            width: 232px;
+            div {
+                label:first-of-type {
+                    margin-bottom: 20px;
+                }
+            }
         }
     }
 

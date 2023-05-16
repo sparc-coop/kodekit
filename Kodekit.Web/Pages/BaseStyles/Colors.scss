@@ -4,22 +4,9 @@
     .content {
         position: relative;
 
-        span {
-            margin-right: 6px;
-            vertical-align: middle;
-            font-size: 14px;
-            line-height: 100%;
-        }
-    }
-
-    header {
-        &.section--header {
-            display: flex;
-            gap: 24px;
-            padding-bottom: 77px;
-
-            p {
-                margin: 0;
+        section {
+            header {
+                margin-bottom: 77px;
             }
         }
     }
@@ -29,17 +16,11 @@
 
         .color-display {
             display: flex;
+            justify-content: start;
+            gap: 53px;
         }
 
         .color-main {
-            margin-right: 58px;
-
-            .color-blotch {
-            }
-        }
-
-        .color-main {
-            width: 100%;
             height: 147px;
             margin-bottom: 35px;
             display: flex;

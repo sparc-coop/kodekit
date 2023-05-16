@@ -15,150 +15,152 @@
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
-            <header class="section--header">
-                <h3><span>01</span>Brand Colors</h3>
-                <p>
-                    The brand colors are the three main colors that will be used to accent your site.
-                </p>
-            </header>
 
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <div class="section color-palette">
-                        <KitStyle Kit=kit>
-                            <div class="color-display primary">
-                                <div class="color-main">
-                                    <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                    <section class="colors--brand">
+                        <header class="flex">
+                            <h3><span>01</span> Brand Colors</h3>
+                            <p class="subheader">
+                                The brand colors are the three main colors that will be used to accent your site.
+                            </p>
+                        </header>
+                        <div class="color-palette">
+                            <KitStyle Kit=kit>
+                                <div class="color-display primary">
+                                    <div class="color-main">
+                                        <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                    </div>
+                                    <div class="subcolor-display">
+                                        @foreach (var weight in Weights)
+                                        {
+                                            string hex = "primary-" + weight;
+                                            <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
+                                        }
+                                    </div>
                                 </div>
-                                <div class="subcolor-display">
-                                    @foreach (var weight in Weights)
-                                    {
-                                        string hex = "primary-" + weight;
-                                        <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
-                                    }
+                                <div class="color-display secondary">
+                                    <div class="color-main">
+                                        <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                    </div>
+                                    <div class="subcolor-display">
+                                        @foreach (var weight in Weights)
+                                        {
+                                            string hex = "secondary-" + weight;
+                                            <ColorCard Type="Secondary" Weight="@weight" Hex="@hex" />
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-@*                            <div class="colors--secondary">
-                                <label>Secondary</label>
-                                <div class="color-display">
-                                    <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                <div class="color-display tertiary">
+                                    <div class="color-main">
+                                        <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                    </div>
+                                    <div class="subcolor-display">
+                                        @foreach (var weight in Weights)
+                                        {
+                                            string hex = "tertiary-" + weight;
+                                            <ColorCard Type="Tertiary" Weight="@weight" Hex="@hex" />
+                                        }
+                                    </div>
                                 </div>
-                                <div class="subcolor-display">
-                                    @foreach (var weight in Weights)
-                                    {
-                                        string hex = "secondary-" + weight;
-                                        <ColorCard Type="Secondary" Weight="@weight" Hex="hex" />
-                                    }
+                            </KitStyle>
+                        </div>
+                    </section>
+                    <section class="colors--grayscale">
+                        <header class="flex">
+                            <h3><span>02</span>Grayscale</h3>
+                            <p class="subheader">
+                                The grayscale colors will primarily be used for text.
+                            </p>
+                        </header>
+                        <div>
+                            <label>
+                                Darkest
+                                <InputColor @bind-Value="Model.Darkest" />
+                            </label>
+                            <label>
+                                Lightest
+                                <InputColor @bind-Value="Model.Lightest" />
+                            </label>
+                        </div>
+                        <Preview Kit=kit AdditionalClass="greyscale">
+                            @foreach (var weight in Weights)
+                            {
+                                <div>
+                                    <label>@weight</label>
+                                    <div class="color-display" style="background-color: var(--grey-@weight)"></div>
                                 </div>
-                            </div>
-                            <div class="colors--tertiary">
-                                <label>Tertiary</label>
-                                <div class="color-display">
-                                    <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
-                                </div>
-                                <div class="subcolor-display">
-                                    @foreach (var weight in Weights)
-                                    {
-                                        string hex = "tertiary-" + weight;
-                                        <ColorCard Type="Tertiary" Weight="@weight" Hex="hex" />
-                                    }
-                                </div>
-                            </div>
-*@                        </KitStyle>
-                    </div>
-
-@*                    <header class="section--header">
-                        <h3><span>02</span>Grayscale</h3>
-                        <p>
-                            The grayscale colors will primarily be used for text.
-                        </p>
-                    </header>
-                    <div class="section">
-                        <label>
-                            Darkest
-                            <InputColor @bind-Value="Model.Darkest" />
-                        </label>
-                        <label>
-                            Lightest
-                            <InputColor @bind-Value="Model.Lightest" />
-                        </label>
-                    </div>
-
-                    <Preview Kit=kit AdditionalClass="greyscale">
-                        @foreach (var weight in Weights)
-                        {
+                            }
+                        </Preview>
+                    </section>
+                    <section class="colors--system">
+                        <header class="flex">
+                            <h3><span>03</span>System Colors</h3>
+                            <p class="subheader">
+                                The system colors are used to highlight alerts.
+                            </p>
+                        </header>
+                        <div>
+                            <label>
+                                Error
+                                <InputColor @bind-Value="Model.Error" />
+                            </label>
+                            <label>
+                                Warning
+                                <InputColor @bind-Value="Model.Warning" />
+                            </label>
+                            <label>
+                                Success
+                                <InputColor @bind-Value="Model.Success" />
+                            </label>
+                        </div>
+                        <Preview Kit=kit AdditionalClass="noscale">
                             <div>
-                                <label>@weight</label>
-                                <div class="color-display" style="background-color: var(--grey-@weight)"></div>
+                                <label>Error</label>
+                                <div class="color-display" style="background-color: var(--error-500)"></div>
                             </div>
-                        }
-                    </Preview>
-
-                    <header class="section--header">
-                        <h3><span>03</span>System Colors</h3>
-                        <p>
-                            The system colors are used to highlight alerts.
-                        </p>
-                    </header>
-                    <div class="section">
-                        <label>
-                            Error
-                            <InputColor @bind-Value="Model.Error" />
-                        </label>
-                        <label>
-                            Warning
-                            <InputColor @bind-Value="Model.Warning" />
-                        </label>
-                        <label>
-                            Success
-                            <InputColor @bind-Value="Model.Success" />
-                        </label>
-                    </div>
-                    <Preview Kit=kit AdditionalClass="noscale">
-                        <div>
-                            <label>Error</label>
-                            <div class="color-display" style="background-color: var(--error-500)"></div>
-                        </div>
-                        <div>
-                            <label>Warning</label>
-                            <div class="color-display" style="background-color: var(--warning-500)"></div>
-                        </div>
-                        <div>
-                            <label>Success</label>
-                            <div class="color-display" style="background-color: var(--success-500)"></div>
-                        </div>
-                    </Preview>
-
-                    <header>
-                        <h3>Preview</h3>
-                        <p>A small example of all colors, buttons, and typography applied to two cards.</p>
-                    </header>
-                    <Preview Kit=kit AdditionalClass="mockup">
-                        <div class="card-with-image">
-                            <img src="/images/example1.png" alt="Example mockup" />
                             <div>
+                                <label>Warning</label>
+                                <div class="color-display" style="background-color: var(--warning-500)"></div>
+                            </div>
+                            <div>
+                                <label>Success</label>
+                                <div class="color-display" style="background-color: var(--success-500)"></div>
+                            </div>
+                        </Preview>
+                    </section>
+                    <section class="colors--preview">
+                        <header class="flex">
+                            <h3>Preview</h3>
+                            <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
+                        </header>
+                        <Preview Kit=kit AdditionalClass="mockup">
+                            <div class="card-with-image">
+                                <img src="/images/example1.png" alt="Example mockup" />
+                                <div>
+                                    <h6 class="tertiary">Information</h6>
+                                    <h4>Brand Colors</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                    </p>
+                                    <button>Primary CTA</button>
+                                </div>
+                            </div>
+                            <div class="card">
                                 <h6 class="tertiary">Information</h6>
                                 <h4>Brand Colors</h4>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit
                                 </p>
-                                <button>Primary CTA</button>
+                                <div class="buttons">
+                                    <button>Primary CTA</button>
+                                    <button class="secondary">Secondary CTA</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <h6 class="tertiary">Information</h6>
-                            <h4>Brand Colors</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                            </p>
-                            <div class="buttons">
-                                <button>Primary CTA</button>
-                                <button class="secondary">Secondary CTA</button>
-                            </div>
-                        </div>
-                    </Preview>
-*@                </EditForm>
+                        </Preview>
+                    </section>
+                </EditForm>
             }
         </div>
     </div>

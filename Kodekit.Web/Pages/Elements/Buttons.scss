@@ -1,6 +1,10 @@
 ﻿@import "../../_variables";
 
 .buttons {
+    .secondary-button {
+        display: flex;
+    }
+
     .preview-example {
         padding: 32px 32px 8px 32px;
 
@@ -10,6 +14,18 @@
 
         .remove {
             border: 1px solid transparent !important;
+        }
+    }
+
+    .section-container {
+        display: flex;
+        margin-top: 40px;
+
+        p {
+            font-family: 'EncodeSans_Expanded';
+            font-weight: 300;
+            font-size: 13px;
+            margin-top: 2px;
         }
     }
 }

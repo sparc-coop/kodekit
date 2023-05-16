@@ -3,104 +3,108 @@
 
 <div class="inputs page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Elements</div>
             <h2>Inputs & Textareas</h2>
-            <p>
+            <p class="subheader">
                 Use to collect text input.
             </p>
         </header>
         <div class="content">
-            <header>
-                <h3>Form Styling</h3>
-                <p>
-                    Input collects a single line of text, while a textarea can receive multiple lines of text.
-                </p>
-            </header>
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <div class="section">
-                        <div>
-                            <label>
-                                Input Font Size (px)
-                                <InputNumber @bind-Value="Model.FontSize" min="1" />
-                            </label>
-                            <label>
-                                Input Font Weight
-                                <InputFontWeight @bind-Value="Model.FontWeight" />
-                            </label>
+                    <section>
+                        <header class="flex">
+                            <h3><span>01</span> Form Styling</h3>
+                            <p class="subheader">
+                                Input collects a single line of text, while a textarea can receive multiple lines of text.
+                            </p>
+                        </header>
+                        <div class="inputs--wrapper">
+                            <div>
+                                <label>
+                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    Input Font Size (px)
+                                </label>
+                                <label>
+                                    <InputFontWeight @bind-Value="Model.FontWeight" />
+                                    Input Font Weight
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                    Vertical Padding (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                    Horizontal Padding (px)
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                    Corner Radius (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                    Border Width (px)
+                                </label>
+                            </div>
                         </div>
-                        <div>
+                        <Preview Kit=kit>
                             <label>
-                                Vertical Padding (px)
-                                <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                <input placeholder="Placeholder" />
                             </label>
                             <label>
-                                Horizontal Padding (px)
-                                <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                <PersonSvg />
+                                <input placeholder="Placeholder" />
                             </label>
-                            <label>
-                                Corner Radius (px)
-                                <InputNumber @bind-Value="Model.CornerRadius" min="0" />
-                            </label>
-                            <label>
-                                Border Width (px)
-                                <InputNumber @bind-Value="Model.BorderWidth" min="0" />
-                            </label>
-                        </div>
-                    </div>
+                            <textarea placeholder="Placeholder"></textarea>
+                        </Preview>
+                    </section>
 
-                    <Preview Kit=kit>
-                        <label>
-                            <input placeholder="Placeholder" />
-                        </label>
-                        <label>
-                            <PersonSvg />
-                            <input placeholder="Placeholder" />
-                        </label>
-                        <textarea placeholder="Placeholder"></textarea>
-                    </Preview>
-
-                    <header>
-                        <h3>Input & Textarea states</h3>
-                        <p>
-                            Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
-                        </p>
-                    </header>
-
-                    <Preview Kit=kit>
-                        <label>
-                            Placeholder
-                            <PersonSvg />
-                            <input placeholder="username" />
-                            <span>Enter your username.</span>
-                        </label>
-                        <label class="selected">
-                            Selected
-                            <PersonSvg />
-                            <input placeholder="username" />
-                            <span>Enter your username.</span>
-                        </label>
-                        <label>
-                            Entered
-                            <PersonSvg />
-                            <input value="Kodekit" />
-                            <span>Enter your username.</span>
-                        </label>
-                        <label class="error">
-                            Error
-                            <PersonSvg />
-                            <input class="invalid" value="username" />
-                            <span>Username is taken.</span>
-                        </label>
-                        <label class="disabled">
-                            Disabled
-                            <PersonSvg />
-                            <input value="enter username" disabled />
-                            <span>Enter your name first.</span>
-                        </label>
-                    </Preview>
+                    <section>
+                        <header clas="flex">
+                            <h3><span> 02</span> Input & Textarea states</h3>
+                            <p class="subheader">
+                                Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
+                            </p>
+                        </header>
+                        <Preview Kit=kit>
+                            <label>
+                                Placeholder
+                                <PersonSvg />
+                                <input placeholder="username" />
+                                <span>Enter your username.</span>
+                            </label>
+                            <label class="selected">
+                                Selected
+                                <PersonSvg />
+                                <input placeholder="username" />
+                                <span>Enter your username.</span>
+                            </label>
+                            <label>
+                                Entered
+                                <PersonSvg />
+                                <input value="Kodekit" />
+                                <span>Enter your username.</span>
+                            </label>
+                            <label class="error">
+                                Error
+                                <PersonSvg />
+                                <input class="invalid" value="username" />
+                                <span>Username is taken.</span>
+                            </label>
+                            <label class="disabled">
+                                Disabled
+                                <PersonSvg />
+                                <input value="enter username" disabled />
+                                <span>Enter your name first.</span>
+                            </label>
+                        </Preview>
+                    </section>
                 </EditForm>
             }
         </div>

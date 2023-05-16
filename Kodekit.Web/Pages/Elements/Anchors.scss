@@ -1,14 +1,25 @@
 ﻿@import "../../_variables";
 
 .anchors {
+    section {
+        select {
+            width: 50%;
+        }
+
+        .link-states {
+            margin-top: 40px;
+            padding-bottom: 0;
+
+            .inputcolor {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
     .preview-example {
         a {
             display: inline-block;
             margin: 16px;
         }
-    }
-
-    .section label {
-        margin-right: 16px;
     }
 }

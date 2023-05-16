@@ -12,34 +12,39 @@
     }
 
     aside {
+        margin-bottom: 40px;
         font-size: 12px;
         font-weight: 400;
-        line-height: 19.2px;
-        color: $gray700;
+        color: #B2B2B2;
+
 
         a {
             text-decoration: none;
-            color: $primary500;
+            color: $white;
         }
     }
 
     .section {
         select {
             background: url("/images/dropdown-icon.svg") no-repeat right;
-            background-color: white;
             -webkit-appearance: none;
             background-position-x: 125px;
         }
     }
 
     .section-container {
-        padding: 34px 0;
-        font-size: 16px;
-        color: $gray700;
+        display: flex;
+        margin-top: 40px;
 
         .switch {
             vertical-align: middle;
-            margin-top: -3px;
+        }
+
+        p {
+            font-family: 'EncodeSans_Expanded';
+            font-weight: 300;
+            font-size: 13px;
+            margin-top: 2px;
         }
     }
 }

@@ -3,43 +3,45 @@
 
 <div class="icons page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Base Styles</div>
             <h2>Icons</h2>
-            <p>
+            <p class="subheader">
                 Provide visual symbols and logos.
             </p>
         </header>
         <div class="content">
-            <header>
-                <h3>Icon Sets</h3>
-                <p>
-                    There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
-                </p>
-            </header>
-            @if (kit != null && Model != null)
-            {
-                <EditForm EditContext="@Context">
-                    <section>
-                        <label>
-                            Icon Set
-                            <InputSelect @bind-Value="Model.Name">
-                                <option>Select:</option>
-                                <option value="Material">Material</option>
-                                <option value="Remix">Remix</option>
-                                <option value="CSS">CSS</option>
-                                <option value="FontAwesome">FontAwesome</option>
-                            </InputSelect>
-                        </label>
-                    </section>
-                    <Preview Kit=kit>
-                        @foreach (var icon in Model.IconsList)
-                        {
-                            <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
-                        }
-                    </Preview>
-                </EditForm>
-            }
+            <section>
+                <header>
+                    <h3>Icon Sets</h3>
+                    <p class="subheader">
+                        There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
+                    </p>
+                </header>
+                @if (kit != null && Model != null)
+                {
+                    <EditForm EditContext="@Context">
+                        <section>
+                            <label>
+                                <InputSelect @bind-Value="Model.Name">
+                                    <option>Select:</option>
+                                    <option value="Material">Material</option>
+                                    <option value="Remix">Remix</option>
+                                    <option value="CSS">CSS</option>
+                                    <option value="FontAwesome">FontAwesome</option>
+                                </InputSelect>
+                                Icon Set
+                            </label>
+                        <Preview Kit=kit>
+                            @foreach (var icon in Model.IconsList)
+                            {
+                                <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                            }
+                        </Preview>
+                        </section>
+                    </EditForm>
+                }
+            </section>
         </div>
     </div>
 </div>

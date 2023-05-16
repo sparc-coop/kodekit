@@ -91,11 +91,42 @@
         }
     }
 
+    section {
+        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+
+        .inputs--wrapper {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .preview-example {
+            padding-bottom: 0px;
+
+            label {
+                font-family: 'EncodeSans_Expanded';
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 100%;
+                color: rgba(255,255,255, 0.8);
+                margin-bottom: 10px;
+            }
+        }
+
+        h4 {
+            margin-bottom: 10px;
+            font-family: 'QuantaGroteskPro';
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: $white;
+        }
+    }
+
     section, .subsection {
         width: 100%;
         margin-top: 40px;
         padding-bottom: 100px;
-        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 
         &:last-of-type {
             border: none;
@@ -103,11 +134,29 @@
 
         header {
             h3 {
+                margin-bottom: 20px;
+
                 span {
                     margin-right: 6px;
                     vertical-align: middle;
                     font-size: 14px;
                     line-height: 100%;
+                }
+            }
+
+            &.flex, .flex {
+                display: flex;
+                gap: 24px;
+
+                span {
+                    margin-right: 6px;
+                    vertical-align: middle;
+                    font-size: 14px;
+                    line-height: 100%;
+                }
+
+                p {
+                    margin-top: -2px;
                 }
             }
         }
@@ -121,18 +170,17 @@
             width: 100%;
             min-height: 87px;
         }
-
         /*.large {
-            width: 486px;
-        }
+        width: 486px;
+    }
 
-        .medium {
-            width: 302px
-        }
+    .medium {
+        width: 302px
+    }
 
-        .small {
-            width: 142px;
-        }*/
+    .small {
+        width: 142px;
+    }*/
     }
 
     .button--save {
@@ -203,6 +251,8 @@
     }
 
     .preview-example-container {
+        margin-top: 40px;
+
         .preview-example {
             padding: 44px;
             box-sizing: border-box;
@@ -281,8 +331,8 @@
                 line-height: 24px;
                 color: #CA9100;
                 /*&::-webkit-scrollbar {
-                width: 0px;
-            }*/
+            width: 0px;
+        }*/
 
                 .hljs-tag {
                     color: #979797;
@@ -325,8 +375,8 @@
             line-height: 24px;
             color: #CA9100;
             /*&::-webkit-scrollbar {
-                width: 0px;
-            }*/
+            width: 0px;
+        }*/
 
             .hljs-tag {
                 color: #979797;

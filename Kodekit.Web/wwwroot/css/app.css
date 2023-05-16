@@ -179,11 +179,37 @@
   line-height: 160%;
   color: #B2B2B2;
 }
+.page section {
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.page section .inputs--wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.page section .preview-example {
+  padding-bottom: 0px;
+}
+.page section .preview-example label {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+.page section h4 {
+  margin-bottom: 10px;
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  color: #FFFFFF;
+}
 .page section, .page .subsection {
   width: 100%;
   margin-top: 40px;
   padding-bottom: 100px;
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
   /*.large {
       width: 486px;
   }
@@ -199,11 +225,27 @@
 .page section:last-of-type, .page .subsection:last-of-type {
   border: none;
 }
+.page section header h3, .page .subsection header h3 {
+  margin-bottom: 20px;
+}
 .page section header h3 span, .page .subsection header h3 span {
   margin-right: 6px;
   vertical-align: middle;
   font-size: 14px;
   line-height: 100%;
+}
+.page section header.flex, .page section header .flex, .page .subsection header.flex, .page .subsection header .flex {
+  display: flex;
+  gap: 24px;
+}
+.page section header.flex span, .page section header .flex span, .page .subsection header.flex span, .page .subsection header .flex span {
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 100%;
+}
+.page section header.flex p, .page section header .flex p, .page .subsection header.flex p, .page .subsection header .flex p {
+  margin-top: -2px;
 }
 .page section-container, .page .subsection-container {
   display: block;
@@ -267,6 +309,9 @@
 }
 .page input[type=number] {
   max-width: 144px;
+}
+.page .preview-example-container {
+  margin-top: 40px;
 }
 .page .preview-example-container .preview-example {
   padding: 44px;
@@ -544,6 +589,9 @@
   background-color: #FFFFFF;
 }
 
+.buttons .secondary-button {
+  display: flex;
+}
 .buttons .preview-example {
   padding: 32px 32px 8px 32px;
 }
@@ -553,22 +601,37 @@
 .buttons .preview-example .remove {
   border: 1px solid transparent !important;
 }
+.buttons .section-container {
+  display: flex;
+  margin-top: 40px;
+}
+.buttons .section-container p {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  margin-top: 2px;
+}
 
+.anchors section select {
+  width: 50%;
+}
+.anchors section .link-states {
+  margin-top: 40px;
+  padding-bottom: 0;
+}
+.anchors section .link-states .inputcolor {
+  margin-bottom: 10px;
+}
 .anchors .preview-example a {
   display: inline-block;
   margin: 16px;
 }
-.anchors .section label {
-  margin-right: 16px;
-}
 
-.inputs .section input {
-  box-sizing: border-box;
-  width: 144px;
-  height: 40px;
+.inputs section .inputs--wrapper {
+  gap: 20px;
 }
-.inputs .section select {
-  width: 232px;
+.inputs section .inputs--wrapper div label:first-of-type {
+  margin-bottom: 20px;
 }
 .inputs .preview-example {
   display: flex;
@@ -582,6 +645,9 @@
   height: unset;
 }
 
+.lists section .list-items {
+  margin-top: 40px;
+}
 .lists .preview-example {
   display: flex;
 }
@@ -598,29 +664,32 @@
   height: unset;
 }
 .dropdowns aside {
+  margin-bottom: 40px;
   font-size: 12px;
   font-weight: 400;
-  line-height: 19.2px;
-  color: #3A3A40;
+  color: #B2B2B2;
 }
 .dropdowns aside a {
   text-decoration: none;
-  color: #0B5FFF;
+  color: #FFFFFF;
 }
 .dropdowns .section select {
   background: url("/images/dropdown-icon.svg") no-repeat right;
-  background-color: white;
   -webkit-appearance: none;
   background-position-x: 125px;
 }
 .dropdowns .section-container {
-  padding: 34px 0;
-  font-size: 16px;
-  color: #3A3A40;
+  display: flex;
+  margin-top: 40px;
 }
 .dropdowns .section-container .switch {
   vertical-align: middle;
-  margin-top: -3px;
+}
+.dropdowns .section-container p {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  margin-top: 2px;
 }
 
 .selectors .preview-example {
@@ -648,31 +717,18 @@
 .colors .content {
   position: relative;
 }
-.colors .content span {
-  margin-right: 6px;
-  vertical-align: middle;
-  font-size: 14px;
-  line-height: 100%;
-}
-.colors header.section--header {
-  display: flex;
-  gap: 24px;
-  padding-bottom: 77px;
-}
-.colors header.section--header p {
-  margin: 0;
+.colors .content section header {
+  margin-bottom: 77px;
 }
 .colors .color-palette {
   width: 100%;
 }
 .colors .color-palette .color-display {
   display: flex;
+  justify-content: start;
+  gap: 53px;
 }
 .colors .color-palette .color-main {
-  margin-right: 58px;
-}
-.colors .color-palette .color-main {
-  width: 100%;
   height: 147px;
   margin-bottom: 35px;
   display: flex;
@@ -784,8 +840,8 @@
   padding: 0;
 }
 
-.icons section {
-  padding-bottom: 15px;
+.icons section select {
+  width: 50%;
 }
 .icons .preview-example i {
   display: inline-block;
@@ -803,7 +859,6 @@
   position: relative;
 }
 .typography .content .subsection {
-  border: none;
   padding: 0;
   margin-bottom: 40px;
 }
@@ -1131,12 +1186,7 @@
   border: none;
 }
 .installation section header div {
-  display: flex;
-  gap: 24px;
   margin-bottom: 40px;
-}
-.installation section header div p {
-  margin-top: -2px;
 }
 .installation .instructions {
   overflow: hidden;
@@ -1533,13 +1583,6 @@
 }
 .release .page--header a:hover {
   color: #FFFFFF;
-}
-.release section header {
-  display: flex;
-  gap: 24px;
-}
-.release section header p {
-  margin-top: -2px;
 }
 .release section div p {
   margin-bottom: 14px;

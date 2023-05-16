@@ -3,65 +3,66 @@
 
 <div class="dropdowns page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Elements</div>
             <h2>Dropdowns</h2>
-            <p>
+            <p class="subheader">
                 Use to select from a series of choices.
             </p>
         </header>
         <div class="content">
-            <header>
-            <h3>Dropdown Styling</h3>
-            <p>
-                The &lt;select&gt; element defines a dropdown list. The &lt;option&gt; elements define options that can be selected. To define a pre-selected option, add the selected attribute to the option.
-            </p>
-            </header>
-            <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <div class="section">
-                        <Switch @bind-Value=Model.OverwriteInherited Title="Overwrite inherited styling" />
-                    </div>
-                    @if (Model.OverwriteInherited)
-                    {
+                    <section>
+                        <header>
+                            <h3>Dropdown Styling</h3>
+                            <p class="subheader">
+                                The &lt;select&gt; element defines a dropdown list. The &lt;option&gt; elements define options that can be selected. To define a pre-selected option, add the selected attribute to the option.
+                            </p>
+                        </header>
+                        <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
+                        @if (Model.OverwriteInherited)
+                        {
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    Font Size (px)
+                                </label>
+                                <label>
+                                    <InputFontWeight @bind-Value=Model.FontWeight />
+                                    Font Weight
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                    Vertical Padding (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                    Horizontal Padding (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                    Corner Radius (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                    Border Width (px)
+                                </label>
+                            </div>
+                        }
                         <div class="section">
-                            <label>
-                                Font Size (px)
-                                <InputNumber @bind-Value="Model.FontSize" min="1" />
-                            </label>
-                            <label>
-                                Font Weight
-                                <InputFontWeight @bind-Value=Model.FontWeight />
-                            </label>
-                            <label>
-                                Vertical Padding (px)
-                                <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
-                            </label>
-                            <label>
-                                Horizontal Padding (px)
-                                <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
-                            </label>
-                            <label>
-                                Corner Radius (px)
-                                <InputNumber @bind-Value="Model.CornerRadius" min="0" />
-                            </label>
-                            <label>
-                                Border Width (px)
-                                <InputNumber @bind-Value="Model.BorderWidth" min="0" />
-                            </label>
+                            <Switch @bind-Value=Model.OverwriteInherited Title="Overwrite Inherited Styling" />
                         </div>
-                    }
-
-                    <Preview Kit=kit>
-                            <select>
-                                <option>Dropdown Menu</option>
-                                <option>Default Row</option>
-                                <option selected>Selected Row</option>
-                                <option>Default Row</option>
-                            </select>
-                    </Preview>
+                        <Preview Kit=kit>
+                                <select>
+                                    <option>Dropdown Menu</option>
+                                    <option>Default Row</option>
+                                    <option selected>Selected Row</option>
+                                    <option>Default Row</option>
+                                </select>
+                        </Preview>
+                    </section>
                 </EditForm>
             }
         </div>

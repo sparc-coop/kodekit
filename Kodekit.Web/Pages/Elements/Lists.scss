@@ -1,6 +1,12 @@
 ﻿@import "../../_variables";
 
 .lists {
+    section {
+        .list-items {
+            margin-top: 40px;
+        }
+    }
+
     .preview-example {
         display: flex;
         > * {

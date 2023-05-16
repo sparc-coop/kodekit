@@ -3,129 +3,129 @@
 
 <div class="buttons page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Elements</div>
             <h2>Buttons</h2>
-            <p>
+            <p class="subheader">
                 A clickable button. Most often for use in forms, to submit entered information.
             </p>
         </header>
         <div class="content">
-            <header>
-                <h3>Core Buttons</h3>
-                <p>
-                    Primary and secondary button stylings are inherited from selected base style colors.
-                </p>
-            </header>
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <div class="section">
-                        <label>
-                            Font Size (px)
-                            <InputNumber @bind-Value="Model.FontSize" min="1" />
-                        </label>
-                        <label>
-                            Font Weight
-                            <InputFontWeight @bind-Value="Model.FontWeight" />
-                        </label>
-                        <label>
-                            Vertical Padding (px)
-                            <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
-                        </label>
-                        <label>
-                            Horizontal Padding (px)
-                            <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
-                        </label>
-                        <label>
-                            Corner Radius (px)
-                            <InputNumber @bind-Value="Model.CornerRadius" min="0" />
-                        </label>
-                        <label>
-                            Border Width (px)
-                            <InputNumber @bind-Value="Model.BorderWidth" min="0" />
-                        </label>
-                        <label>
-                            Icon Size (px)
-                            <InputNumber @bind-Value="Model.IconWidth" min="0" />
-                        </label>
-                    </div>
-
-                    <label style="padding-bottom: 15px;">Secondary Button</label>
-                    <div class="section">
-                        <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button Outline" />
-                    </div>
-
-                    <Preview Kit=kit>
-                        <button name="Preview Button">Button</button>
-                        <button>
-                            <KodekitLogoSvg />
-                            Button
-                        </button>
-                        <button name="Preview Button">
-                            Button
-                            <KodekitLogoSvg />
-                        </button>
-                        <button name="Preview Button">
-                            <KodekitLogoSvg />
-                        </button>
-                        <button name="Preview Button" class="secondary">Button</button>
-                        <button name="Preview Button" class="secondary">
-                            <KodekitLogoSvg />
-                            Button
-                        </button>
-                        <button name="Preview Button" class="secondary">
-                            Button
-                            <KodekitLogoSvg />
-                        </button>
-                        <button name="Preview Button" class="secondary">
-                            <KodekitLogoSvg />
-                        </button>
-                    </Preview>
-
-                    <header>
-                        <h3>Button Variations & States</h3>
-                        <p>
-                            Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
-                        </p>
-                    </header>
-
-                    <Preview Kit=kit>
-                        <div>
-                            <button name="Preview Button">Default</button>
+                    <section>
+                        <header class="flex">
+                            <h3><span>01</span> Core Buttons</h3>
+                            <p class="subheader">
+                                Primary and secondary button stylings are inherited from selected base style colors.
+                            </p>
+                        </header>
+                        <div class="inputs--wrapper">
+                            <label>
+                                <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                Font Size (px)
+                            </label>
+                            <label>
+                                <InputFontWeight @bind-Value="Model.FontWeight" />
+                                Font Weight
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                Vertical Padding (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                Horizontal Padding (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                Corner Radius (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                Border Width (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.IconWidth" min="0" />
+                                Icon Size (px)
+                            </label>
+                        </div>
+                        <div class="secondary-button">
+                            <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button" />
+                        </div>
+                        <Preview Kit=kit>
+                            <button name="Preview Button">Button</button>
                             <button>
-                                Default
+                                <KodekitLogoSvg />
+                                Button
+                            </button>
+                            <button name="Preview Button">
+                                Button
                                 <KodekitLogoSvg />
                             </button>
-                            <button name="Preview Button" class="hover">Hover</button>
-                            <button name="Preview Button" class="hover">
-                                Hover
+                            <button name="Preview Button">
                                 <KodekitLogoSvg />
                             </button>
-                            <button name="Preview Button" disabled="disabled">Disabled</button>
-                            <button name="Preview Button" disabled="disabled">
-                                Disabled
-                                <KodekitLogoSvg />
-                            </button>
-                        </div>
-                        <div>
-                            <button name="Preview Button" class="secondary">Default</button>
+                            <button name="Preview Button" class="secondary">Button</button>
                             <button name="Preview Button" class="secondary">
-                                Default
+                                <KodekitLogoSvg />
+                                Button
+                            </button>
+                            <button name="Preview Button" class="secondary">
+                                Button
                                 <KodekitLogoSvg />
                             </button>
-                            <button name="Preview Button" class="secondary hover">Hover</button>
-                            <button name="Preview Button" class="secondary hover">
-                                Hover
+                            <button name="Preview Button" class="secondary">
                                 <KodekitLogoSvg />
                             </button>
-                            <button name="Preview Button" class="secondary" disabled="disabled">Disabled</button>
-                            <button name="Preview Button" class="secondary" disabled="disabled">
-                                Disabled
-                                <KodekitLogoSvg />
-                            </button>
-                        </div>
-                    </Preview>
+                        </Preview>
+                    </section>
+
+                    <section>
+                        <header class="flex">
+                            <h3><span>02</span> Button Variations & States</h3>
+                            <p class="subheader">
+                                Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
+                            </p>
+                        </header>
+                        <Preview Kit=kit>
+                            <div>
+                                <button name="Preview Button">Default</button>
+                                <button>
+                                    Default
+                                    <KodekitLogoSvg />
+                                </button>
+                                <button name="Preview Button" class="hover">Hover</button>
+                                <button name="Preview Button" class="hover">
+                                    Hover
+                                    <KodekitLogoSvg />
+                                </button>
+                                <button name="Preview Button" disabled="disabled">Disabled</button>
+                                <button name="Preview Button" disabled="disabled">
+                                    Disabled
+                                    <KodekitLogoSvg />
+                                </button>
+                            </div>
+                            <div>
+                                <button name="Preview Button" class="secondary">Default</button>
+                                <button name="Preview Button" class="secondary">
+                                    Default
+                                    <KodekitLogoSvg />
+                                </button>
+                                <button name="Preview Button" class="secondary hover">Hover</button>
+                                <button name="Preview Button" class="secondary hover">
+                                    Hover
+                                    <KodekitLogoSvg />
+                                </button>
+                                <button name="Preview Button" class="secondary" disabled="disabled">Disabled</button>
+                                <button name="Preview Button" class="secondary" disabled="disabled">
+                                    Disabled
+                                    <KodekitLogoSvg />
+                                </button>
+                            </div>
+                        </Preview>
+                    </section>
                 </EditForm>
             }
         </div>
