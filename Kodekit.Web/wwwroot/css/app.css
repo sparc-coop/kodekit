@@ -38,7 +38,7 @@
   margin-bottom: 5px;
   color: #FFFFFF;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 160%;
   margin-bottom: 5px;
 }
 .color-card--content .color-info {
@@ -118,50 +118,41 @@
   margin: 0 auto;
   position: relative;
 }
-.page .title {
-  font-size: 14px;
-  line-height: 120%;
-  letter-spacing: 0.02em;
-  color: #0B5FFF;
-  margin-bottom: 5px;
-}
 .page header.page--header {
   border-bottom: 1px solid rgba(200, 200, 200, 0.3);
   padding-bottom: 100px;
 }
-.page header .title {
+.page header.page--header .title {
   font-family: "QuantaGroteskPro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
   color: #CCCCCC;
 }
-.page header h2 {
+.page header.page--header h2 {
+  margin-bottom: 20px;
   font-family: "QuantaGroteskPro";
   font-weight: 700;
   font-size: 40px;
   line-height: 120%;
   color: #FFFFFF;
 }
-.page header p {
-  margin-top: 20px;
+.page header.page--header p {
   padding-top: 0px;
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 18px;
-  line-height: 150%;
+  line-height: 160%;
   color: #B2B2B2;
 }
 .page .subheader {
-  color: #3A3A40;
-  max-width: 496px;
-  font-size: 16px;
+  font-family: "EncodeSans";
   font-weight: 400;
-  padding: 8px 0 32px 0;
+  font-size: 16px;
   line-height: 160%;
+  color: #F2F2F2;
 }
 .page .content {
-  padding-top: 40px;
   padding-bottom: 100px;
 }
 .page .content header {
@@ -175,15 +166,33 @@
   line-height: 120%;
   color: #FFFFFF;
 }
+.page .content header h3 span {
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 100%;
+}
 .page .content header p {
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 160%;
   color: #B2B2B2;
 }
 .page .section, .page section {
-  padding-bottom: 40px;
+  width: 100%;
+  margin-top: 40px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.page .section:last-of-type, .page section:last-of-type {
+  border: none;
+}
+.page .section header h3 span, .page section header h3 span {
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 100%;
 }
 .page .section-container, .page section-container {
   display: block;
@@ -235,7 +244,7 @@
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
   color: #FFFFFF;
 }
 .page input:focus, .page select:focus, .page textarea:focus {
@@ -306,7 +315,6 @@
 }
 .page pre {
   width: 100%;
-  max-width: 1024px;
   margin: 0px 0 80px 0;
   padding: 0 0 0 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -725,7 +733,7 @@
   border-radius: 4px;
   display: flex;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 160%;
   cursor: pointer;
 }
 .inputcolor input {
@@ -754,12 +762,6 @@
 
 .typography .content {
   position: relative;
-}
-.typography .content span {
-  margin-right: 6px;
-  vertical-align: middle;
-  font-size: 14px;
-  line-height: 100%;
 }
 .typography .content .paragraph-settings--header {
   padding: 40px 0;
@@ -812,7 +814,7 @@
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
   background: #1E1E1E;
   color: #FFFFFF;
   text-align: center;
@@ -1060,76 +1062,108 @@
   margin: 0 30px 20px 0;
 }
 
-.introduction .page--header {
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+.introduction .content {
+  padding-top: 40px;
 }
-.introduction .content header {
+.introduction .content section {
+  margin-top: 0;
+  padding-bottom: 40px;
+  border: none;
+}
+.introduction .content section header {
   margin-bottom: 20px;
 }
-.introduction .content p {
+.introduction .content section p {
   font-size: 16px;
-  line-height: 150%;
+  line-height: 160%;
   margin-bottom: 12px;
 }
 
+.installation section {
+  padding-bottom: 100px;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.installation section:last-of-type {
+  border: none;
+}
+.installation section header div {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+}
 .installation .instructions {
-  background: #282c34;
-  border-radius: 8px;
-  position: relative;
   overflow: hidden;
-  margin: 16px 0 40px 0;
-  height: 92px;
-  max-width: 672px;
-  padding-right: 40px;
-}
-.installation .instructions button {
-  font-size: 12px;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #282c34;
-  border: 1px solid #787980;
-  border-radius: 8px;
-  color: #3A3A40;
-  margin-top: 0;
-  padding: 6px 10px;
-}
-.installation .instructions button:hover {
-  border: 1px solid #0B5FFF;
-  color: #0B5FFF;
-}
-.installation ol {
   list-style: decimal;
   padding-left: 24px;
 }
-.installation .subheader span {
-  background: #D2D4D9;
-  padding: 1px 6px;
-  border-radius: 4px;
-  color: #3A3A40;
-}
-.installation--title {
-  margin-top: 40px;
-}
-.installation pre {
-  margin-top: 6px;
-}
-.installation .download {
-  margin: 30px 0;
-  color: #17171A;
-  font-size: 16px;
-  padding: 8px 16px;
-  background: transparent;
-  border: 1px solid #17171A;
-  border-radius: 4px;
-  width: 205px;
-  display: block;
+.installation .instructions li h4 {
+  height: 26px;
+  margin-bottom: 10px;
   font-weight: 500;
+  line-height: 160%;
 }
-.installation .download img {
-  margin-left: 10px;
-  vertical-align: middle;
-  margin-top: -2px;
+.installation .instructions li div {
+  margin-left: -18px;
+}
+.installation .instructions li p {
+  line-height: 160%;
+}
+.installation .instructions li pre {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 60px;
+  background: #17171A;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+}
+.installation .instructions li pre code {
+  padding: 32px 45px;
+}
+.installation .instructions li.step-one {
+  position: relative;
+}
+.installation .instructions li.step-one .copy {
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  padding: 8px 15px;
+  background: #17171A;
+  border-radius: 8px;
+  font-size: 12px;
+  transition: 250ms ease-in-out;
+}
+.installation .instructions li.step-one .copy:hover {
+  border: 1px solid #FFFFFF;
+}
+.installation .instructions li.step-one .copy:active {
+  background: #FFFFFF;
+  color: #1E1E1E;
+}
+.installation .option-two header h3 {
+  margin-bottom: 40px;
+}
+.installation .option-two li p {
+  line-height: 160%;
+}
+.installation .option-two li .download {
+  display: block;
+  width: 207px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+  transition: 250ms ease-in-out;
+}
+.installation .option-two li .download:hover {
+  border: 1px solid #FFFFFF;
+}
+.installation .option-two li .download:active {
+  background: #FFFFFF;
+  color: #1E1E1E;
 }
 
 .theme-page section {
@@ -1254,7 +1288,7 @@
   font-family: "EncodeSans";
   font-weight: 700;
   font-size: 18px;
-  line-height: 150%;
+  line-height: 160%;
   color: #B2B2B2;
   margin-top: 20px;
   margin-bottom: 40px;
@@ -1271,7 +1305,7 @@
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
   background: #1E1E1E;
   color: #FFFFFF;
   text-align: center;
@@ -1313,7 +1347,7 @@
   transition: 200ms ease-in-out;
 }
 .kit-card--header:hover {
-  filter: brightness(150%);
+  filter: brightness(160%);
 }
 .kit-card--header label {
   margin: 0;
@@ -1321,7 +1355,7 @@
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
   color: #FFFFFF;
   transition: 250ms ease-in-out;
 }
@@ -1335,7 +1369,7 @@
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
   color: #FFFFFF;
   text-transform: uppercase;
 }
@@ -1780,7 +1814,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .section-container:f
   }*/
 }
 .page-info:hover {
-  filter: brightness(150%);
+  filter: brightness(160%);
 }
 .page-info > div {
   display: flex;
@@ -1789,7 +1823,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .section-container:f
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
 }
 .page-info .breadcrumbs .title {
   transition: 250ms ease-in-out;
@@ -1822,7 +1856,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, .section-container:f
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
+  line-height: 160%;
   color: #FFFFFF;
   text-transform: uppercase;
 }

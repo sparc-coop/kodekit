@@ -12,7 +12,7 @@
     transition: 200ms ease-in-out;
 
     &:hover {
-        filter: brightness(150%);
+        filter: brightness(160%);
     }
 
     /*@media screen and (max-width: 1455px) {
@@ -36,7 +36,7 @@
         font-family: 'EncodeSans';
         font-weight: 400;
         font-size: 14px;
-        line-height: 150%;
+        line-height: 160%;
 
         .title {
             transition: 250ms ease-in-out;
@@ -80,7 +80,7 @@
         font-family: 'EncodeSans';
         font-weight: 400;
         font-size: 14px;
-        line-height: 150%;
+        line-height: 160%;
         color: $white;
         text-transform: uppercase;
     }

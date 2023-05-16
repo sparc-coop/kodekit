@@ -5,13 +5,6 @@
     .content {
         position: relative;
 
-        span {
-            margin-right: 6px;
-            vertical-align: middle;
-            font-size: 14px;
-            line-height: 100%;
-        }
-
         .paragraph-settings--header {
             padding: 40px 0;
         }
@@ -75,7 +68,7 @@
         font-family: 'EncodeSans';
         font-weight: 400;
         font-size: 14px;
-        line-height: 150%;
+        line-height: 160%;
         background: #1E1E1E;
         color: $white;
         text-align: center;

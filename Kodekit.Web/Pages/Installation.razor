@@ -4,7 +4,7 @@
 
 <div class="page installation">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Getting Started</div>
             <h2>Installation</h2>
             <p>
@@ -12,60 +12,66 @@
             </p>
         </header>
         <div class="content">
-            <header>
-                <h3>Option One: Import & Auto Update</h3>
-                <p>
-                    Your kit's unique name is: <strong>@kitId</strong>
-                    <br />
-                    <br />
-                </p>
-                <p>
-                    Importing Kodekit into your project is as easy as adding the link to the
-                    <span>&lt;head&gt;</span> section of your "index.html" file.  It allows for quickly
-                    linking your theme to your project, and allows for auto-updating.
-                </p>
-            </header>
-            <ol>
-                <li>
-                    Add Script
-                    <div class="instructions">
-                        <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
-                        <button @onclick="StepOneCopy">@CopyText</button>
-                        <pre>
-<code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
-            </pre>
+            <section class="option-one">
+                <header class="section--header">
+                    <div>
+                        <h3><span>01</span> Option One: Import & Auto Update</h3>
+                        <p>
+                            Your kit's unique name is: <strong>@kitId</strong>
+                        </p>
                     </div>
-                </li>
-
-                <li>
-                    Auto Update
                     <p class="subheader">
-                        Each time you change, update or save your Kodekit theme, your projects
-                        using the theme script will auto-update, allowing you to make changes to your live project.
+                        Importing Kodekit into your project is as easy as adding the link to the
+                        <span>&lt;head&gt;</span> section of your "index.html" file.
                     </p>
-                </li>
-            </ol>
+                    <p class="subheader">
+                        It allows for quickly
+                        linking your theme to your project, and allows for auto-updating.
+                    </p>
+                </header>
 
-            <header style="margin-top: 40px">
-                <h3>Option Two: Manual Download</h3>
-                <p>
-                    If you would rather take a more manual approach, you can instead download the .css file,
-                    and add that directly to your project folder.
-                </p>
-            </header>
-
-            <p class="subheader">
-                Make sure you re-download and add this file every time you update the Kodekit Theme.
-            </p>
-            <ol>
-                <li>
-                    Download your generated CSS file
-                    <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
-                        Download .css file
-                        <img src="/images/filedownload-icon.svg" alt="File Download" />
-                    </a>
-                </li>
-            </ol>
+                <ol class="instructions">
+                    <li class="step-one">
+                        <h4>Add Script</h4>
+                        <div> 
+                            <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
+                            <pre>
+                                <code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
+                            </pre>
+                            <button class="copy" @onclick="StepOneCopy">@CopyText</button>
+                        </div>
+                    </li>
+                    <li class="step-two">
+                        <h4>Auto Update</h4>
+                        <div>
+                            <p>
+                                Each time you change, update or save your Kodekit theme, your projects
+                                using the theme script will auto-update, allowing you to make changes to your live project.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+            <section class="option-two">
+                <header>
+                    <h3><span>02</span> Option Two: Manual Download</h3>
+                    <p class="subheader">
+                        If you would rather take a more manual approach, you can instead download the .css file,
+                        and add that directly to your project folder.
+                    </p>
+                    <p class="subheader">
+                        Make sure you re-download and add this file every time you update the Kodekit Theme.
+                    </p>
+                </header>
+                <ol>
+                    <li>
+                        <p>Download your generated CSS file</p>
+                        <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
+                            Download .css file
+                        </a>
+                    </li>
+                </ol>
+            </section>
         </div>
     </div>
 </div>
