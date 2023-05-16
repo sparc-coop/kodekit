@@ -1,31 +1,42 @@
 ﻿@import "../../_variables";
 
 .global-page {
+    section {
+        header {
+            h3 {
+                margin-bottom: 40px;
+            }
+        }
+    }
+
     .section-container {
         display: flex;
         margin: 20px 0;
-        color: $gray700;
+
+        &:focus {
+            border: none;
+            box-shadow: none;
+        }
     }
 
     .disabled {
-        color: $gray400;
+        color: $white;
 
         input {
-
             &:checked + .slider {
-                background-color: $background;
-                border: 2px solid $gray400;
+                background-color: #1E1E1E;
+                border: 1px solid $white;
 
                 &:before {
-                    -webkit-transform: translateX(12px);
-                    -ms-transform: translateX(12px);
-                    transform: translateX(12px);
-                    background-color: $gray400;
+                    -webkit-transform: translateX(32px);
+                    -ms-transform: translateX(32px);
+                    transform: translateX(32px);
+                    background-color: $white;
                 }
 
                 &:focus {
-                    border: 1px solid black;
-                    box-shadow: 5px 5px 5px $primary500;
+                    border: none;
+                    box-shadow: none;
                 }
             }
         }
