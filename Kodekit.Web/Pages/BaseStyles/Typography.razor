@@ -12,187 +12,178 @@
             </p>
         </header>
         <div class="content">
-            <header>
-                <h3 class="section-header"><span>01</span>Heading Settings</h3>
-            </header>
             @if (Model != null)
             {
                 @*                <AccessibilityChecker Model="Model"/>*@
                 <EditForm EditContext="@Context">
-                    <div class="section heading-settings">
-                        <label class="preview-text">
-                            <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
-                            Preview Text
-                        </label>
-                        <div class="wrapper">
-                            <label>
-                                @if (Fonts.Items != null)
-                                {
-                                    <InputSelect class="medium" @bind-Value="Model.Heading.FontFamily">
-                                        <option value="">Select a font...</option>
-                                        @foreach (var font in Fonts.Items)
+                    <section>
+                        <header>
+                            <h3 class="section-header"><span>01</span>Heading Settings</h3>
+                        </header>
+                        <div class="subsection heading-settings">
+                            <label class="preview-text">
+                                <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
+                                Preview Text
+                            </label>
+                            <div class="inputs--wrapper">
+                                <label>
+                                    @if (Fonts.Items != null)
+                                    {
+                                        <InputSelect class="medium" @bind-Value="Model.Heading.FontFamily">
+                                            <option value="">Select a font...</option>
+                                            @foreach (var font in Fonts.Items)
+                                            {
+                                                <option value="@font.Family">
+                                                    @font.Family
+                                                </option>
+                                            }
+                                        </InputSelect>
+                                    }
+                                    Heading Font
+                                </label>
+                                <label>
+                                    <InputFontWeight @bind-Value="Model.Heading.FontWeight" />
+                                    Default Heading Weight
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Heading.FontSize" min="0" />
+                                    Base Font Size (px)
+                                </label>
+                                <label>
+                                    <InputSelect class="medium" @bind-Value="Model.Heading.TypeScale">
+                                        <option value="">Select a type scale...</option>
+                                        @foreach (var scale in Model.TypeScales)
                                         {
-                                            <option value="@font.Family">
-                                                @font.Family
-                                            </option>
+                                        <option value="@scale.Key">
+                                            @scale.Key (@scale.Value)
+                                        </option>
                                         }
                                     </InputSelect>
-                                }
-                                Heading Font
-                            </label>
-                            <label>
-                                <InputFontWeight @bind-Value="Model.Heading.FontWeight" />
-                                Default Heading Weight
-
-                            </label>
-
-                            <label>
-                                <InputNumber @bind-Value="Model.Heading.FontSize" min="0" />
-                                Base Font Size (px)
-
-                            </label>
-                            <label>
-                                <InputSelect class="medium" @bind-Value="Model.Heading.TypeScale">
-                                    <option value="">Select a type scale...</option>
-                                    @foreach (var scale in Model.TypeScales)
-                                    {
-                                    <option value="@scale.Key">
-                                        @scale.Key (@scale.Value)
-                                    </option>
-                                    }
-                                </InputSelect>
-                                Choose a Type Scale
-
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Heading.LineHeight" min="1" />
-                                Base Line Height (%)
-                            </label>
+                                    Choose a Type Scale
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Heading.LineHeight" min="1" />
+                                    Base Line Height (%)
+                                </label>
+                            </div>
+                            <button @onclick="Toggle" class="edit-options">Manually size fonts <i class="material-icons">edit</i></button>
+                            <div class="fontsize-overrides toggle-@ToggleOption">
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-900")"
+                                       @onchange="@(e => Overrides("type-900", e.Value.ToString()))" />
+                                    h1 (px)
+                                </label>
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-800")"
+                                       @onchange="@(e => Overrides("type-800", e.Value.ToString()))" />
+                                    h2 (px)
+                                </label>
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-700")"
+                                       @onchange="@(e => Overrides("type-700", e.Value.ToString()))" />
+                                    h3 (px)
+                                </label>
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-600")"
+                                       @onchange="@(e => Overrides("type-600", e.Value.ToString()))" />
+                                    h4 (px)
+                                </label>
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-500")"
+                                       @onchange="@(e => Overrides("type-500", e.Value.ToString()))" />
+                                    h5 (px)
+                                </label>
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-400")"
+                                       @onchange="@(e => Overrides("type-400", e.Value.ToString()))" />
+                                    h6 (px)
+                                </label>
+                                <label>
+                                    <input type="number" min="0" value="@SetValue("type-300")"
+                                       @onchange="@(e => Overrides("type-300", e.Value.ToString()))" />
+                                    .subtitle (px)
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <button @onclick="Toggle" class="edit-options">Manually size fonts <i class="material-icons">edit</i></button>
-                    <div class="section toggle-@ToggleOption fontsize-overrides">
-                        <label>
-                            <input type="number" min="0" value="@SetValue("type-900")" 
-                                @onchange="@(e => Overrides("type-900", e.Value.ToString()))" />
-                            h1 (px)
-
-                        </label>
-                        <label>
-                            <input type="number" min="0" value="@SetValue("type-800")"
-                                @onchange="@(e => Overrides("type-800", e.Value.ToString()))"/>
-                            h2 (px)
-                        </label>
-                        <label>
-                            
-                            <input type="number" min="0" value="@SetValue("type-700")"
-                                @onchange="@(e => Overrides("type-700", e.Value.ToString()))"/>
-                            h3 (px)
-                        </label>
-                        <label>
-                            
-                            <input type="number" min="0" value="@SetValue("type-600")"
-                                @onchange="@(e => Overrides("type-600", e.Value.ToString()))"/>
-                            h4 (px)
-                        </label>
-                        <label>
-                            
-                            <input type="number" min="0" value="@SetValue("type-500")"
-                                @onchange="@(e => Overrides("type-500", e.Value.ToString()))"/>
-                            h5 (px)
-                        </label>
-                        <label>
-                            
-                            <input type="number" min="0" value="@SetValue("type-400")"
-                                @onchange="@(e => Overrides("type-400", e.Value.ToString()))" />
-                            h6 (px)
-                        </label>
-                        <label>
-                            
-                            <input type="number" min="0" value="@SetValue("type-300")"
-                                @onchange="@(e => Overrides("type-300", e.Value.ToString()))" />
-                            .subtitle (px)
-                        </label>
-                    </div>
-
-                    <Preview Kit=kit>
-                        <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
-                        <h1>@previewText</h1>
-                        <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
-                        <h2>@previewText</h2>
-                        <label>Header 3 (H3) - Font Size: @HeadingScale("700")</label>
-                        <h3>@previewText</h3>
-                        <label>Header 4 (H4) - Font Size: @HeadingScale("600")</label>
-                        <h4>@previewText</h4>
-                        <label>Header 5 (H5) - Font Size: @HeadingScale("500")</label>
-                        <h5>@previewText</h5>
-                        <label>Header 6 (H6) - Font Size: @HeadingScale("400")</label>
-                        <h6>@previewText</h6>
-                        <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
-                        <p class="subtitle">@previewText</p>
-                    </Preview>
-
-                    <header class="paragraph-settings--header">
-                        <h3 class="section-header"><span>02</span> Paragraph Settings</h3>
-                    </header>
-
-                    <div class="section paragraph-settings">
-                        <label class="preview">
-                            <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
-                            Preview Text
-                        </label>
-                        <div class="wrapper">                        
-                            <label>
-                                <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
-                                    @if (Fonts.Items != null)
-                                        {
-                                        <option value="">Select a body font...</option>
-                                        @foreach (var font in Fonts.Items)
+                        <Preview Kit=kit>
+                            <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
+                            <h1>@previewText</h1>
+                            <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
+                            <h2>@previewText</h2>
+                            <label>Header 3 (H3) - Font Size: @HeadingScale("700")</label>
+                            <h3>@previewText</h3>
+                            <label>Header 4 (H4) - Font Size: @HeadingScale("600")</label>
+                            <h4>@previewText</h4>
+                            <label>Header 5 (H5) - Font Size: @HeadingScale("500")</label>
+                            <h5>@previewText</h5>
+                            <label>Header 6 (H6) - Font Size: @HeadingScale("400")</label>
+                            <h6>@previewText</h6>
+                            <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
+                            <p class="subtitle">@previewText</p>
+                        </Preview>
+                    </section>
+                    <section>
+                        <header>
+                            <h3><span>02</span> Paragraph Settings</h3>
+                        </header>
+                        <div class="subsection paragraph-settings">
+                            <label class="preview-text">
+                                <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
+                                Preview Text
+                            </label>
+                            <div class="inputs--wrapper">                        
+                                <label>
+                                    <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
+                                        @if (Fonts.Items != null)
                                             {
-                                            <option value="@font.Family">
-                                                @font.Family
-                                            </option>
+                                            <option value="">Select a body font...</option>
+                                            @foreach (var font in Fonts.Items)
+                                                {
+                                                <option value="@font.Family">
+                                                    @font.Family
+                                                </option>
+                                                }
                                             }
+                                    </InputSelect>
+                                    Body Font
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Paragraph.FontSize" min="1" />
+                                    Base Font Size (px)
+                                </label>
+                                <label>
+                                    <InputSelect class="medium" @bind-Value=Model.Paragraph.TypeScale>
+                                        <option value="">Select a type scale...</option>
+                                        @foreach (var scale in Model.TypeScales)
+                                         {
+                                        <option value="@scale.Key">
+                                            @scale.Key (@scale.Value)
+                                        </option>
                                         }
-                                </InputSelect>
-                                Choose Body font
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Paragraph.FontSize" min="1" />
-                                Base Font Size (px)
-                            </label>
-                            <label>
-                                <InputSelect class="medium" @bind-Value=Model.Paragraph.TypeScale>
-                                    <option value="">Select a type scale...</option>
-                                    @foreach (var scale in Model.TypeScales)
-                                     {
-                                    <option value="@scale.Key">
-                                        @scale.Key (@scale.Value)
-                                    </option>
-                                    }
-                                </InputSelect>
-                                Choose a Type Scale
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Paragraph.LineHeight" min="1" />
-                                Base Line Height (%)
-                            </label>
+                                    </InputSelect>
+                                    Choose a Type Scale
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Paragraph.LineHeight" min="1" />
+                                    Base Line Height (%)
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <Preview Kit=kit>
-                        <div>
-                            <label>Body Large - Font Size: @BodyScale("500")</label>
-                            <p class="large">@previewTextBody</p>
-                        </div>
-                        <div>
-                            <label>Body - Font Size: @BodyScale("400")</label>
-                            <p class="medium">@previewTextBody</p>
-                        </div>
-                        <div>
-                            <label>Body Small - Font Size: @BodyScale("300")</label>
-                            <p class="small">@previewTextBody</p>
-                        </div>
-                    </Preview>
+                        <Preview Kit=kit>
+                            <div>
+                                <label>Body Large - Font Size: @BodyScale("500")</label>
+                                <p class="large">@previewTextBody</p>
+                            </div>
+                            <div>
+                                <label>Body - Font Size: @BodyScale("400")</label>
+                                <p class="medium">@previewTextBody</p>
+                            </div>
+                            <div>
+                                <label>Body Small - Font Size: @BodyScale("300")</label>
+                                <p class="small">@previewTextBody</p>
+                            </div>
+                        </Preview>
+                    </section>
                 </EditForm>
             }
         </div>

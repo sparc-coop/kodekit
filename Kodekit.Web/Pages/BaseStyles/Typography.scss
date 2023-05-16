@@ -5,26 +5,70 @@
     .content {
         position: relative;
 
-        .paragraph-settings--header {
-            padding: 40px 0;
-        }
+        .subsection {
+            border: none;
+            padding: 0;
+            margin-bottom: 40px;
 
-        .section {
-            max-width: 996px;
+            .inputs--wrapper {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .preview-text {
+                width: 100%;
+                margin-bottom: 20px;
+            }
 
             select {
                 background: url(images/expand-small.svg) no-repeat right #292929;
             }
 
-            .preview-text {
-                width: 100%;
+            .edit-options {
+                margin-top: 20px;
+                padding: 6px 18px;
+                border: 1px solid transparent;
+                border-radius: 6px;
+                font-family: 'EncodeSans';
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 160%;
+                background: #1E1E1E;
+                color: $white;
+                text-align: center;
+                transition: 250ms ease-in-out;
+
+                i {
+                    vertical-align: middle;
+                    font-size: 20px;
+                    margin-top: -6px;
+                    margin-left: 10px;
+                }
+
+                &:hover {
+                    border: 1px solid $white;
+                }
+
+                &:active {
+                    background: $white;
+                    color: #1E1E1E;
+                }
             }
 
-            .wrapper {
+            .fontsize-overrides {
                 display: flex;
-                justify-content: space-between;
                 gap: 20px;
-                flex-wrap: wrap;
+            }
+
+            .toggle {
+                &-hide {
+                    display: none;
+                }
+
+                &-show {
+                    display: flex;
+                }
             }
 
             &.paragraph-settings {
@@ -37,72 +81,26 @@
                 }
             }
         }
-    }
 
-    .preview-example {
-        padding-bottom: 0px;
+        .preview-example {
+            padding-bottom: 0px;
 
-        label {
-            font-family: 'EncodeSans_Expanded';
-            font-weight: 300;
-            font-size: 13px;
-            line-height: 100%;
-            color: rgba(255,255,255, 0.8);
-            margin-bottom: 10px;
-        }
+            label {
+                font-family: 'EncodeSans_Expanded';
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 100%;
+                color: rgba(255,255,255, 0.8);
+                margin-bottom: 10px;
+            }
 
-        h1, h2, h3, h4, h5, h6, p {
-            margin-bottom: 40px;
-        }
+            h1, h2, h3, h4, h5, h6, p {
+                margin-bottom: 40px;
+            }
 
-        &:last-child {
-            margin-bottom: 0px;
-        }
-    }
-
-    .edit-options {
-        margin: -44px 0 20px;
-        padding: 6px 18px;
-        border: 1px solid transparent;
-        border-radius: 6px;
-        font-family: 'EncodeSans';
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 160%;
-        background: #1E1E1E;
-        color: $white;
-        text-align: center;
-        transition: 250ms ease-in-out;
-
-        i {
-            vertical-align: middle;
-            font-size: 20px;
-            margin-top: -6px;
-            margin-left: 10px;
-        }
-
-        &:hover {
-            border: 1px solid $white;
-        }
-
-        &:active {
-            background: $white;
-            color: #1E1E1E;
-        }
-    }
-
-    .fontsize-overrides {
-        display: flex;
-        gap: 20px;
-    }
-
-    .toggle {
-        &-hide {
-            display: none;
-        }
-
-        &-show {
-            display: flex;
+            &:last-child {
+                margin-bottom: 0px;
+            }
         }
     }
 }

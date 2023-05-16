@@ -179,37 +179,39 @@
   line-height: 160%;
   color: #B2B2B2;
 }
-.page .section, .page section {
+.page section, .page .subsection {
   width: 100%;
   margin-top: 40px;
   padding-bottom: 100px;
   border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+  /*.large {
+      width: 486px;
+  }
+
+  .medium {
+      width: 302px
+  }
+
+  .small {
+      width: 142px;
+  }*/
 }
-.page .section:last-of-type, .page section:last-of-type {
+.page section:last-of-type, .page .subsection:last-of-type {
   border: none;
 }
-.page .section header h3 span, .page section header h3 span {
+.page section header h3 span, .page .subsection header h3 span {
   margin-right: 6px;
   vertical-align: middle;
   font-size: 14px;
   line-height: 100%;
 }
-.page .section-container, .page section-container {
+.page section-container, .page .subsection-container {
   display: block;
 }
-.page .section .preview, .page section .preview {
+.page section .preview, .page .subsection .preview {
   max-width: 496px;
   width: 100%;
   min-height: 87px;
-}
-.page .section .large, .page section .large {
-  width: 486px;
-}
-.page .section .medium, .page section .medium {
-  width: 302px;
-}
-.page .section .small, .page section .small {
-  width: 142px;
 }
 .page .button--save {
   color: #17171A;
@@ -233,6 +235,7 @@
 .page label {
   font-family: "EncodeSans_Expanded";
   font-weight: 300;
+  font-size: 13px;
 }
 .page input, .page select, .page textarea {
   padding: 5px 12px;
@@ -265,8 +268,37 @@
 .page input[type=number] {
   max-width: 144px;
 }
-.page .preview-example-container {
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+.page .preview-example-container .preview-example {
+  padding: 44px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 39px;
+  color: #FFFFFF;
+}
+.page .preview-example-container .preview-example-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.page .preview-example-container .preview-example-flex > * {
+  margin: 0px 30px 30px 0;
+}
+.page .preview-example-container .preview-example--body p {
+  width: 100%;
+}
+.page .preview-example-container .preview-example--body .large {
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 160%;
+}
+.page .preview-example-container .preview-example--body .medium {
+  color: #FFFFFF;
+  font-size: 17px;
+  line-height: 160%;
+}
+.page .preview-example-container .preview-example--body .small {
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 160%;
 }
 .page .preview-example-container .preview-info {
   margin-top: 40px;
@@ -281,48 +313,54 @@
 .page .preview-example-container .preview-info a {
   text-decoration: underline;
 }
-.page .preview-example {
-  padding: 44px;
-  box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 48px;
-  color: #FFFFFF;
-}
-.page .preview-example-flex {
-  display: flex;
-  flex-wrap: wrap;
-}
-.page .preview-example-flex > * {
-  margin: 0px 30px 30px 0;
-}
-.page .preview-example--body p {
+.page .preview-example-container pre {
   width: 100%;
+  padding: 32px 0px 32px 44px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #17171A;
 }
-.page .preview-example--body .large {
-  color: #17171A;
-  font-size: 20px;
-  line-height: 160%;
+.page .preview-example-container pre code {
+  padding: 0px;
+  padding-right: 44px;
+  background: #17171A;
+  max-height: 304px;
+  overflow-x: hidden !important;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-family: "FiraCode";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: #CA9100;
+  /*&::-webkit-scrollbar {
+      width: 0px;
+  }*/
 }
-.page .preview-example--body .medium {
-  color: #17171A;
-  font-size: 17px;
-  line-height: 160%;
+.page .preview-example-container pre code .hljs-tag {
+  color: #979797;
 }
-.page .preview-example--body .small {
-  color: #17171A;
-  font-size: 14px;
-  line-height: 160%;
+.page .preview-example-container pre code .hljs-name {
+  color: #875BBF;
+}
+.page .preview-example-container pre code .hljs-attr {
+  color: #E46886;
+}
+.page .preview-example-container pre code .hljs-string {
+  color: #A3A60E;
 }
 .page pre {
   width: 100%;
-  margin: 0px 0 80px 0;
-  padding: 0 0 0 20px;
+  padding: 32px 0px 32px 44px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 24px;
   overflow: hidden;
   background: #17171A;
 }
 .page pre code {
+  padding: 0px;
+  padding-right: 44px;
   background: #17171A;
   max-height: 304px;
   overflow-x: hidden !important;
@@ -764,51 +802,25 @@
 .typography .content {
   position: relative;
 }
-.typography .content .paragraph-settings--header {
-  padding: 40px 0;
+.typography .content .subsection {
+  border: none;
+  padding: 0;
+  margin-bottom: 40px;
 }
-.typography .content .section {
-  max-width: 996px;
-}
-.typography .content .section select {
-  background: url(../../images/expand-small.svg) no-repeat right #292929;
-}
-.typography .content .section .preview-text {
-  width: 100%;
-}
-.typography .content .section .wrapper {
+.typography .content .subsection .inputs--wrapper {
   display: flex;
-  justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
 }
-.typography .content .section.paragraph-settings {
+.typography .content .subsection .preview-text {
   width: 100%;
+  margin-bottom: 20px;
 }
-.typography .content .section.paragraph-settings textarea {
-  width: 100%;
-  padding: 13px;
-  resize: none;
+.typography .content .subsection select {
+  background: url(../../images/expand-small.svg) no-repeat right #292929;
 }
-.typography .preview-example {
-  padding-bottom: 0px;
-}
-.typography .preview-example label {
-  font-family: "EncodeSans_Expanded";
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 100%;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 10px;
-}
-.typography .preview-example h1, .typography .preview-example h2, .typography .preview-example h3, .typography .preview-example h4, .typography .preview-example h5, .typography .preview-example h6, .typography .preview-example p {
-  margin-bottom: 40px;
-}
-.typography .preview-example:last-child {
-  margin-bottom: 0px;
-}
-.typography .edit-options {
-  margin: -44px 0 20px;
+.typography .content .subsection .edit-options {
+  margin-top: 20px;
   padding: 6px 18px;
   border: 1px solid transparent;
   border-radius: 6px;
@@ -821,28 +833,53 @@
   text-align: center;
   transition: 250ms ease-in-out;
 }
-.typography .edit-options i {
+.typography .content .subsection .edit-options i {
   vertical-align: middle;
   font-size: 20px;
   margin-top: -6px;
   margin-left: 10px;
 }
-.typography .edit-options:hover {
+.typography .content .subsection .edit-options:hover {
   border: 1px solid #FFFFFF;
 }
-.typography .edit-options:active {
+.typography .content .subsection .edit-options:active {
   background: #FFFFFF;
   color: #1E1E1E;
 }
-.typography .fontsize-overrides {
+.typography .content .subsection .fontsize-overrides {
   display: flex;
   gap: 20px;
 }
-.typography .toggle-hide {
+.typography .content .subsection .toggle-hide {
   display: none;
 }
-.typography .toggle-show {
+.typography .content .subsection .toggle-show {
   display: flex;
+}
+.typography .content .subsection.paragraph-settings {
+  width: 100%;
+}
+.typography .content .subsection.paragraph-settings textarea {
+  width: 100%;
+  padding: 13px;
+  resize: none;
+}
+.typography .content .preview-example {
+  padding-bottom: 0px;
+}
+.typography .content .preview-example label {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+.typography .content .preview-example h1, .typography .content .preview-example h2, .typography .content .preview-example h3, .typography .content .preview-example h4, .typography .content .preview-example h5, .typography .content .preview-example h6, .typography .content .preview-example p {
+  margin-bottom: 40px;
+}
+.typography .content .preview-example:last-child {
+  margin-bottom: 0px;
 }
 
 .global-page section header h3 {
@@ -1119,15 +1156,11 @@
   line-height: 160%;
 }
 .installation .instructions li pre {
-  width: 100%;
-  padding: 0;
+  padding: 32px 44px;
   margin-bottom: 60px;
-  background: #17171A;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 24px;
 }
 .installation .instructions li pre code {
-  padding: 32px 45px;
+  padding: 0;
 }
 .installation .instructions li.step-one {
   position: relative;

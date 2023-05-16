@@ -91,7 +91,7 @@
         }
     }
 
-    .section, section {
+    section, .subsection {
         width: 100%;
         margin-top: 40px;
         padding-bottom: 100px;
@@ -122,7 +122,7 @@
             min-height: 87px;
         }
 
-        .large {
+        /*.large {
             width: 486px;
         }
 
@@ -132,7 +132,7 @@
 
         .small {
             width: 142px;
-        }
+        }*/
     }
 
     .button--save {
@@ -161,6 +161,7 @@
     label {
         font-family: 'EncodeSans_Expanded';
         font-weight: 300;
+        font-size: 13px;
     }
 
     input, select, textarea {
@@ -202,7 +203,46 @@
     }
 
     .preview-example-container {
-        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+        .preview-example {
+            padding: 44px;
+            box-sizing: border-box;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 39px;
+            color: $white;
+
+            &-flex {
+                display: flex;
+                flex-wrap: wrap;
+
+                > * {
+                    margin: 0px 30px 30px 0;
+                }
+            }
+
+            &--body {
+                p {
+                    width: 100%;
+                }
+
+                .large {
+                    color: $white;
+                    font-size: 20px;
+                    line-height: 160%;
+                }
+
+                .medium {
+                    color: $white;
+                    font-size: 17px;
+                    line-height: 160%;
+                }
+
+                .small {
+                    color: $white;
+                    font-size: 14px;
+                    line-height: 160%;
+                }
+            }
+        }
 
         .preview-info {
             margin-top: 40px;
@@ -218,60 +258,62 @@
                 text-decoration: underline;
             }
         }
-    }
 
-    .preview-example {
-        padding: 44px;
-        box-sizing: border-box;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 48px;
-        color: $white;
+        pre {
+            width: 100%;
+            padding: 32px 0px 32px 44px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            overflow: hidden;
+            background: #17171A;
 
-        &-flex {
-            display: flex;
-            flex-wrap: wrap;
+            code {
+                padding: 0px;
+                padding-right: 44px;
+                background: #17171A;
+                max-height: 304px;
+                overflow-x: hidden !important;
+                overflow-y: auto;
+                white-space: pre-wrap;
+                font-family: 'FiraCode';
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 24px;
+                color: #CA9100;
+                /*&::-webkit-scrollbar {
+                width: 0px;
+            }*/
 
-            > * {
-                margin: 0px 30px 30px 0;
-            }
-        }
+                .hljs-tag {
+                    color: #979797;
+                }
 
-        &--body {
+                .hljs-name {
+                    color: #875BBF;
+                }
 
-            p {
-                width: 100%;
-            }
+                .hljs-attr {
+                    color: #E46886;
+                }
 
-            .large {
-                color: $gray900;
-                font-size: 20px;
-                line-height: 160%;
-            }
-
-            .medium {
-                color: $gray900;
-                font-size: 17px;
-                line-height: 160%;
-            }
-
-            .small {
-                color: $gray900;
-                font-size: 14px;
-                line-height: 160%;
+                .hljs-string {
+                    color: #A3A60E;
+                }
             }
         }
     }
 
     pre {
         width: 100%;
-        margin: 0px 0 80px 0;
-        padding: 0 0 0 20px;
+        padding: 32px 0px 32px 44px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 24px;
         overflow: hidden;
         background: #17171A;
 
         code {
+            padding: 0px;
+            padding-right: 44px;
             background: #17171A;
             max-height: 304px;
             overflow-x: hidden !important;
