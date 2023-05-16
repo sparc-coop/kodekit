@@ -1,46 +1,42 @@
 ﻿@import "../_variables";
 
 .release {
-    a {
-        text-decoration: underline;
+    .page--header {
+        a {
+            text-decoration: underline;
+            transition: 250ms ease-in-out;
+
+            &:hover {
+                color: $white;
+            }
+        }
     }
 
     section {
-        display: flex;
-        flex-wrap: wrap;
-    }
+        header {
+            display: flex;
+            gap: 24px;
 
-    &-left {
-        max-width: 200px;
-        width: 100%;
-        color: $primary500;
-
-        svg {
-            vertical-align: middle;
-            margin-right: 15px;
-        }
-    }
-
-    &-right {
-        display: block !important;
-
-        h3 {
-            font-size: 20px;
+            p {
+                margin-top: -2px;
+            }
         }
 
-        .subheader {
-            color: $gray700;
-            padding: 8px 0 16px 0;
-        }
+        div {
+            p {
+                margin-bottom: 14px;
+                line-height: 160%;
+            }
 
-        ul {
-            margin: 0;
-            padding: 0 20px;
-            color: $gray700;
-            list-style-type: circle;
+            ul {
+                margin: 0;
+                padding-left: 24px;
+                color: $white;
+                list-style: disc;
 
-            li {
-                padding: 5px 0;
+                li {
+                    line-height: 160%;
+                }
             }
         }
     }

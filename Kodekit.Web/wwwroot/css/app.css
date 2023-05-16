@@ -1091,6 +1091,9 @@
   gap: 24px;
   margin-bottom: 40px;
 }
+.installation section header div p {
+  margin-top: -2px;
+}
 .installation .instructions {
   overflow: hidden;
   list-style: decimal;
@@ -1484,40 +1487,32 @@
   padding-right: 35px;
 }
 
-.release a {
+.release .page--header a {
   text-decoration: underline;
+  transition: 250ms ease-in-out;
 }
-.release section {
+.release .page--header a:hover {
+  color: #FFFFFF;
+}
+.release section header {
   display: flex;
-  flex-wrap: wrap;
+  gap: 24px;
 }
-.release-left {
-  max-width: 200px;
-  width: 100%;
-  color: #0B5FFF;
+.release section header p {
+  margin-top: -2px;
 }
-.release-left svg {
-  vertical-align: middle;
-  margin-right: 15px;
+.release section div p {
+  margin-bottom: 14px;
+  line-height: 160%;
 }
-.release-right {
-  display: block !important;
-}
-.release-right h3 {
-  font-size: 20px;
-}
-.release-right .subheader {
-  color: #3A3A40;
-  padding: 8px 0 16px 0;
-}
-.release-right ul {
+.release section div ul {
   margin: 0;
-  padding: 0 20px;
-  color: #3A3A40;
-  list-style-type: circle;
+  padding-left: 24px;
+  color: #FFFFFF;
+  list-style: disc;
 }
-.release-right ul li {
-  padding: 5px 0;
+.release section div ul li {
+  line-height: 160%;
 }
 
 .main {
