@@ -56,11 +56,15 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 160%;
-        color: #F2F2F2;
+        color: #B2B2B2;
     }
 
     .content {
         padding-bottom: 100px;
+    }
+
+    section {
+        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 
         header {
             margin-bottom: 40px;
@@ -86,13 +90,9 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 160%;
-                color: #B2B2B2;
+                color: #F2F2F2;
             }
         }
-    }
-
-    section {
-        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 
         .inputs--wrapper {
             display: flex;
@@ -133,17 +133,6 @@
         }
 
         header {
-            h3 {
-                margin-bottom: 20px;
-
-                span {
-                    margin-right: 6px;
-                    vertical-align: middle;
-                    font-size: 14px;
-                    line-height: 100%;
-                }
-            }
-
             &.flex, .flex {
                 display: flex;
                 gap: 24px;

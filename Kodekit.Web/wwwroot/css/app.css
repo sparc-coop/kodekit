@@ -150,37 +150,37 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;
-  color: #F2F2F2;
+  color: #B2B2B2;
 }
 .page .content {
   padding-bottom: 100px;
 }
-.page .content header {
+.page section {
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.page section header {
   margin-bottom: 40px;
   color: #FFFFFF;
 }
-.page .content header h3 {
+.page section header h3 {
   font-family: "QuantaGroteskPro";
   font-weight: 500;
   font-size: 20px;
   line-height: 120%;
   color: #FFFFFF;
 }
-.page .content header h3 span {
+.page section header h3 span {
   margin-right: 6px;
   vertical-align: middle;
   font-size: 14px;
   line-height: 100%;
 }
-.page .content header p {
+.page section header p {
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;
-  color: #B2B2B2;
-}
-.page section {
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+  color: #F2F2F2;
 }
 .page section .inputs--wrapper {
   display: flex;
@@ -224,15 +224,6 @@
 }
 .page section:last-of-type, .page .subsection:last-of-type {
   border: none;
-}
-.page section header h3, .page .subsection header h3 {
-  margin-bottom: 20px;
-}
-.page section header h3 span, .page .subsection header h3 span {
-  margin-right: 6px;
-  vertical-align: middle;
-  font-size: 14px;
-  line-height: 100%;
 }
 .page section header.flex, .page section header .flex, .page .subsection header.flex, .page .subsection header .flex {
   display: flex;
@@ -720,54 +711,60 @@
 .colors .content section header {
   margin-bottom: 77px;
 }
-.colors .color-palette {
+.colors .content section header h3 {
+  margin: 0;
+}
+.colors .kit-style-container {
   width: 100%;
 }
-.colors .color-palette .color-display {
+.colors .color-display {
   display: flex;
   justify-content: start;
   gap: 53px;
   margin-bottom: 20px;
 }
-.colors .color-palette .color-main {
-  display: flex;
-  flex-direction: row;
-  gap: 25px;
-  justify-content: flex-start;
+.colors .color-main {
+  width: 100%;
+  max-width: 136px;
+  height: 100%;
   font-size: 16px;
 }
-.colors .color-palette .color-main .edit-color {
+.colors .edit-color {
   position: relative;
+  padding: 0px 15px 25px 15px;
   border: 2px solid transparent;
   border-radius: 8px;
+  transition: 250ms ease-in-out;
   /*.color-selector {
-      position: absolute;
-      bottom: 40px;
-      left: 40px;
-  }*/
+          position: absolute;
+          bottom: 40px;
+          left: 40px;
+      }*/
 }
-.colors .color-palette .color-main .edit-color:hover {
+.colors .edit-color:hover {
   cursor: pointer;
   border: 2px solid rgba(200, 200, 200, 0.8);
 }
-.colors .color-palette .color-main .edit-color:active {
+.colors .edit-color:active {
   background: #292929;
   border: 2px solid rgba(200, 200, 200, 0.8);
 }
-.colors .color-palette .color-main .edit-color .color-card {
+.colors .edit-color .color-card {
+  max-width: 136px;
   z-index: 1;
   color: #FFFFFF;
-  transition: 250ms ease-in-out;
 }
-.colors .color-palette .color-main .edit-color .color-card p.hex {
+.colors .edit-color .color-card p.hex {
   display: none;
 }
-.colors .color-palette .color-main .edit-color .color-card aside {
+.colors .edit-color .color-card .color-info {
+  justify-content: space-between;
+}
+.colors .edit-color .color-card .color-info aside {
   position: absolute;
-  bottom: 18px;
   right: 17px;
 }
-.colors .color-palette .color-main .edit-color .inputcolor {
+.colors .edit-color .inputcolor {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -775,73 +772,47 @@
   background: transparent;
   border: transparent;
 }
-.colors .color-palette .color-main .edit-color .inputcolor input.valid {
+.colors .edit-color .inputcolor input.valid {
   visibility: hidden;
 }
-.colors .color-palette .color-main .edit-color .inputcolor .hex-value {
+.colors .edit-color .inputcolor .hex-value {
   position: absolute;
-  bottom: 13px;
-  left: 17px;
+  bottom: -5px;
+  left: 2px;
   color: #FFFFFF;
   font-family: "EncodeSans";
   font-size: 14px;
   line-height: 100%;
   margin-bottom: 5px;
 }
-.colors .color-palette .subcolor-display {
-  display: flex;
-  gap: 25px;
-}
-.colors .color-palette .color-card {
+.colors .color-card {
   width: 100%;
+  max-width: 102px;
   height: 100%;
-  padding: 3px 15px 6px 15px;
   border: 2px solid transparent;
   border-radius: 8px;
 }
-.colors .color-palette .color-card p.hex {
+.colors .color-card p.hex {
   line-height: 100%;
 }
-.colors .preview-example {
-  width: 100%;
-  padding: 0;
-  border: none;
-  /*.subcolor-display {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      height: 28px;
-  }*/
+.colors .subcolor-display {
+  display: flex;
+  gap: 25px;
 }
-.colors .preview-example--greyscale {
-  display: grid;
-  grid-gap: 0;
-  grid-template-columns: repeat(10, 1fr);
-  padding: 24px 32px;
+.colors--greyscale .color-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.colors .preview-example--greyscale .color-display {
-  width: auto;
-  height: 102px;
-  margin: 0;
-  border-radius: 0;
+.colors--greyscale .subcolor-display {
+  margin: auto 0;
 }
-.colors .preview-example--greyscale > div:first-child .color-display {
-  border-radius: 4px 0px 0px 4px;
+.colors--greyscale .subcolor-display .color-info {
+  justify-content: space-between;
 }
-.colors .preview-example--greyscale > div:last-child .color-display {
-  border-radius: 0px 4px 4px 0px;
-}
-.colors .preview-example--noscale .color-display {
-  border-radius: 4px;
-}
-.colors .section {
-  padding-bottom: 40px;
-}
-.colors .section label {
-  position: relative;
-  margin-right: 32px;
-}
-.colors .comment {
-  color: #A3A60E;
+.colors--system .color-display {
+  display: flex;
+  flex-direction: row;
 }
 .colors .preview-example--mockup h3 {
   margin-bottom: 20px;
@@ -876,28 +847,6 @@
 .colors .card {
   padding: 32px 40px;
   display: block;
-}
-
-.inputcolor {
-  background: #FFFFFF;
-  padding: 6px 10px;
-  width: 144px;
-  height: 40px;
-  border: 1px solid #D2D4D9;
-  box-sizing: border-box;
-  border-radius: 4px;
-  display: flex;
-  font-size: 16px;
-  line-height: 160%;
-  cursor: pointer;
-}
-.inputcolor input {
-  border: none;
-  border-radius: 4px;
-  width: 23px;
-  height: 26px;
-  margin: 0 10px 0 0;
-  padding: 0;
 }
 
 .icons section select {
@@ -998,7 +947,7 @@
 }
 
 .global-page section header h3 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .global-page .section-container {
   display: flex;
