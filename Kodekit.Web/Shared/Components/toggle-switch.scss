@@ -41,8 +41,8 @@
         height: 0;
 
         &:checked + .slider {
-            background-color: #34CE97;
-            border: 1px solid #34CE97;
+            background-color: $green;
+            border: 1px solid $green;
 
             &:before {
                 -webkit-transform: translateX(33px);

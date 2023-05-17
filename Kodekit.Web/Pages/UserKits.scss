@@ -1,7 +1,8 @@
 ﻿@import "../_variables.scss";
 
 .dashboard {
-    background: #0E0E0E;
+    background: $background;
+    margin-top: -100px;
 
     .page__container {
         max-width: 1056px;
