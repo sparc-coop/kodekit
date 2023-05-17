@@ -1,8 +1,8 @@
 ﻿@import "../../_variables.scss";
 
 .page {
-    background: #0E0E0E;
-    padding: 100px 80px;
+    background: $background;
+    padding: 0px 80px 100px 80px;
 
     @media screen and (max-width: 780px) {
         padding: 0 40px 100px 40px;
@@ -46,7 +46,7 @@
                 font-weight: 400;
                 font-size: 18px;
                 line-height: 160%;
-                color: #B2B2B2;
+                color: $grey-300;
             }
         }
     }
@@ -56,7 +56,7 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 160%;
-        color: #B2B2B2;
+        color: $grey-300;
     }
 
     .content {
@@ -174,11 +174,11 @@
     }
 
     .button--save {
-        color: $gray900;
+        color: $grey-900;
         font-size: 16px;
         padding: 8px 16px;
         background: transparent;
-        border: 1px solid $gray900;
+        border: 1px solid $grey-900;
         transition: transform 0.3s ease-in-out;
 
         img, svg {
@@ -188,7 +188,7 @@
         }
 
         svg path {
-            fill: $gray900;
+            fill: $grey-900;
         }
 
         &:hover {
@@ -390,7 +390,7 @@
         background: $white;
         padding: 8px 14px;
         border-radius: 6px;
-        border: 1px solid $gray300;
+        border: 1px solid $grey-300;
         display: block;
         margin-top: 16px;
         font-size: 14px;

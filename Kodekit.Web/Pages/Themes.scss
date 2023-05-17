@@ -22,7 +22,7 @@
 
             label {
                 display: block;
-                color: $gray900;
+                color: $grey-900;
                 font-size: 16px;
                 font-weight: 500;
                 margin-top: 16px;
@@ -51,10 +51,10 @@
         justify-content: center;
 
         &:hover {
-            background: $gray300;
+            background: $grey-300;
 
             img {
-                border: 1px solid $gray500;
+                border: 1px solid $grey-500;
                 border-radius: 4px;
             }
         }

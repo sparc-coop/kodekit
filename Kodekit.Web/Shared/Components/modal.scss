@@ -44,7 +44,7 @@
             line-height: 24px;
             letter-spacing: 0.02em;
             text-align: left;
-            color: $gray900;
+            color: $grey-900;
         }
 
         p {
@@ -55,7 +55,7 @@
             line-height: 26px;
             letter-spacing: 0em;
             text-align: left;
-            color: $gray700;
+            color: $grey-700;
             padding: 20px 0 72px;
 
             @media screen and (max-width: 560px) {
@@ -65,11 +65,11 @@
     }
 
     button {
-        border: 1px solid $gray500;
+        border: 1px solid $grey-500;
         box-sizing: border-box;
         border-radius: 4px;
         font-size: 13px;
-        color: $gray700;
+        color: $grey-700;
         background: $white;
         padding: 6px 12px;
 
@@ -80,8 +80,8 @@
     }
 
     .button--confirm {
-        border: 1px solid $error;
-        color: $error;
+        border: 1px solid $error-500;
+        color: $error-500;
         margin-right: 12px;
     }
 
@@ -90,7 +90,7 @@
         font-size: 20px;
         top: 20px;
         right: 20px;
-        color: $gray700;
+        color: $grey-700;
         cursor: pointer;
     }
 }

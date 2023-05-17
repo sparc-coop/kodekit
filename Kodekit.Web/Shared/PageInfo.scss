@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    background: #1A1A1A;
+    background: $background-light;
     border-radius: 0px 0px 8px 8px;
     color: $white;
     transition: 200ms ease-in-out;
@@ -196,20 +196,20 @@
         font-weight: 400;
         line-height: 14px;
         letter-spacing: 0.02em;
-        border: 1px solid $gray300;
+        border: 1px solid $grey-300;
         box-sizing: border-box;
         padding: 3px 7px;
         border-radius: 100px;
-        color: $gray700;
+        color: $grey-700;
         height: 22px;
         width: 138px;
         margin-left: 18px;
         position: relative;
 
         &.selected {
-            background: $primary100;
-            border: 1px solid $primary500;
-            color: $primary500;
+            background: $primary-100;
+            border: 1px solid $primary-500;
+            color: $primary-500;
 
             .icon-right {
                 top: 4px;
@@ -273,17 +273,17 @@
                     }
 
                     button {
-                        color: $primary500;
+                        color: $primary-500;
                         margin-top: 4px;
                         background: $background;
-                        border: 1px solid $primary500;
+                        border: 1px solid $primary-500;
                         border-radius: 4px;
                     }
                 }
             }
 
             .current, li {
-                color: $gray900;
+                color: $grey-900;
                 font-size: 12px;
                 line-height: 14.4px;
                 font-weight: 500;
@@ -307,7 +307,7 @@
                 input {
                     max-width: 120px;
                     padding: 2px 5px;
-                    border: 1px solid $gray700;
+                    border: 1px solid $grey-700;
                     border-radius: 4px;
                     margin-right: 3px;
                 }
@@ -327,13 +327,13 @@
 
             .title {
                 font-size: 11px;
-                color: $gray400;
+                color: $grey-400;
                 text-transform: uppercase;
             }
 
             .material-icons {
                 vertical-align: middle;
-                color: $gray400;
+                color: $grey-400;
                 font-size: 16px;
                 position: absolute;
                 right: 0;
@@ -366,9 +366,9 @@
     }
 
     .auto-publish {
-        border-top: 1px solid $gray100;
+        border-top: 1px solid $grey-100;
         padding-top: 16px;
-        color: $gray700;
+        color: $grey-700;
         font-size: 12px;
         position: absolute;
         bottom: 10px;
@@ -383,7 +383,7 @@
 
         .slider {
             background-color: $white;
-            border: 1px solid $gray400;
+            border: 1px solid $grey-400;
 
             &:before {
                 position: absolute;
@@ -399,13 +399,13 @@
 
             &:checked + .slider {
                 background-color: $white;
-                border: 1px solid $primary500;
+                border: 1px solid $primary-500;
 
                 &:before {
                     -webkit-transform: translateX(10px);
                     -ms-transform: translateX(10px);
                     transform: translateX(10px);
-                    background-color: $primary500;
+                    background-color: $primary-500;
                 }
             }
         }
@@ -427,10 +427,10 @@
         li {
             list-style-type: none;
             padding: 5px 0;
-            color: $gray900;
+            color: $grey-900;
 
             &:hover {
-                color: $primary500;
+                color: $primary-500;
             }
 
             img {
@@ -440,7 +440,7 @@
             span {
                 font-size: 11px;
                 display: block;
-                color: $gray700;
+                color: $grey-700;
                 margin-left: 25px;
             }
         }

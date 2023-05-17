@@ -1,16 +1,25 @@
-﻿//Colors that are currently being used for the website
-//colors
-$background: #F5F7FA;
+﻿//Black & White
+$black: #000000;
 $white: #FFFFFF;
 
+//Backgrounds
+$background: #0E0E0E;
+$background-light: #1A1A1A;
 
+//Greys
+$dark-grey: #525151;
+$light-grey: #979797;
+
+//New Brand Colors
+$blue: #0B5FFF;
+$turquoise: #00C2FF;
+$pink: #FF29C3;
+
+//Old Brand Colors
 $yellow: #A3A60E;
-$orange: #CA9100;
+$orange: #FFB46E;
 $purple: #875BBF;
 
-$background: #F5F7FA;
-
-//Colors on spec.
 //Primary Colors
 $primary-100: #B3CDFF;
 $primary-200: #C2D7FF;
@@ -33,16 +42,17 @@ $tertiary-500: #FFB46E;
 $tertiary-700: #F89B45;
 $tertiary-900: #EB8629;
 
-//Grey Scale
-$grey-100: #F1F2F5;
-$grey-200: #E7E7ED;
-$grey-300: #CDCED9;
-$grey-400: #A7A9BC;
-$grey-500: #787980;
-$grey-600: #393A4A;
-$grey-700: #30313F;
-$grey-800: #2B2D39;
-$grey-900: #272833;
+//Greyscale
+$grey-50: #F2F2F2;
+$grey-100: #E5E5E5;
+$grey-200: #CCCCCC;
+$grey-300: #B2B2B2;
+$grey-400: #999999;
+$grey-500: #7F7F7F;
+$grey-600: #666666;
+$grey-700: #454545;
+$grey-800: #1E1E1E;
+$grey-900: #0E0E0E;
 
 //System Colors
 //Error Color
