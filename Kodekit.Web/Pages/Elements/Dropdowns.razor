@@ -20,8 +20,8 @@
                             <p class="subheader">
                                 The &lt;select&gt; element defines a dropdown list. The &lt;option&gt; elements define options that can be selected. To define a pre-selected option, add the selected attribute to the option.
                             </p>
+                            <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
                         </header>
-                        <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
                         @if (Model.OverwriteInherited)
                         {
                             <div class="inputs--wrapper">
@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                         }
-                        <div class="section">
+                        <div class="overwrite-styling">
                             <Switch @bind-Value=Model.OverwriteInherited Title="Overwrite Inherited Styling" />
                         </div>
                         <Preview Kit=kit>

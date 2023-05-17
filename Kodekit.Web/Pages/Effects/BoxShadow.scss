@@ -1,6 +1,9 @@
 ﻿@import "../../_variables";
 
 .effects-page {
+    section {
+        padding-bottom: 40px;
+    }
 
     .preview-example {
         display: grid;
@@ -13,9 +16,5 @@
                 height: 160px;
             }
         }
-    }
-
-    .inputcolor {
-        margin: 0 30px 20px 0;
     }
 }

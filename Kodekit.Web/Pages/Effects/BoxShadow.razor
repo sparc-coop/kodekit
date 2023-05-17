@@ -3,10 +3,10 @@
 
 <div class="effects-page page">
     <div class="page__container">
-        <header>
+        <header class="page--header">
             <div class="title">Effects</div>
             <h2>Box Shadow</h2>
-            <p>
+            <p class="subhedaer">
                 Add box shadows to different elements.
             </p>
         </header>
@@ -14,85 +14,86 @@
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <h3>Small Shadow Settings</h3>
-                    <div class="section">
-                        <label>
-                            X Length (px)
-                            <InputNumber @bind-Value="Model.Small.X" class="small" />
-                        </label>
-                        <label>
-                            Y Length (px)
-                            <InputNumber @bind-Value="Model.Small.Y" class="small" />
-                        </label>
-                        <label>
-                            Blur (px)
-                            <InputNumber @bind-Value="Model.Small.Blur" class="small" />
-                        </label>
-                        <label>
-                            Spread (px)
-                            <InputNumber @bind-Value="Model.Small.Spread" class="small" />
-                        </label>
-                        <label>
-                            Shadow Color
-                           <InputColor @bind-Value="Model.Small.HexColor" />
-                        </label>
-                        <label>
-                            Shadow Opacity (%)
-                            <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
-                        </label>
-                    </div>
-
-
-                    <h3>X-Large Shadow Settings</h3>
-                    <div class="section">
-                        <label>
-                            X Length (px)
-                            <InputNumber @bind-Value="Model.XLarge.X" class="small" />
-                        </label>
-                        <label>
-                            Y Length (px)
-                            <InputNumber @bind-Value="Model.XLarge.Y" class="small" />
-                        </label>
-                        <label>
-                            Blur (px)
-                            <InputNumber @bind-Value="Model.XLarge.Blur" class="small" />
-                        </label>
-                        <label>
-                            Spread (px)
-                            <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
-                        </label>
-                        <label>
-                            Shadow Color
-                           <InputColor @bind-Value="Model.XLarge.HexColor" />
-                        </label>
-                        <label>
-                            Shadow Opacity (%)
-                            <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
-                        </label>
-                    </div>
-
-                    <Preview Kit=kit>
-                        <div>
-                            <label>Small Shadow</label>
-                            <div class="shadow-100">
-                            </div>
+                    <section>
+                        <header>
+                            <h3>Small Shadow Settings</h3>
+                        </header>
+                        <div class="inputs--wrapper">
+                            <label>
+                                <InputNumber @bind-Value="Model.Small.X" class="small" />
+                                X Length (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.Small.Y" class="small" />
+                                Y Length (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.Small.Blur" class="small" />
+                                Blur (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.Small.Spread" class="small" />
+                                Spread (px)
+                            </label>
+                            <label>
+                                <InputColor @bind-Value="Model.Small.HexColor" />
+                                Shadow Color
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
+                                Shadow Opacity (%)
+                            </label>
                         </div>
-                        <div>
-                            <label>Medium Shadow</label>
-                            <div class="shadow-300">
-                            </div>
+                    </section>
+                    <section>
+                        <header>
+                            <h3>X-Large Shadow Settings</h3>
+                        </header>
+                        <div class="inputs--wrapper">
+                            <label>
+                                <InputNumber @bind-Value="Model.XLarge.X" class="small" />
+                                X Length (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.XLarge.Y" class="small" />
+                                Y Length (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.XLarge.Blur" class="small" />
+                                Blur (px)
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
+                                Spread (px)
+                            </label>
+                            <label>
+                                <InputColor @bind-Value="Model.XLarge.HexColor" />
+                                Shadow Color
+                            </label>
+                            <label>
+                                <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
+                                Shadow Opacity (%)
+                            </label>
                         </div>
-                        <div>
-                            <label>Large Shadow</label>
-                            <div class="shadow-600">
+                        <Preview Kit=kit>
+                            <div>
+                                <div class="shadow-100"></div>
+                                <label>Small Shadow</label>
                             </div>
-                        </div>
-                        <div>
-                            <label>X-Large Shadow</label>
-                            <div class="shadow-1000">
+                            <div>
+                                <div class="shadow-300"></div>
+                                <label>Medium Shadow</label>
                             </div>
-                        </div>
-                    </Preview>
+                            <div>
+                                <div class="shadow-600"></div>
+                                <label>Large Shadow</label>
+                            </div>
+                            <div>
+                                <div class="shadow-1000"></div>
+                                <label>X-Large Shadow</label>
+                            </div>
+                        </Preview>
+                    </section>
                 </EditForm>
             }
         </div>

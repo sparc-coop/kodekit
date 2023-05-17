@@ -1,17 +1,8 @@
 ﻿@import "../../_variables";
 
 .dropdowns {
-    .preview-example {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 32px;
-
-        select {
-            height: unset;
-        }
-    }
-
-    aside {
+    section header aside {
+        margin-top: 10px;
         margin-bottom: 40px;
         font-size: 12px;
         font-weight: 400;
@@ -23,11 +14,13 @@
         }
     }
 
-    .section {
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 32px;
+
         select {
-            background: url("/images/dropdown-icon.svg") no-repeat right;
-            -webkit-appearance: none;
-            background-position-x: 125px;
+            height: unset;
         }
     }
 

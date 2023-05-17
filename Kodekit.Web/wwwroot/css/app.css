@@ -176,6 +176,7 @@
   line-height: 100%;
 }
 .page section header p {
+  margin-top: 10px;
   font-family: "EncodeSans";
   font-weight: 400;
   font-size: 16px;
@@ -646,6 +647,17 @@
   margin: 16px;
 }
 
+.dropdowns section header aside {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #B2B2B2;
+}
+.dropdowns section header aside a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
 .dropdowns .preview-example {
   display: flex;
   flex-wrap: wrap;
@@ -653,21 +665,6 @@
 }
 .dropdowns .preview-example select {
   height: unset;
-}
-.dropdowns aside {
-  margin-bottom: 40px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #B2B2B2;
-}
-.dropdowns aside a {
-  text-decoration: none;
-  color: #FFFFFF;
-}
-.dropdowns .section select {
-  background: url("/images/dropdown-icon.svg") no-repeat right;
-  -webkit-appearance: none;
-  background-position-x: 125px;
 }
 .dropdowns .section-container {
   display: flex;
@@ -1156,6 +1153,9 @@
   border: 1px solid #272833;
 }
 
+.effects-page section {
+  padding-bottom: 40px;
+}
 .effects-page .preview-example {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1165,9 +1165,6 @@
 }
 .effects-page .preview-example > div div {
   height: 160px;
-}
-.effects-page .inputcolor {
-  margin: 0 30px 20px 0;
 }
 
 .introduction .content {
