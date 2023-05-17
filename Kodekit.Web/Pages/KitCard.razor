@@ -1,7 +1,6 @@
 ﻿@using Kodekit.Web.Components.Colors;
 @using Kodekit.Web.Shared.Icons
 
-<div class="kit-card--divider"></div>
 <div tabindex="0" class="kit-card">
     <div class="kit-card--header">
         <label @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</label>
@@ -39,7 +38,7 @@
         <style type="text/css">
             @@import url('@CssUrl(Kit)');
         </style>
-        <div class="typography">
+        <div class="style typography">
             <label>Typography</label>
             @if (Typography != null)
             {
@@ -50,7 +49,7 @@
             }
         </div>
         <div class="preview--divider"></div>
-        <div class="colors">
+        <div class="style colors">
             <label>Brand Colors</label>
             <div class="colors--preview">
                 <ColorBlotch Hex="primary-500" />
@@ -59,7 +58,7 @@
             </div>
         </div>
         <div class="preview--divider"></div>
-        <div class="colors">
+        <div class="style colors">
             <label>Grayscale</label>
             <div class="colors--preview">
                 <ColorBlotch Hex="grey-100" />
@@ -67,7 +66,7 @@
             </div>
         </div>
         <div class="preview--divider"></div>
-        <div class="colors">
+        <div class="style colors">
             <label>System Color</label>
             <div class="colors--preview">
                 <ColorBlotch Hex="error-500" />

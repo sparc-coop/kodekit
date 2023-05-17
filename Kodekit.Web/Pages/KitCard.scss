@@ -1,16 +1,11 @@
 ﻿@import "../_variables.scss";
 
-.kit-card--divider {
-    border-top: 1px solid #C8C8C8;
-    opacity: 30%;
-    width: 100%;
-    margin-bottom: 6px;
-}
-
 .kit-card {
     width: 100%;
     background: #0E0E0E;
+    padding-top: 6px;
     padding-bottom: 40px;
+    border-top: 1px solid rgba(200, 200, 200, 0.3);
 
     &--header {
         display: flex;
@@ -158,6 +153,11 @@
         .preview--divider {
             border-left: 1px solid $white;
             opacity: 30%;
+        }
+
+        .typography {
+            width: 40%;
+            max-width: 526px;
         }
 
         label {

@@ -1430,17 +1430,12 @@
   color: #1E1E1E;
 }
 
-.kit-card--divider {
-  border-top: 1px solid #C8C8C8;
-  opacity: 30%;
-  width: 100%;
-  margin-bottom: 6px;
-}
-
 .kit-card {
   width: 100%;
   background: #0E0E0E;
+  padding-top: 6px;
   padding-bottom: 40px;
+  border-top: 1px solid rgba(200, 200, 200, 0.3);
 }
 .kit-card--header {
   display: flex;
@@ -1553,6 +1548,10 @@
 .kit-card--preview .preview--divider {
   border-left: 1px solid #FFFFFF;
   opacity: 30%;
+}
+.kit-card--preview .typography {
+  width: 40%;
+  max-width: 526px;
 }
 .kit-card--preview label {
   color: #FFFFFF;
