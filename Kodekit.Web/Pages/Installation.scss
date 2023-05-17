@@ -65,7 +65,7 @@
 
                     &:active {
                         background: $white;
-                        color: #1E1E1E;
+                        color: $grey-800;
                     }
                 }
             }
@@ -103,7 +103,7 @@
 
                 &:active {
                     background: $white;
-                    color: #1E1E1E;
+                    color: $background;
                 }
             }
         }

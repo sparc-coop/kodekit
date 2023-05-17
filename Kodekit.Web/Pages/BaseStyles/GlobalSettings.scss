@@ -24,7 +24,7 @@
 
         input {
             &:checked + .slider {
-                background-color: #1E1E1E;
+                background-color: $grey-800;
                 border: 1px solid $white;
 
                 &:before {

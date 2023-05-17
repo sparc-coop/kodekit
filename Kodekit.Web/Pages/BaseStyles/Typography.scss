@@ -33,7 +33,7 @@
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 160%;
-                background: #1E1E1E;
+                background: $grey-800;
                 color: $white;
                 text-align: center;
                 transition: 250ms ease-in-out;
@@ -51,7 +51,7 @@
 
                 &:active {
                     background: $white;
-                    color: #1E1E1E;
+                    color: $background;
                 }
             }
 

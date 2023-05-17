@@ -114,7 +114,7 @@
 
                 &:active {
                     path {
-                        stroke: #1E1E1E !important;
+                        stroke: $grey-800 !important;
                     }
                 }
             }
@@ -131,12 +131,12 @@
 
                 &:active {
                     path {
-                        fill: #1E1E1E !important;
-                        stroke: #1E1E1E !important;
+                        fill: $grey-800 !important;
+                        stroke: $grey-800 !important;
                     }
 
                     line {
-                        stroke: #1E1E1E !important;
+                        stroke: $grey-800 !important;
                     }
                 }
             }
@@ -148,7 +148,7 @@
 
                 &:active {
                     path, circle, fill {
-                        stroke: #1E1E1E !important;
+                        stroke: $grey-800 !important;
                     }
                 }
             }
@@ -162,7 +162,7 @@
 
                 &:active {
                     circle {
-                        fill: #1E1E1E !important;
+                        fill: $grey-800 !important;
                     }
                 }
             }
