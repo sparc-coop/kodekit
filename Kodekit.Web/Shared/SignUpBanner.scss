@@ -2,19 +2,19 @@
 
 .banner {
     width: 100%;
-    max-width: 560px;
-    height: 97px;
-    box-sizing: border-box;
-    padding: 26px 56px;
-    background: $white;
+    max-width: 752px;
+    height: 140px;
+    padding: 41px 110px;
     margin: 0 auto;
+    box-sizing: border-box;
     position: fixed;
     left: 50%;
-    transform: translate(-50%, -50%);
     bottom: -16px;
-    z-index: 10;
-    border-radius: 8px;
-    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.06);
+    transform: translate(-50%, -50%);
+    background: $background-light;
+    border: 1px solid rgba(255,255,255, 0.3);
+    border-radius: 19px;
+    z-index: 100;
 
     @media screen and (max-width: 600px) {
         margin: 0 20px;
@@ -24,22 +24,33 @@
         width: 90%;
     }
 
-    h3 {
+    header {
         margin: 0;
-        font-size: 14px;
-        font-weight: 500;
+        font-family: 'EncodeSans';
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 160%;
+        color: $white;
     }
 
     p {
-        font-size: 14px;
-        color: $grey-700;
+        font-family: 'EncodeSans';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 160%;
+        color: $white;
 
         .select-login {
-            color: $primary-500;
+            color: $green-300;
             cursor: pointer;
-            text-decoration: none;
+            text-decoration: underline;
             display: inline;
             padding: 0;
+            transition: 200ms ease-in-out;
+
+            &:hover {
+                color:  $grey-300;
+            }
         }
 
         @media screen and (max-width: 600px) {
@@ -47,19 +58,13 @@
         }
     }
 
-    .material-icons {
-        vertical-align: middle;
-        margin: -3px 10px 0 -36px;
-        font-size: 22px;
-    }
-
     .button--close {
+        width: 13px;
+        height: 13px;
+        margin: 0;
         position: absolute;
         top: 20px;
         right: 20px;
-        color: $grey-700;
         cursor: pointer;
-        font-size: 16px;
-        margin: 0;
     }
 }

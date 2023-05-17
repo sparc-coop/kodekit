@@ -1,15 +1,15 @@
 ﻿@if (showBanner == true)
 {
     <div class="banner" @ref="tabBanner">
-        
-        <h1>
-            <span class="material-icons">error_outline</span>
+        <header>
             This kit will only be accessible from this device
-        </h1>
+        </header>
         <p>
             Please <a href="authentication/login" class="select-login">log in or create an account</a> to ensure changes are saved.
         </p>
-        <span tabindex="0" class="material-icons button--close" @onclick="HideBanner" @onkeydown="EnterHideBanner">close</span>
+        <span tabindex="0" @onclick="HideBanner" @onkeydown="EnterHideBanner">
+            <img class="button--close" src="images/close-icon.svg" />
+        </span>
     </div>
 }
 

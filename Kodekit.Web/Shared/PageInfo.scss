@@ -1,7 +1,7 @@
 ﻿@import "../_variables.scss";
 
 .page-info {
-    margin: 69px 80px 0px 80px;
+    margin: 69px 80px 100px 80px;
     padding: 18px 15px;
     display: flex;
     justify-content: space-between;
@@ -10,11 +10,9 @@
     border-radius: 0px 0px 8px 8px;
     color: $white;
     transition: 200ms ease-in-out;
-
-    &:hover {
+    /*&:hover {
         filter: brightness(160%);
-    }
-
+    }*/
     /*@media screen and (max-width: 1455px) {
         margin: 80px auto 40px 80px;
     }
@@ -412,36 +410,42 @@
     }
 
     .user-kits--dropdown {
-        background: $white;
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-        border-radius: 8px;
+        display: block;
         width: 210px;
-        box-sizing: border-box;
-        padding: 15px 20px 15px 15px;
+        padding: 20px;
         position: absolute;
         left: -15px;
-        top: 22px;
-        display: block;
-        z-index: 10;
+        top: 30px;
+        box-sizing: border-box;
+        background: $background-light;
+        border: 1px solid $white;
+        border-radius: 8px;
+        z-index: 50;
 
         li {
+            cursor: pointer;
             list-style-type: none;
-            padding: 5px 0;
-            color: $grey-900;
+            margin-bottom: 15px;
 
-            &:hover {
-                color: $primary-500;
+            &:last-of-type {
+                margin-bottom: 0px;
             }
 
-            img {
-                margin-right: 10px;
+            p {
+                color: $white;
+                line-height: 100%;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
 
             span {
-                font-size: 11px;
+                margin-top: 6px;
                 display: block;
-                color: $grey-700;
-                margin-left: 25px;
+                color: $grey-300;
+                font-size: 11px;
+                line-height: 100%;
             }
         }
     }
