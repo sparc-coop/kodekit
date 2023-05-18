@@ -1,8 +1,28 @@
 ﻿@import "../_variables.scss";
 
+.overlay {
+    &-expand {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 110px;
+        z-index: 999;
+    }
+
+    &-collapse {
+        position: fixed;
+        top: 127px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 0px;
+        height: 0px;
+        background: transparent;
+        z-index: 800;
+    }
+}
+
 nav {
-    position: fixed;
-    top: 0;
     width: 100%;
     padding: 48px 80px 38px 80px;
     box-sizing: border-box;
@@ -10,11 +30,10 @@ nav {
     justify-content: space-between;
     gap: 160px;
     background: $background;
-    border-bottom: 1px solid $grey-300;
     z-index: 1000;
 
     .header {
-        z-index: 600;
+        z-index: 1000;
 
         .logo {
             font-family: 'QuantaGroteskPro';
@@ -51,10 +70,9 @@ nav {
 
     .menu {
         overflow: hidden;
-        padding-left: 8px;
         display: flex;
         gap: 60px;
-        z-index: 600;
+        z-index: 1000;
 
         @media screen and (max-width: 780px) {
             transform: translateX(-256px);
@@ -74,6 +92,7 @@ nav {
             width: 122px;
             display: flex;
             flex-direction: column;
+            z-index: 1000;
 
             &.html-elements {
                 width: 163px;
@@ -85,7 +104,6 @@ nav {
             font-weight: 500;
             font-size: 23px;
             line-height: 100%;
-            margin-bottom: 18px;
         }
 
         .links {
@@ -103,6 +121,10 @@ nav {
                 text-decoration: none;
                 transition: 200ms ease-in-out;
 
+                &:first-of-type {
+                    padding-top: 18px;
+                }
+
                 &:last-of-type {
                     margin-bottom: 0;
                 }
@@ -114,9 +136,9 @@ nav {
                 &:active {
                     opacity: 0.7;
                 }
-
                 /*&.active {
-                    opacity: 1;*/
+                    opacity: 1;
+                }*/
             }
             /*.active {
         background-color: $primary100;
@@ -153,7 +175,8 @@ nav {
         width: 100%;
         position: relative;
         background: transparent;
-        z-index: 500;
+        z-index: 1000;
+
 
         .login-display {
             position: absolute;
@@ -195,7 +218,7 @@ nav {
                 width: 100vw;
                 height: 100vh;
                 background: transparent;
-                z-index: 50;
+                z-index: 10;
             }
 
             .dropdown-menu {

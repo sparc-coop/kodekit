@@ -1,9 +1,12 @@
 ﻿@inherits LayoutComponentBase
 
-<NavMenu kitId="@kitId" />
+<div class="layout--header">
+    <NavMenu kitId="@kitId" />
+    <div class="divider"></div>
+    <PageInfo kitId="@kitId" />
+</div>
 
 <div class="main">
-    <PageInfo kitId="@kitId" />
     @Body
 </div>
 
