@@ -187,6 +187,7 @@ nav .menu-right .login-display .dropdown-menu {
   background: #1A1A1A;
   border: 1px solid #FFFFFF;
   border-radius: 8px;
+  z-index: 100;
 }
 nav .menu-right .login-display .dropdown-menu a {
   display: block;

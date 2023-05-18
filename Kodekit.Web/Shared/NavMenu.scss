@@ -203,6 +203,7 @@ nav {
                 background: $background-light;
                 border: 1px solid $white;
                 border-radius: 8px;
+                z-index: 100;
 
                 a {
                     display: block;
