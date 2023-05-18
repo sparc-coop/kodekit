@@ -3,189 +3,191 @@
 <div class="page-info">
     @if (kitId != null)
     {
-        <div class="breadcrumbs">
-            <div class="title">
-                <a href="/">My Kits</a>
-            </div>
-            <img class="next" src="/images/collapse-icon.svg" alt="Right" />
-            <div class="kit-select">
-                @if (kit != null)
-                {
-                    @kit.KitId
-                }
-                @if (UserKits != null && UserKits.Count > 1)
-                {
-                    @if (KitsList == true)
+        <div class="page-info--container">
+            <div class="breadcrumbs">
+                <div class="title">
+                    <a href="/">My Kits</a>
+                </div>
+                <img class="next" src="/images/collapse-icon.svg" alt="Right" />
+                <div class="kit-select">
+                    @if (kit != null)
                     {
-                        <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" style="transform: rotate(180deg);" />
-                        <div class="overlay" @onclick="ShowKitsList"></div>
-                        <ul class="user-kits--dropdown">
-                            @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
+                        @kit.KitId
+                    }
+                    @if (UserKits != null && UserKits.Count > 1)
+                    {
+                        @if (KitsList == true)
+                        {
+                            <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" style="transform: rotate(180deg);" />
+                            <div class="overlay" @onclick="ShowKitsList"></div>
+                            <ul class="user-kits--dropdown">
+                                @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
+                                {
+                                    <li @onclick="@(e => SelectKit(item.Id))">
+                                        <p>@(item.KitId ?? "Untitled Styleguide")</p>
+                                        <span>
+                                            @item.DateModified.ToString("MM/dd/yy hh:mm tt")
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        } else
+                        {
+                            <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
+                        }
+                    }
+                </div>
+            </div>
+            <div class="info">
+                <AuthorizeView>
+                    <Authorized>
+                        <div class="last-saved">
+                            Last Saved: @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
+                        </div>
+                        <div class="actions">
+                            <button>
+                                <PreviewIcon />
+                            </button>
+                            <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
+                                <DownloadIcon />
+                            </a>
+                            <button class="delete-kit" @onclick="@(e => ShowDeleteModal(kit.Id))">
+                                <DeleteIcon />
+                            </button>
+                            <button>
+                                <MoreIcon />
+                             </button>
+                        </div>
+                    </Authorized>
+                    <NotAuthorized>
+                        <div class="please-login">Please <a href="authentication/login">Log In</a> to save changes</div>
+                        <div class="actions">
+                            <svg tabindex="0" id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path tabindex="0" d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
+                            </svg>
+                            <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
+                                <svg viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 12H16L12 16L8 12H11V8H13V12ZM15 4H5V20H19V8H15V4ZM3 2.992C3 2.444 3.447 2 3.999 2H16L21 7V20.993C21.0009 21.1243 20.976 21.2545 20.9266 21.3762C20.8772 21.4979 20.8043 21.6087 20.7121 21.7022C20.6199 21.7957 20.5101 21.8701 20.3892 21.9212C20.2682 21.9723 20.1383 21.9991 20.007 22H3.993C3.73038 21.9982 3.47902 21.8931 3.29322 21.7075C3.10742 21.5219 3.00209 21.2706 3 21.008V2.992Z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </NotAuthorized>
+                </AuthorizeView>
+                @*<AuthorizeView>
+                    <Authorized>
+                        <div tabindex="0" class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown" @onkeydown="ToggleDropdown">
+                            @if (ShowDropdown == false)
                             {
-                                <li @onclick="@(e => SelectKit(item.Id))">
-                                    <p>@(item.KitId ?? "Untitled Styleguide")</p>
-                                    <span>
-                                        @item.DateModified.ToString("MM/dd/yy hh:mm tt")
-                                    </span>
+                                <img class="icon-left" src="/images/history-icon.svg" alt="History Icon" />
+                            }
+                            else
+                            {
+                                <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon" />
+                            }
+                            Version History
+                            @if (ShowDropdown == false)
+                            {
+                                <img class="icon-right" src="/images/dropdown-icon.svg" alt="Dropdown" />
+                            }
+                            else
+                            {
+                                <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close" />
+                            }
+                        </div>
+                    </Authorized>
+            </AuthorizeView>*@
+            </div>
+            @*@if (ShowDropdown == true)
+            {
+                <div class="history--dropdown">
+                    <div class="title">Version History</div>
+                    <div class="current" style="opacity: 0.3">
+                        <img class="img-left" src="/images/ellipse_open_icon.svg" />
+                        @if (EditName == kit.Id)
+                        {
+                            <span>
+                                <input placeholder="@kit.Name" @bind-value="@kit.Name" />
+                                <button @onclick="@(e => UpdateKitName(kit.Id, kit.Name))">Save</button>
+                            </span>
+                        }
+                        else
+                        {
+                            <span>Coming soon!</span>
+                        }
+                        <span class="material-icons img-right" @onclick="@(e => ShowOptions(kit.Id))">more_vert</span>
+                        @if (ShowKitOptions == kit.Id)
+                        {
+                            <div class="publish-options">
+                                <ul>
+                                    <li @onclick="@(e => ShowEditName(kit.Id))">Rename Version</li>
+                                    <li @onclick="@(e => GoToPreview(kit.Id))">Preview Version</li>
+                                    <li>Revert to Version</li>
+                                    <li @onclick="@(e => ShowDeleteModal(kit.Id))">Delete Version</li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                    @if (Kits.Count > 0)
+                    {
+                        <div class="title">Past Versions</div>
+                        <ul>
+                            @foreach (var item in Kits)
+                            {
+                                <li @onclick="@(e => ShowOptions(item.Id))">
+                                    @if (!String.IsNullOrEmpty(item.Name))
+                                    {
+                                        @if (EditName == item.Id)
+                                        {
+                                            <span>
+                                                <input placeholder="@item.Name" @bind-value="@item.Name" />
+                                                <button @onclick="@(e => UpdateKitName(item.Id, item.Name))">Save</button>
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span>@item.Name</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @if (EditName == item.Id)
+                                        {
+                                            <input placeholder="@item.Name" @bind-value="@item.Name" />
+                                            <button @onclick="@(e => UpdateKitName(item.Id, item.Name))">Save</button>
+
+                                        }
+                                        else
+                                        {
+                                            <span>@item.DateCreated.ToString("MMM dd, yyyy hh:mm tt")</span>
+                                        }
+                                    }
+                                    <span class="material-icons">more_vert</span>
+                                    @if (ShowKitOptions == item.Id)
+                                    {
+                                        <div class="publish-options">
+                                            <ul>
+                                                <li @onclick="@(e => Publish(item.Id))">Push Live</li>
+                                                <li @onclick="@(e => ShowEditName(item.Id))">Rename Version</li>
+                                                <li @onclick="@(e => GoToPreview(item.Id))">Preview Version</li>
+                                                <li>Revert to Version</li>
+                                                <li @onclick="@(e => ShowDeleteModal(item.Id))">Delete Version</li>
+                                            </ul>
+                                        </div>
+                                    }
                                 </li>
                             }
                         </ul>
-                    } else
-                    {
-                        <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
                     }
-                }
-            </div>
-        </div>
-        <div class="info">
-            <AuthorizeView>
-                <Authorized>
-                    <div class="last-saved">
-                        Last Saved: @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
+                    <div class="auto-publish">
+                        <label class="switch">
+                            <input tabindex="0" @ref="tabSlider" type="checkbox" @bind="SelectAutoPublish" @oninput="SetAutoPublish">
+                            <span class="slider"></span>
+                        </label>
+                        Auto Publish Saves
                     </div>
-                    <div class="actions">
-                        <button>
-                            <PreviewIcon />
-                        </button>
-                        <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
-                            <DownloadIcon />
-                        </a>
-                        <button class="delete-kit" @onclick="@(e => ShowDeleteModal(kit.Id))">
-                            <DeleteIcon />
-                        </button>
-                        <button>
-                            <MoreIcon />
-                         </button>
-                    </div>
-                </Authorized>
-                <NotAuthorized>
-                    <div class="please-login">Please <a href="authentication/login">Log In</a> to save changes</div>
-                    <div class="actions">
-                        <svg tabindex="0" id="delete" @onclick="@(e => ShowDeleteModal(kit.Id))" title="Delete" viewBox="-3 -3 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path tabindex="0" d="M15 4H20V6H18V19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V6H0V4H5V1C5 0.734784 5.10536 0.48043 5.29289 0.292893C5.48043 0.105357 5.73478 0 6 0H14C14.2652 0 14.5196 0.105357 14.7071 0.292893C14.8946 0.48043 15 0.734784 15 1V4ZM16 6H4V18H16V6ZM7 9H9V15H7V9ZM11 9H13V15H11V9ZM7 2V4H13V2H7Z" />
-                        </svg>
-                        <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
-                            <svg viewBox="-1 -1 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 12H16L12 16L8 12H11V8H13V12ZM15 4H5V20H19V8H15V4ZM3 2.992C3 2.444 3.447 2 3.999 2H16L21 7V20.993C21.0009 21.1243 20.976 21.2545 20.9266 21.3762C20.8772 21.4979 20.8043 21.6087 20.7121 21.7022C20.6199 21.7957 20.5101 21.8701 20.3892 21.9212C20.2682 21.9723 20.1383 21.9991 20.007 22H3.993C3.73038 21.9982 3.47902 21.8931 3.29322 21.7075C3.10742 21.5219 3.00209 21.2706 3 21.008V2.992Z" />
-                            </svg>
-                        </a>
-                    </div>
-                </NotAuthorized>
-            </AuthorizeView>
-            @*<AuthorizeView>
-                <Authorized>
-                    <div tabindex="0" class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown" @onkeydown="ToggleDropdown">
-                        @if (ShowDropdown == false)
-                        {
-                            <img class="icon-left" src="/images/history-icon.svg" alt="History Icon" />
-                        }
-                        else
-                        {
-                            <img class="icon-left" src="/images/blue-history-icon.svg" alt="History Icon" />
-                        }
-                        Version History
-                        @if (ShowDropdown == false)
-                        {
-                            <img class="icon-right" src="/images/dropdown-icon.svg" alt="Dropdown" />
-                        }
-                        else
-                        {
-                            <img class="icon-right" src="/images/blue-close-icon.svg" alt="Close" />
-                        }
-                    </div>
-                </Authorized>
-        </AuthorizeView>*@
-        </div>
-        @*@if (ShowDropdown == true)
-        {
-            <div class="history--dropdown">
-                <div class="title">Version History</div>
-                <div class="current" style="opacity: 0.3">
-                    <img class="img-left" src="/images/ellipse_open_icon.svg" />
-                    @if (EditName == kit.Id)
-                    {
-                        <span>
-                            <input placeholder="@kit.Name" @bind-value="@kit.Name" />
-                            <button @onclick="@(e => UpdateKitName(kit.Id, kit.Name))">Save</button>
-                        </span>
-                    }
-                    else
-                    {
-                        <span>Coming soon!</span>
-                    }
-                    <span class="material-icons img-right" @onclick="@(e => ShowOptions(kit.Id))">more_vert</span>
-                    @if (ShowKitOptions == kit.Id)
-                    {
-                        <div class="publish-options">
-                            <ul>
-                                <li @onclick="@(e => ShowEditName(kit.Id))">Rename Version</li>
-                                <li @onclick="@(e => GoToPreview(kit.Id))">Preview Version</li>
-                                <li>Revert to Version</li>
-                                <li @onclick="@(e => ShowDeleteModal(kit.Id))">Delete Version</li>
-                            </ul>
-                        </div>
-                    }
                 </div>
-                @if (Kits.Count > 0)
-                {
-                    <div class="title">Past Versions</div>
-                    <ul>
-                        @foreach (var item in Kits)
-                        {
-                            <li @onclick="@(e => ShowOptions(item.Id))">
-                                @if (!String.IsNullOrEmpty(item.Name))
-                                {
-                                    @if (EditName == item.Id)
-                                    {
-                                        <span>
-                                            <input placeholder="@item.Name" @bind-value="@item.Name" />
-                                            <button @onclick="@(e => UpdateKitName(item.Id, item.Name))">Save</button>
-                                        </span>
-                                    }
-                                    else
-                                    {
-                                        <span>@item.Name</span>
-                                    }
-                                }
-                                else
-                                {
-                                    @if (EditName == item.Id)
-                                    {
-                                        <input placeholder="@item.Name" @bind-value="@item.Name" />
-                                        <button @onclick="@(e => UpdateKitName(item.Id, item.Name))">Save</button>
-
-                                    }
-                                    else
-                                    {
-                                        <span>@item.DateCreated.ToString("MMM dd, yyyy hh:mm tt")</span>
-                                    }
-                                }
-                                <span class="material-icons">more_vert</span>
-                                @if (ShowKitOptions == item.Id)
-                                {
-                                    <div class="publish-options">
-                                        <ul>
-                                            <li @onclick="@(e => Publish(item.Id))">Push Live</li>
-                                            <li @onclick="@(e => ShowEditName(item.Id))">Rename Version</li>
-                                            <li @onclick="@(e => GoToPreview(item.Id))">Preview Version</li>
-                                            <li>Revert to Version</li>
-                                            <li @onclick="@(e => ShowDeleteModal(item.Id))">Delete Version</li>
-                                        </ul>
-                                    </div>
-                                }
-                            </li>
-                        }
-                    </ul>
-                }
-                <div class="auto-publish">
-                    <label class="switch">
-                        <input tabindex="0" @ref="tabSlider" type="checkbox" @bind="SelectAutoPublish" @oninput="SetAutoPublish">
-                        <span class="slider"></span>
-                    </label>
-                    Auto Publish Saves
-                </div>
-            </div>
-        }*@
+            }*@
+        </div>
     }
 </div>
 <DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@kit" SelectedKit="@SelectedVersion"/>

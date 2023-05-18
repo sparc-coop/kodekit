@@ -72,14 +72,6 @@ nav .menu {
   display: flex;
   gap: 60px;
   z-index: 600;
-  /*.active {
-      background-color: $primary100;
-      border-radius: 4px;
-      margin: 0;
-      padding: 8px 16px;
-      color: $primary500;
-      font-weight: 500;
-  }*/
 }
 @media screen and (max-width: 780px) {
   nav .menu {
@@ -110,10 +102,20 @@ nav .menu .heading {
   line-height: 100%;
   margin-bottom: 18px;
 }
-nav .menu a {
+nav .menu .links {
+  display: flex;
+  flex-direction: column;
+  /*.active {
+      background-color: $primary100;
+      border-radius: 4px;
+      margin: 0;
+      padding: 8px 16px;
+      color: $primary500;
+      font-weight: 500;
+  }*/
+}
+nav .menu .links a {
   margin-bottom: 13px;
-  border: 1px solid transparent;
-  border-radius: 4px;
   color: #FFFFFF;
   opacity: 0.7;
   font-family: "EncodeSans";
@@ -122,14 +124,16 @@ nav .menu a {
   line-height: 100%;
   text-decoration: none;
   transition: 200ms ease-in-out;
+  /*&.active {
+      opacity: 1;*/
 }
-nav .menu a:last-of-type {
+nav .menu .links a:last-of-type {
   margin-bottom: 0;
 }
-nav .menu a:hover {
+nav .menu .links a:hover {
   opacity: 1;
 }
-nav .menu a:active {
+nav .menu .links a:active {
   opacity: 0.7;
 }
 nav .menu-right {

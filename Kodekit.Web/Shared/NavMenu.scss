@@ -88,32 +88,37 @@ nav {
             margin-bottom: 18px;
         }
 
-        a {
-            margin-bottom: 13px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            color: $white;
-            opacity: 0.7;
-            font-family: 'EncodeSans';
-            font-weight: 300;
-            font-size: 14px;
-            line-height: 100%;
-            text-decoration: none;
-            transition: 200ms ease-in-out;
+        .links {
+            display: flex;
+            flex-direction: column;
 
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-
-            &:hover {
-                opacity: 1;
-            }
-
-            &:active {
+            a {
+                margin-bottom: 13px;
+                color: $white;
                 opacity: 0.7;
+                font-family: 'EncodeSans';
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 100%;
+                text-decoration: none;
+                transition: 200ms ease-in-out;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &:active {
+                    opacity: 0.7;
+                }
+
+                /*&.active {
+                    opacity: 1;*/
             }
-        }
-        /*.active {
+            /*.active {
         background-color: $primary100;
         border-radius: 4px;
         margin: 0;
@@ -121,6 +126,7 @@ nav {
         color: $primary500;
         font-weight: 500;
     }*/
+        }
     }
     /*.button--wrapper {
         width: 256px;
