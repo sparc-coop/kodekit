@@ -6,6 +6,7 @@
             </div>
             @if (showMenu == true)
             {
+                <div class="overlay" @onclick="ToggleMenu"></div>
                 <div class="dropdown-menu">
                     <a href="/" @onclick="ToggleMenu">My Kits</a>
                     <button class="logout" @onclick="BeginLogout">

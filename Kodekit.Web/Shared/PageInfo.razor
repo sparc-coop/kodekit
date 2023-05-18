@@ -15,9 +15,10 @@
                 }
                 @if (UserKits != null && UserKits.Count > 1)
                 {
-                    <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
                     @if (KitsList == true)
                     {
+                        <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" style="transform: rotate(180deg);" />
+                        <div class="overlay" @onclick="ShowKitsList"></div>
                         <ul class="user-kits--dropdown">
                             @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
                             {
@@ -29,6 +30,9 @@
                                 </li>
                             }
                         </ul>
+                    } else
+                    {
+                        <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
                     }
                 }
             </div>

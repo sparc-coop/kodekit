@@ -409,6 +409,18 @@
         }
     }
 
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background: transparent;
+        z-index: 50;
+    }
+
     .user-kits--dropdown {
         display: block;
         width: 210px;
@@ -420,7 +432,7 @@
         background: $background-light;
         border: 1px solid $white;
         border-radius: 8px;
-        z-index: 50;
+        z-index: 100;
 
         li {
             cursor: pointer;
