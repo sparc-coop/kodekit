@@ -1606,6 +1606,14 @@
 .release .page--header a:hover {
   color: #FFFFFF;
 }
+.release section {
+  /*        header {
+              .date {
+                  color: $grey-300;
+              }
+          }
+  */
+}
 .release section div p {
   margin-bottom: 14px;
   line-height: 160%;
