@@ -2,9 +2,7 @@
     <AuthorizeView>
         <Authorized>
             <div tabindex="0" class="user-menu"  @onclick="ToggleMenu" @onkeydown="ToggleMenu">
-                <span class="material-icons">
-                    account_circle
-                </span>
+                <button>Hi, @User.FirstName</button>
             </div>
             @if (showMenu == true)
             {
@@ -28,7 +26,18 @@
 @inject SignOutSessionStateManager SignOutManager
 
 @code{
+    private User User;
     bool showMenu = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+        }
+    }
 
     private async Task BeginLogout(MouseEventArgs args)
     {

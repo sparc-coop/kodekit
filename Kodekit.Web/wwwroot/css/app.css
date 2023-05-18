@@ -457,14 +457,15 @@
   visibility: hidden;
 }
 .modal--container {
-  width: 480px;
-  height: 237px;
-  box-sizing: border-box;
-  padding: 32px;
-  background: #FFFFFF;
-  border-radius: 8px;
-  margin: 20% auto;
+  width: 100%;
+  max-width: 752px;
+  padding: 40px 80px;
   position: relative;
+  z-index: 100;
+  background: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 19px;
+  margin: 20% auto;
 }
 @media screen and (max-width: 780px) {
   .modal--container {
@@ -477,51 +478,57 @@
     width: 85%;
   }
 }
-.modal--container h3 {
+.modal--container header {
   margin: 0;
-  font-family: Inter;
+  font-family: "EncodeSans";
+  font-weight: 600;
   font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.02em;
-  text-align: left;
-  color: #0E0E0E;
+  line-height: 160%;
+  color: #FFFFFF;
 }
 .modal--container p {
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
+  padding: 0;
+  margin-top: 20px;
+  font-family: "EncodeSans";
   font-weight: 400;
-  line-height: 26px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #454545;
-  padding: 20px 0 72px;
-}
-@media screen and (max-width: 560px) {
-  .modal--container p {
-    line-height: 20px;
-  }
+  font-size: 18px;
+  line-height: 160%;
+  color: #FFFFFF;
 }
 .modal button {
-  border: 1px solid #7F7F7F;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 13px;
-  color: #454545;
-  background: #FFFFFF;
-  padding: 6px 12px;
+  margin-top: 40px;
+  padding: 6px 18px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 160%;
+  background: #1E1E1E;
+  color: #FFFFFF;
+  text-align: center;
+  transition: 250ms ease-in-out;
 }
-@media screen and (max-width: 500px) {
-  .modal button {
-    margin-top: 2px;
-  }
+.modal button:hover {
+  border: 1px solid #FFFFFF;
+}
+.modal button:active {
+  background: #FFFFFF;
+  color: #0E0E0E;
 }
 .modal .button--confirm {
   border: 1px solid #F96464;
   color: #F96464;
   margin-right: 12px;
+}
+.modal .button--confirm:hover {
+  border: 1px solid #FFFFFF;
+  color: white;
+}
+.modal .button--confirm:active {
+  border: 1px solid #F96464;
+  background: #F96464;
+  color: #0E0E0E;
 }
 .modal .button--close {
   position: absolute;
@@ -1344,9 +1351,6 @@
     margin: 20px auto;
   }
 }
-.dashboard p {
-  margin-top: 40px;
-}
 .dashboard-container {
   margin-top: 20px;
   width: 100%;
@@ -1374,6 +1378,7 @@
   margin: 0 auto;
 }
 .dashboard--header p {
+  margin-top: 40px;
   font-family: "QuantaGroteskPro";
   font-weight: 400;
   font-size: 14px;
@@ -1387,7 +1392,7 @@
   line-height: 120%;
   color: #FFFFFF;
 }
-.dashboard--header h3 {
+.dashboard--header .subheader {
   font-family: "EncodeSans";
   font-weight: 700;
   font-size: 18px;
@@ -1447,7 +1452,7 @@
 .kit-card--header:hover {
   filter: brightness(160%);
 }
-.kit-card--header label {
+.kit-card--header h3 {
   margin: 0;
   padding: 0;
   font-family: "EncodeSans";
@@ -1457,7 +1462,7 @@
   color: #FFFFFF;
   transition: 250ms ease-in-out;
 }
-.kit-card--header label:hover {
+.kit-card--header h3:hover {
   cursor: pointer;
   transform: scale(104%);
 }
@@ -1755,6 +1760,7 @@ nav .menu a:active {
   opacity: 0.7;
 }
 nav .menu-right {
+  width: 100%;
   position: relative;
   background: transparent;
   z-index: 500;
@@ -1777,16 +1783,12 @@ nav .menu-right .login-display .login {
   line-height: 100%;
   margin-bottom: 18px;
 }
-nav .menu-right .login-display .user-menu {
-  background: transparent;
-  display: flex;
-}
-@media screen and (max-width: 780px) {
-  nav .menu-right .login-display .user-menu {
-    right: 5px;
-  }
-}
-nav .menu-right .login-display .user-menu span {
+nav .menu-right .login-display .user-menu button {
+  margin-bottom: 18px;
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 100%;
   color: #FFFFFF;
   cursor: pointer;
 }
@@ -1797,7 +1799,7 @@ nav .menu-right .login-display .dropdown-menu {
   flex-wrap: wrap;
   position: absolute;
   top: 38px;
-  right: 10px;
+  right: 0px;
   background: #1A1A1A;
   border: 1px solid #FFFFFF;
   border-radius: 8px;

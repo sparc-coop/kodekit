@@ -133,6 +133,7 @@ nav .menu a:active {
   opacity: 0.7;
 }
 nav .menu-right {
+  width: 100%;
   position: relative;
   background: transparent;
   z-index: 500;
@@ -155,16 +156,12 @@ nav .menu-right .login-display .login {
   line-height: 100%;
   margin-bottom: 18px;
 }
-nav .menu-right .login-display .user-menu {
-  background: transparent;
-  display: flex;
-}
-@media screen and (max-width: 780px) {
-  nav .menu-right .login-display .user-menu {
-    right: 5px;
-  }
-}
-nav .menu-right .login-display .user-menu span {
+nav .menu-right .login-display .user-menu button {
+  margin-bottom: 18px;
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 100%;
   color: #FFFFFF;
   cursor: pointer;
 }
@@ -175,7 +172,7 @@ nav .menu-right .login-display .dropdown-menu {
   flex-wrap: wrap;
   position: absolute;
   top: 38px;
-  right: 10px;
+  right: 0px;
   background: #1A1A1A;
   border: 1px solid #FFFFFF;
   border-radius: 8px;

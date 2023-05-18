@@ -18,10 +18,6 @@
         }
     }
 
-    p {
-        margin-top: 40px;
-    }
-
     &-container {
         margin-top: 20px;
         width: 100%;
@@ -50,6 +46,7 @@
         margin: 0 auto;
 
         p {
+            margin-top: 40px;
             font-family: 'QuantaGroteskPro';
             font-weight: 400;
             font-size: 14px;
@@ -65,7 +62,7 @@
             color: $white;
         }
 
-        h3 {
+        .subheader {
             font-family: 'EncodeSans';
             font-weight: 700;
             font-size: 18px;

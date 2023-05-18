@@ -17,14 +17,15 @@
     visibility: hidden;
 
     &--container {
-        width: 480px;
-        height: 237px;
-        box-sizing: border-box;
-        padding: 32px;
-        background: $white;
-        border-radius: 8px;
-        margin: 20% auto;
+        width: 100%;
+        max-width: 752px;
+        padding: 40px 80px;
         position: relative;
+        z-index: 100;
+        background: $background-light;
+        border: 1px solid rgba(255,255,255, 0.3);
+        border-radius: 19px;
+        margin: 20% auto;
 
         @media screen and (max-width: 780px) {
             width: 80%;
@@ -35,47 +36,47 @@
             width: 85%;
         }
 
-        h3 {
+        header {
             margin: 0;
-            font-family: Inter;
+            font-family: 'EncodeSans';
+            font-weight: 600;
             font-size: 20px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 24px;
-            letter-spacing: 0.02em;
-            text-align: left;
-            color: $grey-900;
+            line-height: 160%;
+            color: $white;
         }
 
         p {
-            font-family: Inter;
-            font-size: 16px;
-            font-style: normal;
+            padding: 0;
+            margin-top: 20px;
+            font-family: 'EncodeSans';
             font-weight: 400;
-            line-height: 26px;
-            letter-spacing: 0em;
-            text-align: left;
-            color: $grey-700;
-            padding: 20px 0 72px;
-
-            @media screen and (max-width: 560px) {
-                line-height: 20px;
-            }
+            font-size: 18px;
+            line-height: 160%;
+            color: $white;
         }
     }
 
     button {
-        border: 1px solid $grey-500;
-        box-sizing: border-box;
-        border-radius: 4px;
-        font-size: 13px;
-        color: $grey-700;
-        background: $white;
-        padding: 6px 12px;
+        margin-top: 40px;
+        padding: 6px 18px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        font-family: 'EncodeSans';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        background: $grey-800;
+        color: $white;
+        text-align: center;
+        transition: 250ms ease-in-out;
 
+        &:hover {
+            border: 1px solid $white;
+        }
 
-        @media screen and (max-width: 500px) {
-            margin-top: 2px;
+        &:active {
+            background: $white;
+            color: $background;
         }
     }
 
@@ -83,6 +84,17 @@
         border: 1px solid $error-500;
         color: $error-500;
         margin-right: 12px;
+
+        &:hover {
+            border: 1px solid $white;
+            color: white;
+        }
+
+        &:active {
+            border: 1px solid $error-500;
+            background: $error-500;
+            color: $background;
+        }
     }
 
     .button--close {

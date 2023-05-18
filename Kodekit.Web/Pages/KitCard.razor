@@ -2,8 +2,8 @@
 @using Kodekit.Web.Shared.Icons
 
 <div tabindex="0" class="kit-card">
-    <div class="kit-card--header">
-        <label @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</label>
+    <header class="kit-card--header">
+        <h3 @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</h3>
         <div class="kit-info">
             <AuthorizeView>
                 <Authorized>
@@ -33,7 +33,7 @@
                 </NotAuthorized>
             </AuthorizeView>
         </div>
-    </div>
+    </header>
     <div class="kit-card--preview preview-@Kit.Id">
         <style type="text/css">
             @@import url('@CssUrl(Kit)');

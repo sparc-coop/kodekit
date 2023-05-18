@@ -5,10 +5,10 @@
     <div class="page__container">
         @if (!IsLoading)
         {
-            <div class="dashboard--header">
-                <p>@User.FirstName</p>
+            <header class="dashboard--header">
+                <p class="user">@User.FirstName</p>
                 <h2>My Kits</h2>
-                <h3>View and manage your kits for your projects.</h3>
+                <p class="subheader">View and manage your kits for your projects.</p>
                 <div class="right">
                     @*                <select class="sort">
                 <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
@@ -29,7 +29,7 @@
                         </NotAuthorized>
                     </AuthorizeView>
                 </div>
-            </div>
+            </header>
 
             @if (Kits == null || !Kits.Any())
             {
