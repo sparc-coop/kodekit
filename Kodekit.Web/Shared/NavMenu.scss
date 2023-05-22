@@ -7,6 +7,10 @@
         width: 100%;
         height: 110px;
         z-index: 999;
+        
+        &:hover {
+            height: 276px;
+        }
     }
 
     &-collapse {
@@ -24,15 +28,26 @@
 
 nav {
     width: 100%;
-    padding: 48px 80px 38px 80px;
+    padding-bottom: 38px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    gap: 160px;
     background: $background;
     z-index: 1000;
 
+    &:hover {
+        .navmenu .menu .category .links {
+            height: 167px;
+        }
+    }
+
+    .header, .navmenu, .menu-right {
+        padding-top: 48px;
+    }
+
     .header {
+        padding-left: 80px;
+        padding-right: 160px;
         z-index: 1000;
 
         .logo {
@@ -66,6 +81,10 @@ nav {
                 display: block;
             }
         }
+    }
+
+    .navmenu {
+        z-index: 1000;
     }
 
     .menu {
@@ -109,6 +128,9 @@ nav {
         .links {
             display: flex;
             flex-direction: column;
+            height: 0px;
+            transition: height 500ms ease-in-out;
+            max-height: 167px;
 
             a {
                 margin-bottom: 13px;
@@ -177,10 +199,9 @@ nav {
         background: transparent;
         z-index: 1000;
 
-
         .login-display {
             position: absolute;
-            right: 0;
+            right: 80px;
 
             .login {
                 font-family: 'QuantaGroteskPro';

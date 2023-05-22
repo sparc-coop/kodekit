@@ -1669,6 +1669,9 @@
   height: 110px;
   z-index: 999;
 }
+.overlay-expand:hover {
+  height: 276px;
+}
 .overlay-collapse {
   position: fixed;
   top: 127px;
@@ -1683,11 +1686,10 @@
 
 nav {
   width: 100%;
-  padding: 48px 80px 38px 80px;
+  padding-bottom: 38px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  gap: 160px;
   background: #0E0E0E;
   z-index: 1000;
   /*.button--wrapper {
@@ -1711,7 +1713,15 @@ nav {
       }
   }*/
 }
+nav:hover .navmenu .menu .category .links {
+  height: 167px;
+}
+nav .header, nav .navmenu, nav .menu-right {
+  padding-top: 48px;
+}
 nav .header {
+  padding-left: 80px;
+  padding-right: 160px;
   z-index: 1000;
 }
 nav .header .logo {
@@ -1745,6 +1755,9 @@ nav .header .mobile {
   nav .header .mobile {
     display: block;
   }
+}
+nav .navmenu {
+  z-index: 1000;
 }
 nav .menu {
   overflow: hidden;
@@ -1784,6 +1797,9 @@ nav .menu .heading {
 nav .menu .links {
   display: flex;
   flex-direction: column;
+  height: 0px;
+  transition: height 500ms ease-in-out;
+  max-height: 167px;
   /*.active {
       background-color: $primary100;
       border-radius: 4px;
@@ -1827,7 +1843,7 @@ nav .menu-right {
 }
 nav .menu-right .login-display {
   position: absolute;
-  right: 0;
+  right: 80px;
   /*@media screen and (max-width: 780px) {
       right: 25px;
   }
