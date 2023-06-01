@@ -101,7 +101,7 @@
 
 .page {
   background: #0E0E0E;
-  padding: 40px 80px 100px 80px;
+  padding: 80px 80px 100px 80px;
 }
 @media screen and (max-width: 780px) {
   .page {
@@ -215,7 +215,6 @@
 }
 .page section, .page .subsection {
   width: 100%;
-  margin-top: 40px;
   padding-bottom: 100px;
   /*.large {
       width: 486px;
