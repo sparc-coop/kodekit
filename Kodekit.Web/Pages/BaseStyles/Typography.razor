@@ -3,7 +3,7 @@
 
 <div class="typography page">
     <div class="page__container">
-        <header class="page--header">
+        <header class="page--header fadeInUp">
             <div class="title">Base Styles</div>
             <h2>Typography</h2>
             <p>
@@ -16,16 +16,16 @@
             {
                 @*                <AccessibilityChecker Model="Model"/>*@
                 <EditForm EditContext="@Context">
-                    <section>
+                    <section class ="fadeInUp" style="animation-delay: 0.6s;">
                         <header>
                             <h3 class="section-header"><span>01</span>Heading Settings</h3>
                         </header>
-                        <div class="subsection heading-settings">
+                        <div class="subsection heading-settings fadeInUp" style="animation-delay: 0.9s;">
                             <label class="preview-text">
                                 <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
                                 Preview Text
                             </label>
-                            <div class="inputs--wrapper">
+                            <div class="inputs--wrapper fadeInUp" style="animation-delay: 1.2s;">
                                 <label>
                                     @if (Fonts.Items != null)
                                     {
@@ -105,24 +105,26 @@
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
-                            <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
-                            <h1>@previewText</h1>
-                            <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
-                            <h2>@previewText</h2>
-                            <label>Header 3 (H3) - Font Size: @HeadingScale("700")</label>
-                            <h3>@previewText</h3>
-                            <label>Header 4 (H4) - Font Size: @HeadingScale("600")</label>
-                            <h4>@previewText</h4>
-                            <label>Header 5 (H5) - Font Size: @HeadingScale("500")</label>
-                            <h5>@previewText</h5>
-                            <label>Header 6 (H6) - Font Size: @HeadingScale("400")</label>
-                            <h6>@previewText</h6>
-                            <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
-                            <p class="subtitle">@previewText</p>
-                        </Preview>
+                        <div class="fadeInUp" style="animation-delay: 1.5s;">
+                            <Preview Kit=kit>
+                                <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
+                                <h1>@previewText</h1>
+                                <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
+                                <h2>@previewText</h2>
+                                <label>Header 3 (H3) - Font Size: @HeadingScale("700")</label>
+                                <h3>@previewText</h3>
+                                <label>Header 4 (H4) - Font Size: @HeadingScale("600")</label>
+                                <h4>@previewText</h4>
+                                <label>Header 5 (H5) - Font Size: @HeadingScale("500")</label>
+                                <h5>@previewText</h5>
+                                <label>Header 6 (H6) - Font Size: @HeadingScale("400")</label>
+                                <h6>@previewText</h6>
+                                <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
+                                <p class="subtitle">@previewText</p>
+                            </Preview>
+                        </div>
                     </section>
-                    <section>
+                    <section class="fadeInUp" style="animation-delay: 1.8s;">
                         <header>
                             <h3><span>02</span> Paragraph Settings</h3>
                         </header>

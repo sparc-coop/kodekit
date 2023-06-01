@@ -20,7 +20,6 @@
 
     header {
         &.page--header {
-            border-bottom: 1px solid rgba(200, 200, 200, 0.3);
             padding-bottom: 100px;
 
             .title {
@@ -64,6 +63,15 @@
     }
 
     section {
+        &:last-of-type {
+            border: none;
+        }
+
+        &:only-of-type, &:first-of-type {
+            padding-top: 40px;
+            border-top: 1px solid rgba(200, 200, 200, 0.3);
+        }
+
         border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 
         header {
@@ -128,10 +136,6 @@
         width: 100%;
         margin-top: 40px;
         padding-bottom: 100px;
-
-        &:last-of-type {
-            border: none;
-        }
 
         header {
             &.flex, .flex {
@@ -402,4 +406,38 @@
         font-size: 19px;
         vertical-align: middle;
     }
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0px, 0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    animation-delay: 0.3s;
 }

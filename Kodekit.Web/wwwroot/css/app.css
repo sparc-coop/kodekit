@@ -119,7 +119,6 @@
   position: relative;
 }
 .page header.page--header {
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
   padding-bottom: 100px;
 }
 .page header.page--header .title {
@@ -157,6 +156,13 @@
 }
 .page section {
   border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+.page section:last-of-type {
+  border: none;
+}
+.page section:only-of-type, .page section:first-of-type {
+  padding-top: 40px;
+  border-top: 1px solid rgba(200, 200, 200, 0.3);
 }
 .page section header {
   margin-bottom: 40px;
@@ -222,9 +228,6 @@
   .small {
       width: 142px;
   }*/
-}
-.page section:last-of-type, .page .subsection:last-of-type {
-  border: none;
 }
 .page section header.flex, .page section header .flex, .page .subsection header.flex, .page .subsection header .flex {
   display: flex;
@@ -438,6 +441,36 @@
   margin: -4px 0 0 15px;
   font-size: 19px;
   vertical-align: middle;
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0);
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0px, 0);
+  }
+}
+.fadeInUp {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  animation-delay: 0.3s;
 }
 
 .active .modal {
@@ -1185,13 +1218,14 @@
   height: 160px;
 }
 
-.introduction .content {
-  padding-top: 40px;
-}
 .introduction .content section {
   margin-top: 0;
   padding-bottom: 40px;
-  border: none;
+  border-bottom: none;
+}
+.introduction .content section:first-of-type {
+  padding-top: 40px;
+  border-top: 1px solid rgba(200, 200, 200, 0.3);
 }
 .introduction .content section header {
   margin-bottom: 20px;
@@ -1245,6 +1279,7 @@
   bottom: -40px;
   padding: 8px 15px;
   background: #17171A;
+  border: 1px solid transparent;
   border-radius: 8px;
   font-size: 12px;
   transition: 250ms ease-in-out;
