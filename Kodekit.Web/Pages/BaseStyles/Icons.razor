@@ -3,7 +3,7 @@
 
 <div class="icons page">
     <div class="page__container">
-        <header class="page--header">
+        <header class="page--header fadeInUp">
             <div class="title">Base Styles</div>
             <h2>Icons</h2>
             <p class="subheader">
@@ -11,7 +11,7 @@
             </p>
         </header>
         <div class="content">
-            <section>
+            <section class="fadeInUp" style="animation-delay: 0.6s;">
                 <header>
                     <h3>Icon Sets</h3>
                     <p class="subheader">
@@ -21,7 +21,7 @@
                 @if (kit != null && Model != null)
                 {
                     <EditForm EditContext="@Context">
-                        <section>
+                        <div class="fadeInUp" style="animation-delay: 0.9s;">
                             <label>
                                 <InputSelect @bind-Value="Model.Name">
                                     <option>Select:</option>
@@ -32,13 +32,13 @@
                                 </InputSelect>
                                 Icon Set
                             </label>
-                        <Preview Kit=kit>
-                            @foreach (var icon in Model.IconsList)
-                            {
-                                <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
-                            }
-                        </Preview>
-                        </section>
+                            <Preview Kit=kit ExampleAnimationDelay="1.2s" CodeAnimationDelay="1.5s">
+                                @foreach (var icon in Model.IconsList)
+                                {
+                                    <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                                }
+                            </Preview>
+                        </div>
                     </EditForm>
                 }
             </section>

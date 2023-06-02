@@ -1,6 +1,6 @@
 ﻿@if (Kit != null)
 {
-    <div class="preview-example-container">
+    <div class="preview-example-container fadeInUp" style="animation-delay: @ExampleAnimationDelay;">
         @if (!IsLoading && CssUrl != null)
         {
             <style type="text/css">
@@ -14,7 +14,7 @@
         <div class="preview-info">
             * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
         </div>
-        <pre class="preview-code">
+        <pre class="preview-code fadeInUp" style="animation-delay: @CodeAnimationDelay;">
             <code tabindex="0" class="language-html" @ref=CodeBlock>
             </code>
         </pre>
@@ -26,6 +26,8 @@
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public Kit Kit { get; set; }
     [Parameter] public string AdditionalClass { get; set; }
+    [Parameter] public string ExampleAnimationDelay { get; set; }
+    [Parameter] public string CodeAnimationDelay { get; set; }
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;

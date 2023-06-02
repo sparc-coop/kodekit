@@ -3,7 +3,7 @@
 
 <div class="inputs page">
     <div class="page__container">
-        <header class="page--header">
+        <header class="page--header fadeInUp">
             <div class="title">Elements</div>
             <h2>Inputs & Textareas</h2>
             <p class="subheader">
@@ -14,14 +14,14 @@
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <section>
+                    <section class="fadeInUp" style="animation-delay: 0.6s;">
                         <header class="flex">
                             <h3><span>01</span> Form Styling</h3>
                             <p class="subheader">
                                 Input collects a single line of text, while a textarea can receive multiple lines of text.
                             </p>
                         </header>
-                        <div class="inputs--wrapper">
+                        <div class="inputs--wrapper fadeInUp" style="animation-delay: 0.9s;">
                             <div>
                                 <label>
                                     <InputNumber @bind-Value="Model.FontSize" min="1" />
@@ -53,26 +53,28 @@
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
-                            <label>
-                                <input placeholder="Placeholder" />
-                            </label>
-                            <label>
-                                <PersonSvg />
-                                <input placeholder="Placeholder" />
-                            </label>
-                            <textarea placeholder="Placeholder"></textarea>
-                        </Preview>
+                        <div class="preview--wrapper fadeInUp" style="animation-delay: 1.2s;">
+                            <Preview Kit=kit>
+                                <label>
+                                    <input placeholder="Placeholder" />
+                                </label>
+                                <label>
+                                    <PersonSvg />
+                                    <input placeholder="Placeholder" />
+                                </label>
+                                <textarea placeholder="Placeholder"></textarea>
+                            </Preview>
+                        </div>
                     </section>
 
-                    <section>
+                    <section class="fadeInUp" style="animation-delay: 1.5s;">
                         <header clas="flex">
                             <h3><span> 02</span> Input & Textarea states</h3>
                             <p class="subheader">
                                 Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
                             </p>
                         </header>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit ExampleAnimationDelay="1.8s" CodeAnimationDelay="2.1s">
                             <label>
                                 Placeholder
                                 <PersonSvg />

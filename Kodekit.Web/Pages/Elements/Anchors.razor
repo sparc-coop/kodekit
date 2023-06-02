@@ -3,7 +3,7 @@
 
 <div class="anchors page">
     <div class="page__container">
-        <header class="page--header">
+        <header class="page--header fadeInUp">
             <div class="title">Elements</div>
             <h2>Anchor Links</h2>
             <p class="subheader">
@@ -14,7 +14,7 @@
             @if (kit != null)
             {
                 <EditForm EditContext="@Context">
-                    <section>
+                    <section class="fadeInUp" style="animation-delay: 0.6s;">
                         <header>
                             <h3>Link Styling</h3>
                             <p class="subheader">
@@ -27,7 +27,7 @@
                                 Font Weight
                             </label>
                         </div>
-                        <div class="subsection link-states">
+                        <div class="subsection link-states fadeInUp" style="animation-delay: 0.9s;">
                             <h4>Link States</h4>
                             <div class="inputs--wrapper">
                                 <label>
@@ -48,7 +48,7 @@
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit ExampleAnimationDelay="1.2s" CodeAnimationDelay="1.5s">
                             <a href="#@Guid.NewGuid()">Default</a>
                             <a href="#@Guid.NewGuid()" class="hover">Hover</a>
                             <a href="#@Guid.NewGuid()" class="visited">Visited</a>

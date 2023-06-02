@@ -105,7 +105,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="fadeInUp" style="animation-delay: 1.5s;">
+                        <div class="preview--wrapper fadeInUp" style="animation-delay: 1.5s;">
                             <Preview Kit=kit>
                                 <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
                                 <h1>@previewText</h1>
@@ -133,7 +133,7 @@
                                 <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
                                 Preview Text
                             </label>
-                            <div class="inputs--wrapper">                        
+                            <div class="inputs--wrapper fadeInUp" style="animation-delay: 2.1s;">
                                 <label>
                                     <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
                                         @if (Fonts.Items != null)
@@ -171,7 +171,7 @@
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit ExampleAnimationDelay="2.4s" CodeAnimationDelay="2.7s">
                             <div>
                                 <label>Body Large - Font Size: @BodyScale("500")</label>
                                 <p class="large">@previewTextBody</p>
@@ -185,7 +185,7 @@
                                 <p class="small">@previewTextBody</p>
                             </div>
                         </Preview>
-                    </section>
+                </section>
                 </EditForm>
             }
         </div>
