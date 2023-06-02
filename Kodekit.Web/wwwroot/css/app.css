@@ -632,6 +632,21 @@
 .anchors section .link-states .inputcolor {
   margin-bottom: 10px;
 }
+.anchors section .link-states input[type=color] {
+  -webkit-appearance: none;
+  border: none;
+  width: 50px;
+  height: 27px;
+  padding: 0;
+}
+.anchors section .link-states input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 4px;
+}
+.anchors section .link-states input[type=color]::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
+}
 .anchors .preview-example a {
   display: inline-block;
   margin: 16px;
@@ -1187,6 +1202,21 @@
 }
 .effects-page section {
   padding-bottom: 40px;
+}
+.effects-page input[type=color] {
+  -webkit-appearance: none;
+  border: none;
+  width: 50px;
+  height: 27px;
+  padding: 0;
+}
+.effects-page input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 4px;
+}
+.effects-page input[type=color]::-webkit-color-swatch {
+  border: none;
+  border-radius: 4px;
 }
 .effects-page .preview-example {
   display: grid;

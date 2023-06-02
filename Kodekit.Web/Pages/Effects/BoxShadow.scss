@@ -13,6 +13,24 @@
         padding-bottom: 40px;
     }
 
+    input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 50px;
+        height: 27px;
+        padding: 0;
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+        border-radius: 4px;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+        border: none;
+        border-radius: 4px;
+    }
+
     .preview-example {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
