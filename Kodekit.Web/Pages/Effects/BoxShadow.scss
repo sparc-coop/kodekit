@@ -1,6 +1,14 @@
 ﻿@import "../../_variables";
 
 .effects-page {
+    .toggle-bg {
+        float: right;
+        bottom: 80px;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
     section {
         padding-bottom: 40px;
     }
@@ -18,3 +26,22 @@
         }
     }
 }
+
+.white-background {
+    background-color: rgb(255, 255, 255);
+
+    .page__container, .page--header h2, header h3, .preview-example label, .preview-info {
+        color: #0E0E0E !important;
+    }
+
+    .preview-example-container .preview-example {
+        border: 1px solid #0E0E0E;
+    }
+
+    input {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid #0E0E0E;
+        color: #0E0E0E;
+    }
+}
+

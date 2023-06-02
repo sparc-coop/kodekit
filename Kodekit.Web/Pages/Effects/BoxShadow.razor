@@ -1,7 +1,7 @@
 ﻿@inherits HighlightPageBase<ShadowsModel>
 @page "/{kitId}/box-shadow"
 
-<div class="effects-page page">
+<div class="effects-page page @(isBackgroundWhite ? "white-background" : "")">
     <div class="page__container">
         <header class="page--header">
             <div class="title">Effects</div>
@@ -9,6 +9,15 @@
             <p class="subhedaer">
                 Add box shadows to different elements.
             </p>
+            <div class="toggle-bg">
+                <label class="switch">
+                    <input type="checkbox" @bind="@isBackgroundWhite">
+                    <span class="slider"></span>
+                </label>
+                <p>
+                    Toggle Background Color
+                </p>
+            </div>
         </header>
         <div class="content">
             @if (Model != null)
@@ -101,6 +110,8 @@
 </div>
 
 @code {
+    private bool isBackgroundWhite = false;
+
     protected override async Task<ShadowsModel> GetAsync()
     {
         return await PublicApi().GetShadowAsync(kitId);
