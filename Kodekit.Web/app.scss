@@ -98,7 +98,7 @@ body {
     color: $white;
 }
 
-.loading {
+/*.loading {
     text-align: center;
     padding-top: 22%;
     position: absolute;
@@ -123,7 +123,88 @@ body {
     @media screen and (max-width: 500px) {
         padding-top: 45%;
     }
+}*/
+
+.loading {
+    text-align: center;
+    padding-top: 22%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .square-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .square1 img {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        animation: mymove 5s infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    .square4 img {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        animation: mymovesquare4 5s infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    @keyframes mymove {
+        0% {
+            transform: translateY(0) translateX(0);
+        }
+
+        25% {
+            transform: translateY(0) translateX(0);
+        }
+
+        50% {
+            transform: translateY(0) translateX(100px);
+        }
+
+        75% {
+            transform: translateY(-100px) translateX(100px);
+        }
+
+        100% {
+            transform: translateY(-100px) translateX(100px);
+        }
+    }
+
+    @keyframes mymovesquare4 {
+        0% {
+            transform: translateY(100px) translateX(0);
+        }
+
+        25% {
+            transform: translateY(0) translateX(100px);
+        }
+
+        50% {
+            transform: translateY(0) translateX(0);
+        }
+
+        75% {
+            transform: translateY(100px) translateX(0);
+        }
+
+        100% {
+            transform: translateY(0) translateX(100px);
+        }
+    }
 }
+
+
+
+
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -138,9 +219,17 @@ body {
 }
 
 @keyframes bounce {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-100px); }
-    100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-100px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 button {
@@ -154,7 +243,7 @@ button {
     position: relative;
 }
 
-.sparc-authentication{
+.sparc-authentication {
     justify-content: center;
     text-align: center;
     padding-top: 15%;
