@@ -83,7 +83,6 @@ nav .header a {
 }
 nav .header .mobile {
   display: none;
-  cursor: pointer;
   position: absolute;
   left: 25px;
 }
@@ -202,7 +201,6 @@ nav .menu-right .login-display .user-menu button {
   font-size: 23px;
   line-height: 100%;
   color: #FFFFFF;
-  cursor: pointer;
 }
 nav .menu-right .login-display .overlay {
   position: fixed;

@@ -96,7 +96,68 @@ body {
     font-family: 'EncodeSans', sans-serif;
     font-weight: 400;
     color: $white;
+    /*cursor: url("images/cursor.png"), auto;*/
 }
+
+/*.cursor {
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    background: $white;
+    transition: 0.1s;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    mix-blend-mode: difference;
+}
+
+h2:hover ~ .cursor {
+    transform: scale(6);
+}
+
+a, button, label, input, select, div, span, li {
+    &:hover {
+        cursor: url("images/cursor.png"), auto;
+    }
+}
+*/
+
+a, button, label, input, select, div, span, li {
+    &:hover {
+        cursor: none;
+    }
+}
+
+.cursor,
+.follow {
+    position: absolute;
+    pointer-events: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+
+.cursor {
+    background-color: white;
+    border-radius: 100%;
+}
+
+.follow {
+    padding: 2rem;
+    border: 0.1rem solid white;
+    transition: all 0.2s ease-out;
+    border-radius: 100%;
+}
+
+.follow.on-focus {
+    transform: translate(-0.55rem, -0.55rem);
+    border: 0.1rem solid white;
+    border-radius: 0%;
+    padding: 0.46rem;
+}
+
 
 .loading {
     text-align: center;

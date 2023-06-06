@@ -283,14 +283,8 @@
 .page input:focus, .page select:focus, .page textarea:focus {
   box-shadow: none;
 }
-.page select {
-  cursor: pointer;
-}
 .page textarea {
   min-height: 100px;
-}
-.page input {
-  cursor: text;
 }
 .page input.large {
   width: 100%;
@@ -430,7 +424,6 @@
   font-size: 14px;
 }
 .page .delete {
-  cursor: pointer;
   margin: -4px 0 0 15px;
   font-size: 19px;
   vertical-align: middle;
@@ -573,7 +566,6 @@
   top: 20px;
   right: 20px;
   color: #454545;
-  cursor: pointer;
 }
 
 .switch {
@@ -585,7 +577,6 @@
 }
 .switch .slider {
   position: absolute;
-  cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
@@ -783,7 +774,6 @@
       }*/
 }
 .colors .edit-color:hover {
-  cursor: pointer;
   border: 2px solid rgba(200, 200, 200, 0.8);
 }
 .colors .edit-color:active {
@@ -1325,7 +1315,6 @@
 .theme-page section > div {
   margin-bottom: 30px;
   display: block;
-  cursor: pointer;
 }
 .theme-page section > div label {
   display: block;
@@ -1333,7 +1322,6 @@
   font-size: 16px;
   font-weight: 500;
   margin-top: 16px;
-  cursor: pointer;
 }
 .theme-page section > div h5 {
   font-weight: 500;
@@ -1502,7 +1490,6 @@
   transition: 250ms ease-in-out;
 }
 .kit-card--header h3:hover {
-  cursor: pointer;
   transform: scale(104%);
 }
 .kit-card--header .kit-info {
@@ -1775,7 +1762,6 @@ nav .header a {
 }
 nav .header .mobile {
   display: none;
-  cursor: pointer;
   position: absolute;
   left: 25px;
 }
@@ -1894,7 +1880,6 @@ nav .menu-right .login-display .user-menu button {
   font-size: 23px;
   line-height: 100%;
   color: #FFFFFF;
-  cursor: pointer;
 }
 nav .menu-right .login-display .overlay {
   position: fixed;
@@ -1993,7 +1978,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 }
 .banner p .select-login {
   color: #6EF8D7;
-  cursor: pointer;
   text-decoration: underline;
   display: inline;
   padding: 0;
@@ -2014,7 +1998,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   position: absolute;
   top: 20px;
   right: 20px;
-  cursor: pointer;
 }
 
 .page-info {
@@ -2066,9 +2049,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   height: 3.5px;
   vertical-align: middle;
   margin-left: 6px;
-}
-.page-info--container .breadcrumbs .kit-select img.dropdown:hover {
-  cursor: pointer;
 }
 .page-info--container .info {
   height: 25px;
@@ -2156,7 +2136,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   }
 }
 .page-info--container .history {
-  cursor: pointer;
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
@@ -2227,7 +2206,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 }
 .page-info--container .history--dropdown ul li {
   padding: 8px 0;
-  cursor: pointer;
   position: relative;
 }
 .page-info--container .history--dropdown ul li input {
@@ -2249,7 +2227,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   padding: 10px 0;
 }
 .page-info--container .history--dropdown .current {
-  cursor: pointer;
   display: flex;
 }
 .page-info--container .history--dropdown .current .img-left {
@@ -2307,7 +2284,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 }
 .page-info--container .publish-options ul li {
   padding: 8px 0;
-  cursor: pointer;
 }
 .page-info--container .auto-publish {
   border-top: 1px solid #E5E5E5;
@@ -2371,7 +2347,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   z-index: 100;
 }
 .page-info--container .user-kits--dropdown li {
-  cursor: pointer;
   list-style-type: none;
   margin-bottom: 15px;
 }
@@ -2679,7 +2654,7 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-  cursor: pointer;
+  /*cursor: pointer;*/
   -webkit-appearance: none;
   appearance: none;
 }
@@ -2688,7 +2663,7 @@ button[disabled],
 [type=button][disabled],
 [type=reset][disabled],
 [type=submit][disabled] {
-  cursor: default;
+  /*cursor: default;*/
 }
 
 /**
@@ -2798,7 +2773,7 @@ textarea {
  * Clickable labels
  */
 label[for] {
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 /* Interactive */
@@ -2984,6 +2959,63 @@ body {
   font-family: "EncodeSans", sans-serif;
   font-weight: 400;
   color: #FFFFFF;
+  /*cursor: url("../../images/cursor.png"), auto;*/
+}
+
+/*.cursor {
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: none;
+    background: $white;
+    transition: 0.1s;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    mix-blend-mode: difference;
+}
+
+h2:hover ~ .cursor {
+    transform: scale(6);
+}
+
+a, button, label, input, select, div, span, li {
+    &:hover {
+        cursor: url("../../images/cursor.png"), auto;
+    }
+}
+*/
+a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:hover, li:hover {
+  cursor: none;
+}
+
+.cursor,
+.follow {
+  position: absolute;
+  pointer-events: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+.cursor {
+  background-color: white;
+  border-radius: 100%;
+}
+
+.follow {
+  padding: 2rem;
+  border: 0.1rem solid white;
+  transition: all 0.2s ease-out;
+  border-radius: 100%;
+}
+
+.follow.on-focus {
+  transform: translate(-0.55rem, -0.55rem);
+  border: 0.1rem solid white;
+  border-radius: 0%;
+  padding: 0.46rem;
 }
 
 .loading {

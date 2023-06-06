@@ -282,7 +282,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-    cursor: pointer;
+    /*cursor: pointer;*/
     -webkit-appearance: none;
     appearance: none;
 }
@@ -291,7 +291,7 @@ button[disabled],
 [type="button"][disabled],
 [type="reset"][disabled],
 [type="submit"][disabled] {
-    cursor: default;
+    /*cursor: default;*/
 }
 
 /**
@@ -414,7 +414,7 @@ textarea {
  */
 
 label[for] {
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 /* Interactive */

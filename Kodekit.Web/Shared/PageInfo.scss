@@ -56,10 +56,6 @@
                         height: 3.5px;
                         vertical-align: middle;
                         margin-left: 6px;
-
-                        &:hover {
-                            cursor: pointer;
-                        }
                     }
                 }
             }
@@ -182,7 +178,6 @@
         }
 
         .history {
-            cursor: pointer;
             font-size: 12px;
             font-weight: 400;
             line-height: 14px;
@@ -255,7 +250,6 @@
 
                     li {
                         padding: 8px 0;
-                        cursor: pointer;
                         position: relative;
 
                         input {
@@ -282,7 +276,6 @@
                 }
 
                 .current {
-                    cursor: pointer;
                     display: flex;
 
                     .img-left {
@@ -351,7 +344,6 @@
 
                 li {
                     padding: 8px 0;
-                    cursor: pointer;
                 }
             }
         }
@@ -428,7 +420,6 @@
             z-index: 100;
 
             li {
-                cursor: pointer;
                 list-style-type: none;
                 margin-bottom: 15px;
 
