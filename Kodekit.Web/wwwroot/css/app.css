@@ -3017,23 +3017,22 @@ body {
   color: #FFFFFF;
 }
 
-.wrapper {
+.loading .wrapper {
   background: black;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
-
-.wrapper > div {
+.loading .wrapper > div {
   background: black;
   width: 200px;
   height: 200px;
   position: relative;
 }
-
-.wrapper div div:not(.middle) {
+.loading .wrapper > div div:not(.middle) {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -3042,48 +3041,49 @@ body {
   left: 0;
   background: white;
 }
-
-.square1 {
+.loading .wrapper > div .square1 {
   animation: moveOne 5s ease-in-out infinite;
 }
-
-.square2 {
+.loading .wrapper > div .square2 {
   animation: moveTwo 5s ease-in-out infinite;
 }
-
-.middle {
+.loading .wrapper > div .middle {
   animation: middleRotate 5s ease-in-out infinite;
 }
-
-.middle svg {
+.loading .wrapper > div .middle svg {
   position: absolute;
 }
-
-.middle1 {
+.loading .wrapper > div .middle .middle1 {
   top: 79px;
   left: 79px;
   animation: middle1 5s ease-in-out infinite;
 }
-
-.middle2 {
+.loading .wrapper > div .middle .middle2 {
   bottom: 79px;
   right: 79px;
   transform: rotate(180deg);
   animation: middle2 5s ease-in-out infinite;
 }
-
-.middle3 {
+.loading .wrapper > div .middle .middle3 {
   top: 79px;
   right: 79px;
   transform: rotate(90deg);
   animation: middle3 5s ease-in-out infinite;
 }
-
-.middle4 {
+.loading .wrapper > div .middle .middle4 {
   bottom: 79px;
   left: 79px;
   transform: rotate(270deg);
   animation: middle4 5s ease-in-out infinite;
+}
+.loading .wrapper .percentage {
+  width: 23px;
+  height: 14px;
+  margin-top: 30px;
+}
+.loading .wrapper .percentage #loader {
+  font-size: 13px;
+  color: #B2B2B2;
 }
 
 @keyframes moveOne {

@@ -98,126 +98,138 @@ body {
     color: $white;
 }
 
-.wrapper {
-    background: black;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center
+.loading {
+    .wrapper {
+        background: black;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > div {
+            background: black;
+            width: 200px;
+            height: 200px;
+            position: relative;
+
+            div:not(.middle) {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                bottom: 0;
+                border-radius: 4px;
+                left: 0;
+                background: white;
+            }
+
+            .square1 {
+                animation: moveOne 5s ease-in-out infinite;
+            }
+
+            .square2 {
+                animation: moveTwo 5s ease-in-out infinite;
+            }
+
+            .middle {
+                animation: middleRotate 5s ease-in-out infinite;
+
+                svg {
+                    position: absolute;
+                }
+
+                .middle1 {
+                    top: 79px;
+                    left: 79px;
+                    animation: middle1 5s ease-in-out infinite;
+                }
+
+                .middle2 {
+                    bottom: 79px;
+                    right: 79px;
+                    transform: rotate(180deg);
+                    animation: middle2 5s ease-in-out infinite;
+                }
+
+                .middle3 {
+                    top: 79px;
+                    right: 79px;
+                    transform: rotate(90deg);
+                    animation: middle3 5s ease-in-out infinite;
+                }
+
+                .middle4 {
+                    bottom: 79px;
+                    left: 79px;
+                    transform: rotate(270deg);
+                    animation: middle4 5s ease-in-out infinite;
+                }
+            }
+        }
+
+        .percentage {
+            width: 23px;
+            height: 14px;
+            margin-top: 30px;
+
+            #loader {
+                font-size: 13px;
+                color: #B2B2B2;
+            }
+        }
+    }
 }
-
-.wrapper > div {
-    background: black;
-    width: 200px;
-    height: 200px;
-    position: relative;
-}
-
-.wrapper div div:not(.middle) {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    bottom: 0;
-    border-radius: 4px;
-    left: 0;
-    background: white;
-}
-
-.square1 {
-    animation: moveOne 5s ease-in-out infinite;
-}
-
-.square2 {
-    animation: moveTwo 5s ease-in-out infinite;
-}
-
-
-.middle {
-    animation: middleRotate 5s ease-in-out infinite;
-}
-
-.middle svg {
-    position: absolute;
-}
-
-.middle1 {
-    top: 79px;
-    left: 79px;
-    animation: middle1 5s ease-in-out infinite;
-}
-
-.middle2 {
-    bottom: 79px;
-    right: 79px;
-    transform: rotate(180deg);
-    animation: middle2 5s ease-in-out infinite;
-}
-
-.middle3 {
-    top: 79px;
-    right: 79px;
-    transform: rotate(90deg);
-    animation: middle3 5s ease-in-out infinite;
-}
-
-.middle4 {
-    bottom: 79px;
-    left: 79px;
-    transform: rotate(270deg);
-    animation: middle4 5s ease-in-out infinite;
-}
-
 
 @keyframes moveOne {
     0% {
-        transform: translate(0px, 0px)
+        transform: translate(0px, 0px);
     }
 
     20% {
-        transform: translate(100px, -100px)
+        transform: translate(100px, -100px);
     }
 
     40% {
-        transform: translate(0px, -100px)
+        transform: translate(0px, -100px);
     }
 
     60% {
-        transform: translate(0px, 0px)
+        transform: translate(0px, 0px);
     }
 
     80% {
-        transform: translate(100px, -100px)
+        transform: translate(100px, -100px);
     }
 
     100% {
-        transform: translate(0px, 0px)
+        transform: translate(0px, 0px);
     }
 }
 
 @keyframes moveTwo {
     0% {
-        transform: translate(0px, 0px)
+        transform: translate(0px, 0px);
     }
 
     20% {
-        transform: translate(0px, 0px)
+        transform: translate(0px, 0px);
     }
 
     40% {
-        transform: translate(100px, 0px)
+        transform: translate(100px, 0px);
     }
 
     60% {
-        transform: translate(100px, -100px)
+        transform: translate(100px, -100px);
     }
 
     80% {
-        transform: translate(100px, -100px)
+        transform: translate(100px, -100px);
     }
 
     100% {
-        transform: translate(0px, 0px)
+        transform: translate(0px, 0px);
     }
 }
 
