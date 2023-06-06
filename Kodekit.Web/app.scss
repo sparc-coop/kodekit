@@ -174,8 +174,12 @@ body {
             transform: translateY(-100px) translateX(100px);
         }
 
-        100% {
+        90% {
             transform: translateY(-100px) translateX(100px);
+        }
+
+        100% {
+            transform: translateY(0) translateX(0);
         }
     }
 
@@ -196,8 +200,12 @@ body {
             transform: translateY(100px) translateX(0);
         }
 
-        100% {
+        90% {
             transform: translateY(0) translateX(100px);
+        }
+
+        100% {
+            transform: translateY(100px) translateX(0);
         }
     }
 }
