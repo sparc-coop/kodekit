@@ -98,33 +98,6 @@ body {
     color: $white;
 }
 
-/*.loading {
-    text-align: center;
-    padding-top: 22%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    img {
-        vertical-align: middle;
-        animation-name: bounce;
-        animation-timing-function: ease;
-        align-self: flex-end;
-        animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        height: 50px;
-        margin: 0 auto 0 auto;
-        transform-origin: bottom;
-        width: 200px;
-    }
-
-    @media screen and (max-width: 500px) {
-        padding-top: 45%;
-    }
-}*/
-
 .loading {
     text-align: center;
     padding-top: 22%;
@@ -209,10 +182,6 @@ body {
         }
     }
 }
-
-
-
-
 
 ::-webkit-scrollbar {
     width: 4px;
