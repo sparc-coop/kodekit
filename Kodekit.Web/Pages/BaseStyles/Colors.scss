@@ -210,7 +210,9 @@
         }
 
         .card-text {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 270px;
             min-height: 250px;
             padding: 40px;
