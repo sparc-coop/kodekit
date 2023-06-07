@@ -3007,12 +3007,12 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 .follow {
   padding: 2rem;
   border: 0.1rem solid white;
-  transition: all 0.2s ease-out;
+  /*transition: all 0.2s ease-out;*/
   border-radius: 100%;
 }
 
 .follow.on-focus {
-  transform: translate(-0.55rem, -0.55rem);
+  /*transform: translate(-0.55rem, -0.55rem);*/
   border: 0.1rem solid white;
   border-radius: 0%;
   padding: 0.46rem;
