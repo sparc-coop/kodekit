@@ -19,11 +19,13 @@
         width: 100%;
     }
 
-    .color-display {
-        display: flex;
-        justify-content: start;
-        gap: 53px;
-        margin-bottom: 20px;
+    .colors--brand {
+        .color-display {
+            display: flex;
+            justify-content: start;
+            gap: 53px;
+            margin-bottom: 20px;
+        }
     }
 
     .color-main {
@@ -114,21 +116,21 @@
     .subcolor-display {
         display: flex;
         gap: 25px;
+
+        .color-info {
+            justify-content: space-between;
+        }
     }
 
     &--greyscale {
         .color-main {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .subcolor-display {
-            margin: auto 0;
-
-            .color-info {
-                justify-content: space-between;
-            }
+            gap: 34px;
+            margin-left: 17px;
         }
     }
 

@@ -754,7 +754,7 @@
 .colors .kit-style-container {
   width: 100%;
 }
-.colors .color-display {
+.colors .colors--brand .color-display {
   display: flex;
   justify-content: start;
   gap: 53px;
@@ -836,16 +836,16 @@
   display: flex;
   gap: 25px;
 }
+.colors .subcolor-display .color-info {
+  justify-content: space-between;
+}
 .colors--greyscale .color-main {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  margin-bottom: 20px;
 }
 .colors--greyscale .subcolor-display {
-  margin: auto 0;
-}
-.colors--greyscale .subcolor-display .color-info {
-  justify-content: space-between;
+  gap: 34px;
+  margin-left: 17px;
 }
 .colors--system .color-display {
   display: flex;
