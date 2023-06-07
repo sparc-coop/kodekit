@@ -139,48 +139,93 @@
         }
     }
 
-    .preview-example--mockup {
-        h3 {
+    &--preview {
+        &-background {
             margin-bottom: 20px;
         }
 
-        > div {
-            box-sizing: border-box;
-            border-radius: 8px;
-
-            h4 {
-                margin-bottom: 15px;
-            }
-
-            p {
-                margin-bottom: 32px;
-            }
-
-            button.secondary {
-                margin-left: 27px;
-            }
-        }
-    }
-
-    .card-with-image {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        max-width: 500px;
-        padding: 0;
-
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
+        .cards--wrapper {
+            display: grid;
+            grid-template-columns: 489px auto;
+            grid-gap: 40px;
         }
 
-        > div {
-            padding: 32px 40px;
-        }
-    }
+        .card-with-image {
+            display: grid;
+            grid-template-columns: 230px auto;
+            max-width: 489px;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
 
-    .card {
-        padding: 32px 40px;
-        display: block;
+            .color-blobs--wrapper {
+                display: block;
+                max-width: 230px;
+                min-height: 250px;
+                max-height: 100%;
+                position: relative;
+                border-radius: 40px;
+
+                .color-blob {
+                    width: 170px;
+                    height: 166px;
+                    position: absolute;
+                    top: 80px;
+                    left: 50px;
+                    opacity: 0.8;
+                    filter: blur(20px);
+                    z-index: 11;
+                }
+
+                .color-blob2 {
+                    width: 158px;
+                    height: 191px;
+                    position: absolute;
+                    top: 15px;
+                    left: 12px;
+                    opacity: 0.8;
+                    filter: blur(20px);
+                    z-index: 10;
+                }
+
+                .color-blob--noise {
+                    width: 230px;
+                    height: 100%;
+                    border-radius: 40px;
+                    position: absolute;
+                    mix-blend-mode: overlay;
+                    z-index: 12;
+                }
+            }
+
+            .color-content--wrapper {
+                width: 100%;
+                margin: auto 0;
+                padding: 40px;
+            }
+
+            button {
+                margin-top: 30px;
+            }
+        }
+
+        .card-text {
+            display: block;
+            width: 270px;
+            min-height: 250px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+            text-align: center;
+
+            &--container {
+                width: 100%;
+                margin: auto 0;
+            }
+
+            button {
+                margin-top: 30px;
+            }
+        }
     }
 }

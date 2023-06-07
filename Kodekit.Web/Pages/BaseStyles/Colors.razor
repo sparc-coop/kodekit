@@ -210,26 +210,36 @@
                                 <h3>Preview</h3>
                                 <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
                             </header>
-                            <div class="card-with-image">
-                                <img src="/images/example1.png" alt="Example mockup" />
-                                <div>
-                                    <h6 class="tertiary">Information</h6>
-                                    <h4>Brand Colors</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                    </p>
-                                    <button>Primary CTA</button>
-                                </div>
+                            <div class="colors--preview-background">
+                                <label>* Preview Background color <InputColor Value="#000000" /></label>
                             </div>
-                            <div class="card">
-                                <h6 class="tertiary">Information</h6>
-                                <h4>Brand Colors</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </p>
-                                <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="secondary">Secondary CTA</button>
+                            <div class="cards--wrapper">
+                                <div class="card-with-image">
+                                    <div class="color-blobs--wrapper">
+                                        <ColorBlob Primary="@Model.Primary" />
+                                        <ColorBlob2 Secondary="@Model.Secondary" Tertiary="@Model.Tertiary"/>
+                                        <img class="color-blob--noise" src="images/Noise & Texture.png" />
+                                    </div>
+                                    <div class="color-content--wrapper">
+                                        <h6 class="tertiary">Information</h6>
+                                        <h4>Brand Colors</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                        </p>
+                                        <button>Primary CTA</button>
+                                    </div>
+                                </div>
+                                <div class="card-text">
+                                    <div class="card-text--container">
+                                        <h6 class="tertiary">Information</h6>
+                                        <h4>Brand Colors</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                        </p>
+                                        <div class="buttons">
+                                            <button>Primary CTA</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>

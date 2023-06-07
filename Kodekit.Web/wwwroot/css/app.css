@@ -851,39 +851,81 @@
   display: flex;
   flex-direction: row;
 }
-.colors .preview-example--mockup h3 {
+.colors--preview-background {
   margin-bottom: 20px;
 }
-.colors .preview-example--mockup > div {
-  box-sizing: border-box;
-  border-radius: 8px;
-}
-.colors .preview-example--mockup > div h4 {
-  margin-bottom: 15px;
-}
-.colors .preview-example--mockup > div p {
-  margin-bottom: 32px;
-}
-.colors .preview-example--mockup > div button.secondary {
-  margin-left: 27px;
-}
-.colors .card-with-image {
+.colors--preview .cards--wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 500px;
+  grid-template-columns: 489px auto;
+  grid-gap: 40px;
+}
+.colors--preview .card-with-image {
+  display: grid;
+  grid-template-columns: 230px auto;
+  max-width: 489px;
   padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 40px;
 }
-.colors .card-with-image img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-.colors .card-with-image > div {
-  padding: 32px 40px;
-}
-.colors .card {
-  padding: 32px 40px;
+.colors--preview .card-with-image .color-blobs--wrapper {
   display: block;
+  max-width: 230px;
+  min-height: 250px;
+  max-height: 100%;
+  position: relative;
+  border-radius: 40px;
+}
+.colors--preview .card-with-image .color-blobs--wrapper .color-blob {
+  width: 170px;
+  height: 166px;
+  position: absolute;
+  top: 80px;
+  left: 50px;
+  opacity: 0.8;
+  filter: blur(20px);
+  z-index: 11;
+}
+.colors--preview .card-with-image .color-blobs--wrapper .color-blob2 {
+  width: 158px;
+  height: 191px;
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  opacity: 0.8;
+  filter: blur(20px);
+  z-index: 10;
+}
+.colors--preview .card-with-image .color-blobs--wrapper .color-blob--noise {
+  width: 230px;
+  height: 100%;
+  border-radius: 40px;
+  position: absolute;
+  mix-blend-mode: overlay;
+  z-index: 12;
+}
+.colors--preview .card-with-image .color-content--wrapper {
+  width: 100%;
+  margin: auto 0;
+  padding: 40px;
+}
+.colors--preview .card-with-image button {
+  margin-top: 30px;
+}
+.colors--preview .card-text {
+  display: block;
+  width: 270px;
+  min-height: 250px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 40px;
+  text-align: center;
+}
+.colors--preview .card-text--container {
+  width: 100%;
+  margin: auto 0;
+}
+.colors--preview .card-text button {
+  margin-top: 30px;
 }
 
 .icons section select {
