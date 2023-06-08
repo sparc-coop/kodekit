@@ -35,6 +35,10 @@
     }
 
     .preview-example {
+        &-container {
+            margin-top: 20px;
+        }
+
         a {
             display: inline-block;
             margin: 16px;

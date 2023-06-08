@@ -302,6 +302,35 @@
 .page input[type=number] {
   max-width: 144px;
 }
+.page .preview-background {
+  margin-top: 40px;
+}
+.page .preview-background label {
+  display: block !important;
+  width: 220px;
+}
+.page .preview-background label span {
+  display: inline-block;
+  width: 26px;
+  height: 14px;
+  margin-left: 5px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+.page .preview-background label span:hover {
+  cursor: pointer;
+}
+.page .preview-background label span input {
+  visibility: hidden;
+  width: 26px;
+  height: 14px;
+  padding: 0;
+}
+.page .preview-background label span .hex-value {
+  display: none;
+}
 .page .preview-example-container {
   margin-top: 40px;
 }
@@ -602,8 +631,43 @@
 .buttons .secondary-button {
   display: flex;
 }
+.buttons .preview-background {
+  margin-bottom: 20px;
+}
+.buttons .preview-background.core-buttons {
+  margin-top: 40px;
+}
+.buttons .preview-background label {
+  display: block !important;
+  width: 220px;
+}
+.buttons .preview-background label span {
+  display: inline-block;
+  width: 26px;
+  height: 14px;
+  margin-left: 5px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+.buttons .preview-background label span:hover {
+  cursor: pointer;
+}
+.buttons .preview-background label span input {
+  visibility: hidden;
+  width: 26px;
+  height: 14px;
+  padding: 0;
+}
+.buttons .preview-background label span .hex-value {
+  display: none;
+}
 .buttons .preview-example {
   padding: 32px 32px 8px 32px;
+}
+.buttons .preview-example-container {
+  margin-top: 20px;
 }
 .buttons .preview-example > div {
   margin-bottom: 24px;
@@ -646,6 +710,9 @@
 .anchors section .link-states input[type=color]::-webkit-color-swatch {
   border: none;
   border-radius: 4px;
+}
+.anchors .preview-example-container {
+  margin-top: 20px;
 }
 .anchors .preview-example a {
   display: inline-block;
@@ -1293,6 +1360,9 @@
 .effects-page .preview-example {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+.effects-page .preview-example-container {
+  margin-top: 20px;
 }
 .effects-page .preview-example > div {
   margin: 0 16px 16px 0;

@@ -54,7 +54,10 @@
                         <div class="secondary-button">
                             <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button" />
                         </div>
-                        <Preview Kit=kit>
+                        <div class="preview-background core-buttons">
+                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_CoreButtons" BackgroundColor="@PreviewBackground_CoreButtons" /></label>
+                        </div>
+                        <Preview Kit=kit BackgroundColor=@PreviewBackground_CoreButtons>
                             <button name="Preview Button">Button</button>
                             <button>
                                 <KodekitLogoSvg />
@@ -89,7 +92,10 @@
                                 Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
                             </p>
                         </header>
-                        <Preview Kit=kit>
+                        <div class="preview-background button-variations">
+                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_Variations" BackgroundColor="@PreviewBackground_Variations" /></label>
+                        </div>
+                        <Preview Kit=kit BackgroundColor=@PreviewBackground_Variations>
                             <div>
                                 <button name="Preview Button">Default</button>
                                 <button>
@@ -133,6 +139,9 @@
 </div>
 
 @code {
+    public string PreviewBackground_CoreButtons;
+    public string PreviewBackground_Variations;
+
     protected override async Task<UpdateButtonsModel> GetAsync()
     {
         return await PublicApi().GetButtonsAsync(kitId);

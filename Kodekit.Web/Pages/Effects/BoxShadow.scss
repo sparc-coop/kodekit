@@ -35,6 +35,10 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
 
+        &-container {
+            margin-top: 20px;
+        }
+
         > div {
             margin: 0 16px 16px 0;
 

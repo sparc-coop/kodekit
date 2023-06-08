@@ -1,5 +1,11 @@
 ﻿@if (Kit != null)
 {
+    @if (PreviewBackgroundEditable == true)
+    {
+        <div class="preview-background">
+            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackgroundColor" BackgroundColor="@PreviewBackgroundColor" /></label>
+        </div>
+    } 
     <div class="preview-example-container">
         @if (!IsLoading && CssUrl != null)
         {
@@ -7,7 +13,7 @@
                 @@import url('@CssUrl');
             </style>
 
-            <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock>
+            <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock style="background: @(@PreviewBackgroundColor != null ? PreviewBackgroundColor : BackgroundColor);">
                 @ChildContent
             </div>
         }
@@ -26,6 +32,8 @@
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public Kit Kit { get; set; }
     [Parameter] public string AdditionalClass { get; set; }
+    [Parameter] public string BackgroundColor { get; set; }
+    [Parameter] public bool PreviewBackgroundEditable { get; set; } = false;
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;
@@ -33,6 +41,7 @@
     string Scope;
     string CurrentVersion;
     bool IsLoading;
+    string PreviewBackgroundColor;
 
     protected override void OnInitialized()
     {

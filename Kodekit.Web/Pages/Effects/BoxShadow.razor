@@ -84,7 +84,10 @@
                                 Shadow Opacity (%)
                             </label>
                         </div>
-                        <Preview Kit=kit>
+                        @*<div class="preview-background">
+                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground" BackgroundColor="@PreviewBackground" /></label>
+                        </div>*@
+                        <Preview Kit=kit PreviewBackgroundEditable=true>
                             <div>
                                 <div class="shadow-100"></div>
                                 <label>Small Shadow</label>
@@ -111,6 +114,7 @@
 
 @code {
     private bool isBackgroundWhite = false;
+    public string PreviewBackground;
 
     protected override async Task<ShadowsModel> GetAsync()
     {
