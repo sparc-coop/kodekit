@@ -1364,6 +1364,9 @@
 .effects-page .preview-example-container {
   margin-top: 20px;
 }
+.effects-page .preview-example label {
+  margin-top: 10px;
+}
 .effects-page .preview-example > div {
   margin: 0 16px 16px 0;
 }
