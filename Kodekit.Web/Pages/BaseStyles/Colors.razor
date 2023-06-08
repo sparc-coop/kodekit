@@ -211,10 +211,10 @@
                                 <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
                             </header>
                             <div class="colors--preview-background">
-                                <label>* Preview Background color <InputColor Value="#000000" /></label>
+                                <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground" BackgroundColor="@PreviewBackground" /></label>
                             </div>
                             <div class="cards--wrapper">
-                                <div class="card-with-image">
+                                <div class="card-with-image" style="background: @PreviewBackground;">
                                     <div class="color-blobs--wrapper">
                                         <ColorBlob Primary="@Model.Primary" />
                                         <ColorBlob2 Secondary="@Model.Secondary" Tertiary="@Model.Tertiary"/>
@@ -229,7 +229,7 @@
                                         <button>Primary CTA</button>
                                     </div>
                                 </div>
-                                <div class="card-text">
+                                <div class="card-text" style="background: @PreviewBackground;">
                                     <div class="card-text--container">
                                         <h6 class="tertiary">Information</h6>
                                         <h4>Brand Colors</h4>
@@ -252,6 +252,7 @@
 
 @code {
     List<string> Weights = new List<string> { "50", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
+    public string PreviewBackground;
 
     protected override async Task OnInitializedAsync()
     {

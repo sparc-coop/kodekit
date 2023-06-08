@@ -144,12 +144,47 @@
     &--preview {
         &-background {
             margin-bottom: 20px;
+
+            label {
+                display: block !important;
+                width: 220px;
+
+                span {
+                    display: inline-block;
+                    width: 26px;
+                    height: 14px;
+                    margin-left: 5px;
+                    border: 1px solid #FFFFFF;
+                    border-radius: 4px;
+                    margin-top: 1px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+
+                    input {
+                        visibility: hidden;
+                        width: 26px;
+                        height: 14px;
+                        padding: 0;
+                    }
+
+                    .hex-value {
+                        display: none;
+                    }
+                }
+            }
         }
 
         .cards--wrapper {
             display: grid;
             grid-template-columns: 489px auto;
             grid-gap: 40px;
+
+            h4 {
+                color: var(--grey-100);
+            }
         }
 
         .card-with-image {

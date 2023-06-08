@@ -1,6 +1,6 @@
 ﻿@inherits InputText
 
-<span class="inputcolor">
+<span class="inputcolor" style="background: @BackgroundColor;">
     <input @attributes="AdditionalAttributes"
            class="@CssClass"
            type="color"
@@ -9,3 +9,6 @@
     <span class="hex-value">@CurrentValueAsString</span>
 </span>
 
+@code {
+    [Parameter] public string BackgroundColor { get; set; }
+}
