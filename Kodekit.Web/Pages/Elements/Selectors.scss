@@ -8,22 +8,22 @@
 
         > div {
             padding-right: 50px;
+
+            label {
+                margin-bottom: 20px;
+                align-items: center;
+
+                &.switch {
+                    align-items: center;
+                }
+            }
         }
 
         label {
             display: flex;
             flex-direction: unset;
-            margin: 5px 0;
-            font-size: unset;
             justify-content: left;
-
-            &.switch {
-                margin-bottom: 15px;
-            }
-        }
-
-        input {
-            margin: 5px 12px 0 0;
+            gap: 20px;
         }
     }
 }

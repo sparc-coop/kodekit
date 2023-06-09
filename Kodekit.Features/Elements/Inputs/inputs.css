@@ -220,10 +220,10 @@ input[type=checkbox], input[type=radio] {
             transform: scale(1);
         }
 
-    input[type=checkbox]:disabled, input[type=radio]:disabled {
-        border-color: var(--grey-100);
-        cursor: not-allowed;
-    }
+input[type=checkbox]:disabled, input[type=radio]:disabled {
+    border-color: var(--grey-100);
+    cursor: not-allowed;
+}
 
     input[type=checkbox]:checked:disabled::before, input[type=radio]:checked:disabled::before {
         box-shadow: inset 1em 1em var(--grey-100);
@@ -266,7 +266,10 @@ label input {
 label.switch {
     position: relative;
     display: flex;
-    padding-left: 33px;
+    height: var(--font-size);
+    gap: calc(var(--font-size) * 2.45);
+    align-items: center;
+    margin-bottom: 20px;
 }
 
     label.switch .slider {
@@ -289,7 +292,8 @@ label.switch {
             height: calc(var(--font-size) * 0.62);
             width: calc(var(--font-size) * 0.62);
             left: calc(var(--font-size) * 0.10);
-            bottom: calc(var(--font-size) * 0.10);
+            top: 50%;
+            transform: translate(0, -50%);
             border-radius: 50%;
             background-color: var(--grey-300);
             -webkit-transition: .4s;
@@ -308,8 +312,9 @@ label.switch {
         }
 
             label.switch input[type=checkbox]:checked + .slider:before {
-                transform: translateX(calc(var(--font-size) * 0.62));
+                transform: translate(calc(var(--font-size) * 0.62), -50%);
                 background-color: var(--active-500, var(--grey-100));
+                top: 50%;
             }
 
 
