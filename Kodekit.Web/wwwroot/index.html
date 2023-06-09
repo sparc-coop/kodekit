@@ -108,6 +108,15 @@
                     f.classList.remove("on-focus");
                 }
             });
+            window.addEventListener("mouseover", function (event) {
+                var e = event;
+                var t = e.target;
+                var f = follow;
+
+                if (t.tagName == "nav") {
+                    f.style.display = "none";
+                }
+            });
         }
     </script>
 </body>
