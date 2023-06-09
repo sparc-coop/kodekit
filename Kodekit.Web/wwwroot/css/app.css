@@ -1366,6 +1366,9 @@
 }
 .effects-page .preview-example label {
   margin-top: 10px;
+  padding: 3px 6px;
+  background: #000000;
+  text-align: center;
 }
 .effects-page .preview-example > div {
   margin: 0 16px 16px 0;
