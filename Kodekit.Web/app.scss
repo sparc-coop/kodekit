@@ -131,7 +131,7 @@ a, button, label, input, select, div, span, li {
 
 .cursor,
 .follow {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     width: 0.8rem;
     height: 0.8rem;

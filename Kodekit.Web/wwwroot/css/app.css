@@ -2991,7 +2991,7 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 
 .cursor,
 .follow {
-  position: absolute;
+  position: fixed;
   pointer-events: none;
   width: 0.8rem;
   height: 0.8rem;
