@@ -1,42 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <UserSecretsId>1c00dd6d-c22f-4f2b-b3ec-860a43b74a1d</UserSecretsId>
-
   </PropertyGroup>
-
   <ItemGroup>
     <Content Remove="Pages\Index.razor" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="Pages\Index.scss" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Blazor-Analytics" Version="3.10.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
     <PackageReference Include="NSwag.ApiDescription.Client" Version="13.16.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Sparc.Platforms.Web" Version="2.7.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
-
-	<ItemGroup>
-		<TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
-	</ItemGroup>
-  
+  <ItemGroup>
+    <TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
+  </ItemGroup>
   <ItemGroup>
     <OpenApiReference Include="../Kodekit.Features/swagger.json" Namespace="Kodekit.Features">
       <ClassName>KodekitApi</ClassName>
     </OpenApiReference>
   </ItemGroup>
-
 </Project>

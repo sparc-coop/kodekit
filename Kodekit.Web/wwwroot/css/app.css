@@ -3224,15 +3224,19 @@ body {
   transform: rotate(270deg);
   animation: middle4 5s ease-in-out infinite;
 }
-.loading .wrapper .percentage {
-  width: 23px;
-  height: 14px;
-  margin-top: 30px;
+
+.loading .wrapper .loading-progress-text {
+
+        width: 23px;
+        height: 14px;
+        margin-top: 30px;
 }
-.loading .wrapper .percentage #loader {
-  font-size: 13px;
-  color: #B2B2B2;
-}
+
+    .loading .wrapper .loading-progress-text:after {
+        content: var(--blazor-load-percentage-text, "0%");
+        font-size: 13px;
+        color: #B2B2B2;
+    }
 
 @keyframes moveOne {
   0% {

@@ -1,78 +1,109 @@
 .sign-up {
-    font-family: 'Inter', sans-serif;
+    font-family: "EncodeSans";
+}
+
+body {
+    background: #1e1e1e;
+    color: #ffffff;
 }
 
 .bg {
-    background: #0E0E0E;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
-.container {
-    margin: 0 auto;
-    padding: 20px 56px 56px 56px;
-    background: white;
+.left,
+.right {
+    width: 50%;
 }
 
 .logo {
-    font-weight: 500;
-    font-size: 14px;
-    font-family: Inter;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 320px;
 }
 
 .logo img {
-    vertical-align: middle;
-    margin-right: 2px;
-    margin-top: -3px;
-    width: 25px;
+    margin-top: 80px;
+    max-width: 103px;
+    height: 16px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 60px;
+    max-width: 320px;
+    height: 605px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(50% - 605px / 2);
+}
+
+#api {
+    margin-top: 60px;
 }
 
 button {
-    background: #0B5FFF;
+    background: #1e1e1e;
     color: white;
     text-align: center;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 12px;
     width: 100%;
-    max-width: 356px;
     border-radius: 4px;
-    height: 44px;
+    height: 36px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 320px;
 }
 
 input {
+    background: #292929;
     border-radius: 4px;
-    border: 1px solid #D2D4D9;
-    padding: 10px 16px;
+    border: none;
+    padding: 8px 12px;
     outline: none;
     width: 100%;
-	width: calc(100% - 32px);
-    max-width: 322px;
+    max-width: 320px;
 }
 
-.intro, .divider, .password-label, label {
+.intro,
+.divider,
+#forgotPassword {
     display: none;
 }
 
-p {
-    color: #787987;
+label {
+    display: flex;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
 }
 
-h1, input {
-    color: #17171A;
+h1,
+p,
+input {
+    color: #ffffff;
 }
 
 h1 {
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 120%;
+    font-weight: 500;
+    font-size: 37px;
+    line-height: 100%;
+    font-family: "QuantaGroteskPro";
 }
 
 p {
     font-size: 14px;
-    line-height: 160%;
+    line-height: 140%;
 }
 
 .create {
@@ -80,11 +111,41 @@ p {
 }
 
 .entry-item {
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .entry-item:last-child {
-    margin-bottom: 52px;
+    margin-bottom: 60px;
+}
+
+.poster {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 60px;
+    gap: 10px;
+    height: 957px;
+    max-width: 774px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    float: right;
+    margin: 80px;
+    background-image: url("/images/poster2.svg");
+}
+
+.poster h1 {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 100%;
+}
+
+.poster p {
+    font-size: 18px;
+    line-height: 150%;
+    max-width: 589px;
+    margin-top: 0;
 }
 
 ul {
@@ -94,11 +155,11 @@ ul {
 
 li {
     list-style-type: none;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 li:last-child {
-    margin-bottom: 52px;
+    margin-bottom: 60px;
 }
 
 #cancel {
@@ -113,25 +174,24 @@ li:last-child {
     display: none;
 }
 
-.redirect{
-	text-align: center;
+.redirect {
+    text-align: center;
 }
 
-.redirect a{
-	text-decoration: none;
+.redirect a {
     margin-left: 5px;
-    color: #0B5FFF;
+    color: #34ce97;
 }
 
-.error{
-	display: none;
+.error {
+    display: none;
 }
 
-.terms{
-	position: absolute;
-	bottom: -68px;
+.terms {
+    position: absolute;
+    bottom: -68px;
     left: 20%;
-	width: 66%;
+    width: 66%;
 }
 
 .sendCode {
@@ -155,7 +215,7 @@ li:last-child {
 }
 
 .sendNewCode {
-    color: #0B5FFF;
+    color: #0b5fff;
     background: transparent;
     margin-top: 20px;
 }
@@ -171,4 +231,7 @@ li:last-child {
 
 #fieldIncorrect {
     margin-bottom: 20px;
+    color: #c0fffb;
+    font-size: 14px;
+    line-height: 140%;
 }
