@@ -1,10 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+	<TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
   </PropertyGroup>
+  <ItemGroup>
+	<ProjectReference Include="..\Kodekit.Web\Kodekit.Web.csproj" />
+	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+  </ItemGroup>
   <ItemGroup>
     <None Remove="Elements\Anchors\anchors.css" />
     <None Remove="Elements\Effects\shadows.css" />

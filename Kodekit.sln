@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web", "Kodekit.Web\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Features", "Kodekit.Features\Kodekit.Features.csproj", "{D713DAA9-D37B-4600-9A38-53061B20605F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1\BlazorApp1.csproj", "{8F797D78-778A-4016-962D-7563F2319E47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1.Client", "BlazorApp1\BlazorApp1.Client\BlazorApp1.Client.csproj", "{0B70AE61-F296-4B27-A199-F1ED4168AD19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D713DAA9-D37B-4600-9A38-53061B20605F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D713DAA9-D37B-4600-9A38-53061B20605F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D713DAA9-D37B-4600-9A38-53061B20605F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F797D78-778A-4016-962D-7563F2319E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F797D78-778A-4016-962D-7563F2319E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F797D78-778A-4016-962D-7563F2319E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F797D78-778A-4016-962D-7563F2319E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
