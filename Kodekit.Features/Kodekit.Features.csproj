@@ -10,35 +10,35 @@
 	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Elements\Anchors\anchors.css" />
-    <None Remove="Elements\Effects\shadows.css" />
-    <None Remove="Elements\Icons\icons.css" />
-    <None Remove="Elements\Lists\lists.css" />
-    <None Remove="_Plugins\words_alpha.txt" />
-    <None Remove="_Plugins\words_officesafe.txt" />
+    <None Remove="Components\Elements\Anchors\anchors.css" />
+    <None Remove="Components\Elements\Effects\shadows.css" />
+    <None Remove="Components\Elements\Icons\icons.css" />
+    <None Remove="Components\Elements\Lists\lists.css" />
+    <None Remove="Components\_Plugins\words_alpha.txt" />
+    <None Remove="Components\_Plugins\words_officesafe.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Elements\Effects\shadows.css">
+    <Content Include="Components\Elements\Effects\shadows.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Elements\Icons\icons.css">
+    <Content Include="Components\Elements\Icons\icons.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Elements\Lists\lists.css">
+    <Content Include="Components\Elements\Lists\lists.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Elements\Anchors\anchors.css">
+    <Content Include="Components\Elements\Anchors\anchors.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="_Plugins\words_alpha.txt">
+    <Content Include="Components\Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Components\Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Components\Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Components\Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Components\_Plugins\words_alpha.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
-    <Content Include="_Plugins\words_officesafe.txt">
+    <Content Include="Components\_Plugins\words_officesafe.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
