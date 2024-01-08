@@ -36,25 +36,25 @@ public class GenerateCss : Controller
             css.AppendLine($"@import url('{url}');");
 
         css.AppendLine(CompileVariables(kit.Revision, scope));
-        css.AppendLine(GetLocalFile("Elements/_Shared/destyle-reset.css"));
+        css.AppendLine(GetLocalFile("Components/Elements/_Shared/destyle-reset.css"));
 
         if (kit.Revision.Settings.UseTypography)
-            css.AppendLine(GetLocalFile("Elements/Typography/typography.css"));
+            css.AppendLine(GetLocalFile("Components/Elements/Typography/typography.css"));
 
         if (kit.Revision.Settings.UseButtons)
-            css.AppendLine(GetLocalFile("Elements/Buttons/buttons.css"));
+            css.AppendLine(GetLocalFile("Components/Elements/Buttons/buttons.css"));
 
         if (kit.Revision.Settings.UseInputs)
-            css.AppendLine(GetLocalFile("Elements/Inputs/inputs.css"));
+            css.AppendLine(GetLocalFile("Components/Elements/Inputs/inputs.css"));
 
         if (kit.Revision.Settings.UseAnchors)
-            css.AppendLine(GetLocalFile("Elements/Anchors/anchors.css"));
+            css.AppendLine(GetLocalFile("Components/Elements/Anchors/anchors.css"));
 
         if (kit.Revision.Settings.UseLists)
-            css.AppendLine(GetLocalFile("Elements/Lists/lists.css"));
+            css.AppendLine(GetLocalFile("Components/Elements/Lists/lists.css"));
 
         if (kit.Revision.Settings.UseShadows)
-            css.AppendLine(GetLocalFile("Elements/Effects/shadows.css"));
+            css.AppendLine(GetLocalFile("Components/Elements/Effects/shadows.css"));
 
         var result = css.ToString();
         if (!string.IsNullOrWhiteSpace(scope))
