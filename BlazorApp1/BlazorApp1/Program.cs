@@ -32,4 +32,18 @@ app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Counter).Assembly);
 
+app.UseCors(policy =>
+            policy.WithOrigins("https://localhost:5000", "https://localhost:5001",
+                "https://kodekit-test.azurewebsites.net",
+                "https://app.kodekit.io")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
+app.UseRouting();
+app.UseAuthorization();
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapRazorPages();
+//});
+
 app.Run();

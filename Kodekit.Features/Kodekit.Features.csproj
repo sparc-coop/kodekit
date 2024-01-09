@@ -18,6 +18,13 @@
     <None Remove="Components\_Plugins\words_officesafe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\..\..\.nuget\packages\blazor-analytics\3.10.0\contentFiles\any\netstandard2.0\wwwroot\blazor-analytics.js" Link="wwwroot\blazor-analytics.js">
+      <Private>False</Private>
+      <NuGetPackageVersion>3.10.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <NuGetPackageId>Blazor-Analytics</NuGetPackageId>
+      <Pack>false</Pack>
+    </Content>
     <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Components\Elements\Effects\shadows.css">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
