@@ -203,7 +203,7 @@
     {
         if (kitId != null)
         {
-            kit = await PublicApi().GetKitAsync(kitId);
+            kit = await Api.GetKitAsync(kitId);
             SelectAutoPublish = kit.IsAutoPublish ?? false;
 
             await LoginSucceeded();
@@ -251,15 +251,15 @@
 
     private async Task CopyKit()
     {
-        var newKit = await PublicApi().CopyKitAsync(kit.Id);
+        var newKit = await Api.CopyKitAsync(kit.Id);
         Nav.NavigateTo($"/{newKit.KitId}/introduction");
     }
 
     private async Task Publish(string kitId)
     {
         //Get version to publish
-        Kit publishKit = await PublicApi().GetKitAsync(kitId);
-        await PublicApi().PublishKitAsync(publishKit);
+        Kit publishKit = await Api.GetKitAsync(kitId);
+        await Api.PublishKitAsync(publishKit);
     }
 
     private void ShowOptions(string selectedId)
@@ -285,7 +285,7 @@
     {
         Kit selectedKit = UserKits.Where(x => x.Id == id).FirstOrDefault();
         selectedKit.Name = name;
-        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
+        await Api.UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
     }
 
     private void GoToPreview(string id)
@@ -304,7 +304,7 @@
 
     private async Task UpdateKit()
     {
-        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
+        await Api.UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
     }
 
     private void ShowKitsList()

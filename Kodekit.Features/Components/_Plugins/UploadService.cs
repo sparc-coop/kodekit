@@ -60,7 +60,7 @@ public class UploadService
 
         string filePath = Environment.GetFolderPath(folder) + "\\kodekit.css";
 
-        using (var fileStream = File.Create(filePath))
+        using (var fileStream = System.IO.File.Create(filePath))
         {
             stream.CopyTo(fileStream);
         }

@@ -118,11 +118,11 @@
 
     protected override async Task<ShadowsModel> GetAsync()
     {
-        return await PublicApi().GetShadowAsync(kitId);
+        return await Api.GetShadowAsync(kitId);
     }
     
     protected override async Task<Kit> UpdateAsync()
     {
-        return await PublicApi().UpdateShadowAsync(Model);
+        return await Api.UpdateShadowAsync(Model);
     }
 }

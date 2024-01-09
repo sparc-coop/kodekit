@@ -262,11 +262,11 @@
 
     protected override async Task<ColorsModel> GetAsync()
     {
-        return await PublicApi().GetColorsAsync(kitId);
+        return await Api.GetColorsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await PublicApi().UpdateColorsAsync(Model);
+        return await Api.UpdateColorsAsync(Model);
     }
 }

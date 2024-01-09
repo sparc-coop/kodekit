@@ -6,6 +6,9 @@
     <UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="C:\Users\josep\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
+  </ItemGroup>
+  <ItemGroup>
 	<ProjectReference Include="..\Kodekit.Web\Kodekit.Web.csproj" />
 	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
@@ -20,14 +23,14 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.17.0">
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="14.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="SharpScss" Version="2.0.0" />
-    <PackageReference Include="Sparc.Features" Version="6.2.1" />
-    <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.8" />
-    <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
-    <PackageReference Include="Sparc.Storage.Azure" Version="6.0.1" />
+    <PackageReference Include="Sparc.Blossom.Authentication.AzureADB2C" Version="7.1.0" />
+    <PackageReference Include="Sparc.Blossom.Data.AzureStorage" Version="7.1.0" />
+    <PackageReference Include="Sparc.Blossom.Data.Cosmos" Version="7.1.0" />
+    <PackageReference Include="Sparc.Blossom.Server" Version="7.1.0" />
   </ItemGroup>
 </Project>

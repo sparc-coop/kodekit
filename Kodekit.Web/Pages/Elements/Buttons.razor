@@ -144,11 +144,11 @@
 
     protected override async Task<UpdateButtonsModel> GetAsync()
     {
-        return await PublicApi().GetButtonsAsync(kitId);
+        return await Api.GetButtonsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await PublicApi().UpdateButtonsAsync(Model);
+        return await Api.UpdateButtonsAsync(Model);
     }
 }

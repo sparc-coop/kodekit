@@ -1,4 +1,6 @@
-﻿namespace Kodekit.Features.Components.Kits;
+﻿using Sparc.Blossom.Authentication;
+
+namespace Kodekit.Features.Components.Kits;
 
 public class DeleteKit : Feature<string, bool>
 {

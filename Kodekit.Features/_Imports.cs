@@ -3,5 +3,6 @@ global using System.Collections.Generic;
 global using System.Linq;
 global using System.Threading.Tasks;
 
-global using Sparc.Core;
-global using Sparc.Features;
+global using Sparc.Blossom;
+global using Sparc.Blossom.Data;
+global using Sparc.Blossom.Authentication;

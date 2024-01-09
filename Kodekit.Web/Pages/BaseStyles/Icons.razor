@@ -49,12 +49,12 @@
 @code {
     protected override async Task<UpdateIconsModel> GetAsync()
     {
-        return await PublicApi().GetIconsAsync(kitId);
+        return await Api.GetIconsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        var result = await PublicApi().UpdateIconsAsync(Model);
+        var result = await Api.UpdateIconsAsync(Model);
         Model = await GetAsync();
         return result;
 

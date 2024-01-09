@@ -84,7 +84,7 @@
 
     private async Task CreateNew()
     {
-        var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
+        var kit = await Api.CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
         GoToKit(kit.KitId);
     }

@@ -13,8 +13,6 @@
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.JSInterop
 
-@using Sparc.Core
-
 @using Kodekit.Web.Shared
 @using Kodekit.Web.Components
 @using Kodekit.Features
@@ -25,7 +23,6 @@
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Nav
 @inject KodekitApi Api
-@inject Public<KodekitApi> PublicApi
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @attribute [AllowAnonymous]

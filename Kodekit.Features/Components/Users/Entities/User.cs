@@ -1,6 +1,8 @@
-﻿namespace Kodekit.Features;
+﻿using Sparc.Blossom.Authentication;
 
-public class User : Root<string>
+namespace Kodekit.Features;
+
+public class User : BlossomUser
 {
     public User()
     {

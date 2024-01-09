@@ -80,11 +80,11 @@
 
     protected override async Task<UpdateSelectorsModel> GetAsync()
     {
-        return await PublicApi().GetSelectorsAsync(kitId);
+        return await Api.GetSelectorsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await PublicApi().UpdateSelectorsAsync(Model);
+        return await Api.UpdateSelectorsAsync(Model);
     }
 }

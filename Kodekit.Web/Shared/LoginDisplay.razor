@@ -24,8 +24,6 @@
 </div>
 
 
-@inject SignOutSessionStateManager SignOutManager
-
 @code{
     private User User;
     bool showMenu = false;
@@ -42,8 +40,7 @@
 
     private async Task BeginLogout(MouseEventArgs args)
     {
-        await SignOutManager.SetSignOutState();
-        Nav.NavigateTo("authentication/logout");
+        Nav.NavigateToLogout("authentication/logout");
     }
 
     private void ToggleMenu()

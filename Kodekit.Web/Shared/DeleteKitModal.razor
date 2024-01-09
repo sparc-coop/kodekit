@@ -29,7 +29,7 @@
     {
         if(!String.IsNullOrEmpty(SelectedKit))
         {
-            Kit = await PublicApi().GetKitAsync(SelectedKit);
+            Kit = await Api.GetKitAsync(SelectedKit);
         }
     }
 

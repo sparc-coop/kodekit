@@ -57,14 +57,14 @@
 
     private async Task Publish()
     {
-        Kit = await PublicApi().GetKitAsync(kitId);
+        Kit = await Api.GetKitAsync(kitId);
 
         if (User != null)
         {
             Kit.UserId = User.Id;
         }
 
-        await PublicApi().PublishKitAsync(Kit);
+        await Api.PublishKitAsync(Kit);
     }
 
     private void GoTo()

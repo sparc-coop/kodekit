@@ -52,12 +52,12 @@
 
     protected override async Task<UpdateSettingsModel> GetAsync()
     {
-        return await PublicApi().GetSettingsAsync(kitId);
+        return await Api.GetSettingsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await PublicApi().UpdateSettingsAsync(Model);
+        return await Api.UpdateSettingsAsync(Model);
     }
 
     private async Task SetKodekit()
