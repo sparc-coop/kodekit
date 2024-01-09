@@ -16,6 +16,7 @@ builder.AddBlossom("https://localhost:5001");
 builder.Services.AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"]!, "kodekit", ServiceLifetime.Scoped);
 builder.Services.AddAzureADB2CAuthentication<User>(builder.Configuration);
 builder.Services.AddScoped<KitRepository>();
+builder.Services.AddOutputCache();
 
 var app = builder.Build();
 app.UseBlossom();
