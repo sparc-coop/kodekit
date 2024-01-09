@@ -10,39 +10,9 @@
 	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Components\Elements\Anchors\anchors.css" />
-    <None Remove="Components\Elements\Effects\shadows.css" />
-    <None Remove="Components\Elements\Icons\icons.css" />
-    <None Remove="Components\Elements\Lists\lists.css" />
-    <None Remove="Components\_Plugins\words_alpha.txt" />
-    <None Remove="Components\_Plugins\words_officesafe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\..\..\..\.nuget\packages\blazor-analytics\3.10.0\contentFiles\any\netstandard2.0\wwwroot\blazor-analytics.js" Link="wwwroot\blazor-analytics.js">
-      <Private>False</Private>
-      <NuGetPackageVersion>3.10.0</NuGetPackageVersion>
-      <NuGetItemType>Content</NuGetItemType>
-      <NuGetPackageId>Blazor-Analytics</NuGetPackageId>
-      <Pack>false</Pack>
-    </Content>
-    <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Components\Elements\Effects\shadows.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Components\Elements\Icons\icons.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Components\Elements\Lists\lists.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Components\Elements\Anchors\anchors.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="Components\Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Components\Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Components\Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Components\Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Components\_Plugins\words_alpha.txt">
+	  <None Remove="Components\_Plugins\words_alpha.txt" />
+	  <None Remove="Components\_Plugins\words_officesafe.txt" />
+	  <Content Include="Components\_Plugins\words_alpha.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
     <Content Include="Components\_Plugins\words_officesafe.txt">
