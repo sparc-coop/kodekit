@@ -6,16 +6,17 @@
     <UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
+	<Content Remove="C:\Users\josep\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
+    <Content Remove="C:\Users\chris\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
   </ItemGroup>
   <ItemGroup>
 	<ProjectReference Include="..\Kodekit.Web\Kodekit.Web.csproj" />
 	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-	  <None Remove="Components\_Plugins\words_alpha.txt" />
-	  <None Remove="Components\_Plugins\words_officesafe.txt" />
-	  <Content Include="Components\_Plugins\words_alpha.txt">
+	<None Remove="Components\_Plugins\words_alpha.txt" />
+	<None Remove="Components\_Plugins\words_officesafe.txt" />
+	<Content Include="Components\_Plugins\words_alpha.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
     <Content Include="Components\_Plugins\words_officesafe.txt">

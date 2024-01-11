@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Components.Web;
+@inject IHostEnvironment Env
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/atom-one-dark-reasonable.min.css">
+    <HeadOutlet />
 </head>
 
 <body>
@@ -43,7 +47,9 @@
         </div>
     </app>
 
-    <script src="_framework/blazor.webassembly.js"></script>
+    <Routes />
+
+    <script src="_framework/blazor.web.js"></script>
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.js"></script>
