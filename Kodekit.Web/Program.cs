@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Kodekit.Features;
+using Kodekit.Web;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
 using Blazor.Analytics;
