@@ -1,0 +1,50 @@
+﻿<div class="login-display">
+    <AuthorizeView>
+        <Authorized>
+            <div tabindex="0" class="user-menu"  @onclick="ToggleMenu" @onkeydown="ToggleMenu">
+                <button>Hi, @User.FirstName</button>
+            </div>
+            @if (showMenu == true)
+            {
+                <div class="overlay" @onclick="ToggleMenu"></div>
+                <div class="dropdown-menu">
+                    <a href="/" @onclick="ToggleMenu">My Kits</a>
+                    <button class="logout" @onclick="BeginLogout">
+                        Log Out
+                        <span class="material-icons">logout</span>
+                    </button>
+                </div>
+            }
+        </Authorized>
+        <NotAuthorized>
+            <a href="authentication/login" class="login">Login</a>
+            <SignUpBanner />
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+
+@code{
+    private User User;
+    bool showMenu = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+        }
+    }
+
+    private async Task BeginLogout(MouseEventArgs args)
+    {
+        Nav.NavigateToLogout("authentication/logout");
+    }
+
+    private void ToggleMenu()
+    {
+        showMenu = !showMenu;
+    }
+}

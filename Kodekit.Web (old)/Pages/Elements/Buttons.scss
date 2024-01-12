@@ -1,0 +1,75 @@
+﻿@import "../../_variables";
+
+.buttons {
+    .secondary-button {
+        display: flex;
+    }
+
+    .preview-background {
+        margin-bottom: 20px;
+
+        &.core-buttons {
+            margin-top: 40px;
+        }
+
+        label {
+            display: block !important;
+            width: 220px;
+
+            span {
+                display: inline-block;
+                width: 26px;
+                height: 14px;
+                margin-left: 5px;
+                border: 1px solid #FFFFFF;
+                border-radius: 4px;
+                vertical-align: middle;
+                margin-bottom: 3px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+
+                input {
+                    visibility: hidden;
+                    width: 26px;
+                    height: 14px;
+                    padding: 0;
+                }
+
+                .hex-value {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .preview-example {
+        padding: 32px 32px 8px 32px;
+
+        &-container {
+            margin-top: 20px;
+        }
+
+        > div {
+            margin-bottom: 24px;
+        }
+
+        .remove {
+            border: 1px solid transparent !important;
+        }
+    }
+
+    .section-container {
+        display: flex;
+        margin-top: 40px;
+
+        p {
+            font-family: 'EncodeSans_Expanded';
+            font-weight: 300;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+    }
+}

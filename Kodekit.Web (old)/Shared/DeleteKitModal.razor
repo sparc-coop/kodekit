@@ -1,0 +1,47 @@
+﻿<div class="@Show">
+    <div class="modal delete-kit">
+        <div class="overlay" @onclick="Close"></div>
+        <div class="modal--container">
+            <span class="material-icons button--close" @onclick="Close">close</span>
+            <header>Delete Version</header>
+            <p>
+                Are you sure you want to delete this kodekit version?
+            </p>
+            <button @onclick="DeleteKit" class="button--confirm">Confirm & Delete</button>
+            <button @onclick="Close">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+
+@code {
+    [Parameter]
+    public string Show { get; set; }
+    [Parameter]
+    public EventCallback CloseModal { get; set; }
+    [Parameter]
+    public Kit Kit { get; set; }
+    [Parameter]
+    public string SelectedKit { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(!String.IsNullOrEmpty(SelectedKit))
+        {
+            Kit = await Api.GetKitAsync(SelectedKit);
+        }
+    }
+
+    private async Task Close()
+    {
+        await CloseModal.InvokeAsync();
+    }
+
+    private async Task DeleteKit()
+    {
+        await Api.DeleteKitAsync(Kit.KitId);
+        Nav.NavigateTo("/", forceLoad: true);
+        await CloseModal.InvokeAsync();
+    }
+}

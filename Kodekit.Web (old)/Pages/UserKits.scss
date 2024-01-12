@@ -1,0 +1,112 @@
+﻿@import "../_variables.scss";
+
+.dashboard {
+    background: $background;
+    margin-top: -100px;
+
+    .page__container {
+        max-width: 1056px;
+        margin-top: 60px;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+
+        @media screen and (max-width: 780px) {
+            margin: 20px auto;
+        }
+    }
+
+    &-container {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 1240px;
+        display: flex;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 780px) {
+            margin: 20px auto;
+        }
+    }
+
+    .sort {
+        width: 150px;
+        height: 27px;
+        padding: 6px 12px;
+        font-size: 12px;
+        color: $grey-700;
+        background: $background;
+        border: none !important;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    &--header {
+        margin: 0 auto;
+
+        p {
+            margin-top: 40px;
+            font-family: 'QuantaGroteskPro';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 120%;
+            color: $white;
+        }
+
+        h2 {
+            font-family: 'QuantaGroteskPro';
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 120%;
+            color: $white;
+        }
+
+        .subheader {
+            font-family: 'EncodeSans';
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 160%;
+            color: $grey-300;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .right {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+
+            button {
+                padding: 6px 18px;
+                border: 1px solid transparent;
+                border-radius: 6px;
+                font-family: 'EncodeSans';
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 160%;
+                background: $grey-800;
+                color: $white;
+                text-align: center;
+                transition: 250ms ease-in-out;
+
+                .icon-add {
+                    margin-left: 10px;
+
+                    path {
+                        fill: $white;
+                    }
+                }
+
+                &:hover {
+                    border: 1px solid $white;
+                }
+
+                &:active {
+                    background: $white;
+                    color: $grey-800;
+                }
+            }
+        }
+    }
+}

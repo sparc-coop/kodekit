@@ -1,0 +1,47 @@
+﻿@import "../../_variables";
+
+.anchors {
+    section {
+        select {
+            width: 50%;
+        }
+
+        .link-states {
+            margin-top: 40px;
+            padding-bottom: 0;
+
+            .inputcolor {
+                margin-bottom: 10px;
+            }
+
+            input[type="color"] {
+                -webkit-appearance: none;
+                border: none;
+                width: 50px;
+                height: 27px;
+                padding: 0;                
+            }
+
+            input[type="color"]::-webkit-color-swatch-wrapper {
+                padding: 0;
+                border-radius: 4px;                
+            }
+
+            input[type="color"]::-webkit-color-swatch {
+                border: none;
+                border-radius: 4px;                
+            }
+        }
+    }
+
+    .preview-example {
+        &-container {
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 16px;
+        }
+    }
+}

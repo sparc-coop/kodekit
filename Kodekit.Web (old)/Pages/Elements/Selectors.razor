@@ -1,0 +1,90 @@
+﻿@inherits HighlightPageBase<UpdateSelectorsModel>
+@page "/{kitId}/selectors"
+
+<div class="selectors page">
+    <div class="page__container">
+        <header class="page--header">
+            <div class="title">Elements</div>
+            <h2>Selectors & Toggles</h2>
+            <p class="subheader">
+                Radio and checkbox inputs allow for selection from a list of options. Radio allows a single selection of one option while checkbox allows for multiple selections.
+            </p>
+        </header>
+        <div class="content">
+            @if (Model != null)
+            {
+                <EditForm EditContext="@Context">
+                    <section>
+                        <header>
+                            <h3>Style & States</h3>
+                            <p class="subheader">
+                                Active styling is applied when an option has been selected. Disabled styling is applied when a user cannot interact with or select a particular option.
+                            </p>
+                        </header>
+                        <div class="inputs--wrapper">
+                            <label class="small">
+                                <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                Selector Size (px)
+                            </label>
+                            <label>
+                                <InputColorSelector KitId="@kitId" @bind-Value="Model.ActiveColor" />
+                                Active Color
+                            </label>
+                        </div>
+                        <Preview Kit=kit>
+                            <div>
+                                <label for="checkbox-default">
+                                    <input id="checkbox-default" type="checkbox" /> Default
+                                </label>
+                                <label id="active">
+                                    <input type="checkbox" checked /> Active
+                                </label>
+                                <label>
+                                    <input type="checkbox" disabled /> Disabled
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="radio" name="example" /> Default
+                                </label>
+                                <label>
+                                    <input type="radio" name="example" checked /> Active
+                                </label>
+                                <label>
+                                    <input type="radio" disabled /> Disabled
+                                </label>
+                            </div>
+                            <div>
+                                <label class="switch">
+                                    <input type="checkbox" /> Default
+                                    <span class="slider" />
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" checked /> Active
+                                    <span class="slider" />
+                                </label>
+                                <label class="switch">
+                                    <input type="checkbox" disabled /> Disabled
+                                    <span class="slider" />
+                                </label>
+                            </div>
+                        </Preview>
+                    </section>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+
+    protected override async Task<UpdateSelectorsModel> GetAsync()
+    {
+        return await Api.GetSelectorsAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
+    {
+        return await Api.UpdateSelectorsAsync(Model);
+    }
+}

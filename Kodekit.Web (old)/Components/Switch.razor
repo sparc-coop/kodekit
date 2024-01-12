@@ -1,0 +1,17 @@
+﻿@inherits InputCheckbox
+
+<div class="section-container @(IsDisabled ? "disabled" : "")">
+    <label class="switch">
+        <input type="checkbox" @bind="CurrentValue" disabled="@IsDisabled" aria-label="@Title">
+        <span class="slider"></span>
+    </label>
+    <p>
+        @Title
+    </p>
+</div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+
+    [Parameter] public bool IsDisabled { get; set; }
+}

@@ -1,0 +1,136 @@
+﻿<nav>
+    <div class="header menu-left">
+        @*@if (ShowMobileMenu == false)
+        {
+        <span class="material-icons mobile" @onclick="ToggleMobile">menu</span>
+        }
+        else
+        {
+        <span class="material-icons mobile" @onclick="@ToggleMobile">close</span>
+        }*@
+        <h1>
+            <a class="logo" href="/">
+                KodeKit
+            </a>
+        </h1>
+    </div>
+
+    @if (Settings != null)
+    {
+        <div class="navmenu @Show">
+            <div class="menu">
+                <div class="category">
+                    <div class="heading">Overview</div>
+                    <div class="links">
+                        <NavLink href="@Link("introduction")" Match="NavLinkMatch.All">
+                            Introduction
+                        </NavLink>
+                        <NavLink href="@Link("installation")" Match="NavLinkMatch.All">
+                            Installation
+                        </NavLink>
+                        <NavLink href="@Link("themes")" Match="NavLinkMatch.All">
+                            Themes
+                        </NavLink>
+                        <NavLink href="@Link("release-notes")" Match="NavLinkMatch.All">
+                            Release Notes
+                        </NavLink>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="heading">Base Styles</div>
+                    <div class="links">
+                        <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
+                            Global Settings
+                        </NavLink>
+                        <NavLink href="@Link("typography")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseTypography)">
+                            Typography
+                        </NavLink>
+                        <NavLink href="@Link("colors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseColors)">
+                            Colors
+                        </NavLink>
+                        <NavLink href="@Link("icons")" Match="NavLinkMatch.All">
+                            Icons
+                        </NavLink>
+                    </div>
+                </div>
+                <div class="category html-elements">
+                    <div class="heading">HTML Elements</div>
+                    <div class="links">
+                        <NavLink href="@Link("buttons")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseButtons)">
+                            Buttons
+                        </NavLink>
+                        <NavLink href="@Link("inputs")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)">
+                            Inputs & Textareas
+                        </NavLink>
+                        <NavLink href="@Link("selectors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)">
+                            Selectors & Toggles
+                        </NavLink>
+                        <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseDropdowns)">
+                            Dropdowns
+                        </NavLink>
+                        <NavLink href="@Link("anchors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseAnchors)">
+                            Anchors
+                        </NavLink>
+                        <NavLink href="@Link("lists")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseLists)">
+                            Lists
+                        </NavLink>
+                        @*<NavLink href="@Link("layout")" Match="NavLinkMatch.All">
+                            Structure
+                            </NavLink>*@
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="heading">Utility</div>
+                    <div class="links">
+                        <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseShadows)">
+                            Box Shadows
+                        </NavLink>
+                    </div>
+                </div>
+            </div>
+            @*<div class="button--wrapper">
+                <button class="button--save" @onclick="OpenPreview">
+                    Preview Kit
+                    <KodekitLogoSvg />
+                </button>
+            </div>*@
+        </div>
+    }
+    <div class="menu-right">
+        <LoginDisplay />
+    </div>
+</nav>
+
+@inject IJSRuntime Js
+@code {
+    bool ShowMobileMenu = false;
+    string Show = "";
+
+    [Parameter] public string kitId { get; set; }
+    KitSettings Settings;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (kitId != null)
+            Settings = (await Api.GetSettingsAsync(kitId))?.Settings;
+    }
+
+    private void ToggleMobile()
+    {
+        ShowMobileMenu = !ShowMobileMenu;
+
+        if (ShowMobileMenu == true)
+            Show = "show-mobile";
+        else
+            Show = "";
+    }
+
+    private string Link(string page) => $"/{kitId}/{page}";
+
+    private string EnabledIf(bool isEnabled) => isEnabled ? "" : "disabled";
+
+    private async Task OpenPreview()
+    {
+        await Js.InvokeVoidAsync("open", $"/{kitId}/preview", "_blank");
+    }
+}

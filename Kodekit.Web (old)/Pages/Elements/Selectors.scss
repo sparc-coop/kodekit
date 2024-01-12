@@ -1,0 +1,29 @@
+﻿@import "../../_variables";
+
+.selectors {
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 25px 32px 40px 32px;
+
+        > div {
+            padding-right: 50px;
+
+            label {
+                margin-bottom: 20px;
+                align-items: center;
+
+                &.switch {
+                    align-items: center;
+                }
+            }
+        }
+
+        label {
+            display: flex;
+            flex-direction: unset;
+            justify-content: left;
+            gap: 20px;
+        }
+    }
+}

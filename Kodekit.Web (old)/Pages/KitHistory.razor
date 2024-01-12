@@ -1,0 +1,84 @@
+﻿@*@page "/{kitId}/kits"*@
+
+<div class="page">
+    <div class="page__container">
+        @if (Kits != null)
+        {
+            @if (Kit.PublishedRevisionId != null)
+            {
+                <button @onclick="GoTo">Edit Current Version</button>
+            }
+            else 
+            {
+                <button @onclick="Publish">Publish Current Version</button>
+            }
+
+            <p>
+                Kit Name:
+            </p>
+            <h4>
+                Kit Link:
+                <code class="show-link">&lt;link rel="stylesheet" type="text/css" href="https://ui-kit.azurewebsites.net/kit/@kitId"&gt;</code>
+            </h4>
+            <h4>Version History</h4>
+            <ul>
+                <li>
+                    Current Version: @Kits.Where(x => x.Id == kitId).First().DateCreated.ToString("dddd, MMMM dd yyyy")
+                    <span class="material-icons delete" @onclick="ShowDeleteModal">delete</span>
+                </li>
+                @if (Kits.Count() > 1)
+                {
+                    @foreach (var item in Kits)
+                    {
+                        <li>
+                            @item.DateCreated.ToString("dd MMMM yyyy")
+                            <span class="material-icons delete" @onclick="ShowDeleteModal">delete</span>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    </div>
+    <DeleteKitModal Show="@Show" CloseModal="CloseModal" />
+</div>
+
+@code {
+    [Parameter] public string kitId { get; set; }
+    private User User;
+    private Kit Kit;
+    private ICollection<KitRevision> Kits;
+    string Show = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        User = await Api.GetUserAsync();
+        Kits = await Api.GetRelatedKitsAsync(kitId);
+    }
+
+    private async Task Publish()
+    {
+        Kit = await Api.GetKitAsync(kitId);
+
+        if (User != null)
+        {
+            Kit.UserId = User.Id;
+        }
+
+        await Api.PublishKitAsync(Kit);
+    }
+
+    private void GoTo()
+    {
+        Nav.NavigateTo($"{kitId}/introduction/");
+    }
+
+    private void ShowDeleteModal()
+    {
+        Show = "active";
+    }
+
+    private void CloseModal()
+    {
+        Show = "";
+    }
+}

@@ -1,0 +1,25 @@
+﻿/*.color-palette {
+    width: 100%;
+    height: 100vh;
+
+    .color-main {
+        margin-right: 58px;
+
+        .color-blotch {
+            top: -100px;
+        }
+    }
+
+    .primary, .secondary, .tertiary {
+        width: 100%;
+        height: 147px;
+        margin-bottom: 35px;
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        justify-content: flex-start;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+}
+*/

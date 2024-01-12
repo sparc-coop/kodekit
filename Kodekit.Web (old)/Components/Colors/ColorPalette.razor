@@ -1,0 +1,72 @@
+﻿@page "/color-palette"
+
+<div class="color-palette">
+    <div class="primary">
+        <div class="color-main">
+            <ColorCard Type="Primary" Weight="Primary" Hex="#E9C137" />
+        </div>
+        @foreach (var hex in PrimaryColors)
+        {
+            <ColorCard Type="Primary" Weight="@weight.ToString()" Hex="@hex" />
+            @if (weight == 50)
+            {
+                weight += 50;
+            }
+            else if (weight <= 800)
+            {
+                weight += 100;
+            }
+            else
+            {
+                weight = 50;
+            }
+        }
+    </div>
+    <div class ="secondary">
+        <div class="color-main">
+            <ColorCard Type="Secondary" Weight="Secondary" Hex="#3755E9" />
+        </div>
+        @foreach (var hex in SecondaryColors)
+        {
+            <ColorCard Type="Secondary" Weight="@weight.ToString()" Hex="@hex" />
+            @if (weight == 50)
+            {
+                weight += 50;
+            }
+            else if (weight <= 800)
+            {
+                weight += 100;
+            }
+            else
+            {
+                weight = 50;
+            }
+        }
+    </div>
+    <div class="tertiary">
+        <div class="color-main">
+            <ColorCard Type="Tertiary" Weight="Tertiary" Hex="#E937C2" />
+        </div>
+        @foreach (var hex in TertiaryColors)
+        {
+            <ColorCard Type="Tertiary" Weight="@weight.ToString()" Hex="@hex" />
+            @if(weight == 50)
+            {
+                weight += 50;
+            } else if (weight <= 800)
+            {
+                weight += 100;
+            } else
+            {
+                weight = 50;
+            }
+        }
+    </div>
+</div>
+
+@code {
+    public int weight = 50;
+    List<string> PrimaryColors = new List<string> { "#F4E19F", "#F1D781", "#EED16B", "#EBC84F", "#EAC443", "#E9C137", "#DBB533", "#CDA930", "#BF9E2D", "#B19229" };
+    List<string> SecondaryColors = new List<string> { "#9FADF4", "#8194F1", "#6B81EE", "#4F69EB", "#435FEA", "#3755E9", "#334FDB", "#304ACD", "#2D45BF", "#2940B1" };
+    List<string> TertiaryColors = new List<string> { "#F49FE1", "#F181D9", "#EE6BD2", "#EB4FC9", "#EA43C6", "#E937C2", "#DB33B7", "#CD30AB", "#BF2D9F", "#B12994" };
+}

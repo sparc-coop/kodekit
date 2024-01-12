@@ -1,0 +1,173 @@
+﻿/* Vertical rhythm */
+/* ============================================ */
+
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+    margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+    font-family: monospace, monospace; /* 1 */
+    font-size: inherit; /* 2 */
+}
+
+address {
+    font-style: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+    text-decoration: underline; /* 2 */
+    text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+    font-family: monospace, monospace; /* 1 */
+    font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+* {
+    font-family: var(--font-family);
+}
+
+p {
+    line-height: var(--line-height, 160%);
+    font-size: var(--type-400);
+    color: var(--grey-200);
+}
+
+h1, h2, h3, h4, h5, h6, .subtitle {
+    line-height: var(--line-height, 120%);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight);
+    color: var(--grey-100);
+}
+
+h1 {
+    font-size: var(--type-900);
+}
+
+h2 {
+    font-size: var(--type-800);
+}
+
+h3 {
+    font-size: var(--type-700);
+}
+
+h4 {
+    font-size: var(--type-600);
+}
+
+h5 {
+    font-size: var(--type-500);
+}
+
+h6 {
+    font-size: var(--type-400);
+}
+
+.subtitle {
+    font-size: var(--type-300);
+}
+
+.large {
+    font-size: var(--type-500);
+}
+
+.small {
+    font-size: var(--type-300);
+}
+
+strong {
+    font-weight: 700;
+}
+
+span.light {
+    font-weight: 300;
+}
+
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary, p.secondary {
+    color: var(--secondary-500);
+}
+
+h1.tertiary, h2.tertiary, h3.tertiary, h4.tertiary, h5.tertiary, h6.tertiary, p.tertiary {
+    color: var(--tertiary-500);
+}
+
