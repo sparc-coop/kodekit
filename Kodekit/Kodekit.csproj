@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+	<TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+	<Content Remove="C:\Users\josep\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
+    <Content Remove="C:\Users\chris\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
+  </ItemGroup>
+  <ItemGroup>
+	<ProjectReference Include="..\Kodekit.Web\Kodekit.Web.csproj" />
+	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+	<None Remove="Components\_Plugins\words_alpha.txt" />
+	<None Remove="Components\_Plugins\words_officesafe.txt" />
+	<Content Include="Components\_Plugins\words_alpha.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\_Plugins\words_officesafe.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="14.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SharpScss" Version="2.0.0" />
+    <PackageReference Include="Sparc.Blossom.Authentication.AzureADB2C" Version="7.1.0" />
+    <PackageReference Include="Sparc.Blossom.Data.AzureStorage" Version="7.1.0" />
+    <PackageReference Include="Sparc.Blossom.Data.Cosmos" Version="7.1.0" />
+    <PackageReference Include="Sparc.Blossom.Server" Version="7.1.0" />
+  </ItemGroup>
+</Project>

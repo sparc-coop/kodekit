@@ -1,0 +1,30 @@
+﻿@import "../_variables";
+
+.layout--header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    .divider {
+        margin: 0 80px;
+        border-top: 1px solid $grey-300;
+    }
+}
+
+.main {
+    margin-top: 171px;
+
+    @media screen and (max-width: 780px) {
+        margin-left: 0;
+    }
+
+    &.no-sidebar {
+        margin-left: 0;
+    }
+}
+
+/*a:focus-visible, button:focus-visible, input:focus-visible, .section-container:focus, .section-container:focus-within, select:focus-visible, textarea:focus-visible, .auto-publish:focus, .auto-publish:focus-within, .user-menu:focus, .user-menu:focus-within, .dashboard-card:focus {
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px $primary500;
+}*/
