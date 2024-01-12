@@ -1,0 +1,270 @@
+﻿@import "../../_variables";
+
+.colors {
+    .content {
+        position: relative;
+
+        section {
+            header {
+                margin-bottom: 77px;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .kit-style-container {
+        width: 100%;
+    }
+
+    .colors--brand {
+        .color-display {
+            display: flex;
+            justify-content: start;
+            gap: 53px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .color-main {
+        width: 100%;
+        max-width: 136px;
+        height: 100%;
+        font-size: 16px;
+    }
+
+    .edit-color {
+        position: relative;
+        padding: 0px 15px 25px 15px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        transition: 250ms ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            border: 2px solid rgba(200, 200, 200, 0.8);
+        }
+
+        &:active {
+            background: #292929;
+            border: 2px solid rgba(200, 200, 200, 0.8);
+        }
+
+        .color-card {
+            max-width: 136px;
+            z-index: 1;
+            color: $white;
+
+            p.hex {
+                display: none;
+            }
+
+            .color-info {
+                justify-content: space-between;
+
+                aside {
+                    position: absolute;
+                    right: 17px;
+                }
+            }
+        }
+
+        .inputcolor {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background: transparent;
+            border: transparent;
+
+            input.valid {
+                visibility: hidden;
+            }
+
+            .hex-value {
+                position: absolute;
+                bottom: -5px;
+                left: 2px;
+                color: $white;
+                font-family: 'EncodeSans';
+                font-size: 14px;
+                line-height: 100%;
+                margin-bottom: 5px;
+            }
+        }
+        /*.color-selector {
+                position: absolute;
+                bottom: 40px;
+                left: 40px;
+            }*/
+    }
+
+    .color-card {
+        width: 100%;
+        max-width: 102px;
+        height: 100%;
+        border: 2px solid transparent;
+        border-radius: 8px;
+
+        p.hex {
+            line-height: 100%;
+        }
+    }
+
+    .subcolor-display {
+        display: flex;
+        gap: 25px;
+
+        .color-info {
+            justify-content: space-between;
+        }
+    }
+
+    &--greyscale {
+        .color-main {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .subcolor-display {
+            gap: 34px;
+            margin-left: 17px;
+        }
+    }
+
+    &--system {
+        .color-display {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    &--preview {
+        &-background {
+            margin-bottom: 20px;
+
+            label {
+                display: block !important;
+                width: 220px;
+
+                span {
+                    display: inline-block;
+                    width: 26px;
+                    height: 14px;
+                    margin-left: 5px;
+                    border: 1px solid #FFFFFF;
+                    border-radius: 4px;
+                    margin-top: 1px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+
+                    input {
+                        visibility: hidden;
+                        width: 26px;
+                        height: 14px;
+                        padding: 0;
+                    }
+
+                    .hex-value {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .cards--wrapper {
+            display: grid;
+            grid-template-columns: 489px auto;
+            grid-gap: 40px;
+
+            h4 {
+                color: var(--grey-100);
+            }
+        }
+
+        .card-with-image {
+            display: grid;
+            grid-template-columns: 230px auto;
+            max-width: 489px;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+
+            .color-blobs--wrapper {
+                display: block;
+                max-width: 230px;
+                min-height: 250px;
+                max-height: 100%;
+                position: relative;
+                border-radius: 40px;
+
+                .color-blob {
+                    width: 170px;
+                    height: 166px;
+                    position: absolute;
+                    top: 80px;
+                    left: 50px;
+                    opacity: 0.8;
+                    filter: blur(20px);
+                    z-index: 11;
+                }
+
+                .color-blob2 {
+                    width: 158px;
+                    height: 191px;
+                    position: absolute;
+                    top: 15px;
+                    left: 12px;
+                    opacity: 0.8;
+                    filter: blur(20px);
+                    z-index: 10;
+                }
+
+                .color-blob--noise {
+                    width: 230px;
+                    height: 100%;
+                    border-radius: 40px;
+                    position: absolute;
+                    mix-blend-mode: overlay;
+                    z-index: 12;
+                }
+            }
+
+            .color-content--wrapper {
+                width: 100%;
+                margin: auto 0;
+                padding: 40px;
+            }
+
+            button {
+                margin-top: 30px;
+            }
+        }
+
+        .card-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 270px;
+            min-height: 250px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 40px;
+            text-align: center;
+
+            &--container {
+                width: 100%;
+                margin: auto 0;
+            }
+
+            button {
+                margin-top: 30px;
+            }
+        }
+    }
+}

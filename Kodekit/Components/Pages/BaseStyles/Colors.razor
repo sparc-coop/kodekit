@@ -1,0 +1,272 @@
+﻿@inherits HighlightPageBase<ColorsModel>
+@page "/{kitId}/colors"
+@using Kodekit.Web.Components.Colors
+
+<div class="colors page">
+    <div class="page__container">
+        <header class="page--header">
+            <div class="title">Base Styles</div>
+            <h2>Colors</h2>
+            <p>
+                Colors selected here will be applied throughout the kit. They will be
+                applied to their respective elements (such as primary and secondary buttons)
+                &amp; system colors, as well as accessed via css variables.
+            </p>
+        </header>
+        <div class="content">
+            <!-- Contrast Checker Component Here -->
+            @if (Model != null)
+            {
+                <EditForm EditContext="@Context">
+                    <KitStyle Kit=kit>
+                        <section class="colors--brand">
+                            <header class="flex">
+                                <h3><span>01</span> Brand Colors</h3>
+                                <p class="subheader">
+                                    The brand colors are the three main colors that will be used to accent your site.
+                                </p>
+                            </header>
+                            <div class="color-display primary">
+                                <div class="color-main">
+                                    <label class="edit-color">
+                                        @if (string.IsNullOrEmpty(Model.Primary))
+                                        {
+                                            <ColorCardPlaceholder Weight="Primary" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                        }
+                                        <InputColor @bind-Value="Model.Primary" />
+                                    </label>
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "primary-" + weight;
+                                        @if (string.IsNullOrEmpty(Model.Primary))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="color-display secondary">
+                                <div class="color-main">
+                                    <label class="edit-color">
+                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                        {
+                                            <ColorCardPlaceholder Weight="Secondary" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                        }
+                                        <InputColor @bind-Value="Model.Secondary" />
+                                    </label>
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "secondary-" + weight;
+                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Secondary" Weight="@weight" Hex="@hex" />
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="color-display tertiary">
+                                <div class="color-main">
+                                    <label class="edit-color">
+                                        @if (string.IsNullOrEmpty(Model.Tertiary))
+                                        {
+                                            <ColorCardPlaceholder Weight="Tertiary" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                        }
+                                        <InputColor @bind-Value="Model.Tertiary" />
+                                    </label>
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "tertiary-" + weight;
+                                        @if (string.IsNullOrEmpty(Model.Tertiary))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Tertiary" Weight="@weight" Hex="@hex" />
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                        <section class="colors--greyscale">
+                            <header class="flex">
+                                <h3><span>02</span>Greyscale</h3>
+                                <p class="subheader">
+                                    The greyscale colors will primarily be used for text.
+                                </p>
+                            </header>
+                            <div class="color-display greyscale">
+                                <div class="color-main">
+                                    <label class="edit-color">
+                                        @if (string.IsNullOrEmpty(Model.Lightest))
+                                        {
+                                            <ColorCardPlaceholder Weight="Lightest" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Lightest" Weight="Lightest" Hex="grey-100" />
+                                        }
+                                        <InputColor @bind-Value="Model.Lightest" />
+                                    </label>
+                                    <label class="edit-color">
+                                        @if (string.IsNullOrEmpty(Model.Darkest))
+                                        {
+                                            <ColorCardPlaceholder Weight="Darkest" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Darkest" Weight="Darkest" Hex="grey-900" />
+                                        }
+                                        <InputColor @bind-Value="Model.Darkest" />
+                                    </label>
+                                </div>
+                                <div class="subcolor-display">
+                                    @foreach (var weight in Weights)
+                                    {
+                                        string hex = "grey-" + weight;
+                                        @if (string.IsNullOrEmpty(Model.Lightest) || string.IsNullOrEmpty(Model.Darkest))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Grey" Weight="@weight" Hex="@hex" />
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                        <section class="colors--system">
+                            <header class="flex">
+                                <h3><span>03</span>System Colors</h3>
+                                <p class="subheader">
+                                    The system colors are used to highlight alerts.
+                                </p>
+                            </header>
+                            <div class="color-display">
+                                <label class="edit-color">
+                                    @if (string.IsNullOrEmpty(Model.Error))
+                                    {
+                                        <ColorCardPlaceholder Weight="Error" />
+                                    }
+                                    else
+                                    {
+                                        <ColorCard Type="Error" Weight="Error" Hex="error-500" />
+                                    }
+                                    <InputColor @bind-Value="Model.Error" />
+                                </label>
+                                <label class="edit-color">
+                                    @if (string.IsNullOrEmpty(Model.Warning))
+                                    {
+                                        <ColorCardPlaceholder Weight="Warning" />
+                                    }
+                                    else
+                                    {
+                                        <ColorCard Type="Warning" Weight="Warning" Hex="warning-500" />
+                                    }
+                                    <InputColor @bind-Value="Model.Warning" />
+                                </label>
+                                <label class="edit-color">
+                                    @if (string.IsNullOrEmpty(Model.Success))
+                                    {
+                                        <ColorCardPlaceholder Weight="Success" />
+                                    }
+                                    else
+                                    {
+                                        <ColorCard Type="Success" Weight="Success" Hex="success-500" />
+                                    }
+                                    <InputColor @bind-Value="Model.Success" />
+                                </label>
+                            </div>
+                        </section>
+                        <section class="colors--preview">
+                            <header class="flex">
+                                <h3>Preview</h3>
+                                <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
+                            </header>
+                            <div class="colors--preview-background">
+                                <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground" BackgroundColor="@PreviewBackground" /></label>
+                            </div>
+                            <div class="cards--wrapper">
+                                <div class="card-with-image" style="background: @PreviewBackground;">
+                                    <div class="color-blobs--wrapper">
+                                        <ColorBlob Primary="@Model.Primary" />
+                                        <ColorBlob2 Secondary="@Model.Secondary" Tertiary="@Model.Tertiary"/>
+                                        <img class="color-blob--noise" src="images/Noise & Texture.png" />
+                                    </div>
+                                    <div class="color-content--wrapper">
+                                        <h6 class="tertiary">Information</h6>
+                                        <h4>Brand Colors</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                        </p>
+                                        <button>Primary CTA</button>
+                                    </div>
+                                </div>
+                                <div class="card-text" style="background: @PreviewBackground;">
+                                    <div class="card-text--container">
+                                        <h6 class="tertiary">Information</h6>
+                                        <h4>Brand Colors</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                        </p>
+                                        <div class="buttons">
+                                            <button>Primary CTA</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </KitStyle>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    List<string> Weights = new List<string> { "50", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
+    public string PreviewBackground;
+
+    protected override async Task OnInitializedAsync()
+    {
+        DebounceInputs = true;
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task<ColorsModel> GetAsync()
+    {
+        return await Api.GetColorsAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
+    {
+        return await Api.UpdateColorsAsync(Model);
+    }
+}

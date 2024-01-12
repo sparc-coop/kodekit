@@ -1,0 +1,47 @@
+﻿@if (Kit != null)
+{
+    <div class="kit-style-container">
+        @if (!IsLoading && CssUrl != null)
+        {
+            <style type="text/css">
+                @@import url('@CssUrl');
+            </style>
+
+            <div class="kit-style @Scope @(AdditionalClass != null ? "kit-style--" + AdditionalClass : "")">
+                @ChildContent
+            </div>
+        }
+    </div>
+}
+
+@inject IConfiguration Config
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public Kit Kit { get; set; }
+    [Parameter] public string AdditionalClass { get; set; }
+    string CssUrl;
+    string CleanCssUrl;
+    string Scope;
+    bool IsLoading;
+
+    protected override void OnInitialized()
+    {
+        Scope = $"preview-{Guid.NewGuid()}";
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Kit == null) return;
+
+        var newUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}&v={Kit.CurrentRevisionId}";
+        Console.WriteLine("newurl " + newUrl);
+
+        if (newUrl != CssUrl)
+        {
+            CssUrl = newUrl;
+            Console.WriteLine("cssUrl " + CssUrl);
+
+            CleanCssUrl = newUrl.Split("?")[0];
+        }
+    }
+}

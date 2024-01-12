@@ -1,0 +1,71 @@
+﻿@inherits HighlightPageBase<object>
+@*@page  "/{kitId}/layout"*@
+
+<div class="layout page">
+    <div class="page__container">
+        <header>
+            <div class="title">Structure</div>
+            <h2>Layout</h2>
+            <p>
+                The layout is the main structure for your kit.
+            </p>
+        </header>
+        <div class="content">
+            <h3>Container Width</h3>
+            <p class="subheader">
+                Set a container width to define the maximum width the content container can be. 
+            </p>
+            @if (kit != null)
+            {
+                <EditForm Model="@kit">
+                    <section>
+                        <label>
+                            Presets
+                            <select style="display: inline">
+                                <option selected>Default (1000px)</option>
+                            </select>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            Auto-center container to section
+                        </label>
+                    </section>
+                    <div class="preview-example">
+
+                    </div>
+                    <pre>
+                    <code>
+&lt;!-- Use the container class within html --&gt;
+&lt;section&gt;
+    &lt;div class="container"&gt;All content goes inside here&lt;/div&gt;
+&lt;/section&gt;
+                        </code>
+                    <code class="language-scss" style="margin-top: -50px;">
+// Breakpoints
+$large-desktop: 1440px;
+$desktop: 1000px;
+$large-tablet: 840px;
+$tablet: 720px;
+$large-mobile: 480px;
+$mobile: 320px;
+                        </code>
+                    </pre>
+                    <SaveAndContinue OnSubmit=Submit NextPage="box-shadow" />
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+
+    }
+
+    private async Task Submit()
+    {
+        //await Api.UpdateKitAsync(kit);
+    }
+}

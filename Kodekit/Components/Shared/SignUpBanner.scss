@@ -1,0 +1,70 @@
+﻿@import "../_variables.scss";
+
+.banner {
+    width: 100%;
+    max-width: 752px;
+    height: 140px;
+    padding: 41px 110px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%;
+    bottom: -16px;
+    transform: translate(-50%, -50%);
+    background: $background-light;
+    border: 1px solid rgba(255,255,255, 0.3);
+    border-radius: 19px;
+    z-index: 100;
+
+    @media screen and (max-width: 600px) {
+        margin: 0 20px;
+        left: 0;
+        bottom: 15px;
+        transform: unset;
+        width: 90%;
+    }
+
+    header {
+        margin: 0;
+        font-family: 'EncodeSans';
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 160%;
+        color: $white;
+    }
+
+    p {
+        font-family: 'EncodeSans';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 160%;
+        color: $white;
+
+        .select-login {
+            color: $green-300;
+            cursor: pointer;
+            text-decoration: underline;
+            display: inline;
+            padding: 0;
+            transition: 200ms ease-in-out;
+
+            &:hover {
+                color:  $grey-300;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            margin-top: 6px;
+        }
+    }
+
+    .button--close {
+        width: 13px;
+        height: 13px;
+        margin: 0;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+    }
+}

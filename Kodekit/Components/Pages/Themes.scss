@@ -1,0 +1,71 @@
+﻿@import "../_variables.scss";
+
+.theme-page {
+
+    section {
+        width: 1060px;
+
+        header {
+            h3 {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media screen and (max-width: 1410px) {
+            width: auto;
+        }
+
+        > div {
+            margin-bottom: 30px;
+            display: block;
+            cursor: pointer;
+
+            label {
+                display: block;
+                color: $grey-900;
+                font-size: 16px;
+                font-weight: 500;
+                margin-top: 16px;
+                cursor: pointer;
+            }
+
+            h5 {
+                font-weight: 500;
+            }
+
+            @media screen and (max-width: 800px) {
+                width: 100%;
+            }
+        }
+    }
+
+    .theme-card {
+        width: 496px;
+        height: 319px;
+        border-radius: 8px;
+        background: $white;
+        margin-right: 32px;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background: $grey-300;
+
+            img {
+                border: 1px solid $grey-500;
+                border-radius: 4px;
+            }
+        }
+
+        @media screen and (max-width: 1410px) {
+            width: 370px;
+        }
+
+        @media screen and (max-width: 800px) {
+            width: 100%;
+            max-width: 496px;
+        }
+    }
+}

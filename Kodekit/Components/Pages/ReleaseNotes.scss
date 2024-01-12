@@ -1,0 +1,34 @@
+﻿@import "../_variables";
+
+.release {
+    .page--header {
+        a {
+            text-decoration: underline;
+            transition: 250ms ease-in-out;
+
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+
+    section {
+        div {
+            p {
+                margin-bottom: 14px;
+                line-height: 160%;
+            }
+
+            ul {
+                margin: 0;
+                padding-left: 24px;
+                color: $white;
+                list-style: disc;
+
+                li {
+                    line-height: 160%;
+                }
+            }
+        }
+    }
+}

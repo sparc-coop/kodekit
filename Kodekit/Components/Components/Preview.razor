@@ -1,0 +1,71 @@
+﻿@if (Kit != null)
+{
+    @if (PreviewBackgroundEditable == true)
+    {
+        <div class="preview-background">
+            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackgroundColor" BackgroundColor="@PreviewBackgroundColor" /></label>
+        </div>
+    } 
+    <div class="preview-example-container">
+        @if (!IsLoading && CssUrl != null)
+        {
+            <style type="text/css">
+                @@import url('@CssUrl');
+            </style>
+
+            <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock style="background: @(@PreviewBackgroundColor != null ? PreviewBackgroundColor : BackgroundColor);">
+                @ChildContent
+            </div>
+        }
+        <div class="preview-info">
+            * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
+        </div>
+        <pre class="preview-code">
+            <code tabindex="0" class="language-html" @ref=CodeBlock>
+            </code>
+        </pre>
+    </div>
+}
+
+@inject IConfiguration Config
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public Kit Kit { get; set; }
+    [Parameter] public string AdditionalClass { get; set; }
+    [Parameter] public string BackgroundColor { get; set; }
+    [Parameter] public bool PreviewBackgroundEditable { get; set; } = false;
+    ElementReference PreviewBlock;
+    ElementReference CodeBlock;
+    string CssUrl;
+    string CleanCssUrl;
+    string Scope;
+    string CurrentVersion;
+    bool IsLoading;
+    string PreviewBackgroundColor;
+
+    protected override void OnInitialized()
+    {
+        Scope = $"preview-{Guid.NewGuid()}";
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (Kit == null) return;
+
+        var newUrl = Config["ApiUrl"] + $"/{Kit.Id}.css?scope={Scope}&v={Kit.CurrentRevisionId}";
+        Console.WriteLine("newurl " + newUrl);
+
+        if (newUrl != CssUrl)
+        {
+            CssUrl = newUrl;
+            Console.WriteLine("cssUrl " + CssUrl);
+
+            CleanCssUrl = newUrl.Split("?")[0];
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("populatePreviewCode", PreviewBlock, CodeBlock);
+    }
+}

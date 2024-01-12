@@ -1,0 +1,120 @@
+﻿@import "../../_variables.scss";
+
+.active .modal {
+    visibility: visible;
+}
+
+.modal {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(23, 23, 26, 0.5);
+    height: 100%;
+    overflow-y: auto;
+    visibility: hidden;
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 50;
+    }
+
+    &--container {
+        width: 100%;
+        max-width: 752px;
+        padding: 40px 80px;
+        position: relative;
+        z-index: 100;
+        background: $background-light;
+        border: 1px solid rgba(255,255,255, 0.3);
+        border-radius: 19px;
+        margin: 20% auto;
+
+        @media screen and (max-width: 780px) {
+            width: 80%;
+            margin: 40% auto;
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 85%;
+        }
+
+        header {
+            margin: 0;
+            font-family: 'EncodeSans';
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 160%;
+            color: $white;
+        }
+
+        p {
+            padding: 0;
+            margin-top: 20px;
+            font-family: 'EncodeSans';
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 160%;
+            color: $white;
+        }
+    }
+
+    button {
+        margin-top: 40px;
+        padding: 6px 18px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        font-family: 'EncodeSans';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 160%;
+        background: $grey-800;
+        color: $white;
+        text-align: center;
+        transition: 250ms ease-in-out;
+
+        &:hover {
+            border: 1px solid $white;
+        }
+
+        &:active {
+            background: $white;
+            color: $background;
+        }
+    }
+
+    .button--confirm {
+        border: 1px solid $error-500;
+        color: $error-500;
+        margin-right: 12px;
+
+        &:hover {
+            border: 1px solid $white;
+            color: white;
+        }
+
+        &:active {
+            border: 1px solid $error-500;
+            background: $error-500;
+            color: $background;
+        }
+    }
+
+    .button--close {
+        position: absolute;
+        font-size: 20px;
+        top: 20px;
+        right: 20px;
+        color: $grey-700;
+        cursor: pointer;
+    }
+}

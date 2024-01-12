@@ -1,0 +1,201 @@
+﻿@import "../_variables.scss";
+
+.kit-card {
+    width: 100%;
+    background: #0E0E0E;
+    padding-top: 6px;
+    padding-bottom: 40px;
+    border-top: 1px solid rgba(200, 200, 200, 0.3);
+
+    &--header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: #1A1A1A;
+        border-radius: 0px 0px 8px 8px;
+        padding: 18px 15px;
+        transition: 200ms ease-in-out;
+
+        &:hover {
+            filter: brightness(160%);
+        }
+
+        h3 {
+            margin: 0;
+            padding: 0;
+            font-family: 'EncodeSans';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 160%;
+            color: $white;
+            transition: 250ms ease-in-out;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(104%);
+            }
+        }
+
+        .kit-info {
+            height: 25px;
+            display: flex;
+            font-family: 'EncodeSans';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 160%;
+            color: $white;
+            text-transform: uppercase;
+        }
+
+        .kit-actions {
+            display: flex;
+            gap: 3px;
+            align-items: center;
+            margin-left: 10px;
+            margin-top: -3px;
+
+            button, a {
+                width: 25px;
+                height: 25px;
+                border: none;
+                transition: 250ms ease-in-out;
+            }
+
+            .icon {
+                width: 25px;
+                height: 25px;
+                padding: 5px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                transition: 250ms ease-in-out;
+
+                &-preview {
+                    path {
+                        stroke: $white !important;
+                    }
+
+                    &:active {
+                        path {
+                            stroke: $grey-800 !important;
+                        }
+                    }
+                }
+
+                &-download {
+                    path {
+                        fill: $white !important;
+                        stroke: $white !important;
+                    }
+
+                    line {
+                        stroke: $white !important;
+                    }
+
+                    &:active {
+                        path {
+                            fill: $grey-800 !important;
+                            stroke: $grey-800 !important;
+                        }
+
+                        line {
+                            stroke: $grey-800 !important;
+                        }
+                    }
+                }
+
+                &-delete {
+                    path, circle {
+                        stroke: $white !important;
+                    }
+
+                    &:active {
+                        path, circle, fill {
+                            stroke: $grey-800 !important;
+                        }
+                    }
+                }
+
+                &-more {
+                    padding: 0px;
+
+                    circle {
+                        fill: $white !important;
+                    }
+
+                    &:active {
+                        circle {
+                            fill: $grey-800 !important;
+                        }
+                    }
+                }
+
+                &:hover {
+                    border: 1px solid $white;
+                    border-radius: 4px;
+                }
+
+                &:active {
+                    background: $white;
+                }
+            }
+        }
+    }
+
+    &--preview {
+        width: 100%;
+        margin-top: 35px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        color: $white;
+
+        .preview--divider {
+            border-left: 1px solid $white;
+            opacity: 30%;
+        }
+
+        .typography {
+            width: 40%;
+            max-width: 526px;
+        }
+
+        label {
+            color: $white;
+            font-family: 'EncodeSans_Expanded';
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 100%;
+        }
+
+        .typography--preview {
+            margin-top: 20px;
+
+            h5 {
+                margin-bottom: 8px;
+            }
+
+            h5, p {
+                color: $white;
+                line-height: 100%;
+            }
+        }
+
+        .colors--preview {
+            margin-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+
+            .color-blotch {
+                display: block;
+                width: 57px;
+                height: 57px;
+            }
+        }
+
+        &:last-child {
+            padding-right: 35px;
+        }
+    }
+}

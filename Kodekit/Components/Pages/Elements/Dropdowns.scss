@@ -1,0 +1,42 @@
+﻿@import "../../_variables";
+
+.dropdowns {
+    section header aside {
+        margin-top: 10px;
+        margin-bottom: 40px;
+        font-size: 12px;
+        font-weight: 400;
+        color: $grey-300;
+
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+    }
+
+    .preview-example {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 32px;
+
+        select {
+            height: unset;
+        }
+    }
+
+    .section-container {
+        display: flex;
+        margin-top: 40px;
+
+        .switch {
+            vertical-align: middle;
+        }
+
+        p {
+            font-family: 'EncodeSans_Expanded';
+            font-weight: 300;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+    }
+}

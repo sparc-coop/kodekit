@@ -1,0 +1,44 @@
+﻿@if (showBanner == true)
+{
+    <div class="banner" @ref="tabBanner">
+        <header>
+            This kit will only be accessible from this device
+        </header>
+        <p>
+            Please <a href="authentication/login" class="select-login">log in or create an account</a> to ensure changes are saved.
+        </p>
+        <span tabindex="0" @onclick="HideBanner" @onkeydown="EnterHideBanner">
+            <img class="button--close" src="images/close-icon.svg" />
+        </span>
+    </div>
+}
+
+@code {
+    bool showBanner = true;
+    ElementReference tabBanner;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        await tabBanner.FocusAsync();
+        if (user.Identity.IsAuthenticated)
+        {
+            showBanner = false;
+        }
+    }
+
+    void HideBanner() {
+        showBanner = false;
+    }
+
+    void EnterHideBanner(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter")
+        {
+            showBanner = false;
+        }
+        
+    }
+}

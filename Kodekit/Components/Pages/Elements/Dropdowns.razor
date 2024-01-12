@@ -1,0 +1,82 @@
+﻿@inherits HighlightPageBase<UpdateDropdownsModel>
+@page "/{kitId}/dropdowns"
+
+<div class="dropdowns page">
+    <div class="page__container">
+        <header class="page--header">
+            <div class="title">Elements</div>
+            <h2>Dropdowns</h2>
+            <p class="subheader">
+                Use to select from a series of choices.
+            </p>
+        </header>
+        <div class="content">
+            @if (Model != null)
+            {
+                <EditForm EditContext="@Context">
+                    <section>
+                        <header>
+                            <h3>Dropdown Styling</h3>
+                            <p class="subheader">
+                                The &lt;select&gt; element defines a dropdown list. The &lt;option&gt; elements define options that can be selected. To define a pre-selected option, add the selected attribute to the option.
+                            </p>
+                            <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
+                        </header>
+                        @if (Model.OverwriteInherited)
+                        {
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    Font Size (px)
+                                </label>
+                                <label>
+                                    <InputFontWeight @bind-Value=Model.FontWeight />
+                                    Font Weight
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                    Vertical Padding (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                    Horizontal Padding (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                    Corner Radius (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                    Border Width (px)
+                                </label>
+                            </div>
+                        }
+                        <div class="overwrite-styling">
+                            <Switch @bind-Value=Model.OverwriteInherited Title="Overwrite Inherited Styling" />
+                        </div>
+                        <Preview Kit=kit>
+                                <select>
+                                    <option>Dropdown Menu</option>
+                                    <option>Default Row</option>
+                                    <option selected>Selected Row</option>
+                                    <option>Default Row</option>
+                                </select>
+                        </Preview>
+                    </section>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override async Task<UpdateDropdownsModel> GetAsync()
+    {
+        return await Api.GetDropdownsAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
+    {
+        return await Api.UpdateDropdownsAsync(Model);
+    }
+}

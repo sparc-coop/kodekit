@@ -1,0 +1,74 @@
+﻿@inherits HighlightPageBase<UpdateAnchorsModel>
+@page "/{kitId}/anchors"
+
+<div class="anchors page">
+    <div class="page__container">
+        <header class="page--header">
+            <div class="title">Elements</div>
+            <h2>Anchor Links</h2>
+            <p class="subheader">
+                Hyperlinks used to navigate between pages internal and external. The &lt;a&gt; tag defines a hyperlink. The href attribute specifies the URL of the page the link goes to.
+            </p>
+        </header>
+        <div class="content">
+            @if (kit != null)
+            {
+                <EditForm EditContext="@Context">
+                    <section>
+                        <header>
+                            <h3>Link Styling</h3>
+                            <p class="subheader">
+                                Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is applied when the link is being clicked on. Visited is applied once the link has been navigated to.
+                            </p>
+                        </header>
+                        <div>
+                            <label>
+                                <InputFontWeight @bind-Value="Model.FontWeight" />
+                                Font Weight
+                            </label>
+                        </div>
+                        <div class="subsection link-states">
+                            <h4>Link States</h4>
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputColor @bind-Value="Model.DefaultColor" />
+                                    Default
+                                </label>
+                                <label>
+                                    <InputColor @bind-Value="Model.HoverColor" />
+                                    Hover
+                                </label>
+                                <label>
+                                    <InputColor @bind-Value="Model.VisitedColor" />
+                                    Visited
+                                </label>
+                                <label>
+                                    <InputColor @bind-Value="Model.ActiveColor" />
+                                    Active
+                                </label>
+                            </div>
+                        </div>
+                        <Preview Kit=kit PreviewBackgroundEditable=true>
+                            <a href="#@Guid.NewGuid()">Default</a>
+                            <a href="#@Guid.NewGuid()" class="hover">Hover</a>
+                            <a href="#@Guid.NewGuid()" class="visited">Visited</a>
+                            <a href="#@Guid.NewGuid()" class="active">Active</a>
+                        </Preview>
+                    </section>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override async Task<UpdateAnchorsModel> GetAsync()
+    {
+        return await Api.GetAnchorsAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
+    {
+        return await Api.UpdateAnchorsAsync(Model);
+    }
+}

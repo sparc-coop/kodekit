@@ -1,0 +1,97 @@
+﻿@inherits HighlightPageBase<object>
+@page "/installation"
+@page "/{kitId}/installation"
+
+<div class="page installation">
+    <div class="page__container">
+        <header class="page--header">
+            <div class="title">Getting Started</div>
+            <h2>Installation</h2>
+            <p>
+                There are two ways to install Kodekit into your project, both of which are extremely easy to set up.
+            </p>
+        </header>
+        <div class="content">
+            <section class="option-one">
+                <header>
+                    <div class="flex">
+                        <h3><span>01</span> Option One: Import & Auto Update</h3>
+                        <p>
+                            Your kit's unique name is: <strong>@kitId</strong>
+                        </p>
+                    </div>
+                    <p class="subheader">
+                        Importing Kodekit into your project is as easy as adding the link to the
+                        <span>&lt;head&gt;</span> section of your "index.html" file.
+                    </p>
+                    <p class="subheader">
+                        It allows for quickly
+                        linking your theme to your project, and allows for auto-updating.
+                    </p>
+                </header>
+
+                <ol class="instructions">
+                    <li class="step-one">
+                        <h4>Add Script</h4>
+                        <div> 
+                            <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
+                            <pre>
+                                <code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
+                            </pre>
+                            <button class="copy" @onclick="StepOneCopy">@CopyText</button>
+                        </div>
+                    </li>
+                    <li class="step-two">
+                        <h4>Auto Update</h4>
+                        <div>
+                            <p>
+                                Each time you change, update or save your Kodekit theme, your projects
+                                using the theme script will auto-update, allowing you to make changes to your live project.
+                            </p>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+            <section class="option-two">
+                <header>
+                    <h3><span>02</span> Option Two: Manual Download</h3>
+                    <p class="subheader">
+                        If you would rather take a more manual approach, you can instead download the .css file,
+                        and add that directly to your project folder.
+                    </p>
+                    <p class="subheader">
+                        Make sure you re-download and add this file every time you update the Kodekit Theme.
+                    </p>
+                </header>
+                <ol>
+                    <li>
+                        <p>Download your generated CSS file</p>
+                        <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
+                            Download .css file
+                        </a>
+                    </li>
+                </ol>
+            </section>
+        </div>
+    </div>
+</div>
+
+@inject IConfiguration Config
+@code {
+    string ImportUrl;
+    string CopyText = "Copy";
+
+    protected override void OnInitialized()
+    {
+        ImportUrl = Config["ApiUrl"] + $"/{kitId}.css";
+    }
+
+    private async Task StepOneCopy()
+    {
+        CopyText = "Copied";
+        await Task.Delay(2000);
+        CopyText = "Copy";
+        //copy to clipboard link
+        await JSRuntime.InvokeAsync<string>("copyToClipboard", "step-one");
+    }
+}

@@ -1,0 +1,35 @@
+﻿@if (Weights != null)
+{
+    <InputSelect @bind-Value=Value>
+        <option value="">Select a weight...</option>
+        @foreach (var weight in Weights)
+        {
+        <option value="@weight.Key">
+            @weight.Value (@weight.Key)
+        </option>
+        }
+</InputSelect>
+}
+
+@code {
+    IDictionary<string, string> Weights;
+
+    private string _value;
+    [Parameter]
+    public string Value
+    {
+        get => _value;
+        set
+        {
+            if (_value == value) return;
+            _value = value;
+            ValueChanged.InvokeAsync(value);
+        }
+    }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Weights = (await Api.GetWeightsAsync()).Weights;
+    }
+}

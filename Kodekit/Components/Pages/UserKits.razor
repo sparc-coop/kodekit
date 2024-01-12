@@ -1,0 +1,122 @@
+﻿@layout SimplifiedLayout
+@page "/"
+
+<div class="dashboard page">
+    <div class="page__container">
+        @if (!IsLoading)
+        {
+            <header class="dashboard--header">
+                <p class="user">@User.FirstName</p>
+                <h2>My Kits</h2>
+                <p class="subheader">View and manage your kits for your projects.</p>
+                <div class="right">
+                    @*                <select class="sort">
+                <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
+                </select>*@
+                    <AuthorizeView>
+                        <Authorized>
+                            <button @onclick="CreateNew">
+                                Add New Kit  +
+                            </button>
+                        </Authorized>
+                        <NotAuthorized>
+                            @if (Kits == null || !Kits.Any())
+                            {
+                                <button @onclick="CreateNew">
+                                    Add New Kit  +
+                                </button>
+                            }
+                        </NotAuthorized>
+                    </AuthorizeView>
+                </div>
+            </header>
+
+            @if (Kits == null || !Kits.Any())
+            {
+                <p>Create a new styleguide to get started!</p>
+            }
+            else
+            {
+                <div class="dashboard-container">
+                    @foreach (var kit in Kits)
+                    {
+                        <KitCard Kit="kit" />
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@inject IConfiguration Config
+@code {
+    private User User;
+    private ICollection<Kit> Kits;
+    private ICollection<KitRevision> KitRevisions;
+    bool IsLoading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            User = await Api.GetUserAsync();
+            Kits = await Api.GetUserKitsAsync();
+
+            // To import an existing kit into your account after first login
+            string result = await localStorage.GetItemAsync<string>("kodekitId");
+            if (result != null)
+                await CaptureExistingKit(result);
+        }
+        else
+        {
+            Kits = new List<Kit>();
+            string result = await localStorage.GetItemAsync<string>("kodekitId");
+            if (result != null)
+                GoToKit(result);
+            else
+                await CreateNew();
+        }
+        IsLoading = false;
+    }
+
+    private async Task CreateNew()
+    {
+        var kit = await Api.CreateKitAsync(User != null ? User.Id : "");
+        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+        GoToKit(kit.KitId);
+    }
+
+    private async Task CaptureExistingKit(string id)
+    {
+        var existingKit = await Api.GetKitAsync(id);
+        if (Kits.Any(x => x.Id == existingKit.Id))
+            return;
+
+        if (string.IsNullOrWhiteSpace(existingKit?.UserId))
+        {
+            await Api.UpdateKitAsync(new UpdateKitRequest
+        {
+            KitId = existingKit.Id,
+            Name = existingKit.Name,
+            IsAutoPublish = existingKit.IsAutoPublish ?? false
+        });
+            Kits.Add(existingKit);
+        }
+    }
+
+    private void Sort(string filter)
+    {
+        if (filter == "date-mod")
+        {
+            Kits = Kits.OrderByDescending(x => x.DateModified).ToList();
+        }
+    }
+
+    private void GoToKit(string kit)
+    {
+        Nav.NavigateTo($"/{kit}/introduction");
+    }
+}

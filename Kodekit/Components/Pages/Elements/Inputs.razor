@@ -1,0 +1,126 @@
+﻿@inherits HighlightPageBase<UpdateInputsModel>
+@page "/{kitId}/inputs"
+
+<div class="inputs page">
+    <div class="page__container">
+        <header class="page--header">
+            <div class="title">Elements</div>
+            <h2>Inputs & Textareas</h2>
+            <p class="subheader">
+                Use to collect text input.
+            </p>
+        </header>
+        <div class="content">
+            @if (Model != null)
+            {
+                <EditForm EditContext="@Context">
+                    <section>
+                        <header class="flex">
+                            <h3><span>01</span> Form Styling</h3>
+                            <p class="subheader">
+                                Input collects a single line of text, while a textarea can receive multiple lines of text.
+                            </p>
+                        </header>
+                        <div class="inputs--wrapper">
+                            <div>
+                                <label>
+                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    Input Font Size (px)
+                                </label>
+                                <label>
+                                    <InputFontWeight @bind-Value="Model.FontWeight" />
+                                    Input Font Weight
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                    Vertical Padding (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                    Horizontal Padding (px)
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                    Corner Radius (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                    Border Width (px)
+                                </label>
+                            </div>
+                        </div>
+                        <Preview Kit=kit>
+                            <label class="input-form-preview">
+                                <input placeholder="Placeholder" />
+                            </label>
+                            <label class="input-form-preview">
+                                <PersonSvg />
+                                <input placeholder="Placeholder" />
+                            </label>
+                            <label>
+                                <textarea placeholder="Placeholder"></textarea>
+                            </label>
+                        </Preview>
+                    </section>
+
+                    <section>
+                        <header clas="flex">
+                            <h3><span> 02</span> Input & Textarea states</h3>
+                            <p class="subheader">
+                                Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
+                            </p>
+                        </header>
+                        <Preview Kit=kit>
+                            <label>
+                                Placeholder
+                                <PersonSvg />
+                                <input placeholder="username" />
+                                <span>Enter your username.</span>
+                            </label>
+                            <label class="selected">
+                                Selected
+                                <PersonSvg />
+                                <input placeholder="username" />
+                                <span>Enter your username.</span>
+                            </label>
+                            <label>
+                                Entered
+                                <PersonSvg />
+                                <input value="Kodekit" />
+                                <span>Enter your username.</span>
+                            </label>
+                            <label class="error">
+                                Error
+                                <PersonSvg />
+                                <input class="invalid" value="username" />
+                                <span>Username is taken.</span>
+                            </label>
+                            <label class="disabled">
+                                Disabled
+                                <PersonSvg />
+                                <input value="enter username" disabled />
+                                <span>Enter your name first.</span>
+                            </label>
+                        </Preview>
+                    </section>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override async Task<UpdateInputsModel> GetAsync()
+    {
+        return await Api.GetInputsAsync(kitId);
+    }
+
+    protected override async Task<Kit> UpdateAsync()
+    {
+        return await Api.UpdateInputsAsync(Model);
+    }
+}

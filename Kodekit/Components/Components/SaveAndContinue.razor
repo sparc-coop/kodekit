@@ -1,0 +1,19 @@
+﻿<button tabindex="0" class="button--save" @onclick="Submit">
+    @(Text ?? "Save & Continue")
+    <KodekitLogoSvg />
+</button>
+
+@code {
+    [Parameter] public EventCallback<MouseEventArgs> OnSubmit { get; set; }
+    [Parameter] public string NextPage { get; set; }
+    [Parameter] public string Text { get; set; }
+
+    async Task Submit()
+    {
+        if (OnSubmit.HasDelegate)
+            await OnSubmit.InvokeAsync();
+
+        var kitId = Nav.ToBaseRelativePath(Nav.Uri).Split("/").First();
+        Nav.NavigateTo($"/{kitId}/{NextPage}");
+    }
+}
