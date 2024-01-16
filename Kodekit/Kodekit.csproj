@@ -24,6 +24,8 @@
   </ItemGroup>
 	
   <ItemGroup>
+    <PackageReference Include="Blazor-Analytics" Version="3.10.0" />
+    <PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
     <PackageReference Include="NSwag.ApiDescription.Client" Version="14.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
