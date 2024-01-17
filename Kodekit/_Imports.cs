@@ -26,3 +26,6 @@ global using Kodekit.Pages;
 global using Kodekit.Models;
 global using Kodekit.Models.Elements;
 global using Kodekit.Models.Kits;
+
+global using Blazored.LocalStorage;
+global using Blazor.Analytics;

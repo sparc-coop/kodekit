@@ -103,11 +103,11 @@
 @code {
     protected override async Task<UpdateListsModel> GetAsync()
     {
-        return await Api.GetListsAsync(kitId);
+        return await GetLists(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await Api.UpdateListsAsync(Model);
+        return await UpdateLists(Model);
     }
 }

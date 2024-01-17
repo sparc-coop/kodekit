@@ -199,12 +199,12 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        Fonts = await Api.GetGoogleFontsAsync("");
+        Fonts = await GetGoogleFonts("");
     }
 
     protected override async Task<GetTypographyResponse> GetAsync()
     {
-        return await Api.GetTypographyAsync(kitId);
+        return await GetTypography(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
@@ -216,8 +216,8 @@
                 Paragraphs = Model.Paragraph
             };
 
-        var kit = await Api.UpdateTypographyAsync(result);
-        Model = await Api.GetTypographyAsync(kitId);
+        var kit = await UpdateTypography(result);
+        Model = await GetTypography(kitId);
         return kit;
     }
 

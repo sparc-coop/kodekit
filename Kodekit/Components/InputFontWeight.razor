@@ -30,6 +30,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Weights = (await Api.GetWeightsAsync()).Weights;
+        Weights = await GetWeights().Weights;
     }
 }

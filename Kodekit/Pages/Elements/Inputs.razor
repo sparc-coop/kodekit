@@ -116,11 +116,11 @@
 @code {
     protected override async Task<UpdateInputsModel> GetAsync()
     {
-        return await Api.GetInputsAsync(kitId);
+        return await GetInputs(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await Api.UpdateInputsAsync(Model);
+        return await UpdateInputs(Model);
     }
 }
