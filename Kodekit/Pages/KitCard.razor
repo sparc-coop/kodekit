@@ -91,7 +91,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Typography = await Api.GetTypographyAsync(Kit.Id);
+        Typography = await GetTypography(Kit.Id);
     }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";

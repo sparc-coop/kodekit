@@ -51,20 +51,20 @@
 
     protected override async Task OnInitializedAsync()
     {
-        User = await Api.GetUserAsync();
-        Kits = await Api.GetRelatedKitsAsync(kitId);
+        User = await UserRepository.GetUserAsync();
+        Kits = await KitRepository.GetRelatedKitsAsync(kitId);
     }
 
     private async Task Publish()
     {
-        Kit = await Api.GetKitAsync(kitId);
+        Kit = await KitRepository.GetKitAsync(kitId);
 
         if (User != null)
         {
             Kit.UserId = User.Id;
         }
 
-        await Api.PublishKitAsync(Kit);
+        await KitRepository.PublishKitAsync(Kit);
     }
 
     private void GoTo()
