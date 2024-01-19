@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using System.Security.Claims;
 
 namespace Kodekit;
 
@@ -15,6 +16,7 @@ public class KitRepository
     public IRepository<Kit> Kits { get; }
     public IRepository<KitRevision> Revisions { get; }
     public IWebHostEnvironment Env { get; }
+    public ClaimsPrincipal User { get; }
 
     // CREATE
     public record CreateKitResponse(string KitId);
@@ -152,8 +154,6 @@ public class KitRepository
     }
 
     // UPDATE
-    public record UpdateKitRequest(string KitId, string Name, string? UserId, bool IsAutoPublish);
-
     internal async Task UpdateAsync((Kit Kit, KitRevision? Revision) kit)
     {
         // update revision links
@@ -172,6 +172,28 @@ public class KitRepository
 
         kit.Update(request.Name, request.IsAutoPublish);
         await Kits.UpdateAsync(kit);
+    }
+
+    public async Task<bool> SetKitThemeAsync(string kitId)
+    {
+        try
+        {
+            var kit = await GetCurrentAsync(kitId);
+            //if theme not already set
+            if (kit.Kit.ThemeId != null)
+                return false;
+
+            kit.Kit.ThemeId = 1;
+            kit.Revision = new KitRevision(true, kitId, kit.Kit.CurrentRevisionId);
+
+            await UpdateAsync(kit);
+            return true;
+
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     // DELETE

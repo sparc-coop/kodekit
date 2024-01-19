@@ -18,14 +18,19 @@ global using Microsoft.JSInterop;
 global using Sparc.Blossom;
 global using Sparc.Blossom.Data;
 global using Sparc.Blossom.Authentication;
+global using System.Net.NetworkInformation;
 
 global using Kodekit;
 global using Kodekit.Components;
+global using Kodekit.Components.Colors;
+global using Kodekit.Components.Icons;
+global using Kodekit.Components.Modals;
 global using Kodekit.Layouts;
-global using Kodekit.Pages;
+global using Kodekit.Layouts.Components;
 global using Kodekit.Models;
 global using Kodekit.Models.Elements;
 global using Kodekit.Models.Kits;
+global using Kodekit.Pages;
 global using static Kodekit.KitRepository;
 global using static Kodekit.UserRepository;
 

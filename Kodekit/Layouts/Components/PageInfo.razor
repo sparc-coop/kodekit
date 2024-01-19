@@ -1,6 +1,4 @@
-﻿@using Kodekit.Components.Icons
-
-<div class="page-info">
+﻿<div class="page-info">
     @if (kitId != null)
     {
         <div class="page-info--container">
@@ -203,7 +201,7 @@
     {
         if (kitId != null)
         {
-            kit = await Api.GetKitAsync(kitId);
+            kit = await KitRepository.GetKitAsync(kitId);
             SelectAutoPublish = kit.IsAutoPublish ?? false;
 
             await LoginSucceeded();
@@ -217,8 +215,8 @@
         if (user.Identity.IsAuthenticated)
         {
             Console.WriteLine(kitId);
-            Kits = await Api.GetRelatedKitsAsync(kitId);
-            UserKits = await Api.GetUserKitsAsync();
+            Kits = await KitRepository.GetRelatedKitsAsync(kitId);
+            UserKits = await KitRepository.GetUserKitsAsync(kit.UserId);
         }
     }
 
@@ -231,7 +229,7 @@
             var user = authState.User;
             if (user.Identity.IsAuthenticated)
             {
-                Kits = await Api.GetRelatedKitsAsync(kit.Id);
+                Kits = await KitRepository.GetRelatedKitsAsync(kit.Id);
             }
 
             await tabSlider.FocusAsync();
@@ -251,15 +249,15 @@
 
     private async Task CopyKit()
     {
-        var newKit = await Api.CopyKitAsync(kit.Id);
+        var newKit = await KitRepository.CopyKitAsync(kit.Id);
         Nav.NavigateTo($"/{newKit.KitId}/introduction");
     }
 
     private async Task Publish(string kitId)
     {
         //Get version to publish
-        Kit publishKit = await Api.GetKitAsync(kitId);
-        await Api.PublishKitAsync(publishKit);
+        Kit publishKit = await KitRepository.GetKitAsync(kitId);
+        await KitRepository.PublishKitAsync(publishKit);
     }
 
     private void ShowOptions(string selectedId)
@@ -285,7 +283,7 @@
     {
         Kit selectedKit = UserKits.Where(x => x.Id == id).FirstOrDefault();
         selectedKit.Name = name;
-        await Api.UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
+        await KitRepository.UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
     }
 
     private void GoToPreview(string id)
@@ -304,7 +302,7 @@
 
     private async Task UpdateKit()
     {
-        await Api.UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
+        await KitRepository.UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
     }
 
     private void ShowKitsList()

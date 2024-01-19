@@ -16,7 +16,7 @@ public class DeleteKit : Feature<string, bool>
         try
         {
             kit.IsDeleted = true;
-            await Kits.UpdateAsync(kit);
+            await Kits.UpdateAsync((kit, null));
             return true;
         }
         catch

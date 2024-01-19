@@ -14,7 +14,7 @@ public class UpdateKit : PublicFeature<UpdateKitRequest, Kit>
             kit.SetUser(User.Id());
 
         kit.Update(request.Name, request.IsAutoPublish);
-        await Kits.UpdateAsync(kit);
+        await Kits.UpdateAsync((kit, null));
         return kit;
     }
 }

@@ -64,11 +64,11 @@
 @code {
     protected override async Task<UpdateAnchorsModel> GetAsync()
     {
-        return await GetAnchors(kitId);
+        return await ElementRepository.GetAnchorsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await UpdateAnchors(Model);
+        return await ElementRepository.UpdateAnchorsAsync(Model);
     }
 }

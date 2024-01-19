@@ -112,7 +112,7 @@
     protected override async Task OnParametersSetAsync()
     {
         if (kitId != null)
-            Settings = (await Api.GetSettingsAsync(kitId))?.Settings;
+            Settings = (await ElementRepository.GetSettingsAsync(kitId))?.Settings;
     }
 
     private void ToggleMobile()

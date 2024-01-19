@@ -80,11 +80,11 @@
 
     protected override async Task<UpdateSelectorsModel> GetAsync()
     {
-        return await GetSelectors(kitId);
+        return await ElementRepository.GetSelectorsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await UpdateSelectors(Model);
+        return await ElementRepository.UpdateSelectorsAsync(Model);
     }
 }

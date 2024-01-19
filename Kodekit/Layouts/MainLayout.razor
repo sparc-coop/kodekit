@@ -34,7 +34,7 @@
             }
             else
             {
-                var kit = await Api.CreateKitAsync(User != null ? User.Id : "");
+                var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
                 await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
                 kitId = kit.KitId;
             }
@@ -48,7 +48,7 @@
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
         {
-            User = await Api.GetUserAsync();
+            User = await UserRepository.GetUserAsync();
         }
     }
 }

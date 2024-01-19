@@ -10,6 +10,8 @@ namespace Kodekit
         }
         public IRepository<User> Users { get; }
 
+        public ClaimsPrincipal User { get; }
+
         // CREATE
         public async Task<bool> CreateUserAsync()
         {
@@ -55,7 +57,7 @@ namespace Kodekit
         }
 
         // GET
-        public override Task<User> GetUserAsync()
+        public Task<User> GetUserAsync()
         {
             var claims = User.Claims;
             User user = new()

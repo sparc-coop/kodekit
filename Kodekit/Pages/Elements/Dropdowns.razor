@@ -72,11 +72,11 @@
 @code {
     protected override async Task<UpdateDropdownsModel> GetAsync()
     {
-        return await GetDropdowns(kitId);
+        return await ElementRepository.GetDropdownsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await UpdateDropdowns(Model);
+        return await ElementRepository.UpdateDropdownsAsync(Model);
     }
 }

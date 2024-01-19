@@ -29,7 +29,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var colors = await Api.GetColorsAsync(KitId);
+        var colors = await ElementRepository.GetColorsAsync(KitId);
 
         Model = new Dictionary<string, string>
         {

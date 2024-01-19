@@ -34,7 +34,7 @@
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
         {
-            User = await Api.GetUserAsync();
+            User = await UserRepository.GetUserAsync();
         }
     }
 

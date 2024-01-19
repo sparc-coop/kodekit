@@ -49,6 +49,7 @@
 </div>
 
 @inject IConfiguration Config
+
 @code {
     private User User;
     private ICollection<Kit> Kits;
@@ -62,8 +63,8 @@
         var user = authState.User;
         if (user.Identity.IsAuthenticated)
         {
-            User = await Api.GetUserAsync();
-            Kits = await Api.GetUserKitsAsync();
+            User = await UserRepository.GetUserAsync();
+            Kits = await KitRepository.GetUserKitsAsync(User.Id);
 
             // To import an existing kit into your account after first login
             string result = await localStorage.GetItemAsync<string>("kodekitId");
@@ -84,20 +85,20 @@
 
     private async Task CreateNew()
     {
-        var kit = await Api.CreateKitAsync(User != null ? User.Id : "");
+        var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
         await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
         GoToKit(kit.KitId);
     }
 
     private async Task CaptureExistingKit(string id)
     {
-        var existingKit = await Api.GetKitAsync(id);
+        var existingKit = await KitRepository.GetKitAsync(id);
         if (Kits.Any(x => x.Id == existingKit.Id))
             return;
 
         if (string.IsNullOrWhiteSpace(existingKit?.UserId))
         {
-            await Api.UpdateKitAsync(new UpdateKitRequest
+            await KitRepository.UpdateKitAsync(new UpdateKitRequest
         {
             KitId = existingKit.Id,
             Name = existingKit.Name,

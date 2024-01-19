@@ -12,7 +12,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        kit = await GetKit(kitId);
+        kit = await KitRepository.GetKitAsync(kitId);
         Model = await GetAsync();
         Context = new EditContext(Model);
         Context.OnFieldChanged += HandleFieldChanged;

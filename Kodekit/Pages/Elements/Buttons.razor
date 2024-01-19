@@ -144,11 +144,11 @@
 
     protected override async Task<UpdateButtonsModel> GetAsync()
     {
-        return await GetButtons(kitId);
+        return await ElementRepository.GetButtonsAsync(kitId);
     }
 
     protected override async Task<Kit> UpdateAsync()
     {
-        return await UpdateButtons(Model);
+        return await ElementRepository.UpdateButtonsAsync(Model);
     }
 }

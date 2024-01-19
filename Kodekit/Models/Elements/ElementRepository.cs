@@ -3,13 +3,11 @@ using Newtonsoft.Json;
 
 namespace Kodekit;
 
-public class ElementsRepository
+public class ElementRepository
 {
-    public KitRepository? Kits { get; }
+    public KitRepository Kits { get; }
 
     // ANCHORS
-    public record UpdateAnchorsModel(string KitId, double? FontSize, string? FontWeight, string? DefaultColor, string? HoverColor, string? VisitedColor, string? ActiveColor);
-
     public async Task<UpdateAnchorsModel> GetAnchorsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -38,8 +36,6 @@ public class ElementsRepository
     }
 
     // BUTTONS
-    public record UpdateButtonsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth, double? IconWidth, double? IconHeight, bool RemoveSecondaryBorder);
-
     public async Task<UpdateButtonsModel> GetButtonsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -71,9 +67,7 @@ public class ElementsRepository
     }
 
     // COLORS
-    public record ColorsModel(string KitId, string? Primary, string? Secondary, string? Tertiary, string? Darkest, string? Lightest, string? Error, string? Warning, string? Success);
-
-    public async Task<ColorsModel> GetColorAsync(string id)
+    public async Task<ColorsModel> GetColorsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
 
@@ -107,8 +101,6 @@ public class ElementsRepository
     }
 
     // DROPDOWNS
-    public record UpdateDropdownsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth, bool OverwriteInherited);
-
     public async Task<UpdateDropdownsModel> GetDropdownsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -138,8 +130,6 @@ public class ElementsRepository
     }
 
     // ICONS
-    public record UpdateIconsModel(string KitId, string? Name, List<IconLibrary> ValidIcons, List<string> IconsList);
-
     public async Task<UpdateIconsModel> GetIconsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -152,7 +142,7 @@ public class ElementsRepository
         );
     }
 
-    public async Task<Kit> UpdatIconsAsync(UpdateIconsModel request)
+    public async Task<Kit> UpdateIconsAsync(UpdateIconsModel request)
     {
         var kit = await Kits.GetCurrentAsync(request.KitId);
 
@@ -164,8 +154,6 @@ public class ElementsRepository
     }
 
     // INPUTS
-    public record UpdateInputsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth);
-
     public async Task<UpdateInputsModel> GetInputsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -195,8 +183,6 @@ public class ElementsRepository
     }
 
     // LISTS
-    public record UpdateListsModel(string KitId, double? FontSize, string? FontWeight, string? OlStyleType, string? UlStyleType, double? ListHorizontalPadding, double? ListVerticalPadding, double? ItemHorizontalPadding, double? ItemVerticalPadding);
-
     public async Task<UpdateListsModel> GetListsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -228,8 +214,6 @@ public class ElementsRepository
     }
 
     // SELECTORS
-    public record UpdateSelectorsModel(string KitId, double? FontSize, string? FontWeight, string? ActiveColor);
-
     public async Task<UpdateSelectorsModel> GetSelectorsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -248,15 +232,13 @@ public class ElementsRepository
     }
 
     // SETTINGS
-    public record UpdateSettingsModel(string KitId, KitSettings Settings);
-
-    public async Task<UpdateSettingsModel> GetKitSettingsAsync(string id)
+    public async Task<UpdateSettingsModel> GetSettingsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
         return new(id, kit.Settings);
     }
 
-    public async Task<Kit> UpdateKitSettingsAsync(UpdateSettingsModel request)
+    public async Task<Kit> UpdateSettingsAsync(UpdateSettingsModel request)
     {
         var kit = await Kits.GetCurrentAsync(request.KitId);
 
@@ -267,8 +249,6 @@ public class ElementsRepository
     }
 
     // SHADOWS
-    public record ShadowsModel(string KitId, Shadow? Small, Shadow? XLarge);
-
     public async Task<ShadowsModel> GetShadowsAsync(string id)
     {
         var kit = await Kits.GetCurrentRevisionAsync(id);
@@ -292,14 +272,39 @@ public class ElementsRepository
     }
 
     // TYPOGRAPHY
-    public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<double, string> TypeScales);
-    public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, double? LineHeight, Dictionary<string, string>? FontSizeOverrides, Dictionary<string, string> TypeScaleValues);
-    public record GetWeightsModel(Dictionary<string, string> Weights);
-    public record UpdateTypographyModel(string KitId, TypographyModel Headings, TypographyModel Paragraphs);
-
-    public Task<GetWeightsModel> GetWeightsAsync()
+    public async Task<GetTypographyResponse> GetTypographyAsync(string id)
     {
-        return Task.FromResult(new GetWeightsModel(Font.ValidWeights));
+        var kit = await Kits.GetCurrentRevisionAsync(id);
+        if (kit == null)
+            throw new NotFoundException("Kit not found!");
+
+
+        var heading = new TypographyModel(
+            kit.Headings.Font.Family,
+            kit.Headings.Font.Weight,
+            kit.Headings.Font.Size?.Value,
+            kit.Headings.TypeScale,
+            kit.Headings.Font.LineHeight?.Value,
+            kit.Headings.FontSizeOverrides,
+            kit.Headings.Serialize() // to show on preview example
+        );
+
+        var paragraph = new TypographyModel(
+            kit.Paragraphs.Font.Family,
+            kit.Paragraphs.Font.Weight,
+            kit.Paragraphs.Font.Size?.Value,
+            kit.Paragraphs.TypeScale,
+            kit.Paragraphs.Font.LineHeight?.Value,
+            kit.Paragraphs.FontSizeOverrides,
+            kit.Paragraphs.Serialize() // to show on preview example
+        );
+
+        return new(heading, paragraph, Typography.TypeScales);
+    }
+
+    public Task<Dictionary<string, string>> GetWeightsAsync()
+    {
+        return Task.FromResult(new Dictionary<string, string>(Font.ValidWeights));
     }
 
     public async Task<FontListResponse> GetGoogleFontsAsync(string colors)
@@ -357,5 +362,4 @@ public class ElementsRepository
 
         return kit.Kit;
     }
-
 }

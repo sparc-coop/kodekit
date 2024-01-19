@@ -1,7 +1,4 @@
-﻿@using Kodekit.Components.Colors;
-@using Kodekit.Components.Icons
-
-<div tabindex="0" class="kit-card">
+﻿<div tabindex="0" class="kit-card">
     <header class="kit-card--header">
         <h3 @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</h3>
         <div class="kit-info">
@@ -91,7 +88,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Typography = await GetTypography(Kit.Id);
+        Typography = await ElementRepository.GetTypographyAsync(Kit.Id);
     }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
