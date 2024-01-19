@@ -39,8 +39,9 @@
             <div class="info">
                 <AuthorizeView>
                     <Authorized>
+
                         <div class="last-saved">
-                            Last Saved: @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
+                            Last Saved: @if (kit != null) @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
                         </div>
                         <div class="actions">
                             <button>
@@ -49,9 +50,17 @@
                             <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
                                 <DownloadIcon />
                             </a>
-                            <button class="delete-kit" @onclick="@(e => ShowDeleteModal(kit.Id))">
-                                <DeleteIcon />
-                            </button>
+                            @if (kit != null)
+                            {
+                                <button class="delete-kit" @onclick="@(e => ShowDeleteModal(kit.Id))">
+                                    <DeleteIcon />
+                                </button>
+                            } else
+                            {
+                                <button class="delete-kit" disabled>
+                                    <DeleteIcon />
+                                </button>
+                            }
                             <button>
                                 <MoreIcon />
                              </button>
@@ -183,7 +192,7 @@
 
 @inject IConfiguration Config
 @code {
-    [Parameter] public string kitId { get; set; }
+    [Parameter] public string? kitId { get; set; }
 
     bool ShowDropdown = false;
     string ShowKitOptions = "";
@@ -192,9 +201,9 @@
     string EditName = "";
     bool SelectAutoPublish = false;
     bool KitsList = false;
-    private ICollection<KitRevision> Kits;
-    private ICollection<Kit> UserKits;
-    Kit kit;
+    private ICollection<KitRevision>? Kits;
+    private ICollection<Kit>? UserKits;
+    Kit? kit;
     ElementReference tabSlider;
 
     protected override async Task OnParametersSetAsync()
@@ -212,11 +221,13 @@
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
-        if (user.Identity.IsAuthenticated)
+        if (user.Identity != null && user.Identity.IsAuthenticated)
         {
-            Console.WriteLine(kitId);
-            Kits = await KitRepository.GetRelatedKitsAsync(kitId);
-            UserKits = await KitRepository.GetUserKitsAsync(kit.UserId);
+            if (kit != null)
+            {
+                Kits = await KitRepository.GetRelatedKitsAsync(kit.Id);
+                if (kit.UserId != null) UserKits = await KitRepository.GetUserKitsAsync(kit.UserId);
+            }
         }
     }
 
@@ -227,9 +238,9 @@
         {
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
             var user = authState.User;
-            if (user.Identity.IsAuthenticated)
+            if (user.Identity != null && user.Identity.IsAuthenticated)
             {
-                Kits = await KitRepository.GetRelatedKitsAsync(kit.Id);
+                if (kit != null) Kits = await KitRepository.GetRelatedKitsAsync(kit.Id);
             }
 
             await tabSlider.FocusAsync();
@@ -249,8 +260,11 @@
 
     private async Task CopyKit()
     {
-        var newKit = await KitRepository.CopyKitAsync(kit.Id);
-        Nav.NavigateTo($"/{newKit.KitId}/introduction");
+        if (kit != null)
+        {
+            var newKit = await KitRepository.CopyKitAsync(kit.Id);
+            Nav.NavigateTo($"/{newKit.KitId}/introduction");
+        }
     }
 
     private async Task Publish(string kitId)
@@ -262,7 +276,6 @@
 
     private void ShowOptions(string selectedId)
     {
-        return;
         if (ShowKitOptions == selectedId)
         {
             ShowKitOptions = "";
@@ -271,6 +284,7 @@
         {
             ShowKitOptions = selectedId;
         }
+        return;
     }
 
     private void ShowEditName(string kitId)
@@ -281,9 +295,12 @@
 
     private async Task UpdateKitName(string id, string name)
     {
-        Kit selectedKit = UserKits.Where(x => x.Id == id).First();
-        selectedKit.Name = name;
-        await KitRepository.UpdateAsync(new UpdateKitRequest(id, name));
+        if (UserKits != null)
+        {
+            Kit selectedKit = UserKits.Where(x => x.Id == id).First();
+            selectedKit.Name = name;
+            await KitRepository.UpdateAsync(new UpdateKitRequest(id, name));
+        }
     }
 
     private void GoToPreview(string id)
@@ -295,14 +312,14 @@
     private async Task SetAutoPublish()
     {
         SelectAutoPublish = !SelectAutoPublish;
-        kit.IsAutoPublish = SelectAutoPublish;
+        if (kit != null) kit.IsAutoPublish = SelectAutoPublish;
 
         await UpdateKit();
     }
 
     private async Task UpdateKit()
     {
-        await KitRepository.UpdateAsync(new UpdateKitRequest(kit.Id, kit.Name, kit.UserId, kit.IsAutoPublish ?? false));
+        if (kit != null) await KitRepository.UpdateAsync(new UpdateKitRequest(kit.Id, kit.Name, kit.UserId, kit.IsAutoPublish ?? false));
     }
 
     private void ShowKitsList()

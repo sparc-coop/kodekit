@@ -24,7 +24,7 @@ public class UploadService
 
     public async Task<string> Upload(Stream stream, string fileName)
     {
-        var encodeFileName = Uri.EscapeUriString(fileName);
+        var encodeFileName = Uri.EscapeDataString(fileName);
         BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
         BlobClient blob = container.GetBlobClient(encodeFileName);
 
@@ -39,7 +39,7 @@ public class UploadService
         byte[] bytes = Encoding.ASCII.GetBytes(cssString);
         MemoryStream stream = new MemoryStream(bytes);
 
-        var encodeFileName = Uri.EscapeUriString(fileName);
+        var encodeFileName = Uri.EscapeDataString(fileName);
         BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
         BlobClient blob = container.GetBlobClient(encodeFileName);
 
@@ -51,7 +51,7 @@ public class UploadService
 
     public async Task<string> Download(string fileName)
     {
-        var encodeFileName = Uri.EscapeUriString(fileName);
+        var encodeFileName = Uri.EscapeDataString(fileName);
         BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
         BlobClient blob = container.GetBlobClient(encodeFileName + ".css");
 

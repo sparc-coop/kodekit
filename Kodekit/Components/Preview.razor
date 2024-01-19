@@ -7,7 +7,7 @@
         </div>
     } 
     <div class="preview-example-container">
-        @if (!IsLoading && CssUrl != null)
+        @if (IsLoading == null && CssUrl != null)
         {
             <style type="text/css">
                 @@import url('@CssUrl');
@@ -29,19 +29,19 @@
 
 @inject IConfiguration Config
 @code {
-    [Parameter] public RenderFragment ChildContent { get; set; }
-    [Parameter] public Kit Kit { get; set; }
-    [Parameter] public string AdditionalClass { get; set; }
-    [Parameter] public string BackgroundColor { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public Kit? Kit { get; set; }
+    [Parameter] public string? AdditionalClass { get; set; }
+    [Parameter] public string? BackgroundColor { get; set; }
     [Parameter] public bool PreviewBackgroundEditable { get; set; } = false;
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
-    string CssUrl;
-    string CleanCssUrl;
-    string Scope;
-    string CurrentVersion;
-    bool IsLoading;
-    string PreviewBackgroundColor;
+    string? CssUrl;
+    string? CleanCssUrl;
+    string? Scope;
+    string? CurrentVersion;
+    bool? IsLoading;
+    string? PreviewBackgroundColor;
 
     protected override void OnInitialized()
     {

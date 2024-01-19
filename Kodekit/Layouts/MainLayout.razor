@@ -12,8 +12,8 @@
 
 @inject IConfiguration Config
 @code {
-    string kitId;
-    private User User;
+    string? kitId;
+    private User? User;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -46,7 +46,7 @@
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
-        if (user.Identity.IsAuthenticated)
+        if (user.Identity != null && user.Identity.IsAuthenticated)
         {
             User = await UserRepository.GetUserAsync();
         }

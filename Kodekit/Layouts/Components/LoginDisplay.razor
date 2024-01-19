@@ -2,7 +2,7 @@
     <AuthorizeView>
         <Authorized>
             <div tabindex="0" class="user-menu"  @onclick="ToggleMenu" @onkeydown="ToggleMenu">
-                <button>Hi, @User.FirstName</button>
+                <button>Hi, @if (User != null) @User.FirstName</button>
             </div>
             @if (showMenu == true)
             {
@@ -25,20 +25,20 @@
 
 
 @code{
-    private User User;
+    private User? User;
     bool showMenu = false;
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
-        if (user.Identity.IsAuthenticated)
+        if (user.Identity != null && user.Identity.IsAuthenticated)
         {
             User = await UserRepository.GetUserAsync();
         }
     }
 
-    private async Task BeginLogout(MouseEventArgs args)
+    private void BeginLogout(MouseEventArgs args)
     {
         Nav.NavigateTo("authentication/logout");
     }

@@ -78,9 +78,9 @@
 @inject IConfiguration Config
 @code {
     [Parameter]
-    public Kit Kit { get; set; }
+    public Kit? Kit { get; set; }
 
-    GetTypographyResponse Typography { get; set; }
+    GetTypographyResponse? Typography { get; set; }
     string headingFontCss = "";
     string paragraphFontCss = "";
     string Show = "";
@@ -88,12 +88,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Typography = await ElementRepository.GetTypographyAsync(Kit.Id);
+        if (Kit != null) Typography = await ElementRepository.GetTypographyAsync(Kit.Id);
     }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 
-    private async Task GoToKit(string kit)
+    private void GoToKit(string kit)
     {
         Nav.NavigateTo($"/{kit}/introduction");
     }

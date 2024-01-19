@@ -16,12 +16,12 @@
 
 @inject IConfiguration Config
 @code {
-    [Parameter] public RenderFragment ChildContent { get; set; }
-    [Parameter] public Kit Kit { get; set; }
-    [Parameter] public string AdditionalClass { get; set; }
-    string CssUrl;
-    string CleanCssUrl;
-    string Scope;
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public Kit? Kit { get; set; }
+    [Parameter] public string? AdditionalClass { get; set; }
+    string? CssUrl;
+    string? CleanCssUrl;
+    string? Scope;
     bool IsLoading;
 
     protected override void OnInitialized()

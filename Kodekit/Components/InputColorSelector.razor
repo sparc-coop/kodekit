@@ -12,10 +12,10 @@
 }
 
 @code {
-    IDictionary<string, string> Model;
-    [Parameter] public string KitId { get; set; }
-    private string _value;
-    [Parameter] public string Value
+    IDictionary<string, string>? Model;
+    [Parameter] public string? KitId { get; set; }
+    private string? _value;
+    [Parameter] public string? Value
     {
         get => _value;
         set
@@ -29,13 +29,15 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var colors = await ElementRepository.GetColorsAsync(KitId);
-
-        Model = new Dictionary<string, string>
+        if (KitId != null)
         {
-            { colors.Primary, "Primary (500)" },
-            { colors.Secondary, "Secondary (500)" },
-            { colors.Tertiary, "Tertiary (500)" },
-        };
+            var colors = await ElementRepository.GetColorsAsync(KitId);
+            Model = new Dictionary<string, string>
+            {
+                { colors.Primary, "Primary (500)" },
+                { colors.Secondary, "Secondary (500)" },
+                { colors.Tertiary, "Tertiary (500)" },
+            };
+        }
     }
 }

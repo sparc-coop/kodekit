@@ -6,7 +6,7 @@
         @if (!IsLoading)
         {
             <header class="dashboard--header">
-                <p class="user">@User.FirstName</p>
+                <p class="user">@if(User != null) @User.FirstName</p>
                 <h2>My Kits</h2>
                 <p class="subheader">View and manage your kits for your projects.</p>
                 <div class="right">
@@ -51,9 +51,8 @@
 @inject IConfiguration Config
 
 @code {
-    private User User;
-    private ICollection<Kit> Kits;
-    private ICollection<KitRevision> KitRevisions;
+    private User? User;
+    private ICollection<Kit>? Kits;
     bool IsLoading;
 
     protected override async Task OnInitializedAsync()
@@ -61,7 +60,7 @@
         IsLoading = true;
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
-        if (user.Identity.IsAuthenticated)
+        if (user.Identity != null && user.Identity.IsAuthenticated)
         {
             User = await UserRepository.GetUserAsync();
             Kits = await KitRepository.GetUserKitsAsync(User.Id);
@@ -93,13 +92,18 @@
     private async Task CaptureExistingKit(string id)
     {
         var existingKit = await KitRepository.GetKitAsync(id);
-        if (Kits.Any(x => x.Id == existingKit.Id))
-            return;
-
-        if (string.IsNullOrWhiteSpace(existingKit?.UserId))
+        if (Kits != null)
         {
-            await KitRepository.UpdateAsync(new UpdateKitRequest(existingKit.Id,existingKit.Name, existingKit.UserId, existingKit.IsAutoPublish ?? false));
-            Kits.Add(existingKit);
+            if (Kits.Any(x => x.Id == existingKit.Id))
+                return;
+            if (string.IsNullOrWhiteSpace(existingKit?.UserId))
+            {
+                if (existingKit != null)
+                {
+                    await KitRepository.UpdateAsync(new UpdateKitRequest(existingKit.Id, existingKit.Name, existingKit.UserId, existingKit.IsAutoPublish ?? false));
+                    Kits.Add(existingKit);
+                }
+            }
         }
     }
 
@@ -107,7 +111,7 @@
     {
         if (filter == "date-mod")
         {
-            Kits = Kits.OrderByDescending(x => x.DateModified).ToList();
+            if (Kits != null) Kits = Kits.OrderByDescending(x => x.DateModified).ToList();
         }
     }
 

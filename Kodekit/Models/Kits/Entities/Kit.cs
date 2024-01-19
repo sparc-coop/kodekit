@@ -46,7 +46,7 @@ public class Kit : Root<string>
     public string? UserId { get; set; }
     public DateTime DateCreated { get; set; }
 
-    internal void Publish()
+    internal new void Publish()
     {
         PublishedRevisionId = CurrentRevisionId;
         DateModified = DateTime.UtcNow;

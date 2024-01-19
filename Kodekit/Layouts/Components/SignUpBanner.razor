@@ -23,7 +23,7 @@
         var user = authState.User;
 
         await tabBanner.FocusAsync();
-        if (user.Identity.IsAuthenticated)
+        if (user.Identity != null && user.Identity.IsAuthenticated)
         {
             showBanner = false;
         }
