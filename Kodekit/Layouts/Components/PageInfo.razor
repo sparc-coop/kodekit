@@ -281,9 +281,9 @@
 
     private async Task UpdateKitName(string id, string name)
     {
-        Kit selectedKit = UserKits.Where(x => x.Id == id).FirstOrDefault();
+        Kit selectedKit = UserKits.Where(x => x.Id == id).First();
         selectedKit.Name = name;
-        await KitRepository.UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
+        await KitRepository.UpdateAsync(new UpdateKitRequest(id, name));
     }
 
     private void GoToPreview(string id)

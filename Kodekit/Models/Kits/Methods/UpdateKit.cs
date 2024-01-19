@@ -1,6 +1,6 @@
 ﻿namespace Kodekit;
 
-public record UpdateKitRequest(string KitId, string Name, string? UserId, bool IsAutoPublish);
+public record UpdateKitRequest(string KitId, string Name, string? UserId = null, bool IsAutoPublish = false);
 public class UpdateKit : PublicFeature<UpdateKitRequest, Kit>
 {
     public KitRepository Kits { get; }
