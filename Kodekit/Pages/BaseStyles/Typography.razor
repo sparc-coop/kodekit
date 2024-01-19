@@ -209,12 +209,7 @@
 
     protected override async Task<Kit> UpdateAsync()
     {
-        var result = new UpdateTypographyModel
-            {
-                KitId = kitId,
-                Headings = Model.Heading,
-                Paragraphs = Model.Paragraph
-            };
+        var result = new UpdateTypographyModel(kitId, Model.Heading, Model.Paragraph);
 
         var kit = await ElementRepository.UpdateTypographyAsync(result);
         Model = await ElementRepository.GetTypographyAsync(kitId);

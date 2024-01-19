@@ -302,7 +302,7 @@
 
     private async Task UpdateKit()
     {
-        await KitRepository.UpdateKitAsync(new UpdateKitRequest { KitId = kit.Id, Name = kit.Name, IsAutoPublish = kit.IsAutoPublish ?? false });
+        await KitRepository.UpdateAsync(new UpdateKitRequest(kit.Id, kit.Name, kit.UserId, kit.IsAutoPublish ?? false));
     }
 
     private void ShowKitsList()
@@ -310,10 +310,13 @@
         KitsList = !KitsList;
     }
 
-    private async Task SelectKit(string id)
+    private void SelectKit(string id)
     {
         KitsList = !KitsList;
-        kit = UserKits.Where(x => x.Id == id).FirstOrDefault();
+        if (UserKits != null)
+        {
+            kit = UserKits.Where(x => x.Id == id).FirstOrDefault();
+        }
         Nav.NavigateTo($"/{id}/introduction");
     }
 }
