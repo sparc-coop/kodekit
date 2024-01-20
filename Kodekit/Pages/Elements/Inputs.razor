@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<UpdateInputsModel>
-@page "/{kitId}/inputs"
+﻿@page "/{kitId}/inputs"
 
 <div class="inputs page">
     <div class="page__container">
@@ -11,7 +10,7 @@
             </p>
         </header>
         <div class="content">
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -24,36 +23,36 @@
                         <div class="inputs--wrapper">
                             <div>
                                 <label>
-                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    <InputNumber @bind-Value="Input.Font.Size" min="1" />
                                     Input Font Size (px)
                                 </label>
                                 <label>
-                                    <InputFontWeight @bind-Value="Model.FontWeight" />
+                                    <InputFontWeight @bind-Value="Input.Font.Weight" />
                                     Input Font Weight
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                    <InputNumber @bind-Value="Input.Padding.Vertical" min="0" />
                                     Vertical Padding (px)
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                    <InputNumber @bind-Value="Input.Padding.Horizontal" min="0" />
                                     Horizontal Padding (px)
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                    <InputNumber @bind-Value="Input.Border.Radius" min="0" />
                                     Corner Radius (px)
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                    <InputNumber @bind-Value="Input.Border.Width" min="0" />
                                     Border Width (px)
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                             <label class="input-form-preview">
                                 <input placeholder="Placeholder" />
                             </label>
@@ -74,7 +73,7 @@
                                 Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
                             </p>
                         </header>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                             <label>
                                 Placeholder
                                 <PersonSvg />
@@ -114,13 +113,22 @@
 </div>
 
 @code {
-    protected override async Task<UpdateInputsModel> GetAsync()
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    Input? Input;
+    EditContext? Context;
+
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetInputsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Input = kit.Revision.Inputs;
+        Context = new EditContext(kit.Revision.Inputs);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateInputsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

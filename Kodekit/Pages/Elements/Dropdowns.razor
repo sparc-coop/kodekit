@@ -11,7 +11,7 @@
             </p>
         </header>
         <div class="content">
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -22,39 +22,39 @@
                             </p>
                             <aside>This element inherits direct styling from <a href="@($"/{kitId}/inputs")">Inputs & Textareas</a> as defaults.</aside>
                         </header>
-                        @if (Model.OverwriteInherited)
+                        @if (Dropdown.OverwriteInherited)
                         {
                             <div class="inputs--wrapper">
                                 <label>
-                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    <InputNumber @bind-Value="Dropdown.Font.Size" min="1" />
                                     Font Size (px)
                                 </label>
                                 <label>
-                                    <InputFontWeight @bind-Value=Model.FontWeight />
+                                    <InputFontWeight @bind-Value=Dropdown.Font.Weight />
                                     Font Weight
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                    <InputNumber @bind-Value="Dropdown.Padding.Vertical" min="0" />
                                     Vertical Padding (px)
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                    <InputNumber @bind-Value="Dropdown.Padding.Horizontal" min="0" />
                                     Horizontal Padding (px)
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                    <InputNumber @bind-Value="Dropdown.Border.Radius" min="0" />
                                     Corner Radius (px)
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                    <InputNumber @bind-Value="Dropdown.Border.Width" min="0" />
                                     Border Width (px)
                                 </label>
                             </div>
                         }
                         <div class="overwrite-styling">
-                            <Switch @bind-Value=Model.OverwriteInherited Title="Overwrite Inherited Styling" />
+                            <Switch @bind-Value=Dropdown.OverwriteInherited Title="Overwrite Inherited Styling" />
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                                 <select>
                                     <option>Dropdown Menu</option>
                                     <option>Default Row</option>
@@ -70,13 +70,22 @@
 </div>
 
 @code {
-    protected override async Task<UpdateDropdownsModel> GetAsync()
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    Dropdown? Dropdown;
+    EditContext? Context;
+
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetDropdownsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Dropdown = kit.Revision.Dropdowns;
+        Context = new EditContext(kit.Revision.Dropdowns);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateDropdownsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

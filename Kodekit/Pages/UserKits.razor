@@ -100,7 +100,7 @@
             {
                 if (existingKit != null)
                 {
-                    await KitRepository.UpdateAsync(new UpdateKitRequest(existingKit.Id, existingKit.Name, existingKit.UserId, existingKit.IsAutoPublish ?? false));
+                    await KitRepository.UpdateAsync(existingKit.Id, existingKit.Name, existingKit.UserId, existingKit.IsAutoPublish ?? false);
                     Kits.Add(existingKit);
                 }
             }

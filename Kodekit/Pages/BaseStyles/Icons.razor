@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<UpdateIconsModel>
-@page "/{kitId}/icons"
+﻿@page "/{kitId}/icons"
 
 <div class="icons page">
     <div class="page__container">
@@ -18,12 +17,12 @@
                         There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
                     </p>
                 </header>
-                @if (kit != null && Model != null)
+                @if (kit.Kit != null)
                 {
                     <EditForm EditContext="@Context">
                         <section>
                             <label>
-                                <InputSelect @bind-Value="Model.Name">
+                                <InputSelect @bind-Value="Icon.Name">
                                     <option>Select:</option>
                                     <option value="Material">Material</option>
                                     <option value="Remix">Remix</option>
@@ -32,10 +31,10 @@
                                 </InputSelect>
                                 Icon Set
                             </label>
-                        <Preview Kit=kit>
-                            @foreach (var icon in Model.IconsList)
+                        <Preview Kit=kit.Kit>
+                            @foreach (var icon in IconList)
                             {
-                                <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                                <i class="@(Icon.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
                             }
                         </Preview>
                         </section>
@@ -47,16 +46,24 @@
 </div>
 
 @code {
-    protected override async Task<UpdateIconsModel> GetAsync()
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    IconLibrary? Icon;
+    List<string>? IconList;
+    EditContext? Context;
+    
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetIconsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Icon = kit.Revision.Icons;
+        IconList = Icon.GetRandomIconsAsync().Result;
+        Context = new EditContext(kit.Revision.Icons);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        var result = await ElementRepository.UpdateIconsAsync(Model);
-        Model = await GetAsync();
-        return result;
-
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

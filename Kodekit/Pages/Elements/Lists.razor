@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<UpdateListsModel>
-@page "/{kitId}/lists"
+﻿@page "/{kitId}/lists"
 
 <div class="lists page">
     <div class="page__container">
@@ -11,7 +10,7 @@
             </p>
         </header>
         <div class="content">
-            @if (kit != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -25,7 +24,7 @@
                             <h4>List Styling</h4>
                             <div class="inputs--wrapper">
                                 <label>
-                                    <InputSelect @bind-Value=Model.OlStyleType>
+                                    <InputSelect @bind-Value=List.OrderedListStyleType>
                                         <option value="none">None</option>
                                         <option value="decimal">Decimal</option>
                                         <option value="decimal-leading-zero">Decimal padded by initial zeros</option>
@@ -40,7 +39,7 @@
                                     OL Style Type
                                 </label>
                                 <label>
-                                    <InputSelect @bind-Value=Model.UlStyleType>
+                                    <InputSelect @bind-Value=List.UnorderedListStyleType>
                                         <option value="none">None</option>
                                         <option value="disc">Disc</option>
                                         <option value="circle">Circle</option>
@@ -49,11 +48,11 @@
                                     UL Style Type
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.ListVerticalPadding" min="0" />
+                                    <InputNumber @bind-Value="List.ListPadding.Vertical" min="0" />
                                     Vertical Padding
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.ListHorizontalPadding" min="0" />
+                                    <InputNumber @bind-Value="List.ListPadding.Horizontal" min="0" />
                                     Horizontal Padding
                                 </label>
                             </div>
@@ -62,24 +61,24 @@
                             <h4>List Item Styling</h4>
                             <div class="inputs--wrapper">
                                 <label>
-                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                    <InputNumber @bind-Value="List.Font.Size" min="1" />
                                     List Item Font Size
                                 </label>
                                 <label>
-                                    <InputFontWeight @bind-Value="Model.FontWeight" />
+                                    <InputFontWeight @bind-Value="List.Font.Weight" />
                                     List Item Font Weight
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.ItemVerticalPadding" min="0" />
+                                    <InputNumber @bind-Value="List.ItemPadding.Vertical" min="0" />
                                     Vertical Padding
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.ItemHorizontalPadding" min="0" />
+                                    <InputNumber @bind-Value="List.ItemPadding.Horizontal" min="0" />
                                     Horizontal Padding
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                             <ol>
                                 <li>List Item</li>
                                 <li>List Item</li>
@@ -101,13 +100,22 @@
 </div>
 
 @code {
-    protected override async Task<UpdateListsModel> GetAsync()
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    List? List;
+    EditContext? Context;
+
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetListsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        List = kit.Revision.Lists;
+        Context = new EditContext(kit.Revision.Lists);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateListsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

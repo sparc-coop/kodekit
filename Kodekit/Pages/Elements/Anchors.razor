@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<UpdateAnchorsModel>
-@page "/{kitId}/anchors"
+﻿@page "/{kitId}/anchors"
 
 <div class="anchors page">
     <div class="page__container">
@@ -11,7 +10,7 @@
             </p>
         </header>
         <div class="content">
-            @if (kit != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -23,7 +22,7 @@
                         </header>
                         <div>
                             <label>
-                                <InputFontWeight @bind-Value="Model.FontWeight" />
+                                <InputFontWeight @bind-Value="Anchor.Font.Weight" />
                                 Font Weight
                             </label>
                         </div>
@@ -31,24 +30,24 @@
                             <h4>Link States</h4>
                             <div class="inputs--wrapper">
                                 <label>
-                                    <InputColor @bind-Value="Model.DefaultColor" />
+                                    <InputColor @bind-Value="Anchor.DefaultColor" />
                                     Default
                                 </label>
                                 <label>
-                                    <InputColor @bind-Value="Model.HoverColor" />
+                                    <InputColor @bind-Value="Anchor.HoverColor" />
                                     Hover
                                 </label>
                                 <label>
-                                    <InputColor @bind-Value="Model.VisitedColor" />
+                                    <InputColor @bind-Value="Anchor.VisitedColor" />
                                     Visited
                                 </label>
                                 <label>
-                                    <InputColor @bind-Value="Model.ActiveColor" />
+                                    <InputColor @bind-Value="Anchor.ActiveColor" />
                                     Active
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit PreviewBackgroundEditable=true>
+                        <Preview Kit=kit.Kit PreviewBackgroundEditable=true>
                             <a href="#@Guid.NewGuid()">Default</a>
                             <a href="#@Guid.NewGuid()" class="hover">Hover</a>
                             <a href="#@Guid.NewGuid()" class="visited">Visited</a>
@@ -62,13 +61,21 @@
 </div>
 
 @code {
-    protected override async Task<UpdateAnchorsModel> GetAsync()
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    Anchor? Anchor;
+    EditContext? Context;
+
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetAnchorsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Anchor = kit.Revision.Anchors;
+        Context = new EditContext(kit.Revision.Anchors);
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task<(Kit Kit, KitRevision Revision)> UpdateAsync()
     {
-        return await ElementRepository.UpdateAnchorsAsync(Model);
+        return await KitRepository.UpdateAsync(Kit.Id, Revision.Id);
     }
 }

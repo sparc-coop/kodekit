@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<UpdateButtonsModel>
-@page "/{kitId}/buttons"
+﻿@page "/{kitId}/buttons"
 
 <div class="buttons page">
     <div class="page__container">
@@ -11,7 +10,7 @@
             </p>
         </header>
         <div class="content">
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -23,41 +22,41 @@
                         </header>
                         <div class="inputs--wrapper">
                             <label>
-                                <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                <InputNumber @bind-Value="Button.Font.Size" min="1" />
                                 Font Size (px)
                             </label>
                             <label>
-                                <InputFontWeight @bind-Value="Model.FontWeight" />
+                                <InputFontWeight @bind-Value="Button.Font.Weight" />
                                 Font Weight
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                <InputNumber @bind-Value="Button.Padding.Vertical" min="0" />
                                 Vertical Padding (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                <InputNumber @bind-Value="Button.Padding.Horizontal" min="0" />
                                 Horizontal Padding (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                <InputNumber @bind-Value="Button.Border.Radius" min="0" />
                                 Corner Radius (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                <InputNumber @bind-Value="Button.Border.Width" min="0" />
                                 Border Width (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.IconWidth" min="0" />
+                                <InputNumber @bind-Value="Button.IconWidth" min="0" />
                                 Icon Size (px)
                             </label>
                         </div>
                         <div class="secondary-button">
-                            <Switch @bind-Value=Model.RemoveSecondaryBorder Title="Secondary Button" />
+                            <Switch @bind-Value=Button.RemoveSecondaryBorder Title="Secondary Button" />
                         </div>
                         <div class="preview-background core-buttons">
                             <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_CoreButtons" BackgroundColor="@PreviewBackground_CoreButtons" /></label>
                         </div>
-                        <Preview Kit=kit BackgroundColor=@PreviewBackground_CoreButtons>
+                        <Preview Kit=kit.Kit BackgroundColor=@PreviewBackground_CoreButtons>
                             <button name="Preview Button">Button</button>
                             <button>
                                 <KodekitLogoSvg />
@@ -95,7 +94,7 @@
                         <div class="preview-background button-variations">
                             <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_Variations" BackgroundColor="@PreviewBackground_Variations" /></label>
                         </div>
-                        <Preview Kit=kit BackgroundColor=@PreviewBackground_Variations>
+                        <Preview Kit=kit.Kit BackgroundColor=@PreviewBackground_Variations>
                             <div>
                                 <button name="Preview Button">Default</button>
                                 <button>
@@ -139,16 +138,25 @@
 </div>
 
 @code {
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    Button? Button;
+    EditContext? Context;
+
     public string PreviewBackground_CoreButtons;
     public string PreviewBackground_Variations;
 
-    protected override async Task<UpdateButtonsModel> GetAsync()
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetButtonsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Button = kit.Revision.Buttons;
+        Context = new EditContext(kit.Revision.Buttons);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateButtonsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

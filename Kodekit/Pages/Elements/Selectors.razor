@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<UpdateSelectorsModel>
-@page "/{kitId}/selectors"
+﻿@page "/{kitId}/selectors"
 
 <div class="selectors page">
     <div class="page__container">
@@ -11,7 +10,7 @@
             </p>
         </header>
         <div class="content">
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -23,15 +22,15 @@
                         </header>
                         <div class="inputs--wrapper">
                             <label class="small">
-                                <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                <InputNumber @bind-Value="Selector.Font.Size" min="1" />
                                 Selector Size (px)
                             </label>
                             <label>
-                                <InputColorSelector KitId="@kitId" @bind-Value="Model.ActiveColor" />
+                                <InputColorSelector KitId="@kitId" @bind-Value="Selector.ActiveColor" />
                                 Active Color
                             </label>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                             <div>
                                 <label for="checkbox-default">
                                     <input id="checkbox-default" type="checkbox" /> Default
@@ -77,14 +76,22 @@
 </div>
 
 @code {
+    [Parameter] public string? kitId { get; set; }
 
-    protected override async Task<UpdateSelectorsModel> GetAsync()
+    (Kit Kit, KitRevision Revision) kit;
+    Selector? Selector;
+    EditContext? Context;
+
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetSelectorsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Selector = kit.Revision.Selectors;
+        Context = new EditContext(kit.Revision.Selectors);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateSelectorsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

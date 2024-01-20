@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<ColorsModel>
-@page "/{kitId}/colors"
+﻿@page "/{kitId}/colors"
 @using Kodekit.Components.Colors
 
 <div class="colors page">
@@ -15,10 +14,10 @@
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
-                    <KitStyle Kit=kit>
+                    <KitStyle Kit=kit.Kit>
                         <section class="colors--brand">
                             <header class="flex">
                                 <h3><span>01</span> Brand Colors</h3>
@@ -29,7 +28,7 @@
                             <div class="color-display primary">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Primary))
+                                        @if (string.IsNullOrEmpty(Primary.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="Primary" />
                                         }
@@ -37,14 +36,14 @@
                                         {
                                             <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
                                         }
-                                        <InputColor @bind-Value="Model.Primary" />
+                                        <InputColor @bind-Value="Primary.HexValue" />
                                     </label>
                                 </div>
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "primary-" + weight;
-                                        @if (string.IsNullOrEmpty(Model.Primary))
+                                        @if (string.IsNullOrEmpty(Primary.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
                                         }
@@ -58,7 +57,7 @@
                             <div class="color-display secondary">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                        @if (string.IsNullOrEmpty(Secondary.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="Secondary" />
                                         }
@@ -66,14 +65,14 @@
                                         {
                                             <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
                                         }
-                                        <InputColor @bind-Value="Model.Secondary" />
+                                        <InputColor @bind-Value="Secondary.HexValue" />
                                     </label>
                                 </div>
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "secondary-" + weight;
-                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                        @if (string.IsNullOrEmpty(Secondary.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
                                         }
@@ -87,7 +86,7 @@
                             <div class="color-display tertiary">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Tertiary))
+                                        @if (string.IsNullOrEmpty(Tertiary.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="Tertiary" />
                                         }
@@ -95,14 +94,14 @@
                                         {
                                             <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
                                         }
-                                        <InputColor @bind-Value="Model.Tertiary" />
+                                        <InputColor @bind-Value="Tertiary.HexValue" />
                                     </label>
                                 </div>
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "tertiary-" + weight;
-                                        @if (string.IsNullOrEmpty(Model.Tertiary))
+                                        @if (string.IsNullOrEmpty(Tertiary.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
                                         }
@@ -124,7 +123,7 @@
                             <div class="color-display greyscale">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Lightest))
+                                        @if (string.IsNullOrEmpty(Lightest.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="Lightest" />
                                         }
@@ -132,10 +131,10 @@
                                         {
                                             <ColorCard Type="Lightest" Weight="Lightest" Hex="grey-100" />
                                         }
-                                        <InputColor @bind-Value="Model.Lightest" />
+                                        <InputColor @bind-Value="Lightest.HexValue" />
                                     </label>
                                     <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Darkest))
+                                        @if (string.IsNullOrEmpty(Darkest.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="Darkest" />
                                         }
@@ -143,14 +142,14 @@
                                         {
                                             <ColorCard Type="Darkest" Weight="Darkest" Hex="grey-900" />
                                         }
-                                        <InputColor @bind-Value="Model.Darkest" />
+                                        <InputColor @bind-Value="Darkest.HexValue" />
                                     </label>
                                 </div>
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "grey-" + weight;
-                                        @if (string.IsNullOrEmpty(Model.Lightest) || string.IsNullOrEmpty(Model.Darkest))
+                                        @if (string.IsNullOrEmpty(Lightest.HexValue) || string.IsNullOrEmpty(Darkest.HexValue))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
                                         }
@@ -171,7 +170,7 @@
                             </header>
                             <div class="color-display">
                                 <label class="edit-color">
-                                    @if (string.IsNullOrEmpty(Model.Error))
+                                    @if (string.IsNullOrEmpty(Error.HexValue))
                                     {
                                         <ColorCardPlaceholder Weight="Error" />
                                     }
@@ -179,10 +178,10 @@
                                     {
                                         <ColorCard Type="Error" Weight="Error" Hex="error-500" />
                                     }
-                                    <InputColor @bind-Value="Model.Error" />
+                                    <InputColor @bind-Value="Error.HexValue" />
                                 </label>
                                 <label class="edit-color">
-                                    @if (string.IsNullOrEmpty(Model.Warning))
+                                    @if (string.IsNullOrEmpty(Warning.HexValue))
                                     {
                                         <ColorCardPlaceholder Weight="Warning" />
                                     }
@@ -190,10 +189,10 @@
                                     {
                                         <ColorCard Type="Warning" Weight="Warning" Hex="warning-500" />
                                     }
-                                    <InputColor @bind-Value="Model.Warning" />
+                                    <InputColor @bind-Value="Warning.HexValue" />
                                 </label>
                                 <label class="edit-color">
-                                    @if (string.IsNullOrEmpty(Model.Success))
+                                    @if (string.IsNullOrEmpty(Success.HexValue))
                                     {
                                         <ColorCardPlaceholder Weight="Success" />
                                     }
@@ -201,7 +200,7 @@
                                     {
                                         <ColorCard Type="Success" Weight="Success" Hex="success-500" />
                                     }
-                                    <InputColor @bind-Value="Model.Success" />
+                                    <InputColor @bind-Value="Success.HexValue" />
                                 </label>
                             </div>
                         </section>
@@ -216,8 +215,8 @@
                             <div class="cards--wrapper">
                                 <div class="card-with-image" style="background: @PreviewBackground;">
                                     <div class="color-blobs--wrapper">
-                                        <ColorBlob Primary="@Model.Primary" />
-                                        <ColorBlob2 Secondary="@Model.Secondary" Tertiary="@Model.Tertiary"/>
+                                        <ColorBlob Primary="@Primary.HexValue" />
+                                        <ColorBlob2 Secondary="@Secondary.HexValue" Tertiary="@Tertiary.HexValue"/>
                                         <img class="color-blob--noise" src="images/Noise & Texture.png" />
                                     </div>
                                     <div class="color-content--wrapper">
@@ -251,8 +250,24 @@
 </div>
 
 @code {
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    List<Variable<Color>>? ColorList;
+    Color? Primary;
+    Color? Secondary;
+    Color? Tertiary;
+    Color? Lightest;
+    Color? Darkest;
+    Color? Success;
+    Color? Warning;
+    Color? Error;
+    EditContext? Context;    
+
     List<string> Weights = new List<string> { "50", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
     public string PreviewBackground;
+
+    bool DebounceInputs;
 
     protected override async Task OnInitializedAsync()
     {
@@ -260,13 +275,24 @@
         await base.OnInitializedAsync();
     }
 
-    protected override async Task<ColorsModel> GetAsync()
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetColorsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        ColorList = kit.Revision.Colors;
+        Primary = ColorList.FirstOrDefault(x => x.Name == "Primary").Value;
+        Secondary = ColorList.FirstOrDefault(x => x.Name == "Secondary").Value;
+        Tertiary = ColorList.FirstOrDefault(x => x.Name == "Tertiary").Value;
+        Lightest = ColorList.FirstOrDefault(x => x.Name == "Lightest").Value;
+        Darkest = ColorList.FirstOrDefault(x => x.Name == "Darkest").Value;
+        Success = ColorList.FirstOrDefault(x => x.Name == "Success").Value;
+        Warning = ColorList.FirstOrDefault(x => x.Name == "Warning").Value;
+        Error = ColorList.FirstOrDefault(x => x.Name == "Error").Value;
+        Context = new EditContext(kit.Revision.Colors);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateColorsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

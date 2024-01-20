@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<ShadowsModel>
-@page "/{kitId}/box-shadow"
+﻿@page "/{kitId}/box-shadow"
 
 <div class="effects-page page @(isBackgroundWhite ? "white-background" : "")">
     <div class="page__container">
@@ -20,7 +19,7 @@
             </div>
         </header>
         <div class="content">
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
@@ -29,27 +28,27 @@
                         </header>
                         <div class="inputs--wrapper">
                             <label>
-                                <InputNumber @bind-Value="Model.Small.X" class="small" />
+                                <InputNumber @bind-Value="shadowSmall.X" class="small" />
                                 X Length (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.Small.Y" class="small" />
+                                <InputNumber @bind-Value="shadowSmall.Y" class="small" />
                                 Y Length (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.Small.Blur" class="small" />
+                                <InputNumber @bind-Value="shadowSmall.Blur" class="small" />
                                 Blur (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.Small.Spread" class="small" />
+                                <InputNumber @bind-Value="shadowSmall.Spread" class="small" />
                                 Spread (px)
                             </label>
                             <label>
-                                <InputColor @bind-Value="Model.Small.HexColor" />
+                                <InputColor @bind-Value="shadowSmall.HexColor" />
                                 Shadow Color
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
+                                <InputNumber @bind-Value="shadowSmall.Opacity" class="small" />
                                 Shadow Opacity (%)
                             </label>
                         </div>
@@ -60,34 +59,34 @@
                         </header>
                         <div class="inputs--wrapper">
                             <label>
-                                <InputNumber @bind-Value="Model.XLarge.X" class="small" />
+                                <InputNumber @bind-Value="shadowXlarge.X" class="small" />
                                 X Length (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.XLarge.Y" class="small" />
+                                <InputNumber @bind-Value="shadowXlarge.Y" class="small" />
                                 Y Length (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.XLarge.Blur" class="small" />
+                                <InputNumber @bind-Value="shadowXlarge.Blur" class="small" />
                                 Blur (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
+                                <InputNumber @bind-Value="shadowXlarge.Spread" class="small" />
                                 Spread (px)
                             </label>
                             <label>
-                                <InputColor @bind-Value="Model.XLarge.HexColor" />
+                                <InputColor @bind-Value="shadowXlarge.HexColor" />
                                 Shadow Color
                             </label>
                             <label>
-                                <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
+                                <InputNumber @bind-Value="shadowXlarge.Opacity" class="small" />
                                 Shadow Opacity (%)
                             </label>
                         </div>
                         @*<div class="preview-background">
                             <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground" BackgroundColor="@PreviewBackground" /></label>
                         </div>*@
-                        <Preview Kit=kit PreviewBackgroundEditable=true>
+                        <Preview Kit=kit.Kit PreviewBackgroundEditable=true>
                             <div>
                                 <div class="shadow-100"></div>
                                 <label>Small Shadow</label>
@@ -113,16 +112,29 @@
 </div>
 
 @code {
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    List<Variable<Shadow>>? Shadows;
+    Shadow? shadowSmall;
+    BoxShadow? shadowXlarge;
+    EditContext? Context;
+
     private bool isBackgroundWhite = false;
     public string PreviewBackground;
 
-    protected override async Task<ShadowsModel> GetAsync()
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetShadowsAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Shadows = kit.Revision.Shadows;
+        smallShadow = Shadows.Find(x => x.Name == "shadow-100");
+        largeShadow = Shadows.Find(x => x.Name == "shadow-1000");
+        Context = new EditContext(kit.Revision.Shadows);
+        return kit;
     }
-    
-    protected override async Task<Kit> UpdateAsync()
+
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        return await ElementRepository.UpdateShadowsAsync(Model);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

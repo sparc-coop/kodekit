@@ -23,11 +23,11 @@ public class ElementRepository
         );
     }
 
-    public async Task<Kit> UpdateAnchorsAsync(UpdateAnchorsModel request)
+    public async Task<Kit> UpdateAnchorsAsync(string KitId, double? FontSize, string? FontWeight, string? DefaultColor, string? HoverColor, string? VisitedColor, string? ActiveColor)
     {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
+        var kit = await Kits.GetCurrentAsync(KitId);
 
-        var anchor = new Anchor(request.FontSize, request.FontWeight, request.DefaultColor, request.HoverColor, request.VisitedColor, request.ActiveColor);
+        var anchor = new Anchor(FontSize, FontWeight, DefaultColor, HoverColor, VisitedColor, ActiveColor);
 
         kit.Revision.UpdateAnchors(anchor);
         await Kits.UpdateAsync(kit);

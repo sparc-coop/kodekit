@@ -299,7 +299,7 @@
         {
             Kit selectedKit = UserKits.Where(x => x.Id == id).First();
             selectedKit.Name = name;
-            await KitRepository.UpdateAsync(new UpdateKitRequest(id, name));
+            await KitRepository.UpdateAsync(id, name);
         }
     }
 
@@ -319,7 +319,7 @@
 
     private async Task UpdateKit()
     {
-        if (kit != null) await KitRepository.UpdateAsync(new UpdateKitRequest(kit.Id, kit.Name, kit.UserId, kit.IsAutoPublish ?? false));
+        if (kit != null) await KitRepository.UpdateAsync(kit.Id, kit.Name, kit.UserId, kit.IsAutoPublish ?? false);
     }
 
     private void ShowKitsList()

@@ -163,14 +163,14 @@ public class KitRepository
         await Revisions.AddAsync(revision);
     }
 
-    internal async Task UpdateAsync(UpdateKitRequest request)
+    internal async Task UpdateAsync(string KitId, string Name, string? UserId = null, bool IsAutoPublish = false)
     {
-        var kit = await GetKitAsync(request.KitId);
+        var kit = await GetKitAsync(KitId);
 
         if (string.IsNullOrWhiteSpace(kit.UserId) && User?.Id() != null)
             kit.SetUser(User.Id());
 
-        kit.Update(request.Name, request.IsAutoPublish);
+        kit.Update(Name, IsAutoPublish);
         await Kits.UpdateAsync(kit);
     }
 

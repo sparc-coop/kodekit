@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<GetTypographyResponse>
-@page "/{kitId}/typography"
+﻿@page "/{kitId}/typography"
 
 <div class="typography page">
     <div class="page__container">
@@ -15,7 +14,7 @@
             @if (Model != null)
             {
                 @*                <AccessibilityChecker Model="Model"/>*@
-                <EditForm EditContext="@Context">
+                <EditForm EditContext="@ContextHeadings">
                     <section>
                         <header>
                             <h3 class="section-header"><span>01</span>Heading Settings</h3>
@@ -122,6 +121,8 @@
                             <p class="subtitle">@previewText</p>
                         </Preview>
                     </section>
+                </EditForm>
+                <EditForm EditContext="@ContextParagraphs">
                     <section>
                         <header>
                             <h3><span>02</span> Paragraph Settings</h3>
@@ -191,6 +192,14 @@
 </div>
 
 @code {
+    [Parameter] public string? kitId { get; set; }
+
+    (Kit Kit, KitRevision Revision) kit;
+    Typography? Headings;
+    Typography? Paragraphs;
+    EditContext? ContextHeadings;
+    EditContext? ContextParagraphs;
+
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
     FontListResponse Fonts;
@@ -202,18 +211,19 @@
         Fonts = await ElementRepository.GetGoogleFontsAsync("");
     }
 
-    protected override async Task<GetTypographyResponse> GetAsync()
+    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
     {
-        return await ElementRepository.GetTypographyAsync(kitId);
+        kit = await KitRepository.GetCurrentAsync(kitId);
+        Headings = kit.Revision.Headings;
+        Paragraphs = kit.Revision.Paragraphs;
+        ContextHeadings = new EditContext(kit.Revision.Headings);
+        ContextParagraphs = new EditContext(kit.Revision.Paragraphs);
+        return kit;
     }
 
-    protected override async Task<Kit> UpdateAsync()
+    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
     {
-        var result = new UpdateTypographyModel(kitId, Model.Heading, Model.Paragraph);
-
-        var kit = await ElementRepository.UpdateTypographyAsync(result);
-        Model = await ElementRepository.GetTypographyAsync(kitId);
-        return kit;
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 
     private string HeadingScale(string scale)
