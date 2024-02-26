@@ -11,7 +11,7 @@
             </p>
         </header>
         <div class="content">
-            @if (Model != null)
+            @if (kit.Revision != null)
             {
                 @*                <AccessibilityChecker Model="Model"/>*@
                 <EditForm EditContext="@ContextHeadings">
@@ -28,7 +28,7 @@
                                 <label>
                                     @if (Fonts.Items != null)
                                     {
-                                        <InputSelect class="medium" @bind-Value="Model.Heading.FontFamily">
+                                        <InputSelect class="medium" @bind-Value="Headings.Font.Family">
                                             <option value="">Select a font...</option>
                                             @foreach (var font in Fonts.Items)
                                             {
@@ -41,17 +41,17 @@
                                     Heading Font
                                 </label>
                                 <label>
-                                    <InputFontWeight @bind-Value="Model.Heading.FontWeight" />
+                                    <InputFontWeight @bind-Value="Headings.Font.Weight" />
                                     Default Heading Weight
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.Heading.FontSize" min="0" />
+                                    <InputNumber @bind-Value="Headings.Font.Size" min="0" />
                                     Base Font Size (px)
                                 </label>
                                 <label>
-                                    <InputSelect class="medium" @bind-Value="Model.Heading.TypeScale">
+                                    <InputSelect class="medium" @bind-Value="Headings.TypeScale">
                                         <option value="">Select a type scale...</option>
-                                        @foreach (var scale in Model.TypeScales)
+                                        @foreach (var scale in Kodekit.Models.Elements.Typography.TypeScales)
                                         {
                                         <option value="@scale.Key">
                                             @scale.Key (@scale.Value)
@@ -61,7 +61,7 @@
                                     Choose a Type Scale
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.Heading.LineHeight" min="1" />
+                                    <InputNumber @bind-Value="Headings.Font.LineHeight" min="1" />
                                     Base Line Height (%)
                                 </label>
                             </div>
@@ -104,7 +104,7 @@
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                             <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
                             <h1>@previewText</h1>
                             <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
@@ -134,7 +134,7 @@
                             </label>
                             <div class="inputs--wrapper">                        
                                 <label>
-                                    <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
+                                    <InputSelect class="medium" @bind-Value="Paragraphs.Font.Family">
                                         @if (Fonts.Items != null)
                                             {
                                             <option value="">Select a body font...</option>
@@ -149,13 +149,13 @@
                                     Body Font
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.Paragraph.FontSize" min="1" />
+                                    <InputNumber @bind-Value="Paragraphs.Font.Size" min="1" />
                                     Base Font Size (px)
                                 </label>
                                 <label>
-                                    <InputSelect class="medium" @bind-Value=Model.Paragraph.TypeScale>
+                                    <InputSelect class="medium" @bind-Value=Paragraphs.TypeScale>
                                         <option value="">Select a type scale...</option>
-                                        @foreach (var scale in Model.TypeScales)
+                                        @foreach (var scale in Kodekit.Models.Elements.Typography.TypeScales)
                                          {
                                         <option value="@scale.Key">
                                             @scale.Key (@scale.Value)
@@ -165,12 +165,12 @@
                                     Choose a Type Scale
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.Paragraph.LineHeight" min="1" />
+                                    <InputNumber @bind-Value="Paragraphs.Font.LineHeight" min="1" />
                                     Base Line Height (%)
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit>
+                        <Preview Kit=kit.Kit>
                             <div>
                                 <label>Body Large - Font Size: @BodyScale("500")</label>
                                 <p class="large">@previewTextBody</p>
@@ -195,10 +195,12 @@
     [Parameter] public string? kitId { get; set; }
 
     (Kit Kit, KitRevision Revision) kit;
-    Typography? Headings;
-    Typography? Paragraphs;
+    Kodekit.Models.Elements.Typography? Headings;
+    Kodekit.Models.Elements.Typography? Paragraphs;
     EditContext? ContextHeadings;
     EditContext? ContextParagraphs;
+    Dictionary<string, string>? HeadingTypeScaleValues;
+    Dictionary<string, string>? ParagraphTypeScaleValues;
 
     private string previewText = "The power of small steps";
     private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
@@ -218,6 +220,8 @@
         Paragraphs = kit.Revision.Paragraphs;
         ContextHeadings = new EditContext(kit.Revision.Headings);
         ContextParagraphs = new EditContext(kit.Revision.Paragraphs);
+        HeadingTypeScaleValues = Headings.Serialize();
+        ParagraphTypeScaleValues = Paragraphs.Serialize();
         return kit;
     }
 
@@ -228,35 +232,35 @@
 
     private string HeadingScale(string scale)
     {
-        return Model?.Heading?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
-            ? Model.Heading.TypeScaleValues[$"type-{scale}"]
+        return HeadingTypeScaleValues.ContainsKey($"type-{scale}") == true
+            ? HeadingTypeScaleValues[$"type-{scale}"]
             : string.Empty;
     }
 
     private string BodyScale(string scale)
     {
-        return Model?.Paragraph?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
-            ? Model.Paragraph.TypeScaleValues[$"type-{scale}"]
+        return ParagraphTypeScaleValues.ContainsKey($"type-{scale}") == true
+            ? ParagraphTypeScaleValues[$"type-{scale}"]
             : string.Empty;
     }
 
     private async Task Overrides(string type, string value)
     {
-        if (Model.Heading.FontSizeOverrides == null)
-            Model.Heading.FontSizeOverrides = new Dictionary<string, string>();
+        if (Headings.FontSizeOverrides == null)
+            Headings.FontSizeOverrides = new Dictionary<string, string>();
 
-        Model.Heading.FontSizeOverrides[type] = value;
-        await UpdateAsync();
+        Headings.FontSizeOverrides[type] = value;
+        await UpdateAsync(kit);
     }
 
     private string SetValue(string typeValue)
     {
-        if (Model.Heading.FontSizeOverrides == null)
+        if (Headings.FontSizeOverrides == null)
             return "";
 
-        if(Model.Heading.FontSizeOverrides.ContainsKey(typeValue))
+        if(Headings.FontSizeOverrides.ContainsKey(typeValue))
         {
-            return Model.Heading.FontSizeOverrides[typeValue];
+            return Headings.FontSizeOverrides[typeValue];
         } else
         {
             return "";
@@ -274,4 +278,3 @@
         }         
     }
 }
-

@@ -30,19 +30,19 @@
                             <h4>Link States</h4>
                             <div class="inputs--wrapper">
                                 <label>
-                                    <InputColor @bind-Value="Anchor.DefaultColor" />
+                                    <InputColor @bind-Value="Anchor.DefaultColor.HexValue" />
                                     Default
                                 </label>
                                 <label>
-                                    <InputColor @bind-Value="Anchor.HoverColor" />
+                                    <InputColor @bind-Value="Anchor.HoverColor.HexValue" />
                                     Hover
                                 </label>
                                 <label>
-                                    <InputColor @bind-Value="Anchor.VisitedColor" />
+                                    <InputColor @bind-Value="Anchor.VisitedColor.HexValue" />
                                     Visited
                                 </label>
                                 <label>
-                                    <InputColor @bind-Value="Anchor.ActiveColor" />
+                                    <InputColor @bind-Value="Anchor.ActiveColor.HexValue" />
                                     Active
                                 </label>
                             </div>
@@ -72,10 +72,11 @@
         kit = await KitRepository.GetCurrentAsync(kitId);
         Anchor = kit.Revision.Anchors;
         Context = new EditContext(kit.Revision.Anchors);
+        return kit;
     }
 
-    protected async Task<(Kit Kit, KitRevision Revision)> UpdateAsync()
+    protected async Task UpdateAsync()
     {
-        return await KitRepository.UpdateAsync(Kit.Id, Revision.Id);
+        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
     }
 }

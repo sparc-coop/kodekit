@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Kodekit.Features, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "title": "Kodekit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
     "version": "v1"
   },
   "paths": {

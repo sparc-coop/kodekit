@@ -59,27 +59,27 @@
                         </header>
                         <div class="inputs--wrapper">
                             <label>
-                                <InputNumber @bind-Value="shadowXlarge.X" class="small" />
+                                <InputNumber @bind-Value="shadowLarge.X" class="small" />
                                 X Length (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="shadowXlarge.Y" class="small" />
+                                <InputNumber @bind-Value="shadowLarge.Y" class="small" />
                                 Y Length (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="shadowXlarge.Blur" class="small" />
+                                <InputNumber @bind-Value="shadowLarge.Blur" class="small" />
                                 Blur (px)
                             </label>
                             <label>
-                                <InputNumber @bind-Value="shadowXlarge.Spread" class="small" />
+                                <InputNumber @bind-Value="shadowLarge.Spread" class="small" />
                                 Spread (px)
                             </label>
                             <label>
-                                <InputColor @bind-Value="shadowXlarge.HexColor" />
+                                <InputColor @bind-Value="shadowLarge.HexColor" />
                                 Shadow Color
                             </label>
                             <label>
-                                <InputNumber @bind-Value="shadowXlarge.Opacity" class="small" />
+                                <InputNumber @bind-Value="shadowLarge.Opacity" class="small" />
                                 Shadow Opacity (%)
                             </label>
                         </div>
@@ -117,7 +117,7 @@
     (Kit Kit, KitRevision Revision) kit;
     List<Variable<Shadow>>? Shadows;
     Shadow? shadowSmall;
-    BoxShadow? shadowXlarge;
+    Shadow? shadowLarge;
     EditContext? Context;
 
     private bool isBackgroundWhite = false;
@@ -127,8 +127,8 @@
     {
         kit = await KitRepository.GetCurrentAsync(kitId);
         Shadows = kit.Revision.Shadows;
-        smallShadow = Shadows.Find(x => x.Name == "shadow-100");
-        largeShadow = Shadows.Find(x => x.Name == "shadow-1000");
+        shadowSmall = Shadows.First(x => x.Name == "shadow-100").Value;
+        shadowLarge = Shadows.First(x => x.Name == "shadow-1000").Value;
         Context = new EditContext(kit.Revision.Shadows);
         return kit;
     }
