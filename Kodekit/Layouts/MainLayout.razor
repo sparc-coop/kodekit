@@ -1,9 +1,11 @@
 ﻿@inherits LayoutComponentBase
+@rendermode InteractiveAuto
+@implements IDisposable
 
 <div class="layout--header">
-    <NavMenu kitId="@kitId" />
+    <NavMenu kitId="@kitId" @rendermode="new InteractiveServerRenderMode(prerender: false)" />
     <div class="divider"></div>
-    <PageInfo kitId="@kitId" />
+    <PageInfo kitId="@kitId" @rendermode="new InteractiveServerRenderMode(prerender: false)" />
 </div>
 
 <div class="main">
@@ -11,9 +13,23 @@
 </div>
 
 @inject IConfiguration Config
+@inject PersistentComponentState ApplicationState
 @code {
     string? kitId;
     private User? User;
+
+    private PersistingComponentStateSubscription persistingSubscription;
+
+    protected override async Task OnInitializedAsync()
+    {
+        persistingSubscription = ApplicationState.RegisterOnPersisting(PersistKodekitId);
+
+        if (!ApplicationState.TryTakeFromJson<string>("kitId", out var kitId))
+        {
+            var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
+            kitId = kit.KitId;
+        }
+    }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -23,23 +39,43 @@
         {
             kitId = result?.ToString();
         }
+    }
 
-        if(kitId == null)
-        {
-            //ImportUrl = null;
-            string id = await localStorage.GetItemAsync<string>("kodekitId");
-            if (id != null)
-            {
-                kitId = id;
-            }
-            else
-            {
-                var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
-                await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
-                kitId = kit.KitId;
-            }
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (kitId == null)
+    //     {
+    //         //ImportUrl = null;
+    //         string id = await localStorage.GetItemAsync<string>("kodekitId");
+    //         if (id != null)
+    //         {
+    //             kitId = id;
+    //         }
+    //         else
+    //         {
+    //             var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
+    //             await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+    //             kitId = kit.KitId;
+    //         }
+    //     }
+    // }
 
-        }
+    private Task PersistKodekitId()
+    {
+        // if (kitId == null)
+        // {
+        //     var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
+        //     kitId = kit.KitId;
+        // }
+
+        ApplicationState.PersistAsJson("kitId", kitId);
+        Console.WriteLine(kitId);
+        return Task.CompletedTask;
+    }
+
+    void IDisposable.Dispose()
+    {
+        persistingSubscription.Dispose();
     }
 
     private async Task GetUser()

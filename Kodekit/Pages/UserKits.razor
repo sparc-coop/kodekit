@@ -13,21 +13,21 @@
                     @*                <select class="sort">
                 <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
                 </select>*@
-                    <AuthorizeView>
-                        <Authorized>
+                    @* <AuthorizeView>
+                        <Authorized> *@
                             <button @onclick="CreateNew">
                                 Add New Kit  +
                             </button>
-                        </Authorized>
-                        <NotAuthorized>
+                        @* </Authorized>
+                        <NotAuthorized> *@
                             @if (Kits == null || !Kits.Any())
                             {
                                 <button @onclick="CreateNew">
                                     Add New Kit  +
                                 </button>
                             }
-                        </NotAuthorized>
-                    </AuthorizeView>
+                        @* </NotAuthorized>
+                    </AuthorizeView> *@
                 </div>
             </header>
 
@@ -54,13 +54,19 @@
     private User? User;
     private ICollection<Kit>? Kits;
     bool IsLoading;
+    System.Security.Claims.ClaimsPrincipal? authUser;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
         IsLoading = true;
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
-        if (user.Identity != null && user.Identity.IsAuthenticated)
+        authUser = user;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (authUser.Identity != null && authUser.Identity.IsAuthenticated)
         {
             User = await UserRepository.GetUserAsync();
             Kits = await KitRepository.GetUserKitsAsync(User.Id);

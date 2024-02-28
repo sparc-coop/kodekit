@@ -1,6 +1,6 @@
 ﻿<div class="login-display">
-    <AuthorizeView>
-        <Authorized>
+    @* <AuthorizeView>
+        <Authorized> *@
             <div tabindex="0" class="user-menu"  @onclick="ToggleMenu" @onkeydown="ToggleMenu">
                 <button>Hi, @if (User != null) @User.FirstName</button>
             </div>
@@ -15,12 +15,12 @@
                     </button>
                 </div>
             }
-        </Authorized>
-        <NotAuthorized>
+        @* </Authorized>
+        <NotAuthorized> *@
             <a href="authentication/login" class="login">Login</a>
             <SignUpBanner />
-        </NotAuthorized>
-    </AuthorizeView>
+        @* </NotAuthorized>
+    </AuthorizeView> *@
 </div>
 
 

@@ -37,8 +37,8 @@
                 </div>
             </div>
             <div class="info">
-                <AuthorizeView>
-                    <Authorized>
+                @* <AuthorizeView>
+                    <Authorized> *@
 
                         <div class="last-saved">
                             Last Saved: @if (kit != null) @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
@@ -65,11 +65,11 @@
                                 <MoreIcon />
                              </button>
                         </div>
-                    </Authorized>
-                    <NotAuthorized>
+                    @* </Authorized>
+                    <NotAuthorized> *@
                         <div class="please-login">Please <a href="authentication/login">Log In</a> to save changes</div>
-                    </NotAuthorized>
-                </AuthorizeView>
+                    @* </NotAuthorized>
+                </AuthorizeView> *@
                 @*<AuthorizeView>
                     <Authorized>
                         <div tabindex="0" class="history @(ShowDropdown == true ? "selected" : "")" @onclick="ToggleDropdown" @onkeydown="ToggleDropdown">
