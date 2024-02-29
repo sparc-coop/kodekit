@@ -59,39 +59,14 @@
     protected override async Task OnParametersSetAsync()
     {
         IsLoading = true;
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        authUser = user;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (authUser.Identity != null && authUser.Identity.IsAuthenticated)
-        {
-            User = await UserRepository.GetUserAsync();
-            Kits = await KitRepository.GetUserKitsAsync(User.Id);
-
-            // To import an existing kit into your account after first login
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            if (result != null)
-                await CaptureExistingKit(result);
-        }
-        else
-        {
-            Kits = new List<Kit>();
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            if (result != null)
-                GoToKit(result);
-            else
-                await CreateNew();
-        }
+        User = await UserRepository.GetUserAsync();
+        Kits = await KitRepository.GetUserKitsAsync(User.Id);
         IsLoading = false;
     }
 
     private async Task CreateNew()
     {
         var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
-        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
         GoToKit(kit.KitId);
     }
 

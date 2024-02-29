@@ -19,17 +19,11 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-
-        // await tabBanner.FocusAsync();
-        if (user.Identity != null && user.Identity.IsAuthenticated)
-        {
-            showBanner = false;
-        }
+        showBanner = false;
     }
 
-    void HideBanner() {
+    void HideBanner()
+    {
         showBanner = false;
     }
 
@@ -39,6 +33,6 @@
         {
             showBanner = false;
         }
-        
+
     }
 }
