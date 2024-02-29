@@ -80,11 +80,6 @@
 
     private async Task GetUser()
     {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        if (user.Identity != null && user.Identity.IsAuthenticated)
-        {
-            User = await UserRepository.GetUserAsync();
-        }
+        User = await UserRepository.GetUserAsync();
     }
 }

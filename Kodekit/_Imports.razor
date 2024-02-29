@@ -3,11 +3,9 @@
 @using System.ComponentModel.DataAnnotations
 
 @using Microsoft.Extensions.Configuration
-@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
-@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using static Microsoft.AspNetCore.Components.Web.RenderMode
 @using Microsoft.JSInterop
@@ -30,9 +28,6 @@
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Nav
 @* @inject KodekitApi Api *@
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject AuthenticationStateProvider AuthenticationStateProvider
-@attribute [AllowAnonymous]
 
 @inject Kodekit.KitRepository KitRepository
 @inject Kodekit.UserRepository UserRepository
