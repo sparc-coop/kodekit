@@ -1,4 +1,4 @@
-﻿@rendermode InteractiveAuto
+﻿@* @rendermode InteractiveAuto *@
 @implements IDisposable
 @layout SimplifiedLayout
 @page "/"
@@ -57,7 +57,7 @@
     private User? User;
     private ICollection<Kit>? Kits;
     bool IsLoading;
-    System.Security.Claims.ClaimsPrincipal? authUser;
+    //System.Security.Claims.ClaimsPrincipal? authUser;
 
     string? _kitId;
     private PersistingComponentStateSubscription persistingSubscription;
@@ -72,7 +72,8 @@
         } else
         {
             //var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
-            var kit = await KitRepository.CreateKitAsync(User != null ? "1f09f061-932a-40a4-a482-6d802786e4b7" : "");
+            //var kit = await KitRepository.CreateKitAsync(User != null ? "1f09f061-932a-40a4-a482-6d802786e4b7" : "");
+            var kit = await KitRepository.GetKitAsync("durbars-noncircumspectly");
             _kitId = kit.KitId;
         }
     }
