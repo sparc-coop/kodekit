@@ -2,10 +2,10 @@
 
 <Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Kodekit._Imports).Assembly }">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(SimplifiedLayout)" />
     </Found>
     <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
+        <LayoutView Layout="@typeof(SimplifiedLayout)">
             <p>Sorry, there's nothing at this address.</p>
         </LayoutView>
     </NotFound>

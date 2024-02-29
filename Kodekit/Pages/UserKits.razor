@@ -1,4 +1,6 @@
-﻿@layout SimplifiedLayout
+﻿@rendermode InteractiveAuto
+@implements IDisposable
+@layout SimplifiedLayout
 @page "/"
 
 <div class="dashboard page">
@@ -49,6 +51,7 @@
 </div>
 
 @inject IConfiguration Config
+@inject PersistentComponentState ApplicationState
 
 @code {
     private User? User;
@@ -56,43 +59,89 @@
     bool IsLoading;
     System.Security.Claims.ClaimsPrincipal? authUser;
 
-    protected override async Task OnParametersSetAsync()
+    string? _kitId;
+    private PersistingComponentStateSubscription persistingSubscription;
+
+    protected override async Task OnInitializedAsync()
     {
-        IsLoading = true;
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        authUser = user;
+        persistingSubscription = ApplicationState.RegisterOnPersisting(PersistKodekitId);
+
+        if (ApplicationState.TryTakeFromJson<string>("kitId", out var kitId))
+        {
+            _kitId = kitId;
+        } else
+        {
+            //var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
+            var kit = await KitRepository.CreateKitAsync(User != null ? "1f09f061-932a-40a4-a482-6d802786e4b7" : "");
+            _kitId = kit.KitId;
+        }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (authUser.Identity != null && authUser.Identity.IsAuthenticated)
-        {
-            User = await UserRepository.GetUserAsync();
-            Kits = await KitRepository.GetUserKitsAsync(User.Id);
+    // protected override async Task OnParametersSetAsync()
+    // {
+    //     IsLoading = true;
+    //     var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    //     var user = authState.User;
+    //     authUser = user;
 
-            // To import an existing kit into your account after first login
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            if (result != null)
-                await CaptureExistingKit(result);
-        }
-        else
-        {
-            Kits = new List<Kit>();
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            if (result != null)
-                GoToKit(result);
-            else
-                await CreateNew();
-        }
-        IsLoading = false;
+    //     persistingSubscription = ApplicationState.RegisterOnPersisting(PersistKodekitId);
+
+    //     if (ApplicationState.TryTakeFromJson<string>("kitId", out var kitId))
+    //     {
+    //         _kitId = kitId;
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine(User);
+    //         var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
+    //         _kitId = kit.KitId;
+    //     }
+    // }
+
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (authUser.Identity != null && authUser.Identity.IsAuthenticated)
+    //     {
+    //         User = await UserRepository.GetUserAsync();
+    //         Kits = await KitRepository.GetUserKitsAsync(User.Id);
+
+    //         // To import an existing kit into your account after first login
+    //         //string result = await localStorage.GetItemAsync<string>("kodekitId");
+    //         if (_kitId != null)
+    //             await CaptureExistingKit(_kitId);
+    //     }
+    //     else
+    //     {
+    //         Kits = new List<Kit>();
+    //         //string result = await localStorage.GetItemAsync<string>("kodekitId");
+    //         if (_kitId != null)
+    //             GoToKit(_kitId);
+    //         else
+    //             await CreateNew();
+    //     }
+    //     IsLoading = false;
+    // }
+
+    private Task PersistKodekitId()
+    {
+        ApplicationState.PersistAsJson("kitId", _kitId);
+        Console.WriteLine(_kitId);
+        return Task.CompletedTask;
     }
+
+    void IDisposable.Dispose()
+    {
+        persistingSubscription.Dispose();
+    }
+
 
     private async Task CreateNew()
     {
         var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
-        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
-        GoToKit(kit.KitId);
+        // await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+        _kitId = kit.KitId;
+        await PersistKodekitId();
+        GoToKit(_kitId);
     }
 
     private async Task CaptureExistingKit(string id)

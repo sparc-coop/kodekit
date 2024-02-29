@@ -8,10 +8,14 @@
 	<UserSecretsId>1c00dd6d-c22f-4f2b-b3ec-860a43b74a1d</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="C:\Users\chris\.nuget\packages\blazor-analytics\3.10.0\contentFiles\any\netstandard2.0\wwwroot\blazor-analytics.js" />
     <Content Remove="Pages\Index.razor" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\Index.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\index.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />

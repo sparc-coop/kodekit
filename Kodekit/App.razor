@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Components.Web;
+﻿@using Kodekit
+@using Microsoft.AspNetCore.Components.Web;
 @inject IHostEnvironment Env
 
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" />
+    <link href="_content/Kodekit.styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/atom-one-dark-reasonable.min.css">
     <HeadOutlet />
 </head>
@@ -51,8 +53,8 @@
     <Routes />
 
     <script src="_framework/blazor.web.js"></script>
-    <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+@*     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
+ *@    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-css.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.js"></script>
@@ -84,8 +86,9 @@
             hljs.highlightElement(codeBlock);
         }
     </script>
-    <script src="color-checker.js" charset="utf-8"></script>
-    <!-- Hotjar Tracking Code for https://kodekit.io -->
+    @*<script src="color-checker.js" charset="utf-8"></script>*@
+@*     <script src="_content/Kodekit/color-checker.js"></script>
+ *@    <!-- Hotjar Tracking Code for https://kodekit.io -->
     <script>
         (function (h, o, t, j, a, r) {
             h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };

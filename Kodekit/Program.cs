@@ -37,6 +37,8 @@ var app = builder.Build();
 //app.UseBlossom();
 app.UseAntiforgery();
 app.UseAuthentication();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

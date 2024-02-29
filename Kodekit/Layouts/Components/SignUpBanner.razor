@@ -17,17 +17,17 @@
     bool showBanner = true;
     // ElementReference tabBanner;
 
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    //     var user = authState.User;
 
-        // await tabBanner.FocusAsync();
-        if (user.Identity != null && user.Identity.IsAuthenticated)
-        {
-            showBanner = false;
-        }
-    }
+    //     // await tabBanner.FocusAsync();
+    //     if (user.Identity != null && user.Identity.IsAuthenticated)
+    //     {
+    //         showBanner = false;
+    //     }
+    // }
 
     void HideBanner() {
         showBanner = false;
