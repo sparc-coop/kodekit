@@ -71,6 +71,19 @@ namespace Kodekit
             return Task.FromResult(user);
         }
 
+        public async Task<User> GetUserFromIdAsync(string userId)
+        {
+            var user = await Users.FindAsync(userId);
+            if (user != null)
+            {
+                return user;
+            }
+            else
+            {
+                return new User();
+            }
+        }
+
         // UPDATE
         public async Task<bool> UpdateUserAsync(User user)
         {

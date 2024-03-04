@@ -64,18 +64,48 @@
 
     protected override async Task OnInitializedAsync()
     {
-        persistingSubscription = ApplicationState.RegisterOnPersisting(PersistKodekitId);
+        User = await UserRepository.GetUserFromIdAsync("1f09f061-932a-40a4-a482-6d802786e4b7");
+        if (User != null)
+        {
+            Kits = await KitRepository.GetUserKitsAsync(User.Id);
+            persistingSubscription = ApplicationState.RegisterOnPersisting(PersistKodekitId);
 
-        if (ApplicationState.TryTakeFromJson<string>("kitId", out var kitId))
-        {
-            _kitId = kitId;
-        } else
-        {
-            //var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
-            //var kit = await KitRepository.CreateKitAsync(User != null ? "1f09f061-932a-40a4-a482-6d802786e4b7" : "");
-            var kit = await KitRepository.GetKitAsync("durbars-noncircumspectly");
-            _kitId = kit.KitId;
+            if (ApplicationState.TryTakeFromJson<string>("kitId", out var kitId))
+            {
+                _kitId = kitId;
+            }
+            else
+            {
+                //var kit = await KitRepository.CreateKitAsync(User != null ? User.Id : "");
+                //var kit = await KitRepository.CreateKitAsync(User != null ? "1f09f061-932a-40a4-a482-6d802786e4b7" : "");
+                var kit = await KitRepository.GetKitAsync("durbars-noncircumspectly");
+                _kitId = kit.KitId;
+            }
         }
+
+        // IsLoading = true;
+        // var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        // var user = authState.User;
+        // if (user.Identity.IsAuthenticated)
+        // {
+        //     User = await Api.GetUserAsync();
+        //     Kits = await Api.GetUserKitsAsync();
+
+        //     // To import an existing kit into your account after first login
+        //     string result = await localStorage.GetItemAsync<string>("kodekitId");
+        //     if (result != null)
+        //         await CaptureExistingKit(result);
+        // }
+        // else
+        // {
+        //     Kits = new List<Kit>();
+        //     string result = await localStorage.GetItemAsync<string>("kodekitId");
+        //     if (result != null)
+        //         GoToKit(result);
+        //     else
+        //         await CreateNew();
+        // }
+        // IsLoading = false;
     }
 
     // protected override async Task OnParametersSetAsync()
