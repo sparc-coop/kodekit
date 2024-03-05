@@ -1,10 +1,9 @@
 ﻿namespace Kodekit;
 
 public record UpdateKitRequest(string KitId, string Name, string? UserId = null, bool IsAutoPublish = false);
-public class UpdateKit : PublicFeature<UpdateKitRequest, Kit>
+public class UpdateKit(KitRepository kit) : PublicFeature<UpdateKitRequest, Kit>
 {
-    public KitRepository Kits { get; }
-    public UpdateKit(KitRepository kit) => Kits = kit;
+    public KitRepository Kits { get; } = kit;
 
     public override async Task<Kit> ExecuteAsync(UpdateKitRequest request)
     {

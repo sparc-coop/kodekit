@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetButtons : PublicFeature<string, UpdateButtonsModel>
+public class GetButtons(KitRepository kits) : PublicFeature<string, UpdateButtonsModel>
 {
-    public GetButtons(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateButtonsModel> ExecuteAsync(string id)
     {

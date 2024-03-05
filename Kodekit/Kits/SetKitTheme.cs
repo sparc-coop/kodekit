@@ -1,9 +1,8 @@
 ﻿namespace Kodekit;
 
-public class SetKitTheme : PublicFeature<string, bool>
+public class SetKitTheme(KitRepository kit) : PublicFeature<string, bool>
 {
-    public KitRepository Kits { get; }
-    public SetKitTheme(KitRepository kit) => Kits = kit;
+    public KitRepository Kits { get; } = kit;
 
     public override async Task<bool> ExecuteAsync(string kitId)
     {

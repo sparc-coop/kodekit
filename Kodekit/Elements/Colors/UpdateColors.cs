@@ -1,14 +1,9 @@
 ﻿namespace Kodekit.Models.Elements;
 
 public record ColorsModel(string KitId, string? Primary, string? Secondary, string? Tertiary, string? Darkest, string? Lightest, string? Error, string? Warning, string? Success);
-public class UpdateColors : PublicFeature<ColorsModel, Kit>
+public class UpdateColors(KitRepository kits) : PublicFeature<ColorsModel, Kit>
 {
-    public UpdateColors(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(ColorsModel request)
     {

@@ -3,14 +3,9 @@ using System.Security.Claims;
 
 namespace Kodekit;
 
-public class CreateUser : PublicFeature<bool>
+public class CreateUser(IRepository<User> users) : PublicFeature<bool>
 {
-    public CreateUser(IRepository<User> users)
-    {
-        Users = users;
-    }
-
-    public IRepository<User> Users { get; }
+    public IRepository<User> Users { get; } = users;
 
     public override async Task<bool> ExecuteAsync()
     {

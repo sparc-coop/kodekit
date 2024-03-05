@@ -2,13 +2,9 @@
 
 namespace Kodekit
 {
-    public class UserRepository
+    public class UserRepository(IRepository<User> users)
     {
-        public UserRepository(IRepository<User> users)
-        {
-            Users = users;
-        }
-        public IRepository<User> Users { get; }
+        public IRepository<User> Users { get; } = users;
 
         public ClaimsPrincipal User { get; }
 

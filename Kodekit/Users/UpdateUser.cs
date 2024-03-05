@@ -1,13 +1,8 @@
 ﻿namespace Kodekit;
 
-public class UpdateUser : PublicFeature<User, bool>
+public class UpdateUser(IRepository<User> users) : PublicFeature<User, bool>
 {
-    public UpdateUser(IRepository<User> users)
-    {
-        Users = users;
-    }
-
-    public IRepository<User> Users { get; }
+    public IRepository<User> Users { get; } = users;
 
     public override async Task<bool> ExecuteAsync(User user)
     {

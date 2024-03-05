@@ -2,10 +2,9 @@
 
 namespace Kodekit.Models.Kits;
 
-public class DeleteKit : Feature<string, bool>
+public class DeleteKit(KitRepository kits) : Feature<string, bool>
 {
-    public KitRepository Kits { get; }
-    public DeleteKit(KitRepository kits) => Kits = kits;
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<bool> ExecuteAsync(string kitId)
     {

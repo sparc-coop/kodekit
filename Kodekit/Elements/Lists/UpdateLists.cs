@@ -3,14 +3,9 @@
 public record UpdateListsModel(string KitId, double? FontSize, string? FontWeight, string? OlStyleType, string? UlStyleType,
     double? ListHorizontalPadding, double? ListVerticalPadding,
     double? ItemHorizontalPadding, double? ItemVerticalPadding);
-public class UpdateLists : PublicFeature<UpdateListsModel, Kit>
+public class UpdateLists(KitRepository kits) : PublicFeature<UpdateListsModel, Kit>
 {
-    public UpdateLists(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(UpdateListsModel request)
     {

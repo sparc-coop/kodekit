@@ -1,14 +1,9 @@
 ﻿namespace Kodekit.Models.Elements;
 
 public record UpdateDropdownsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth, bool OverwriteInherited);
-public class UpdateDropdowns : PublicFeature<UpdateDropdownsModel, Kit>
+public class UpdateDropdowns(KitRepository kits) : PublicFeature<UpdateDropdownsModel, Kit>
 {
-    public UpdateDropdowns(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(UpdateDropdownsModel request)
     {

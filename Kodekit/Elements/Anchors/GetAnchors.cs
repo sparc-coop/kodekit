@@ -1,12 +1,7 @@
 ﻿namespace Kodekit.Models;
-public class GetAnchors : PublicFeature<string, UpdateAnchorsModel>
+public class GetAnchors(KitRepository kits) : PublicFeature<string, UpdateAnchorsModel>
 {
-    public GetAnchors(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateAnchorsModel> ExecuteAsync(string id)
     {

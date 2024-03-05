@@ -1,14 +1,9 @@
 ﻿namespace Kodekit.Models.Elements;
 
 public record UpdateButtonsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding, double? HorizontalPadding, double? CornerRadius, double? BorderWidth, double? IconWidth, double? IconHeight, bool RemoveSecondaryBorder);
-public class UpdateButtons : PublicFeature<UpdateButtonsModel, Kit>
+public class UpdateButtons(KitRepository kits) : PublicFeature<UpdateButtonsModel, Kit>
 {
-    public UpdateButtons(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(UpdateButtonsModel request)
     {

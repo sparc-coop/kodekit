@@ -1,14 +1,9 @@
 ﻿namespace Kodekit.Models.Elements;
 
 public record UpdateSelectorsModel(string KitId, double? FontSize, string? FontWeight, string? ActiveColor);
-public class UpdateSelectors : PublicFeature<UpdateSelectorsModel, Kit>
+public class UpdateSelectors(KitRepository kits) : PublicFeature<UpdateSelectorsModel, Kit>
 {
-    public UpdateSelectors(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(UpdateSelectorsModel request)
     {

@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetShadow : PublicFeature<string, ShadowsModel>
+public class GetShadow(KitRepository kits) : PublicFeature<string, ShadowsModel>
 {
-    public GetShadow(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<ShadowsModel> ExecuteAsync(string id)
     {

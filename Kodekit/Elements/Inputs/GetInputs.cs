@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetInputs : PublicFeature<string, UpdateInputsModel>
+public class GetInputs(KitRepository kits) : PublicFeature<string, UpdateInputsModel>
 {
-    public GetInputs(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateInputsModel> ExecuteAsync(string id)
     {

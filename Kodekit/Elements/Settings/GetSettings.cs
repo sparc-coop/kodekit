@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetSettings : PublicFeature<string, UpdateSettingsModel>
+public class GetSettings(KitRepository kits) : PublicFeature<string, UpdateSettingsModel>
 {
-    public GetSettings(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateSettingsModel> ExecuteAsync(string id)
     {

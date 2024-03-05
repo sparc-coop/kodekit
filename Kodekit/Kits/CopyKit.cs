@@ -1,9 +1,8 @@
 ﻿namespace Kodekit;
 
-public class CopyKit : PublicFeature<string, CreateKitResponse>
+public class CopyKit(KitRepository kit) : PublicFeature<string, CreateKitResponse>
 {
-    public KitRepository Kits { get; }
-    public CopyKit(KitRepository kit) => Kits = kit;
+    public KitRepository Kits { get; } = kit;
 
     public override async Task<CreateKitResponse> ExecuteAsync(string kitId)
     {

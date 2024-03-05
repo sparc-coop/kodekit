@@ -2,14 +2,9 @@
 
 public record UpdateInputsModel(string KitId, double? FontSize, string? FontWeight, double? VerticalPadding,
     double? HorizontalPadding, double? CornerRadius, double? BorderWidth);
-public class UpdateInputs : PublicFeature<UpdateInputsModel, Kit>
+public class UpdateInputs(KitRepository kits) : PublicFeature<UpdateInputsModel, Kit>
 {
-    public UpdateInputs(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(UpdateInputsModel request)
     {

@@ -2,14 +2,9 @@
 
 namespace Kodekit;
 
-public class GetUser : Feature<User>
+public class GetUser(IRepository<User> users) : Feature<User>
 {
-    public GetUser(IRepository<User> users)
-    {
-        Users = users;
-    }
-
-    public IRepository<User> Users { get; }
+    public IRepository<User> Users { get; } = users;
 
     public override Task<User> ExecuteAsync()
     {

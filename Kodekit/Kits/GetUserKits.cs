@@ -1,13 +1,8 @@
 ﻿namespace Kodekit;
 
-public class GetUserKits : Feature<List<Kit>>
+public class GetUserKits(IRepository<Kit> kits) : Feature<List<Kit>>
 {
-    public GetUserKits(IRepository<Kit> kits)
-    {
-        Kits = kits;
-    }
-
-    public IRepository<Kit> Kits { get; }
+    public IRepository<Kit> Kits { get; } = kits;
 
     public override async Task<List<Kit>> ExecuteAsync()
     {

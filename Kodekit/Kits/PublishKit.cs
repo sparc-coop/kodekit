@@ -1,13 +1,8 @@
 ﻿namespace Kodekit;
 
-public class PublishKit : PublicFeature<Kit, bool>
+public class PublishKit(IRepository<Kit> kits) : PublicFeature<Kit, bool>
 {
-    public PublishKit(IRepository<Kit> kits)
-    {
-        Kits = kits;
-    }
-
-    public IRepository<Kit> Kits { get; }
+    public IRepository<Kit> Kits { get; } = kits;
 
     public override async Task<bool> ExecuteAsync(Kit kit)
     {

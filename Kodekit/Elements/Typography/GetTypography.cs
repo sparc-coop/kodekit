@@ -3,14 +3,9 @@
 public record GetTypographyResponse(TypographyModel Heading, TypographyModel Paragraph, Dictionary<double, string> TypeScales);
 public record TypographyModel(string? FontFamily, string? FontWeight, double? FontSize, double? TypeScale, 
     double? LineHeight, Dictionary<string, string>? FontSizeOverrides, Dictionary<string, string> TypeScaleValues);
-public class GetTypography : PublicFeature<string, GetTypographyResponse>
+public class GetTypography(KitRepository kits) : PublicFeature<string, GetTypographyResponse>
 {
-    public GetTypography(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<GetTypographyResponse> ExecuteAsync(string id)
     {

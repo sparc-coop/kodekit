@@ -6,16 +6,10 @@ using SharpScss;
 
 namespace Kodekit;
 
-public class GenerateCss : Controller
+public class GenerateCss(KitRepository kits, IWebHostEnvironment env) : Controller
 {
-    public KitRepository Kits { get; }
-    public string RootPath { get; }
-
-    public GenerateCss(KitRepository kits, IWebHostEnvironment env)
-    {
-        Kits = kits;
-        RootPath = env.ContentRootPath;
-    }
+    public KitRepository Kits { get; } = kits;
+    public string RootPath { get; } = env.ContentRootPath;
 
     [HttpGet("/{kitId}.css")]
     public async Task<IActionResult> HandleAsync(string kitId, string? v, string? scope)

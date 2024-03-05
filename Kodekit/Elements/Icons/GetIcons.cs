@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetIcons : PublicFeature<string, UpdateIconsModel>
+public class GetIcons(KitRepository kits) : PublicFeature<string, UpdateIconsModel>
 {
-    public GetIcons(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateIconsModel> ExecuteAsync(string id)
     {

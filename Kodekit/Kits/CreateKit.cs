@@ -3,16 +3,10 @@
 namespace Kodekit;
 
 public record CreateKitResponse(string KitId);
-public class CreateKit : PublicFeature<string, CreateKitResponse>
+public class CreateKit(KitRepository kits, IWebHostEnvironment env) : PublicFeature<string, CreateKitResponse>
 {
-    public KitRepository Kits { get; }
-    public IWebHostEnvironment Env { get; }
-
-    public CreateKit(KitRepository kits, IWebHostEnvironment env)
-    {
-        Kits = kits;
-        Env = env;
-    }
+    public KitRepository Kits { get; } = kits;
+    public IWebHostEnvironment Env { get; } = env;
 
     public override async Task<CreateKitResponse> ExecuteAsync(string userId)
     {

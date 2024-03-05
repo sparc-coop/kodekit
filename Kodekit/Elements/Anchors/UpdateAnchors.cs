@@ -1,14 +1,9 @@
 ﻿namespace Kodekit.Models.Elements;
 
 public record UpdateAnchorsModel(string KitId, double? FontSize, string? FontWeight, string? DefaultColor, string? HoverColor, string? VisitedColor, string? ActiveColor);
-public class UpdateAnchors : PublicFeature<UpdateAnchorsModel, Kit>
+public class UpdateAnchors(KitRepository kits) : PublicFeature<UpdateAnchorsModel, Kit>
 {
-    public UpdateAnchors(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(UpdateAnchorsModel request)
     {

@@ -1,13 +1,8 @@
 ﻿namespace Kodekit;
 
-public class GetRelatedKits : PublicFeature<string, List<KitRevision>>
+public class GetRelatedKits(IRepository<KitRevision> revisions) : PublicFeature<string, List<KitRevision>>
 {
-    public GetRelatedKits(IRepository<KitRevision> revisions)
-    {
-        Revisions = revisions;
-    }
-
-    public IRepository<KitRevision> Revisions { get; }
+    public IRepository<KitRevision> Revisions { get; } = revisions;
 
     public override async Task<List<KitRevision>> ExecuteAsync(string kitId)
     {

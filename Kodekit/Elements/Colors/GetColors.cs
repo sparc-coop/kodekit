@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetColors : PublicFeature<string, ColorsModel>
+public class GetColors(KitRepository kits) : PublicFeature<string, ColorsModel>
 {
-    public GetColors(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<ColorsModel> ExecuteAsync(string id)
     {

@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetDropdowns : PublicFeature<string, UpdateDropdownsModel>
+public class GetDropdowns(KitRepository kits) : PublicFeature<string, UpdateDropdownsModel>
 {
-    public GetDropdowns(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateDropdownsModel> ExecuteAsync(string id)
     {

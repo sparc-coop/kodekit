@@ -1,13 +1,8 @@
 ﻿namespace Kodekit.Models.Elements;
 
-public class GetSelectors : PublicFeature<string, UpdateSelectorsModel>
+public class GetSelectors(KitRepository kits) : PublicFeature<string, UpdateSelectorsModel>
 {
-    public GetSelectors(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<UpdateSelectorsModel> ExecuteAsync(string id)
     {

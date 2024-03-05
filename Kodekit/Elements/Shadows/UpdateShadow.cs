@@ -1,14 +1,9 @@
 ﻿namespace Kodekit.Models.Elements;
 
 public record ShadowsModel(string KitId, Shadow? Small, Shadow? XLarge);
-public class UpdateShadow : PublicFeature<ShadowsModel, Kit>
+public class UpdateShadow(KitRepository kits) : PublicFeature<ShadowsModel, Kit>
 {
-    public UpdateShadow(KitRepository kits)
-    {
-        Kits = kits;
-    }
-
-    public KitRepository Kits { get; }
+    public KitRepository Kits { get; } = kits;
 
     public override async Task<Kit> ExecuteAsync(ShadowsModel request)
     {

@@ -2,12 +2,8 @@
 
 namespace Kodekit;
 
-public partial class KodekitContext : DbContext
+public partial class KodekitContext(DbContextOptions<KodekitContext> options) : DbContext(options)
 {
-    public KodekitContext(DbContextOptions<KodekitContext> options) :
-        base(options)
-    { }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<User>().HasNoKey();
