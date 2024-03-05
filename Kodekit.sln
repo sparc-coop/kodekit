@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web", "Kodekit.Web\Kodekit.Web.csproj", "{4BB97F2D-7CFB-40D2-AE4F-6C61EF40BF72}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Features", "Kodekit.Features\Kodekit.Features.csproj", "{D713DAA9-D37B-4600-9A38-53061B20605F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1\BlazorApp1.csproj", "{8F797D78-778A-4016-962D-7563F2319E47}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1.Client", "BlazorApp1\BlazorApp1.Client\BlazorApp1.Client.csproj", "{0B70AE61-F296-4B27-A199-F1ED4168AD19}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C535525D-B256-46CF-BF7B-39434E96741D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -22,24 +14,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web (Old)", "Kodeki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit", "Kodekit\Kodekit.csproj", "{B5674D2B-6547-4889-BFA9-467FC98EEA84}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4BB97F2D-7CFB-40D2-AE4F-6C61EF40BF72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BB97F2D-7CFB-40D2-AE4F-6C61EF40BF72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BB97F2D-7CFB-40D2-AE4F-6C61EF40BF72}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D713DAA9-D37B-4600-9A38-53061B20605F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D713DAA9-D37B-4600-9A38-53061B20605F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D713DAA9-D37B-4600-9A38-53061B20605F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F797D78-778A-4016-962D-7563F2319E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F797D78-778A-4016-962D-7563F2319E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F797D78-778A-4016-962D-7563F2319E47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B70AE61-F296-4B27-A199-F1ED4168AD19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B51C1B6-DD5C-4B06-AE11-3853B3705FA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B51C1B6-DD5C-4B06-AE11-3853B3705FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B51C1B6-DD5C-4B06-AE11-3853B3705FA6}.Release|Any CPU.Build.0 = Release|Any CPU
@@ -53,6 +35,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B51C1B6-DD5C-4B06-AE11-3853B3705FA6} = {E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}
+		{EC0B255E-8072-41AA-8DDE-7B16236CBB6B} = {E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B62532E-4EEB-4BBA-BCFC-8047EA9EBBB5}
