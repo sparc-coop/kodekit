@@ -1,64 +1,63 @@
 ﻿@page "/{kitId}/anchors"
 
-<div class="anchors page">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Elements</div>
-            <h2>Anchor Links</h2>
-            <p class="subheader">
-                Hyperlinks used to navigate between pages internal and external. The &lt;a&gt; tag defines a hyperlink. The href attribute specifies the URL of the page the link goes to.
-            </p>
-        </header>
-        <div class="content">
-            @if (kit.Revision != null)
-            {
-                <EditForm EditContext="@Context">
-                    <section>
-                        <header>
-                            <h3>Link Styling</h3>
-                            <p class="subheader">
-                                Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is applied when the link is being clicked on. Visited is applied once the link has been navigated to.
-                            </p>
-                        </header>
-                        <div>
-                            <label>
-                                <InputFontWeight @bind-Value="Anchor.Font.Weight" />
-                                Font Weight
-                            </label>
-                        </div>
-                        <div class="subsection link-states">
-                            <h4>Link States</h4>
-                            <div class="inputs--wrapper">
-                                <label>
-                                    <InputColor @bind-Value="Anchor.DefaultColor.HexValue" />
-                                    Default
-                                </label>
-                                <label>
-                                    <InputColor @bind-Value="Anchor.HoverColor.HexValue" />
-                                    Hover
-                                </label>
-                                <label>
-                                    <InputColor @bind-Value="Anchor.VisitedColor.HexValue" />
-                                    Visited
-                                </label>
-                                <label>
-                                    <InputColor @bind-Value="Anchor.ActiveColor.HexValue" />
-                                    Active
-                                </label>
-                            </div>
-                        </div>
-                        <Preview Kit=kit.Kit PreviewBackgroundEditable=true>
-                            <a href="#@Guid.NewGuid()">Default</a>
-                            <a href="#@Guid.NewGuid()" class="hover">Hover</a>
-                            <a href="#@Guid.NewGuid()" class="visited">Visited</a>
-                            <a href="#@Guid.NewGuid()" class="active">Active</a>
-                        </Preview>
-                    </section>
-                </EditForm>
-            }
-        </div>
-    </div>
-</div>
+<header>
+    <h1>Elements</h1>
+    <h2>Anchor Links</h2>
+    <p>
+        Hyperlinks used to navigate between pages internal and external. The &lt;a&gt; tag defines 
+        a hyperlink. The href attribute specifies the URL of the page the link goes to.
+    </p>
+</header>
+
+<article>
+    @if (kit.Revision != null)
+    {
+        <EditForm EditContext="@Context">
+            <section>
+                <header>
+                    <h3>Link Styling</h3>
+                    <p class="subheader">
+                        Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is applied when the link is being clicked on. Visited is applied once the link has been navigated to.
+                    </p>
+                </header>
+                <div>
+                    <label>
+                        <InputFontWeight @bind-Value="Anchor.Font.Weight" />
+                        Font Weight
+                    </label>
+                </div>
+                <div class="subsection link-states">
+                    <h4>Link States</h4>
+                    <div class="inputs--wrapper">
+                        <label>
+                            <InputColor @bind-Value="Anchor.DefaultColor.HexValue" />
+                            Default
+                        </label>
+                        <label>
+                            <InputColor @bind-Value="Anchor.HoverColor.HexValue" />
+                            Hover
+                        </label>
+                        <label>
+                            <InputColor @bind-Value="Anchor.VisitedColor.HexValue" />
+                            Visited
+                        </label>
+                        <label>
+                            <InputColor @bind-Value="Anchor.ActiveColor.HexValue" />
+                            Active
+                        </label>
+                    </div>
+                </div>
+                <Preview Kit=kit.Kit PreviewBackgroundEditable=true>
+                    <a href="#@Guid.NewGuid()">Default</a>
+                    <a href="#@Guid.NewGuid()" class="hover">Hover</a>
+                    <a href="#@Guid.NewGuid()" class="visited">Visited</a>
+                    <a href="#@Guid.NewGuid()" class="active">Active</a>
+                </Preview>
+            </section>
+        </EditForm>
+    }
+</article>
+
 
 @code {
     [Parameter] public string? kitId { get; set; }

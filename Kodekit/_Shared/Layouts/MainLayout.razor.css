@@ -1,0 +1,32 @@
+﻿header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+header hr {
+  margin: 0 80px;
+  border-top: 1px solid var(--grey-300);
+}
+
+main {
+  margin-top: 171px;
+}
+@media screen and (max-width: 780px) {
+  main {
+    margin-left: 0;
+  }
+}
+main.no-sidebar {
+  margin-left: 0;
+}
+main .centered {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+/*a:focus-visible, button:focus-visible, input:focus-visible, .section-container:focus, .section-container:focus-within, select:focus-visible, textarea:focus-visible, .auto-publish:focus, .auto-publish:focus-within, .user-menu:focus, .user-menu:focus-within, .dashboard-card:focus {
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px $primary500;
+}*/

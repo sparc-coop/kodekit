@@ -2,5 +2,13 @@
   {
     "outputFile": "wwwroot/css/app.css",
     "inputFile": "App.scss"
+  },
+  {
+    "outputFile": "Elements/Anchors/Anchors.razor.css",
+    "inputFile": "Elements/Anchors/Anchors.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Layouts/MainLayout.razor.css",
+    "inputFile": "_Shared/Layouts/MainLayout.razor.scss"
   }
 ]

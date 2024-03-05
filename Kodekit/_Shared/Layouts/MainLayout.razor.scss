@@ -1,18 +1,16 @@
-﻿@import "../_variables";
-
-.layout--header {
+﻿header {
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 1000;
 
-    .divider {
+    hr {
         margin: 0 80px;
-        border-top: 1px solid $grey-300;
+        border-top: 1px solid var(--grey-300);
     }
 }
 
-.main {
+main {
     margin-top: 171px;
 
     @media screen and (max-width: 780px) {
@@ -21,6 +19,12 @@
 
     &.no-sidebar {
         margin-left: 0;
+    }
+
+    .centered {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
     }
 }
 

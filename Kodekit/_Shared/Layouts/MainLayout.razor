@@ -2,15 +2,17 @@
 @rendermode InteractiveAuto
 @implements IDisposable
 
-<div class="layout--header">
+<header>
     <NavMenu kitId="@kitId" @rendermode="new InteractiveServerRenderMode(prerender: false)" />
-    <div class="divider"></div>
+    <hr />
     <PageInfo kitId="@kitId" @rendermode="new InteractiveServerRenderMode(prerender: false)" />
-</div>
+</header>
 
-<div class="main">
-    @Body
-</div>
+<main>
+    <div class="centered">
+        @Body
+    </div>
+</main>
 
 @inject IConfiguration Config
 @inject PersistentComponentState ApplicationState

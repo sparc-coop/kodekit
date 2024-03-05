@@ -1,0 +1,1 @@
+﻿header{width:100%;position:fixed;top:0;z-index:1000;}header hr{margin:0 80px;border-top:1px solid var(--grey-300);}main{margin-top:171px;}@media screen and (max-width:780px){main{margin-left:0;}}main.no-sidebar{margin-left:0;}main .centered{width:100%;margin:0 auto;position:relative;}
