@@ -11,20 +11,16 @@ public class Kit : Entity<string>
         DateModified = DateTime.UtcNow;
     }
 
-    public Kit(string id, string name, string? userId = null) : this()
+    public Kit(IWebHostEnvironment env, string name, string? userId = null) : this()
     {
-        Id = id;
-        KitId = id;
+        Id = GenerateFriendlyId(env);
+        KitId = Id;
         Name = name;
         UserId = userId;
     }
 
-    public Kit(string id, Kit kit) : this()
+    public Kit(IWebHostEnvironment env, Kit kit) : this(env, kit.Name, kit.UserId)
     {
-        Id = id;
-        KitId = id;
-        Name = kit.Name;
-        UserId = kit.UserId;
     }
 
     public string KitId { get; set; }
@@ -69,5 +65,27 @@ public class Kit : Entity<string>
         Current = new KitRevision(this);
         PreviousRevisionId = CurrentRevisionId;
         CurrentRevisionId = Current.Id;
+    }
+
+    string GenerateFriendlyId(IWebHostEnvironment env)
+    {
+        return $"{GetRandomWord(env)}-{GetRandomWord(env)}";
+    }
+
+    string GetRandomWord(IWebHostEnvironment env)
+    {
+        var random = new Random();
+        var word = System.IO.File.ReadLines(Path.Combine(env.ContentRootPath, "_Plugins/words_alpha.txt"))
+            .Skip(random.Next(370000))
+            .First()
+            .Trim()
+            .ToLower();
+
+        // Check against office-unsafe words
+        if (System.IO.File.ReadLines(Path.Combine(env.ContentRootPath, "_Plugins/words_officesafe.txt"))
+            .Any(x => x.ToLower() == word))
+            return GetRandomWord(env);
+
+        return word;
     }
 }

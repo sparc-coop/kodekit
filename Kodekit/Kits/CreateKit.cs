@@ -16,31 +16,9 @@ public class CreateKit : PublicFeature<string, CreateKitResponse>
 
     public override async Task<CreateKitResponse> ExecuteAsync(string userId)
     {
-        var kit = new Kit(GenerateFriendlyId(), "Untitled", userId);
-        await Kits.UpdateAsync((kit, null));
+        var kit = new Kit(Env, "Untitled", userId);
+        await Kits.UpdateAsync(kit);
 
         return new(kit.Id);
-    }
-
-    string GenerateFriendlyId()
-    {
-        return $"{GetRandomWord()}-{GetRandomWord()}";
-    }
-
-    private string GetRandomWord()
-    {
-        var random = new Random();
-        var word = System.IO.File.ReadLines(System.IO.Path.Combine(Env.ContentRootPath, "_Plugins/words_alpha.txt"))
-            .Skip(random.Next(370000))
-            .First()
-            .Trim()
-            .ToLower();
-
-        // Check against office-unsafe words
-        if (System.IO.File.ReadLines(System.IO.Path.Combine(Env.ContentRootPath, "_Plugins/words_officesafe.txt"))
-            .Any(x => x.ToLower() == word))
-            return GetRandomWord();
-
-        return word;
     }
 }

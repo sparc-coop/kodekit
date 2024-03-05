@@ -21,28 +21,6 @@ public class KitRepository(IRepository<Kit> kits, IRepository<KitRevision> revis
         return new(kit.Id);
     }
 
-    string GenerateFriendlyId()
-    {
-        return $"{GetRandomWord()}-{GetRandomWord()}";
-    }
-
-    private string GetRandomWord()
-    {
-        var random = new Random();
-        var word = System.IO.File.ReadLines(System.IO.Path.Combine(Env.ContentRootPath, "_Plugins/words_alpha.txt"))
-            .Skip(random.Next(370000))
-            .First()
-            .Trim()
-            .ToLower();
-
-        // Check against office-unsafe words
-        if (System.IO.File.ReadLines(Path.Combine(Env.ContentRootPath, "_Plugins/words_officesafe.txt"))
-            .Any(x => x.ToLower() == word))
-            return GetRandomWord();
-
-        return word;
-    }
-
     public async Task<Kit> GetAsync(string kitId)
     {
         var kit = await Kits.FindAsync(kitId)
