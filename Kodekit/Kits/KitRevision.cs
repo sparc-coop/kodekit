@@ -2,7 +2,7 @@
 
 namespace Kodekit;
 
-public class KitRevision : Root<string>
+public class KitRevision : Entity<string>
 {
     private KitRevision()
     {
@@ -10,8 +10,8 @@ public class KitRevision : Root<string>
         KitId = string.Empty;
         DateCreated = DateTime.UtcNow;
 
-        Colors = new();
-        Shadows = new();
+        Colors = [];
+        Shadows = [];
 
         Headings = new();
         Paragraphs = new();
@@ -30,51 +30,52 @@ public class KitRevision : Root<string>
     {
         KitId = kit.Id;
         Id = "1";
+
+        if (kit.Current == null)
+            return;
+
+        Id = (int.Parse(kit.Current.Id) + 1).ToString();
+
+        KitId = kit.Current.KitId;
+        ParentRevisionId = kit.Current.Id;
+
+        Colors = kit.Current.Colors;
+        Shadows = kit.Current.Shadows;
+        Headings = kit.Current.Headings;
+        Paragraphs = kit.Current.Paragraphs;
+        Buttons = kit.Current.Buttons;
+        Inputs = kit.Current.Inputs;
+        Selectors = kit.Current.Selectors;
+        Settings = kit.Current.Settings;
+        Dropdowns = kit.Current.Dropdowns;
+        Anchors = kit.Current.Anchors;
+        Lists = kit.Current.Lists;
+        Icons = kit.Current.Icons;
     }
 
-    public KitRevision(KitRevision revision) : this()
-    {
-        // Auto-incrementing integer version IDs
-        Id = (int.Parse(revision.Id) + 1).ToString();
-
-        KitId = revision.KitId;
-        ParentRevisionId = revision.Id;
-
-        Colors = revision.Colors;
-        Shadows = revision.Shadows;
-        Headings = revision.Headings;
-        Paragraphs = revision.Paragraphs;
-        Buttons = revision.Buttons;
-        Inputs = revision.Inputs;
-        Selectors = revision.Selectors;
-        Settings = revision.Settings;
-        Dropdowns = revision.Dropdowns;
-        Anchors = revision.Anchors;
-        Lists = revision.Lists;
-        Icons = revision.Icons;
-    }
-
-    public KitRevision(bool isDefault, string kitId, string? revisionId)
+    public KitRevision(string kitId, string? revisionId)
     {
         Id = revisionId != null ? (int.Parse(revisionId) + 1).ToString() : "1";
         KitId = kitId;
         DateCreated = DateTime.UtcNow;
 
-        Colors = new List<Variable<Color>>
-        {
-            new Variable<Color>{ Name = "Primary", Value = new Color{ HexValue = "#0B5FFF" } },
-            new Variable<Color>{ Name = "Secondary", Value = new Color{ HexValue = "#72E5DD" } },
-            new Variable<Color>{ Name = "Tertiary", Value = new Color{ HexValue = "#FFB46E" } },
-            new Variable<Color>{ Name = "Darkest", Value = new Color{ HexValue = "#000000" } },
-            new Variable<Color>{ Name = "Lightest", Value = new Color{ HexValue = "#FFFFFF" } },
-            new Variable<Color>{ Name = "Error", Value = new Color{ HexValue = "#F96464" } },
-            new Variable<Color>{ Name = "Warning", Value = new Color{ HexValue = "#FF8F39" } },
-            new Variable<Color>{ Name = "Success", Value = new Color{ HexValue = "#5ACA75" } }
-        };
-        Shadows = new List<Variable<Shadow>>
-        {
-            new Variable<Shadow> {Name = "", Value = new Shadow{ Blur = 5, HexColor = "", Spread = 5}}
-        };
+        Colors =
+        [
+            new() { Name = "Primary", Value = new Color{ HexValue = "#0B5FFF" } },
+            new() { Name = "Secondary", Value = new Color{ HexValue = "#72E5DD" } },
+            new() { Name = "Tertiary", Value = new Color{ HexValue = "#FFB46E" } },
+            new() { Name = "Darkest", Value = new Color{ HexValue = "#000000" } },
+            new() { Name = "Lightest", Value = new Color{ HexValue = "#FFFFFF" } },
+            new() { Name = "Error", Value = new Color{ HexValue = "#F96464" } },
+            new() { Name = "Warning", Value = new Color{ HexValue = "#FF8F39" } },
+            new() { Name = "Success", Value = new Color{ HexValue = "#5ACA75" } }
+        ];
+
+        Shadows =
+        [
+            new() {Name = "", Value = new Shadow{ Blur = 5, HexColor = "", Spread = 5}}
+        ];
+
         Headings = new Typography("Roboto", "400", 16, 1.250, 120, null);
         Paragraphs = new Typography("Roboto", "500", 17, 1.200, 160, null);
 

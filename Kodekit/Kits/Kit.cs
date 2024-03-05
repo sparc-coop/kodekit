@@ -1,6 +1,6 @@
 ﻿namespace Kodekit;
 
-public class Kit : Root<string>
+public class Kit : Entity<string>
 {
     private Kit()
     {
@@ -27,6 +27,24 @@ public class Kit : Root<string>
         UserId = kit.UserId;
     }
 
+    public string KitId { get; set; }
+    public string Name { get; set; }
+    public string? Description { get; set; }
+    public string? UserId { get; set; }
+    public DateTime DateCreated { get; set; }
+    public DateTime DateModified { get; set; }
+    public bool? IsAutoPublish { get; set; }
+    public bool? IsDeleted { get; set; }
+    public int? ThemeId { get; set; }
+
+    // Revision links
+    public string? CurrentRevisionId { get; set; }
+    public string? PublishedRevisionId { get; set; }
+    public string? PreviousRevisionId { get; set; }
+    public string? NextRevisionId { get; set; }
+
+    internal KitRevision? Current { get; set; }
+
     internal void SetUser(string id)
     {
         UserId = id;
@@ -40,39 +58,16 @@ public class Kit : Root<string>
         DateModified = DateTime.UtcNow;
     }
 
-    public string KitId { get; set; }
-    public string Name { get; set; }
-    public string? Description { get; set; }
-    public string? UserId { get; set; }
-    public DateTime DateCreated { get; set; }
-
     internal new void Publish()
     {
         PublishedRevisionId = CurrentRevisionId;
         DateModified = DateTime.UtcNow;
     }
 
-    public DateTime DateModified { get; set; }
-    public bool? IsAutoPublish { get; set; }
-    public bool? IsDeleted { get; set; }
-    public int? ThemeId { get; set; }
-
-    // Revision links
-    public string? CurrentRevisionId { get; set; }
-    public string? PublishedRevisionId { get; set; }
-    public string? PreviousRevisionId { get; set; }
-    public string? NextRevisionId { get; set; }
-
-    internal KitRevision AddRevision(KitRevision? previousRevision = null)
+    internal void AddRevision()
     {
-        var revision =
-            previousRevision == null
-            ? new KitRevision(this)
-            : new KitRevision(previousRevision);
-
+        Current = new KitRevision(this);
         PreviousRevisionId = CurrentRevisionId;
-        CurrentRevisionId = revision.Id;
-
-        return revision;
+        CurrentRevisionId = Current.Id;
     }
 }

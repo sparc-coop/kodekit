@@ -1,30 +1,22 @@
-﻿using Azure.Core;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using System.Security.Claims;
 
 namespace Kodekit;
 
-public class KitRepository
+public class KitRepository(IRepository<Kit> kits, IRepository<KitRevision> revisions, IWebHostEnvironment env, ClaimsPrincipal user)
 {
-    public KitRepository(IRepository<Kit> kits, IRepository<KitRevision> revisions)
-    {
-        Kits = kits;
-        Revisions = revisions;
-    }
-
-    public IRepository<Kit> Kits { get; }
-    public IRepository<KitRevision> Revisions { get; }
-    public IWebHostEnvironment Env { get; }
-    public ClaimsPrincipal User { get; }
+    public IRepository<Kit> Kits { get; } = kits;
+    public IRepository<KitRevision> Revisions { get; } = revisions;
+    public IWebHostEnvironment Env { get; } = env;
+    public ClaimsPrincipal User { get; } = user;
 
     // CREATE
     public record CreateKitResponse(string KitId);
 
-    public async Task<CreateKitResponse> CreateKitAsync(string userId)
+    public async Task<CreateKitResponse> CreateKitAsync()
     {
-        var kit = new Kit(GenerateFriendlyId(), "Untitled", userId);
-        await UpdateAsync((kit, null));
+        var kit = new Kit(GenerateFriendlyId(), "Untitled", User.Id());
+        await UpdateAsync(kit);
 
         return new(kit.Id);
     }
@@ -44,21 +36,33 @@ public class KitRepository
             .ToLower();
 
         // Check against office-unsafe words
-        if (System.IO.File.ReadLines(System.IO.Path.Combine(Env.ContentRootPath, "_Plugins/words_officesafe.txt"))
+        if (System.IO.File.ReadLines(Path.Combine(Env.ContentRootPath, "_Plugins/words_officesafe.txt"))
             .Any(x => x.ToLower() == word))
             return GetRandomWord();
 
         return word;
     }
 
+    public async Task<Kit> GetAsync(string kitId)
+    {
+        var kit = await Kits.FindAsync(kitId)
+            ?? throw new Exception("Kit not found!");
+
+        kit.Current = kit.CurrentRevisionId != null
+            ? await GetRevisionAsync(kitId, kit.CurrentRevisionId)
+            : null;
+
+        return kit;
+    }
+
     public async Task<CreateKitResponse> CopyKitAsync(string kitId)
     {
-        var kit = await GetCurrentAsync(kitId);
+        var kit = await GetAsync(kitId);
 
-        var newKit = new Kit(Guid.NewGuid().ToString(), kit.Kit);
-        var newRevision = new KitRevision(kit.Revision);
+        var newKit = new Kit(Guid.NewGuid().ToString(), kit);
+        newKit.Current = new KitRevision(kit);
 
-        await UpdateAsync((newKit, newRevision));
+        await UpdateAsync(newKit);
 
         return new(newKit.Id);
     }
@@ -76,7 +80,7 @@ public class KitRepository
             else
             {
                 kit.Publish();
-                await UpdateAsync((kit, null));
+                await UpdateAsync(kit);
                 return true;
             }
         }
@@ -86,57 +90,22 @@ public class KitRepository
         }
     }
 
-    // GET
-    public async Task<(Kit Kit, KitRevision Revision)> GetKitAndRevisionAsync(string kitId, string revisionId)
-    {
-        var kit = await GetKitAsync(kitId);
-
-        var revision = await GetRevisionAsync(kitId, revisionId)
-            ?? new KitRevision(kit);
-
-        return (kit, revision);
-    }
-
-    public async Task<Kit> GetKitAsync(string kitId)
-    {
-        var kit = await Kits.FindAsync(kitId);
-        if (kit == null)
-            throw new NotFoundException("Kit not found!");
-
-        return kit;
-    }
-
     public Task<KitRevision?> GetRevisionAsync(string kitId, string revisionId)
     {
-        return Task.FromResult(Revisions.Query(kitId).AsNoTracking().FirstOrDefault(x => x.Id == revisionId));
+        var revision = Revisions.Query(kitId).FirstOrDefault(x => x.Id == revisionId);
+        return Task.FromResult(revision);
     }
-
-    public async Task<KitRevision> GetCurrentRevisionAsync(string kitId)
-        => (await GetCurrentAsync(kitId)).Revision;
-
-    public async Task<(Kit Kit, KitRevision Revision)> GetCurrentAsync(string kitId)
+    
+    public async Task<Kit> GetPublishedAsync(string kitId)
     {
-        var kit = await GetKitAsync(kitId);
-        var revision = kit.CurrentRevisionId != null
-            ? await GetRevisionAsync(kitId, kit.CurrentRevisionId)
-            : null;
-
-        if (revision == null)
-            throw new NotFoundException("Current revision not found!");
-
-        return (kit, revision);
-    }
-
-    public async Task<(Kit Kit, KitRevision? Revision)> GetPublishedAsync(string kitId)
-    {
-        var kit = await GetKitAsync(kitId);
-        var revision = kit.PublishedRevisionId != null
+        var kit = await GetAsync(kitId);
+        kit.Current = kit.PublishedRevisionId != null
             ? await GetRevisionAsync(kitId, kit.PublishedRevisionId)
             : kit.CurrentRevisionId != null
             ? await GetRevisionAsync(kitId, kit.CurrentRevisionId)
             : null;
 
-        return (kit, revision);
+        return kit;
     }
     public async Task<List<KitRevision>> GetRelatedKitsAsync(string kitId)
     {
@@ -154,18 +123,16 @@ public class KitRepository
     }
 
     // UPDATE
-    internal async Task UpdateAsync((Kit Kit, KitRevision? Revision) kit)
+    internal async Task UpdateAsync(Kit kit)
     {
-        // update revision links
-        var revision = kit.Kit.AddRevision(kit.Revision);
-
-        await Kits.UpdateAsync(kit.Kit);
-        await Revisions.AddAsync(revision);
+        kit.AddRevision();
+        await Kits.UpdateAsync(kit);
+        await Revisions.AddAsync(kit.Current!);
     }
 
     internal async Task UpdateAsync(string KitId, string Name, string? UserId = null, bool IsAutoPublish = false)
     {
-        var kit = await GetKitAsync(KitId);
+        var kit = await GetAsync(KitId);
 
         if (string.IsNullOrWhiteSpace(kit.UserId) && User?.Id() != null)
             kit.SetUser(User.Id());
@@ -178,14 +145,12 @@ public class KitRepository
     {
         try
         {
-            var kit = await GetCurrentAsync(kitId);
+            var kit = await GetAsync(kitId);
             //if theme not already set
-            if (kit.Kit.ThemeId != null)
+            if (kit.ThemeId != null)
                 return false;
 
-            kit.Kit.ThemeId = 1;
-            kit.Revision = new KitRevision(true, kitId, kit.Kit.CurrentRevisionId);
-
+            kit.ThemeId = 1;
             await UpdateAsync(kit);
             return true;
 
@@ -199,9 +164,9 @@ public class KitRepository
     // DELETE
     public async Task<bool> DeleteKitAsync(string kitId)
     {
-        var kit = await GetKitAsync(kitId);
+        var kit = await GetAsync(kitId);
         if (kit.UserId != User.Id())
-            throw new NotAuthorizedException("You do not own this kit!");
+            throw new Exception("You do not own this kit!");
 
         try
         {
