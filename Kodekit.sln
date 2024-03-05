@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Server", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Data.AzureStorage", "..\Sparc.Kernel\Sparc.Blossom.Data.AzureStorage\Sparc.Blossom.Data.AzureStorage.csproj", "{23AADF55-AFEB-4E87-91BB-8113A7474E3A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Client", "..\Sparc.Kernel\Sparc.Blossom.Client\Sparc.Blossom.Client.csproj", "{B802DFBF-4E21-412D-9D24-7FBE63BD2506}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B802DFBF-4E21-412D-9D24-7FBE63BD2506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B802DFBF-4E21-412D-9D24-7FBE63BD2506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B802DFBF-4E21-412D-9D24-7FBE63BD2506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B802DFBF-4E21-412D-9D24-7FBE63BD2506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{0C1ECBF0-C8D3-408C-9B58-B808CD608D33} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 		{C0DDAD24-1E91-4287-B053-F16687922742} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 		{23AADF55-AFEB-4E87-91BB-8113A7474E3A} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{B802DFBF-4E21-412D-9D24-7FBE63BD2506} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B62532E-4EEB-4BBA-BCFC-8047EA9EBBB5}
