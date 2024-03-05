@@ -8,6 +8,10 @@
   </PropertyGroup>
 	
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+	
+  <ItemGroup>
 	<None Remove="_Plugins\words_alpha.txt" />
 	<None Remove="_Plugins\words_officesafe.txt" />
 	<Content Include="_Plugins\words_alpha.txt">
@@ -16,6 +20,10 @@
     <Content Include="_Plugins\words_officesafe.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 	
   <ItemGroup>

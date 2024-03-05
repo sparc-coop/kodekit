@@ -1,50 +1,59 @@
-@import "_variables";
-
-//Components
-@import "Components/Colors/ColorPalette";
-@import "Components/Colors/ColorCard";
-@import "Components/Colors/ColorBlotch";
-
-@import "Shared/Components/pagelayout";
-@import "Shared/Components/modal";
-@import "Shared/Components/toggle-switch";
-
-@import "Pages/Elements/Buttons";
-@import "Pages/Elements/Anchors";
-@import "Pages/Elements/Inputs";
-@import "Pages/Elements/Lists";
-@import "Pages/Elements/Dropdowns";
-@import "Pages/Elements/Selectors";
-@import "Pages/BaseStyles/Colors";
-@import "Pages/BaseStyles/Icons";
-@import "Pages/BaseStyles/Layout";
-@import "Pages/BaseStyles/Typography";
-@import "Pages/BaseStyles/GlobalSettings";
-@import "Pages/BaseStyles/PreviewPage";
-@import "Pages/Effects/BoxShadow";
-@import "Pages/Introduction";
-@import "Pages/Installation";
-@import "Pages/Themes";
-@import "Pages/UserKits";
-@import "Pages/KitCard";
-@import "Pages/ReleaseNotes";
-
-@import "Shared/MainLayout";
-@import "Shared/SimplifiedLayout";
-@import "Shared/NavMenu";
-@import "Shared/SignUpBanner";
-@import "Shared/PageInfo";
-
-//Core Imports
-@import "wwwroot/CoreStyles/Core/Colors.scss";
-@import "wwwroot/CoreStyles/Core/Layout.scss";
-@import "wwwroot/CoreStyles/Core/Reset.scss";
-@import "wwwroot/CoreStyles/Core/Typography.scss";
-
-//Elements Imports
-@import "wwwroot/CoreStyles/Elements/Buttons.scss";
-@import "wwwroot/CoreStyles/Elements/CheckboxesAndRadios.scss";
-@import "wwwroot/CoreStyles/Elements/InputsAndTextareas.scss";
+// Colors
+:root {
+    //Black & White
+    --black: #000000;
+    --white: #FFFFFF;
+    //Backgrounds
+    --background: #0E0E0E;
+    --background-light: #1A1A1A;
+    //Greys
+    --dark-grey: #525151;
+    --light-grey: #979797;
+    //New Brand Colors
+    --blue: #0B5FFF;
+    --turquoise: #00C2FF;
+    --pink: #FF29C3;
+    --green: #34CE97;
+    --green-300: #6EF8D7;
+    //Old Brand Colors
+    --yellow: #A3A60E;
+    --orange: #FFB46E;
+    --purple: #875BBF;
+    //Primary Colors
+    --primary-100: #B3CDFF;
+    --primary-200: #C2D7FF;
+    --primary-300: #80ACFF;
+    --primary-500: #0B5FFF;
+    --primary-700: #0053F0;
+    --primary-900: #004AD7;
+    //Secondary Colors
+    --secondary-100: #E5F7F6;
+    --secondary-300: #6DAEFF;
+    --secondary-500: #00BFB2;
+    --secondary-700: #2782F4;
+    --secondary-900: #126FE4;
+    //Tertiary Colors
+    --tertiary-100: #FFDEC0;
+    --tertiary-300: #FFCC9C;
+    --tertiary-500: #FFB46E;
+    --tertiary-700: #F89B45;
+    --tertiary-900: #EB8629;
+    //Greyscale
+    --grey-50: #F2F2F2;
+    --grey-100: #E5E5E5;
+    --grey-200: #CCCCCC;
+    --grey-300: #B2B2B2;
+    --grey-400: #999999;
+    --grey-500: #7F7F7F;
+    --grey-600: #666666;
+    --grey-700: #454545;
+    --grey-800: #1E1E1E;
+    --grey-900: #0E0E0E;
+    //System Colors
+    --error-500: #F96464;
+    --warning-500: #FF8F39;
+    --success-500: #5ACA75;
+}
 
 //Fonts
 @font-face {
@@ -92,10 +101,10 @@
 body {
     margin: 0;
     overflow-x: hidden;
-    background: $background;
+    background: var(--background);
     font-family: 'EncodeSans', sans-serif;
     font-weight: 400;
-    color: $white;
+    color: var(--white);
 }
 
 .loading {
@@ -193,18 +202,18 @@ section.secondary {
 }
 
 .code-example {
-    background: $grey-900;
+    background: var(--grey-900);
     border-radius: 0px 0px 8px 8px;
     padding: 32px;
-    color: $orange;
+    color: var(--orange);
     margin-bottom: 40px;
 
     span {
-        color: $purple;
+        color: var(--purple);
     }
 
     .comment {
-        color: $grey-300;
+        color: var(--grey-300);
     }
 }
 
@@ -331,3 +340,5 @@ button {
     text-align: center;
     padding-top: 15%;
 }
+
+@import "_Imports";
