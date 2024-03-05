@@ -15,7 +15,7 @@ public class KitRepository(IRepository<Kit> kits, IRepository<KitRevision> revis
 
     public async Task<CreateKitResponse> CreateKitAsync()
     {
-        var kit = new Kit(GenerateFriendlyId(), "Untitled", User.Id());
+        var kit = new Kit(Env, "Untitled", User.Id());
         await UpdateAsync(kit);
 
         return new(kit.Id);
@@ -37,8 +37,10 @@ public class KitRepository(IRepository<Kit> kits, IRepository<KitRevision> revis
     {
         var kit = await GetAsync(kitId);
 
-        var newKit = new Kit(Guid.NewGuid().ToString(), kit);
-        newKit.Current = new KitRevision(kit);
+        var newKit = new Kit(Env, kit)
+        {
+            Current = new KitRevision(kit)
+        };
 
         await UpdateAsync(newKit);
 
