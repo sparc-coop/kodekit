@@ -8,20 +8,8 @@
   </PropertyGroup>
 	
   <ItemGroup>
-	<Content Remove="C:\Users\josep\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
-    <Content Remove="C:\Users\chris\.nuget\packages\sparc.blossom.server\7.1.0\contentFiles\any\net7.0\Pages\BlossomServerApp.razor" />
-  </ItemGroup>
-	
-  <ItemGroup>
 	<None Remove="_Plugins\words_alpha.txt" />
 	<None Remove="_Plugins\words_officesafe.txt" />
-	<Content Include="_Shared\CoreStyles\Core\Colors.scss" />
-	<Content Include="_Shared\CoreStyles\Core\Layout.scss" />
-	<Content Include="_Shared\CoreStyles\Core\Reset.scss" />
-	<Content Include="_Shared\CoreStyles\Core\Typography.scss" />
-	<Content Include="_Shared\CoreStyles\Elements\Buttons.scss" />
-	<Content Include="_Shared\CoreStyles\Elements\CheckboxesAndRadios.scss" />
-	<Content Include="_Shared\CoreStyles\Elements\InputsAndTextareas.scss" />
 	<Content Include="_Plugins\words_alpha.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -46,40 +34,4 @@
     <ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Data.Cosmos\Sparc.Blossom.Data.Cosmos.csproj" />
     <ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.Server.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <None Include="wwwroot\css\destyle-reset.css" />
-    <None Include="wwwroot\css\kodekit-theme.css" />
-  </ItemGroup>
-	
-  <ItemGroup>
-    <Content Update="Elements\Colors\ColorBlob.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\ColorBlob2.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\ColorBlotch.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\ColorCard.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\ColorCardPlaceholder.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\ColorPalette.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\ColorSvg.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\InputColor.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-    <Content Update="Elements\Colors\InputColorSelector.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-  </ItemGroup>
-	
 </Project>
