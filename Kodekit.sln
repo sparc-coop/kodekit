@@ -3,18 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C535525D-B256-46CF-BF7B-39434E96741D}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Features (Old)", "Kodekit.Features (old)\Kodekit.Features (Old).csproj", "{6B51C1B6-DD5C-4B06-AE11-3853B3705FA6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web (Old)", "Kodekit.Web (old)\Kodekit.Web (Old).csproj", "{EC0B255E-8072-41AA-8DDE-7B16236CBB6B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit", "Kodekit\Kodekit.csproj", "{B5674D2B-6547-4889-BFA9-467FC98EEA84}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Legacy", "_Legacy", "{E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blossom", "Blossom", "{879C4EEA-C518-4281-9A39-14931E19AE11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Core", "..\Sparc.Kernel\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj", "{265AE0E2-82DD-479F-B693-10408186281D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Data.Cosmos", "..\Sparc.Kernel\Sparc.Blossom.Data.Cosmos\Sparc.Blossom.Data.Cosmos.csproj", "{0C1ECBF0-C8D3-408C-9B58-B808CD608D33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Server", "..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.Server.csproj", "{C0DDAD24-1E91-4287-B053-F16687922742}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Data.AzureStorage", "..\Sparc.Kernel\Sparc.Blossom.Data.AzureStorage\Sparc.Blossom.Data.AzureStorage.csproj", "{23AADF55-AFEB-4E87-91BB-8113A7474E3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +37,22 @@ Global
 		{B5674D2B-6547-4889-BFA9-467FC98EEA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5674D2B-6547-4889-BFA9-467FC98EEA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5674D2B-6547-4889-BFA9-467FC98EEA84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{265AE0E2-82DD-479F-B693-10408186281D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{265AE0E2-82DD-479F-B693-10408186281D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{265AE0E2-82DD-479F-B693-10408186281D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{265AE0E2-82DD-479F-B693-10408186281D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C1ECBF0-C8D3-408C-9B58-B808CD608D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C1ECBF0-C8D3-408C-9B58-B808CD608D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C1ECBF0-C8D3-408C-9B58-B808CD608D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C1ECBF0-C8D3-408C-9B58-B808CD608D33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0DDAD24-1E91-4287-B053-F16687922742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0DDAD24-1E91-4287-B053-F16687922742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0DDAD24-1E91-4287-B053-F16687922742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0DDAD24-1E91-4287-B053-F16687922742}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23AADF55-AFEB-4E87-91BB-8113A7474E3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +60,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6B51C1B6-DD5C-4B06-AE11-3853B3705FA6} = {E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}
 		{EC0B255E-8072-41AA-8DDE-7B16236CBB6B} = {E40DA9BC-0F04-462C-9F5F-82BEA45AFBA1}
+		{265AE0E2-82DD-479F-B693-10408186281D} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{0C1ECBF0-C8D3-408C-9B58-B808CD608D33} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{C0DDAD24-1E91-4287-B053-F16687922742} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{23AADF55-AFEB-4E87-91BB-8113A7474E3A} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B62532E-4EEB-4BBA-BCFC-8047EA9EBBB5}
