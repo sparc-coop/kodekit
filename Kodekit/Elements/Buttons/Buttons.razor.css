@@ -1,0 +1,60 @@
+﻿.secondary-button {
+  display: flex;
+}
+
+.preview-background {
+  margin-bottom: 20px;
+}
+.preview-background.core-buttons {
+  margin-top: 40px;
+}
+.preview-background label {
+  display: block !important;
+  width: 220px;
+}
+.preview-background label span {
+  display: inline-block;
+  width: 26px;
+  height: 14px;
+  margin-left: 5px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+.preview-background label span:hover {
+  cursor: pointer;
+}
+.preview-background label span input {
+  visibility: hidden;
+  width: 26px;
+  height: 14px;
+  padding: 0;
+}
+.preview-background label span .hex-value {
+  display: none;
+}
+
+.preview-example {
+  padding: 32px 32px 8px 32px;
+}
+.preview-example-container {
+  margin-top: 20px;
+}
+.preview-example > div {
+  margin-bottom: 24px;
+}
+.preview-example .remove {
+  border: 1px solid transparent !important;
+}
+
+.section-container {
+  display: flex;
+  margin-top: 40px;
+}
+.section-container p {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  margin-top: 2px;
+}

@@ -10,5 +10,9 @@
   {
     "outputFile": "_Shared/Layouts/MainLayout.razor.css",
     "inputFile": "_Shared/Layouts/MainLayout.razor.scss"
+  },
+  {
+    "outputFile": "Elements/Buttons/Buttons.razor.css",
+    "inputFile": "Elements/Buttons/Buttons.razor.scss"
   }
 ]
