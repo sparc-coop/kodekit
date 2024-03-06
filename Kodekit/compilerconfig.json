@@ -22,5 +22,9 @@
   {
     "outputFile": "Elements/Dropdowns/Dropdowns.css",
     "inputFile": "Elements/Dropdowns/Dropdowns.scss"
+  },
+  {
+    "outputFile": "Elements/Icons/Icons.razor.css",
+    "inputFile": "Elements/Icons/Icons.razor.scss"
   }
 ]

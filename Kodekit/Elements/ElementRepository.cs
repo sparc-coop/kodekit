@@ -7,30 +7,6 @@ public class ElementRepository
 {
     public KitRepository Kits { get; }
     
-    // ICONS
-    public async Task<UpdateIconsModel> GetIconsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-
-        return new(
-            id,
-            kit.Icons.Name,
-            IconLibrary.GetValidIcons(),
-            await kit.Icons.GetRandomIconsAsync()
-        );
-    }
-
-    public async Task<Kit> UpdateIconsAsync(UpdateIconsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        var icon = new IconLibrary(request.Name);
-        kit.Revision.UpdateIcons(icon);
-        await Kits.UpdateAsync(kit);
-
-        return kit.Kit;
-    }
-
     // INPUTS
     public async Task<UpdateInputsModel> GetInputsAsync(string id)
     {

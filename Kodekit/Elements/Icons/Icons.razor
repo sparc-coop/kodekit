@@ -1,69 +1,54 @@
-﻿@page "/{kitId}/icons"
+﻿@inherits LiveForm
+@page "/{kitId}/icons"
 
-<div class="icons page">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Base Styles</div>
-            <h2>Icons</h2>
+<header>
+    <h1>Base Styles</h1>
+    <h2>Icons</h2>
+    <p>
+        Provide visual symbols and logos.
+    </p>
+</header>
+<article>
+    <section>
+        <header>
+            <h3>Icon Sets</h3>
             <p class="subheader">
-                Provide visual symbols and logos.
+                There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
             </p>
         </header>
-        <div class="content">
-            <section>
-                <header>
-                    <h3>Icon Sets</h3>
-                    <p class="subheader">
-                        There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
-                    </p>
-                </header>
-                @if (kit.Kit != null)
-                {
-                    <EditForm EditContext="@Context">
-                        <section>
-                            <label>
-                                <InputSelect @bind-Value="Icon.Name">
-                                    <option>Select:</option>
-                                    <option value="Material">Material</option>
-                                    <option value="Remix">Remix</option>
-                                    <option value="CSS">CSS</option>
-                                    <option value="FontAwesome">FontAwesome</option>
-                                </InputSelect>
-                                Icon Set
-                            </label>
-                        <Preview Kit=kit.Kit>
-                            @foreach (var icon in IconList)
-                            {
-                                <i class="@(Icon.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
-                            }
-                        </Preview>
-                        </section>
-                    </EditForm>
-                }
-            </section>
-        </div>
-    </div>
-</div>
+        @if (kit != null)
+        {
+            <EditForm EditContext="@Context">
+                <section>
+                    <label>
+                        <InputSelect @bind-Value="kit.Current.Icons.Name">
+                            <option>Select:</option>
+                            <option value="Material">Material</option>
+                            <option value="Remix">Remix</option>
+                            <option value="CSS">CSS</option>
+                            <option value="FontAwesome">FontAwesome</option>
+                        </InputSelect>
+                        Icon Set
+                    </label>
+                    <Preview Kit=kit>
+                        @foreach (var icon in RandomIcons)
+                        {
+                            <i class="@(kit.Current.Icons.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                        }
+                    </Preview>
+                </section>
+            </EditForm>
+        }
+    </section>
+</article>
 
 @code {
-    [Parameter] public string? kitId { get; set; }
+    List<string> RandomIcons = new();
 
-    (Kit Kit, KitRevision Revision) kit;
-    IconLibrary? Icon;
-    List<string>? IconList;
-    EditContext? Context;
-    
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
+    protected override async Task OnInitializedAsync()
     {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        Icon = kit.Revision.Icons;
-        IconList = Icon.GetRandomIconsAsync().Result;
-        Context = new EditContext(kit.Revision.Icons);
-        return kit;
-    }
-
-    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
+        await base.OnInitializedAsync();
+        RandomIcons = await kit!.Current.Icons.GetRandomIconsAsync();
     }
 }
+
