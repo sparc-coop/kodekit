@@ -7,23 +7,6 @@ public class ElementRepository
 {
     public KitRepository Kits { get; }
    
-    // SETTINGS
-    public async Task<UpdateSettingsModel> GetSettingsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-        return new(id, kit.Settings);
-    }
-
-    public async Task<Kit> UpdateSettingsAsync(UpdateSettingsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        kit.Revision.UpdateSettings(request.Settings);
-        await Kits.UpdateAsync(kit);
-
-        return kit.Kit;
-    }
-
     // SHADOWS
     public async Task<ShadowsModel> GetShadowsAsync(string id)
     {

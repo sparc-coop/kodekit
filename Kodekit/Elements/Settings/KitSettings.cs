@@ -4,16 +4,7 @@ public class KitSettings
 {
     public KitSettings()
     {
-        UseTypography = true;
-        UseColors = true;
-        UseIcons = true;
-        UseButtons = true;
-        UseInputs = true;
-        UseCheckboxes = true;
-        UseDropdowns = true;
-        UseAnchors = true;
-        UseLists = true;
-        UseShadows = true;
+        UpdateAll(true);
     }
 
     public bool UseTypography { get; set; }
@@ -26,4 +17,18 @@ public class KitSettings
     public bool UseAnchors { get; set; }
     public bool UseLists { get; set; }
     public bool UseShadows { get; set; }
+
+    public void UpdateAll(bool value)
+    {
+        UseTypography = value;
+        UseColors = value;
+        UseIcons = value;
+        UseButtons = value;
+        UseInputs = value;
+        UseCheckboxes = value;
+        UseDropdowns = value;
+        UseAnchors = value;
+        UseLists = value;
+        UseShadows = value;
+    }
 }

@@ -1,0 +1,44 @@
+﻿section {
+    header {
+        h3 {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.section-container {
+    display: flex;
+    margin: 20px 0;
+
+    &:focus {
+        border: none;
+        box-shadow: none;
+    }
+}
+
+.disabled {
+    color: var(--white);
+
+    input {
+        &:checked + .slider {
+            background-color: var(--grey-800);
+            border: 1px solid var(--white);
+
+            &:before {
+                -webkit-transform: translateX(33px);
+                -ms-transform: translateX(33px);
+                transform: translateX(33px);
+                background-color: var(--white);
+            }
+
+            &:focus {
+                border: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+input[type="checkbox"]:disabled + .slider {
+    opacity: 0.5;
+}
