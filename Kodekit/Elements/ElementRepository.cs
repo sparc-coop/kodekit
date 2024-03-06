@@ -7,29 +7,6 @@ public class ElementRepository
 {
     public KitRepository Kits { get; }
    
-    // SHADOWS
-    public async Task<ShadowsModel> GetShadowsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-        if (kit == null)
-            throw new NotFoundException("Kit not found!");
-
-        var smallShadow = kit.GetShadow("small");
-        var xlargeShadow = kit.GetShadow("xlarge");
-
-        return new(id, smallShadow ?? new Shadow(), xlargeShadow ?? new Shadow());
-    }
-    public async Task<Kit> UpdateShadowsAsync(ShadowsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        if (request.Small != null && request.XLarge != null)
-            kit.Revision.UpdateShadows(request.Small, request.XLarge);
-
-        await Kits.UpdateAsync(kit);
-        return kit.Kit;
-    }
-
     // TYPOGRAPHY
     public async Task<GetTypographyResponse> GetTypographyAsync(string id)
     {

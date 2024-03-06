@@ -42,5 +42,9 @@
   {
     "outputFile": "Elements/Selectors/Selectors.razor.css",
     "inputFile": "Elements/Selectors/Selectors.razor.scss"
+  },
+  {
+    "outputFile": "Elements/Shadows/BoxShadow.razor.css",
+    "inputFile": "Elements/Shadows/BoxShadow.razor.scss"
   }
 ]

@@ -1,140 +1,66 @@
-﻿@page "/{kitId}/box-shadow"
+﻿@inherits LiveForm
+@page "/{kitId}/box-shadow"
 
-<div class="effects-page page @(isBackgroundWhite ? "white-background" : "")">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Effects</div>
-            <h2>Box Shadow</h2>
-            <p class="subhedaer">
-                Add box shadows to different elements.
-            </p>
-            <div class="toggle-bg">
-                <label class="switch">
-                    <input type="checkbox" @bind="@isBackgroundWhite">
-                    <span class="slider"></span>
-                </label>
-                <p>
-                    Toggle Background Color
-                </p>
-            </div>
-        </header>
-        <div class="content">
-            @if (kit.Revision != null)
-            {
-                <EditForm EditContext="@Context">
-                    <section>
-                        <header>
-                            <h3>Small Shadow Settings</h3>
-                        </header>
-                        <div class="inputs--wrapper">
-                            <label>
-                                <InputNumber @bind-Value="shadowSmall.X" class="small" />
-                                X Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowSmall.Y" class="small" />
-                                Y Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowSmall.Blur" class="small" />
-                                Blur (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowSmall.Spread" class="small" />
-                                Spread (px)
-                            </label>
-                            <label>
-                                <InputColor @bind-Value="shadowSmall.HexColor" />
-                                Shadow Color
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowSmall.Opacity" class="small" />
-                                Shadow Opacity (%)
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <header>
-                            <h3>X-Large Shadow Settings</h3>
-                        </header>
-                        <div class="inputs--wrapper">
-                            <label>
-                                <InputNumber @bind-Value="shadowLarge.X" class="small" />
-                                X Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowLarge.Y" class="small" />
-                                Y Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowLarge.Blur" class="small" />
-                                Blur (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowLarge.Spread" class="small" />
-                                Spread (px)
-                            </label>
-                            <label>
-                                <InputColor @bind-Value="shadowLarge.HexColor" />
-                                Shadow Color
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="shadowLarge.Opacity" class="small" />
-                                Shadow Opacity (%)
-                            </label>
-                        </div>
-                        @*<div class="preview-background">
-                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground" BackgroundColor="@PreviewBackground" /></label>
-                        </div>*@
-                        <Preview Kit=kit.Kit PreviewBackgroundEditable=true>
-                            <div>
-                                <div class="shadow-100"></div>
-                                <label>Small Shadow</label>
-                            </div>
-                            <div>
-                                <div class="shadow-300"></div>
-                                <label>Medium Shadow</label>
-                            </div>
-                            <div>
-                                <div class="shadow-600"></div>
-                                <label>Large Shadow</label>
-                            </div>
-                            <div>
-                                <div class="shadow-1000"></div>
-                                <label>X-Large Shadow</label>
-                            </div>
-                        </Preview>
-                    </section>
-                </EditForm>
-            }
-        </div>
+<header>
+    <h1>Effects</h1>
+    <h2>Box Shadow</h2>
+    <p>
+        Add box shadows to different elements.
+    </p>
+    <div class="toggle-bg">
+        <label class="switch">
+            <input type="checkbox" @bind="@isBackgroundWhite">
+            <span class="slider"></span>
+        </label>
+        <p>
+            Toggle Background Color
+        </p>
     </div>
-</div>
+</header>
 
+<article class="@(isBackgroundWhite ? "white-background" : "")">
+    @if (kit != null)
+    {
+        <EditForm EditContext="@Context">
+            <section>
+                <header>
+                    <h3>Small Shadow Settings</h3>
+                </header>
+                <ShadowSettings Shadow="smallShadow" />
+            </section>
+            <section>
+                <header>
+                    <h3>X-Large Shadow Settings</h3>
+                </header>
+                <ShadowSettings Shadow="largeShadow" />
+            </section>
+
+            <section>
+                <Preview Kit=kit PreviewBackgroundEditable=true>
+                    <div>
+                        <div class="shadow-100"></div>
+                        <label>Small Shadow</label>
+                    </div>
+                    <div>
+                        <div class="shadow-300"></div>
+                        <label>Medium Shadow</label>
+                    </div>
+                    <div>
+                        <div class="shadow-600"></div>
+                        <label>Large Shadow</label>
+                    </div>
+                    <div>
+                        <div class="shadow-1000"></div>
+                        <label>X-Large Shadow</label>
+                    </div>
+                </Preview>
+            </section>
+        </EditForm>
+    }
+</article>
+    
 @code {
-    [Parameter] public string? kitId { get; set; }
-
-    (Kit Kit, KitRevision Revision) kit;
-    List<Variable<Shadow>>? Shadows;
-    Shadow? shadowSmall;
-    Shadow? shadowLarge;
-    EditContext? Context;
-
-    private bool isBackgroundWhite = false;
-    public string PreviewBackground;
-
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
-    {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        Shadows = kit.Revision.Shadows;
-        shadowSmall = Shadows.First(x => x.Name == "shadow-100").Value;
-        shadowLarge = Shadows.First(x => x.Name == "shadow-1000").Value;
-        Context = new EditContext(kit.Revision.Shadows);
-        return kit;
-    }
-
-    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
-    }
+    bool isBackgroundWhite = false;
+    Shadow smallShadow => kit!.Current.GetShadow("small")!;
+    Shadow largeShadow => kit!.Current.GetShadow("large")!;
 }

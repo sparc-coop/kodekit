@@ -1,0 +1,30 @@
+﻿<div class="inputs--wrapper">
+    <label>
+        <InputNumber @bind-Value="Shadow.X" class="small" />
+        X Length (px)
+    </label>
+    <label>
+        <InputNumber @bind-Value="Shadow.Y" class="small" />
+        Y Length (px)
+    </label>
+    <label>
+        <InputNumber @bind-Value="Shadow.Blur" class="small" />
+        Blur (px)
+    </label>
+    <label>
+        <InputNumber @bind-Value="Shadow.Spread" class="small" />
+        Spread (px)
+    </label>
+    <label>
+        <InputColor @bind-Value="Shadow.HexColor" />
+        Shadow Color
+    </label>
+    <label>
+        <InputNumber @bind-Value="Shadow.Opacity" class="small" />
+        Shadow Opacity (%)
+    </label>
+</div>
+
+@code {
+    [Parameter] public required Shadow Shadow { get; set; }
+}
