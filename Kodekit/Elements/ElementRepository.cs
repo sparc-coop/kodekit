@@ -7,35 +7,6 @@ public class ElementRepository
 {
     public KitRepository Kits { get; }
     
-    // DROPDOWNS
-    public async Task<UpdateDropdownsModel> GetDropdownsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-
-        return new(
-            id,
-            kit.Dropdowns.Font.Size?.Value,
-            kit.Dropdowns.Font.Weight,
-            kit.Dropdowns.Padding.Vertical?.Value,
-            kit.Dropdowns.Padding.Horizontal?.Value,
-            kit.Dropdowns.Border.Radius?.Value,
-            kit.Dropdowns.Border.Width?.Value,
-            kit.Dropdowns.OverwriteInherited
-        );
-    }
-
-    public async Task<Kit> UpdateDropdownsAsync(UpdateDropdownsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        var Dropdowns = new Dropdown(request.FontSize, request.FontWeight, request.VerticalPadding, request.HorizontalPadding, request.CornerRadius, request.BorderWidth, request.OverwriteInherited);
-
-        kit.Revision.UpdateDropdowns(Dropdowns);
-        await Kits.UpdateAsync(kit);
-
-        return kit.Kit;
-    }
-
     // ICONS
     public async Task<UpdateIconsModel> GetIconsAsync(string id)
     {
