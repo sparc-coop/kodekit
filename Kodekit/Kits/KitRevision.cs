@@ -150,9 +150,12 @@ public class KitRevision : Entity<string>
         Icons = icon;
     }
 
-    public Color? GetColor(ColorTypes colorType)
+    public Variable<Color> GetColor(ColorTypes colorType)
     {
-        return Colors.FirstOrDefault(x => x.Name == $"{colorType.ToString().ToLower()}")?.Value;
+        var type = colorType.ToString().ToLower();
+        
+        return Colors.FirstOrDefault(x => x.Name == type)
+            ?? new(type, new());
     }
 
     public Dictionary<string, string>? GetGreyscaleColors()
@@ -160,7 +163,7 @@ public class KitRevision : Entity<string>
         var lightest = GetColor(ColorTypes.Lightest);
         var darkest = GetColor(ColorTypes.Darkest);
         if (lightest != null && darkest != null)
-            return lightest.Expand(darkest);
+            return lightest.Value.Expand(darkest.Value);
 
         return null;
     }

@@ -1,0 +1,28 @@
+﻿<div class="@ColorType">
+    <div class="color-main">
+        <label class="edit-color">
+            <ColorCard Kit="kit" Type="ColorType" />
+            <InputColor @bind-Value="Color.Value.HexValue" />
+        </label>
+    </div>
+    <div class="subcolor-display">
+        @foreach (var weight in Weights)
+        {
+            string hex = $"{ColorTypeClass}-{weight}";
+            <ColorCard Weight="@weight" Hex="@hex" />
+        }
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public required Kit Kit { get; set; }
+    [Parameter] public ColorTypes ColorType { get; set; } = ColorTypes.Primary;
+    [Parameter] public bool IsEditable { get; set; }
+
+    Variable<Color> Color => Kit.Current.GetColor(ColorType);
+
+    string ColorTypeClass => ColorType.ToString().ToLower();
+
+    List<string> Weights = new List<string> { "50", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
+}
