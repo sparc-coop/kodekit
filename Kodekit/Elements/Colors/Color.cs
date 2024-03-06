@@ -143,14 +143,13 @@ public class Color : ISerializable
     }
     
     public record ContrastColorResponse(string Ratio, string AA, string AALarge, string AAA, string AAALarge);
-    public async Task<ContrastColorResponse> CheckContrastAsync(Color color)
+    public async Task<ContrastColorResponse> CheckContrastAsync(Color backgroundColor)
     {
         var client = new HttpClient();
-        var apiurl = "https://webaim.org/resources/contrastchecker/?fcolor="
+        var url = "https://webaim.org/resources/contrastchecker/?fcolor="
             + HexValue[1..]
-            + "&bcolor=" + color.HexValue[1..]
+            + "&bcolor=" + backgroundColor.HexValue[1..]
             + "&api";
-        var url = new Uri(apiurl);
         var response = await client.GetFromJsonAsync<ContrastColorResponse>(url);
         return response ?? new ContrastColorResponse("0", "fail", "fail", "fail", "fail");
     }
