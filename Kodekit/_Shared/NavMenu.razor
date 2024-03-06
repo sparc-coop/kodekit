@@ -106,13 +106,13 @@
     bool ShowMobileMenu = false;
     string Show = "";
 
-    [Parameter] public string kitId { get; set; }
-    KitSettings Settings;
+    [Parameter] public string? kitId { get; set; }
+    KitSettings? Settings;
 
     protected override async Task OnParametersSetAsync()
     {
         if (kitId != null)
-            Settings = (await ElementRepository.GetSettingsAsync(kitId))?.Settings;
+            Settings = (await KitRepository.GetAsync(kitId))?.Current.Settings;
     }
 
     private void ToggleMobile()

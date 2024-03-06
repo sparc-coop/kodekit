@@ -1,19 +1,14 @@
-﻿@if (Weights != null)
-{
-    <InputSelect @bind-Value=Value>
+﻿    <InputSelect @bind-Value=Value>
         <option value="">Select a weight...</option>
-        @foreach (var weight in Weights)
+        @foreach (var weight in Font.ValidWeights)
         {
         <option value="@weight.Key">
             @weight.Value (@weight.Key)
         </option>
         }
 </InputSelect>
-}
 
 @code {
-    IDictionary<string, string> Weights;
-
     private string _value;
     [Parameter]
     public string Value
@@ -27,9 +22,4 @@
         }
     }
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        Weights = await ElementRepository.GetWeightsAsync();
-    }
 }

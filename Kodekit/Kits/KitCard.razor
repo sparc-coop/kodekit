@@ -37,11 +37,11 @@
         </style>
         <div class="style typography">
             <label>Typography</label>
-            @if (Typography != null)
+            @if (Kit.Current != null)
             {
                 <div class="typography--preview">
-                    <h5 style="font-family: '@Typography.Heading?.FontFamily'; ">Heading/H5/@Typography.Heading?.FontFamily</h5>
-                    <p style="font-family: '@Typography.Paragraph?.FontFamily'; ">Body/Regular/@Typography.Paragraph?.FontFamily</p>
+                    <h5 style="font-family: '@Kit.Current.Headings.Font.Family'; ">Heading/H5/@Kit.Current.Headings.Font.Family</h5>
+                    <p style="font-family: '@Kit.Current.Paragraphs.Font.Family'; ">Body/Regular/@Kit.Current.Paragraphs.Font.Family</p>
                 </div>
             }
         </div>
@@ -80,16 +80,10 @@
     [Parameter]
     public Kit? Kit { get; set; }
 
-    GetTypographyResponse? Typography { get; set; }
     string headingFontCss = "";
     string paragraphFontCss = "";
     string Show = "";
     string SelectedVersion = "";
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (Kit != null) Typography = await ElementRepository.GetTypographyAsync(Kit.Id);
-    }
 
     private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
 

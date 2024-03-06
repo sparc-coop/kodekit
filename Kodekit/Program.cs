@@ -28,7 +28,6 @@ builder.Services.AddTransient((IServiceProvider sp) => new CosmosDbDatabaseProvi
 //builder.Services.Add(new ServiceDescriptor(typeof(IRepository<>), typeof(CosmosDbRepository<>), ServiceLifetime.Scoped));builder.Services.AddAzureADB2CAuthentication<User>(builder.Configuration);
 
 builder.Services.AddScoped<KitRepository>();
-builder.Services.AddScoped<ElementRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddOutputCache();
 builder.Services.AddBlazoredLocalStorage();
