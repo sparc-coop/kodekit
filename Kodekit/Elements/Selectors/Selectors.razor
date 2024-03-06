@@ -1,36 +1,37 @@
-﻿@page "/{kitId}/selectors"
+﻿@inherits LiveForm
+@page "/{kitId}/selectors"
 
-<div class="selectors page">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Elements</div>
+        <header>
+            <h1>Elements</h1>
             <h2>Selectors & Toggles</h2>
-            <p class="subheader">
-                Radio and checkbox inputs allow for selection from a list of options. Radio allows a single selection of one option while checkbox allows for multiple selections.
+            <p>
+                Radio and checkbox inputs allow for selection from a list of options. Radio allows a single 
+                selection of one option while checkbox allows for multiple selections.
             </p>
         </header>
-        <div class="content">
-            @if (kit.Revision != null)
+        <article>
+            @if (kit != null)
             {
                 <EditForm EditContext="@Context">
                     <section>
                         <header>
                             <h3>Style & States</h3>
                             <p class="subheader">
-                                Active styling is applied when an option has been selected. Disabled styling is applied when a user cannot interact with or select a particular option.
+                                Active styling is applied when an option has been selected. Disabled styling 
+                                is applied when a user cannot interact with or select a particular option.
                             </p>
                         </header>
                         <div class="inputs--wrapper">
                             <label class="small">
-                                <InputNumber @bind-Value="Selector.Font.Size" min="1" />
+                                <InputNumber @bind-Value="kit.Current.Selectors.Font.Size" min="1" />
                                 Selector Size (px)
                             </label>
                             <label>
-                                <InputColorSelector KitId="@kitId" @bind-Value="Selector.ActiveColor.HexValue" />
+                                <InputColorSelector KitId="@kitId" @bind-Value="kit.Current.Selectors.ActiveColor.HexValue" />
                                 Active Color
                             </label>
                         </div>
-                        <Preview Kit=kit.Kit>
+                        <Preview Kit=kit>
                             <div>
                                 <label for="checkbox-default">
                                     <input id="checkbox-default" type="checkbox" /> Default
@@ -71,27 +72,4 @@
                     </section>
                 </EditForm>
             }
-        </div>
-    </div>
-</div>
-
-@code {
-    [Parameter] public string? kitId { get; set; }
-
-    (Kit Kit, KitRevision Revision) kit;
-    Selector? Selector;
-    EditContext? Context;
-
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
-    {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        Selector = kit.Revision.Selectors;
-        Context = new EditContext(kit.Revision.Selectors);
-        return kit;
-    }
-
-    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
-    }
-}
+        </article>

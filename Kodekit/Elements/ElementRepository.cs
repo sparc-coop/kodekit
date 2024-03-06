@@ -7,24 +7,6 @@ public class ElementRepository
 {
     public KitRepository Kits { get; }
    
-    // SELECTORS
-    public async Task<UpdateSelectorsModel> GetSelectorsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-
-        return new(id, kit.Selectors.Font.Size?.Value, kit.Selectors.Font.Weight, kit.Selectors.ActiveColor?.HexValue);
-    }
-    public async Task<Kit> UpdateSelectorsAsync(UpdateSelectorsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        kit.Revision.UpdateSelectors(new Selector(request.FontSize, request.FontWeight, request.ActiveColor));
-
-        await Kits.UpdateAsync(kit);
-
-        return kit.Kit;
-    }
-
     // SETTINGS
     public async Task<UpdateSettingsModel> GetSettingsAsync(string id)
     {

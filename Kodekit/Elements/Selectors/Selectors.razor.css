@@ -1,0 +1,21 @@
+﻿.preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px 32px 40px 32px;
+}
+.preview-example > div {
+  padding-right: 50px;
+}
+.preview-example > div label {
+  margin-bottom: 20px;
+  align-items: center;
+}
+.preview-example > div label.switch {
+  align-items: center;
+}
+.preview-example label {
+  display: flex;
+  flex-direction: unset;
+  justify-content: left;
+  gap: 20px;
+}
