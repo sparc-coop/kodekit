@@ -10,12 +10,9 @@
 </div>
 
 @code {
-    [Parameter]
-    public string Type { get; set; }
-    [Parameter]
-    public string Weight { get; set; }
-    [Parameter]
-    public string Hex { get; set; }
+    [Parameter] public string Type { get; set; }
+    [Parameter] public string Weight { get; set; }
+    [Parameter] public string Hex { get; set; }
 
     string FillColor => Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
 }
