@@ -1,0 +1,188 @@
+﻿@inherits LiveForm
+@page "/{kitId}/typography"
+
+<header>
+    <h1>Base Styles</h1>
+    <h2>Typography</h2>
+    <p>
+        Select your font family, weight, size, line-height and typescale.
+        This will then be applied to the <span>&lt;h1&gt;</span> - <span>&lt;h6&gt;</span> html tags.
+    </p>
+</header>
+<article>
+    @if (kit != null)
+    {
+        @* <AccessibilityChecker Model="Model"/>*@
+        <EditForm EditContext="@Context">
+            <section>
+                <header>
+                    <h3 class="section-header"><span>01</span>Heading Settings</h3>
+                </header>
+                <div class="subsection heading-settings">
+                    <label class="preview-text">
+                        <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
+                        Preview Text
+                    </label>
+                    <div class="inputs--wrapper">
+                        <label>
+                            @if (Fonts?.Items != null)
+                            {
+                                <InputSelect class="medium" @bind-Value="kit.Current.Headings.Font.Family">
+                                    <option value="">Select a font...</option>
+                                    @foreach (var font in Fonts.Items)
+                                    {
+                                        <option value="@font.Family">
+                                            @font.Family
+                                        </option>
+                                    }
+                                </InputSelect>
+                            }
+                            Heading Font
+                        </label>
+                        <label>
+                            <InputFontWeight @bind-Value="kit.Current.Headings.Font.Weight" />
+                            Default Heading Weight
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Headings.Font.Size" min="0" />
+                            Base Font Size (px)
+                        </label>
+                        <label>
+                            <InputSelect class="medium" @bind-Value="kit.Current.Headings.TypeScale">
+                                <option value="">Select a type scale...</option>
+                                @foreach (var scale in Kodekit.Models.Elements.Typography.TypeScales)
+                                {
+                                    <option value="@scale.Key">
+                                        @scale.Key (@scale.Value)
+                                    </option>
+                                }
+                            </InputSelect>
+                            Choose a Type Scale
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Headings.Font.LineHeight" min="1" />
+                            Base Line Height (%)
+                        </label>
+                    </div>
+                    <button @onclick="Toggle" class="edit-options">Manually size fonts <i class="material-icons">edit</i></button>
+                    <div class="fontsize-overrides toggle-@ToggleOption">
+                        @foreach (var weight in Typography.FontWeights)
+                        {
+                            <label>
+                                <input type="number" min="0" value="@kit.Current.Headings.GetOverride(weight.Value)" @onchange="@(e => UpdateOverride(weight.Value, e))" />
+                                @weight.Key (px)
+                            </label>
+                        }
+                    </div>
+                </div>
+
+                <Preview Kit=kit>
+                    <label>Header 1 (H1) - Font Size: @kit.Current.Headings.Scale("900")</label>
+                    <h1>@previewText</h1>
+                    <label>Header 2 (H2) - Font Size: @kit.Current.Headings.Scale("800")</label>
+                    <h2>@previewText</h2>
+                    <label>Header 3 (H3) - Font Size: @kit.Current.Headings.Scale("700")</label>
+                    <h3>@previewText</h3>
+                    <label>Header 4 (H4) - Font Size: @kit.Current.Headings.Scale("600")</label>
+                    <h4>@previewText</h4>
+                    <label>Header 5 (H5) - Font Size: @kit.Current.Headings.Scale("500")</label>
+                    <h5>@previewText</h5>
+                    <label>Header 6 (H6) - Font Size: @kit.Current.Headings.Scale("400")</label>
+                    <h6>@previewText</h6>
+                    <label>Subtitle (.subtitle) - Font Size: @kit.Current.Headings.Scale("300")</label>
+                    <p class="subtitle">@previewText</p>
+                </Preview>
+            </section>
+        </EditForm>
+
+        <EditForm EditContext="@Context">
+            <section>
+                <header>
+                    <h3><span>02</span> Paragraph Settings</h3>
+                </header>
+                <div class="subsection paragraph-settings">
+                    <label class="preview-text">
+                        <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
+                        Preview Text
+                    </label>
+                    <div class="inputs--wrapper">
+                        <label>
+                            <InputSelect class="medium" @bind-Value="kit.Current.Paragraphs.Font.Family">
+                                @if (Fonts.Items != null)
+                                {
+                                    <option value="">Select a body font...</option>
+                                    @foreach (var font in Fonts.Items)
+                                    {
+                                        <option value="@font.Family">
+                                            @font.Family
+                                        </option>
+                                    }
+                                }
+                            </InputSelect>
+                            Body Font
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Paragraphs.Font.Size" min="1" />
+                            Base Font Size (px)
+                        </label>
+                        <label>
+                            <InputSelect class="medium" @bind-Value=kit.Current.Paragraphs.TypeScale>
+                                <option value="">Select a type scale...</option>
+                                @foreach (var scale in Kodekit.Models.Elements.Typography.TypeScales)
+                                {
+                                    <option value="@scale.Key">
+                                        @scale.Key (@scale.Value)
+                                    </option>
+                                }
+                            </InputSelect>
+                            Choose a Type Scale
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Paragraphs.Font.LineHeight" min="1" />
+                            Base Line Height (%)
+                        </label>
+                    </div>
+                </div>
+                <Preview Kit=kit>
+                    <div>
+                        <label>Body Large - Font Size: @kit.Current.Paragraphs.Scale("500")</label>
+                        <p class="large">@previewTextBody</p>
+                    </div>
+                    <div>
+                        <label>Body - Font Size: @kit.Current.Paragraphs.Scale("400")</label>
+                        <p class="medium">@previewTextBody</p>
+                    </div>
+                    <div>
+                        <label>Body Small - Font Size: @kit.Current.Paragraphs.Scale("300")</label>
+                        <p class="small">@previewTextBody</p>
+                    </div>
+                </Preview>
+            </section>
+        </EditForm>
+    }
+</article>
+
+@inject IConfiguration Config
+@code {
+
+
+    private string previewText = "The power of small steps";
+    private string previewTextBody = "What you do makes a difference. \nAnd you have to decide what kind of difference you want to make.";
+    Typography.FontListResponse? Fonts;
+    private string ToggleOption = "hide";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        Fonts = await Typography.GetGoogleFontsAsync(Config["GoogleFontsApiKey"]!);
+    }
+
+    
+    private async Task UpdateOverride(string type, Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        kit!.Current.Headings.UpdateOverride(type, e.Value?.ToString());
+        await UpdateAsync();
+    }
+
+    private void Toggle() => ToggleOption = ToggleOption == "hide" ? "show" : "hide";
+}

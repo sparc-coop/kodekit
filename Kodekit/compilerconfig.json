@@ -46,5 +46,9 @@
   {
     "outputFile": "Elements/Shadows/BoxShadow.razor.css",
     "inputFile": "Elements/Shadows/BoxShadow.razor.scss"
+  },
+  {
+    "outputFile": "Elements/Typography/Typography.razor.css",
+    "inputFile": "Elements/Typography/Typography.razor.scss"
   }
 ]

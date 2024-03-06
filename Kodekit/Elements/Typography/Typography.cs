@@ -1,4 +1,6 @@
-﻿namespace Kodekit.Models.Elements;
+﻿using Newtonsoft.Json;
+
+namespace Kodekit.Models.Elements;
 
 public class Typography : ISerializable
 {
@@ -7,7 +9,7 @@ public class Typography : ISerializable
         Font = new();
     }
 
-    public Typography(string? fontFamily, string? fontWeight, double? fontSize, double? typeScale, 
+    public Typography(string? fontFamily, string? fontWeight, double? fontSize, double? typeScale,
         double? lineHeight, Dictionary<string, string>? fontSizeOverride) : this()
     {
         Font = new(fontSize, fontWeight, fontFamily, lineHeight);
@@ -29,6 +31,17 @@ public class Typography : ISerializable
         { 1.414, "Augmented Fourth" },
         { 1.500, "Perfect Fifth" },
         { 1.618, "Golden Ratio" }
+    };
+
+    public static Dictionary<string, string> FontWeights = new()
+    {
+        { "h1", "type-900" },
+        { "h2", "type-800" },
+        { "h3", "type-700" },
+        { "h4", "type-600" },
+        { "h5", "type-500" },
+        { "h6", "type-400" },
+        { ".subtitle", "type-300" }
     };
 
     public Dictionary<string, string> Serialize()
@@ -64,11 +77,61 @@ public class Typography : ISerializable
 
     public Size CheckOverride(string type, Size size, double scale, int multiplier)
     {
-        if(FontSizeOverrides != null)
+        if (FontSizeOverrides != null)
             return FontSizeOverrides.ContainsKey(type)
             ? new Size(Convert.ToDouble(FontSizeOverrides[type]))
             : size.Scale(scale, multiplier);
 
         return size.Scale(scale, multiplier);
+    }
+
+    public string GetOverride(string typeValue)
+    {
+        if (FontSizeOverrides == null)
+            return "";
+
+        if (FontSizeOverrides.TryGetValue(typeValue, out string? value))
+        {
+            return value;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    public void UpdateOverride(string type, string? value)
+    {
+        FontSizeOverrides ??= [];
+
+        if (value == null && FontSizeOverrides.ContainsKey(type))
+            FontSizeOverrides.Remove(type);
+        else if (value != null)
+            FontSizeOverrides[type] = value;
+    }
+
+    public string Scale(string scale)
+    {
+        var scales = Serialize();
+        return scales.ContainsKey($"type-{scale}") == true
+        ? scales[$"type-{scale}"]
+        : string.Empty;
+    }
+
+    public record FontListResponse(List<GoogleFont>? Items);
+    public record GoogleFont(string? Family, string? Category, FontFile? Files);
+    public record FontFile(string? Regular);
+
+    public static async Task<FontListResponse> GetGoogleFontsAsync(string apiKey)
+    {
+        string url = $"https://www.googleapis.com/webfonts/v1/webfonts?key={apiKey}";
+        
+        using HttpClient client = new();
+        var fonts = await client.GetFromJsonAsync<FontListResponse>(url);
+        if (fonts?.Items == null)
+            throw new Exception("Failed to fetch Google Fonts");
+
+        fonts.Items.RemoveAll(x => x.Category != "serif" && x.Category != "sans-serif");
+        return fonts;
     }
 }

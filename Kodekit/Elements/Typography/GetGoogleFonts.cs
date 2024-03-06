@@ -40,19 +40,3 @@ public class GetGoogleFonts : PublicFeature<string, FontListResponse>
     }
 }
 
-public class FontListResponse
-{
-    public List<GoogleFont>? Items { get; set; }
-}
-
-public class GoogleFont
-{
-    public string? Family { get; set; }
-    public string? Category { get; set; }
-    public FontFile? Files { get; set; }
-
-}
-public class FontFile
-{
-    public string? Regular { get; set; }
-}
