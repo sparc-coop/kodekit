@@ -1,4 +1,5 @@
-﻿@page "/{kitId}/anchors"
+﻿@inherits LiveForm
+@page "/{kitId}/anchors"
 
 <header>
     <h1>Elements</h1>
@@ -10,19 +11,20 @@
 </header>
 
 <article>
-    @if (kit.Revision != null)
+    @if (kit != null)
     {
-        <EditForm EditContext="@Context">
+        <EditForm EditContext="Context">
             <section>
                 <header>
                     <h3>Link Styling</h3>
                     <p class="subheader">
-                        Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is applied when the link is being clicked on. Visited is applied once the link has been navigated to.
+                        Default styling is applied before a link is clicked. Hover is applied on mouseover. Active is 
+                        applied when the link is being clicked on. Visited is applied once the link has been navigated to.
                     </p>
                 </header>
                 <div>
                     <label>
-                        <InputFontWeight @bind-Value="Anchor.Font.Weight" />
+                        <InputFontWeight @bind-Value="kit.Current.Anchors.Font.Weight" />
                         Font Weight
                     </label>
                 </div>
@@ -30,24 +32,25 @@
                     <h4>Link States</h4>
                     <div class="inputs--wrapper">
                         <label>
-                            <InputColor @bind-Value="Anchor.DefaultColor.HexValue" />
+                            <InputColor @bind-Value="kit.Current.Anchors.DefaultColor.HexValue" />
                             Default
                         </label>
                         <label>
-                            <InputColor @bind-Value="Anchor.HoverColor.HexValue" />
+                            <InputColor @bind-Value="kit.Current.Anchors.HoverColor.HexValue" />
                             Hover
                         </label>
                         <label>
-                            <InputColor @bind-Value="Anchor.VisitedColor.HexValue" />
+                            <InputColor @bind-Value="kit.Current.Anchors.VisitedColor.HexValue" />
                             Visited
                         </label>
                         <label>
-                            <InputColor @bind-Value="Anchor.ActiveColor.HexValue" />
+                            <InputColor @bind-Value="kit.Current.Anchors.ActiveColor.HexValue" />
                             Active
                         </label>
                     </div>
                 </div>
-                <Preview Kit=kit.Kit PreviewBackgroundEditable=true>
+
+                <Preview Kit=kit PreviewBackgroundEditable=true>
                     <a href="#@Guid.NewGuid()">Default</a>
                     <a href="#@Guid.NewGuid()" class="hover">Hover</a>
                     <a href="#@Guid.NewGuid()" class="visited">Visited</a>
@@ -57,25 +60,3 @@
         </EditForm>
     }
 </article>
-
-
-@code {
-    [Parameter] public string? kitId { get; set; }
-
-    (Kit Kit, KitRevision Revision) kit;
-    Anchor? Anchor;
-    EditContext? Context;
-
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
-    {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        Anchor = kit.Revision.Anchors;
-        Context = new EditContext(kit.Revision.Anchors);
-        return kit;
-    }
-
-    protected async Task UpdateAsync()
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
-    }
-}

@@ -20,10 +20,10 @@ public class Anchor : ISerializable
     }
 
     public Font Font { get; set; }
-    public Color? DefaultColor { get; set; }
-    public Color? HoverColor { get; set; }
-    public Color? VisitedColor { get; set; }
-    public Color? ActiveColor { get; set; }
+    public Color DefaultColor { get; set; } = new();
+    public Color HoverColor { get; set; } = new();
+    public Color VisitedColor { get; set; } = new();
+    public Color ActiveColor { get; set; } = new();
 
 
     public Dictionary<string, string> Serialize()

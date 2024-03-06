@@ -9,6 +9,7 @@ public class Kit : Entity<string>
         Name = "Untitled Kit";
         DateCreated = DateTime.UtcNow;
         DateModified = DateTime.UtcNow;
+        Current = new KitRevision(this);
     }
 
     public Kit(IWebHostEnvironment env, string name, string? userId = null) : this()
@@ -39,7 +40,7 @@ public class Kit : Entity<string>
     public string? PreviousRevisionId { get; set; }
     public string? NextRevisionId { get; set; }
 
-    internal KitRevision? Current { get; set; }
+    internal KitRevision Current { get; set; }
 
     internal void SetUser(string id)
     {
