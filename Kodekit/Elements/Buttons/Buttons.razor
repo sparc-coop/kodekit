@@ -1,162 +1,147 @@
-﻿@page "/{kitId}/buttons"
+﻿@inherits LiveForm
+@page "/{kitId}/buttons"
 
-<div class="buttons page">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Elements</div>
-            <h2>Buttons</h2>
-            <p class="subheader">
-                A clickable button. Most often for use in forms, to submit entered information.
-            </p>
-        </header>
-        <div class="content">
-            @if (kit.Revision != null)
-            {
-                <EditForm EditContext="@Context">
-                    <section>
-                        <header class="flex">
-                            <h3><span>01</span> Core Buttons</h3>
-                            <p class="subheader">
-                                Primary and secondary button stylings are inherited from selected base style colors.
-                            </p>
-                        </header>
-                        <div class="inputs--wrapper">
-                            <label>
-                                <InputNumber @bind-Value="Button.Font.Size" min="1" />
-                                Font Size (px)
-                            </label>
-                            <label>
-                                <InputFontWeight @bind-Value="Button.Font.Weight" />
-                                Font Weight
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Button.Padding.Vertical" min="0" />
-                                Vertical Padding (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Button.Padding.Horizontal" min="0" />
-                                Horizontal Padding (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Button.Border.Radius" min="0" />
-                                Corner Radius (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Button.Border.Width" min="0" />
-                                Border Width (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Button.IconWidth" min="0" />
-                                Icon Size (px)
-                            </label>
-                        </div>
-                        <div class="secondary-button">
-                            <Switch @bind-Value=Button.RemoveSecondaryBorder Title="Secondary Button" />
-                        </div>
-                        <div class="preview-background core-buttons">
-                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_CoreButtons" BackgroundColor="@PreviewBackground_CoreButtons" /></label>
-                        </div>
-                        <Preview Kit=kit.Kit BackgroundColor=@PreviewBackground_CoreButtons>
-                            <button name="Preview Button">Button</button>
-                            <button>
-                                <KodekitLogoSvg />
-                                Button
-                            </button>
-                            <button name="Preview Button">
-                                Button
-                                <KodekitLogoSvg />
-                            </button>
-                            <button name="Preview Button">
-                                <KodekitLogoSvg />
-                            </button>
-                            <button name="Preview Button" class="secondary">Button</button>
-                            <button name="Preview Button" class="secondary">
-                                <KodekitLogoSvg />
-                                Button
-                            </button>
-                            <button name="Preview Button" class="secondary">
-                                Button
-                                <KodekitLogoSvg />
-                            </button>
-                            <button name="Preview Button" class="secondary">
-                                <KodekitLogoSvg />
-                            </button>
-                        </Preview>
-                    </section>
+<header>
+    <h1>Elements</h1>
+    <h2>Buttons</h2>
+    <p>
+        A clickable button. Most often for use in forms, to submit entered information.
+    </p>
+</header>
 
-                    <section>
-                        <header class="flex">
-                            <h3><span>02</span> Button Variations & States</h3>
-                            <p class="subheader">
-                                Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
-                            </p>
-                        </header>
-                        <div class="preview-background button-variations">
-                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_Variations" BackgroundColor="@PreviewBackground_Variations" /></label>
-                        </div>
-                        <Preview Kit=kit.Kit BackgroundColor=@PreviewBackground_Variations>
-                            <div>
-                                <button name="Preview Button">Default</button>
-                                <button>
-                                    Default
-                                    <KodekitLogoSvg />
-                                </button>
-                                <button name="Preview Button" class="hover">Hover</button>
-                                <button name="Preview Button" class="hover">
-                                    Hover
-                                    <KodekitLogoSvg />
-                                </button>
-                                <button name="Preview Button" disabled="disabled">Disabled</button>
-                                <button name="Preview Button" disabled="disabled">
-                                    Disabled
-                                    <KodekitLogoSvg />
-                                </button>
-                            </div>
-                            <div>
-                                <button name="Preview Button" class="secondary">Default</button>
-                                <button name="Preview Button" class="secondary">
-                                    Default
-                                    <KodekitLogoSvg />
-                                </button>
-                                <button name="Preview Button" class="secondary hover">Hover</button>
-                                <button name="Preview Button" class="secondary hover">
-                                    Hover
-                                    <KodekitLogoSvg />
-                                </button>
-                                <button name="Preview Button" class="secondary" disabled="disabled">Disabled</button>
-                                <button name="Preview Button" class="secondary" disabled="disabled">
-                                    Disabled
-                                    <KodekitLogoSvg />
-                                </button>
-                            </div>
-                        </Preview>
-                    </section>
-                </EditForm>
-            }
-        </div>
-    </div>
-</div>
+<article>
+    @if (kit != null)
+    {
+        <EditForm EditContext="Context">
+            <section>
+                <header class="flex">
+                    <h3><span>01</span> Core Buttons</h3>
+                    <p>
+                        Primary and secondary button stylings are inherited from selected base style colors.
+                    </p>
+                </header>
+                <div class="inputs--wrapper">
+                    <label>
+                        <InputNumber @bind-Value="kit.Current.Buttons.Font.Size" min="1" />
+                        Font Size (px)
+                    </label>
+                    <label>
+                        <InputFontWeight @bind-Value="kit.Current.Buttons.Font.Weight" />
+                        Font Weight
+                    </label>
+                    <label>
+                        <InputNumber @bind-Value="kit.Current.Buttons.Padding.Vertical" min="0" />
+                        Vertical Padding (px)
+                    </label>
+                    <label>
+                        <InputNumber @bind-Value="kit.Current.Buttons.Padding.Horizontal" min="0" />
+                        Horizontal Padding (px)
+                    </label>
+                    <label>
+                        <InputNumber @bind-Value="kit.Current.Buttons.Border.Radius" min="0" />
+                        Corner Radius (px)
+                    </label>
+                    <label>
+                        <InputNumber @bind-Value="kit.Current.Buttons.Border.Width" min="0" />
+                        Border Width (px)
+                    </label>
+                    <label>
+                        <InputNumber @bind-Value="kit.Current.Buttons.IconWidth" min="0" />
+                        Icon Size (px)
+                    </label>
+                </div>
+                <div class="secondary-button">
+                    <Switch @bind-Value=kit.Current.Buttons.RemoveSecondaryBorder Title="Secondary Button" />
+                </div>
+                <div class="preview-background core-buttons">
+                    <label>
+                        * Preview Background Color 
+                        <InputColor @bind-Value="@PreviewBackground_CoreButtons" BackgroundColor="@PreviewBackground_CoreButtons" />
+                    </label>
+                </div>
+
+                <Preview Kit=kit BackgroundColor=@PreviewBackground_CoreButtons>
+                    <button name="Preview Button">Button</button>
+                    <button>
+                        <KodekitLogoSvg />
+                        Button
+                    </button>
+                    <button name="Preview Button">
+                        Button
+                        <KodekitLogoSvg />
+                    </button>
+                    <button name="Preview Button">
+                        <KodekitLogoSvg />
+                    </button>
+                    <button name="Preview Button" class="secondary">Button</button>
+                    <button name="Preview Button" class="secondary">
+                        <KodekitLogoSvg />
+                        Button
+                    </button>
+                    <button name="Preview Button" class="secondary">
+                        Button
+                        <KodekitLogoSvg />
+                    </button>
+                    <button name="Preview Button" class="secondary">
+                        <KodekitLogoSvg />
+                    </button>
+                </Preview>
+            </section>
+
+            <section>
+                <header class="flex">
+                    <h3><span>02</span> Button Variations & States</h3>
+                    <p class="subheader">
+                        Hover styling is applied upon mouseover. Disabled styling is applied when a user cannot 
+                        interact with the button. Icons may be added to buttons for further variation or illustrative purposes.
+                    </p>
+                </header>
+                <div class="preview-background button-variations">
+                    <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground_Variations" BackgroundColor="@PreviewBackground_Variations" /></label>
+                </div>
+
+                <Preview Kit=kit BackgroundColor=@PreviewBackground_Variations>
+                    <div>
+                        <button name="Preview Button">Default</button>
+                        <button>
+                            Default
+                            <KodekitLogoSvg />
+                        </button>
+                        <button name="Preview Button" class="hover">Hover</button>
+                        <button name="Preview Button" class="hover">
+                            Hover
+                            <KodekitLogoSvg />
+                        </button>
+                        <button name="Preview Button" disabled="disabled">Disabled</button>
+                        <button name="Preview Button" disabled="disabled">
+                            Disabled
+                            <KodekitLogoSvg />
+                        </button>
+                    </div>
+                    <div>
+                        <button name="Preview Button" class="secondary">Default</button>
+                        <button name="Preview Button" class="secondary">
+                            Default
+                            <KodekitLogoSvg />
+                        </button>
+                        <button name="Preview Button" class="secondary hover">Hover</button>
+                        <button name="Preview Button" class="secondary hover">
+                            Hover
+                            <KodekitLogoSvg />
+                        </button>
+                        <button name="Preview Button" class="secondary" disabled="disabled">Disabled</button>
+                        <button name="Preview Button" class="secondary" disabled="disabled">
+                            Disabled
+                            <KodekitLogoSvg />
+                        </button>
+                    </div>
+                </Preview>
+            </section>
+        </EditForm>
+    }
+</article>
 
 @code {
-    [Parameter] public string? kitId { get; set; }
-
-    (Kit Kit, KitRevision Revision) kit;
-    Button? Button;
-    EditContext? Context;
-
-    public string PreviewBackground_CoreButtons;
-    public string PreviewBackground_Variations;
-
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
-    {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        Button = kit.Revision.Buttons;
-        Context = new EditContext(kit.Revision.Buttons);
-        return kit;
-    }
-
-    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
-    }
+    public string? PreviewBackground_CoreButtons;
+    public string? PreviewBackground_Variations;
 }
