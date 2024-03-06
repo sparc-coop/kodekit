@@ -1,23 +1,22 @@
-﻿@inherits HighlightPageBase<object>
+﻿@inherits LiveForm
 @*@page  "/{kitId}/layout"*@
 
-<div class="layout page">
-    <div class="page__container">
+
         <header>
-            <div class="title">Structure</div>
+            <h1>Structure</h1>
             <h2>Layout</h2>
             <p>
                 The layout is the main structure for your kit.
             </p>
         </header>
-        <div class="content">
+        <article>
             <h3>Container Width</h3>
             <p class="subheader">
                 Set a container width to define the maximum width the content container can be. 
             </p>
             @if (kit != null)
             {
-                <EditForm Model="@kit">
+                <EditForm EditContext="@Context">
                     <section>
                         <label>
                             Presets
@@ -51,21 +50,6 @@ $large-mobile: 480px;
 $mobile: 320px;
                         </code>
                     </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="box-shadow" />
                 </EditForm>
             }
-        </div>
-    </div>
-</div>
-
-@code {
-    protected override void OnInitialized()
-    {
-
-    }
-
-    private async Task Submit()
-    {
-        //await Api.UpdateKitAsync(kit);
-    }
-}
+        </article>
