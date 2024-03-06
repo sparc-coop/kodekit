@@ -14,5 +14,9 @@
   {
     "outputFile": "Elements/Buttons/Buttons.razor.css",
     "inputFile": "Elements/Buttons/Buttons.razor.scss"
+  },
+  {
+    "outputFile": "Elements/Colors/Colors.razor.css",
+    "inputFile": "Elements/Colors/Colors.razor.scss"
   }
 ]
