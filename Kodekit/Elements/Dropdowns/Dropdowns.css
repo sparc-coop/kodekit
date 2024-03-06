@@ -1,0 +1,34 @@
+﻿section header aside {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--grey-300);
+}
+section header aside a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 32px;
+}
+.preview-example select {
+  height: unset;
+}
+
+.section-container {
+  display: flex;
+  margin-top: 40px;
+}
+.section-container .switch {
+  vertical-align: middle;
+}
+.section-container p {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 300;
+  font-size: 13px;
+  margin-top: 2px;
+}
