@@ -1,121 +1,98 @@
-﻿@page "/{kitId}/lists"
+﻿@inherits LiveForm
+@page "/{kitId}/lists"
 
-<div class="lists page">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Elements</div>
-            <h2>Lists</h2>
-            <p class="subheader">
-                Use lists to group a set of related items.
-            </p>
-        </header>
-        <div class="content">
-            @if (kit.Revision != null)
-            {
-                <EditForm EditContext="@Context">
-                    <section>
-                        <header>
-                            <h3>Ordered & Unordered Styling</h3>
-                            <p class="subheader">
-                                Use the <code>&lt;ul&gt;</code> tag to start an unorderd list. Use the <code>&lt;ol&gt;</code> tag to start an ordered list.
-                            </p>
-                        </header>
-                        <div class="list-style">
-                            <h4>List Styling</h4>
-                            <div class="inputs--wrapper">
-                                <label>
-                                    <InputSelect @bind-Value=List.OrderedListStyleType>
-                                        <option value="none">None</option>
-                                        <option value="decimal">Decimal</option>
-                                        <option value="decimal-leading-zero">Decimal padded by initial zeros</option>
-                                        <option value="lower-roman">Lowercase roman numerals</option>
-                                        <option value="upper-roman">Uppercase roman numerals</option>
-                                        <option value="lower-greek">Lowercase classical Greek</option>
-                                        <option value="lower-alpha">Lowercase ASCII letters</option>
-                                        <option value="upper-alpha">Uppercase ASCII letters</option>
-                                        <option value="arabic-indic">Arabic-Indic numbers</option>
-                                        <option value="armenian">Traditional Armenian</option>
-                                    </InputSelect>
-                                    OL Style Type
-                                </label>
-                                <label>
-                                    <InputSelect @bind-Value=List.UnorderedListStyleType>
-                                        <option value="none">None</option>
-                                        <option value="disc">Disc</option>
-                                        <option value="circle">Circle</option>
-                                        <option value="square">Square</option>
-                                    </InputSelect>
-                                    UL Style Type
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="List.ListPadding.Vertical" min="0" />
-                                    Vertical Padding
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="List.ListPadding.Horizontal" min="0" />
-                                    Horizontal Padding
-                                </label>
-                            </div>
-                        </div>
-                        <div class="list-items">
-                            <h4>List Item Styling</h4>
-                            <div class="inputs--wrapper">
-                                <label>
-                                    <InputNumber @bind-Value="List.Font.Size" min="1" />
-                                    List Item Font Size
-                                </label>
-                                <label>
-                                    <InputFontWeight @bind-Value="List.Font.Weight" />
-                                    List Item Font Weight
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="List.ItemPadding.Vertical" min="0" />
-                                    Vertical Padding
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="List.ItemPadding.Horizontal" min="0" />
-                                    Horizontal Padding
-                                </label>
-                            </div>
-                        </div>
-                        <Preview Kit=kit.Kit>
-                            <ol>
-                                <li>List Item</li>
-                                <li>List Item</li>
-                                <li>List Item</li>
-                                <li>List Item</li>
-                            </ol>
-                            <ul>
-                                <li>List Item</li>
-                                <li>List Item</li>
-                                <li>List Item</li>
-                                <li>List Item</li>
-                            </ul>
-                        </Preview>
-                    </section>
-                </EditForm>
-            }
-        </div>
-    </div>
-</div>
-
-@code {
-    [Parameter] public string? kitId { get; set; }
-
-    (Kit Kit, KitRevision Revision) kit;
-    List? List;
-    EditContext? Context;
-
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
+<header>
+    <h1>Elements</h1>
+    <h2>Lists</h2>
+    <p>
+        Use lists to group a set of related items.
+    </p>
+</header>
+<article>
+    @if (kit != null)
     {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        List = kit.Revision.Lists;
-        Context = new EditContext(kit.Revision.Lists);
-        return kit;
+        <EditForm EditContext="@Context">
+            <section>
+                <header>
+                    <h3>Ordered & Unordered Styling</h3>
+                    <p class="subheader">
+                        Use the <code>&lt;ul&gt;</code> tag to start an unorderd kit.Current.Lists. Use the 
+                        <code>&lt;ol&gt;</code> tag to start an ordered kit.Current.Lists.
+                    </p>
+                </header>
+                <div class="list-style">
+                    <h4>List Styling</h4>
+                    <div class="inputs--wrapper">
+                        <label>
+                            <InputSelect @bind-Value=kit.Current.Lists.OrderedListStyleType>
+                                <option value="none">None</option>
+                                <option value="decimal">Decimal</option>
+                                <option value="decimal-leading-zero">Decimal padded by initial zeros</option>
+                                <option value="lower-roman">Lowercase roman numerals</option>
+                                <option value="upper-roman">Uppercase roman numerals</option>
+                                <option value="lower-greek">Lowercase classical Greek</option>
+                                <option value="lower-alpha">Lowercase ASCII letters</option>
+                                <option value="upper-alpha">Uppercase ASCII letters</option>
+                                <option value="arabic-indic">Arabic-Indic numbers</option>
+                                <option value="armenian">Traditional Armenian</option>
+                            </InputSelect>
+                            OL Style Type
+                        </label>
+                        <label>
+                            <InputSelect @bind-Value=kit.Current.Lists.UnorderedListStyleType>
+                                <option value="none">None</option>
+                                <option value="disc">Disc</option>
+                                <option value="circle">Circle</option>
+                                <option value="square">Square</option>
+                            </InputSelect>
+                            UL Style Type
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Lists.ListPadding.Vertical" min="0" />
+                            Vertical Padding
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Lists.ListPadding.Horizontal" min="0" />
+                            Horizontal Padding
+                        </label>
+                    </div>
+                </div>
+                <div class="list-items">
+                    <h4>List Item Styling</h4>
+                    <div class="inputs--wrapper">
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Lists.Font.Size" min="1" />
+                            List Item Font Size
+                        </label>
+                        <label>
+                            <InputFontWeight @bind-Value="kit.Current.Lists.Font.Weight" />
+                            List Item Font Weight
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Lists.ItemPadding.Vertical" min="0" />
+                            Vertical Padding
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Lists.ItemPadding.Horizontal" min="0" />
+                            Horizontal Padding
+                        </label>
+                    </div>
+                </div>
+                <Preview Kit=kit>
+                    <ol>
+                        <li>List Item</li>
+                        <li>List Item</li>
+                        <li>List Item</li>
+                        <li>List Item</li>
+                    </ol>
+                    <ul>
+                        <li>List Item</li>
+                        <li>List Item</li>
+                        <li>List Item</li>
+                        <li>List Item</li>
+                    </ul>
+                </Preview>
+            </section>
+        </EditForm>
     }
-
-    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
-    }
-}
+</article>

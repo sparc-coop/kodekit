@@ -1,0 +1,13 @@
+﻿section {
+    .list-items {
+        margin-top: 40px;
+    }
+}
+
+.preview-example {
+    display: flex;
+
+    > * {
+        margin: 16px;
+    }
+}

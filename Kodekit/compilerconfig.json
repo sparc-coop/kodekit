@@ -34,5 +34,9 @@
   {
     "outputFile": "Elements/Layouts/Layout.razor.css",
     "inputFile": "Elements/Layouts/Layout.razor.scss"
+  },
+  {
+    "outputFile": "Elements/Lists/Lists.razor.css",
+    "inputFile": "Elements/Lists/Lists.razor.scss"
   }
 ]

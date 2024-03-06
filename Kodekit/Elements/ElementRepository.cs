@@ -7,37 +7,6 @@ public class ElementRepository
 {
     public KitRepository Kits { get; }
    
-    // LISTS
-    public async Task<UpdateListsModel> GetListsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-
-        return new(
-            id,
-            kit.Lists.Font.Size?.Value,
-            kit.Lists.Font.Weight,
-            kit.Lists.OrderedListStyleType,
-            kit.Lists.UnorderedListStyleType,
-            kit.Lists.ListPadding?.Horizontal?.Value,
-            kit.Lists.ItemPadding?.Vertical?.Value,
-            kit.Lists.ListPadding?.Horizontal?.Value,
-            kit.Lists.ItemPadding?.Vertical?.Value
-        );
-    }
-    public async Task<Kit> UpdateListsAsync(UpdateListsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        var List = new List(request.FontSize, request.FontWeight, request.OlStyleType, request.UlStyleType,
-            request.ListHorizontalPadding, request.ListVerticalPadding,
-            request.ItemHorizontalPadding, request.ItemVerticalPadding);
-
-        kit.Revision.UpdateLists(List);
-        await Kits.UpdateAsync(kit);
-
-        return kit.Kit;
-    }
-
     // SELECTORS
     public async Task<UpdateSelectorsModel> GetSelectorsAsync(string id)
     {
