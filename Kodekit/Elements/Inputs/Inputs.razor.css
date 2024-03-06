@@ -1,0 +1,25 @@
+﻿section .inputs--wrapper {
+  gap: 20px;
+}
+section .inputs--wrapper div label:first-of-type {
+  margin-bottom: 20px;
+}
+
+.preview-example {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px 32px;
+}
+.preview-example > * {
+  margin: 0px 30px 30px 0;
+}
+.preview-example .input-form-preview {
+  justify-content: normal;
+}
+.preview-example .input-form-preview svg {
+  top: 8%;
+  fill: #E5E5E5;
+}
+.preview-example input {
+  height: unset;
+}

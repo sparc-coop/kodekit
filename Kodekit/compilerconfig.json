@@ -26,5 +26,9 @@
   {
     "outputFile": "Elements/Icons/Icons.razor.css",
     "inputFile": "Elements/Icons/Icons.razor.scss"
+  },
+  {
+    "outputFile": "Elements/Inputs/Inputs.razor.css",
+    "inputFile": "Elements/Inputs/Inputs.razor.scss"
   }
 ]

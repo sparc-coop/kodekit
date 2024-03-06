@@ -6,36 +6,7 @@ namespace Kodekit;
 public class ElementRepository
 {
     public KitRepository Kits { get; }
-    
-    // INPUTS
-    public async Task<UpdateInputsModel> GetInputsAsync(string id)
-    {
-        var kit = await Kits.GetCurrentRevisionAsync(id);
-
-        return new(
-            id,
-            kit.Inputs.Font.Size?.Value,
-            kit.Inputs.Font.Weight,
-            kit.Inputs.Padding.Vertical?.Value,
-            kit.Inputs.Padding.Horizontal?.Value,
-            kit.Inputs.Border.Radius?.Value,
-            kit.Inputs.Border.Width?.Value
-        );
-    }
-
-    public async Task<Kit> UpdateInputsAsync(UpdateInputsModel request)
-    {
-        var kit = await Kits.GetCurrentAsync(request.KitId);
-
-        var input = new Input(request.FontSize, request.FontWeight, request.VerticalPadding,
-            request.HorizontalPadding, request.CornerRadius, request.BorderWidth);
-
-        kit.Revision.UpdateInputs(input);
-        await Kits.UpdateAsync(kit);
-
-        return kit.Kit;
-    }
-
+   
     // LISTS
     public async Task<UpdateListsModel> GetListsAsync(string id)
     {

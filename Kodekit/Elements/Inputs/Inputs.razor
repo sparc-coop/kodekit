@@ -1,134 +1,111 @@
-﻿@page "/{kitId}/inputs"
+﻿@inherits LiveForm
+@page "/{kitId}/inputs"
 
-<div class="inputs page">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Elements</div>
-            <h2>Inputs & Textareas</h2>
-            <p class="subheader">
-                Use to collect text input.
-            </p>
-        </header>
-        <div class="content">
-            @if (kit.Revision != null)
-            {
-                <EditForm EditContext="@Context">
-                    <section>
-                        <header class="flex">
-                            <h3><span>01</span> Form Styling</h3>
-                            <p class="subheader">
-                                Input collects a single line of text, while a textarea can receive multiple lines of text.
-                            </p>
-                        </header>
-                        <div class="inputs--wrapper">
-                            <div>
-                                <label>
-                                    <InputNumber @bind-Value="Input.Font.Size" min="1" />
-                                    Input Font Size (px)
-                                </label>
-                                <label>
-                                    <InputFontWeight @bind-Value="Input.Font.Weight" />
-                                    Input Font Weight
-                                </label>
-                            </div>
-                            <div>
-                                <label>
-                                    <InputNumber @bind-Value="Input.Padding.Vertical" min="0" />
-                                    Vertical Padding (px)
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="Input.Padding.Horizontal" min="0" />
-                                    Horizontal Padding (px)
-                                </label>
-                            </div>
-                            <div>
-                                <label>
-                                    <InputNumber @bind-Value="Input.Border.Radius" min="0" />
-                                    Corner Radius (px)
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="Input.Border.Width" min="0" />
-                                    Border Width (px)
-                                </label>
-                            </div>
-                        </div>
-                        <Preview Kit=kit.Kit>
-                            <label class="input-form-preview">
-                                <input placeholder="Placeholder" />
-                            </label>
-                            <label class="input-form-preview">
-                                <PersonSvg />
-                                <input placeholder="Placeholder" />
-                            </label>
-                            <label>
-                                <textarea placeholder="Placeholder"></textarea>
-                            </label>
-                        </Preview>
-                    </section>
-
-                    <section>
-                        <header clas="flex">
-                            <h3><span> 02</span> Input & Textarea states</h3>
-                            <p class="subheader">
-                                Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
-                            </p>
-                        </header>
-                        <Preview Kit=kit.Kit>
-                            <label>
-                                Placeholder
-                                <PersonSvg />
-                                <input placeholder="username" />
-                                <span>Enter your username.</span>
-                            </label>
-                            <label class="selected">
-                                Selected
-                                <PersonSvg />
-                                <input placeholder="username" />
-                                <span>Enter your username.</span>
-                            </label>
-                            <label>
-                                Entered
-                                <PersonSvg />
-                                <input value="Kodekit" />
-                                <span>Enter your username.</span>
-                            </label>
-                            <label class="error">
-                                Error
-                                <PersonSvg />
-                                <input class="invalid" value="username" />
-                                <span>Username is taken.</span>
-                            </label>
-                            <label class="disabled">
-                                Disabled
-                                <PersonSvg />
-                                <input value="enter username" disabled />
-                                <span>Enter your name first.</span>
-                            </label>
-                        </Preview>
-                    </section>
-                </EditForm>
-            }
-        </div>
-    </div>
-</div>
-
-@code {
-    [Parameter] public string? kitId { get; set; }
-
-    (Kit Kit, KitRevision Revision) kit;
-    Input? Input;
-    EditContext? Context;
-
-    protected async Task<(Kit Kit, KitRevision Revision)> GetAsync()
+<header>
+    <h1>Elements</h1>
+    <h2>Inputs & Textareas</h2>
+    <p>
+        Use to collect text kit.Current.Inputs.
+    </p>
+</header>
+<article>
+    @if (kit != null)
     {
-        kit = await KitRepository.GetCurrentAsync(kitId);
-        Input = kit.Revision.Inputs;
-        Context = new EditContext(kit.Revision.Inputs);
-        return kit;
-    }
+        <EditForm EditContext="@Context">
+            <section>
+                <header class="flex">
+                    <h3><span>01</span> Form Styling</h3>
+                    <p>
+                        Input collects a single line of text, while a textarea can receive multiple lines of text.
+                    </p>
+                </header>
+                <div class="inputs--wrapper">
+                    <div>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Inputs.Font.Size" min="1" />
+                            Input Font Size (px)
+                        </label>
+                        <label>
+                            <InputFontWeight @bind-Value="kit.Current.Inputs.Font.Weight" />
+                            Input Font Weight
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Inputs.Padding.Vertical" min="0" />
+                            Vertical Padding (px)
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Inputs.Padding.Horizontal" min="0" />
+                            Horizontal Padding (px)
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Inputs.Border.Radius" min="0" />
+                            Corner Radius (px)
+                        </label>
+                        <label>
+                            <InputNumber @bind-Value="kit.Current.Inputs.Border.Width" min="0" />
+                            Border Width (px)
+                        </label>
+                    </div>
+                </div>
 
-    protected async Task UpdateAsync((Kit Kit, KitRevision Revision) kit)
-    {
-        await KitRepository.UpdateAsync(kit.Kit.Id, kit.Revision.Id);
+                <Preview Kit=kit>
+                    <label class="input-form-preview">
+                        <input placeholder="Placeholder" />
+                    </label>
+                    <label class="input-form-preview">
+                        <PersonSvg />
+                        <input placeholder="Placeholder" />
+                    </label>
+                    <label>
+                        <textarea placeholder="Placeholder"></textarea>
+                    </label>
+                </Preview>
+            </section>
+
+            <section>
+                <header clas="flex">
+                    <h3><span> 02</span> Input & Textarea states</h3>
+                    <p class="subheader">
+                        Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the kit.Current.Inputs.
+                    </p>
+                </header>
+                <Preview Kit=kit>
+                    <label>
+                        Placeholder
+                        <PersonSvg />
+                        <input placeholder="username" />
+                        <span>Enter your username.</span>
+                    </label>
+                    <label class="selected">
+                        Selected
+                        <PersonSvg />
+                        <input placeholder="username" />
+                        <span>Enter your username.</span>
+                    </label>
+                    <label>
+                        Entered
+                        <PersonSvg />
+                        <input value="Kodekit" />
+                        <span>Enter your username.</span>
+                    </label>
+                    <label class="error">
+                        Error
+                        <PersonSvg />
+                        <input class="invalid" value="username" />
+                        <span>Username is taken.</span>
+                    </label>
+                    <label class="disabled">
+                        Disabled
+                        <PersonSvg />
+                        <input value="enter username" disabled />
+                        <span>Enter your name first.</span>
+                    </label>
+                </Preview>
+            </section>
+        </EditForm>
     }
-}
+</article>
