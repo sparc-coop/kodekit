@@ -1,10 +1,8 @@
-﻿@import "../../_variables.scss";
-
-.active .modal {
+﻿.active {
     visibility: visible;
 }
 
-.modal {
+dialog {
     position: fixed;
     z-index: 50;
     top: 0;
@@ -34,7 +32,7 @@
         padding: 40px 80px;
         position: relative;
         z-index: 100;
-        background: $background-light;
+        background: var(--background-light);
         border: 1px solid rgba(255,255,255, 0.3);
         border-radius: 19px;
         margin: 20% auto;
@@ -54,7 +52,7 @@
             font-weight: 600;
             font-size: 20px;
             line-height: 160%;
-            color: $white;
+            color: var(--white);
         }
 
         p {
@@ -64,7 +62,7 @@
             font-weight: 400;
             font-size: 18px;
             line-height: 160%;
-            color: $white;
+            color: var(--white);
         }
     }
 
@@ -77,35 +75,35 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 160%;
-        background: $grey-800;
-        color: $white;
+        background: var(--grey-800);
+        color: var(--white);
         text-align: center;
         transition: 250ms ease-in-out;
 
         &:hover {
-            border: 1px solid $white;
+            border: 1px solid var(--white);
         }
 
         &:active {
-            background: $white;
-            color: $background;
+            background: var(--white);
+            color: var(--background);
         }
     }
 
     .button--confirm {
-        border: 1px solid $error-500;
-        color: $error-500;
+        border: 1px solid var(--error-500);
+        color: var(--error-500);
         margin-right: 12px;
 
         &:hover {
-            border: 1px solid $white;
+            border: 1px solid var(--white);
             color: white;
         }
 
         &:active {
-            border: 1px solid $error-500;
-            background: $error-500;
-            color: $background;
+            border: 1px solid var(--error-500);
+            background: var(--error-500);
+            color: var(--background);
         }
     }
 
@@ -114,7 +112,7 @@
         font-size: 20px;
         top: 20px;
         right: 20px;
-        color: $grey-700;
+        color: var(--grey-700);
         cursor: pointer;
     }
 }
