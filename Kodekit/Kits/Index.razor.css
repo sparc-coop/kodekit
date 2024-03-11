@@ -1,0 +1,85 @@
+﻿a {
+  display: block;
+  text-decoration: none;
+}
+@media screen and (max-width: 780px) {
+  a {
+    margin: 20px auto;
+  }
+}
+
+.dashboard-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 780px) {
+  .dashboard-container {
+    margin: 20px auto;
+  }
+}
+
+.sort {
+  width: 150px;
+  height: 27px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--grey-700);
+  background: var(--background);
+  border: none !important;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+header {
+  margin: 0 auto;
+}
+header h2 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 120%;
+  color: var(--white);
+}
+header p {
+  font-family: "EncodeSans";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--grey-300);
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+header .right {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+header .right button {
+  padding: 6px 18px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-family: "EncodeSans";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 160%;
+  background: var(--grey-800);
+  color: var(--white);
+  text-align: center;
+  transition: 250ms ease-in-out;
+}
+header .right button .icon-add {
+  margin-left: 10px;
+}
+header .right button .icon-add path {
+  fill: var(--white);
+}
+header .right button:hover {
+  border: 1px solid var(--white);
+}
+header .right button:active {
+  background: var(--white);
+  color: var(--grey-800);
+}

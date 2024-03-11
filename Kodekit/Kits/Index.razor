@@ -3,52 +3,52 @@
 @layout SimplifiedLayout
 @page "/"
 
-<div class="dashboard page">
-    <div class="page__container">
-        @if (!IsLoading)
-        {
-            <header class="dashboard--header">
-                <p class="user">@if(User != null) @User.FirstName</p>
-                <h2>My Kits</h2>
-                <p class="subheader">View and manage your kits for your projects.</p>
-                <div class="right">
-                    @*                <select class="sort">
-                <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
-                </select>*@
-                    @* <AuthorizeView>
-                        <Authorized> *@
-                            <button @onclick="CreateNew">
-                                Add New Kit  +
-                            </button>
-                        @* </Authorized>
-                        <NotAuthorized> *@
-                            @if (Kits == null || !Kits.Any())
-                            {
-                                <button @onclick="CreateNew">
-                                    Add New Kit  +
-                                </button>
-                            }
-                        @* </NotAuthorized>
-                    </AuthorizeView> *@
-                </div>
-            </header>
-
-            @if (Kits == null || !Kits.Any())
-            {
-                <p>Create a new styleguide to get started!</p>
-            }
-            else
-            {
-                <div class="dashboard-container">
-                    @foreach (var kit in Kits)
-                    {
-                        <KitCard Kit="kit" />
-                    }
-                </div>
-            }
-        }
+<header>
+    <p class="user">
+        @(User?.FirstName)
+    </p>
+    <h2>My Kits</h2>
+    <p>View and manage your kits for your projects.</p>
+    <div class="right">
+      @*<select class="sort">
+            <option @onclick="@(e => Sort("date-mod"))">Recently Updated</option>
+        </select>
+        <AuthorizeView>
+            <Authorized> *@
+                <button @onclick="CreateNew">
+                    Add New Kit  +
+                </button>
+         @* </Authorized>
+            <NotAuthorized>
+                @if (Kits == null || !Kits.Any())
+                {
+                    <button @onclick="CreateNew">
+                     Add New Kit  +
+                    </button>
+                }
+            </NotAuthorized>
+        </AuthorizeView>*@
     </div>
-</div>
+</header>
+
+@if (!IsLoading)
+{
+
+
+    @if (Kits == null || !Kits.Any())
+    {
+        <p>Create a new styleguide to get started!</p>
+    }
+    else
+    {
+        <section>
+            @foreach (var kit in Kits)
+            {
+                <KitCard Kit="kit" />
+            }
+        </section>
+    }
+}
 
 @inject IConfiguration Config
 @inject PersistentComponentState ApplicationState

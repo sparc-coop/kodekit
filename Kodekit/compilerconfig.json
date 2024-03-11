@@ -50,5 +50,9 @@
   {
     "outputFile": "Elements/Typography/Typography.razor.css",
     "inputFile": "Elements/Typography/Typography.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Index.razor.css",
+    "inputFile": "Kits/Index.razor.scss"
   }
 ]
