@@ -22,6 +22,7 @@ public class Kit : Entity<string>
 
     public Kit(IWebHostEnvironment env, Kit kit) : this(env, kit.Name, kit.UserId)
     {
+        Current = new KitRevision(kit);
     }
 
     public string KitId { get; set; }
@@ -66,6 +67,11 @@ public class Kit : Entity<string>
         Current = new KitRevision(this);
         PreviousRevisionId = CurrentRevisionId;
         CurrentRevisionId = Current.Id;
+    }
+
+    internal Kit Copy(IWebHostEnvironment env)
+    {
+        return new Kit(env, this);
     }
 
     string GenerateFriendlyId(IWebHostEnvironment env)
