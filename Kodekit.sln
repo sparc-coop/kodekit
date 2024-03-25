@@ -23,7 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Data.AzureSto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Client", "..\Sparc.Kernel\Sparc.Blossom.Client\Sparc.Blossom.Client.csproj", "{B802DFBF-4E21-412D-9D24-7FBE63BD2506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Authentication.Passwordless", "..\Sparc.Kernel\Sparc.Blossom.Authentication.Passwordless\Sparc.Blossom.Authentication.Passwordless.csproj", "{C7CDC24D-B138-4C99-BEE7-4D5C134985B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Authentication.Passwordless", "..\Sparc.Kernel\Sparc.Blossom.Authentication.Passwordless\Sparc.Blossom.Authentication.Passwordless.csproj", "{C7CDC24D-B138-4C99-BEE7-4D5C134985B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Server.ApiGenerator", "..\Sparc.Kernel\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.Server.ApiGenerator.csproj", "{B263BC5F-2FED-457B-9238-A6F611135F5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Example.Single", "..\Sparc.Kernel\Sparc.Blossom.Example.Server\Sparc.Blossom.Example.Single.csproj", "{EB037FEA-857F-4AE7-83A2-342DFC231207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Server.ApiGenerator.Test", "Sparc.Blossom.Server.ApiGenerator.Test\Sparc.Blossom.Server.ApiGenerator.Test.csproj", "{34879C4F-2360-463E-AAEA-F3BC1028C9C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +71,18 @@ Global
 		{C7CDC24D-B138-4C99-BEE7-4D5C134985B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7CDC24D-B138-4C99-BEE7-4D5C134985B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7CDC24D-B138-4C99-BEE7-4D5C134985B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B263BC5F-2FED-457B-9238-A6F611135F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B263BC5F-2FED-457B-9238-A6F611135F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B263BC5F-2FED-457B-9238-A6F611135F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B263BC5F-2FED-457B-9238-A6F611135F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB037FEA-857F-4AE7-83A2-342DFC231207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB037FEA-857F-4AE7-83A2-342DFC231207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB037FEA-857F-4AE7-83A2-342DFC231207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB037FEA-857F-4AE7-83A2-342DFC231207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34879C4F-2360-463E-AAEA-F3BC1028C9C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34879C4F-2360-463E-AAEA-F3BC1028C9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34879C4F-2360-463E-AAEA-F3BC1028C9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34879C4F-2360-463E-AAEA-F3BC1028C9C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +96,9 @@ Global
 		{23AADF55-AFEB-4E87-91BB-8113A7474E3A} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 		{B802DFBF-4E21-412D-9D24-7FBE63BD2506} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 		{C7CDC24D-B138-4C99-BEE7-4D5C134985B0} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{B263BC5F-2FED-457B-9238-A6F611135F5B} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{EB037FEA-857F-4AE7-83A2-342DFC231207} = {879C4EEA-C518-4281-9A39-14931E19AE11}
+		{34879C4F-2360-463E-AAEA-F3BC1028C9C1} = {879C4EEA-C518-4281-9A39-14931E19AE11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B62532E-4EEB-4BBA-BCFC-8047EA9EBBB5}
