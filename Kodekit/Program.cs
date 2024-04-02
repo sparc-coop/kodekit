@@ -8,11 +8,11 @@ using System.Configuration;
 using Sparc.Blossom.Authentication.Passwordless;
 
 var app = BlossomApplication.Run<App, User>(args,
-    (services, config) =>
+    builder =>
 {
-    services.AddCosmos<KodekitContext>(config["ConnectionStrings:CosmosDb"]!, "kodekit", ServiceLifetime.Scoped);
-    services.AddPasswordless<User>(config);
-    services.AddScoped<KitRepository>()
+    builder.Services.AddCosmos<KodekitContext>(config["ConnectionStrings:CosmosDb"]!, "kodekit", ServiceLifetime.Scoped);
+    builder.Services.AddPasswordless<User>(config);
+    builder.Services.AddScoped<KitRepository>()
             .AddScoped<UserRepository>();
 });
 
