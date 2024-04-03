@@ -1,8 +1,8 @@
-﻿using Sparc.Blossom.Data;
+﻿using Ardalis.Specification;
 
 namespace Sparc.Blossom.Example.Single.TodoItem;
 
-public partial class TodoItems
+public class Open : Specification<TodoItem>
 {
-    public IEnumerable<TodoItem> Open(IRepository<TodoItem> items) => items.Query.Where(x => x.IsDone == false);
+    public Open() => Query.Where(x => x.IsDone == false);
 }
