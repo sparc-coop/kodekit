@@ -15,7 +15,6 @@
         </header>
         <div class="content">
             <!-- Contrast Checker Component Here -->
-
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
@@ -30,7 +29,14 @@
                             <div class="color-display primary">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                        @if (string.IsNullOrEmpty(Model.Primary))
+                                        {
+                                            <ColorCardPlaceholder Weight="Primary" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                        }
                                         <InputColor @bind-Value="Model.Primary" />
                                     </label>
                                 </div>
@@ -38,14 +44,28 @@
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "primary-" + weight;
-                                        <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
+                                        @if (string.IsNullOrEmpty(Model.Primary))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
+                                        }
                                     }
                                 </div>
                             </div>
                             <div class="color-display secondary">
                                 <div class="color-main">
-                                    <label class ="edit-color">
-                                        <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                    <label class="edit-color">
+                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                        {
+                                            <ColorCardPlaceholder Weight="Secondary" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                        }
                                         <InputColor @bind-Value="Model.Secondary" />
                                     </label>
                                 </div>
@@ -53,14 +73,28 @@
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "secondary-" + weight;
-                                        <ColorCard Type="Secondary" Weight="@weight" Hex="@hex" />
+                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Secondary" Weight="@weight" Hex="@hex" />
+                                        }
                                     }
                                 </div>
                             </div>
                             <div class="color-display tertiary">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                        @if (string.IsNullOrEmpty(Model.Tertiary))
+                                        {
+                                            <ColorCardPlaceholder Weight="Tertiary" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                        }
                                         <InputColor @bind-Value="Model.Tertiary" />
                                     </label>
                                 </div>
@@ -68,7 +102,14 @@
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "tertiary-" + weight;
-                                        <ColorCard Type="Tertiary" Weight="@weight" Hex="@hex" />
+                                        @if (string.IsNullOrEmpty(Model.Tertiary))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Tertiary" Weight="@weight" Hex="@hex" />
+                                        }
                                     }
                                 </div>
                             </div>
@@ -83,11 +124,25 @@
                             <div class="color-display greyscale">
                                 <div class="color-main">
                                     <label class="edit-color">
-                                        <ColorCard Type="Lightest" Weight="Lightest" Hex="grey-100" />
+                                        @if (string.IsNullOrEmpty(Model.Lightest))
+                                        {
+                                            <ColorCardPlaceholder Weight="Lightest" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Lightest" Weight="Lightest" Hex="grey-100" />
+                                        }
                                         <InputColor @bind-Value="Model.Lightest" />
                                     </label>
                                     <label class="edit-color">
-                                        <ColorCard Type="Darkest" Weight="Darkest" Hex="grey-900" />
+                                        @if (string.IsNullOrEmpty(Model.Darkest))
+                                        {
+                                            <ColorCardPlaceholder Weight="Darkest" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Darkest" Weight="Darkest" Hex="grey-900" />
+                                        }
                                         <InputColor @bind-Value="Model.Darkest" />
                                     </label>
                                 </div>
@@ -95,7 +150,14 @@
                                     @foreach (var weight in Weights)
                                     {
                                         string hex = "grey-" + weight;
-                                        <ColorCard Type="Grey" Weight=@weight Hex=@hex />
+                                        @if (string.IsNullOrEmpty(Model.Lightest) || string.IsNullOrEmpty(Model.Darkest))
+                                        {
+                                            <ColorCardPlaceholder Weight="@weight" />
+                                        }
+                                        else
+                                        {
+                                            <ColorCard Type="Grey" Weight="@weight" Hex="@hex" />
+                                        }
                                     }
                                 </div>
                             </div>
@@ -109,15 +171,36 @@
                             </header>
                             <div class="color-display">
                                 <label class="edit-color">
-                                    <ColorCard Type="Error" Weight="Error" Hex="error-500" />
+                                    @if (string.IsNullOrEmpty(Model.Error))
+                                    {
+                                        <ColorCardPlaceholder Weight="Error" />
+                                    }
+                                    else
+                                    {
+                                        <ColorCard Type="Error" Weight="Error" Hex="error-500" />
+                                    }
                                     <InputColor @bind-Value="Model.Error" />
                                 </label>
                                 <label class="edit-color">
-                                    <ColorCard Type="Warning" Weight="Warning" Hex="warning-500" />
+                                    @if (string.IsNullOrEmpty(Model.Warning))
+                                    {
+                                        <ColorCardPlaceholder Weight="Warning" />
+                                    }
+                                    else
+                                    {
+                                        <ColorCard Type="Warning" Weight="Warning" Hex="warning-500" />
+                                    }
                                     <InputColor @bind-Value="Model.Warning" />
                                 </label>
                                 <label class="edit-color">
-                                    <ColorCard Type="Success" Weight="Success" Hex="success-500" />
+                                    @if (string.IsNullOrEmpty(Model.Success))
+                                    {
+                                        <ColorCardPlaceholder Weight="Success" />
+                                    }
+                                    else
+                                    {
+                                        <ColorCard Type="Success" Weight="Success" Hex="success-500" />
+                                    }
                                     <InputColor @bind-Value="Model.Success" />
                                 </label>
                             </div>

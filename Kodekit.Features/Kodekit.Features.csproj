@@ -1,58 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<None Remove="Elements\Anchors\anchors.css" />
-		<None Remove="Elements\Effects\shadows.css" />
-		<None Remove="Elements\Icons\icons.css" />
-		<None Remove="Elements\Lists\lists.css" />
-		<None Remove="_Plugins\words_alpha.txt" />
-		<None Remove="_Plugins\words_officesafe.txt" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
-		<Content Include="Elements\Effects\shadows.css">
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-		<Content Include="Elements\Icons\icons.css">
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-		<Content Include="Elements\Lists\lists.css">
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-		<Content Include="Elements\Anchors\anchors.css">
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-		<Content Include="Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest" />
-		<Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
-		<Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
-		<Content Include="Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
-		<Content Include="_Plugins\words_alpha.txt">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Content>
-		<Content Include="_Plugins\words_officesafe.txt">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.17.0">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="SharpScss" Version="2.0.0" />
-		<PackageReference Include="Sparc.Features" Version="6.2.1" />
-		<PackageReference Include="Sparc.Database.Cosmos" Version="6.0.8" />
-		<PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
-		<PackageReference Include="Sparc.Storage.Azure" Version="6.0.1" />
-	</ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Elements\Anchors\anchors.css" />
+    <None Remove="Elements\Effects\shadows.css" />
+    <None Remove="Elements\Icons\icons.css" />
+    <None Remove="Elements\Lists\lists.css" />
+    <None Remove="_Plugins\words_alpha.txt" />
+    <None Remove="_Plugins\words_officesafe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".config\dotnet-tools.json" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Elements\Effects\shadows.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Elements\Icons\icons.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Elements\Lists\lists.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Elements\Anchors\anchors.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Elements\Buttons\buttons.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Elements\Inputs\inputs.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Elements\Typography\typography.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Elements\_Shared\destyle-reset.css" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="_Plugins\words_alpha.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="_Plugins\words_officesafe.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.17.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SharpScss" Version="2.0.0" />
+    <PackageReference Include="Sparc.Features" Version="6.2.1" />
+    <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.8" />
+    <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
+    <PackageReference Include="Sparc.Storage.Azure" Version="6.0.1" />
+  </ItemGroup>
 </Project>

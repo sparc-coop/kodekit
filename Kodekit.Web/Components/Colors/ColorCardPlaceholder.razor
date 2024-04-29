@@ -1,0 +1,21 @@
+﻿<div class="color-card">
+    <ColorBlotch HideImages="true" />
+    <div class="color-card--content">
+        <label>@Weight</label>
+        <div class="color-info">
+            <p class="hex"></p>
+            <aside class="swatch" style="visibility:hidden"></aside>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Type { get; set; }
+    [Parameter]
+    public string Weight { get; set; }
+    [Parameter]
+    public string Hex { get; set; }
+
+    string FillColor => Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
+}
