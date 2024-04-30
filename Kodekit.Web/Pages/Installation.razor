@@ -1,5 +1,4 @@
-﻿@inherits HighlightPageBase<object>
-@page "/installation"
+﻿@page "/installation"
 @page "/{kitId}/installation"
 
 <div class="page installation">
@@ -66,7 +65,7 @@
                 if intersecting transition opacity to 1 
                 else transition opacity to 0">
                 <header>
-                    <h3><span>02</span> Option Two: Manual Download</h3>
+                    <h3><span script="on click toggle .red on me">02</span> Option Two: Manual Download</h3>
                     <p class="subheader">
                         If you would rather take a more manual approach, you can instead download the .css file,
                         and add that directly to your project folder.
@@ -103,6 +102,7 @@
 @code {
     string ImportUrl;
     string CopyText = "Copy";
+    [Parameter] public string kitId { get; set; }
 
     protected override void OnInitialized()
     {

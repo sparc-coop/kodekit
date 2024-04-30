@@ -26,6 +26,9 @@ if (cursor) {
         var f = follow;
         var c = cursor;
 
+        if (t == null || t.parentElement == null)
+            return;
+
         if (t.tagName == "BUTTON" || t.tagName == "A") {
             c.style.backgroundColor = "transparent";
 

@@ -1,6 +1,6 @@
 ﻿@if (showBanner == true)
 {
-    <div class="banner" @ref="tabBanner">
+    <div class="banner">
         <header>
             This kit will only be accessible from this device
         </header>
@@ -15,15 +15,17 @@
 
 @code {
     bool showBanner = true;
-    ElementReference tabBanner;
+    //ElementReference? tabBanner;
 
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var user = authState.User;
 
-        await tabBanner.FocusAsync();
-        if (user.Identity.IsAuthenticated)
+        // if (tabBanner.HasValue)
+        //     await tabBanner.Value.FocusAsync();
+        
+            if (user.Identity.IsAuthenticated)
         {
             showBanner = false;
         }
