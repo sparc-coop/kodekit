@@ -11,6 +11,7 @@
 </div>
 
 @inject IConfiguration Config
+@inject IJSRuntime Js
 @code {
     string kitId;
     private User User;
@@ -40,6 +41,11 @@
             }
 
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Js.InvokeVoidAsync("initHyperScript");
     }
 
     private async Task GetUser()

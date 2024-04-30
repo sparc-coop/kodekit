@@ -76,6 +76,12 @@
             codeBlock.innerHTML = encodedHtml;
             hljs.highlightElement(codeBlock);
         }
+
+        function initHyperScript() {
+            console.log('INITTING HYPERSCRIPT.....');
+            _hyperscript.processNode(document.body);
+        }
+
     </script>
 
     <script src="color-checker.js" charset="utf-8"></script>
