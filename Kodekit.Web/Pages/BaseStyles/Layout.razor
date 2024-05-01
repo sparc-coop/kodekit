@@ -18,40 +18,44 @@
             @if (kit != null)
             {
                 <EditForm Model="@kit">
-                    <section>
-                        <label>
-                            Presets
-                            <select style="display: inline">
-                                <option selected>Default (1000px)</option>
-                            </select>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider"></span>
+                    <KitStyle Kit=kit>
+                        <section _="on intersection(intersecting) having threshold 0.5
+                                    if intersecting transition opacity to 1 then set :done to 1
+                                    else if :done != 1 then transition opacity to 0">
+                            <label>
+                                Presets
+                                <select style="display: inline">
+                                    <option selected>Default (1000px)</option>
+                                </select>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                                Auto-center container to section
                             </label>
-                            Auto-center container to section
-                        </label>
-                    </section>
-                    <div class="preview-example">
+                        </section>
+                        <div class="preview-example">
 
-                    </div>
-                    <pre>
-                    <code>
-&lt;!-- Use the container class within html --&gt;
-&lt;section&gt;
-    &lt;div class="container"&gt;All content goes inside here&lt;/div&gt;
-&lt;/section&gt;
-                        </code>
-                    <code class="language-scss" style="margin-top: -50px;">
-// Breakpoints
-$large-desktop: 1440px;
-$desktop: 1000px;
-$large-tablet: 840px;
-$tablet: 720px;
-$large-mobile: 480px;
-$mobile: 320px;
-                        </code>
-                    </pre>
-                    <SaveAndContinue OnSubmit=Submit NextPage="box-shadow" />
+                        </div>
+                        <pre>
+                        <code>
+    &lt;!-- Use the container class within html --&gt;
+    &lt;section&gt;
+        &lt;div class="container"&gt;All content goes inside here&lt;/div&gt;
+    &lt;/section&gt;
+                            </code>
+                        <code class="language-scss" style="margin-top: -50px;">
+    // Breakpoints
+    $large-desktop: 1440px;
+    $desktop: 1000px;
+    $large-tablet: 840px;
+    $tablet: 720px;
+    $large-mobile: 480px;
+    $mobile: 320px;
+                            </code>
+                        </pre>
+                        <SaveAndContinue OnSubmit=Submit NextPage="box-shadow" />
+                    </KitStyle>
                 </EditForm>
             }
         </div>
