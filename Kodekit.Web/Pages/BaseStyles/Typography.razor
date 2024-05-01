@@ -2,8 +2,8 @@
 @page "/{kitId}/typography"
 
 <div class="typography page">
-    <div class="page__container">
-        <header class="page--header fadeInUp">
+    <div class="page__container fadeInUp">
+        <header class="page--header">
             <div class="title">Base Styles</div>
             <h2>Typography</h2>
             <p>
@@ -16,16 +16,24 @@
             {
                 @*                <AccessibilityChecker Model="Model"/>*@
                 <EditForm EditContext="@Context">
-                    <section class ="fadeInUp" style="animation-delay: 0.6s;">
+                    <section  _="on intersection(intersecting) having threshold 0.5
+                        if intersecting transition opacity to 1 then set :done to 1
+                        else if :done != 1 then transition opacity to 0">
                         <header>
                             <h3 class="section-header"><span>01</span>Heading Settings</h3>
                         </header>
-                        <div class="subsection heading-settings fadeInUp" style="animation-delay: 0.9s;">
+                        <div class="subsection heading-settings"
+                             _="on intersection(intersecting) having threshold 0.5
+                            if intersecting transition opacity to 1 then set :done to 1
+                            else if :done != 1 then transition opacity to 0">
                             <label class="preview-text">
                                 <input @bind-value="previewText" @bind-value:event="oninput" class="large" />
                                 Preview Text
                             </label>
-                            <div class="inputs--wrapper fadeInUp" style="animation-delay: 1.2s;">
+                            <div class="inputs--wrapper"
+                                 _="on intersection(intersecting) having threshold 0.5
+                                if intersecting transition opacity to 1 then set :done to 1
+                                else if :done != 1 then transition opacity to 0">
                                 <label>
                                     @if (Fonts.Items != null)
                                     {
@@ -105,7 +113,10 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="preview--wrapper fadeInUp" style="animation-delay: 1.5s;">
+                        <div class="preview--wrapper"
+                             _="on intersection(intersecting) having threshold 0.5
+                            if intersecting transition opacity to 1 then set :done to 1
+                            else if :done != 1 then transition opacity to 0">
                             <Preview Kit=kit>
                                 <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
                                 <h1>@previewText</h1>
@@ -124,7 +135,9 @@
                             </Preview>
                         </div>
                     </section>
-                    <section class="fadeInUp" style="animation-delay: 1.8s;">
+                    <section _="on intersection(intersecting) having threshold 0.5
+                            if intersecting transition opacity to 1 then set :done to 1
+                            else if :done != 1 then transition opacity to 0">
                         <header>
                             <h3><span>02</span> Paragraph Settings</h3>
                         </header>
@@ -133,7 +146,10 @@
                                 <textarea @bind-value="previewTextBody" @bind-value:event="oninput" />
                                 Preview Text
                             </label>
-                            <div class="inputs--wrapper fadeInUp" style="animation-delay: 2.1s;">
+                            <div class="inputs--wrapper"
+                                 _="on intersection(intersecting) having threshold 0.5
+                                if intersecting transition opacity to 1 then set :done to 1
+                                else if :done != 1 then transition opacity to 0">
                                 <label>
                                     <InputSelect class="medium" @bind-Value="Model.Paragraph.FontFamily">
                                         @if (Fonts.Items != null)
@@ -171,7 +187,7 @@
                                 </label>
                             </div>
                         </div>
-                        <Preview Kit=kit ExampleAnimationDelay="2.4s" CodeAnimationDelay="2.7s">
+                        <Preview Kit=kit>
                             <div>
                                 <label>Body Large - Font Size: @BodyScale("500")</label>
                                 <p class="large">@previewTextBody</p>

@@ -1,7 +1,10 @@
 ﻿@using Kodekit.Web.Components.Colors;
 @using Kodekit.Web.Shared.Icons
 
-<div tabindex="0" class="kit-card">
+<div tabindex="0" class="kit-card"
+     _="on intersection(intersecting) having threshold 0.5
+        if intersecting transition opacity to 1 then set :done to 1
+        else if :done != 1 then transition opacity to 0">
     <header class="kit-card--header">
         <h3 @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</h3>
         <div class="kit-info">

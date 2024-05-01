@@ -2,8 +2,8 @@
 @page "/release-notes"
 
 <div class="release page">
-    <div class="page__container">
-        <header class="page--header fadeInUp">
+    <div class="page__container fadeInUp">
+        <header class="page--header">
             <div class="title">Overview</div>
             <h2>Release Notes</h2>
             <p class="subheader">
@@ -12,7 +12,9 @@
             </p>
         </header>
         <div class="content">
-            <section class="fadeInUp" style="animation-delay: 0.6s;">
+            <section _="on intersection(intersecting) having threshold 0.5
+                        if intersecting transition opacity to 1 then set :done to 1
+                        else if :done != 1 then transition opacity to 0">
                 <header class="flex">
                     <h3>Kodekit V1.0 Launch</h3>
                     <p class="subheader date">
