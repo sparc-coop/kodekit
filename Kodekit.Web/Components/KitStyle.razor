@@ -15,6 +15,8 @@
 }
 
 @inject IConfiguration Config
+@inject IJSRuntime Js
+
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public Kit Kit { get; set; }
@@ -43,5 +45,10 @@
 
             CleanCssUrl = newUrl.Split("?")[0];
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Js.InvokeVoidAsync("initHyperScript");
     }
 }

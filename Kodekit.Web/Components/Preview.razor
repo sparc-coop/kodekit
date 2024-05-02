@@ -1,7 +1,7 @@
 ﻿@if (Kit != null)
 {
     <div class="preview-example-container"
-        _="on intersection(intersecting) having threshold 0.5
+        _="on intersection(intersecting) having threshold 0.25
         if intersecting transition opacity to 1 then set :done to 1
         else if :done != 1 then transition opacity to 0">
         @if (!IsLoading && CssUrl != null)
@@ -18,7 +18,7 @@
             * Using live generated CSS from <a href="@CleanCssUrl" target="_blank">@CleanCssUrl</a>
         </div>
         <pre class="preview-code"
-            _="on intersection(intersecting) having threshold 0.5
+            _="on intersection(intersecting) having threshold 0.25
             if intersecting transition opacity to 1 then set :done to 1
             else if :done != 1 then transition opacity to 0">
             <code tabindex="0" class="language-html" @ref=CodeBlock>

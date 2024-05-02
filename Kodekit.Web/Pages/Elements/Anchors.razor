@@ -15,7 +15,7 @@
             {
                 <EditForm EditContext="@Context">
                     <KitStyle Kit="kit">
-                        <section _="on intersection(intersecting) having threshold 0.5
+                        <section _="on intersection(intersecting) having threshold 0.25
                                     if intersecting transition opacity to 1 then set :done to 1
                                     else if :done != 1 then transition opacity to 0">
                             <header>
@@ -31,7 +31,7 @@
                                 </label>
                             </div>
                             <div class="subsection link-states" 
-                                _="on intersection(intersecting) having threshold 0.5 
+                                _="on intersection(intersecting) having threshold 0.25 
                                    if intersecting transition opacity to 1 then set :done to 1 
                                    else if :done != 1 then transition opacity to 0">
                                 <h4>Link States</h4>
