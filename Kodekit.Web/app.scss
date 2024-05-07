@@ -22,16 +22,18 @@
 @import "Pages/BaseStyles/GlobalSettings";
 @import "Pages/BaseStyles/PreviewPage";
 @import "Pages/Effects/BoxShadow";
-@import "Pages/Introduction";
-@import "Pages/Installation";
-@import "Pages/Themes";
-@import "Pages/UserKits";
+@import "Pages/Overview/Installation";
+@import "Pages/Overview/Installation";
+@import "Pages/Overview/Themes";
+@import "Pages/Overview/ReleaseNotes";
+@import "Pages/Dashboard";
 @import "Pages/KitCard";
-@import "Pages/ReleaseNotes";
+@import "Pages/Home";
 
 @import "Shared/MainLayout";
 @import "Shared/SimplifiedLayout";
 @import "Shared/NavMenu";
+@import "Shared/Sidebar";
 @import "Shared/SignUpBanner";
 @import "Shared/PageInfo";
 
@@ -136,12 +138,53 @@ a, button, label, input, select, div, span, li {
     width: 0.8rem;
     height: 0.8rem;
     transform: translate(-50%, -50%);
-    z-index: 2000;
+    z-index: 3000;
+}
+
+.follow {
+    display: none;
 }
 
 .cursor {
     background-color: white;
     border-radius: 100%;
+
+    &-start {
+        aspect-ratio: 1/1;
+        width: 139px;
+        position: fixed;
+        z-index: 2500;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+
+        .cursor-text {
+            width: 139px;
+            height: auto;
+            animation: spin 10s linear infinite;
+            pointer-events: none;
+        }
+    }
+
+    &-shadow {
+        //width: 620px;
+        width: calc(100vw/4);
+        height: auto;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0.8;
+        filter: blur(100px);
+    }
+}
+ 
+@keyframes spin {
+    0% {transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .follow {

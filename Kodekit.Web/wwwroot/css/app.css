@@ -101,17 +101,13 @@
 
 .page {
   background: #0E0E0E;
-  padding: 80px 80px 100px 80px;
-}
-@media screen and (max-width: 780px) {
-  .page {
-    padding: 0 40px 100px 40px;
+  /*@media screen and (max-width: 780px) {
+      padding: 0 40px 100px 40px;
   }
-}
-@media screen and (max-width: 500px) {
-  .page {
-    padding: 0 25px 100px 25px;
-  }
+
+  @media screen and (max-width: 500px) {
+      padding: 0 25px 100px 25px;
+  }*/
 }
 .page__container {
   width: 100%;
@@ -1260,22 +1256,86 @@
   color: #0E0E0E;
 }
 
-.introduction .content section {
-  margin-top: 0;
-  padding-bottom: 40px;
-  border-bottom: none;
+.installation section {
+  padding-bottom: 100px;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
 }
-.introduction .content section:first-of-type {
-  padding-top: 40px;
-  border-top: 1px solid rgba(200, 200, 200, 0.3);
+.installation section:last-of-type {
+  border: none;
 }
-.introduction .content section header {
-  margin-bottom: 20px;
+.installation section header div {
+  margin-bottom: 40px;
 }
-.introduction .content section p {
-  font-size: 16px;
+.installation .instructions {
+  overflow: hidden;
+  list-style: decimal;
+  padding-left: 24px;
+}
+.installation .instructions li h4 {
+  height: 26px;
+  margin-bottom: 10px;
+  font-weight: 500;
   line-height: 160%;
-  margin-bottom: 12px;
+}
+.installation .instructions li div {
+  margin-left: -18px;
+}
+.installation .instructions li p {
+  line-height: 160%;
+}
+.installation .instructions li pre {
+  padding: 32px 44px;
+  margin-bottom: 60px;
+}
+.installation .instructions li pre code {
+  padding: 0;
+}
+.installation .instructions li.step-one {
+  position: relative;
+}
+.installation .instructions li.step-one .copy {
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  padding: 8px 15px;
+  background: #17171A;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 12px;
+  transition: 250ms ease-in-out;
+}
+.installation .instructions li.step-one .copy:hover {
+  border: 1px solid #FFFFFF;
+}
+.installation .instructions li.step-one .copy:active {
+  background: #FFFFFF;
+  color: #1E1E1E;
+}
+.installation .option-two header h3 {
+  margin-bottom: 40px;
+}
+.installation .option-two li p {
+  line-height: 160%;
+}
+.installation .option-two li .download {
+  display: block;
+  width: 207px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+  transition: 250ms ease-in-out;
+}
+.installation .option-two li .download:hover {
+  border: 1px solid #FFFFFF;
+}
+.installation .option-two li .download:active {
+  background: #FFFFFF;
+  color: #0E0E0E;
 }
 
 .installation section {
@@ -1418,6 +1478,27 @@
     width: 100%;
     max-width: 496px;
   }
+}
+
+.release .page--header a {
+  text-decoration: underline;
+  transition: 250ms ease-in-out;
+}
+.release .page--header a:hover {
+  color: #FFFFFF;
+}
+.release section div p {
+  margin-bottom: 14px;
+  line-height: 160%;
+}
+.release section div ul {
+  margin: 0;
+  padding-left: 24px;
+  color: #FFFFFF;
+  list-style: disc;
+}
+.release section div ul li {
+  line-height: 160%;
 }
 
 .dashboard {
@@ -1673,25 +1754,52 @@
   padding-right: 35px;
 }
 
-.release .page--header a {
-  text-decoration: underline;
-  transition: 250ms ease-in-out;
+.dashboard {
+  width: 100%;
+  height: 100%;
+  background: #0E0E0E;
+  margin-top: -100px;
 }
-.release .page--header a:hover {
-  color: #FFFFFF;
+.dashboard .background {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
-.release section div p {
-  margin-bottom: 14px;
-  line-height: 160%;
+.dashboard .background .blob-container {
+  width: 100%;
+  height: 100%;
+  filter: blur(200px);
 }
-.release section div ul {
-  margin: 0;
-  padding-left: 24px;
-  color: #FFFFFF;
-  list-style: disc;
+.dashboard .background .blob-blue {
+  width: 50%;
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
-.release section div ul li {
-  line-height: 160%;
+.dashboard .background .blob-purple {
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+.dashboard .background .blob-gradient {
+  width: 50%;
+  position: absolute;
+  top: -171px;
+  right: 0;
+  z-index: 30;
+}
+.dashboard .background .overlay-noise {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: overlay;
+  z-index: 30;
 }
 
 .layout--header {
@@ -1706,7 +1814,18 @@
 }
 
 .main {
+  width: 100%;
+  padding: 0 80px;
   margin-top: 171px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+.main__container {
+  width: 100%;
+  margin-left: 300px;
+  padding-top: 40px;
 }
 @media screen and (max-width: 780px) {
   .main {
@@ -1734,6 +1853,8 @@
 
 .main.simplified {
   margin-top: 210px;
+  width: 100vw;
+  height: 100vh;
 }
 
 .overlay-expand {
@@ -1993,6 +2114,85 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   vertical-align: middle;
   font-size: 16px;
   margin: -2px 0 0 5px;
+}
+
+.sidebar {
+  width: fit-content;
+  max-width: 240px;
+  height: calc(100vh - 200px);
+  padding: 40px 40px 80px 4px;
+  position: fixed;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  background: #0E0E0E;
+  z-index: 900;
+}
+.sidebar .navmenu {
+  z-index: 1000;
+}
+.sidebar .menu {
+  min-width: 163px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  z-index: 1000;
+}
+@media screen and (max-width: 780px) {
+  .sidebar .menu {
+    transform: translateX(-256px);
+    transition: all 0.5s ease;
+  }
+  .sidebar .menu.show-mobile {
+    display: block;
+    left: 0;
+    z-index: 11;
+    transform: translateX(0);
+    transition: all 0.5s ease;
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  }
+}
+.sidebar .menu .category {
+  width: 122px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+.sidebar .menu .category.html-elements {
+  width: fit-content;
+}
+.sidebar .menu .heading {
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 100%;
+}
+.sidebar .menu .links {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .menu .links a {
+  margin-bottom: 13px;
+  color: #FFFFFF;
+  opacity: 0.7;
+  font-family: "EncodeSans";
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 100%;
+  text-decoration: none;
+  transition: 200ms ease-in-out;
+}
+.sidebar .menu .links a:first-of-type {
+  padding-top: 18px;
+}
+.sidebar .menu .links a:last-of-type {
+  margin-bottom: 0;
+}
+.sidebar .menu .links a:hover {
+  opacity: 1;
+}
+.sidebar .menu .links a:active {
+  opacity: 0.7;
 }
 
 .banner {
@@ -3055,14 +3255,50 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   width: 0.8rem;
   height: 0.8rem;
   transform: translate(-50%, -50%);
-  z-index: 2000;
+  z-index: 3000;
+}
+
+.follow {
+  display: none;
 }
 
 .cursor {
   background-color: white;
   border-radius: 100%;
 }
+.cursor-start {
+  aspect-ratio: 1/1;
+  width: 139px;
+  position: fixed;
+  z-index: 2500;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cursor-start .cursor-text {
+  width: 139px;
+  height: auto;
+  animation: spin 10s linear infinite;
+  pointer-events: none;
+}
+.cursor-shadow {
+  width: 25vw;
+  height: auto;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.8;
+  filter: blur(100px);
+}
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .follow {
   padding: 2rem;
   border: 0.1rem solid white;

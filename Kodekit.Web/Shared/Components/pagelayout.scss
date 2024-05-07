@@ -2,15 +2,14 @@
 
 .page {
     background: $background;
-    padding: 80px 80px 100px 80px;
 
-    @media screen and (max-width: 780px) {
+    /*@media screen and (max-width: 780px) {
         padding: 0 40px 100px 40px;
     }
 
     @media screen and (max-width: 500px) {
         padding: 0 25px 100px 25px;
-    }
+    }*/
 
     &__container {
         width: 100%;

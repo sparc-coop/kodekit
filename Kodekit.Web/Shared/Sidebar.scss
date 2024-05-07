@@ -1,0 +1,91 @@
+﻿@import "../_variables.scss";
+
+.sidebar {
+    width: fit-content;
+    max-width: 240px;
+    height: calc(100vh - 200px);
+    padding: 40px 40px 80px 4px;
+    position: fixed;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    background: $background;
+    z-index: 900;
+
+    .navmenu {
+        z-index: 1000;
+    }
+
+    .menu {
+        min-width: 163px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        z-index: 1000;
+
+        @media screen and (max-width: 780px) {
+            transform: translateX(-256px);
+            transition: all 0.5s ease;
+
+            &.show-mobile {
+                display: block;
+                left: 0;
+                z-index: 11;
+                transform: translateX(0);
+                transition: all 0.5s ease;
+                box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.10), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+            }
+        }
+
+        .category {
+            width: 122px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+
+            &.html-elements {
+                width: fit-content;
+            }
+        }
+
+        .heading {
+            font-family: 'QuantaGroteskPro';
+            font-weight: 500;
+            font-size: 23px;
+            line-height: 100%;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                margin-bottom: 13px;
+                color: $white;
+                opacity: 0.7;
+                font-family: 'EncodeSans';
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 100%;
+                text-decoration: none;
+                transition: 200ms ease-in-out;
+
+                &:first-of-type {
+                    padding-top: 18px;
+                }
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &:active {
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+}
