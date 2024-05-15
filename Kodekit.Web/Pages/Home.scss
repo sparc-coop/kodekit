@@ -1,55 +1,153 @@
 @import "../_variables.scss";
 
+#canvas {
+    z-index: 500;
+}
+
+.blob-container--hidden {
+    display: none;
+}
+
 .dashboard {
     width: 100%;
     height: 100%;
     background: $background;
     margin-top: -100px;
+}
 
-    .background {
+.background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    &-container {
+        position: relative;
+    }
+
+    .blob-container {
         width: 100%;
         height: 100%;
-        position: relative;
+        filter: blur(200px);
+    }
 
-        .blob-container {
-            width: 100%;
-            height: 100%;
-            filter: blur(200px);
-        }
+    .blob-blue {
+        width: 50%;
+        position: absolute;
+        bottom: -25%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        //animation: blob1 10s infinite;
+    }
 
-        .blob-blue {
-            width: 50%;
-            position: absolute;
-            bottom: -25%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
+    .blob-purple {
+        width: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        //animation: blob2 10s infinite;
+    }
 
-        .blob-purple {
-            width: 50%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 20;
-        }
+    .blob-gradient {
+        width: 50%;
+        position: absolute;
+        top: -171px;
+        right: 0;
+        z-index: 30;
+    }
 
-        .blob-gradient {
-            width: 50%;
-            position: absolute;
-            top: -171px;
-            right: 0;
-            z-index: 30;
-        }
+    .overlay-noise {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        mix-blend-mode: overlay;
+        z-index: 30;
+    }
+}
 
-        .overlay-noise {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            mix-blend-mode: overlay;
-            z-index: 30;
-        }
+
+@keyframes blob1 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        left: -100px;
+        top: 70px;
+    }
+
+    50% {
+        left: 20px;
+        top: 150px;
+    }
+
+    75% {
+        left: 50px;
+        top: 100px;
+    }
+
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes blob2 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        left: 50px;
+        top: 10px;
+    }
+
+    50% {
+        left: 100px;
+        top: 50px;
+    }
+
+    75% {
+        left: 50px;
+        top: 100px;
+    }
+
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+}
+
+@keyframes blob3 {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        left: -100px;
+        top: 70px;
+    }
+
+    50% {
+        left: 20px;
+        top: 150px;
+    }
+
+    75% {
+        left: 50px;
+        top: 100px;
+    }
+
+    100% {
+        left: 0px;
+        top: 0px;
     }
 }

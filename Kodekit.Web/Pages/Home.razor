@@ -1,8 +1,15 @@
 ﻿@layout HomeLayout
 @page "/{kitId}/home"
 
-<div class="dashboard page">
-    <div class="background">
+<canvas id="canvas"></canvas>
+<canvas id="canvas-overlay"></canvas>
+<div class="blob-container--hidden">
+    @* <img class="blob-blue" src="blobs/blob-blue.svg" />
+    <img class="blob-purple" src="blobs/blob-purple.svg" />
+    <img class="blob-gradient" src="blobs/blob-gradient.svg" /> *@
+</div>
+@* <div class="background">
+    <div class="background-container">
         <div class="blob-container">
             <img class="blob-blue" src="blobs/blob-blue.svg" />
             <img class="blob-purple" src="blobs/blob-purple.svg" />
@@ -10,7 +17,267 @@
         </div>
         <img class="overlay-noise" src="blobs/noise-3.svg" />
     </div>
+</div> *@
+<div class="dashboard page">
+
 </div>
+
+<script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+    var window_width = window.innerWidth;
+    var window_height = window.innerHeight;
+
+    canvas.width = window_width;
+    canvas.height = window_height;
+    canvas.style.position = "absolute";
+    canvas.style.top = "0";
+    canvas.style.left = "0";
+    canvas.style.background = "#000";
+
+    // ** EXAMPLE CONSTRUCTOR FOR ANIMATED CIRCLE THAT BOUNCES OFF THE WALLS OF THE CONTAINER ** //
+
+    // class Blob {
+    //     constructor(xpos, ypos, radius, color, speed) {
+    //         this.xpos = xpos;
+    //         this.ypos = ypos;
+    //         this.radius = radius;
+    //         this.color = color;
+    //         this.speed = speed;
+
+    //         this.dx = 1 * this.speed;
+    //         this.dy = 1 * this.speed;
+    //     }
+
+    //     draw(ctx) {
+    //         ctx.beginPath();
+    //         ctx.strokeStyle = this.color;
+    //         ctx.lineWidth = 5;
+    //         ctx.arc(this.xpos, this.ypos, this.radius, 0, Math.PI * 2, false);
+    //         ctx.stroke();
+    //         ctx.closePath();
+    //     }
+
+    //     update() {
+    //         ctx.clearRect(0, 0, window_width, window_height);
+    //         this.draw(ctx);
+
+    //         if ((this.xpos + this.radius) > window_width) {
+    //             this.dx = -this.dx;
+    //         }
+
+    //         if ((this.xpos - this.radius) < 0) {
+    //             this.dx = -this.dx;
+    //         }
+
+    //         if ((this.ypos + this.radius) > window_height) {
+    //             this.dy = -this.dy;
+    //         }
+
+    //         if ((this.ypos - this.radius) < 0) {
+    //             this.dy = -this.dy;
+    //         }
+
+
+    //         this.xpos += this.dx;
+    //         this.ypos += this.dy;
+    //     }
+    // }
+
+    // let random_x = Math.random() * window_width;
+    // let random_y = Math.random() * window_height;
+
+    // let my_blob = new Blob(100, 100, 50, "blue", 5);
+    // my_blob.draw(ctx);
+    // let updateBlob = function() {
+    //     requestAnimationFrame(updateBlob);
+    //     my_blob.update();
+    // }
+
+    // updateBlob();
+
+
+    // ** TESTING MOUSE INTERSECTION WITH POSITION OF CIRCLE ** //
+
+    // function getMousePos(canvas, evt) {
+    //     var rect = canvas.getBoundingClientRect();
+    //     return {
+    //         x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+    //         y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+    //     };
+    // }
+
+    // let mouse_over = function (event) {
+    //     event.preventDefault();
+    //     let mousePos = getMousePos(canvas, event);
+    //     var mouseX = mousePos.x;
+    //     var mouseY = mousePos.y;
+    //     console.log(mouseX, mouseY);
+    //     console.log(my_blob.xpos, my_blob.ypos);
+
+    //     // if mouse overlaps with blob, blob will change direction in X and Y axis
+    //     if (mouseX == (my_blob.xpos - my_blob.radius) && mouseY == (my_blob.ypos - my_blob.radius)) {
+    //         console.log("hit");
+    //         my_blob.dx = -my_blob.dx;
+    //         my_blob.dx += my_blob.dx
+
+    //         my_blob.dy = -my_blob.dy;
+    //         my_block.dy += my_blob.dy;
+    //     }
+    // }
+
+    // my_blob.AddEventListener("onmouseover", mouse_over);
+
+    // canvas.onmousedown = (e) => { console.log('mousedown', e.layerX, e.layerY) };
+
+    // ** CONSTRUCTOR FOR PNG BOBS ** //
+
+    class Blob {
+        constructor(src, xpos, ypos, width, height, speed) {
+            this.src = src;
+            this.xpos = xpos;
+            this.ypos = ypos;
+            this.width = width;
+            this.height = height;
+            this.speed = speed;
+
+            this.dx = 1 * this.speed;
+            this.dy = 1 * this.speed;
+        }
+
+        draw(ctx) {
+            var big_blob = new Image();
+            big_blob.src = this.src;
+            big_blob.onload = () => ctx.drawImage(big_blob, this.xpos, this.ypos, this.width, this.height);
+            big_blob.filter = "blur(200px)";
+        }
+
+        update() {
+            ctx.clearRect(0, 0, window_width, window_height);
+            this.draw(ctx);
+
+            if ((this.xpos + (this.width/2)) > window_width) {
+                this.dx = -this.dx;
+            }
+
+            if ((this.xpos - (this.width/2)) < 0) {
+                this.dx = -this.dx;
+            }
+
+            if ((this.ypos + (this.height/2)) > window_height) {
+                this.dy = -this.dy;
+            }
+
+            if ((this.ypos - (this.height/2)) < 0) {
+                this.dy = -this.dy;
+            }
+
+            this.xpos += this.dx;
+            this.ypos += this.dy;
+        }
+    }
+
+    // BLOBS DRAWN USING CONSTRUCTOR HOWEVER LOADING IMAGES IS SLOW IN BROWSER
+    // ANIMATION ALSO NOT WORKING
+
+    let blob_gradient = new Blob("blobs/blob-gradient.png", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2);
+    blob_gradient.draw(ctx);
+    let updateBlob = function() {
+        requestAnimationFrame(updateBlob);
+        blob_gradient.update();
+    }
+
+    let blob_blue = new Blob("blobs/blob-blue.png", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2);
+    blob_blue.draw(ctx);
+    let updateBlob = function () {
+        requestAnimationFrame(updateBlob);
+        blob_blue.update();
+    }
+
+    let blob_purple = new Blob("blobs/blob-purple.png", 0, window_height / -4, window_width * .75, window_height);
+    blob_purple.draw(ctx);
+    let updateBlob = function () {
+        requestAnimationFrame(updateBlob);
+        blob_purple.update();
+    }
+
+    // ADDING BLOBS WITHOUT CONSTRUCTOR
+
+    // const blobGradient = new Image();
+    // blobGradient.src = "blobs/blob-gradient.png";
+    // blobGradient.onload = () => ctx.drawImage(blobGradient, window_width/2, window_height/-4, window_width/2, window_height*1.2);
+
+    // const blobBlue = new Image();
+    // blobBlue.src = "blobs/blob-blue.png";
+    // blobBlue.onload = () => ctx.drawImage(blobBlue, window_width/3, window_height/3, window_width*.6, window_height*1.2);
+
+    // const blobPurple = new Image();
+    // blobPurple.src = "blobs/blob-purple.png";
+    // blobPurple.onload = () => ctx.drawImage(blobPurple, 0, window_height/-4, window_width*.75, window_height);
+
+    // ctx.filter = "blur(200px)";
+
+    // TRIED TO LAYER A SECON CANVAS TO SEPARATE THE NOISE OVERLAY FROM THE BLUR FILTER
+    // BUT NOT WORKING, BLUR STILL AFFECTING NOISE OVERLAY TO DISPLAY PROPERLY
+
+    let canvas_overlay = document.getElementById('canvas-overlay');
+    let ctx_overlay = canvas.getContext('2d');
+
+    canvas_overlay.width = window_width;
+    canvas_overlay.height = window_height;
+    canvas_overlay.style.position = "absolute";
+    canvas_overlay.style.top = "0";
+    canvas_overlay.style.left = "0";
+
+    const overlay = new Image();
+    overlay.src = "blobs/noise-3.png";
+    overlay.onload = () => ctx_overlay.drawImage(overlay, 0, 0, window_width, window_height);
+ 
+    let mouse_over = function (event) {
+        event.preventDefault();
+        console.log("hit");
+        my_blob.dx = -my_blob.dx;
+        my_blob.dx += my_blob.dx
+
+        my_blob.dy = -my_blob.dy;
+        my_block.dy += my_blob.dy;
+    }
+
+    // TRIED TO DRAW SVG INTO CANVAS, BUT NOT WORKING
+
+    // let svg = document.getElementsByClassName('blob-container--hidden');
+    // let blob = new Blob([svg], { type: 'image/svg+xml' });
+    // let url = URL.createObjectURL(blob);
+
+    // const blobImg = new Image();
+    // blobImg.onload = () => ctx.drawImage(blobImg, 54, 387, 792, 960);
+    // blobImg.src = url;
+
+    // canvas.addEventListener('mouseover', function (event)) {
+    //     console.log('mousedown');
+    //     console.log(event);
+    // });
+
+    // var blob1 = '<svg width="1264" height="1229" viewBox="0 0 1264 1229" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+    //     '<path fill-rule="evenodd" clip - rule="evenodd" d = "M639.677 4.28075C741.8 32.9369 732.352 201.221 821.389 258.865C903.059 311.738 1025.34 248.682 1104.52 305.223C1190.4 366.559 1277.08 469.128 1262.11 573.6C1246.6 681.834 1103.45 716.943 1033.48 800.963C978.104 867.461 953.317 951.504 894.519 1015C818.253 1097.36 749.538 1249.24 639.677 1226.23C518.238 1200.79 530.232 1004.73 439.833 919.74C378.026 861.635 276.261 874.371 209.6 821.905C123.019 753.76 -2.69956 683.747 0.0441571 573.6C2.81134 462.51 147.997 415.416 221.795 332.335C279.482 267.391 319.38 190.81 387.705 137.172C463.69 77.5207 546.668 -21.818 639.677 4.28075Z" fill = "url(#paint0_linear_409_32704)" />' +
+    //     '<defs>' +
+    //     '<linearGradient id="paint0_linear_409_32704" x1 = "631.901" y1 = "0" x2 = "631.901" y2 = "1228.57" gradientUnits = "userSpaceOnUse">' +
+    //     '<stop stop - color="#0B5FFF" stop - opacity="0" />' +
+    //     '<stop offset="1" stop - color="#0B5FFF" />' +
+    //     '</linearGradient>' +
+    //     '</defs>' +
+    //     '</svg>';
+
+    // var DOMURL = window.URL || window.webkitURL || window;
+    // var img1 = new Image();
+    // var svg = new Blob([blob1]), type: 'image/svg+xml'});
+    // var url = DOMURL.createObjectURL(svg);
+    // img1.onload = function () {
+    //     ctx.drawImage(img1, 25, 70);
+    //     DOMURL.revokeObjectURL(url);
+    // }
+    // img1.src = url;
+</script>
 
 @inject IConfiguration Config
 @code {
