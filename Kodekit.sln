@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Core", "..\Sp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Data.Cosmos", "..\Sparc.Kernel\Sparc.Blossom.Data.Cosmos\Sparc.Blossom.Data.Cosmos.csproj", "{0C1ECBF0-C8D3-408C-9B58-B808CD608D33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Server", "..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.Server.csproj", "{C0DDAD24-1E91-4287-B053-F16687922742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom", "..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.csproj", "{C0DDAD24-1E91-4287-B053-F16687922742}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Data.AzureStorage", "..\Sparc.Kernel\Sparc.Blossom.Data.AzureStorage\Sparc.Blossom.Data.AzureStorage.csproj", "{23AADF55-AFEB-4E87-91BB-8113A7474E3A}"
 EndProject
@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Server.ApiGen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Example.Single", "..\Sparc.Kernel\Sparc.Blossom.Example.Server\Sparc.Blossom.Example.Single.csproj", "{EB037FEA-857F-4AE7-83A2-342DFC231207}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Server.ApiGenerator.Test", "Sparc.Blossom.Server.ApiGenerator.Test\Sparc.Blossom.Server.ApiGenerator.Test.csproj", "{34879C4F-2360-463E-AAEA-F3BC1028C9C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Server.ApiGenerator.Test", "Sparc.Blossom.Server.ApiGenerator.Test\Sparc.Blossom.Server.ApiGenerator.Test.csproj", "{34879C4F-2360-463E-AAEA-F3BC1028C9C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
