@@ -24,7 +24,7 @@ public class Color : ISerializable
         if (hex.Length < 6 || hex.Length > 7 || !hex.All("#0123456789abcdefABCDEF".Contains))
             throw new ArgumentOutOfRangeException(nameof(hex), "Hex value is not valid");
 
-        if (hex.Length == 6 && !hex.StartsWith("#"))
+        if (hex.Length == 6 && !hex.StartsWith('#'))
             hex = "#" + hex;
 
         HexValue = hex;
