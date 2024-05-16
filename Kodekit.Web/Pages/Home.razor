@@ -4,11 +4,38 @@
 <canvas id="canvas"></canvas>
 <canvas id="canvas-overlay"></canvas>
 <div class="blob-container--hidden">
-    @* <img class="blob-blue" src="blobs/blob-blue.svg" />
-    <img class="blob-purple" src="blobs/blob-purple.svg" />
-    <img class="blob-gradient" src="blobs/blob-gradient.svg" /> *@
+    <svg id="blob-gradient" width="1050" height="1263" viewBox="0 0 1050 1263" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M480.903 0.706347C579.09 -1.54725 665.217 54.6377 754.712 95.0929C853.274 139.647 985.876 153.203 1033.3 250.415C1081.24 348.675 1009.32 462.509 986.094 569.344C967.422 655.231 935.05 732.863 910.098 817.14C876.975 929.011 897.27 1065.17 814.841 1147.74C731.371 1231.35 589.506 1293.58 480.903 1247.07C360.724 1195.59 364.168 1017.91 279.375 918.4C230.099 860.571 141.067 852.328 93.8387 792.815C42.9368 728.674 -12.1649 649.929 2.3659 569.344C17.0974 487.646 132.214 463.468 166.831 388.014C207.061 300.326 153.49 182.432 214.256 107.497C275.606 31.841 383.523 2.9414 480.903 0.706347Z" fill="url(#paint0_linear_409_32703)" />
+        <defs>
+            <linearGradient id="paint0_linear_409_32703" x1="524.719" y1="0.640625" x2="524.719" y2="1262.98" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00C2FF" stop-opacity="0" />
+                <stop offset="1" stop-color="#FF29C3" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <img id="blob-gradient__img" />
+    <svg id="blob-blue" width="1264" height="1229" viewBox="0 0 1264 1229" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M639.677 4.28075C741.8 32.9369 732.352 201.221 821.389 258.865C903.059 311.738 1025.34 248.682 1104.52 305.223C1190.4 366.559 1277.08 469.128 1262.11 573.6C1246.6 681.834 1103.45 716.943 1033.48 800.963C978.104 867.461 953.317 951.504 894.519 1015C818.253 1097.36 749.538 1249.24 639.677 1226.23C518.238 1200.79 530.232 1004.73 439.833 919.74C378.026 861.635 276.261 874.371 209.6 821.905C123.019 753.76 -2.69956 683.747 0.0441571 573.6C2.81134 462.51 147.997 415.416 221.795 332.335C279.482 267.391 319.38 190.81 387.705 137.172C463.69 77.5207 546.668 -21.818 639.677 4.28075Z" fill="url(#paint0_linear_409_32704)" />
+        <defs>
+            <linearGradient id="paint0_linear_409_32704" x1="631.901" y1="0" x2="631.901" y2="1228.57" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0B5FFF" stop-opacity="0" />
+                <stop offset="1" stop-color="#0B5FFF" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <img id="blob-blue__img" />
+    <svg id="blob-purple" width="1170" height="1241" viewBox="0 0 1170 1241" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M621.796 8.16353C737.489 38.507 784.837 174.82 871.345 257.416C935.723 318.883 1016.22 359.457 1066.59 432.843C1119.58 510.04 1163.05 596.148 1168.02 689.647C1173.12 785.389 1159.93 892.381 1094.79 962.732C1030.68 1031.97 922.651 1028.3 831.58 1053C761.802 1071.93 690.226 1067.7 621.796 1091.04C511.833 1128.54 414.31 1280.56 309.153 1231.16C208.508 1183.88 285.43 1011.76 238.46 910.966C197.446 822.956 91.7463 780.235 56.7955 689.647C14.0423 578.835 -24.033 452.276 18.7386 341.471C62.2108 228.851 177.531 161.551 283.186 103.156C387.564 45.467 506.439 -22.092 621.796 8.16353Z" fill="url(#paint0_linear_409_32705)" />
+        <defs>
+            <linearGradient id="paint0_linear_409_32705" x1="229.483" y1="1818.1" x2="1418.15" y2="1153.72" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3F3D9F" />
+                <stop offset="1" stop-color="#12163E" stop-opacity="0" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <img id="blob-purple__img" />
 </div>
-@* <div class="background">
+<div class="background" style="display: none">
     <div class="background-container">
         <div class="blob-container">
             <img class="blob-blue" src="blobs/blob-blue.svg" />
@@ -17,7 +44,7 @@
         </div>
         <img class="overlay-noise" src="blobs/noise-3.svg" />
     </div>
-</div> *@
+</div>
 <div class="dashboard page">
 
 </div>
@@ -132,76 +159,76 @@
 
     // ** CONSTRUCTOR FOR PNG BOBS ** //
 
-    class Blob {
-        constructor(src, xpos, ypos, width, height, speed) {
-            this.src = src;
-            this.xpos = xpos;
-            this.ypos = ypos;
-            this.width = width;
-            this.height = height;
-            this.speed = speed;
+    // class Blob {
+    //     constructor(src, xpos, ypos, width, height, speed) {
+    //         this.src = src;
+    //         this.xpos = xpos;
+    //         this.ypos = ypos;
+    //         this.width = width;
+    //         this.height = height;
+    //         this.speed = speed;
 
-            this.dx = 1 * this.speed;
-            this.dy = 1 * this.speed;
-        }
+    //         this.dx = 1 * this.speed;
+    //         this.dy = 1 * this.speed;
+    //     }
 
-        draw(ctx) {
-            var big_blob = new Image();
-            big_blob.src = this.src;
-            big_blob.onload = () => ctx.drawImage(big_blob, this.xpos, this.ypos, this.width, this.height);
-            big_blob.filter = "blur(200px)";
-        }
+    //     draw(ctx) {
+    //         var big_blob = new Image();
+    //         big_blob.src = this.src;
+    //         big_blob.onload = () => ctx.drawImage(big_blob, this.xpos, this.ypos, this.width, this.height);
+    //         big_blob.filter = "blur(200px)";
+    //     }
 
-        update() {
-            ctx.clearRect(0, 0, window_width, window_height);
-            this.draw(ctx);
+    //     update() {
+    //         ctx.clearRect(0, 0, window_width, window_height);
+    //         this.draw(ctx);
 
-            if ((this.xpos + (this.width/2)) > window_width) {
-                this.dx = -this.dx;
-            }
+    //         if ((this.xpos + (this.width/2)) > window_width) {
+    //             this.dx = -this.dx;
+    //         }
 
-            if ((this.xpos - (this.width/2)) < 0) {
-                this.dx = -this.dx;
-            }
+    //         if ((this.xpos - (this.width/2)) < 0) {
+    //             this.dx = -this.dx;
+    //         }
 
-            if ((this.ypos + (this.height/2)) > window_height) {
-                this.dy = -this.dy;
-            }
+    //         if ((this.ypos + (this.height/2)) > window_height) {
+    //             this.dy = -this.dy;
+    //         }
 
-            if ((this.ypos - (this.height/2)) < 0) {
-                this.dy = -this.dy;
-            }
+    //         if ((this.ypos - (this.height/2)) < 0) {
+    //             this.dy = -this.dy;
+    //         }
 
-            this.xpos += this.dx;
-            this.ypos += this.dy;
-        }
-    }
+    //         this.xpos += this.dx;
+    //         this.ypos += this.dy;
+    //     }
+    // }
 
-    // BLOBS DRAWN USING CONSTRUCTOR HOWEVER LOADING IMAGES IS SLOW IN BROWSER
+    // ** BLOBS DRAWN USING CONSTRUCTOR HOWEVER LOADING IMAGES IS SLOW IN BROWSER ** //
     // ANIMATION ALSO NOT WORKING
 
-    let blob_gradient = new Blob("blobs/blob-gradient.png", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2);
-    blob_gradient.draw(ctx);
-    let updateBlob = function() {
-        requestAnimationFrame(updateBlob);
-        blob_gradient.update();
-    }
+    // let blob_gradient = new Blob("blobs/blob-gradient.png", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2);
+    // blob_gradient.draw(ctx);
+    // let updateBlob = function() {
+    //     requestAnimationFrame(updateBlob);
+    //     blob_gradient.update();
+    // }
 
-    let blob_blue = new Blob("blobs/blob-blue.png", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2);
-    blob_blue.draw(ctx);
-    let updateBlob = function () {
-        requestAnimationFrame(updateBlob);
-        blob_blue.update();
-    }
+    // let blob_blue = new Blob("blobs/blob-blue.png", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2);
+    // blob_blue.draw(ctx);
+    // let updateBlob = function () {
+    //     requestAnimationFrame(updateBlob);
+    //     blob_blue.update();
+    // }
 
-    let blob_purple = new Blob("blobs/blob-purple.png", 0, window_height / -4, window_width * .75, window_height);
-    blob_purple.draw(ctx);
-    let updateBlob = function () {
-        requestAnimationFrame(updateBlob);
-        blob_purple.update();
-    }
+    // let blob_purple = new Blob("blobs/blob-purple.png", 0, window_height / -4, window_width * .75, window_height);
+    // blob_purple.draw(ctx);
+    // let updateBlob = function () {
+    //     requestAnimationFrame(updateBlob);
+    //     blob_purple.update();
+    // }
 
-    // ADDING BLOBS WITHOUT CONSTRUCTOR
+    // ** ADDING BLOBS WITHOUT CONSTRUCTOR ** //
 
     // const blobGradient = new Image();
     // blobGradient.src = "blobs/blob-gradient.png";
@@ -217,66 +244,162 @@
 
     // ctx.filter = "blur(200px)";
 
-    // TRIED TO LAYER A SECON CANVAS TO SEPARATE THE NOISE OVERLAY FROM THE BLUR FILTER
+    // ** TRIED TO LAYER A SECON CANVAS TO SEPARATE THE NOISE OVERLAY FROM THE BLUR FILTER **//
     // BUT NOT WORKING, BLUR STILL AFFECTING NOISE OVERLAY TO DISPLAY PROPERLY
 
-    let canvas_overlay = document.getElementById('canvas-overlay');
-    let ctx_overlay = canvas.getContext('2d');
+    // let canvas_overlay = document.getElementById('canvas-overlay');
+    // let ctx_overlay = canvas.getContext('2d');
 
-    canvas_overlay.width = window_width;
-    canvas_overlay.height = window_height;
-    canvas_overlay.style.position = "absolute";
-    canvas_overlay.style.top = "0";
-    canvas_overlay.style.left = "0";
+    // canvas_overlay.width = window_width;
+    // canvas_overlay.height = window_height;
+    // canvas_overlay.style.position = "absolute";
+    // canvas_overlay.style.top = "0";
+    // canvas_overlay.style.left = "0";
 
-    const overlay = new Image();
-    overlay.src = "blobs/noise-3.png";
-    overlay.onload = () => ctx_overlay.drawImage(overlay, 0, 0, window_width, window_height);
+    // const overlay = new Image();
+    // overlay.src = "blobs/noise-3.png";
+    // overlay.onload = () => ctx_overlay.drawImage(overlay, 0, 0, window_width, window_height);
  
-    let mouse_over = function (event) {
-        event.preventDefault();
-        console.log("hit");
-        my_blob.dx = -my_blob.dx;
-        my_blob.dx += my_blob.dx
+    // let mouse_over = function (event) {
+    //     event.preventDefault();
+    //     console.log("hit");
+    //     my_blob.dx = -my_blob.dx;
+    //     my_blob.dx += my_blob.dx
 
-        my_blob.dy = -my_blob.dy;
-        my_block.dy += my_blob.dy;
+    //     my_blob.dy = -my_blob.dy;
+    //     my_block.dy += my_blob.dy;
+    // }
+
+    // ** DRAW SVG IN CANVAS **//
+    // Blob constructor for svg
+    // NOT WORKING
+    class BigBlob {
+        constructor(svg, img, xpos, ypos, width, height, speed, direction) {
+            this.svg = svg;
+            this.img = img;
+            this.xpos = xpos;
+            this.ypos = ypos;
+            this.width = width;
+            this.height = height;
+            this.speed = speed;
+            this.direction = direction;
+
+            this.dx = 1 * this.speed;
+            this.dy = 1 * this.speed;
+        }
+
+        draw(ctx) {
+            var blobSvg = document.getElementById(this.svg);
+            let xml = new XMLSerializer().serializeToString(blobSvg);     // get svg data
+            let svg64 = btoa(xml);                                          // make it base64
+            let b64Start = 'data:image/svg+xml;base64,';
+            let image64 = b64Start + svg64;                                 // prepend a "header"
+
+            var blobImg = document.getElementById(this.img);
+            blobImg.src = image64;                                          // image source
+            blobImg.onload = () => ctx.drawImage(blobImg, this.xpos, this.ypos); //draw
+        }
+
+        update() {
+            //ctx.clearRect(0, 0, window_width, window_height);
+            this.draw(ctx);
+
+            // if ((this.xpos + (this.width / 2)) > window_width) {
+            //     this.dx = -this.dx;
+            // }
+
+            // if ((this.xpos - (this.width / 2)) < 0) {
+            //     this.dx = -this.dx;
+            // }
+
+            // if ((this.ypos + (this.height / 2)) > window_height) {
+            //     this.dy = -this.dy;
+            // }
+
+            // if ((this.ypos - (this.height / 2)) < 0) {
+            //     this.dy = -this.dy;
+            // }
+            if (this.direction == "right") {
+                this.xpos += this.dx;
+            }
+
+            if (this.direction == "left") {
+                this.xpos -= this.dx;            
+            }
+
+            if (this.direction == "up_right") {
+                this.xpos += this.dx;
+                this.ypos -= this.dy;
+            }
+        }
     }
 
-    // TRIED TO DRAW SVG INTO CANVAS, BUT NOT WORKING
+    let blob_gradient = new BigBlob("blob-gradient", "blob-gradient__img", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2, 1, "left");
+    blob_gradient.draw(ctx);
+    let updateGradientBlob = function () {
+        requestAnimationFrame(updateGradientBlob);
+        blob_gradient.update();
+    }
 
-    // let svg = document.getElementsByClassName('blob-container--hidden');
-    // let blob = new Blob([svg], { type: 'image/svg+xml' });
-    // let url = URL.createObjectURL(blob);
+    updateGradientBlob();
 
-    // const blobImg = new Image();
-    // blobImg.onload = () => ctx.drawImage(blobImg, 54, 387, 792, 960);
-    // blobImg.src = url;
+    let blob_blue = new BigBlob("blob-blue", "blob-blue__img", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2, 1, "up_right");
+    blob_blue.draw(ctx);
+    let updateBlueBlob = function () {
+        requestAnimationFrame(updateBlueBlob);
+        blob_blue.update();
+    }
 
-    // canvas.addEventListener('mouseover', function (event)) {
-    //     console.log('mousedown');
-    //     console.log(event);
-    // });
+    updateBlueBlob();
 
-    // var blob1 = '<svg width="1264" height="1229" viewBox="0 0 1264 1229" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    //     '<path fill-rule="evenodd" clip - rule="evenodd" d = "M639.677 4.28075C741.8 32.9369 732.352 201.221 821.389 258.865C903.059 311.738 1025.34 248.682 1104.52 305.223C1190.4 366.559 1277.08 469.128 1262.11 573.6C1246.6 681.834 1103.45 716.943 1033.48 800.963C978.104 867.461 953.317 951.504 894.519 1015C818.253 1097.36 749.538 1249.24 639.677 1226.23C518.238 1200.79 530.232 1004.73 439.833 919.74C378.026 861.635 276.261 874.371 209.6 821.905C123.019 753.76 -2.69956 683.747 0.0441571 573.6C2.81134 462.51 147.997 415.416 221.795 332.335C279.482 267.391 319.38 190.81 387.705 137.172C463.69 77.5207 546.668 -21.818 639.677 4.28075Z" fill = "url(#paint0_linear_409_32704)" />' +
-    //     '<defs>' +
-    //     '<linearGradient id="paint0_linear_409_32704" x1 = "631.901" y1 = "0" x2 = "631.901" y2 = "1228.57" gradientUnits = "userSpaceOnUse">' +
-    //     '<stop stop - color="#0B5FFF" stop - opacity="0" />' +
-    //     '<stop offset="1" stop - color="#0B5FFF" />' +
-    //     '</linearGradient>' +
-    //     '</defs>' +
-    //     '</svg>';
+    let blob_purple = new BigBlob("blob-purple", "blob-purple__img", 0, window_height / -4, window_width * .75, window_height, 1, "right");
+    blob_purple.draw(ctx);
+    let updatePurpleBlob = function () {
+        requestAnimationFrame(updatePurpleBlob);
+        blob_purple.update();
+    }
 
-    // var DOMURL = window.URL || window.webkitURL || window;
-    // var img1 = new Image();
-    // var svg = new Blob([blob1]), type: 'image/svg+xml'});
-    // var url = DOMURL.createObjectURL(svg);
-    // img1.onload = function () {
-    //     ctx.drawImage(img1, 25, 70);
-    //     DOMURL.revokeObjectURL(url);
+    updatePurpleBlob();
+
+    // ctx.filter = "blur(200px)"
+
+    // var blob_gradient = document.getElementById("blob-gradient");
+    // let xml = new XMLSerializer().serializeToString(blob_gradient);     // get svg data
+    // let svg64 = btoa(xml);                                          // make it base64
+    // let b64Start = 'data:image/svg+xml;base64,';
+    // let image64 = b64Start + svg64;                                 // prepend a "header"
+
+    // var blob_gradient__img = document.getElementById("blob-gradient__img");
+    // blob_gradient__img.src = image64;                                          // image source
+    // blob_gradient__img.onload = x => {
+    //     ctx.drawImage(blob_gradient__img, window_width / 2, window_height / -4, window_width / 2, window_height * 1.2); // draw
     // }
-    // img1.src = url;
+
+    // var blob_blue = document.getElementById("blob-blue");
+    // xml = new XMLSerializer().serializeToString(blob_blue);     // get svg data
+    // svg64 = btoa(xml);                                          // make it base64
+    // b64Start = 'data:image/svg+xml;base64,';
+    // image64 = b64Start + svg64;                                 // prepend a "header"
+
+    // var blob_blue__img = document.getElementById("blob-blue__img");
+    // blob_blue__img.src = image64;                                          // image source
+    // blob_blue__img.onload = x => {
+    //     ctx.drawImage(blob_blue__img, window_width / 3, window_height / 3, window_width * .6, window_height * 1.2); // draw
+    // }
+
+    // var blob_purple = document.getElementById("blob-purple");
+    // console.log(blob_purple);
+    // xml = new XMLSerializer().serializeToString(blob_purple);     // get svg data
+    // console.log(xml);
+    // svg64 = btoa(xml);                                          // make it base64
+    // b64Start = 'data:image/svg+xml;base64,';
+    // image64 = b64Start + svg64;                                 // prepend a "header"
+
+    // var blob_purple__img = document.getElementById("blob-purple__img");
+    // blob_purple__img.src = image64;                                          // image source
+    // blob_purple__img.onload = x => {
+    //     ctx.drawImage(blob_purple__img, 0, 0, window_width * .75, window_height); // draw
+    // }
 </script>
 
 @inject IConfiguration Config
