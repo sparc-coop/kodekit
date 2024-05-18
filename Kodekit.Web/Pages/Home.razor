@@ -54,6 +54,7 @@
     let ctx = canvas.getContext('2d');
     var window_width = window.innerWidth;
     var window_height = window.innerHeight;
+    console.log(window_width);
 
     canvas.width = window_width;
     canvas.height = window_height;
@@ -289,6 +290,7 @@
         }
 
         draw(ctx) {
+            //console.log("drawing blob");
             var blobSvg = document.getElementById(this.svg);
             let xml = new XMLSerializer().serializeToString(blobSvg);     // get svg data
             let svg64 = btoa(xml);                                          // make it base64
@@ -297,12 +299,39 @@
 
             var blobImg = document.getElementById(this.img);
             blobImg.src = image64;                                          // image source
-            blobImg.onload = () => ctx.drawImage(blobImg, this.xpos, this.ypos); //draw
+            blobImg.onload = () => {
+                ctx.beginPath();
+                ctx.drawImage(blobImg, this.xpos, this.ypos); //draw
+                ctx.closePath();
+                ctx.fill();
+            }
         }
 
-        update() {
-            //ctx.clearRect(0, 0, window_width, window_height);
-            this.draw(ctx);
+        animate(ctx) {
+            setInterval(this.update(ctx), 2000);
+        }
+
+        update(ctx) {
+            setTimeout(ctx.clearRect(0, 0, window_width, window_height), 2000);
+            console.log("clearing canvas");
+
+            setTimeout(this.draw(ctx), 2000);
+            console.log("re-drawing blobs");
+
+            if (this.direction == "right") {
+                this.xpos += this.dx;
+            }
+
+            if (this.direction == "left") {
+                this.xpos -= this.dx;
+            }
+
+            if (this.direction == "up_right") {
+                this.xpos += this.dx;
+                this.ypos -= this.dy;
+            }
+
+            requestAnimationFrame(this.update(ctx));
 
             // if ((this.xpos + (this.width / 2)) > window_width) {
             //     this.dx = -this.dx;
@@ -319,47 +348,53 @@
             // if ((this.ypos - (this.height / 2)) < 0) {
             //     this.dy = -this.dy;
             // }
-            if (this.direction == "right") {
-                this.xpos += this.dx;
-            }
-
-            if (this.direction == "left") {
-                this.xpos -= this.dx;            
-            }
-
-            if (this.direction == "up_right") {
-                this.xpos += this.dx;
-                this.ypos -= this.dy;
-            }
         }
     }
 
-    let blob_gradient = new BigBlob("blob-gradient", "blob-gradient__img", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2, 1, "left");
-    blob_gradient.draw(ctx);
-    let updateGradientBlob = function () {
-        requestAnimationFrame(updateGradientBlob);
-        blob_gradient.update();
+    let blob_gradient = new BigBlob("blob-gradient", "blob-gradient__img", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2, 0.5, "left");
+    //blob_gradient.draw(ctx);
+    blob_gradient.animate(ctx);
+
+    // let updateGradientBlob = function () {
+    //     requestAnimationFrame(updateGradientBlob);
+    //     console.log("requesting animation frame");
+    //     blob_gradient.update();
+    //     console.log("updating blob");
+    // }
+    // updateGradientBlob();
+
+    // let blob_blue = new BigBlob("blob-blue", "blob-blue__img", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2, 1, "up_right");
+    // blob_blue.draw(ctx);
+    // let updateBlueBlob = function () {
+    //     requestAnimationFrame(updateBlueBlob);
+    //     // blob_blue.update();
+    // }
+
+    // updateBlueBlob();
+
+    // let blob_purple = new BigBlob("blob-purple", "blob-purple__img", 0, window_height / -4, window_width * .75, window_height, 1, "right");
+    // blob_purple.draw(ctx);
+    // let updatePurpleBlob = function () {
+    //     requestAnimationFrame(updatePurpleBlob);
+    //     blob_purple.update();
+    // }
+
+    // updatePurpleBlob();
+
+    function resizeCanvas() {
+        window_width = window.innerWidth;
+        window_height = window.innerHeight;
+        canvas.width = window_width;
+        canvas.height = window_height;
+        blob_gradient = new BigBlob("blob-gradient", "blob-gradient__img", window_width / 2, window_height / -4, window_width / 2, window_height * 1.2, 1, "left");
+        blob_gradient.draw(ctx);
+        // blob_blue = new BigBlob("blob-blue", "blob-blue__img", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2, 1, "up_right");
+        // blob_blue.draw(ctx);
+        // blob_purple = new BigBlob("blob-purple", "blob-purple__img", 0, window_height / -4, window_width * .75, window_height, 1, "right");
+        // blob_purple.draw(ctx);
     }
 
-    updateGradientBlob();
-
-    let blob_blue = new BigBlob("blob-blue", "blob-blue__img", window_width / 3, window_height / 3, window_width * .6, window_height * 1.2, 1, "up_right");
-    blob_blue.draw(ctx);
-    let updateBlueBlob = function () {
-        requestAnimationFrame(updateBlueBlob);
-        blob_blue.update();
-    }
-
-    updateBlueBlob();
-
-    let blob_purple = new BigBlob("blob-purple", "blob-purple__img", 0, window_height / -4, window_width * .75, window_height, 1, "right");
-    blob_purple.draw(ctx);
-    let updatePurpleBlob = function () {
-        requestAnimationFrame(updatePurpleBlob);
-        blob_purple.update();
-    }
-
-    updatePurpleBlob();
+    window.addEventListener('resize', resizeCanvas, false);
 
     // ctx.filter = "blur(200px)"
 
