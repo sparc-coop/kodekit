@@ -1762,126 +1762,6 @@
   display: none;
 }
 
-.dashboard {
-  width: 100%;
-  height: 100%;
-  background: #0E0E0E;
-  margin-top: -100px;
-}
-
-.background {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-.background-container {
-  position: relative;
-}
-.background .blob-container {
-  width: 100%;
-  height: 100%;
-  filter: blur(200px);
-}
-.background .blob-blue {
-  width: 50%;
-  position: absolute;
-  bottom: -25%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-.background .blob-purple {
-  width: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20;
-}
-.background .blob-gradient {
-  width: 50%;
-  position: absolute;
-  top: -171px;
-  right: 0;
-  z-index: 30;
-}
-.background .overlay-noise {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  mix-blend-mode: overlay;
-  z-index: 30;
-}
-
-@keyframes blob1 {
-  0% {
-    left: 0px;
-    top: 0px;
-  }
-  25% {
-    left: -100px;
-    top: 70px;
-  }
-  50% {
-    left: 20px;
-    top: 150px;
-  }
-  75% {
-    left: 50px;
-    top: 100px;
-  }
-  100% {
-    left: 0px;
-    top: 0px;
-  }
-}
-@keyframes blob2 {
-  0% {
-    left: 0px;
-    top: 0px;
-  }
-  25% {
-    left: 50px;
-    top: 10px;
-  }
-  50% {
-    left: 100px;
-    top: 50px;
-  }
-  75% {
-    left: 50px;
-    top: 100px;
-  }
-  100% {
-    left: 0px;
-    top: 0px;
-  }
-}
-@keyframes blob3 {
-  0% {
-    left: 0px;
-    top: 0px;
-  }
-  25% {
-    left: -100px;
-    top: 70px;
-  }
-  50% {
-    left: 20px;
-    top: 150px;
-  }
-  75% {
-    left: 50px;
-    top: 100px;
-  }
-  100% {
-    left: 0px;
-    top: 0px;
-  }
-}
 .layout--header {
   width: 100%;
   position: fixed;
@@ -1912,9 +1792,6 @@
     margin-left: 0;
   }
 }
-.main.no-sidebar {
-  margin-left: 0;
-}
 
 /*a:focus-visible, button:focus-visible, input:focus-visible, .section-container:focus, .section-container:focus-within, select:focus-visible, textarea:focus-visible, .auto-publish:focus, .auto-publish:focus-within, .user-menu:focus, .user-menu:focus-within, .dashboard-card:focus {
     border: 1px solid black;
@@ -1937,6 +1814,135 @@
   height: 100vh;
 }
 
+.main.no-sidebar {
+  margin: 0;
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  background: #0E0E0E;
+  overflow: hidden;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: blur(200px);
+}
+.background .blob-container {
+  width: 100%;
+  height: 100%;
+}
+.background .blob-purple {
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  animation: blob1 10s infinite;
+}
+.background .blob-gradient {
+  width: 50%;
+  position: absolute;
+  top: -171px;
+  right: 0;
+  z-index: 30;
+  animation: blob2 10s infinite;
+}
+.background .blob-blue {
+  width: 50%;
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: blob3 10s infinite;
+}
+.background .overlay-noise {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: overlay;
+  z-index: 30;
+}
+
+@keyframes blob1 {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    left: 30%;
+    top: 70px;
+  }
+  50% {
+    left: 75%;
+    top: 150px;
+  }
+  75% {
+    left: 50px;
+    bottom: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+@keyframes blob2 {
+  0% {
+    right: 0px;
+    top: 0px;
+  }
+  25% {
+    right: 30%;
+    top: 50%;
+  }
+  50% {
+    left: 75%;
+    top: 75%;
+  }
+  75% {
+    left: 0px;
+    bottom: 0px;
+  }
+  100% {
+    right: 0px;
+    top: 0px;
+  }
+}
+@keyframes blob3 {
+  0% {
+    left: 50%;
+    top: 50%;
+  }
+  25% {
+    left: 25%;
+    top: 75%;
+  }
+  50% {
+    left: 50%;
+    top: 50%;
+  }
+  75% {
+    left: 75%;
+    top: 50%;
+  }
+  100% {
+    left: 50%;
+    top: 50%;
+  }
+}
 .overlay-expand {
   position: fixed;
   top: 0;
