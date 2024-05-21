@@ -164,7 +164,7 @@
         }
       }
     },
-    "/publicapi/ColorContrastChecker": {
+    "/api/ColorContrastChecker": {
       "post": {
         "tags": [
           "ColorContrastChecker"
@@ -212,7 +212,7 @@
         }
       }
     },
-    "/publicapi/CopyKit": {
+    "/api/CopyKit": {
       "post": {
         "tags": [
           "CopyKit"
@@ -260,7 +260,7 @@
         }
       }
     },
-    "/publicapi/CreateKit": {
+    "/api/CreateKit": {
       "post": {
         "tags": [
           "CreateKit"
@@ -308,7 +308,7 @@
         }
       }
     },
-    "/publicapi/CreateUser": {
+    "/api/CreateUser": {
       "post": {
         "tags": [
           "CreateUser"
@@ -382,16 +382,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/{kitId}.css": {
@@ -430,7 +421,7 @@
         }
       }
     },
-    "/publicapi/GetAnchors": {
+    "/api/GetAnchors": {
       "post": {
         "tags": [
           "GetAnchors"
@@ -478,7 +469,7 @@
         }
       }
     },
-    "/publicapi/GetButtons": {
+    "/api/GetButtons": {
       "post": {
         "tags": [
           "GetButtons"
@@ -526,7 +517,7 @@
         }
       }
     },
-    "/publicapi/GetColors": {
+    "/api/GetColors": {
       "post": {
         "tags": [
           "GetColors"
@@ -574,7 +565,7 @@
         }
       }
     },
-    "/publicapi/GetDropdowns": {
+    "/api/GetDropdowns": {
       "post": {
         "tags": [
           "GetDropdowns"
@@ -622,7 +613,7 @@
         }
       }
     },
-    "/publicapi/GetGoogleFonts": {
+    "/api/GetGoogleFonts": {
       "post": {
         "tags": [
           "GetGoogleFonts"
@@ -670,7 +661,7 @@
         }
       }
     },
-    "/publicapi/GetIcons": {
+    "/api/GetIcons": {
       "post": {
         "tags": [
           "GetIcons"
@@ -718,7 +709,7 @@
         }
       }
     },
-    "/publicapi/GetInputs": {
+    "/api/GetInputs": {
       "post": {
         "tags": [
           "GetInputs"
@@ -766,7 +757,7 @@
         }
       }
     },
-    "/publicapi/GetKit": {
+    "/api/GetKit": {
       "post": {
         "tags": [
           "GetKit"
@@ -814,7 +805,7 @@
         }
       }
     },
-    "/publicapi/GetLists": {
+    "/api/GetLists": {
       "post": {
         "tags": [
           "GetLists"
@@ -862,7 +853,7 @@
         }
       }
     },
-    "/publicapi/GetRelatedKits": {
+    "/api/GetRelatedKits": {
       "post": {
         "tags": [
           "GetRelatedKits"
@@ -919,7 +910,7 @@
         }
       }
     },
-    "/publicapi/GetSelectors": {
+    "/api/GetSelectors": {
       "post": {
         "tags": [
           "GetSelectors"
@@ -967,7 +958,7 @@
         }
       }
     },
-    "/publicapi/GetSettings": {
+    "/api/GetSettings": {
       "post": {
         "tags": [
           "GetSettings"
@@ -1015,7 +1006,7 @@
         }
       }
     },
-    "/publicapi/GetShadow": {
+    "/api/GetShadow": {
       "post": {
         "tags": [
           "GetShadow"
@@ -1063,7 +1054,7 @@
         }
       }
     },
-    "/publicapi/GetTypography": {
+    "/api/GetTypography": {
       "post": {
         "tags": [
           "GetTypography"
@@ -1137,16 +1128,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/api/GetUserKits": {
@@ -1184,19 +1166,10 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
-    "/publicapi/GetWeights": {
+    "/api/GetWeights": {
       "post": {
         "tags": [
           "GetWeights"
@@ -1225,7 +1198,7 @@
         }
       }
     },
-    "/publicapi/PublishKit": {
+    "/api/PublishKit": {
       "post": {
         "tags": [
           "PublishKit"
@@ -1285,7 +1258,7 @@
         }
       }
     },
-    "/publicapi/SetKitTheme": {
+    "/api/SetKitTheme": {
       "post": {
         "tags": [
           "SetKitTheme"
@@ -1333,7 +1306,7 @@
         }
       }
     },
-    "/publicapi/UpdateAnchors": {
+    "/api/UpdateAnchors": {
       "post": {
         "tags": [
           "UpdateAnchors"
@@ -1393,7 +1366,7 @@
         }
       }
     },
-    "/publicapi/UpdateButtons": {
+    "/api/UpdateButtons": {
       "post": {
         "tags": [
           "UpdateButtons"
@@ -1453,7 +1426,7 @@
         }
       }
     },
-    "/publicapi/UpdateColors": {
+    "/api/UpdateColors": {
       "post": {
         "tags": [
           "UpdateColors"
@@ -1513,7 +1486,7 @@
         }
       }
     },
-    "/publicapi/UpdateDropdowns": {
+    "/api/UpdateDropdowns": {
       "post": {
         "tags": [
           "UpdateDropdowns"
@@ -1573,7 +1546,7 @@
         }
       }
     },
-    "/publicapi/UpdateIcons": {
+    "/api/UpdateIcons": {
       "post": {
         "tags": [
           "UpdateIcons"
@@ -1633,7 +1606,7 @@
         }
       }
     },
-    "/publicapi/UpdateInputs": {
+    "/api/UpdateInputs": {
       "post": {
         "tags": [
           "UpdateInputs"
@@ -1693,7 +1666,7 @@
         }
       }
     },
-    "/publicapi/UpdateKit": {
+    "/api/UpdateKit": {
       "post": {
         "tags": [
           "UpdateKit"
@@ -1753,7 +1726,7 @@
         }
       }
     },
-    "/publicapi/UpdateLists": {
+    "/api/UpdateLists": {
       "post": {
         "tags": [
           "UpdateLists"
@@ -1813,7 +1786,7 @@
         }
       }
     },
-    "/publicapi/UpdateSelectors": {
+    "/api/UpdateSelectors": {
       "post": {
         "tags": [
           "UpdateSelectors"
@@ -1873,7 +1846,7 @@
         }
       }
     },
-    "/publicapi/UpdateSettings": {
+    "/api/UpdateSettings": {
       "post": {
         "tags": [
           "UpdateSettings"
@@ -1933,7 +1906,7 @@
         }
       }
     },
-    "/publicapi/UpdateShadow": {
+    "/api/UpdateShadow": {
       "post": {
         "tags": [
           "UpdateShadow"
@@ -1993,7 +1966,7 @@
         }
       }
     },
-    "/publicapi/UpdateTypography": {
+    "/api/UpdateTypography": {
       "post": {
         "tags": [
           "UpdateTypography"
@@ -2053,7 +2026,7 @@
         }
       }
     },
-    "/publicapi/UpdateUser": {
+    "/api/UpdateUser": {
       "post": {
         "tags": [
           "UpdateUser"
@@ -3375,14 +3348,6 @@
           }
         },
         "additionalProperties": false
-      }
-    },
-    "securitySchemes": {
-      "bearer": {
-        "type": "http",
-        "description": "Enter JWT Bearer token **_only_**",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   }
