@@ -1848,7 +1848,8 @@
   top: 0;
   left: 0;
   z-index: 20;
-  animation: blob1 10s infinite;
+  animation: blob1 30s infinite;
+  transition: all 0.1s linear;
 }
 .background .blob-gradient {
   width: 50%;
@@ -1856,7 +1857,8 @@
   top: -171px;
   right: 0;
   z-index: 30;
-  animation: blob2 10s infinite;
+  animation: blob2 30s infinite;
+  transition: all 0.1s linear;
 }
 .background .blob-blue {
   width: 50%;
@@ -1865,7 +1867,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  animation: blob3 10s infinite;
+  animation: blob3 30s infinite;
+  transition: all 0.1s linear;
 }
 .background .overlay-noise {
   width: 100%;
