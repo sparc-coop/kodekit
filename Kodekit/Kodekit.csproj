@@ -5,6 +5,8 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+	  <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -43,5 +45,6 @@
 		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Data.AzureStorage\Sparc.Blossom.Data.AzureStorage.csproj" />
 		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Data.Cosmos\Sparc.Blossom.Data.Cosmos.csproj" />
 		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.csproj" />
+		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj" OutputItemType="Analyzer" />
 	</ItemGroup>
 </Project>

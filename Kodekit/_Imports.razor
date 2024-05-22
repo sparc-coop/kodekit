@@ -10,10 +10,6 @@
 @using static Microsoft.AspNetCore.Components.Web.RenderMode
 @using Microsoft.JSInterop
 
-@using Kodekit
-@using Kodekit.Models
-@using Kodekit.Models.Elements
-@using Kodekit.Models.Kits
 @using Kodekit._Shared
 @using Kodekit._Shared.Layouts
 @using Kodekit._Shared.Inputs
@@ -25,7 +21,5 @@
 
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Nav
-@* @inject KodekitApi Api *@
 
-@inject Kodekit.KitRepository KitRepository
-@inject Kodekit.UserRepository UserRepository
+@inject Sparc.Blossom.Api.KitApi Api
