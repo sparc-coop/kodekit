@@ -2,7 +2,7 @@
 
 namespace Kodekit;
 
-public class KitRevision : Entity<string>
+public class KitRevision : BlossomEntity<string>
 {
     private KitRevision()
     {

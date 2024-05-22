@@ -1,6 +1,6 @@
 ﻿namespace Kodekit;
 
-public class Kit : Entity<string>
+public class Kit : BlossomEntity<string>
 {
     private Kit()
     {

@@ -1,4 +1,6 @@
-﻿<div tabindex="0" class="kit-card">
+﻿@using Kodekit.Elements.Colors
+
+<div tabindex="0" class="kit-card">
     <header class="kit-card--header">
         <h3 @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</h3>
         <div class="kit-info">
