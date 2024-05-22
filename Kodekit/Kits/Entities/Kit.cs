@@ -4,7 +4,7 @@ public class Kit : BlossomEntity<string>
 {
     private Kit()
     {
-        Id = Guid.NewGuid().ToString();
+        Id = BlossomTools.FriendlyId();
         KitId = Id;
         Name = "Untitled Kit";
         DateCreated = DateTime.UtcNow;
@@ -12,15 +12,14 @@ public class Kit : BlossomEntity<string>
         Current = new KitRevision(this);
     }
 
-    public Kit(IWebHostEnvironment env, string name, string? userId = null) : this()
+    public Kit(string name, string? userId = null) : this()
     {
-        Id = GenerateFriendlyId(env);
         KitId = Id;
         Name = name;
         UserId = userId;
     }
 
-    public Kit(IWebHostEnvironment env, Kit kit) : this(env, kit.Name, kit.UserId)
+    internal Kit(Kit kit) : this(kit.Name, kit.UserId)
     {
         Current = new KitRevision(kit);
     }
@@ -69,30 +68,10 @@ public class Kit : BlossomEntity<string>
         CurrentRevisionId = Current.Id;
     }
 
-    internal Kit Copy(IWebHostEnvironment env)
+    internal Kit Copy()
     {
-        return new Kit(env, this);
+        return new Kit(this);
     }
 
-    string GenerateFriendlyId(IWebHostEnvironment env)
-    {
-        return $"{GetRandomWord(env)}-{GetRandomWord(env)}";
-    }
-
-    string GetRandomWord(IWebHostEnvironment env)
-    {
-        var random = new Random();
-        var word = System.IO.File.ReadLines(Path.Combine(env.ContentRootPath, "_Plugins/words_alpha.txt"))
-            .Skip(random.Next(370000))
-            .First()
-            .Trim()
-            .ToLower();
-
-        // Check against office-unsafe words
-        if (System.IO.File.ReadLines(Path.Combine(env.ContentRootPath, "_Plugins/words_officesafe.txt"))
-            .Any(x => x.ToLower() == word))
-            return GetRandomWord(env);
-
-        return word;
-    }
+    
 }
