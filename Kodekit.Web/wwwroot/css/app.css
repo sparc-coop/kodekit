@@ -3328,6 +3328,44 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   cursor: none;
 }
 
+.new-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 139px;
+  width: 139px;
+  z-index: 3000;
+}
+.new-cursor > * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+.new-cursor-point {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: white;
+  border-radius: 100%;
+}
+.new-cursor-text {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  animation: spin 10s linear infinite;
+  pointer-events: none;
+}
+.new-cursor-shadow {
+  width: 25vw;
+  height: auto;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.8;
+  filter: blur(100px);
+}
+
 .cursor,
 .follow {
   position: fixed;
@@ -3349,7 +3387,8 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 .cursor-start {
   aspect-ratio: 1/1;
   width: 139px;
-  position: fixed;
+  position: relative;
+  transform: translate(-50%, -50%);
   z-index: 2500;
   transform: translate(-50%, -50%);
   pointer-events: none;
