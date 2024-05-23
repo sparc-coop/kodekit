@@ -16,7 +16,6 @@ function move(event) {
     var mouseY = e.clientY;
 
     cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-    requestAnimationFrame(move);
 
     if (t == null || t.parentElement == null) {
         return;
@@ -106,7 +105,7 @@ function move(event) {
 }
 
 if (cursor) {
-    window.addEventListener("mousemove", move)
+    window.addEventListener("mousemove", ev => requestAnimationFrame(() => move(ev)));
 }
 
 
