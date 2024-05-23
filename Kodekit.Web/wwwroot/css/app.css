@@ -1961,7 +1961,7 @@
 
 nav {
   width: 100%;
-  padding-bottom: 38px;
+  padding: 48px 80px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -1991,12 +1991,7 @@ nav {
 nav:hover .navmenu .menu .category .links {
   height: 167px;
 }
-nav .header, nav .navmenu, nav .menu-right {
-  padding-top: 48px;
-}
 nav .header {
-  padding-left: 80px;
-  padding-right: 160px;
   z-index: 1000;
 }
 nav .header .logo {
@@ -2036,7 +2031,7 @@ nav .navmenu {
 nav .menu {
   overflow: hidden;
   display: flex;
-  gap: 60px;
+  justify-content: space-between;
   z-index: 1000;
 }
 @media screen and (max-width: 780px) {
@@ -2110,14 +2105,12 @@ nav .menu .links a:active {
   opacity: 0.7;
 }
 nav .menu-right {
-  width: 100%;
-  position: relative;
   background: transparent;
   z-index: 1000;
 }
 nav .menu-right .login-display {
-  position: absolute;
-  right: 80px;
+  position: relative;
+  z-index: 1000;
   /*@media screen and (max-width: 780px) {
       right: 25px;
   }
@@ -2134,12 +2127,13 @@ nav .menu-right .login-display .login {
   margin-bottom: 18px;
 }
 nav .menu-right .login-display .user-menu button {
-  margin-bottom: 18px;
+  width: 100%;
   font-family: "QuantaGroteskPro";
   font-weight: 500;
   font-size: 23px;
   line-height: 100%;
   color: #FFFFFF;
+  white-space: nowrap;
 }
 nav .menu-right .login-display .overlay {
   position: fixed;
@@ -3292,6 +3286,7 @@ button.card-button-secondary {
   src: url(../fonts/QuantaGroteskPro-Bold.ttf) format("truetype");
 }
 body {
+  position: relative;
   margin: 0;
   overflow-x: hidden;
   background: #0E0E0E;
@@ -3324,6 +3319,24 @@ a, button, label, input, select, div, span, li {
     }
 }
 */
+.nav {
+  position: relative;
+  z-index: 1000;
+}
+.nav > * {
+  position: relative;
+  z-index: 1000;
+}
+
+.sidebar {
+  position: relative;
+  z-index: 1000;
+}
+.sidebar > * {
+  position: relative;
+  z-index: 1000;
+}
+
 a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:hover, li:hover {
   cursor: none;
 }
@@ -3334,7 +3347,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   left: -70px;
   height: 140px;
   width: 140px;
-  z-index: 3000;
   pointer-events: none;
 }
 .new-cursor > * {
@@ -3347,24 +3359,33 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 .new-cursor-point {
   width: 0.8rem;
   height: 0.8rem;
+  position: absolute;
   background-color: white;
   border-radius: 100%;
+  z-index: 3000;
+}
+.new-cursor-follow {
+  transition: opacity 200ms ease-in-out;
 }
 .new-cursor-text {
   height: 100%;
   width: 100%;
+  position: absolute;
   left: 0;
   top: 0;
   animation: spin 10s linear infinite;
   pointer-events: none;
+  z-index: 2500;
+  transition: opacity 200ms ease-in-out;
 }
 .new-cursor-shadow {
   width: 25vw;
   height: auto;
-  z-index: 10;
+  position: absolute;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 1;
   filter: blur(100px);
+  z-index: 500;
 }
 
 .cursor,

@@ -3,6 +3,9 @@
 document.body.style.cursor = "none";
 
 var cursor = document.getElementById('cursor');
+var cursorFollow = document.getElementById('cursor-follow');
+var cursorText = document.getElementById('cursor-text');
+var cursorShadow = document.getElementById('cursor-shadow');
 
 // cursor/follow changes shape based on element hovered
 // follow disappears when hovering over the nav
@@ -19,6 +22,15 @@ function move(event) {
 
     if (t == null || t.parentElement == null) {
         return;
+    }
+
+    if (t.tagName == "NAV" || t.classList.contains("sidebar") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.classList.contains(
+    "menu-right")) {
+        cursorFollow.style.opacity = "0";
+        cursorText.style.opacity = "0";
+    } else {
+        cursorFollow.style.opacity = "1";
+        cursorText.style.opacity = "1";
     }
 
     //e.preventDefault();
