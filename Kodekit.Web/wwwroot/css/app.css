@@ -3330,11 +3330,12 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 
 .new-cursor {
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 139px;
-  width: 139px;
+  top: -70px;
+  left: -70px;
+  height: 140px;
+  width: 140px;
   z-index: 3000;
+  pointer-events: none;
 }
 .new-cursor > * {
   position: absolute;
@@ -3372,7 +3373,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   pointer-events: none;
   width: 0.8rem;
   height: 0.8rem;
-  transform: translate(-50%, -50%);
   z-index: 3000;
 }
 
@@ -3390,7 +3390,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   position: relative;
   transform: translate(-50%, -50%);
   z-index: 2500;
-  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 .cursor-start .cursor-text {
@@ -3403,7 +3402,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   width: 25vw;
   height: auto;
   position: fixed;
-  transform: translate(-50%, -50%);
   z-index: 10;
   pointer-events: none;
   opacity: 0.8;

@@ -1,6 +1,6 @@
 ﻿// create cursor elements
 
-document.body.style.cursor = "none";
+//document.body.style.cursor = "none";
 
 var cursor = document.getElementById('cursor');
 

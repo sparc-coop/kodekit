@@ -32,7 +32,6 @@
 
 @import "Shared/MainLayout";
 @import "Shared/SimplifiedLayout";
-@import "Shared/HomeLayout";
 @import "Shared/NavMenu";
 @import "Shared/Sidebar";
 @import "Shared/SignUpBanner";
@@ -134,11 +133,12 @@ a, button, label, input, select, div, span, li {
 
 .new-cursor {
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 139px;
-    width: 139px;
+    top: -70px;
+    left: -70px;
+    height: 140px;
+    width: 140px;
     z-index: 3000;
+    pointer-events: none;
 
     > * {
         position: absolute;
