@@ -28,32 +28,55 @@ const cursors = [cursor, follow, start, shadow];
 // cursor/follow changes shape based on element hovered
 // follow disappears when hovering over the nav
 
-isMouseMoving = false;
+//var isMouseMoving = false;
 
-function move(array, event) {
-    for (var i = 0; i < array.length; i++) {
-        i.style = "";
-        i.style.transform = "translate(" + t.offsetTop + "px" + t.offsetLeft + "px" + ")";
-        i.style.transform = "translate(" + t.offsetTop + "px" + t.offsetLeft + "px" + ")";
-
-        if (i.classList.Contains("follow")) {
-            f.classList.remove("on-focus");
-        }
-        if (i.classList.Contains("cursor-start")) {
-            st.classList.remove("on-focus");
-        }
-        if (i.classList.Contains("cursor-shadow")) {
-            cs.classList.remove("on-focus");
-        }
-    }
-}
-
-function mouseMove(event) {
-    //e.preventDefault();
-    isMouseMoving = true;
-
+function move(event) {
     var e = event;
     var t = e.target;
+    var mouseX = e.clientX;
+    var mouseY = e.clientY;
+    var c = cursor;
+    var f = follow;
+    var st = start;
+    var cs = shadow;
+
+    //e.preventDefault();
+    //isMouseMoving = true;
+
+    if (t == null || t.parentElement == null) {
+        return;
+    }
+
+    for (var i = 0; i < cursors.length; i++) {
+        //var position = cursors[i].offset();
+        cursors[i].style = "";
+        //cursors[i].style.top = mouseY + "px";
+        //cursors[i].style.left = mouseX + "px";
+        //cursors[i].style.transform = "translate(" + mouseX + "px, " + mouseY + "px" + ")";
+        //cursors[i].css({
+        //    transform: 'translateX(' + mouseX + 'px) translateY(' + mouseY + 'px)'
+        //});
+        //cursors[i].css({
+            //transform: 'translateX(' + (mouseX - cursors[i].offsetLeft) + 'px) translateY(' + (mouseY - cursors[i].offsetTop) + 'px)'
+        //});
+
+        //cursors[i].style.transform = 'translateX(' + mouseX + 'px) translateY(' + mouseY + 'px)'
+        cursors[i].style.transform = 'translateX(' + (mouseX - cursors[i].offsetLeft) + 'px) translateY(' + (mouseY - cursors[i].offsetTop) + 'px)';
+
+        //if (cursors[i].classList.contains("cursor")) {
+        //    cursors[i].style.transform = 'translateX(' + (mouseX - (cursors[i].offsetLeft)) + 'px) translateY(' + (mouseY - (cursors[i].offsetTop)) + 'px)';
+        //} else {
+        //    cursors[i].style.transform = 'translateX(' + (mouseX - (cursors[i].offsetLeft - (cursors[i].width / 2))) + 'px) translateY(' + (mouseY - (cursors[i].offsetTop - (cursors[i].height / 2))) + 'px)';
+        //}
+    }
+
+    requestAnimationFrame(move);
+
+    //e.preventDefault();
+    //isMouseMoving = true;
+
+    //var e = event;
+    //var t = e.target;
     //var c = cursor;
     //var f = follow;
     //var st = start;
@@ -67,10 +90,10 @@ function mouseMove(event) {
     //st.classList.remove("on-focus");
     //cs.classList.remove("on-focus");
 
-    if (isMouseMoving) {
+    //if (isMouseMoving) {
         //requestAnimationFrame(move(cursors, e));
-        move(cursors, e);
-    }
+        //move(cursors, e);
+    //}
 
     //if (t == null || t.parentElement == null)
     //    return;
@@ -133,8 +156,11 @@ function mouseMove(event) {
 }
 
 if (cursor) {
-    window.addEventListener("mousemove", mouseMove)
+    window.addEventListener("mousemove", move)
 }
+
+
+// ATTEMPTS TO THROTTLE MOUSEMOVE EVENT
 
 var timesPerSecond = 10;
 function throttle(func) {

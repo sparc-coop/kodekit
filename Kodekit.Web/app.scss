@@ -138,7 +138,7 @@ a, button, label, input, select, div, span, li {
     pointer-events: none;
     width: 0.8rem;
     height: 0.8rem;
-    transform: translate(-50%, -50%);
+    //transform: translate(-50%, -50%);
     z-index: 3000;
 }
 
@@ -155,7 +155,7 @@ a, button, label, input, select, div, span, li {
         width: 139px;
         position: fixed;
         z-index: 2500;
-        transform: translate(-50%, -50%);
+        //transform: translate(-50%, -50%);
         pointer-events: none;
 
         .cursor-text {
@@ -171,7 +171,7 @@ a, button, label, input, select, div, span, li {
         width: calc(100vw/4);
         height: auto;
         position: fixed;
-        transform: translate(-50%, -50%);
+        //transform: translate(-50%, -50%);
         z-index: 10;
         pointer-events: none;
         opacity: 0.8;

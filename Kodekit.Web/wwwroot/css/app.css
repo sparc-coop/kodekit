@@ -1882,68 +1882,53 @@
 
 @keyframes blob1 {
   0% {
-    left: 0px;
-    top: 0px;
+    transform: translate(0%, 100%);
   }
   25% {
-    left: 30%;
-    top: 70px;
+    transform: translate(50%, 100%);
   }
   50% {
-    left: 75%;
-    top: 150px;
+    transform: translate 75%, 100%;
   }
   75% {
-    left: 50px;
-    bottom: 0px;
+    transform: translate 50%, 100%;
   }
   100% {
-    left: 0px;
-    top: 0px;
+    transform: translate 0%, 100%;
   }
 }
 @keyframes blob2 {
   0% {
-    right: 0px;
-    top: 0px;
+    transform: translate(100%, 0%);
   }
   25% {
-    right: 30%;
-    top: 50%;
+    transform: translate(100%, 50%);
   }
   50% {
-    left: 75%;
-    top: 75%;
+    transform: translate 100%, 75%;
   }
   75% {
-    left: 0px;
-    bottom: 0px;
+    transform: translate 50%, 50%;
   }
   100% {
-    right: 0px;
-    top: 0px;
+    transform: translate 0%, 0%;
   }
 }
 @keyframes blob3 {
   0% {
-    left: 50%;
-    top: 50%;
+    transform: translate(25%, 25%);
   }
   25% {
-    left: 25%;
-    top: 75%;
+    transform: translate(75%, 75%);
   }
   50% {
-    left: 50%;
-    top: 50%;
+    transform: translate 50%, 50%;
   }
   75% {
-    left: 75%;
-    top: 50%;
+    transform: translate 50%, 50%;
   }
   100% {
-    left: 50%;
-    top: 50%;
+    transform: translate 25%, 25%;
   }
 }
 .overlay-expand {
@@ -3343,7 +3328,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   pointer-events: none;
   width: 0.8rem;
   height: 0.8rem;
-  transform: translate(-50%, -50%);
   z-index: 3000;
 }
 
@@ -3360,7 +3344,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   width: 139px;
   position: fixed;
   z-index: 2500;
-  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 .cursor-start .cursor-text {
@@ -3373,7 +3356,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   width: 25vw;
   height: auto;
   position: fixed;
-  transform: translate(-50%, -50%);
   z-index: 10;
   pointer-events: none;
   opacity: 0.8;
