@@ -1,7 +1,7 @@
-﻿<div class="login-display">
+﻿<div class="login-display hide-cursor-follow">
     <AuthorizeView>
         <Authorized>
-            <div tabindex="0" class="user-menu"  @onclick="ToggleMenu" @onkeydown="ToggleMenu">
+            <div tabindex="0" class="user-menu hide-cursor-follow" @onclick="ToggleMenu" @onkeydown="ToggleMenu">
                 <button>Hi, @User.FirstName</button>
             </div>
             @if (showMenu == true)
@@ -17,12 +17,11 @@
             }
         </Authorized>
         <NotAuthorized>
-            <a href="authentication/login" class="login">Login</a>
+            <a href="authentication/login" class="login hide-cursor-follow">Login</a>
             <SignUpBanner />
         </NotAuthorized>
     </AuthorizeView>
 </div>
-
 
 @inject SignOutSessionStateManager SignOutManager
 

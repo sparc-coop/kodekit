@@ -1,14 +1,14 @@
 ﻿@if (showBanner == true)
 {
-    <div class="banner">
-        <header>
+    <div class="banner hide-cursor-follow">
+        <header class="hide-cursor-follow">
             This kit will only be accessible from this device
         </header>
-        <p>
+        <p class="hide-cursor-follow">
             Please <a href="authentication/login" class="select-login">log in or create an account</a> to ensure changes are saved.
         </p>
-        <span tabindex="0" @onclick="HideBanner" @onkeydown="EnterHideBanner">
-            <img class="button--close" src="images/close-icon.svg" />
+        <span class="hide-cursor-follow" tabindex="0" @onclick="HideBanner" @onkeydown="EnterHideBanner">
+            <img class="button--close hide-cursor-follow" src="images/close-icon.svg" />
         </span>
     </div>
 }

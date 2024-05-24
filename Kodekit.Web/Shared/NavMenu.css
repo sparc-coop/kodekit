@@ -27,6 +27,7 @@ nav {
   display: flex;
   justify-content: space-between;
   background: #0E0E0E;
+  position: relative;
   z-index: 1000;
   /*.button--wrapper {
       width: 256px;
@@ -48,6 +49,10 @@ nav {
           }
       }
   }*/
+}
+nav > * {
+  position: relative;
+  z-index: 1000;
 }
 nav:hover .navmenu .menu .category .links {
   height: 167px;

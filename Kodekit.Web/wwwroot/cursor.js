@@ -17,6 +17,7 @@ function move(event) {
     var t = e.target;
     var mouseX = e.clientX;
     var mouseY = e.clientY;
+    console.log(mouseX);
 
     cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
@@ -24,8 +25,9 @@ function move(event) {
         return;
     }
 
-    if (t.tagName == "NAV" || t.classList.contains("sidebar") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.classList.contains(
-    "menu-right")) {
+    //if (t.tagName == "NAV" || t.classList.contains("sidebar") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.classList.contains(
+    //    "menu-right") || t.classList.contains("page-info") || t.parentElement.classList.contains("page-info") || t.parentElement.classList.contains("page-info--container") || t.parentElement.classList.contains("info")) {
+    if (t.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A") {
         cursorFollow.style.opacity = "0";
         cursorText.style.opacity = "0";
     } else {

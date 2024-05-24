@@ -1,15 +1,15 @@
 ﻿@using Kodekit.Web.Shared.Icons
 
-<div class="page-info">
+<div class="page-info hide-cursor-follow">
     @if (kitId != null)
     {
-        <div class="page-info--container">
-            <div class="breadcrumbs">
-                <div class="title">
-                    <a href="/">My Kits</a>
+        <div class="page-info--container hide-cursor-follow">
+            <div class="breadcrumbs hide-cursor-follow">
+                <div class="title hide-cursor-follow">
+                    <a href="/" class="hide-cursor-follow">My Kits</a>
                 </div>
-                <img class="next" src="/images/collapse-icon.svg" alt="Right" />
-                <div class="kit-select">
+                <img class="next hide-cursor-follow" src="/images/collapse-icon.svg" alt="Right" />
+                <div class="kit-select hide-cursor-follow">
                     @if (kit != null)
                     {
                         @kit.KitId
@@ -18,9 +18,9 @@
                     {
                         @if (KitsList == true)
                         {
-                            <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" style="transform: rotate(180deg);" />
-                            <div class="overlay" @onclick="ShowKitsList"></div>
-                            <ul class="user-kits--dropdown">
+                            <img class="dropdown hide-cursor-follow" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" style="transform: rotate(180deg);" />
+                            <div class="overlay hide-cursor-follow" @onclick="ShowKitsList"></div>
+                            <ul class="user-kits--dropdown hide-cursor-follow">
                                 @foreach (var item in UserKits.OrderBy(x => x.DateCreated))
                                 {
                                     <li @onclick="@(e => SelectKit(item.Id))">
@@ -33,34 +33,34 @@
                             </ul>
                         } else
                         {
-                            <img class="dropdown" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
+                            <img class="dropdown hide-cursor-follow" src="/images/collapse-icon.svg" @onclick="ShowKitsList" alt="Dropdown" />
                         }
                     }
                 </div>
             </div>
-            <div class="info">
+            <div class="info hide-cursor-follow">
                 <AuthorizeView>
                     <Authorized>
-                        <div class="last-saved">
+                        <div class="last-saved hide-cursor-follow">
                             Last Saved: @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
                         </div>
-                        <div class="actions">
-                            <button>
+                        <div class="actions hide-cursor-follow">
+                            <button class="hide-cursor-follow">
                                 <PreviewIcon />
                             </button>
-                            <a href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
+                            <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
                                 <DownloadIcon />
                             </a>
-                            <button class="delete-kit" @onclick="@(e => ShowDeleteModal(kit.Id))">
+                            <button class="delete-kit hide-cursor-follow" @onclick="@(e => ShowDeleteModal(kit.Id))">
                                 <DeleteIcon />
                             </button>
-                            <button>
+                            <button class="hide-cursor-follow">
                                 <MoreIcon />
                              </button>
                         </div>
                     </Authorized>
                     <NotAuthorized>
-                        <div class="please-login">Please <a href="authentication/login">Log In</a> to save changes</div>
+                        <div class="please-login hide-cursor-follow">Please <a href="authentication/login">Log In</a> to save changes</div>
                     </NotAuthorized>
                 </AuthorizeView>
                 @*<AuthorizeView>

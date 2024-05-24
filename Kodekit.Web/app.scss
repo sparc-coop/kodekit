@@ -36,6 +36,7 @@
 @import "Shared/Sidebar";
 @import "Shared/SignUpBanner";
 @import "Shared/PageInfo";
+@import "Shared/CustomCursor";
 
 //Core Imports
 @import "wwwroot/CoreStyles/Core/Colors.scss";
@@ -99,50 +100,11 @@ body {
     font-family: 'EncodeSans', sans-serif;
     font-weight: 400;
     color: $white;
-    /*cursor: url("images/cursor.png"), auto;*/
-}
 
-/*.cursor {
-    position: fixed;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: none;
-    background: $white;
-    transition: 0.1s;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    mix-blend-mode: difference;
-}
-
-h2:hover ~ .cursor {
-    transform: scale(6);
-}
-
-a, button, label, input, select, div, span, li {
-    &:hover {
-        cursor: url("images/cursor.png"), auto;
-    }
-}
-*/
-
-.nav {
-    position: relative;
-    z-index: 1000;
-
-    & > * {
+    app  {
         position: relative;
-        z-index: 1000;
-    }
-}
-
-.sidebar {
-    position: relative;
-    z-index: 1000;
-
-    & > * {
-        position: relative;
-        z-index: 1000;
+        z-index: 500;
+        cursor: none;
     }
 }
 
@@ -151,132 +113,6 @@ a, button, label, input, select, div, span, li {
         cursor: none;
     }
 }
-
-.new-cursor {
-    position: fixed;
-    top: -70px;
-    left: -70px;
-    height: 140px;
-    width: 140px;
-    //z-index: 3000;
-    pointer-events: none;
-
-    > * {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        transform-origin: center center;
-    }
-
-    &-point {
-        width: 0.8rem;
-        height: 0.8rem;
-        position: absolute;
-        background-color: white;
-        border-radius: 100%;
-        z-index: 3000;
-    }
-
-    &-follow {
-        transition: opacity 200ms ease-in-out;
-    }
-
-    &-text {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        animation: spin 10s linear infinite;
-        pointer-events: none;
-        z-index: 2500;
-        transition: opacity 200ms ease-in-out;
-    }
-
-    &-shadow {
-        width: calc(100vw/4);
-        height: auto;
-        //transform: translate(-50%, -50%);
-        position: absolute;
-        pointer-events: none;
-        opacity: 1;
-        filter: blur(100px);
-        z-index: 500;
-    }
-}
-
-.cursor,
-.follow {
-    position: fixed;
-    pointer-events: none;
-    width: 0.8rem;
-    height: 0.8rem;
-    //transform: translate(-50%, -50%);
-    z-index: 3000;
-}
-
-.follow {
-    display: none;
-}
-
-.cursor {
-    background-color: white;
-    border-radius: 100%;
-
-    &-start {
-        aspect-ratio: 1/1;
-        width: 139px;
-        position: relative;
-        transform: translate(-50%, -50%);
-        z-index: 2500;
-        pointer-events: none;
-
-        .cursor-text {
-            width: 139px;
-            height: auto;
-            animation: spin 10s linear infinite;
-            pointer-events: none;
-        }
-    }
-
-    &-shadow {
-        //width: 620px;
-        width: calc(100vw/4);
-        height: auto;
-        position: fixed;
-        //transform: translate(-50%, -50%);
-        z-index: 10;
-        pointer-events: none;
-        opacity: 0.8;
-        filter: blur(100px);
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.follow {
-    padding: 2rem;
-    border: 0.1rem solid white;
-    /*transition: all 0.2s ease-out;*/
-    border-radius: 100%;
-}
-
-.follow.on-focus {
-    /*transform: translate(-0.55rem, -0.55rem);*/
-    border: 0.1rem solid white;
-    border-radius: 0%;
-    padding: 0.46rem;
-}
-
 
 .loading {
     .wrapper {

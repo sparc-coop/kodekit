@@ -1,11 +1,12 @@
-﻿<div class="sidebar">
-@if (Settings != null)
+﻿<div class="sidebar hide-cursor-follow">
+@* @if (Settings != null)
 {
-    <div class="navmenu @Show">
-        <div class="menu">
-            <div class="category">
-                <div class="heading">Overview</div>
-                <div class="links">
+    *@    
+    <div class="navmenu @Show hide-cursor-follow">
+        <div class="menu hide-cursor-follow">
+            <div class="category hide-cursor-follow">
+                <div class="heading hide-cursor-follow">Overview</div>
+                <div class="links hide-cursor-follow">
                     <NavLink href="@Link("introduction")" Match="NavLinkMatch.All">
                         Introduction
                     </NavLink>
@@ -20,9 +21,9 @@
                     </NavLink>
                 </div>
             </div>
-            <div class="category">
-                <div class="heading">Base Styles</div>
-                <div class="links">
+            <div class="category hide-cursor-follow">
+                <div class="heading hide-cursor-follow">Base Styles</div>
+                <div class="links hide-cursor-follow">
                     <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
                         Global Settings
                     </NavLink>
@@ -37,9 +38,9 @@
                     </NavLink>
                 </div>
             </div>
-            <div class="category html-elements">
-                <div class="heading">HTML Elements</div>
-                <div class="links">
+            <div class="category html-elements hide-cursor-follow">
+                <div class="heading hide-cursor-follow">HTML Elements</div>
+                <div class="links hide-cursor-follow">
                     <NavLink href="@Link("buttons")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseButtons)">
                         Buttons
                     </NavLink>
@@ -63,9 +64,9 @@
                 </NavLink>*@
                 </div>
             </div>
-            <div class="category">
-                <div class="heading">Utility</div>
-                <div class="links">
+            <div class="category hide-cursor-follow">
+                <div class="heading hide-cursor-follow">Utility</div>
+                <div class="links hide-cursor-follow">
                     <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseShadows)">
                         Box Shadows
                     </NavLink>
@@ -79,8 +80,8 @@
     </button>
     </div>*@
     </div>
-}
-</div>
+@* }
+ *@</div>
 
 @inject IJSRuntime Js
 @code {

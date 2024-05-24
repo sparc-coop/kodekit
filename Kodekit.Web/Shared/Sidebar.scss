@@ -11,6 +11,11 @@
     background: $background;
     z-index: 900;
 
+    & > * {
+        position: relative;
+        z-index: 1000;
+    }
+
     .navmenu {
         z-index: 1000;
     }

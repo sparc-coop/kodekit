@@ -1,5 +1,5 @@
-﻿<nav style="@(transparent ? "background: none" : "")">
-    <div class="header menu-left">
+﻿<nav class="hide-cursor-follow" style="@(transparent ? "background: none" : "")">
+    <div class="header menu-left hide-cursor-follow">
         @*@if (ShowMobileMenu == false)
         {
         <span class="material-icons mobile" @onclick="ToggleMobile">menu</span>
@@ -9,13 +9,13 @@
         <span class="material-icons mobile" @onclick="@ToggleMobile">close</span>
         }*@
         <h1>
-            <a class="logo" href="/">
+            <a class="logo hide-cursor-follow" href="/">
                 KodeKit
             </a>
         </h1>
     </div>
 
-    <div class="menu-right">
+    <div class="menu-right hide-cursor-follow">
         <LoginDisplay />
     </div>
 </nav>
