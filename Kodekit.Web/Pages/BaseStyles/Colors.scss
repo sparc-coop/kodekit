@@ -63,7 +63,7 @@
 
                 aside {
                     position: absolute;
-                    right: 17px;
+                    right: 7px;
                 }
             }
         }
@@ -98,21 +98,10 @@
             }*/
     }
 
-    .color-card {
-        width: 100%;
-        max-width: 102px;
-        height: 100%;
-        border: 2px solid transparent;
-        border-radius: 8px;
-
-        p.hex {
-            line-height: 100%;
-        }
-    }
-
     .subcolor-display {
         display: flex;
         gap: 25px;
+        flex-wrap: wrap;
     }
 
     &--greyscale {
@@ -138,9 +127,14 @@
         }
     }
 
-    .preview-example--mockup {
+    &--preview {
         h3 {
             margin-bottom: 20px;
+        }
+
+        > * {
+            border: 1px solid #fff;
+            border-radius: 40px;
         }
 
         > div {
@@ -159,27 +153,70 @@
                 margin-left: 27px;
             }
         }
-    }
 
-    .card-with-image {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        max-width: 500px;
-        padding: 0;
+        &__container {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
 
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
+            > div {
+                height: 250px;
+                border: 1px solid #fff;
+                border-radius: 40px;
+            }
         }
 
-        > div {
-            padding: 32px 40px;
+        .card-with-image {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 500px;
+            padding: 0;
+
+            > div {
+                padding: 20px 40px;
+                margin: auto 0;
+            }
+        }
+
+        &__blobs {
+            width: 220px;
+            height: 100%;
+            padding: 0 !important;
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+
+            svg {
+                position: absolute;
+                filter: blur(15px);
+
+                &.color-preview-1 {
+                    width: 170px;
+                    height: 166px;
+                    top: 70px;
+                    left: 50px;
+                }
+
+                &.color-preview-2 {
+                    width: 160px;
+                    height: 190px;
+                    top: 10px;
+                    left: -15px;
+                }
+            }
+
+            .color-preview-noise {
+                display: none;
+            }
         }
     }
 
     .card {
-        padding: 32px 40px;
-        display: block;
+        display: flex;
+
+        > * {
+            margin: auto 0;
+            padding: 20px 40px;
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿@inherits HighlightPageBase<ColorsModel>
 @page "/{kitId}/colors"
 @using Kodekit.Web.Components.Colors
+@using Kodekit.Features;
+@using System.Drawing;
 
 <div class="colors page">
     <div class="page__container fadeInUp">
@@ -24,10 +26,14 @@
                                if intersecting transition opacity to 1 then set :done to 1
                                else if :done != 1 then transition opacity to 0">
                             <header class="flex">
-                                <h3><span>01</span> Brand Colors</h3>
-                                <p class="subheader">
-                                    The brand colors are the three main colors that will be used to accent your site.
-                                </p>
+                                <div class="header--container">
+                                    <h3><span>01</span> Brand Colors</h3>
+                                    <p class="subheader">
+                                        The brand colors are the three main colors that will be used to accent your site.
+                                    </p>
+                                </div>
+                                <img class="collapse-btn" src="images/collapse-icon.svg" 
+                                _="on click toggle .collapsed on .colors--brand then toggle .collapsed on me" />
                             </header>
                             <div class="color-display primary"
                                  _="on intersection(intersecting) having threshold 0.25
@@ -41,7 +47,7 @@
                                         }
                                         else
                                         {
-                                            <ColorCard Type="Primary" Weight="Primary" Hex="primary-500" />
+                                            <ColorCard Type="Primary" Weight="Primary" Hex="@Model.Primary" />
                                         }
                                         <InputColor @bind-Value="Model.Primary" />
                                     </label>
@@ -49,7 +55,11 @@
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
-                                        string hex = "primary-" + weight;
+                                        string hex = PrimaryColors[$"primary-{weight}"];
+                                        @if (hex == null)
+                                        {
+                                            hex = "primary-" + weight;
+                                        }
                                         @if (string.IsNullOrEmpty(Model.Primary))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
@@ -81,7 +91,11 @@
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
-                                        string hex = "secondary-" + weight;
+                                        string hex = SecondaryColors[$"secondary-{weight}"];
+                                        @if (hex == null)
+                                        {
+                                            hex = "secondary-" + weight;
+                                        }
                                         @if (string.IsNullOrEmpty(Model.Secondary))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
@@ -113,7 +127,11 @@
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
-                                        string hex = "tertiary-" + weight;
+                                        string hex = TertiaryColors[$"tertiary-{weight}"];
+                                        @if (hex == null)
+                                        {
+                                            hex = "tertiary-" + weight;
+                                        }
                                         @if (string.IsNullOrEmpty(Model.Tertiary))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
@@ -164,7 +182,11 @@
                                 <div class="subcolor-display">
                                     @foreach (var weight in Weights)
                                     {
-                                        string hex = "grey-" + weight;
+                                        string hex = GreyscaleColors[$"grey-{weight}"];
+                                        @if (hex == null)
+                                        {
+                                            hex = "grey-" + weight;
+                                        }
                                         @if (string.IsNullOrEmpty(Model.Lightest) || string.IsNullOrEmpty(Model.Darkest))
                                         {
                                             <ColorCardPlaceholder Weight="@weight" />
@@ -231,26 +253,30 @@
                                 <h3>Preview</h3>
                                 <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
                             </header>
-                            <div class="card-with-image">
-                                <img src="/images/example1.png" alt="Example mockup" />
-                                <div>
-                                    <h6 class="tertiary">Information</h6>
-                                    <h4>Brand Colors</h4>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                    </p>
-                                    <button>Primary CTA</button>
+                            <div class="colors--preview__container">
+                                <div class="card-with-image">
+                                    <ColorPreview Primary="@Model.Primary" Secondary="@Model.Secondary" Tertiary="@Model.Tertiary" />
+                                    <div class="card-content">
+                                        <h6 class="tertiary">Information</h6>
+                                        <h4>Brand Colors</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                        </p>
+                                        <button>Primary CTA</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card">
-                                <h6 class="tertiary">Information</h6>
-                                <h4>Brand Colors</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </p>
-                                <div class="buttons">
-                                    <button>Primary CTA</button>
-                                    <button class="secondary">Secondary CTA</button>
+                                <div class="card">
+                                    <div>
+                                        <h6 class="tertiary">Information</h6>
+                                        <h4>Brand Colors</h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                        </p>
+                                        <div class="buttons">
+                                            <button>Primary CTA</button>
+                                            <button class="secondary">Secondary CTA</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -263,11 +289,23 @@
 
 @code {
     List<string> Weights = new List<string> { "50", "100", "200", "300", "400", "500", "600", "700", "800", "900" };
+    Dictionary<string, string> PrimaryColors;
+    Dictionary<string, string> SecondaryColors;
+    Dictionary<string, string> TertiaryColors;
+    Dictionary<string, string> GreyscaleColors;
 
     protected override async Task OnInitializedAsync()
     {
         DebounceInputs = true;
         await base.OnInitializedAsync();
+
+        if (Model != null)
+        {
+            PrimaryColors = Serialize("primary", Model.Primary);
+            SecondaryColors = Serialize("secondary", Model.Secondary);
+            TertiaryColors = Serialize("tertiary", Model.Tertiary);
+            GreyscaleColors = Expand(Model.Lightest, Model.Darkest);
+        }
     }
 
     protected override async Task<ColorsModel> GetAsync()
@@ -278,5 +316,81 @@
     protected override async Task<Kit> UpdateAsync()
     {
         return await PublicApi().UpdateColorsAsync(Model);
+    }
+
+
+    public Dictionary<string, string> Serialize(string? type, string hex)
+    {
+        if (!string.IsNullOrWhiteSpace(type))
+            type = type.ToLower();
+        else
+            type = string.Empty;
+
+        return new Dictionary<string, string>
+        {
+            { $"{type}-50", ChangeBrightness(0.52f, hex) },
+            { $"{type}-100", ChangeBrightness(0.37f, hex) },
+            { $"{type}-200", ChangeBrightness(0.26f, hex) },
+            { $"{type}-300", ChangeBrightness(0.12f, hex) },
+            { $"{type}-400", ChangeBrightness(0.06f, hex) },
+            { $"{type}-500", hex },
+            { $"{type}-600", ChangeBrightness(-0.06f, hex) },
+            { $"{type}-700", ChangeBrightness(-0.12f, hex) },
+            { $"{type}-800", ChangeBrightness(-0.18f, hex) },
+            { $"{type}-900", ChangeBrightness(-0.24f, hex) }
+        };
+    }
+
+    public Dictionary<string, string> Expand(string lightest, string darkest)
+    {
+        var type = "grey";
+        var colors = new Dictionary<string, string>();
+
+        colors.Add($"{type}-50", Interpolate(lightest, darkest, 0.05f));
+
+        for (var i = 0.1f; i < 1f; i += 0.1f)
+            colors.Add($"{type}-{Math.Round(i * 1000)}", Interpolate(lightest, darkest, i));
+
+        return colors;
+    }
+
+    private string ChangeBrightness(float correctionFactor, string hex)
+    {
+        var color = ColorTranslator.FromHtml(hex);
+
+        float red = color.R;
+        float green = color.G;
+        float blue = color.B;
+
+        if (correctionFactor < 0)
+        {
+            correctionFactor = 1 + correctionFactor;
+            red *= correctionFactor;
+            green *= correctionFactor;
+            blue *= correctionFactor;
+        }
+        else
+        {
+            red = (255 - red) * correctionFactor + red;
+            green = (255 - green) * correctionFactor + green;
+            blue = (255 - blue) * correctionFactor + blue;
+        }
+
+        color = System.Drawing.Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+        return ColorTranslator.ToHtml(color);
+    }
+
+    public string Interpolate(string lightest, string darkest, float percentage)
+    {
+        var color1 = ColorTranslator.FromHtml(lightest);
+        var color2 = ColorTranslator.FromHtml(darkest);
+
+        double resultRed = color1.R + percentage * (color2.R - color1.R);
+        double resultGreen = color1.G + percentage * (color2.G - color1.G);
+        double resultBlue = color1.B + percentage * (color2.B - color1.B);
+
+        var color = System.Drawing.Color.FromArgb((int)resultRed, (int)resultGreen, (int)resultBlue);
+
+        return ColorTranslator.ToHtml(color);
     }
 }

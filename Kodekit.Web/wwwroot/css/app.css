@@ -26,9 +26,11 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 .color-card {
   width: 110px;
-  height: 147px;
+  height: 132px;
   font-family: "EncodeSans";
   font-weight: 400;
+  border: 2px solid transparent;
+  border-radius: 8px;
 }
 .color-card--content {
   display: flex;
@@ -46,6 +48,7 @@
   border-top: 1px solid #FFFFFF;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 5px;
   border-top: 1px solid #FFFFFF;
 }
@@ -53,6 +56,9 @@
   font-family: "EncodeSans";
   font-weight: 300;
   font-size: 14px;
+  line-height: 100%;
+}
+.color-card--content .color-info p.hex {
   line-height: 100%;
 }
 .color-card--content .color-info aside {
@@ -151,12 +157,20 @@
   padding-bottom: 100px;
 }
 .page section {
+  max-height: 100%;
   padding-top: 40px;
   border-top: 1px solid rgba(200, 200, 200, 0.3);
+  transition: max-height 500ms ease-in-out;
 }
 .page section header {
+  width: 100%;
+  height: fit-content;
   margin-bottom: 40px;
   color: #FFFFFF;
+}
+.page section header--container {
+  display: flex;
+  gap: 24px;
 }
 .page section header h3 {
   font-family: "QuantaGroteskPro";
@@ -178,6 +192,15 @@
   font-size: 16px;
   line-height: 160%;
   color: #F2F2F2;
+}
+.page section header .collapse-btn {
+  transition: 300ms ease-in-out;
+}
+.page section header .collapse-btn.collapsed {
+  transform: rotate(180deg);
+}
+.page section.collapsed {
+  height: 0px;
 }
 .page section .inputs--wrapper {
   display: flex;
@@ -220,7 +243,7 @@
 }
 .page section header.flex, .page section header .flex, .page .subsection header.flex, .page .subsection header .flex {
   display: flex;
-  gap: 24px;
+  justify-content: space-between;
 }
 .page section header.flex span, .page section header .flex span, .page .subsection header.flex span, .page .subsection header .flex span {
   margin-right: 6px;
@@ -335,6 +358,13 @@
 }
 .page .preview-example-container .preview-info a {
   text-decoration: underline;
+  transition: 250ms ease-in-out;
+}
+.page .preview-example-container .preview-info a.preview-link {
+  color: #FFFFFF;
+}
+.page .preview-example-container .preview-info a.preview-link:hover {
+  color: #B2B2B2;
 }
 .page .preview-example-container pre {
   width: 100%;
@@ -811,7 +841,7 @@
 }
 .colors .edit-color .color-card .color-info aside {
   position: absolute;
-  right: 17px;
+  right: 7px;
 }
 .colors .edit-color .inputcolor {
   position: absolute;
@@ -834,19 +864,10 @@
   line-height: 100%;
   margin-bottom: 5px;
 }
-.colors .color-card {
-  width: 100%;
-  max-width: 102px;
-  height: 100%;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-.colors .color-card p.hex {
-  line-height: 100%;
-}
 .colors .subcolor-display {
   display: flex;
   gap: 25px;
+  flex-wrap: wrap;
 }
 .colors--greyscale .color-main {
   display: flex;
@@ -863,39 +884,79 @@
   display: flex;
   flex-direction: row;
 }
-.colors .preview-example--mockup h3 {
+.colors--preview h3 {
   margin-bottom: 20px;
 }
-.colors .preview-example--mockup > div {
+.colors--preview > * {
+  border: 1px solid #fff;
+  border-radius: 40px;
+}
+.colors--preview > div {
   box-sizing: border-box;
   border-radius: 8px;
 }
-.colors .preview-example--mockup > div h4 {
+.colors--preview > div h4 {
   margin-bottom: 15px;
 }
-.colors .preview-example--mockup > div p {
+.colors--preview > div p {
   margin-bottom: 32px;
 }
-.colors .preview-example--mockup > div button.secondary {
+.colors--preview > div button.secondary {
   margin-left: 27px;
 }
-.colors .card-with-image {
+.colors--preview__container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.colors--preview__container > div {
+  height: 250px;
+  border: 1px solid #fff;
+  border-radius: 40px;
+}
+.colors--preview .card-with-image {
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 500px;
   padding: 0;
 }
-.colors .card-with-image img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+.colors--preview .card-with-image > div {
+  padding: 20px 40px;
+  margin: auto 0;
 }
-.colors .card-with-image > div {
-  padding: 32px 40px;
+.colors--preview__blobs {
+  width: 220px;
+  height: 100%;
+  padding: 0 !important;
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+}
+.colors--preview__blobs svg {
+  position: absolute;
+  filter: blur(15px);
+}
+.colors--preview__blobs svg.color-preview-1 {
+  width: 170px;
+  height: 166px;
+  top: 70px;
+  left: 50px;
+}
+.colors--preview__blobs svg.color-preview-2 {
+  width: 160px;
+  height: 190px;
+  top: 10px;
+  left: -15px;
+}
+.colors--preview__blobs .color-preview-noise {
+  display: none;
 }
 .colors .card {
-  padding: 32px 40px;
-  display: block;
+  display: flex;
+}
+.colors .card > * {
+  margin: auto 0;
+  padding: 20px 40px;
 }
 
 .icons section select {
@@ -1904,7 +1965,7 @@
 }
 .main__container {
   width: 100%;
-  margin-left: 300px;
+  margin-left: 260px;
   padding-top: 40px;
 }
 @media screen and (max-width: 780px) {
@@ -1931,7 +1992,7 @@
   border-top: 1px solid #B2B2B2;
 }
 
-.main.simplified {
+.main.no-sidebar {
   margin-top: 210px;
   width: 100vw;
   height: 100vh;
