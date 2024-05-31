@@ -17,7 +17,6 @@ function move(event) {
     var t = e.target;
     var mouseX = e.clientX;
     var mouseY = e.clientY;
-    console.log(mouseX);
 
     cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
@@ -138,6 +137,6 @@ function skipFrames(func) {
         func();
         globalSkipCounter = 0;
     } else {
-        glbalSkipCounter++;
+        globalSkipCounter++;
     }
 }

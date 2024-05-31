@@ -2,7 +2,6 @@
 
 .page {
     background: $background;
-
     /*@media screen and (max-width: 780px) {
         padding: 0 40px 100px 40px;
     }
@@ -62,12 +61,21 @@
     }
 
     section {
+        max-height: 100%;
         padding-top: 40px;
         border-top: 1px solid rgba(200, 200, 200, 0.3);
+        transition: max-height 500ms ease-in-out;
 
         header {
+            width: 100%;
+            height: fit-content;
             margin-bottom: 40px;
             color: $white;
+
+            &--container {
+                display: flex;
+                gap: 24px;
+            }
 
             h3 {
                 font-family: 'QuantaGroteskPro';
@@ -92,6 +100,18 @@
                 line-height: 160%;
                 color: #F2F2F2;
             }
+
+            .collapse-btn {
+                transition: 300ms ease-in-out;
+
+                &.collapsed {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        &.collapsed {
+            height: 0px;
         }
 
         .inputs--wrapper {
@@ -130,7 +150,7 @@
         header {
             &.flex, .flex {
                 display: flex;
-                gap: 24px;
+                justify-content: space-between;
 
                 span {
                     margin-right: 6px;
@@ -284,6 +304,15 @@
 
             a {
                 text-decoration: underline;
+                transition: 250ms ease-in-out;
+
+                &.preview-link {
+                    color: $white;
+
+                    &:hover {
+                        color: $grey-300;
+                    }
+                }
             }
         }
 
