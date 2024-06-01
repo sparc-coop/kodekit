@@ -26,7 +26,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 .color-card {
   width: 110px;
-  height: 132px;
+  height: 140px;
   font-family: "EncodeSans";
   font-weight: 400;
   border: 2px solid transparent;
@@ -66,7 +66,6 @@
   height: 14px;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
-  margin-top: 1px;
 }
 
 .color-blotch {
@@ -156,21 +155,27 @@
 .page .content {
   padding-bottom: 100px;
 }
-.page section {
+.page .collapsible {
   max-height: 100%;
+  padding-top: 77px;
+  overflow: hidden;
+  transition: max-height 250ms ease-in-out;
+}
+.page .collapsible.collapsed {
+  height: 0px;
+  padding: 0;
+  display: none;
+}
+.page section {
   padding-top: 40px;
   border-top: 1px solid rgba(200, 200, 200, 0.3);
-  transition: max-height 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 .page section header {
   width: 100%;
   height: fit-content;
   margin-bottom: 40px;
   color: #FFFFFF;
-}
-.page section header--container {
-  display: flex;
-  gap: 24px;
 }
 .page section header h3 {
   font-family: "QuantaGroteskPro";
@@ -199,9 +204,6 @@
 .page section header .collapse-btn.collapsed {
   transform: rotate(180deg);
 }
-.page section.collapsed {
-  height: 0px;
-}
 .page section .inputs--wrapper {
   display: flex;
   gap: 20px;
@@ -228,7 +230,7 @@
 }
 .page section, .page .subsection {
   width: 100%;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
   /*.large {
       width: 486px;
   }
@@ -240,6 +242,12 @@
   .small {
       width: 142px;
   }*/
+}
+.page section header.header__container, .page section .header__container, .page .subsection header.header__container, .page .subsection .header__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
 }
 .page section header.flex, .page section header .flex, .page .subsection header.flex, .page .subsection header .flex {
   display: flex;
@@ -788,9 +796,6 @@
 .colors .content {
   position: relative;
 }
-.colors .content section header {
-  margin-bottom: 77px;
-}
 .colors .content section header h3 {
   margin: 0;
 }
@@ -802,6 +807,7 @@
   justify-content: start;
   gap: 53px;
   margin-bottom: 20px;
+  transition: height 250ms ease-in-out;
 }
 .colors .color-main {
   width: 100%;
@@ -810,6 +816,7 @@
   font-size: 16px;
 }
 .colors .edit-color {
+  width: 140px;
   position: relative;
   padding: 0px 15px 25px 15px;
   border: 2px solid transparent;
@@ -829,24 +836,27 @@
   border: 2px solid rgba(200, 200, 200, 0.8);
 }
 .colors .edit-color .color-card {
-  max-width: 136px;
+  max-width: 140px;
   z-index: 1;
   color: #FFFFFF;
-}
-.colors .edit-color .color-card p.hex {
-  display: none;
 }
 .colors .edit-color .color-card .color-info {
   justify-content: space-between;
 }
+.colors .edit-color .color-card .color-info p.hex {
+  display: none;
+  color: #FFFFFF !important;
+}
 .colors .edit-color .color-card .color-info aside {
   position: absolute;
-  right: 7px;
+  right: 10px;
 }
 .colors .edit-color .inputcolor {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   z-index: 2;
   background: transparent;
   border: transparent;
@@ -856,13 +866,12 @@
 }
 .colors .edit-color .inputcolor .hex-value {
   position: absolute;
-  bottom: -5px;
-  left: 2px;
-  color: #FFFFFF;
+  bottom: 22px;
+  left: 15px;
+  color: var(--grey-200);
   font-family: "EncodeSans";
   font-size: 14px;
   line-height: 100%;
-  margin-bottom: 5px;
 }
 .colors .subcolor-display {
   display: flex;
@@ -904,25 +913,88 @@
 .colors--preview > div button.secondary {
   margin-left: 27px;
 }
-.colors--preview__container {
+.colors--preview__container .preview-background {
+  width: fit-content;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.colors--preview__container .preview-background p {
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 160%;
+}
+.colors--preview__container .preview-background .inputcolor {
+  /*width: 26px;
+  height: 14px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  margin-top: 1px;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  background: transparent;
+  border: transparent;
+}
+.colors--preview__container .preview-background .inputcolor input.valid {
+  visibility: hidden;
+}
+.colors--preview__container .preview-background .inputcolor .hex-value {
+  display: none;
+  position: absolute;
+  bottom: -5px;
+  left: 2px;
+  color: #FFFFFF;
+  font-family: "EncodeSans";
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 5px;
+}
+.colors--preview__container .preview-background aside {
+  width: 26px;
+  height: 14px;
+  margin: auto 0;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+}
+.colors--preview__container .preview-cards {
   display: flex;
   flex-direction: row;
   gap: 40px;
 }
-.colors--preview__container > div {
+.colors--preview__container .preview-cards > div {
   height: 250px;
   border: 1px solid #fff;
   border-radius: 40px;
 }
-.colors--preview .card-with-image {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 500px;
+.colors--preview__container .preview-cards .card-with-image {
+  display: flex;
   padding: 0;
 }
-.colors--preview .card-with-image > div {
+.colors--preview__container .preview-cards .card-with-image > div {
   padding: 20px 40px;
   margin: auto 0;
+}
+.colors--preview__container .preview-cards .card-with-image .card-content {
+  width: 209px;
+}
+.colors--preview__container .preview-cards .card {
+  display: flex;
+}
+.colors--preview__container .preview-cards .card .card-content {
+  width: 389px;
+  padding: 20px 40px;
+  margin: auto auto;
+}
+.colors--preview__container .preview-cards .card .card-content .buttons {
+  display: flex;
+  justify-content: center;
 }
 .colors--preview__blobs {
   width: 220px;
@@ -950,13 +1022,6 @@
 }
 .colors--preview__blobs .color-preview-noise {
   display: none;
-}
-.colors .card {
-  display: flex;
-}
-.colors .card > * {
-  margin: auto 0;
-  padding: 20px 40px;
 }
 
 .icons section select {

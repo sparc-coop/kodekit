@@ -26,121 +26,123 @@
                                if intersecting transition opacity to 1 then set :done to 1
                                else if :done != 1 then transition opacity to 0">
                             <header class="flex">
-                                <div class="header--container">
+                                <div class="header__container">
                                     <h3><span>01</span> Brand Colors</h3>
                                     <p class="subheader">
                                         The brand colors are the three main colors that will be used to accent your site.
                                     </p>
                                 </div>
                                 <img class="collapse-btn" src="images/collapse-icon.svg" 
-                                _="on click toggle .collapsed on .colors--brand then toggle .collapsed on me" />
+                                _="on click toggle .collapsed on next <div/> then toggle .collapsed on me" />
                             </header>
-                            <div class="color-display primary"
-                                 _="on intersection(intersecting) having threshold 0.25
-                                    if intersecting transition opacity to 1 then set :done to 1
-                                    else if :done != 1 then transition opacity to 0">
-                                <div class="color-main">
-                                    <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Primary))
+                            <div class="collapsible">
+                                <div class="color-display primary"
+                                     _="on intersection(intersecting) having threshold 0.25
+                                        if intersecting transition opacity to 1 then set :done to 1
+                                        else if :done != 1 then transition opacity to 0">
+                                    <div class="color-main">
+                                        <label class="edit-color">
+                                            @if (string.IsNullOrEmpty(Model.Primary))
+                                            {
+                                                <ColorCardPlaceholder Weight="Primary" />
+                                            }
+                                            else
+                                            {
+                                                <ColorCard Type="Primary" Weight="Primary" Hex="@Model.Primary" />
+                                            }
+                                            <InputColor @bind-Value="Model.Primary" />
+                                        </label>
+                                    </div>
+                                    <div class="subcolor-display">
+                                        @foreach (var weight in Weights)
                                         {
-                                            <ColorCardPlaceholder Weight="Primary" />
+                                            string hex = PrimaryColors[$"primary-{weight}"];
+                                            @if (hex == null)
+                                            {
+                                                hex = "primary-" + weight;
+                                            }
+                                            @if (string.IsNullOrEmpty(Model.Primary))
+                                            {
+                                                <ColorCardPlaceholder Weight="@weight" />
+                                            }
+                                            else
+                                            {
+                                                <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
+                                            }
                                         }
-                                        else
-                                        {
-                                            <ColorCard Type="Primary" Weight="Primary" Hex="@Model.Primary" />
-                                        }
-                                        <InputColor @bind-Value="Model.Primary" />
-                                    </label>
+                                    </div>
                                 </div>
-                                <div class="subcolor-display">
-                                    @foreach (var weight in Weights)
-                                    {
-                                        string hex = PrimaryColors[$"primary-{weight}"];
-                                        @if (hex == null)
+                                <div class="color-display secondary"
+                                     _="on intersection(intersecting) having threshold 0.25
+                                       if intersecting transition opacity to 1 then set :done to 1
+                                       else if :done != 1 then transition opacity to 0">
+                                    <div class="color-main">
+                                        <label class="edit-color">
+                                            @if (string.IsNullOrEmpty(Model.Secondary))
+                                            {
+                                                <ColorCardPlaceholder Weight="Secondary" />
+                                            }
+                                            else
+                                            {
+                                                <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
+                                            }
+                                            <InputColor @bind-Value="Model.Secondary" />
+                                        </label>
+                                    </div>
+                                    <div class="subcolor-display">
+                                        @foreach (var weight in Weights)
                                         {
-                                            hex = "primary-" + weight;
+                                            string hex = SecondaryColors[$"secondary-{weight}"];
+                                            @if (hex == null)
+                                            {
+                                                hex = "secondary-" + weight;
+                                            }
+                                            @if (string.IsNullOrEmpty(Model.Secondary))
+                                            {
+                                                <ColorCardPlaceholder Weight="@weight" />
+                                            }
+                                            else
+                                            {
+                                                <ColorCard Type="Secondary" Weight="@weight" Hex="@hex" />
+                                            }
                                         }
-                                        @if (string.IsNullOrEmpty(Model.Primary))
-                                        {
-                                            <ColorCardPlaceholder Weight="@weight" />
-                                        }
-                                        else
-                                        {
-                                            <ColorCard Type="Primary" Weight="@weight" Hex="@hex" />
-                                        }
-                                    }
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="color-display secondary"
-                                 _="on intersection(intersecting) having threshold 0.25
-                                   if intersecting transition opacity to 1 then set :done to 1
-                                   else if :done != 1 then transition opacity to 0">
-                                <div class="color-main">
-                                    <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Secondary))
+                                <div class="color-display tertiary" 
+                                    _="on intersection(intersecting) having threshold 0.25
+                                       if intersecting transition opacity to 1 then set :done to 1
+                                       else if :done != 1 then transition opacity to 0">
+                                    <div class="color-main">
+                                        <label class="edit-color">
+                                            @if (string.IsNullOrEmpty(Model.Tertiary))
+                                            {
+                                                <ColorCardPlaceholder Weight="Tertiary" />
+                                            }
+                                            else
+                                            {
+                                                <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
+                                            }
+                                            <InputColor @bind-Value="Model.Tertiary" />
+                                        </label>
+                                    </div>
+                                    <div class="subcolor-display">
+                                        @foreach (var weight in Weights)
                                         {
-                                            <ColorCardPlaceholder Weight="Secondary" />
+                                            string hex = TertiaryColors[$"tertiary-{weight}"];
+                                            @if (hex == null)
+                                            {
+                                                hex = "tertiary-" + weight;
+                                            }
+                                            @if (string.IsNullOrEmpty(Model.Tertiary))
+                                            {
+                                                <ColorCardPlaceholder Weight="@weight" />
+                                            }
+                                            else
+                                            {
+                                                <ColorCard Type="Tertiary" Weight="@weight" Hex="@hex" />
+                                            }
                                         }
-                                        else
-                                        {
-                                            <ColorCard Type="Secondary" Weight="Secondary" Hex="secondary-500" />
-                                        }
-                                        <InputColor @bind-Value="Model.Secondary" />
-                                    </label>
-                                </div>
-                                <div class="subcolor-display">
-                                    @foreach (var weight in Weights)
-                                    {
-                                        string hex = SecondaryColors[$"secondary-{weight}"];
-                                        @if (hex == null)
-                                        {
-                                            hex = "secondary-" + weight;
-                                        }
-                                        @if (string.IsNullOrEmpty(Model.Secondary))
-                                        {
-                                            <ColorCardPlaceholder Weight="@weight" />
-                                        }
-                                        else
-                                        {
-                                            <ColorCard Type="Secondary" Weight="@weight" Hex="@hex" />
-                                        }
-                                    }
-                                </div>
-                            </div>
-                            <div class="color-display tertiary" 
-                                _="on intersection(intersecting) having threshold 0.25
-                                   if intersecting transition opacity to 1 then set :done to 1
-                                   else if :done != 1 then transition opacity to 0">
-                                <div class="color-main">
-                                    <label class="edit-color">
-                                        @if (string.IsNullOrEmpty(Model.Tertiary))
-                                        {
-                                            <ColorCardPlaceholder Weight="Tertiary" />
-                                        }
-                                        else
-                                        {
-                                            <ColorCard Type="Tertiary" Weight="Tertiary" Hex="tertiary-500" />
-                                        }
-                                        <InputColor @bind-Value="Model.Tertiary" />
-                                    </label>
-                                </div>
-                                <div class="subcolor-display">
-                                    @foreach (var weight in Weights)
-                                    {
-                                        string hex = TertiaryColors[$"tertiary-{weight}"];
-                                        @if (hex == null)
-                                        {
-                                            hex = "tertiary-" + weight;
-                                        }
-                                        @if (string.IsNullOrEmpty(Model.Tertiary))
-                                        {
-                                            <ColorCardPlaceholder Weight="@weight" />
-                                        }
-                                        else
-                                        {
-                                            <ColorCard Type="Tertiary" Weight="@weight" Hex="@hex" />
-                                        }
-                                    }
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -149,12 +151,16 @@
                                if intersecting transition opacity to 1 then set :done to 1
                                else if :done != 1 then transition opacity to 0">
                             <header class="flex">
-                                <h3><span>02</span>Greyscale</h3>
-                                <p class="subheader">
+                                <div class="header__container">
+                                    <h3><span>02</span> Greyscale</h3>
+                                    <p class="subheader">
                                     The greyscale colors will primarily be used for text.
-                                </p>
+                                    </p>
+                                </div>
+                                <img class="collapse-btn" src="images/collapse-icon.svg"
+                                     _="on click toggle .collapsed on next <div/> then toggle .collapsed on me" />
                             </header>
-                            <div class="color-display greyscale">
+                            <div class="color-display greyscale collapsible">
                                 <div class="color-main">
                                     <label class="edit-color">
                                         @if (string.IsNullOrEmpty(Model.Lightest))
@@ -204,12 +210,16 @@
                                if intersecting transition opacity to 1 then set :done to 1
                                else if :done != 1 then transition opacity to 0">
                             <header class="flex">
-                                <h3><span>03</span>System Colors</h3>
-                                <p class="subheader">
-                                    The system colors are used to highlight alerts.
-                                </p>
+                                <div class="header__container">
+                                    <h3><span>03</span> System Colors</h3>
+                                    <p class="subheader">
+                                        The system colors are used to highlight alerts.
+                                    </p>
+                                </div>
+                                <img class="collapse-btn" src="images/collapse-icon.svg"
+                                     _="on click toggle .collapsed on next <div/> then toggle .collapsed on me" />
                             </header>
-                            <div class="color-display">
+                            <div class="color-display collapsible">
                                 <label class="edit-color">
                                     @if (string.IsNullOrEmpty(Model.Error))
                                     {
@@ -250,31 +260,42 @@
                                if intersecting transition opacity to 1 then set :done to 1
                                else if :done != 1 then transition opacity to 0">
                             <header class="flex">
-                                <h3>Preview</h3>
-                                <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
-                            </header>
-                            <div class="colors--preview__container">
-                                <div class="card-with-image">
-                                    <ColorPreview Primary="@Model.Primary" Secondary="@Model.Secondary" Tertiary="@Model.Tertiary" />
-                                    <div class="card-content">
-                                        <h6 class="tertiary">Information</h6>
-                                        <h4>Brand Colors</h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                        </p>
-                                        <button>Primary CTA</button>
-                                    </div>
+                                <div class="header__container">
+                                    <h3><span>04</span> Preview</h3>
+                                    <p class="subheader">A small example of all colors, buttons, and typography applied to two cards.</p>
                                 </div>
-                                <div class="card">
-                                    <div>
-                                        <h6 class="tertiary">Information</h6>
-                                        <h4>Brand Colors</h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                        </p>
-                                        <div class="buttons">
+                                <img class="collapse-btn" src="images/collapse-icon.svg"
+                                     _="on click toggle .collapsed on next <div/> then toggle .collapsed on me" />
+                            </header>
+                            <div class="colors--preview__container collapsible">
+                                <div class="preview-background">
+                                    <p>* Preview Background Color</p>
+                                    <InputColor @bind-Value="PreviewBackgroundColor" />
+                                    <aside class="swatch" style="background: @PreviewBackgroundColor;"></aside>
+                                </div>
+                                <div class="preview-cards">
+                                    <div class="card-with-image" style="background: @PreviewBackgroundColor">
+                                        <ColorPreview Primary="@Model.Primary" Secondary="@Model.Secondary" Tertiary="@Model.Tertiary" />
+                                        <div class="card-content">
+                                            <h6 class="tertiary">Information</h6>
+                                            <h4>Brand Colors</h4>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                            </p>
                                             <button>Primary CTA</button>
-                                            <button class="secondary">Secondary CTA</button>
+                                        </div>
+                                    </div>
+                                    <div class="card" style="background: @PreviewBackgroundColor">
+                                        <div class="card-content">
+                                            <h6 class="tertiary">Information</h6>
+                                            <h4>Brand Colors</h4>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                            </p>
+                                            <div class="buttons">
+                                                <button>Primary CTA</button>
+                                                <button class="secondary">Secondary CTA</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -293,6 +314,7 @@
     Dictionary<string, string> SecondaryColors;
     Dictionary<string, string> TertiaryColors;
     Dictionary<string, string> GreyscaleColors;
+    string PreviewBackgroundColor = "#000000";
 
     protected override async Task OnInitializedAsync()
     {

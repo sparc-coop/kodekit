@@ -60,22 +60,29 @@
         padding-bottom: 100px;
     }
 
-    section {
+    .collapsible {
         max-height: 100%;
+        padding-top: 77px;
+        overflow: hidden;
+        transition: max-height 250ms ease-in-out;
+    }
+
+    .collapsible.collapsed {
+        height: 0px;
+        padding: 0;
+        display: none;
+    }
+
+    section {
         padding-top: 40px;
         border-top: 1px solid rgba(200, 200, 200, 0.3);
-        transition: max-height 500ms ease-in-out;
+        transition: all 500ms ease-in-out;
 
         header {
             width: 100%;
             height: fit-content;
             margin-bottom: 40px;
             color: $white;
-
-            &--container {
-                display: flex;
-                gap: 24px;
-            }
 
             h3 {
                 font-family: 'QuantaGroteskPro';
@@ -110,9 +117,6 @@
             }
         }
 
-        &.collapsed {
-            height: 0px;
-        }
 
         .inputs--wrapper {
             display: flex;
@@ -145,7 +149,14 @@
 
     section, .subsection {
         width: 100%;
-        padding-bottom: 100px;
+        padding-bottom: 40px;
+
+        header.header__container, .header__container {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            margin: 0;
+        }
 
         header {
             &.flex, .flex {
