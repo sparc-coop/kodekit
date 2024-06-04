@@ -6,6 +6,11 @@
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Figma Projects</PageTitle>
+<div>
+    <input @bind="TeamId" />
+    <label>Enter Team Id (tip: 1377318027660273677)</label>
+    <button @onclick="GetProjectsInTeam">Submit</button>
+</div>
 @if (Files.Any())
 {
     <ul>
@@ -25,16 +30,21 @@ else
 
 @code {
     public List<FigmaFile> Files { get; set; } = new List<FigmaFile>();
+    public string TeamId { get; set; } = "";
 
-    protected override async Task OnInitializedAsync()
+    // protected override async Task OnInitializedAsync()
+    // {
+
+    // }
+    public async Task<string> GetProjectsInTeam()
     {
         var token = await GetTokenAsync();
-        var projects = await figmaService.GetProjectsInTeam("1377318027660273677", token);
+        var projects = await figmaService.GetProjectsInTeam(TeamId, token);
         foreach (var item in projects)
         {
             Files = await figmaService.GetFilesInProject(item.Id, token);
         }
-        var abc = "";
+        return "";
     }
     public async Task<string> GetTokenAsync()
     {

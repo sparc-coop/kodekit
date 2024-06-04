@@ -20,12 +20,12 @@ builder.Services.AddHttpClient<FigmaService>(client =>
         // Handler configuration if necessary
     });
 
-builder.Services.AddScoped(provider =>
-    new FigmaService(
-        provider.GetRequiredService<HttpClient>(),
-        "emAOkbS5jC6HcNzfTXVzKZ",
-        "https://localhost:44342/figma-callback",
-        "files:read,file_comments:write"));
+builder.Services.AddScoped<FigmaService>(serviceProvider =>
+{
+    var config = builder.Configuration.GetSection("FigmaApi");
+    var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("FigmaService");
+    return new FigmaService(httpClient, config);
+});
 
 var app = builder.Build();
 

@@ -7,22 +7,20 @@ namespace KodekitAPI
     public class FigmaService
     {
         private readonly HttpClient _httpClient;
-        private readonly string clientId;
-        private readonly string redirectUri;
-        private readonly string scope;
-        private readonly string responseType = "code";
+        private readonly IConfigurationSection _configSection;
 
-        public FigmaService(HttpClient httpClient, string clientId, string redirectUri, string scope)
+        public FigmaService(HttpClient httpClient, IConfigurationSection configSection)
         {
             _httpClient = httpClient;
-            this.clientId = clientId;
-            this.redirectUri = redirectUri;
-            this.scope = scope;
+            _configSection = configSection;
         }
 
         public string GetAuthenticationUrl(string state)
         {
-            return $"https://www.figma.com/oauth?client_id={clientId}&redirect_uri={Uri.EscapeDataString(redirectUri)}&scope={Uri.EscapeDataString(scope)}&state={state}&response_type={responseType}";
+            var clientId = _configSection["ClientId"];
+            var redirectUri = _configSection["RedirectUri"];
+            var scope = _configSection["Scope"];
+            return $"https://www.figma.com/oauth?client_id={clientId}&redirect_uri={Uri.EscapeDataString(redirectUri)}&scope={Uri.EscapeDataString(scope)}&state={state}&response_type=code";
         }
 
         public async Task<string> GetFigmaFileDetails(string fileId, string accessToken)
@@ -36,9 +34,9 @@ namespace KodekitAPI
         {
             var requestBody = new Dictionary<string, string>
             {
-                {"client_id", clientId},
-                {"client_secret", "Ueq1mgoRmrELfgZLniMAWtb2Z57Zk1"}, // Keep this secure
-                {"redirect_uri", redirectUri},
+                {"client_id", _configSection["ClientId"]},
+                {"client_secret", _configSection["ClientSecret"]},
+                {"redirect_uri", _configSection["RedirectUri"]},
                 {"code", code},
                 {"grant_type", "authorization_code"}
             };
