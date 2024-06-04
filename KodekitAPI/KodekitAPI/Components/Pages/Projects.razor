@@ -1,0 +1,45 @@
+﻿@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@page "/Projects"
+@using static KodekitAPI.FigmaService
+@inject FigmaService figmaService
+@inject NavigationManager navigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Figma Projects</PageTitle>
+@if (Files.Any())
+{
+    <ul>
+        @foreach (var file in Files)
+        {
+            <li>@file.Name</li>
+            <img style="max-width: 150px" src="@file.ThumbnailUrl"/>
+        }
+    </ul>
+}
+else
+{
+    <p>No files found.</p>
+    
+}
+
+
+@code {
+    public List<FigmaFile> Files { get; set; } = new List<FigmaFile>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var token = await GetTokenAsync();
+        var projects = await figmaService.GetProjectsInTeam("1377318027660273677", token);
+        foreach (var item in projects)
+        {
+            Files = await figmaService.GetFilesInProject(item.Id, token);
+        }
+        var abc = "";
+    }
+    public async Task<string> GetTokenAsync()
+    {
+        var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "authToken");
+        // Use sessionStorage.getItem if you used sessionStorage to store the token
+        return token;
+    }
+}

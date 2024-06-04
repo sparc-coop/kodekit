@@ -1,0 +1,23 @@
+﻿@page "/authenticate"
+@inject FigmaService FigmaService
+@inject NavigationManager NavigationManager
+
+@using System;
+@using System.Security.Cryptography;
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        string state = GenerateRandomState(); // Implement this method to generate a random string for state
+        string url = FigmaService.GetAuthenticationUrl(state);
+        NavigationManager.NavigateTo(url, forceLoad: true);
+    }
+
+    public string GenerateRandomState()
+    {
+        var rng = RandomNumberGenerator.Create();
+        byte[] randomBytes = new byte[32];
+        rng.GetBytes(randomBytes);
+        return Convert.ToBase64String(randomBytes);
+    }
+}

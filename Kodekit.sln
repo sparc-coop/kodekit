@@ -22,6 +22,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web (Old)", "Kodeki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit", "Kodekit\Kodekit.csproj", "{B5674D2B-6547-4889-BFA9-467FC98EEA84}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KodekitAPI", "KodekitAPI\KodekitAPI\KodekitAPI.csproj", "{383AED06-556F-4383-9FCD-6739907E50BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KodekitAPI.Client", "KodekitAPI\KodekitAPI.Client\KodekitAPI.Client.csproj", "{F34DC4A7-5D29-41E6-9ABA-7F087A4ADEFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,14 @@ Global
 		{B5674D2B-6547-4889-BFA9-467FC98EEA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5674D2B-6547-4889-BFA9-467FC98EEA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5674D2B-6547-4889-BFA9-467FC98EEA84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383AED06-556F-4383-9FCD-6739907E50BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383AED06-556F-4383-9FCD-6739907E50BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383AED06-556F-4383-9FCD-6739907E50BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383AED06-556F-4383-9FCD-6739907E50BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F34DC4A7-5D29-41E6-9ABA-7F087A4ADEFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34DC4A7-5D29-41E6-9ABA-7F087A4ADEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34DC4A7-5D29-41E6-9ABA-7F087A4ADEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34DC4A7-5D29-41E6-9ABA-7F087A4ADEFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

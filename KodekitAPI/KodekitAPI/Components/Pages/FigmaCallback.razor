@@ -1,0 +1,73 @@
+﻿@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@page "/figma-callback"
+@inject FigmaService figmaService
+@inject NavigationManager navigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Figma Callback</PageTitle>
+
+@if (isProcessing)
+{
+    <p>Processing...</p>
+}
+else if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p>Error: @errorMessage</p>
+}
+else
+{
+    <p>Authentication successful! Access Token: @accessToken</p>
+}
+
+@code {
+    private bool isProcessing = true;
+    private string errorMessage;
+    private string accessToken;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = new Uri(navigationManager.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+
+        if (query.ContainsKey("error"))
+        {
+            errorMessage = "Error during Figma authentication: " + query["error"];
+            isProcessing = false;
+            return;
+        }
+
+        if (!query.ContainsKey("code"))
+        {
+            errorMessage = "No authorization code found.";
+            isProcessing = false;
+            return;
+        }
+
+        var code = query["code"];
+        accessToken = await ExchangeCodeForToken(code);
+        await SetTokenAsync(accessToken);
+        isProcessing = false;
+
+        if (!string.IsNullOrEmpty(accessToken))
+        {
+            navigationManager.NavigateTo("/projects", replace: true);
+        }
+    }
+    public async Task SetTokenAsync(string token)
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "authToken", token);
+        // Use sessionStorage.setItem if you prefer session storage
+    }
+    private async Task<string> ExchangeCodeForToken(string code)
+    {
+        try
+        {
+            return await figmaService.ExchangeAuthorizationCodeForToken(code);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to exchange code for token: {ex.Message}";
+            return null;
+        }
+    }
+}
