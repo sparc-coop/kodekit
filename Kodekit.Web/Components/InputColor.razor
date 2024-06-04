@@ -6,6 +6,6 @@
            type="color"
            @bind="CurrentValueAsString"
            @bind:event="oninput" />
-    <span class="hex-value">@CurrentValueAsString.ToUpper()</span>
+    <span class="hex-value">@CurrentValueAsString?.ToUpper()</span>
 </span>
  

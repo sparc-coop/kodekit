@@ -268,11 +268,11 @@
                                      _="on click toggle .collapsed on next <div/> then toggle .collapsed on me" />
                             </header>
                             <div class="colors--preview__container collapsible">
-                                <div class="preview-background">
+                                <label class="preview-background">
                                     <p>* Preview Background Color</p>
                                     <InputColor @bind-Value="PreviewBackgroundColor" />
                                     <aside class="swatch" style="background: @PreviewBackgroundColor;"></aside>
-                                </div>
+                                </label>
                                 <div class="preview-cards">
                                     <div class="card-with-image" style="background: @PreviewBackgroundColor">
                                         <ColorPreview Primary="@Model.Primary" Secondary="@Model.Secondary" Tertiary="@Model.Tertiary" />
