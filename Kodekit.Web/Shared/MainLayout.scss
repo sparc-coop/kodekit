@@ -13,9 +13,9 @@
 }
 
 .main {
-    width: 100%;
+    width: calc(100% - 160px);
     height: calc(100% - 122px);
-    padding: 0 80px;
+    margin: 0 80px;
     margin-top: 122px;
     display: flex;
     flex-direction: row;

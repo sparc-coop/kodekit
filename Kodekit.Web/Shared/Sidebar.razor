@@ -6,10 +6,12 @@
             <div class="category hide-cursor-follow">
                 <div class="heading hide-cursor-follow">Overview</div>
                 <div class="links hide-cursor-follow">
-                    <NavLink href="@Link("introduction")" Match="NavLinkMatch.All">
+                    <NavLink href="@Link("introduction")" Match="NavLinkMatch.All" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Introduction
                     </NavLink>
-                    <NavLink href="@Link("installation")" Match="NavLinkMatch.All">
+                    <NavLink href="@Link("installation")" Match="NavLinkMatch.All" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Installation
                     </NavLink>
                     @* <NavLink href="@Link("themes")" Match="NavLinkMatch.All">
@@ -23,16 +25,20 @@
             <div class="category hide-cursor-follow">
                 <div class="heading hide-cursor-follow">Base Styles</div>
                 <div class="links hide-cursor-follow">
-                    <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All">
+                    <NavLink href="@Link("global-settings")" Match="NavLinkMatch.All" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Global Settings
                     </NavLink>
-                    <NavLink href="@Link("typography")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseTypography)">
+                    <NavLink href="@Link("typography")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseTypography)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Typography
                     </NavLink>
-                    <NavLink href="@Link("colors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseColors)">
+                    <NavLink href="@Link("colors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseColors)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Colors
                     </NavLink>
-                    <NavLink href="@Link("icons")" Match="NavLinkMatch.All">
+                    <NavLink href="@Link("icons")" Match="NavLinkMatch.All" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Icons
                     </NavLink>
                 </div>
@@ -40,22 +46,28 @@
             <div class="category html-elements hide-cursor-follow">
                 <div class="heading hide-cursor-follow">HTML Elements</div>
                 <div class="links hide-cursor-follow">
-                    <NavLink href="@Link("buttons")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseButtons)">
+                    <NavLink href="@Link("buttons")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseButtons)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Buttons
                     </NavLink>
-                    <NavLink href="@Link("inputs")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)">
+                    <NavLink href="@Link("inputs")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Inputs & Textareas
                     </NavLink>
-                    <NavLink href="@Link("selectors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)">
+                    <NavLink href="@Link("selectors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseInputs)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Selectors & Toggles
                     </NavLink>
-                    <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseDropdowns)">
+                    <NavLink href="@Link("dropdowns")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseDropdowns)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Dropdowns
                     </NavLink>
-                    <NavLink href="@Link("anchors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseAnchors)">
+                    <NavLink href="@Link("anchors")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseAnchors)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Anchors
                     </NavLink>
-                    <NavLink href="@Link("lists")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseLists)">
+                    <NavLink href="@Link("lists")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseLists)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Lists
                     </NavLink>
                     @*<NavLink href="@Link("layout")" Match="NavLinkMatch.All">
@@ -66,7 +78,8 @@
             <div class="category hide-cursor-follow">
                 <div class="heading hide-cursor-follow">Utility</div>
                 <div class="links hide-cursor-follow">
-                    <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseShadows)">
+                    <NavLink href="@Link("box-shadow")" Match="NavLinkMatch.All" class="@EnabledIf(Settings.UseShadows)" ActiveClass="active">
+                        <img src="images/selected-icon.svg" />
                         Box Shadow
                     </NavLink>
                 </div>
@@ -84,34 +97,34 @@
 
 @inject IJSRuntime Js
 @code {
-bool ShowMobileMenu = false;
-string Show = "";
+    bool ShowMobileMenu = false;
+    string Show = "";
 
-[Parameter] public string kitId { get; set; }
-KitSettings Settings;
+    [Parameter] public string kitId { get; set; }
+    KitSettings Settings;
 
-protected override async Task OnParametersSetAsync()
-{
-    if (kitId != null)
-        Settings = (await PublicApi().GetSettingsAsync(kitId))?.Settings;
-}
+    protected override async Task OnParametersSetAsync()
+    {
+        if (kitId != null)
+            Settings = (await PublicApi().GetSettingsAsync(kitId))?.Settings;
+    }
 
-private void ToggleMobile()
-{
-    ShowMobileMenu = !ShowMobileMenu;
+    private void ToggleMobile()
+    {
+        ShowMobileMenu = !ShowMobileMenu;
 
-    if (ShowMobileMenu == true)
-        Show = "show-mobile";
-    else
-        Show = "";
-}
+        if (ShowMobileMenu == true)
+            Show = "show-mobile";
+        else
+            Show = "";
+    }
 
-private string Link(string page) => $"/{kitId}/{page}";
+    private string Link(string page) => $"/{kitId}/{page}";
 
-private string EnabledIf(bool isEnabled) => isEnabled ? "" : "disabled";
+    private string EnabledIf(bool isEnabled) => isEnabled ? "" : "disabled";
 
-private async Task OpenPreview()
-{
-    await Js.InvokeVoidAsync("open", $"/{kitId}/preview", "_blank");
-}
+    private async Task OpenPreview()
+    {
+        await Js.InvokeVoidAsync("open", $"/{kitId}/preview", "_blank");
+    }
 }

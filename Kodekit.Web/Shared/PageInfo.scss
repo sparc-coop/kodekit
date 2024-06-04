@@ -2,7 +2,7 @@
 
 .page-info {
     display: block;
-    width: 100%;
+    width: calc(100% - 260px);
     height: 61px;
     position: fixed;
     top: 120px;
@@ -11,7 +11,7 @@
     z-index: 50;
 
     &--container {
-        width: calc(100% - 260px);
+        width: 100%;
         height: 55px;
         padding: 15px;
         margin: 0;

@@ -2023,9 +2023,9 @@
 }
 
 .main {
-  width: 100%;
+  width: calc(100% - 160px);
   height: calc(100% - 122px);
-  padding: 0 80px;
+  margin: 0 80px;
   margin-top: 122px;
   display: flex;
   flex-direction: row;
@@ -2332,11 +2332,12 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   width: fit-content;
   max-width: 240px;
   height: 100%;
-  padding: 40px 40px 80px 4px;
+  padding: 40px 40px 80px 0px;
+  margin-left: -15px;
   position: fixed;
   overflow-y: scroll;
   box-sizing: border-box;
-  background: #0E0E0E;
+  background: transparent;
   z-index: 900;
 }
 .sidebar > * {
@@ -2351,7 +2352,7 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
   z-index: 1000;
 }
 @media screen and (max-width: 780px) {
@@ -2378,9 +2379,11 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   width: fit-content;
 }
 .sidebar .menu .heading {
+  padding-left: 15px;
+  margin-bottom: 15px;
   font-family: "QuantaGroteskPro";
   font-weight: 500;
-  font-size: 23px;
+  font-size: 20px;
   line-height: 100%;
 }
 .sidebar .menu .links {
@@ -2388,6 +2391,7 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   flex-direction: column;
 }
 .sidebar .menu .links a {
+  padding-left: 15px;
   margin-bottom: 13px;
   color: #FFFFFF;
   opacity: 0.7;
@@ -2397,9 +2401,8 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   line-height: 100%;
   text-decoration: none;
   transition: 200ms ease-in-out;
-}
-.sidebar .menu .links a:first-of-type {
-  padding-top: 18px;
+  position: relative;
+  z-index: 1000;
 }
 .sidebar .menu .links a:last-of-type {
   margin-bottom: 0;
@@ -2409,6 +2412,22 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 }
 .sidebar .menu .links a:active {
   opacity: 0.7;
+}
+.sidebar .menu .links a img {
+  display: none;
+  position: absolute;
+  top: 4px;
+  left: 0px;
+  z-index: 1000;
+}
+.sidebar .menu .links a.active {
+  opacity: 1;
+}
+.sidebar .menu .links a.active img {
+  display: inline;
+  /*vertical-align: middle;
+  margin-top: -3px;
+  margin-right: 5px;*/
 }
 
 .banner {
@@ -2477,7 +2496,7 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 
 .page-info {
   display: block;
-  width: 100%;
+  width: calc(100% - 260px);
   height: 61px;
   position: fixed;
   top: 120px;
@@ -2486,7 +2505,7 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   z-index: 50;
 }
 .page-info--container {
-  width: calc(100% - 260px);
+  width: 100%;
   height: 55px;
   padding: 15px;
   margin: 0;
