@@ -1,0 +1,72 @@
+@import "../_variables.scss";
+
+.page-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 20px;
+    padding-bottom: 40px;
+
+    > * {
+        height: 66px;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h5 {
+            font-size: 14px;
+            line-height: 140%;
+        }
+
+        button {
+            width: 200px;
+            padding: 8px 12px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            display: flex;
+            gap: 10px;
+            background: $grey-800;
+            color: $white;
+            font-size: 14px;
+            line-height: 140%;
+            transition: 250ms ease-in-out;
+
+            &:hover {
+                border: 1px solid $white;
+            }
+
+            &:active {
+                background: $white;
+                color: $background;
+            }
+
+            span {
+                width: 140px;
+                text-align: center;
+            }
+
+            img {
+                width: 14px;
+                height: 20px;
+            }
+        }
+
+        &.previous-page {
+            align-items: flex-start;
+
+            button {
+                justify-content: flex-start;
+            }
+        }
+
+        &.next-page {
+            align-items: flex-end;
+
+            button {
+                justify-content: flex-end;
+            }
+        }
+    }
+}

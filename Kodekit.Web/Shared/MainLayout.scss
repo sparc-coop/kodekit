@@ -14,8 +14,9 @@
 
 .main {
     width: 100%;
+    height: calc(100% - 122px);
     padding: 0 80px;
-    margin-top: 171px;
+    margin-top: 122px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -23,8 +24,11 @@
 
     &__container {
         width: 100%;
+        height: calc(100% - 120px);
         margin-left: 260px;
-        padding-top: 40px;
+        padding-top: 105px;
+        padding-bottom: 150px;
+        position: relative;
     }
 
     @media screen and (max-width: 780px) {

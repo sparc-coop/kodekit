@@ -1,0 +1,40 @@
+﻿<div class="page-nav">
+    <div class="previous-page">
+        @if (PreviousPage != null)
+        {
+            <h5>Previous Page</h5>
+            <button class="previous-btn" @onclick="GoToPreviousPage">
+                <img src="images/collapse-icon.svg" style="transform: rotate(90deg);" />
+                <span>@PreviousPage</span>
+            </button>
+        }
+    </div>
+    <div class="next-page">
+        @if (NextPage != null)
+        {
+            <h5>Next Page</h5>
+            <button class="next-btn" @onclick="GoToNextPage">
+                <span>@NextPage</span>
+                <img src="images/collapse-icon.svg" style="transform: rotate(270deg);" />
+            </button>
+        }
+    </div>
+</div>
+
+@inject NavigationManager Navigation
+
+@code {
+    [Parameter] public string KitId { get; set; }
+    [Parameter] public string PreviousPage { get; set; }
+    [Parameter] public string NextPage { get; set; }
+
+    public void GoToPreviousPage()
+    {
+        Navigation.NavigateTo($"/{KitId}/{PreviousPage.ToLower().Replace(" ", "-")}");
+    }
+
+    public void GoToNextPage()
+    {
+        Navigation.NavigateTo($"/{KitId}/{NextPage.ToLower().Replace(" ", "-")}");
+    }
+}
