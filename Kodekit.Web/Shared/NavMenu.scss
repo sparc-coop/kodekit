@@ -28,7 +28,9 @@
 
 nav {
     width: 100%;
-    padding: 48px 80px;
+    padding: 0px 80px;
+    padding-top: 65px;
+    padding-bottom: 25px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -47,13 +49,7 @@ nav {
         }
     }
 
-    .header, .navmenu, .menu-right {
-        //padding-top: 48px;
-    }
-
     .header {
-        //padding-left: 80px;
-        //padding-right: 160px;
         z-index: 1000;
 
         .logo {
