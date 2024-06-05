@@ -22,7 +22,7 @@
 @import "Pages/BaseStyles/GlobalSettings";
 @import "Pages/BaseStyles/PreviewPage";
 @import "Pages/Effects/BoxShadow";
-@import "Pages/Overview/Installation";
+@import "Pages/Overview/Introduction";
 @import "Pages/Overview/Installation";
 @import "Pages/Overview/Themes";
 @import "Pages/Overview/ReleaseNotes";
@@ -64,9 +64,57 @@
 }
 
 @font-face {
+    font-family: 'EncodeSans';
+    font-weight: 500;
+    src: url(wwwroot/fonts/EncodeSans-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_SemiExpanded';
+    font-weight: 300;
+    src: url(wwwroot/fonts/EncodeSans_SemiExpanded-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_SemiExpanded';
+    font-weight: 400;
+    src: url(wwwroot/fonts/EncodeSans_SemiExpanded-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_SemiExpanded';
+    font-weight: 500;
+    src: url(wwwroot/fonts/EncodeSans_SemiExpanded-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_SemiExpanded';
+    font-weight: 700;
+    src: url(wwwroot/fonts/EncodeSans_SemiExpanded-Bold.ttf) format('truetype');
+}
+
+@font-face {
     font-family: 'EncodeSans_Expanded';
     font-weight: 300;
     src: url(wwwroot/fonts/EncodeSans_Expanded-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_Expanded';
+    font-weight: 400;
+    src: url(wwwroot/fonts/EncodeSans_Expanded-Rgular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_Expanded';
+    font-weight: 500;
+    src: url(wwwroot/fonts/EncodeSans_Expanded-Medium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'EncodeSans_Expanded';
+    font-weight: 700;
+    src: url(wwwroot/fonts/EncodeSans_Expanded-Bold.ttf) format('truetype');
 }
 
 @font-face {
@@ -98,14 +146,21 @@ body {
     margin: 0;
     overflow-x: hidden;
     background: $background;
-    font-family: 'EncodeSans', sans-serif;
+    font-family: 'EncodeSans_SemiExpanded', sans-serif;
     font-weight: 400;
     color: $white;
 
-    app  {
+    app {
         position: relative;
         z-index: 500;
         cursor: none;
+    }
+
+    p {
+        font-family: 'EncodeSans_SemiExpanded';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
     }
 }
 

@@ -1,8 +1,7 @@
 ﻿@import "../_variables.scss";
 
 .sidebar {
-    width: fit-content;
-    max-width: 240px;
+    width: 224px;
     height: 100%;
     padding: 40px 40px 80px 0px;
     margin-left: -15px;
@@ -56,11 +55,12 @@
 
         .heading {
             padding-left: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             font-family: 'QuantaGroteskPro';
             font-weight: 500;
-            font-size: 20px;
+            font-size: 14px;
             line-height: 100%;
+            color: $grey-200;
         }
 
         .links {
@@ -68,8 +68,8 @@
             flex-direction: column;
 
             a {
+                padding: 4px 0;
                 padding-left: 15px;
-                margin-bottom: 13px;
                 color: $white;
                 opacity: 0.7;
                 font-family: 'EncodeSans';
@@ -80,10 +80,6 @@
                 transition: 200ms ease-in-out;
                 position: relative;
                 z-index: 1000;
-
-                &:last-of-type {
-                    margin-bottom: 0;
-                }
 
                 &:hover {
                     opacity: 1;
@@ -96,7 +92,7 @@
                 img {
                     display: none;
                     position: absolute;
-                    top: 4px;
+                    top: 8px;
                     left: 0px;
                     z-index: 1000;
                 }

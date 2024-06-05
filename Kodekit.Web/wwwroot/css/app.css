@@ -125,17 +125,17 @@
   margin: 0 auto;
   position: relative;
 }
-.page header.page--header {
-  padding-bottom: 100px;
+.page header.page--header, .page header.section--header {
+  padding-bottom: 80px;
 }
-.page header.page--header .title {
+.page header.page--header .title, .page header.section--header .title {
   font-family: "QuantaGroteskPro";
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;
   color: #CCCCCC;
 }
-.page header.page--header h2 {
+.page header.page--header h2, .page header.section--header h2 {
   margin-bottom: 20px;
   font-family: "QuantaGroteskPro";
   font-weight: 700;
@@ -143,7 +143,7 @@
   line-height: 120%;
   color: #FFFFFF;
 }
-.page header.page--header p {
+.page header.page--header p, .page header.section--header p {
   padding-top: 0px;
   font-family: "EncodeSans";
   font-weight: 400;
@@ -962,7 +962,8 @@
 .colors--preview__container .preview-background aside {
   width: 26px;
   height: 14px;
-  margin: auto 0;
+  margin-top: 5px;
+  margin-left: 5px;
   border: 1px solid #FFFFFF;
   border-radius: 4px;
 }
@@ -1385,6 +1386,50 @@
   color: #0E0E0E;
 }
 
+.introduction .content section {
+  margin-top: 0;
+  padding: 40px 0;
+  padding-bottom: 40px;
+  border-bottom: none;
+}
+.introduction .content section h3 {
+  margin-bottom: 20px;
+  font-family: "QuantaGroteskPro";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%; /* 26px */
+}
+.introduction .content section p {
+  font-family: "EncodeSans_SemiExpanded";
+  font-size: 16px;
+  line-height: 160%;
+  margin-bottom: 12px;
+}
+.introduction .content section .start-btn {
+  width: 243px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: #1E1E1E;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+  transition: 250ms ease-in-out;
+}
+.introduction .content section .start-btn:hover {
+  border: 1px solid #FFFFFF;
+}
+.introduction .content section .start-btn:active {
+  background: #FFFFFF;
+  color: #0E0E0E;
+}
+
+.installation .section--header {
+  margin-bottom: 0px;
+  padding-bottom: 80px;
+}
 .installation section {
   padding-bottom: 100px;
   border-bottom: 1px solid rgba(200, 200, 200, 0.3);
@@ -1392,13 +1437,21 @@
 .installation section:last-of-type {
   border: none;
 }
-.installation section header div {
-  margin-bottom: 40px;
+.installation .option-one header .flex {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 20px;
+}
+.installation .option-one header .flex p {
+  font-size: 16px;
+  line-height: 160%;
+  opacity: 0.7;
 }
 .installation .instructions {
   overflow: hidden;
   list-style: decimal;
-  padding-left: 24px;
+  margin: 0 40px;
 }
 .installation .instructions li h4 {
   height: 26px;
@@ -2021,14 +2074,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 40px;
+  gap: 20px;
 }
 .main__container {
   width: 100%;
   height: calc(100% - 113px);
-  margin-left: 260px;
+  margin-left: 244px;
   padding-top: 105px;
-  padding-bottom: 150px;
   position: relative;
 }
 @media screen and (max-width: 780px) {
@@ -2322,8 +2374,7 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 }
 
 .sidebar {
-  width: fit-content;
-  max-width: 240px;
+  width: 224px;
   height: 100%;
   padding: 40px 40px 80px 0px;
   margin-left: -15px;
@@ -2373,19 +2424,20 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 }
 .sidebar .menu .heading {
   padding-left: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-family: "QuantaGroteskPro";
   font-weight: 500;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 100%;
+  color: #CCCCCC;
 }
 .sidebar .menu .links {
   display: flex;
   flex-direction: column;
 }
 .sidebar .menu .links a {
+  padding: 4px 0;
   padding-left: 15px;
-  margin-bottom: 13px;
   color: #FFFFFF;
   opacity: 0.7;
   font-family: "EncodeSans";
@@ -2397,9 +2449,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   position: relative;
   z-index: 1000;
 }
-.sidebar .menu .links a:last-of-type {
-  margin-bottom: 0;
-}
 .sidebar .menu .links a:hover {
   opacity: 1;
 }
@@ -2409,7 +2458,7 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 .sidebar .menu .links a img {
   display: none;
   position: absolute;
-  top: 4px;
+  top: 8px;
   left: 0px;
   z-index: 1000;
 }
@@ -2489,11 +2538,11 @@ nav .menu-right .login-display .dropdown-menu .logout span {
 
 .page-info {
   display: block;
-  width: calc(100% - 260px);
+  width: calc(100% - 244px);
   height: 61px;
   position: fixed;
-  top: 120px;
-  left: 260px;
+  top: 113px;
+  left: 244px;
   padding: 0 80px;
   z-index: 50;
 }
@@ -2862,8 +2911,6 @@ nav .menu-right .login-display .dropdown-menu .logout span {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  bottom: 20px;
   padding-bottom: 40px;
 }
 .page-nav > * {
@@ -3625,9 +3672,49 @@ button.card-button-secondary {
   src: url(../fonts/EncodeSans-Regular.ttf) format("truetype");
 }
 @font-face {
+  font-family: "EncodeSans";
+  font-weight: 500;
+  src: url(../fonts/EncodeSans-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_SemiExpanded";
+  font-weight: 300;
+  src: url(../fonts/EncodeSans_SemiExpanded-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_SemiExpanded";
+  font-weight: 400;
+  src: url(../fonts/EncodeSans_SemiExpanded-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_SemiExpanded";
+  font-weight: 500;
+  src: url(../fonts/EncodeSans_SemiExpanded-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_SemiExpanded";
+  font-weight: 700;
+  src: url(../fonts/EncodeSans_SemiExpanded-Bold.ttf) format("truetype");
+}
+@font-face {
   font-family: "EncodeSans_Expanded";
   font-weight: 300;
   src: url(../fonts/EncodeSans_Expanded-Light.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 400;
+  src: url(../fonts/EncodeSans_Expanded-Rgular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 500;
+  src: url(../fonts/EncodeSans_Expanded-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "EncodeSans_Expanded";
+  font-weight: 700;
+  src: url(../fonts/EncodeSans_Expanded-Bold.ttf) format("truetype");
 }
 @font-face {
   font-family: "FiraCode";
@@ -3654,7 +3741,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   background: #0E0E0E;
-  font-family: "EncodeSans", sans-serif;
+  font-family: "EncodeSans_SemiExpanded", sans-serif;
   font-weight: 400;
   color: #FFFFFF;
 }
@@ -3662,6 +3749,12 @@ body app {
   position: relative;
   z-index: 500;
   cursor: none;
+}
+body p {
+  font-family: "EncodeSans_SemiExpanded";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
 }
 
 a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:hover, li:hover {

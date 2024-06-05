@@ -20,14 +20,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 40px;
+    gap: 20px;
 
     &__container {
         width: 100%;
         height: calc(100% - 113px);
-        margin-left: 260px;
+        margin-left: 244px;
         padding-top: 105px;
-        padding-bottom: 150px;
         position: relative;
     }
 
