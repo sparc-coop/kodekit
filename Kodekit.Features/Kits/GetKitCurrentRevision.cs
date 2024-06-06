@@ -1,4 +1,6 @@
-﻿namespace Kodekit.Features;
+﻿using Kodekit.Features.Kits.Entities;
+
+namespace Kodekit.Features;
 
 public class GetKitCurrentRevision : PublicFeature<string, KitRevision>
 {
@@ -13,5 +15,8 @@ public class GetKitCurrentRevision : PublicFeature<string, KitRevision>
     {
         var currentRevision = await Kits.GetCurrentRevisionAsync(kitId);
         return currentRevision;
+
+        // Return FigmaKit instead of KitRevision
+        // return new FigmaKit(currentRevision);
     }
 }
