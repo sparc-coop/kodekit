@@ -11,41 +11,37 @@
             </p>
         </header>
         <div class="content">
-            <section _="on intersection(intersecting) having threshold 0.25
-                        if intersecting transition opacity to 1 then set :done to 1
-                        else if :done != 1 then transition opacity to 0">
-                <header>
-                    <h3>Icon Sets</h3>
-                    <p class="subheader">
-                        There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
-                    </p>
-                </header>
-                @if (kit != null && Model != null)
-                {
-                    <EditForm EditContext="@Context">
-                        <section _="on intersection(intersecting) having threshold 0.25
+            @if (kit != null && Model != null)
+            {
+                <EditForm EditContext="@Context">
+                    <section _="on intersection(intersecting) having threshold 0.25
                                 if intersecting transition opacity to 1 then set :done to 1
                                 else if :done != 1 then transition opacity to 0">
-                            <label>
-                                <InputSelect @bind-Value="Model.Name">
-                                    <option>Select:</option>
-                                    <option value="Material">Material</option>
-                                    <option value="Remix">Remix</option>
-                                    <option value="CSS">CSS</option>
-                                    <option value="FontAwesome">FontAwesome</option>
-                                </InputSelect>
-                                Icon Set
-                            </label>
-                            <Preview Kit=kit>
-                                @foreach (var icon in Model.IconsList)
-                                {
-                                    <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
-                                }
-                            </Preview>
-                        </section>
-                    </EditForm>
-                }
-            </section>
+                        <header class="section--header">
+                            <h3>Icon Sets</h3>
+                            <p class="subheader">
+                                There are several icon libraries available, each with a different style and syntax for use. The selected library will be automatically integrated into your stylesheet.
+                            </p>
+                        </header>
+                        <label>
+                            <InputSelect @bind-Value="Model.Name">
+                                <option>Select:</option>
+                                <option value="Material">Material</option>
+                                <option value="Remix">Remix</option>
+                                <option value="CSS">CSS</option>
+                                <option value="FontAwesome">FontAwesome</option>
+                            </InputSelect>
+                            Icon Set
+                        </label>
+                        <Preview Kit=kit>
+                            @foreach (var icon in Model.IconsList)
+                            {
+                                <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                            }
+                        </Preview>
+                    </section>
+                </EditForm>
+            }
         </div>
     </div>
 </div>
