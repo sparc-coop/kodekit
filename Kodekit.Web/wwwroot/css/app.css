@@ -161,7 +161,7 @@
 }
 .page .collapsible {
   max-height: 100%;
-  padding-top: 77px;
+  margin-top: 80px;
   overflow: hidden;
   transition: max-height 250ms ease-in-out;
 }
@@ -181,7 +181,6 @@
 .page section header {
   width: 100%;
   height: fit-content;
-  margin-bottom: 40px;
   color: #FFFFFF;
 }
 .page section header h3 {
@@ -362,8 +361,7 @@
   line-height: 160%;
 }
 .page .preview-example-container .preview-info {
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: 20px 0;
   font-family: "EncodeSans";
   font-style: normal;
   font-weight: 200;
@@ -380,6 +378,57 @@
 }
 .page .preview-example-container .preview-info a.preview-link:hover {
   color: #B2B2B2;
+}
+.page .preview-example-container .preview-background {
+  width: fit-content;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.page .preview-example-container .preview-background p {
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 160%;
+}
+.page .preview-example-container .preview-background .inputcolor {
+  /*width: 26px;
+      height: 14px;
+      border: 1px solid #FFFFFF;
+      border-radius: 4px;
+      margin-top: 1px;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  background: transparent;
+  border: transparent;
+}
+.page .preview-example-container .preview-background .inputcolor input.valid {
+  visibility: hidden;
+}
+.page .preview-example-container .preview-background .inputcolor .hex-value {
+  display: none;
+  position: absolute;
+  bottom: -5px;
+  left: 2px;
+  color: #FFFFFF;
+  font-family: "EncodeSans";
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 5px;
+}
+.page .preview-example-container .preview-background aside {
+  width: 26px;
+  height: 14px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
 }
 .page .preview-example-container pre {
   width: 100%;
@@ -882,7 +931,7 @@
 }
 .colors .subcolor-display {
   display: flex;
-  gap: 25px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 .colors--greyscale .color-display {
@@ -891,11 +940,11 @@
 .colors--greyscale .color-main {
   display: flex;
   flex-direction: row;
-  gap: 20px;
 }
 .colors--greyscale .subcolor-display {
   height: 154px;
   margin: auto 0;
+  margin-left: 15px;
 }
 .colors--greyscale .subcolor-display .color-info {
   justify-content: space-between;
@@ -903,7 +952,7 @@
 .colors--system .color-display {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 0px;
 }
 .colors .preview-example-container .preview-example {
   display: none;
@@ -1102,6 +1151,7 @@
   color: #0E0E0E;
 }
 .typography .content .subsection .fontsize-overrides {
+  margin-top: 20px;
   display: flex;
   gap: 20px;
 }

@@ -57,14 +57,13 @@
         line-height: 160%;
         color: $grey-300;
     }
-
-/*    .content {
+    /*    .content {
         padding-bottom: 100px;
     }
 */
     .collapsible {
         max-height: 100%;
-        padding-top: 77px;
+        margin-top: 80px;
         overflow: hidden;
         transition: max-height 250ms ease-in-out;
     }
@@ -87,7 +86,6 @@
         header {
             width: 100%;
             height: fit-content;
-            margin-bottom: 40px;
             color: $white;
 
             h3 {
@@ -310,8 +308,7 @@
         }
 
         .preview-info {
-            margin-top: 20px;
-            margin-bottom: 40px;
+            margin: 20px 0;
             font-family: 'EncodeSans';
             font-style: normal;
             font-weight: 200;
@@ -330,6 +327,64 @@
                         color: $grey-300;
                     }
                 }
+            }
+        }
+
+        .preview-background {
+            width: fit-content;
+            height: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            margin-bottom: 20px;
+
+            p {
+                font-size: 14px;
+                color: $white;
+                line-height: 160%;
+            }
+
+            .inputcolor {
+                /*width: 26px;
+                    height: 14px;
+                    border: 1px solid #FFFFFF;
+                    border-radius: 4px;
+                    margin-top: 1px;*/
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 500;
+                background: transparent;
+                border: transparent;
+
+                input.valid {
+                    visibility: hidden;
+                }
+
+                .hex-value {
+                    display: none;
+                    position: absolute;
+                    bottom: -5px;
+                    left: 2px;
+                    color: $white;
+                    font-family: 'EncodeSans';
+                    font-size: 14px;
+                    line-height: 100%;
+                    margin-bottom: 5px;
+                }
+            }
+
+            aside {
+                width: 26px;
+                height: 14px;
+                margin-top: 5px;
+                margin-left: 5px;
+                border: 1px solid #FFFFFF;
+                border-radius: 4px;
             }
         }
 

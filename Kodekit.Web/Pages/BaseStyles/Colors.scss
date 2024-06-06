@@ -102,7 +102,7 @@
 
     .subcolor-display {
         display: flex;
-        gap: 25px;
+        gap: 30px;
         flex-wrap: wrap;
     }
 
@@ -114,12 +114,12 @@
         .color-main {
             display: flex;
             flex-direction: row;
-            gap: 20px;
         }
 
         .subcolor-display {
             height: 154px;
             margin: auto 0;
+            margin-left: 15px;
 
             .color-info {
                 justify-content: space-between;
@@ -131,7 +131,7 @@
         .color-display {
             display: flex;
             flex-direction: row;
-            gap: 20px;
+            gap: 0px;
         }
     }
 
