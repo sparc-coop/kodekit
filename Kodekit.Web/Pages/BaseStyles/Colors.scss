@@ -27,15 +27,15 @@
 
     .color-main {
         width: 100%;
-        max-width: 136px;
+        max-width: 125px;
         height: 100%;
         font-size: 16px;
     }
 
     .edit-color {
-        width: 140px;
+        width: 125px;
         position: relative;
-        padding: 0px 15px 25px 15px;
+        padding: 0px 15px 15px 15px;
         border: 2px solid transparent;
         border-radius: 8px;
         transition: 250ms ease-in-out;
@@ -50,7 +50,7 @@
         }
 
         .color-card {
-            max-width: 140px;
+            max-width: 120px;
             z-index: 1;
             color: $white;
 
@@ -64,7 +64,7 @@
 
                 aside {
                     position: absolute;
-                    right: 10px;
+                    right: 15px;
                 }
             }
         }
@@ -85,7 +85,7 @@
 
             .hex-value {
                 position: absolute;
-                bottom: 22px;
+                bottom: 15px;
                 left: 15px;
                 color: var(--grey-200);
                 font-family: 'EncodeSans';
@@ -107,13 +107,18 @@
     }
 
     &--greyscale {
+        .color-display {
+            display: block;
+        }
+
         .color-main {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 20px;
         }
 
         .subcolor-display {
+            height: 154px;
             margin: auto 0;
 
             .color-info {
@@ -126,6 +131,13 @@
         .color-display {
             display: flex;
             flex-direction: row;
+            gap: 20px;
+        }
+    }
+
+    .preview-example-container {
+        .preview-example {
+            display: none;
         }
     }
 

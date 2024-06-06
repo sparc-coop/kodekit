@@ -45,18 +45,18 @@
                             Last Saved: @kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
                         </div>
                         <div class="actions hide-cursor-follow">
-                            <button class="hide-cursor-follow">
+                            <a class="hide-cursor-follow" href="@($"/{kitId}/preview")" title="Preview" target="_blank" aria-label="Preview">
                                 <PreviewIcon />
-                            </button>
-                            <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank">
+                            </a>
+                            <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{kitId}.css")" title="Download" target="_blank" aria-label="Download">
                                 <DownloadIcon />
                             </a>
-                            <button class="delete-kit hide-cursor-follow" @onclick="@(e => ShowDeleteModal(kit.Id))">
+                            <button class="delete-kit hide-cursor-follow" @onclick="ShowDeleteModal" title="Delete" aria-label="Delete">
                                 <DeleteIcon />
                             </button>
-                            <button class="hide-cursor-follow">
+                            @* <button class="hide-cursor-follow" title="More" aria-label="More">
                                 <MoreIcon />
-                             </button>
+                             </button> *@
                         </div>
                     </Authorized>
                     <NotAuthorized>
@@ -238,9 +238,9 @@
         }
     }
 
-    private void ShowDeleteModal(string selected)
+    private void ShowDeleteModal()
     {
-        SelectedVersion = selected;
+        SelectedVersion = kitId;
         Show = "active";
     }
 
@@ -288,11 +288,11 @@
         await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = id, Name = name });
     }
 
-    private void GoToPreview(string id)
-    {
-        ShowKitOptions = "";
-        Nav.NavigateTo("/" + id + "/preview");
-    }
+    // private void GoToPreview()
+    // {
+    //     ShowKitOptions = "";
+    //     Nav.NavigateTo($"/{kitId}/preview");
+    // }
 
     private async Task SetAutoPublish()
     {

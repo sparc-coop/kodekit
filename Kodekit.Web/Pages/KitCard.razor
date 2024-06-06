@@ -15,18 +15,18 @@
                     </span>
 
                     <div class="kit-actions">
-                        <button>
+                        <a class="hide-cursor-follow" href="@($"/{Kit.Id}/preview")" title="Preview" target="_blank" aria-label="Preview">
                             <PreviewIcon />
-                        </button>
-                        <a href="@($"{Config["ApiUrl"]}/{Kit.KitId}.css")" title="Download" target="_blank">
+                        </a>
+                        <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{Kit.Id}.css")" title="Download" target="_blank" aria-label="Download">
                             <DownloadIcon />
                         </a>
-                        <button class="delete-kit" @onclick="@(e => ShowDeleteModal(Kit.Id))">
+                        <button class="delete-kit hide-cursor-follow" @onclick="ShowDeleteModal" title="Delete" aria-label="Delete">
                             <DeleteIcon />
                         </button>
-                        <button>
+                        @* <button class="hide-cursor-follow" title="More" aria-label="More">
                             <MoreIcon />
-                         </button>
+                        </button> *@
                     </div>
                 </Authorized>
                 <NotAuthorized>
@@ -104,9 +104,9 @@
         Nav.NavigateTo($"/{kit}/introduction");
     }
 
-    private void ShowDeleteModal(string selected)
+    private void ShowDeleteModal()
     {
-        SelectedVersion = selected;
+        SelectedVersion = Kit.Id;
         Show = "active";
     }
 

@@ -1,13 +1,13 @@
 ﻿<div class="@Show">
-    <div class="modal delete-kit">
+    <div class="modal edit-name">
         <div class="overlay" @onclick="Close"></div>
         <div class="modal--container">
             <span class="material-icons button--close" @onclick="Close">close</span>
-            <header>Delete Kit</header>
-            <p>
-                Are you sure you want to delete this kit?
-            </p>
-            <button @onclick="DeleteKit" class="button--confirm">Confirm & Delete</button>
+            <header>Edit Kit Name</header>
+            <form>
+                <input type="text" @bind-value="@Kit.Name" />
+            </form>
+            <button @onclick="UpdateKit" class="button--confirm">Save</button>
             <button @onclick="Close">Cancel</button>
         </div>
     </div>
@@ -27,7 +27,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if(!String.IsNullOrEmpty(SelectedKit))
+        if (!String.IsNullOrEmpty(SelectedKit))
         {
             Kit = await PublicApi().GetKitAsync(SelectedKit);
         }
@@ -38,10 +38,8 @@
         await CloseModal.InvokeAsync();
     }
 
-    private async Task DeleteKit()
+    private async Task UpdateKit()
     {
-        await Api.DeleteKitAsync(Kit.KitId);
-        Nav.NavigateTo("/", forceLoad: true);
-        await CloseModal.InvokeAsync();
+        await PublicApi().UpdateKitAsync(new UpdateKitRequest { KitId = Kit.Id, Name = Kit.Name, IsAutoPublish = Kit.IsAutoPublish ?? false });
     }
 }
