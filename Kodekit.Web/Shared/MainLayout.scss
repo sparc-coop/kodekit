@@ -13,7 +13,22 @@
 }
 
 .main {
-    margin-top: 171px;
+    width: calc(100% - 160px);
+    height: calc(100% - 113px);
+    margin: 0 80px;
+    margin-top: 113px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+
+    &__container {
+        width: 100%;
+        height: calc(100% - 113px);
+        margin-left: 244px;
+        padding-top: 105px;
+        position: relative;
+    }
 
     @media screen and (max-width: 780px) {
         margin-left: 0;

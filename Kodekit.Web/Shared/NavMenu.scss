@@ -28,12 +28,20 @@
 
 nav {
     width: 100%;
-    padding-bottom: 38px;
+    padding: 0px 80px;
+    padding-top: 65px;
+    padding-bottom: 25px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     background: $background;
+    position: relative;
     z-index: 1000;
+
+    & > * {
+        position: relative;
+        z-index: 1000;
+    }
 
     &:hover {
         .navmenu .menu .category .links {
@@ -41,13 +49,7 @@ nav {
         }
     }
 
-    .header, .navmenu, .menu-right {
-        padding-top: 48px;
-    }
-
     .header {
-        padding-left: 80px;
-        padding-right: 160px;
         z-index: 1000;
 
         .logo {
@@ -73,7 +75,6 @@ nav {
 
         .mobile {
             display: none;
-            cursor: pointer;
             position: absolute;
             left: 25px;
 
@@ -90,7 +91,7 @@ nav {
     .menu {
         overflow: hidden;
         display: flex;
-        gap: 60px;
+        justify-content: space-between;
         z-index: 1000;
 
         @media screen and (max-width: 780px) {
@@ -194,14 +195,12 @@ nav {
     }*/
 
     .menu-right {
-        width: 100%;
-        position: relative;
         background: transparent;
         z-index: 1000;
 
         .login-display {
-            position: absolute;
-            right: 80px;
+            position: relative;
+            z-index: 1000;
 
             .login {
                 font-family: 'QuantaGroteskPro';
@@ -220,13 +219,13 @@ nav {
 
             .user-menu {
                 button {
-                    margin-bottom: 18px;
+                    width: 100%;
                     font-family: 'QuantaGroteskPro';
                     font-weight: 500;
                     font-size: 23px;
                     line-height: 100%;
                     color: $white;
-                    cursor: pointer;
+                    white-space: nowrap;
                 }
             }
 

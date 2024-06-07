@@ -1,4 +1,4 @@
-﻿@import "../_variables";
+﻿@import "../../_variables";
 
 .installation {
     section {
@@ -55,6 +55,7 @@
                     bottom: -40px;
                     padding: 8px 15px;
                     background: #17171A;
+                    border: 1px solid transparent;
                     border-radius: 8px;
                     font-size: 12px;
                     transition: 250ms ease-in-out;
@@ -90,6 +91,7 @@
                 padding: 8px 12px;
                 margin-top: 10px;
                 background: rgba(255, 255, 255, 0.05);
+                border: 1px solid transparent;
                 border-radius: 4px;
                 color: $white;
                 font-size: 14px;

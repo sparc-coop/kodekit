@@ -2,7 +2,7 @@
 @page "/{kitId}/box-shadow"
 
 <div class="effects-page page @(isBackgroundWhite ? "white-background" : "")">
-    <div class="page__container">
+    <div class="page__container fadeInUp">
         <header class="page--header">
             <div class="title">Effects</div>
             <h2>Box Shadow</h2>
@@ -23,94 +23,98 @@
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <section>
-                        <header>
-                            <h3>Small Shadow Settings</h3>
-                        </header>
-                        <div class="inputs--wrapper">
-                            <label>
-                                <InputNumber @bind-Value="Model.Small.X" class="small" />
-                                X Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Small.Y" class="small" />
-                                Y Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Small.Blur" class="small" />
-                                Blur (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Small.Spread" class="small" />
-                                Spread (px)
-                            </label>
-                            <label>
-                                <InputColor @bind-Value="Model.Small.HexColor" />
-                                Shadow Color
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
-                                Shadow Opacity (%)
-                            </label>
-                        </div>
-                    </section>
-                    <section>
-                        <header>
-                            <h3>X-Large Shadow Settings</h3>
-                        </header>
-                        <div class="inputs--wrapper">
-                            <label>
-                                <InputNumber @bind-Value="Model.XLarge.X" class="small" />
-                                X Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.XLarge.Y" class="small" />
-                                Y Length (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.XLarge.Blur" class="small" />
-                                Blur (px)
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
-                                Spread (px)
-                            </label>
-                            <label>
-                                <InputColor @bind-Value="Model.XLarge.HexColor" />
-                                Shadow Color
-                            </label>
-                            <label>
-                                <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
-                                Shadow Opacity (%)
-                            </label>
-                        </div>
-                        @*<div class="preview-background">
-                            <label>* Preview Background Color <InputColor @bind-Value="@PreviewBackground" BackgroundColor="@PreviewBackground" /></label>
-                        </div>*@
-                        <Preview Kit=kit PreviewBackgroundEditable=true>
-                            <div>
-                                <div class="shadow-100"></div>
-                                <label>Small Shadow</label>
+                    <KitStyle Kit="kit">
+                        <section _="on intersection(intersecting) having threshold 0.25
+                                if intersecting transition opacity to 1 then set :done to 1
+                                else if :done != 1 then transition opacity to 0">
+                            <header>
+                                <h3>Small Shadow Settings</h3>
+                            </header>
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputNumber @bind-Value="Model.Small.X" class="small" />
+                                    X Length (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Small.Y" class="small" />
+                                    Y Length (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Small.Blur" class="small" />
+                                    Blur (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Small.Spread" class="small" />
+                                    Spread (px)
+                                </label>
+                                <label>
+                                    <InputColor @bind-Value="Model.Small.HexColor" />
+                                    Shadow Color
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.Small.Opacity" class="small" />
+                                    Shadow Opacity (%)
+                                </label>
                             </div>
-                            <div>
-                                <div class="shadow-300"></div>
-                                <label>Medium Shadow</label>
+                        </section>
+                        <section _="on intersection(intersecting) having threshold 0.25
+                                    if intersecting transition opacity to 1 then set :done to 1
+                                    else if :done != 1 then transition opacity to 0">
+                            <header>
+                                <h3>X-Large Shadow Settings</h3>
+                            </header>
+                            <div class="inputs--wrapper">
+                                <label>
+                                    <InputNumber @bind-Value="Model.XLarge.X" class="small" />
+                                    X Length (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.XLarge.Y" class="small" />
+                                    Y Length (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.XLarge.Blur" class="small" />
+                                    Blur (px)
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.XLarge.Spread" class="small" />
+                                    Spread (px)
+                                </label>
+                                <label>
+                                    <InputColor @bind-Value="Model.XLarge.HexColor" />
+                                    Shadow Color
+                                </label>
+                                <label>
+                                    <InputNumber @bind-Value="Model.XLarge.Opacity" class="small" />
+                                    Shadow Opacity (%)
+                                </label>
                             </div>
-                            <div>
-                                <div class="shadow-600"></div>
-                                <label>Large Shadow</label>
-                            </div>
-                            <div>
-                                <div class="shadow-1000"></div>
-                                <label>X-Large Shadow</label>
-                            </div>
-                        </Preview>
-                    </section>
+                            <Preview Kit=kit>
+                                <div>
+                                    <div class="shadow-100"></div>
+                                    <label>Small Shadow</label>
+                                </div>
+                                <div>
+                                    <div class="shadow-300"></div>
+                                    <label>Medium Shadow</label>
+                                </div>
+                                <div>
+                                    <div class="shadow-600"></div>
+                                    <label>Large Shadow</label>
+                                </div>
+                                <div>
+                                    <div class="shadow-1000"></div>
+                                    <label>X-Large Shadow</label>
+                                </div>
+                            </Preview>
+                            </section>
+                    </KitStyle>
                 </EditForm>
             }
         </div>
     </div>
 </div>
+<PageNav KitId="@kitId" PreviousPage="Lists" />
 
 @code {
     private bool isBackgroundWhite = false;

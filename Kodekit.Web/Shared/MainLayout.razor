@@ -1,16 +1,22 @@
 ﻿@inherits LayoutComponentBase
 
+<CustomCursor />
 <div class="layout--header">
     <NavMenu kitId="@kitId" />
     <div class="divider"></div>
-    <PageInfo kitId="@kitId" />
 </div>
 
 <div class="main">
-    @Body
+    <Sidebar kitId="@kitId" />
+    <div class="main__container">
+        <PageInfo kitId="@kitId" />
+        @Body
+    </div>
 </div>
 
 @inject IConfiguration Config
+@inject IJSRuntime Js
+
 @code {
     string kitId;
     private User User;
@@ -40,6 +46,11 @@
             }
 
         }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Js.InvokeVoidAsync("initHyperScript");
     }
 
     private async Task GetUser()

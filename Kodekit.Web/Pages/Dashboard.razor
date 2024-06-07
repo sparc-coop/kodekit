@@ -1,12 +1,12 @@
-﻿@layout SimplifiedLayout
+﻿@layout DashboardLayout
 @page "/"
 
 <div class="dashboard page">
-    <div class="page__container">
+    <div class="page__container fadeInUp">
         @if (!IsLoading)
         {
             <header class="dashboard--header">
-                <p class="user">@User.FirstName</p>
+                <p class="user">@User?.FirstName</p>
                 <h2>My Kits</h2>
                 <p class="subheader">View and manage your kits for your projects.</p>
                 <div class="right">

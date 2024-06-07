@@ -1,0 +1,17 @@
+﻿<div id="cursor" class="new-cursor">
+    @if (isHomePage == true)
+    {
+        <img id="cursor-shadow" class="new-cursor-shadow" src="blobs/blob-black.svg" />
+        <img id="cursor-text" class="new-cursor-text" src="blobs/cursor-text.svg" />
+    } else
+    {
+        <div id="cursor-follow" class="new-cursor-follow"></div>
+    }
+    <div id="cursor-point" class="new-cursor-point"></div>
+</div>
+
+<script src="cursor.js"></script>
+
+@code {
+    [Parameter] public bool isHomePage { get; set; } = false;
+}

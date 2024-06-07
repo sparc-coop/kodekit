@@ -1,0 +1,44 @@
+﻿<div class="page-nav">
+    <div class="previous-page">
+        @if (PreviousPage != null)
+        {
+            <h5>Previous Page</h5>
+            <button class="previous-btn hide-cursor-follow" @onclick="GoToPreviousPage">
+                <img src="images/collapse-icon.svg" style="transform: rotate(90deg);" />
+                <span>@PreviousPage</span>
+            </button>
+        }
+    </div>
+    <div class="next-page">
+        @if (NextPage != null)
+        {
+            @if (NextPage == "Global Settings")
+            {
+                <h5>Start Your Style</h5>
+            } else
+            {
+                <h5>Next Page</h5>
+            }
+            <button class="next-btn hide-cursor-follow" @onclick="GoToNextPage">
+                <span>@NextPage</span>
+                <img src="images/collapse-icon.svg" style="transform: rotate(270deg);" />
+            </button>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public string KitId { get; set; }
+    [Parameter] public string PreviousPage { get; set; }
+    [Parameter] public string NextPage { get; set; }
+
+    public void GoToPreviousPage()
+    {
+        Nav.NavigateTo($"/{KitId}/{PreviousPage.ToLower().Replace(" ", "-")}");
+    }
+
+    public void GoToNextPage()
+    {
+        Nav.NavigateTo($"/{KitId}/{NextPage.ToLower().Replace(" ", "-")}");
+    }
+}

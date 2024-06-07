@@ -17,5 +17,5 @@
     [Parameter]
     public string Hex { get; set; }
 
-    string FillColor => Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
+    string FillColor => Hex == null ? "#FFFFFF" : Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
 }

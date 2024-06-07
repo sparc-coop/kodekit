@@ -2,7 +2,7 @@
 @page "/{kitId}/selectors"
 
 <div class="selectors page">
-    <div class="page__container">
+    <div class="page__container fadeInUp">
         <header class="page--header">
             <div class="title">Elements</div>
             <h2>Selectors & Toggles</h2>
@@ -14,14 +14,19 @@
             @if (Model != null)
             {
                 <EditForm EditContext="@Context">
-                    <section>
+                    <section _="on intersection(intersecting) having threshold 0.25
+                                if intersecting transition opacity to 1 then set :done to 1
+                                else if :done != 1 then transition opacity to 0">
                         <header>
                             <h3>Style & States</h3>
                             <p class="subheader">
                                 Active styling is applied when an option has been selected. Disabled styling is applied when a user cannot interact with or select a particular option.
                             </p>
                         </header>
-                        <div class="inputs--wrapper">
+                        <div class="inputs--wrapper"
+                             _="on intersection(intersecting) having threshold 0.25
+                                if intersecting transition opacity to 1 then set :done to 1
+                                else if :done != 1 then transition opacity to 0">
                             <label class="small">
                                 <InputNumber @bind-Value="Model.FontSize" min="1" />
                                 Selector Size (px)
@@ -75,6 +80,7 @@
         </div>
     </div>
 </div>
+<PageNav KitId="@kitId" PreviousPage="Inputs" NextPage="Dropdowns" />
 
 @code {
 

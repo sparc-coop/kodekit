@@ -22,11 +22,14 @@
 
 nav {
   width: 100%;
-  padding-bottom: 38px;
+  padding: 0px 80px;
+  padding-top: 65px;
+  padding-bottom: 25px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   background: #0E0E0E;
+  position: relative;
   z-index: 1000;
   /*.button--wrapper {
       width: 256px;
@@ -49,15 +52,14 @@ nav {
       }
   }*/
 }
+nav > * {
+  position: relative;
+  z-index: 1000;
+}
 nav:hover .navmenu .menu .category .links {
   height: 167px;
 }
-nav .header, nav .navmenu, nav .menu-right {
-  padding-top: 48px;
-}
 nav .header {
-  padding-left: 80px;
-  padding-right: 160px;
   z-index: 1000;
 }
 nav .header .logo {
@@ -83,7 +85,6 @@ nav .header a {
 }
 nav .header .mobile {
   display: none;
-  cursor: pointer;
   position: absolute;
   left: 25px;
 }
@@ -98,7 +99,7 @@ nav .navmenu {
 nav .menu {
   overflow: hidden;
   display: flex;
-  gap: 60px;
+  justify-content: space-between;
   z-index: 1000;
 }
 @media screen and (max-width: 780px) {
@@ -172,14 +173,12 @@ nav .menu .links a:active {
   opacity: 0.7;
 }
 nav .menu-right {
-  width: 100%;
-  position: relative;
   background: transparent;
   z-index: 1000;
 }
 nav .menu-right .login-display {
-  position: absolute;
-  right: 80px;
+  position: relative;
+  z-index: 1000;
   /*@media screen and (max-width: 780px) {
       right: 25px;
   }
@@ -196,13 +195,13 @@ nav .menu-right .login-display .login {
   margin-bottom: 18px;
 }
 nav .menu-right .login-display .user-menu button {
-  margin-bottom: 18px;
+  width: 100%;
   font-family: "QuantaGroteskPro";
   font-weight: 500;
   font-size: 23px;
   line-height: 100%;
   color: #FFFFFF;
-  cursor: pointer;
+  white-space: nowrap;
 }
 nav .menu-right .login-display .overlay {
   position: fixed;

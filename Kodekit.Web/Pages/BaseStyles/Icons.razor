@@ -2,7 +2,7 @@
 @page "/{kitId}/icons"
 
 <div class="icons page">
-    <div class="page__container">
+    <div class="page__container fadeInUp">
         <header class="page--header">
             <div class="title">Base Styles</div>
             <h2>Icons</h2>
@@ -11,7 +11,9 @@
             </p>
         </header>
         <div class="content">
-            <section>
+            <section _="on intersection(intersecting) having threshold 0.25
+                        if intersecting transition opacity to 1 then set :done to 1
+                        else if :done != 1 then transition opacity to 0">
                 <header>
                     <h3>Icon Sets</h3>
                     <p class="subheader">
@@ -21,30 +23,35 @@
                 @if (kit != null && Model != null)
                 {
                     <EditForm EditContext="@Context">
-                        <section>
-                            <label>
-                                <InputSelect @bind-Value="Model.Name">
-                                    <option>Select:</option>
-                                    <option value="Material">Material</option>
-                                    <option value="Remix">Remix</option>
-                                    <option value="CSS">CSS</option>
-                                    <option value="FontAwesome">FontAwesome</option>
-                                </InputSelect>
-                                Icon Set
-                            </label>
-                        <Preview Kit=kit>
-                            @foreach (var icon in Model.IconsList)
-                            {
-                                <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
-                            }
-                        </Preview>
-                        </section>
+                        <KitStyle Kit=kit>
+                            <section _="on intersection(intersecting) having threshold 0.25
+                                    if intersecting transition opacity to 1 then set :done to 1
+                                    else if :done != 1 then transition opacity to 0">
+                                <label>
+                                    <InputSelect @bind-Value="Model.Name">
+                                        <option>Select:</option>
+                                        <option value="Material">Material</option>
+                                        <option value="Remix">Remix</option>
+                                        <option value="CSS">CSS</option>
+                                        <option value="FontAwesome">FontAwesome</option>
+                                    </InputSelect>
+                                    Icon Set
+                                </label>
+                                <Preview Kit=kit>
+                                    @foreach (var icon in Model.IconsList)
+                                    {
+                                        <i class="@(Model.Name == "FontAwesome" ? "fas " + icon : icon)" title=".@icon"></i>
+                                    }
+                                </Preview>
+                            </section>
+                        </KitStyle>
                     </EditForm>
                 }
             </section>
         </div>
     </div>
 </div>
+<PageNav KitId="@kitId" PreviousPage="Colors" NextPage="Buttons" />
 
 @code {
     protected override async Task<UpdateIconsModel> GetAsync()
