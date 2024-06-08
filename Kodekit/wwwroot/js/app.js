@@ -21,51 +21,48 @@ function populatePreviewCode(previewBlock, codeBlock) {
 }
 
 function initHyperScript() {
-    console.log('INITTING HYPERSCRIPT.....');
     _hyperscript.processNode(document.body);
 }
 
 // Cursor
-document.addEventListener('DOMContentLoaded', function () {
-    document.body.style.cursor = "none";
+document.body.style.cursor = "none";
 
-    var cursor = document.getElementById('cursor');
-    var cursorFollow = document.getElementById('cursor-follow');
-    var cursorText = document.getElementById('cursor-text');
+var cursor = document.getElementById('cursor');
+var cursorFollow = document.getElementById('cursor-follow');
+var cursorText = document.getElementById('cursor-text');
 
-    // cursor/follow changes shape based on element hovered
-    // follow disappears when hovering over the nav
-    function move(event) {
-        var e = event;
-        var t = e.target;
-        var mouseX = e.clientX;
-        var mouseY = e.clientY;
+// cursor/follow changes shape based on element hovered
+// follow disappears when hovering over the nav
+function move(event) {
+    var e = event;
+    var t = e.target;
+    var mouseX = e.clientX;
+    var mouseY = e.clientY;
 
-        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
-        if (t == null || t.parentElement == null) {
-            return;
-        }
+    if (t == null || t.parentElement == null) {
+        return;
+    }
 
-        if (cursorFollow) {
-            if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
-                cursorFollow.style.opacity = "0";
-            } else {
-                cursorFollow.style.opacity = "1";
-            }
-        }
-
-        if (cursorText) {
-            if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
-                cursorText.style.opacity = "0";
-                cursorText.style.opacity = "0";
-            } else {
-                cursorText.style.opacity = "1";
-            }
+    if (cursorFollow) {
+        if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
+            cursorFollow.style.opacity = "0";
+        } else {
+            cursorFollow.style.opacity = "1";
         }
     }
 
-    if (cursor) {
-        window.addEventListener("mousemove", ev => requestAnimationFrame(() => move(ev)));
+    if (cursorText) {
+        if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
+            cursorText.style.opacity = "0";
+            cursorText.style.opacity = "0";
+        } else {
+            cursorText.style.opacity = "1";
+        }
     }
-});
+}
+
+if (cursor) {
+    window.addEventListener("mousemove", ev => requestAnimationFrame(() => move(ev)));
+}
