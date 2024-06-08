@@ -20,7 +20,7 @@
 
     header {
         &.page--header, &.section--header {
-            padding-bottom: 80px;
+            margin-bottom: 40px;
 
             .title {
                 font-family: 'QuantaGroteskPro';
@@ -63,7 +63,7 @@
 */
     .collapsible {
         max-height: 100%;
-        margin-top: 80px;
+        margin-top: 40px;
         overflow: hidden;
         transition: max-height 250ms ease-in-out;
     }
@@ -85,6 +85,7 @@
 
         header {
             width: 100%;
+            margin-bottom: 40px;
             height: fit-content;
             color: $white;
 
@@ -114,6 +115,7 @@
 
             .collapse-btn {
                 transition: 300ms ease-in-out;
+                margin-right: 10px;
 
                 &.collapsed {
                     transform: rotate(180deg);
@@ -140,15 +142,6 @@
                 margin-bottom: 10px;
             }
         }
-
-        h4 {
-            margin-bottom: 10px;
-            font-family: 'QuantaGroteskPro';
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 160%;
-            color: $white;
-        }
     }
 
     section, .subsection {
@@ -165,7 +158,7 @@
         header {
             &.flex, .flex {
                 display: flex;
-                justify-content: space-between;
+                gap: 20px;
 
                 span {
                     margin-right: 6px;
@@ -176,6 +169,19 @@
 
                 p {
                     margin-top: -2px;
+                }
+            }
+
+            &.collapse-control {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0px;
+                padding: 10px;
+                border-radius: 4px;
+                transition: 250ms ease-in-out;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.05);
                 }
             }
         }
@@ -271,6 +277,7 @@
             box-sizing: border-box;
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 39px;
+            background: $grey-100;
             color: $white;
 
             &-flex {
@@ -330,61 +337,66 @@
             }
         }
 
-        .preview-background {
-            width: fit-content;
-            height: 20px;
-            position: relative;
+        .preview-options {
             display: flex;
-            flex-direction: row;
-            gap: 5px;
-            margin-bottom: 20px;
+            gap: 20px;
 
-            p {
-                font-size: 14px;
-                color: $white;
-                line-height: 160%;
-            }
+            > * {
+                width: fit-content;
+                height: 20px;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                margin-bottom: 20px;
 
-            .inputcolor {
-                /*width: 26px;
+                p {
+                    font-size: 14px;
+                    color: $white;
+                    line-height: 160%;
+                }
+
+                .inputcolor {
+                    /*width: 26px;
                     height: 14px;
                     border: 1px solid #FFFFFF;
                     border-radius: 4px;
                     margin-top: 1px;*/
 
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 500;
-                background: transparent;
-                border: transparent;
-
-                input.valid {
-                    visibility: hidden;
-                }
-
-                .hex-value {
-                    display: none;
                     position: absolute;
-                    bottom: -5px;
-                    left: 2px;
-                    color: $white;
-                    font-family: 'EncodeSans';
-                    font-size: 14px;
-                    line-height: 100%;
-                    margin-bottom: 5px;
-                }
-            }
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 500;
+                    background: transparent;
+                    border: transparent;
 
-            aside {
-                width: 26px;
-                height: 14px;
-                margin-top: 5px;
-                margin-left: 5px;
-                border: 1px solid #FFFFFF;
-                border-radius: 4px;
+                    input.valid {
+                        visibility: hidden;
+                    }
+
+                    .hex-value {
+                        display: none;
+                        position: absolute;
+                        bottom: -5px;
+                        left: 2px;
+                        color: $white;
+                        font-family: 'EncodeSans';
+                        font-size: 14px;
+                        line-height: 100%;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                aside {
+                    width: 26px;
+                    height: 14px;
+                    margin-top: 5px;
+                    margin-left: 5px;
+                    border: 1px solid #FFFFFF;
+                    border-radius: 4px;
+                }
             }
         }
 

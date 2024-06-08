@@ -34,12 +34,17 @@
     .preview-example {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        padding-bottom: 16px !important;
 
         > div {
             margin: 0 16px 16px 0;
 
             div {
                 height: 160px;
+            }
+
+            label {
+                margin-top: 16px;
             }
         }
     }

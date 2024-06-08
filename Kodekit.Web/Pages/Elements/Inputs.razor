@@ -17,99 +17,109 @@
                     <section _="on intersection(intersecting) having threshold 0.25 
                                 if intersecting transition opacity to 1 then set :done to 1 
                                 else if :done != 1 then transition opacity to 0">
-                        <header class="flex">
-                            <h3><span>01</span> Form Styling</h3>
-                            <p class="subheader">
-                                Input collects a single line of text, while a textarea can receive multiple lines of text.
-                            </p>
+                        <header class="flex collapse-control" _="on click toggle .collapsed on #inputs-form__collapsible then toggle .collapsed on #inputs-form__collapse">
+                            <div class="header__container">
+                                <h3><span>01</span> Form Styling</h3>
+                                <p class="subheader">
+                                    Input collects a single line of text, while a textarea can receive multiple lines of text.
+                                </p>
+                            </div>
+                            <img id="inputs-form__collapse" class="collapse-btn" src="images/collapse-icon.svg" />
                         </header>
-                        <div class="inputs--wrapper">
-                            <div>
-                                <label>
-                                    <InputNumber @bind-Value="Model.FontSize" min="1" />
-                                    Input Font Size (px)
-                                </label>
-                                <label>
-                                    <InputFontWeight @bind-Value="Model.FontWeight" />
-                                    Input Font Weight
-                                </label>
+                        <div id="inputs-form__collapsible" class="collapsible">
+                            <div class="inputs--wrapper">
+                                <div>
+                                    <label>
+                                        <InputNumber @bind-Value="Model.FontSize" min="1" />
+                                        Input Font Size (px)
+                                    </label>
+                                    <label>
+                                        <InputFontWeight @bind-Value="Model.FontWeight" />
+                                        Input Font Weight
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
+                                        Vertical Padding (px)
+                                    </label>
+                                    <label>
+                                        <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
+                                        Horizontal Padding (px)
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <InputNumber @bind-Value="Model.CornerRadius" min="0" />
+                                        Corner Radius (px)
+                                    </label>
+                                    <label>
+                                        <InputNumber @bind-Value="Model.BorderWidth" min="0" />
+                                        Border Width (px)
+                                    </label>
+                                </div>
                             </div>
-                            <div>
-                                <label>
-                                    <InputNumber @bind-Value="Model.VerticalPadding" min="0" />
-                                    Vertical Padding (px)
+                            <Preview Kit=kit>
+                                <label class="input-form-preview">
+                                    <input placeholder="Placeholder" />
+                                </label>
+                                <label class="input-form-preview">
+                                    <PersonSvg />
+                                    <input placeholder="Placeholder" />
                                 </label>
                                 <label>
-                                    <InputNumber @bind-Value="Model.HorizontalPadding" min="0" />
-                                    Horizontal Padding (px)
+                                    <textarea placeholder="Placeholder"></textarea>
                                 </label>
-                            </div>
-                            <div>
-                                <label>
-                                    <InputNumber @bind-Value="Model.CornerRadius" min="0" />
-                                    Corner Radius (px)
-                                </label>
-                                <label>
-                                    <InputNumber @bind-Value="Model.BorderWidth" min="0" />
-                                    Border Width (px)
-                                </label>
-                            </div>
+                            </Preview>
                         </div>
-                        <Preview Kit=kit>
-                            <label class="input-form-preview">
-                                <input placeholder="Placeholder" />
-                            </label>
-                            <label class="input-form-preview">
-                                <PersonSvg />
-                                <input placeholder="Placeholder" />
-                            </label>
-                            <label>
-                                <textarea placeholder="Placeholder"></textarea>
-                            </label>
-                        </Preview>
                     </section>
 
                     <section _="on intersection(intersecting) having threshold 0.25
                                 if intersecting transition opacity to 1 then set :done to 1
                                 else if :done != 1 then transition opacity to 0">
-                        <header clas="flex">
-                            <h3><span> 02</span> Input & Textarea states</h3>
-                            <p class="subheader">
+                        <header class="flex collapse-control" _="on click toggle .collapsed on #inputs-textarea__collapsible then toggle .collapsed on #inputs-textarea__collapse" style="display: block;">
+                            <div class="header__container" style="display: flex; justify-content: space-between;">
+                                <h3><span> 02</span> Input & Textarea states</h3>
+                                <img id="inputs-textarea__collapse" class="collapse-btn" src="images/collapse-icon.svg" />
+                            </div>
+                            <p class="subheader" style="padding-right: 50px; margin-top: 10px;">
                                 Placeholder text appears by default before any text has been entered by a user. Selected styling is applied when a user is typing into the input box. Entered styling is applied once the input has been filled out. Error styling is applied when requirements set on the form have not been fulfilled, and disabled styling is applied when a user is prevented from interacting with the input.
                             </p>
                         </header>
-                        <Preview Kit=kit>
-                            <label>
-                                Placeholder
-                                <PersonSvg />
-                                <input placeholder="username" />
-                                <span>Enter your username.</span>
-                            </label>
-                            <label class="selected">
-                                Selected
-                                <PersonSvg />
-                                <input placeholder="username" />
-                                <span>Enter your username.</span>
-                            </label>
-                            <label>
-                                Entered
-                                <PersonSvg />
-                                <input value="Kodekit" />
-                                <span>Enter your username.</span>
-                            </label>
-                            <label class="error">
-                                Error
-                                <PersonSvg />
-                                <input class="invalid" value="username" />
-                                <span>Username is taken.</span>
-                            </label>
-                            <label class="disabled">
-                                Disabled
-                                <PersonSvg />
-                                <input value="enter username" disabled />
-                                <span>Enter your name first.</span>
-                            </label>
-                        </Preview>
+                        <div id="inputs-textarea__collapsible" class="collapsible">
+                            <Preview Kit=kit>
+                                <label>
+                                    Placeholder
+                                    <PersonSvg />
+                                    <input placeholder="username" />
+                                    <span>Enter your username.</span>
+                                </label>
+                                <label class="selected">
+                                    Selected
+                                    <PersonSvg />
+                                    <input placeholder="username" />
+                                    <span>Enter your username.</span>
+                                </label>
+                                <label>
+                                    Entered
+                                    <PersonSvg />
+                                    <input value="Kodekit" />
+                                    <span>Enter your username.</span>
+                                </label>
+                                <label class="error">
+                                    Error
+                                    <PersonSvg />
+                                    <input class="invalid" value="username" />
+                                    <span>Username is taken.</span>
+                                </label>
+                                <label class="disabled">
+                                    Disabled
+                                    <PersonSvg />
+                                    <input value="enter username" disabled />
+                                    <span>Enter your name first.</span>
+                                </label>
+                            </Preview>
+                        </div>
                     </section>
                 </EditForm>
             }
@@ -118,7 +128,13 @@
 </div>
 <PageNav KitId="@kitId" PreviousPage="Buttons" NextPage="Selectors" />
 
+@inject IJSRuntime Js
 @code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Js.InvokeVoidAsync("initHyperScript");
+    }
+
     protected override async Task<UpdateInputsModel> GetAsync()
     {
         return await PublicApi().GetInputsAsync(kitId);

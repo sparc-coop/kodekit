@@ -4,13 +4,26 @@
         _="on intersection(intersecting) having threshold 0.25
         if intersecting transition opacity to 1 then set :done to 1
         else if :done != 1 then transition opacity to 0">
-        @if (HidePreviewBackgroundColor == false) 
+        @if (HidePreviewBackgroundColor == false || HidePreviewFontColor == false)
         {
-            <label class="preview-background">
-                <p>* Preview Background Color</p>
-                <InputColor @bind-Value="PreviewBackgroundColor" />
-                <aside class="swatch" style="background: @PreviewBackgroundColor;"></aside>
-            </label>
+            <div class="preview-options">
+                @if (HidePreviewBackgroundColor == false)
+                {
+                    <label class="preview-options--background">
+                        <p>* Preview Background Color</p>
+                        <InputColor @bind-Value="PreviewBackgroundColor" />
+                        <aside class="swatch" style="background: @PreviewBackgroundColor;"></aside>
+                    </label>
+                }
+                @if (HidePreviewFontColor == false)
+                {
+                    <label class="preview-options--font">
+                        <p>Font Color</p>
+                        <InputColor @bind-Value="PreviewFontColor" />
+                        <aside class="swatch" style="background: @PreviewFontColor;"></aside>
+                    </label>
+                }
+            </div>
         }
         @if (!IsLoading && CssUrl != null)
         {
@@ -18,7 +31,7 @@
                 @@import url('@CssUrl');
             </style>
 
-            <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock style="background: @PreviewBackgroundColor">
+            <div class="preview-example @Scope @(AdditionalClass != null ? "preview-example--" + AdditionalClass : "")" @ref=PreviewBlock style="background: @PreviewBackgroundColor !important; color: @PreviewFontColor !important;">
                 @ChildContent
             </div>
         }
@@ -41,6 +54,7 @@
     [Parameter] public Kit Kit { get; set; }
     [Parameter] public string AdditionalClass { get; set; }
     [Parameter] public bool HidePreviewBackgroundColor { get; set; } = false;
+    [Parameter] public bool HidePreviewFontColor { get; set; } = false;
     ElementReference PreviewBlock;
     ElementReference CodeBlock;
     string CssUrl;
@@ -49,6 +63,7 @@
     string CurrentVersion;
     bool IsLoading;
     string PreviewBackgroundColor = "#000000";
+    string PreviewFontColor = "#FFFFFF";
 
     protected override void OnInitialized()
     {
