@@ -47,75 +47,101 @@
 @font-face {
   font-family: "EncodeSans";
   font-weight: 300;
-  src: url(../fonts/EncodeSans-Light.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans-Light.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans";
   font-weight: 400;
-  src: url(../fonts/EncodeSans-Regular.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans";
   font-weight: 500;
-  src: url(../fonts/EncodeSans-Medium.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans-Medium.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_SemiExpanded";
   font-weight: 300;
-  src: url(../fonts/EncodeSans_SemiExpanded-Light.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_SemiExpanded-Light.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_SemiExpanded";
   font-weight: 400;
-  src: url(../fonts/EncodeSans_SemiExpanded-Regular.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_SemiExpanded-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_SemiExpanded";
   font-weight: 500;
-  src: url(../fonts/EncodeSans_SemiExpanded-Medium.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_SemiExpanded-Medium.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_SemiExpanded";
   font-weight: 700;
-  src: url(../fonts/EncodeSans_SemiExpanded-Bold.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_SemiExpanded-Bold.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_Expanded";
   font-weight: 300;
-  src: url(../fonts/EncodeSans_Expanded-Light.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_Expanded-Light.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_Expanded";
   font-weight: 400;
-  src: url(../fonts/EncodeSans_Expanded-Rgular.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_Expanded-Rgular.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_Expanded";
   font-weight: 500;
-  src: url(../fonts/EncodeSans_Expanded-Medium.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_Expanded-Medium.ttf) format("truetype");
 }
 @font-face {
   font-family: "EncodeSans_Expanded";
   font-weight: 700;
-  src: url(../fonts/EncodeSans_Expanded-Bold.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/EncodeSans_Expanded-Bold.ttf) format("truetype");
 }
 @font-face {
   font-family: "FiraCode";
   font-weight: 400;
-  src: url(../fonts/FiraCode-Regular.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/FiraCode-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "QuantaGroteskPro";
   font-weight: 400;
-  src: url(../fonts/QuantaGroteskPro-Regular.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/QuantaGroteskPro-Regular.ttf) format("truetype");
 }
 @font-face {
   font-family: "QuantaGroteskPro";
   font-weight: 500;
-  src: url(../fonts/QuantaGroteskPro-Medium.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/QuantaGroteskPro-Medium.ttf) format("truetype");
 }
 @font-face {
   font-family: "QuantaGroteskPro";
   font-weight: 700;
-  src: url(../fonts/QuantaGroteskPro-Bold.ttf) format("truetype");
+  src: url(../../_Plugins/Blossom/wwwroot/fonts/QuantaGroteskPro-Bold.ttf) format("truetype");
+}
+body {
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--background);
+  font-family: "EncodeSans_SemiExpanded", sans-serif;
+  font-weight: 400;
+  color: var(--white);
+}
+
+p {
+  font-family: "EncodeSans_SemiExpanded";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:hover, li:hover {
+  cursor: none;
+}
+
+#blossomapp {
+  position: relative;
+  z-index: 500;
+  cursor: none;
 }

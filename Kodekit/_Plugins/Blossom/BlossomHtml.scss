@@ -1,0 +1,22 @@
+body {
+    position: relative;
+    margin: 0;
+    overflow-x: hidden;
+    background: var(--background);
+    font-family: 'EncodeSans_SemiExpanded', sans-serif;
+    font-weight: 400;
+    color: var(--white);
+}
+
+p {
+    font-family: 'EncodeSans_SemiExpanded';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+}
+
+a, button, label, input, select, div, span, li {
+    &:hover {
+        cursor: none;
+    }
+}
