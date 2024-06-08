@@ -10,5 +10,9 @@
   {
     "outputFile": "_Shared/Layout/NavMenu.razor.css",
     "inputFile": "_Shared/Layout/NavMenu.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Layout/CustomCursor.razor.css",
+    "inputFile": "_Shared/Layout/CustomCursor.razor.scss"
   }
 ]
