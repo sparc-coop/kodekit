@@ -1869,12 +1869,14 @@
   flex-direction: row;
   justify-content: space-between;
   background: #1A1A1A;
+  border: 1px solid transparent;
   border-radius: 0px 0px 8px 8px;
   padding: 18px 15px;
   transition: 200ms ease-in-out;
 }
 .kit-card--header:hover {
   filter: brightness(160%);
+  border: 1px solid #FFFFFF;
 }
 .kit-card--header h3 {
   margin: 0;
@@ -1885,9 +1887,9 @@
   line-height: 160%;
   color: #FFFFFF;
   transition: 250ms ease-in-out;
-}
-.kit-card--header h3:hover {
-  transform: scale(104%);
+  /*&:hover {
+      transform: scale(104%);
+  }*/
 }
 .kit-card--header .kit-info {
   height: 25px;

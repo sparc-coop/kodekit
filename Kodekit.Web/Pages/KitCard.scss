@@ -12,12 +12,14 @@
         flex-direction: row;
         justify-content: space-between;
         background: #1A1A1A;
+        border: 1px solid transparent;
         border-radius: 0px 0px 8px 8px;
         padding: 18px 15px;
         transition: 200ms ease-in-out;
 
         &:hover {
             filter: brightness(160%);
+            border: 1px solid $white;
         }
 
         h3 {
@@ -30,9 +32,9 @@
             color: $white;
             transition: 250ms ease-in-out;
 
-            &:hover {
+            /*&:hover {
                 transform: scale(104%);
-            }
+            }*/
         }
 
         .kit-info {
