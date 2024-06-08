@@ -1,0 +1,17 @@
+﻿<nav class="hide-cursor-follow @(Transparent ? "transparent" : "")">
+    <header>
+        <h1>
+            <a href="/">
+                KodeKit
+            </a>
+        </h1>
+    </header>
+
+    <aside>
+      @* <LoginDisplay /> <- Replace with Passwordless *@
+    </aside>
+</nav>
+
+@code {
+    [Parameter] public bool Transparent { get; set; }
+}

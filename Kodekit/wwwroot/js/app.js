@@ -45,21 +45,13 @@ function move(event) {
         return;
     }
 
+    var shouldHide = t.closest('hide-cursor-follow') || t.closest('button') || t.closest('a');
     if (cursorFollow) {
-        if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
-            cursorFollow.style.opacity = "0";
-        } else {
-            cursorFollow.style.opacity = "1";
-        }
+        cursorFollow.style.opacity = shouldHide ? "0" : "1";
     }
 
     if (cursorText) {
-        if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
-            cursorText.style.opacity = "0";
-            cursorText.style.opacity = "0";
-        } else {
-            cursorText.style.opacity = "1";
-        }
+        cursorText.style.opacity = shouldHide ? "0" : "1";
     }
 }
 

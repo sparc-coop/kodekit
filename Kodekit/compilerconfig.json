@@ -2,5 +2,13 @@
   {
     "outputFile": "wwwroot/css/BlossomApp.css",
     "inputFile": "_Plugins/Blossom/BlossomApp.scss"
+  },
+  {
+    "outputFile": "_Shared/Layout/DashboardLayout.razor.css",
+    "inputFile": "_Shared/Layout/DashboardLayout.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Layout/NavMenu.razor.css",
+    "inputFile": "_Shared/Layout/NavMenu.razor.scss"
   }
 ]
