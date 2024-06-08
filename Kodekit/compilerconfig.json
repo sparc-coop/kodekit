@@ -1,6 +1,14 @@
 ﻿[
   {
     "outputFile": "wwwroot/css/app.css",
-    "inputFile": "_Plugins/Blossom/BlossomHtml.scss"
+    "inputFile": "_Imports.scss"
+  },
+  {
+    "outputFile": "_Plugins/Blossom/BlossomApp.razor.css",
+    "inputFile": "_Plugins/Blossom/BlossomApp.razor.scss"
+  },
+  {
+    "outputFile": "_Plugins/Blossom/BlossomHtml.razor.css",
+    "inputFile": "_Plugins/Blossom/BlossomHtml.razor.scss"
   }
 ]
