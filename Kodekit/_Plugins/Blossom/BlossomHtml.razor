@@ -1,17 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@using Kodekit._Plugins.Blossom
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
-    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="Kodekit.styles.css" />
     <HeadOutlet @rendermode="InteractiveServer" />
 </head>
 
 <body>
-    <Routes @rendermode="InteractiveServer" />
+    <BlossomApp Program="Program" MainLayout="MainLayout" @rendermode="InteractiveServer" />
     <script src="_framework/blazor.web.js"></script>
 </body>
 
