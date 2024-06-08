@@ -42,6 +42,11 @@
   --error-500: #F96464;
   --warning-500: #FF8F39;
   --success-500: #5ACA75;
+  --encode: "EncodeSans", sans-serif;
+  --encode_semiexpanded: "EncodeSans_SemiExpanded", sans-serif;
+  --encode_expanded: "EncodeSans_Expanded", sans-serif;
+  --firacode: "FiraCode", monospace;
+  --quanta: "QuantaGroteskPro", sans-serif;
 }
 
 @font-face {
@@ -124,13 +129,13 @@ body {
   margin: 0;
   overflow-x: hidden;
   background: var(--background);
-  font-family: "EncodeSans_SemiExpanded", sans-serif;
+  font-family: var(--encode_semiexpanded);
   font-weight: 400;
   color: var(--white);
 }
 
 p {
-  font-family: "EncodeSans_SemiExpanded";
+  font-family: var(--encode_semiexpanded);
   font-weight: 400;
   font-size: 16px;
   line-height: 160%;

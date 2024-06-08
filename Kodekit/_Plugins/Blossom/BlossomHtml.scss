@@ -3,13 +3,13 @@ body {
     margin: 0;
     overflow-x: hidden;
     background: var(--background);
-    font-family: 'EncodeSans_SemiExpanded', sans-serif;
+    font-family: var(--encode_semiexpanded);
     font-weight: 400;
     color: var(--white);
 }
 
 p {
-    font-family: 'EncodeSans_SemiExpanded';
+    font-family: var(--encode_semiexpanded);
     font-weight: 400;
     font-size: 16px;
     line-height: 160%;
