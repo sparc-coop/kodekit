@@ -16,4 +16,21 @@ main {
         height: 100%;
         margin-top: 113px;
     }
+
+    .page__container {
+        max-width: 1056px;
+        margin-top: 80px;
+    }
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+
+    &__container {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
 }
