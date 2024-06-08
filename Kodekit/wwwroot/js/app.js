@@ -1,0 +1,71 @@
+﻿function copyToClipboard(id) {
+    var copyText = document.getElementById(id).value;
+    navigator.clipboard.writeText(copyText);
+}
+
+function showHighlight() {
+    hljs.highlightAll();
+}
+
+function populatePreviewCode(previewBlock, codeBlock) {
+    var htmlWithBetterLineBreaks = previewBlock.innerHTML.replace(/>([^\r\n])/g, function (match, $1) { return '>\r\n' + $1 })
+        .replace(/([^\s])</g, function (match, $1) { return $1 + '\r\n<' })
+        .replace(/\r\n\s*\r\n/g, '\r\n');
+    var encodedHtml = html_beautify(htmlWithBetterLineBreaks, { indent_size: 2 })
+        .replace(/<!--!-->/g, '') // get rid of blazor debug comments
+        .replace(/[\u00A0-\u9999<>\&]/g, function (i) { // switch to html entities
+            return '&#' + i.charCodeAt(0) + ';';
+        });
+    codeBlock.innerHTML = encodedHtml;
+    hljs.highlightElement(codeBlock);
+}
+
+function initHyperScript() {
+    console.log('INITTING HYPERSCRIPT.....');
+    _hyperscript.processNode(document.body);
+}
+
+// Cursor
+document.addEventListener('DOMContentLoaded', function () {
+    document.body.style.cursor = "none";
+
+    var cursor = document.getElementById('cursor');
+    var cursorFollow = document.getElementById('cursor-follow');
+    var cursorText = document.getElementById('cursor-text');
+
+    // cursor/follow changes shape based on element hovered
+    // follow disappears when hovering over the nav
+    function move(event) {
+        var e = event;
+        var t = e.target;
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+
+        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+        if (t == null || t.parentElement == null) {
+            return;
+        }
+
+        if (cursorFollow) {
+            if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
+                cursorFollow.style.opacity = "0";
+            } else {
+                cursorFollow.style.opacity = "1";
+            }
+        }
+
+        if (cursorText) {
+            if (t.classList.contains("hide-cursor-follow") || t.parentElement.classList.contains("hide-cursor-follow") || t.tagName == "BUTTON" || t.tagName == "A" || t.parentElement.tagName == "BUTTON" || t.parentElement.tagName == "A") {
+                cursorText.style.opacity = "0";
+                cursorText.style.opacity = "0";
+            } else {
+                cursorText.style.opacity = "1";
+            }
+        }
+    }
+
+    if (cursor) {
+        window.addEventListener("mousemove", ev => requestAnimationFrame(() => move(ev)));
+    }
+});
