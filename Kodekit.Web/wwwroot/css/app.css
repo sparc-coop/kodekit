@@ -59,7 +59,8 @@
   line-height: 100%;
 }
 .color-card--content .color-info p.hex {
-  color: var(--grey-200);
+  color: #FFFFFF;
+  opacity: 0.7;
   line-height: 100%;
 }
 .color-card--content .color-info aside {
@@ -127,7 +128,7 @@
   position: relative;
 }
 .page header.page--header, .page header.section--header {
-  padding-bottom: 80px;
+  margin-bottom: 40px;
 }
 .page header.page--header .title, .page header.section--header .title {
   font-family: "QuantaGroteskPro";
@@ -161,7 +162,7 @@
 }
 .page .collapsible {
   max-height: 100%;
-  padding-top: 77px;
+  margin-top: 40px;
   overflow: hidden;
   transition: max-height 250ms ease-in-out;
 }
@@ -180,8 +181,8 @@
 }
 .page section header {
   width: 100%;
-  height: fit-content;
   margin-bottom: 40px;
+  height: fit-content;
   color: #FFFFFF;
 }
 .page section header h3 {
@@ -207,6 +208,7 @@
 }
 .page section header .collapse-btn {
   transition: 300ms ease-in-out;
+  margin-right: 10px;
 }
 .page section header .collapse-btn.collapsed {
   transform: rotate(180deg);
@@ -226,14 +228,6 @@
   line-height: 100%;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 10px;
-}
-.page section h4 {
-  margin-bottom: 10px;
-  font-family: "QuantaGroteskPro";
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 160%;
-  color: #FFFFFF;
 }
 .page section, .page .subsection {
   width: 100%;
@@ -258,7 +252,7 @@
 }
 .page section header.flex, .page section header .flex, .page .subsection header.flex, .page .subsection header .flex {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 .page section header.flex span, .page section header .flex span, .page .subsection header.flex span, .page .subsection header .flex span {
   margin-right: 6px;
@@ -268,6 +262,17 @@
 }
 .page section header.flex p, .page section header .flex p, .page .subsection header.flex p, .page .subsection header .flex p {
   margin-top: -2px;
+}
+.page section header.collapse-control, .page .subsection header.collapse-control {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  padding: 10px;
+  border-radius: 4px;
+  transition: 250ms ease-in-out;
+}
+.page section header.collapse-control:hover, .page .subsection header.collapse-control:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 .page section-container, .page .subsection-container {
   display: block;
@@ -334,6 +339,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 39px;
+  background: #E5E5E5;
   color: #FFFFFF;
 }
 .page .preview-example-container .preview-example-flex {
@@ -362,8 +368,7 @@
   line-height: 160%;
 }
 .page .preview-example-container .preview-info {
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: 20px 0;
   font-family: "EncodeSans";
   font-style: normal;
   font-weight: 200;
@@ -380,6 +385,61 @@
 }
 .page .preview-example-container .preview-info a.preview-link:hover {
   color: #B2B2B2;
+}
+.page .preview-example-container .preview-options {
+  display: flex;
+  gap: 20px;
+}
+.page .preview-example-container .preview-options > * {
+  width: fit-content;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.page .preview-example-container .preview-options > * p {
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 160%;
+}
+.page .preview-example-container .preview-options > * .inputcolor {
+  /*width: 26px;
+  height: 14px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  margin-top: 1px;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  background: transparent;
+  border: transparent;
+}
+.page .preview-example-container .preview-options > * .inputcolor input.valid {
+  visibility: hidden;
+}
+.page .preview-example-container .preview-options > * .inputcolor .hex-value {
+  display: none;
+  position: absolute;
+  bottom: -5px;
+  left: 2px;
+  color: #FFFFFF;
+  font-family: "EncodeSans";
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 5px;
+}
+.page .preview-example-container .preview-options > * aside {
+  width: 26px;
+  height: 14px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
 }
 .page .preview-example-container pre {
   width: 100%;
@@ -814,7 +874,6 @@
   justify-content: start;
   gap: 53px;
   margin-bottom: 20px;
-  transition: height 250ms ease-in-out;
 }
 .colors .color-main {
   width: 100%;
@@ -875,14 +934,15 @@
   position: absolute;
   bottom: 15px;
   left: 15px;
-  color: var(--grey-200);
+  color: #FFFFFF;
+  opacity: 0.7;
   font-family: "EncodeSans";
   font-size: 14px;
   line-height: 100%;
 }
 .colors .subcolor-display {
   display: flex;
-  gap: 25px;
+  gap: 30px;
   flex-wrap: wrap;
 }
 .colors--greyscale .color-display {
@@ -891,11 +951,10 @@
 .colors--greyscale .color-main {
   display: flex;
   flex-direction: row;
-  gap: 20px;
 }
 .colors--greyscale .subcolor-display {
-  height: 154px;
   margin: auto 0;
+  margin-left: 15px;
 }
 .colors--greyscale .subcolor-display .color-info {
   justify-content: space-between;
@@ -903,7 +962,8 @@
 .colors--system .color-display {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 0px;
+  flex-wrap: wrap;
 }
 .colors .preview-example-container .preview-example {
   display: none;
@@ -1102,6 +1162,7 @@
   color: #0E0E0E;
 }
 .typography .content .subsection .fontsize-overrides {
+  margin-top: 20px;
   display: flex;
   gap: 20px;
 }
@@ -1375,12 +1436,16 @@
 .effects-page .preview-example {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 16px !important;
 }
 .effects-page .preview-example > div {
   margin: 0 16px 16px 0;
 }
 .effects-page .preview-example > div div {
   height: 160px;
+}
+.effects-page .preview-example > div label {
+  margin-top: 16px;
 }
 
 .white-background {
@@ -1804,12 +1869,14 @@
   flex-direction: row;
   justify-content: space-between;
   background: #1A1A1A;
+  border: 1px solid transparent;
   border-radius: 0px 0px 8px 8px;
   padding: 18px 15px;
   transition: 200ms ease-in-out;
 }
 .kit-card--header:hover {
   filter: brightness(160%);
+  border: 1px solid #FFFFFF;
 }
 .kit-card--header h3 {
   margin: 0;
@@ -1820,9 +1887,9 @@
   line-height: 160%;
   color: #FFFFFF;
   transition: 250ms ease-in-out;
-}
-.kit-card--header h3:hover {
-  transform: scale(104%);
+  /*&:hover {
+      transform: scale(104%);
+  }*/
 }
 .kit-card--header .kit-info {
   height: 25px;

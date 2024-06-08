@@ -5,8 +5,8 @@
      _="on intersection(intersecting) having threshold 0.25
         if intersecting transition opacity to 1 then set :done to 1
         else if :done != 1 then transition opacity to 0">
-    <header class="kit-card--header">
-        <h3 @onclick="@(e => GoToKit(Kit.Id))">@Kit.KitId</h3>
+    <header class="kit-card--header" @onclick="@(e => GoToKit(Kit.Id))">
+        <h3>@Kit.KitId</h3>
         <div class="kit-info">
             <AuthorizeView>
                 <Authorized>
@@ -15,13 +15,13 @@
                     </span>
 
                     <div class="kit-actions">
-                        <a class="hide-cursor-follow" href="@($"/{Kit.Id}/preview")" title="Preview" target="_blank" aria-label="Preview">
+                        @* <a class="hide-cursor-follow" href="@($"/{Kit.Id}/preview")" title="Preview" target="_blank" aria-label="Preview">
                             <PreviewIcon />
-                        </a>
-                        <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{Kit.Id}.css")" title="Download" target="_blank" aria-label="Download">
+                        </a> *@
+                        <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{Kit.Id}.css")" @onclick:stopPropagation="true" title="Download" target="_blank" aria-label="Download">
                             <DownloadIcon />
                         </a>
-                        <button class="delete-kit hide-cursor-follow" @onclick="ShowDeleteModal" title="Delete" aria-label="Delete">
+                        <button class="delete-kit hide-cursor-follow" @onclick="ShowDeleteModal" @onclick:stopPropagation="true" title="Delete" aria-label="Delete">
                             <DeleteIcon />
                         </button>
                         @* <button class="hide-cursor-follow" title="More" aria-label="More">
