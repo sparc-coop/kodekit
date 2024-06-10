@@ -1,0 +1,58 @@
+﻿<nav class="hide-cursor-follow">
+@if (Settings != null)
+{ 
+    <div class="navmenu @Show">
+        <div class="menu">
+            <div class="category">
+                <div class="heading">Overview</div>
+                <div class="links">
+                    <KitNavLink Name="Introduction" Href="introduction" />
+                </div>
+            </div>
+            <div class="category">
+                <div class="heading">Base Styles</div>
+                <div class="links">
+                    <KitNavLink Name="Global Settings" Href="global-settings" />
+                    <KitNavLink Name="Typography" Href="typography" Enabled="Settings.UseTypography" />
+                    <KitNavLink Name="Colors" Href="colors" Enabled="Settings.UseColors" />
+                    <KitNavLink Name="Icons" Href="icons" />
+                </div>
+            </div>
+            <div class="category html-elements">
+                <div class="heading">HTML Elements</div>
+                <div class="links">
+                    <KitNavLink Name="Buttons" Href="buttons" Enabled="Settings.UseButtons" />
+                    <KitNavLink Name="Inputs & Textareas" Href="inputs" Enabled="Settings.UseInputs" />
+                    <KitNavLink Name="Selectors & Toggles" Href="selectors" Enabled="Settings.UseInputs" />
+                    <KitNavLink Name="Dropdowns" Href="dropdowns" Enabled="Settings.UseDropdowns" />
+                    <KitNavLink Name="Anchors" Href="anchors" Enabled="Settings.UseAnchors" />
+                    <KitNavLink Name="Lists" Href="lists" Enabled="Settings.UseLists" />
+                </div>
+            </div>
+            <div class="category">
+                <div class="heading">Utility</div>
+                <div class="links">
+                    <KitNavLink Name="Box Shadows" Href="box-shadow" Enabled="Settings.UseShadows" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+ </nav>
+
+@inject IJSRuntime Js
+@code {
+    bool ShowMobileMenu = false;
+    string Show = "";
+
+    [Parameter] public string KitId { get; set; }
+    KitSettings Settings;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (KitId != null)
+            Settings = (await PublicApi().GetSettingsAsync(KitId))?.Settings;
+    }
+
+    private string Link(string page) => $"/{KitId}/{page}";
+}

@@ -1,9 +1,41 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<CustomCursor />
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+<header>
+    <NavMenu />
+    <div class="divider"></div>
+</header>
+
+@if (KitId == null)
+{
+    <main class="no-sidebar">
+        <div class="page">
+            <div class="page__container fadeInUp">
+                @Body
+            </div>
+        </div> 
+    </main>
+}
+else
+{
+    <main>
+        <Kodekit.Kits.KitNavigation KitId="@KitId" />
+        <div class="main__container">
+            <PageInfo kitId="@KitId" />
+            @Body
+        </div>
+    </main>
+}
+
+@code {
+    string? KitId;
+
+    protected override void OnInitialized()
+    {
+        if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out var result) == true)
+        {
+            KitId = result?.ToString();
+        }
+    }
+}

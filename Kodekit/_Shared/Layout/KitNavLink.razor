@@ -1,0 +1,10 @@
+﻿<NavLink href="@Link(Href)" Match="NavLinkMatch.All" ActiveClass="active">
+    <img src="images/selected-icon.svg" />
+    @Name
+</NavLink>
+
+@code {
+    [Parameter] public string Href { get; set; }
+    [Parameter] public string Name { get; set; }
+    [Parameter] public bool Enabled { get; set; } = true;
+}
