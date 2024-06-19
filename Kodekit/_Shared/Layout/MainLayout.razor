@@ -7,7 +7,7 @@
     <div class="divider"></div>
 </header>
 
-@if (KitId == null)
+@if (!hasSidebar)
 {
     <main class="no-sidebar">
         <div class="page">
@@ -20,22 +20,16 @@
 else
 {
     <main>
-        <Kodekit.Kits.KitNavigation KitId="@KitId" />
-        <div class="main__container">
-            <PageInfo kitId="@KitId" />
-            @Body
-        </div>
+        @Body
     </main>
 }
 
+@inject IJSRuntime Js
 @code {
-    string? KitId;
-
-    protected override void OnInitialized()
+    bool hasSidebar = false;
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if ((this.Body.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out var result) == true)
-        {
-            KitId = result?.ToString();
-        }
+        await Js.InvokeVoidAsync("initHyperScript");
     }
 }

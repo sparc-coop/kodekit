@@ -18,5 +18,9 @@
   {
     "outputFile": "Kits/KitNavigation.razor.css",
     "inputFile": "Kits/KitNavigation.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Index.razor.css",
+    "inputFile": "Kits/Index.razor.scss"
   }
 ]

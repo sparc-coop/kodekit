@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Web", "Kodekit.Web\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit.Features", "Kodekit.Features\Kodekit.Features.csproj", "{D713DAA9-D37B-4600-9A38-53061B20605F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodekit", "Kodekit\Kodekit.csproj", "{10CA00DE-2DDF-4454-919A-6CB57FFA31E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit", "Kodekit\Kodekit.csproj", "{10CA00DE-2DDF-4454-919A-6CB57FFA31E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Legacy", "_Legacy", "{6D3A762F-3F6C-44D4-9921-A7E256CCEA0B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blossom", "Blossom", "{BCC9CFE1-A7CF-44EA-B80E-8A083AE1D0FF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Blossom", "_Blossom", "{BCC9CFE1-A7CF-44EA-B80E-8A083AE1D0FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Core", "..\Sparc.Kernel\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj", "{06AFC619-3E96-4D35-8398-622D9029C0E6}"
 EndProject

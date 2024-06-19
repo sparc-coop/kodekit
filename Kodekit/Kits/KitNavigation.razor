@@ -1,6 +1,4 @@
 ﻿<nav class="hide-cursor-follow">
-@if (Settings != null)
-{ 
     <div class="navmenu @Show">
         <div class="menu">
             <div class="category">
@@ -37,22 +35,14 @@
             </div>
         </div>
     </div>
-}
  </nav>
 
-@inject IJSRuntime Js
 @code {
     bool ShowMobileMenu = false;
     string Show = "";
 
-    [Parameter] public string KitId { get; set; }
-    KitSettings Settings;
+    [Parameter] public Kit Kit { get; set; }
+    KitSettings Settings => Kit.Settings;
 
-    protected override async Task OnParametersSetAsync()
-    {
-        if (KitId != null)
-            Settings = (await PublicApi().GetSettingsAsync(KitId))?.Settings;
-    }
-
-    private string Link(string page) => $"/{KitId}/{page}";
+    private string Link(string page) => $"/{Kit.Id}/{page}";
 }
