@@ -23,13 +23,13 @@ public class Shadow : ISerializable
     }
 
 
-    internal double X { get; set; }
-    internal double Y { get; set; }
-    internal double Blur { get; set; }
-    internal double Spread { get; set; }
-    internal Color Color => new(HexColor, "#00000");
-    internal string HexColor { get; set; }
-    internal double Opacity { get; set; }
+    public double X { get; set; }
+    public double Y { get; set; }
+    public double Blur { get; set; }
+    public double Spread { get; set; }
+    public Color Color => new(HexColor, "#00000");
+    public string HexColor { get; set; }
+    public double Opacity { get; set; }
 
     internal Dictionary<string, string> Expand(Shadow xLargeShadow)
     {

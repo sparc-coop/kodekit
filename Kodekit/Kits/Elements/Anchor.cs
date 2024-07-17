@@ -17,11 +17,11 @@ public class Anchor : ISerializable
         if (activeColor != null) ActiveColor = new(activeColor);
     }
 
-    internal Font Font { get; set; }
-    internal Color? DefaultColor { get; set; }
-    internal Color? HoverColor { get; set; }
-    internal Color? VisitedColor { get; set; }
-    internal Color? ActiveColor { get; set; }
+    public Font Font { get; set; }
+    public Color? DefaultColor { get; set; }
+    public Color? HoverColor { get; set; }
+    public Color? VisitedColor { get; set; }
+    public Color? ActiveColor { get; set; }
 
 
     public Dictionary<string, string> Serialize()

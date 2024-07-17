@@ -35,7 +35,7 @@ public class Color : ISerializable
         HexValue = ColorTranslator.ToHtml(color);
     }
 
-    internal string HexValue { get; set; }
+    public string HexValue { get; set; }
 
     public override string ToString() => $"{HexValue}";
 

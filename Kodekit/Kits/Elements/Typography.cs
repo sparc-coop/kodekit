@@ -15,9 +15,9 @@ public class Typography : ISerializable
         FontSizeOverrides = fontSizeOverride;
     }
 
-    internal Font Font { get; set; }
-    internal double? TypeScale { get; set; }
-    internal Dictionary<string, string>? FontSizeOverrides { get; set; }
+    public Font Font { get; set; }
+    public double? TypeScale { get; set; }
+    public Dictionary<string, string>? FontSizeOverrides { get; set; }
 
     internal static Dictionary<double, string> TypeScales = new()
     {

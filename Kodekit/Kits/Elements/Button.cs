@@ -25,12 +25,12 @@ public class Button : ISerializable
         RemoveSecondaryBorder = removeSecondaryBorder;
     }
 
-    internal Font Font { get; set; }
-    internal Padding Padding { get; set; }
-    internal Border Border { get; set; }
-    internal Size? IconWidth { get; set; }
-    internal Size? IconHeight { get; set; }
-    internal bool RemoveSecondaryBorder { get; set; }
+    public Font Font { get; set; }
+    public Padding Padding { get; set; }
+    public Border Border { get; set; }
+    public Size? IconWidth { get; set; }
+    public Size? IconHeight { get; set; }
+    public bool RemoveSecondaryBorder { get; set; }
 
     public Dictionary<string, string> Serialize()
     {

@@ -17,9 +17,9 @@ public class Input : ISerializable
         Border = new(borderWidth, cornerRadius);
     }
 
-    internal Font Font { get; set; }
-    internal Padding Padding { get; set; }
-    internal Border Border { get; set; }
+    public Font Font { get; set; }
+    public Padding Padding { get; set; }
+    public Border Border { get; set; }
 
     public Dictionary<string, string> Serialize()
     {

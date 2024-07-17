@@ -1,6 +1,6 @@
 ﻿namespace Kodekit;
 
-internal record Border : ISerializable
+public class Border : ISerializable
 {
     internal Border()
     {
@@ -18,9 +18,9 @@ internal record Border : ISerializable
             Color = new(color);
     }
 
-    internal Size? Width { get; set; }
-    internal Size? Radius { get; set; }
-    internal Color? Color { get; set; }
+    public Size? Width { get; set; }
+    public Size? Radius { get; set; }
+    public Color? Color { get; set; }
 
     internal string? Scope => null;
 

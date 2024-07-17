@@ -14,8 +14,8 @@ public class Variable<T> : ISerializable where T : ISerializable
         Value = value;
     }
 
-    internal string Name { get; set; }
-    internal T Value { get; set; }
+    public string Name { get; set; }
+    public T Value { get; set; }
 
     public Dictionary<string, string> Serialize()
     {

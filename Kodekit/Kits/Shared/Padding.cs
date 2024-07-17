@@ -1,6 +1,6 @@
 ﻿namespace Kodekit;
 
-internal record Padding : ISerializable
+public class Padding : ISerializable
 {
     internal Padding()
     {
@@ -15,8 +15,8 @@ internal record Padding : ISerializable
             Vertical = new(vertical.Value);
     }
 
-    internal Size? Vertical { get; set; }
-    internal Size? Horizontal { get; set; }
+    public Size? Vertical { get; set; }
+    public Size? Horizontal { get; set; }
 
     public Dictionary<string, string> Serialize()
     {

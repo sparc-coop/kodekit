@@ -1,10 +1,10 @@
 ﻿namespace Kodekit;
 
-internal record Size
+public class Size
 {
-    internal double Value { get; set; }
-    internal string Unit { get; set; }
-    internal string Placeholder { get; set; }
+    public double Value { get; set; }
+    public string Unit { get; set; }
+    public string Placeholder { get; set; }
 
     internal Size()
     {

@@ -20,8 +20,8 @@ public class IconLibrary
         Markup = markup;
     }
 
-    internal string? Name { get; set; }
-    internal string? Url { get; set; }
+    public string? Name { get; set; }
+    public string? Url { get; set; }
     internal string? Markup { get; set; }
 
     internal static List<IconLibrary> GetValidIcons()

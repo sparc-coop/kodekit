@@ -19,11 +19,11 @@ public class List : ISerializable
         ItemPadding = new(itemHorizontalPadding, itemVerticalPadding);
     }
 
-    internal Font Font { get; set; }
-    internal string? OrderedListStyleType { get; set; }
-    internal string? UnorderedListStyleType { get; set; }
-    internal Padding ListPadding { get; set; }
-    internal Padding ItemPadding { get; set; }
+    public Font Font { get; set; }
+    public string? OrderedListStyleType { get; set; }
+    public string? UnorderedListStyleType { get; set; }
+    public Padding ListPadding { get; set; }
+    public Padding ItemPadding { get; set; }
 
 
     public Dictionary<string, string> Serialize()

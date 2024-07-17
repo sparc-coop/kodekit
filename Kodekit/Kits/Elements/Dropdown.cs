@@ -13,5 +13,5 @@ public class Dropdown : Input
         OverwriteInherited = overwriteInherited;
     }
 
-    internal bool OverwriteInherited { get; set; }
+    public bool OverwriteInherited { get; set; }
 }

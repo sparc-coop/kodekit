@@ -15,8 +15,8 @@ public class Selector : ISerializable
             ActiveColor = new(activeColor);
     }
 
-    internal Font Font { get; set; }
-    internal Color? ActiveColor { get; set; }
+    public Font Font { get; set; }
+    public Color? ActiveColor { get; set; }
 
     public Dictionary<string, string> Serialize()
     {

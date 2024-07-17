@@ -1,6 +1,6 @@
 ﻿namespace Kodekit;
 
-internal record Font : ISerializable
+public class Font : ISerializable
 {
     internal Font()
     { }
@@ -21,11 +21,11 @@ internal record Font : ISerializable
             LineHeight = new(lineHeight.Value);
     }
 
-    internal string? Family { get; set; }
-    internal string? FamilyUrl { get; set; }
-    internal string? Weight { get; set; }
-    internal Size? Size { get; set; }
-    internal Size? LineHeight { get; set; }
+    public string? Family { get; set; }
+    public string? FamilyUrl { get; set; }
+    public string? Weight { get; set; }
+    public Size? Size { get; set; }
+    public Size? LineHeight { get; set; }
 
     internal static Dictionary<string, string> ValidWeights = new()
     {
