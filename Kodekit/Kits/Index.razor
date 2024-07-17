@@ -6,8 +6,8 @@
             @if (!IsLoading)
             {
                 <header>
-                    <p class="user">@User?.FirstName</p>
-                    <h2>My Kits</h2>
+@*                     <p class="user">@User?.FirstName</p>
+ *@                    <h2>My Kits</h2>
                     <p class="subheader">View and manage your kits for your projects.</p>
                     <div class="right">
                         @*                <select class="sort">
@@ -20,7 +20,7 @@
                                 </button>
                             </Authorized>
                             <NotAuthorized>
-                                @if (Kits == null || !Kits.Any())
+                                @if (UserKits == null || !UserKits.Any())
                                 {
                                     <button @onclick="CreateNew">
                                         Add New Kit  +
@@ -31,14 +31,14 @@
                     </div>
                 </header>
 
-                @if (Kits == null || !Kits.Any())
+                @if (UserKits == null || !UserKits.Any())
                 {
                     <p>Create a new Kodekit to get started!</p>
                 }
                 else
                 {
                     <div class="dashboard-container">
-                        @foreach (var kit in Kits)
+                        @foreach (var kit in UserKits)
                         {
                             <KitCard Kit="kit" />
                         }
@@ -50,68 +50,31 @@
 </div>
 
 @inject IConfiguration Config
+@inject KitApi Kits
+
 @code {
-    private User User;
-    private ICollection<Kit> Kits;
+    //private User User;
+    private IEnumerable<Kit> UserKits = [];
     bool IsLoading;
 
     protected override async Task OnInitializedAsync()
     {
         IsLoading = true;
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-        if (user.Identity.IsAuthenticated)
-        {
-            User = await Api.GetUserAsync();
-            Kits = await Api.GetUserKitsAsync();
-
-            // To import an existing kit into your account after first login
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            if (result != null)
-                await CaptureExistingKit(result);
-        }
-        else
-        {
-            Kits = new List<Kit>();
-            string result = await localStorage.GetItemAsync<string>("kodekitId");
-            if (result != null)
-                GoToKit(result);
-            else
-                await CreateNew();
-        }
+        UserKits = await Kits.All();
         IsLoading = false;
     }
 
     private async Task CreateNew()
     {
-        var kit = await PublicApi().CreateKitAsync(User != null ? User.Id : "");
-        await localStorage.SetItemAsStringAsync("kodekitId", kit.KitId);
+        var kit = await Kits.Create("Untitled Kit", null);
         GoToKit(kit.KitId);
-    }
-
-    private async Task CaptureExistingKit(string id)
-    {
-        var existingKit = await Api.GetKitAsync(id);
-        if (Kits.Any(x => x.Id == existingKit.Id))
-            return;
-
-        if (string.IsNullOrWhiteSpace(existingKit?.UserId))
-        {
-            await Api.UpdateKitAsync(new UpdateKitRequest
-                {
-                    KitId = existingKit.Id,
-                    Name = existingKit.Name,
-                    IsAutoPublish = existingKit.IsAutoPublish ?? false
-                });
-            Kits.Add(existingKit);
-        }
     }
 
     private void Sort(string filter)
     {
         if (filter == "date-mod")
         {
-            Kits = Kits.OrderByDescending(x => x.DateModified).ToList();
+            UserKits = UserKits.OrderByDescending(x => x.DateModified).ToList();
         }
     }
 

@@ -1,48 +1,48 @@
 ﻿<nav class="hide-cursor-follow">
-    <div class="navmenu @Show">
-        <div class="menu">
-            <div class="category">
-                <div class="heading">Overview</div>
-                <div class="links">
-                    <KitNavLink Name="Introduction" Href="introduction" />
+    <CascadingValue Value="Kit.Id">
+        <div class="navmenu @Show">
+            <div class="menu">
+                <div class="category">
+                    <div class="heading">Overview</div>
+                    <div class="links">
+                        <KitNavLink Name="Introduction" Href="introduction" />
+                    </div>
                 </div>
-            </div>
-            <div class="category">
-                <div class="heading">Base Styles</div>
-                <div class="links">
-                    <KitNavLink Name="Global Settings" Href="global-settings" />
-                    <KitNavLink Name="Typography" Href="typography" Enabled="Settings.UseTypography" />
-                    <KitNavLink Name="Colors" Href="colors" Enabled="Settings.UseColors" />
-                    <KitNavLink Name="Icons" Href="icons" />
+                <div class="category">
+                    <div class="heading">Base Styles</div>
+                    <div class="links">
+                        <KitNavLink Name="Global Settings" Href="global-settings" />
+                        <KitNavLink Name="Typography" Href="typography" Enabled="Kit.Settings.UseTypography" />
+                        <KitNavLink Name="Colors" Href="colors" Enabled="Kit.Settings.UseColors" />
+                        <KitNavLink Name="Icons" Href="icons" />
+                    </div>
                 </div>
-            </div>
-            <div class="category html-elements">
-                <div class="heading">HTML Elements</div>
-                <div class="links">
-                    <KitNavLink Name="Buttons" Href="buttons" Enabled="Settings.UseButtons" />
-                    <KitNavLink Name="Inputs & Textareas" Href="inputs" Enabled="Settings.UseInputs" />
-                    <KitNavLink Name="Selectors & Toggles" Href="selectors" Enabled="Settings.UseInputs" />
-                    <KitNavLink Name="Dropdowns" Href="dropdowns" Enabled="Settings.UseDropdowns" />
-                    <KitNavLink Name="Anchors" Href="anchors" Enabled="Settings.UseAnchors" />
-                    <KitNavLink Name="Lists" Href="lists" Enabled="Settings.UseLists" />
+                <div class="category html-elements">
+                    <div class="heading">HTML Elements</div>
+                    <div class="links">
+                        <KitNavLink Name="Buttons" Href="buttons" Enabled="Kit.Settings.UseButtons" />
+                        <KitNavLink Name="Inputs & Textareas" Href="inputs" Enabled="Kit.Settings.UseInputs" />
+                        <KitNavLink Name="Selectors & Toggles" Href="selectors" Enabled="Kit.Settings.UseInputs" />
+                        <KitNavLink Name="Dropdowns" Href="dropdowns" Enabled="Kit.Settings.UseDropdowns" />
+                        <KitNavLink Name="Anchors" Href="anchors" Enabled="Kit.Settings.UseAnchors" />
+                        <KitNavLink Name="Lists" Href="lists" Enabled="Kit.Settings.UseLists" />
+                    </div>
                 </div>
-            </div>
-            <div class="category">
-                <div class="heading">Utility</div>
-                <div class="links">
-                    <KitNavLink Name="Box Shadows" Href="box-shadow" Enabled="Settings.UseShadows" />
+                <div class="category">
+                    <div class="heading">Utility</div>
+                    <div class="links">
+                        <KitNavLink Name="Box Shadows" Href="box-shadow" Enabled="Kit.Settings.UseShadows" />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
- </nav>
+    </CascadingValue>
+</nav>
 
 @code {
     bool ShowMobileMenu = false;
     string Show = "";
 
     [Parameter] public Kit Kit { get; set; }
-    KitSettings Settings => Kit.Settings;
-
     private string Link(string page) => $"/{Kit.Id}/{page}";
 }

@@ -1,0 +1,20 @@
+﻿namespace Kodekit;
+
+public interface ISerializable
+{
+    Dictionary<string, string> Serialize();
+}
+
+internal static class ISerializableExtensions
+{
+    internal static Dictionary<string, string> Concat(this ISerializable item, ISerializable item2)
+    {
+        return item.Serialize().Concat(item2).ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    internal static Dictionary<string, string> Concat(this Dictionary<string, string> item, ISerializable item2)
+    {
+        return item.Concat(item2.Serialize())
+            .ToDictionary(x => x.Key, x => x.Value);
+    }
+}

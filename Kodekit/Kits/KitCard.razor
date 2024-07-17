@@ -1,0 +1,105 @@
+﻿<div tabindex="0" class="kit-card"
+_="on intersection(intersecting) having threshold 0.25
+        if intersecting transition opacity to 1 then set :done to 1
+        else if :done != 1 then transition opacity to 0">
+    <header class="kit-card--header" @onclick="@(e => GoToKit(Kit.Id))">
+        <h3>@Kit.KitId</h3>
+        <div class="kit-info">
+            <AuthorizeView>
+                <Authorized>
+                    <span class="last-saved">
+                        Last Saved: @Kit.DateModified.ToString("MM/dd/yyyy hh:mm tt")
+                    </span>
+
+                    <div class="kit-actions">
+                        @* <a class="hide-cursor-follow" href="@($"/{Kit.Id}/preview")" title="Preview" target="_blank" aria-label="Preview">
+                            <PreviewIcon />
+                        </a> *@
+                        <a class="hide-cursor-follow" href="@($"{Config["ApiUrl"]}/{Kit.Id}.css")" @onclick:stopPropagation="true" title="Download" target="_blank" aria-label="Download">
+                            <DownloadIcon />
+                        </a>
+                        <button class="delete-kit hide-cursor-follow" @onclick="ShowDeleteModal" @onclick:stopPropagation="true" title="Delete" aria-label="Delete">
+                            <DeleteIcon />
+                        </button>
+                        @* <button class="hide-cursor-follow" title="More" aria-label="More">
+                            <MoreIcon />
+                        </button> *@
+                    </div>
+                </Authorized>
+                <NotAuthorized>
+                    <span class="last-saved">
+                        Please <a href="authentication/login">Log In</a> to save changes
+                    </span>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+    </header>
+    <div class="kit-card--preview preview-@Kit.Id">
+        <style type="text/css">
+            @@import url('@CssUrl(Kit)');
+        </style>
+        <div class="style typography">
+            <label>Typography</label>
+            @if (Kit.Current.Headings != null)
+            {
+                <div class="typography--preview">
+                    <h5 style="font-family: '@Kit.Current.Headings?.FontFamily'; ">Heading/H5/@Kit.Current.Headings?.FontFamily</h5>
+                    <p style="font-family: '@Kit.Current.Paragraphs?.FontFamily'; ">Body/Regular/@Kit.Current.Paragraphs?.FontFamily</p>
+                </div>
+            }
+        </div>
+        <div class="preview--divider"></div>
+        <div class="style colors">
+            <label>Brand Colors</label>
+            <div class="colors--preview">
+                <ColorBlotch Hex="primary-500" />
+                <ColorBlotch Hex="secondary-500" />
+                <ColorBlotch Hex="tertiary-500" />
+            </div>
+        </div>
+        <div class="preview--divider"></div>
+        <div class="style colors">
+            <label>Grayscale</label>
+            <div class="colors--preview">
+                <ColorBlotch Hex="grey-100" />
+                <ColorBlotch Hex="grey-900" />
+            </div>
+        </div>
+        <div class="preview--divider"></div>
+        <div class="style colors">
+            <label>System Color</label>
+            <div class="colors--preview">
+                <ColorBlotch Hex="error-500" />
+                <ColorBlotch Hex="warning-500" />
+                <ColorBlotch Hex="success-500" />
+            </div>
+        </div>
+    </div>
+</div>
+<DeleteKitModal Show="@Show" CloseModal="CloseModal" Kit="@Kit" SelectedKit="@SelectedVersion" />
+
+@inject IConfiguration Config
+@code {
+    [Parameter] public Kit Kit { get; set; } = default!;
+
+    string Show = "";
+    string SelectedVersion = "";
+
+    private string CssUrl(Kit kit) => Config["ApiUrl"] + $"/{kit.Id}.css?scope=preview-{kit.Id}";
+
+    private void GoToKit(string kit)
+    {
+        Nav.NavigateTo($"/{kit}/introduction");
+    }
+
+    private void ShowDeleteModal()
+    {
+        SelectedVersion = Kit.Id;
+        Show = "active";
+    }
+
+    private void CloseModal()
+    {
+        Show = "";
+    }
+}

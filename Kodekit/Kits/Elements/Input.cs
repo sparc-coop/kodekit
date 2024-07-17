@@ -1,0 +1,28 @@
+﻿namespace Kodekit;
+
+public class Input : ISerializable
+{
+    internal Input() : base()
+    {
+        Font = new();
+        Padding = new();
+        Border = new();
+    }
+
+    internal Input(double? fontSize, string? fontWeight, double? verticalPadding, double? horizontalPadding, double? cornerRadius,
+        double? borderWidth) : this()
+    {
+        Font = new(fontSize, fontWeight);
+        Padding = new(horizontalPadding, verticalPadding);
+        Border = new(borderWidth, cornerRadius);
+    }
+
+    internal Font Font { get; set; }
+    internal Padding Padding { get; set; }
+    internal Border Border { get; set; }
+
+    public Dictionary<string, string> Serialize()
+    {
+        return Font.Concat(Padding).Concat(Border);
+    }
+}

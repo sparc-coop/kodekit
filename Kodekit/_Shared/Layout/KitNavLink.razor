@@ -7,4 +7,7 @@
     [Parameter] public string Href { get; set; }
     [Parameter] public string Name { get; set; }
     [Parameter] public bool Enabled { get; set; } = true;
+    [CascadingParameter] public Kit Kit { get; set; } = null!;
+
+    private string Link(string page) => $"/{Kit.Id}/{page}";
 }
