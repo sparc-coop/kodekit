@@ -34,8 +34,8 @@ public class Size
     internal Size Scale(double typeScale, int power)
     {
         var result = power > 0
-            ? this with { Value = Value * Math.Pow(typeScale, power) }
-            : this with { Value = Value / Math.Pow(typeScale, power * -1) };
+            ? new Size(Value * Math.Pow(typeScale, power))
+            : new Size(Value / Math.Pow(typeScale, power * -1));
 
         result.Value = Math.Round(result.Value, 2);
 
