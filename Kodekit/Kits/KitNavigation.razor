@@ -40,9 +40,8 @@
 </nav>
 
 @code {
-    bool ShowMobileMenu = false;
     string Show = "";
 
-    [Parameter] public Kit Kit { get; set; }
+    [Parameter] public Kit Kit { get; set; } = default!;
     private string Link(string page) => $"/{Kit.Id}/{page}";
 }

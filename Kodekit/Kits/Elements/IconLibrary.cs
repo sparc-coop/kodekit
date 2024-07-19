@@ -56,6 +56,6 @@ public class IconLibrary
             .Select(x => x.Groups[1]?.Value)
             .Where(x => x != null)
             .Distinct()
-            .ToList();
+            .ToList()!;
     }
 }

@@ -4,8 +4,8 @@
 </NavLink>
 
 @code {
-    [Parameter] public string Href { get; set; }
-    [Parameter] public string Name { get; set; }
+    [Parameter] public string Href { get; set; } = default!;
+    [Parameter] public string Name { get; set; } = default!;
     [Parameter] public bool Enabled { get; set; } = true;
     [CascadingParameter] public Kit Kit { get; set; } = null!;
 

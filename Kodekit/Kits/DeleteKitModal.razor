@@ -1,0 +1,34 @@
+﻿<div class="@Show">
+    <div class="modal delete-kit">
+        <div class="overlay" @onclick="Close"></div>
+        <div class="modal--container">
+            <span class="material-icons button--close" @onclick="Close">close</span>
+            <header>Delete Kit</header>
+            <p>
+                Are you sure you want to delete this kit?
+            </p>
+            <button @onclick="DeleteKit" class="button--confirm">Confirm & Delete</button>
+            <button @onclick="Close">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+@inject KitApi Kits
+@code {
+    [Parameter] public string Show { get; set; } = default!;
+    [Parameter] public EventCallback CloseModal { get; set; } 
+    [Parameter] public Kit Kit { get; set; } = default!;
+
+    private async Task Close()
+    {
+        await CloseModal.InvokeAsync();
+    }
+
+    private async Task DeleteKit()
+    {
+        await Kits.Delete(Kit.KitId);
+        Nav.NavigateTo("/", forceLoad: true);
+        await CloseModal.InvokeAsync();
+    }
+}

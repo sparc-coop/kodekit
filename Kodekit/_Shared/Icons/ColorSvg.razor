@@ -14,8 +14,7 @@
 </svg>
 
 @code {
-    [Parameter]
-    public string Hex { get; set; }
+    [Parameter] public string Hex { get; set; } = default!;
 
     string FillColor => Hex == null ? "#FFFFFF" : Hex.StartsWith("#") ? Hex : $"var(--{Hex})";
 }
