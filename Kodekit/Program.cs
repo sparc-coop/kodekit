@@ -1,6 +1,4 @@
-using Kodekit._Plugins.Blossom;
-
-BlossomApplication.Run<BlossomHtml>(args,
+BlossomApplication.Run<Program>(args,
     builder =>
     {
         //builder.Services.AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"]!, "kodekit", ServiceLifetime.Scoped);
