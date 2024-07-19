@@ -1,6 +1,6 @@
 ﻿using Sparc.Blossom.Authentication;
 
-namespace Kodekit._Plugins.Auth;
+namespace Kodekit;
 
 public class User : BlossomUser
 {
@@ -8,7 +8,7 @@ public class User : BlossomUser
     {
         UserId = Id;
     }
-    
+
     public string UserId { get; private set; }
     public string? Email { get; private set; }
     public string? FirstName { get; private set; }
