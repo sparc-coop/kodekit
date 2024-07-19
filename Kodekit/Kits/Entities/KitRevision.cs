@@ -86,7 +86,7 @@ public class KitRevision : BlossomEntity<string>
         Icons = new IconLibrary("Material", "https://fonts.googleapis.com/icon?family=Material+Icons", "<span class='material-icons'>%</span>");
     }
 
-    internal string KitId { get; private set; }
+    public string KitId { get; private set; }
     public DateTime DateCreated { get; private set; }
     internal string? ParentRevisionId { get; private set; }//For child elements/later versions
     public string? Name { get; private set; }

@@ -28,7 +28,7 @@ public class Kit : BlossomEntity<string>
     public string KitId { get; private set; }
     public string Name { get; private set; }
     public string? Description { get; private set; }
-    internal string? UserId { get; private set; }
+    public string? UserId { get; private set; }
     public DateTime DateCreated { get; private set; }
     public DateTime DateModified { get; private set; }
     public bool? IsAutoPublish { get; private set; }

@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sparc.Blossom.Authentication;
-using Sparc.Blossom.Realtime;
 
 namespace Kodekit;
 
 public partial class KodekitContext
-    (DbContextOptions<KodekitContext> options, IBlossomAuthenticator auth, BlossomNotifier notifier) 
-    : BlossomDbContext(options, auth, notifier)
+    (DbContextOptions<KodekitContext> options, BlossomClaimsPrincipalProvider auth) 
+    : BlossomDbContext(options, auth)
 {
     protected override void OnModelCreating(ModelBuilder builder)
     {
