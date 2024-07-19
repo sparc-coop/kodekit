@@ -1,6 +1,4 @@
-﻿using System.IO;
-using Azure.Storage.Blobs;
-using Microsoft.Extensions.Configuration;
+﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using System.Text;
 

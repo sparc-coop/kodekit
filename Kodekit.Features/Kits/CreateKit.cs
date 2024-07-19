@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-
-namespace Kodekit.Features;
+﻿namespace Kodekit.Features;
 
 public record CreateKitResponse(string KitId);
 public class CreateKit : PublicFeature<string, CreateKitResponse>
