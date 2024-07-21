@@ -1,7 +1,7 @@
 ﻿[
   {
     "outputFile": "wwwroot/css/BlossomApp.css",
-    "inputFile": "_Plugins/Blossom/BlossomApp.scss"
+    "inputFile": "App.scss"
   },
   {
     "outputFile": "_Shared/Layout/MainLayout.razor.css",

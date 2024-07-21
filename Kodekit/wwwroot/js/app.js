@@ -25,36 +25,38 @@ function initHyperScript() {
 }
 
 // Cursor
-document.body.style.cursor = "none";
+function initCursor() {
+    document.body.style.cursor = "none";
 
-var cursor = document.getElementById('cursor');
-var cursorFollow = document.getElementById('cursor-follow');
-var cursorText = document.getElementById('cursor-text');
+    var cursor = document.getElementById('cursor');
+    var cursorFollow = document.getElementById('cursor-follow');
+    var cursorText = document.getElementById('cursor-text');
 
-// cursor/follow changes shape based on element hovered
-// follow disappears when hovering over the nav
-function move(event) {
-    var e = event;
-    var t = e.target;
-    var mouseX = e.clientX;
-    var mouseY = e.clientY;
+    // cursor/follow changes shape based on element hovered
+    // follow disappears when hovering over the nav
+    function move(event) {
+        var e = event;
+        var t = e.target;
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
 
-    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 
-    if (t == null || t.parentElement == null) {
-        return;
+        if (t == null || t.parentElement == null) {
+            return;
+        }
+
+        var shouldHide = t.closest('hide-cursor-follow') || t.closest('button') || t.closest('a');
+        if (cursorFollow) {
+            cursorFollow.style.opacity = shouldHide ? "0" : "1";
+        }
+
+        if (cursorText) {
+            cursorText.style.opacity = shouldHide ? "0" : "1";
+        }
     }
 
-    var shouldHide = t.closest('hide-cursor-follow') || t.closest('button') || t.closest('a');
-    if (cursorFollow) {
-        cursorFollow.style.opacity = shouldHide ? "0" : "1";
+    if (cursor) {
+        window.addEventListener("mousemove", ev => requestAnimationFrame(() => move(ev)));
     }
-
-    if (cursorText) {
-        cursorText.style.opacity = shouldHide ? "0" : "1";
-    }
-}
-
-if (cursor) {
-    window.addEventListener("mousemove", ev => requestAnimationFrame(() => move(ev)));
 }

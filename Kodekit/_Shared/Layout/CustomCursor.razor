@@ -11,6 +11,13 @@
     <div id="cursor-point"></div>
 </div>
 
+@inject IJSRuntime Js
 @code {
     [Parameter] public bool IsHomePage { get; set; } = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+            await Js.InvokeVoidAsync("window.initCursor");
+    }
 }
