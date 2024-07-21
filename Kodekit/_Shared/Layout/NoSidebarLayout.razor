@@ -8,28 +8,22 @@
 </header>
 
 <CascadingValue Value="User">
-    @if (Kit != null)
-    {
-        <Kodekit.Kits.KitNavigation Kit="Kit" />
-    }
-    <main>
-        @Body
-    </main>
+        <main class="no-sidebar">
+            <div class="page">
+                <div class="page__container fadeInUp">
+                    @Body
+                </div>
+            </div>
+        </main>
 </CascadingValue>
 
 @inject IJSRuntime Js
-@inject KitApi Kits
 @inject AuthenticationStateProvider Auth
 @code {
     ClaimsPrincipal? User { get; set; }
-    Kit? Kit;
 
     protected override async Task OnInitializedAsync()
     {
-        object? kitId = null;
-        if ((this.Body?.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out kitId) == true)
-            Kit = await Kits.Get(kitId);
-
         var state = await Auth.GetAuthenticationStateAsync();
         User = state.User;
     }

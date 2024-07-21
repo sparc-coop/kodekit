@@ -50,5 +50,9 @@
   {
     "outputFile": "_Shared/PageNav.razor.css",
     "inputFile": "_Shared/PageNav.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Layout/NoSidebarLayout.razor.css",
+    "inputFile": "_Shared/Layout/NoSidebarLayout.razor.scss"
   }
 ]

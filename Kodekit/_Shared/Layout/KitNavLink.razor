@@ -9,5 +9,5 @@
     [Parameter] public bool Enabled { get; set; } = true;
     [CascadingParameter] public Kit Kit { get; set; } = null!;
 
-    private string Link(string page) => $"/{Kit.Id}/{page}";
+    private string Link(string page) => $"/{Kit?.Id}/{page}";
 }
