@@ -30,5 +30,25 @@
   {
     "outputFile": "_Shared/Icons/ColorBlotch.razor.css",
     "inputFile": "_Shared/Icons/ColorBlotch.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Overview/Installation.razor.css",
+    "inputFile": "Kits/Overview/Installation.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Overview/Introduction.razor.css",
+    "inputFile": "Kits/Overview/Introduction.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Overview/ReleaseNotes.razor.css",
+    "inputFile": "Kits/Overview/ReleaseNotes.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Overview/Themes.razor.css",
+    "inputFile": "Kits/Overview/Themes.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/PageNav.razor.css",
+    "inputFile": "_Shared/PageNav.razor.scss"
   }
 ]

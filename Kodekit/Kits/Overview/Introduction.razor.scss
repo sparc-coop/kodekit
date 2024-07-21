@@ -1,0 +1,176 @@
+﻿.introduction {
+    .content {
+        section {
+            margin-top: 0;
+            padding: 40px 0;
+            padding-bottom: 40px;
+            border-bottom: none;
+
+            h3 {
+                margin-bottom: 20px;
+                font-family: 'QuantaGroteskPro';
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 130%; /* 26px */
+            }
+
+            p {
+                font-family: 'EncodeSans_SemiExpanded';
+                font-size: 16px;
+                line-height: 160%;
+                margin-bottom: 12px;
+            }
+
+            .start-btn {
+                width: 243px;
+                padding: 8px 12px;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                background: var(--grey-800);
+                color: var(--white);
+                font-size: 14px;
+                line-height: 140%;
+                text-align: center;
+                transition: 250ms ease-in-out;
+
+                &:hover {
+                    border: 1px solid var(--white);
+                }
+
+                &:active {
+                    background: var(--white);
+                    color: var(--background);
+                }
+            }
+        }
+    }
+}
+
+.installation {
+    .section--header {
+        margin-bottom: 0px;
+        padding-bottom: 80px;
+    }
+
+    section {
+        padding-bottom: 100px;
+        border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+
+        &:last-of-type {
+            border: none;
+        }
+    }
+
+    .option-one {
+        header {
+            .flex {
+                display: flex;
+                justify-content: flex-start;
+                align-content: center;
+                gap: 20px;
+
+                p {
+                    font-size: 16px;
+                    line-height: 160%;
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    .instructions {
+        overflow: hidden;
+        list-style: decimal;
+        margin: 0 40px;
+
+        li {
+            h4 {
+                height: 26px;
+                margin-bottom: 10px;
+                font-weight: 500;
+                line-height: 160%;
+            }
+
+            div {
+                margin-left: -18px;
+            }
+
+            p {
+                line-height: 160%;
+            }
+
+            pre {
+                padding: 32px 44px;
+                margin-bottom: 60px;
+
+                code {
+                    padding: 0;
+                }
+            }
+
+            &.step-one {
+                position: relative;
+
+                .copy {
+                    position: absolute;
+                    right: 0;
+                    bottom: -40px;
+                    padding: 8px 15px;
+                    background: #17171A;
+                    border: 1px solid transparent;
+                    border-radius: 8px;
+                    font-size: 12px;
+                    transition: 250ms ease-in-out;
+
+                    &:hover {
+                        border: 1px solid var(--white);
+                    }
+
+                    &:active {
+                        background: var(--white);
+                        color: var(--grey-800);
+                    }
+                }
+            }
+        }
+    }
+
+    .option-two {
+        header {
+            h3 {
+                margin-bottom: 40px;
+            }
+        }
+
+        li {
+            p {
+                line-height: 160%;
+            }
+
+            .download {
+                display: block;
+                width: 207px;
+                padding: 8px 12px;
+                margin-top: 10px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid transparent;
+                border-radius: 4px;
+                color: var(--white);
+                font-size: 14px;
+                line-height: 140%;
+                text-align: center;
+                transition: 250ms ease-in-out;
+
+                &:hover {
+                    border: 1px solid var(--white);
+                }
+
+                &:active {
+                    background: var(--white);
+                    color: var(--background);
+                }
+            }
+        }
+    }
+}

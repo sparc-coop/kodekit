@@ -1,0 +1,60 @@
+﻿section {
+  width: 1060px;
+}
+section header h3 {
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 1410px) {
+  section {
+    width: auto;
+  }
+}
+section > div {
+  margin-bottom: 30px;
+  display: block;
+}
+section > div label {
+  display: block;
+  color: var(--grey-900);
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+section > div h5 {
+  font-weight: 500;
+}
+@media screen and (max-width: 800px) {
+  section > div {
+    width: 100%;
+  }
+}
+
+.theme-card {
+  width: 496px;
+  height: 319px;
+  border-radius: 8px;
+  background: var(--white);
+  margin-right: 32px;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-card:hover {
+  background: var(--grey-300);
+}
+.theme-card:hover img {
+  border: 1px solid var(--grey-500);
+  border-radius: 4px;
+}
+@media screen and (max-width: 1410px) {
+  .theme-card {
+    width: 370px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .theme-card {
+    width: 100%;
+    max-width: 496px;
+  }
+}

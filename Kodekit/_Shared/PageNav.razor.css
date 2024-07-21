@@ -1,0 +1,58 @@
+﻿.page-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  padding-bottom: 40px;
+}
+.page-nav > * {
+  height: 66px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.page-nav > * h5 {
+  font-size: 14px;
+  line-height: 140%;
+}
+.page-nav > * button {
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: flex;
+  gap: 10px;
+  background: var(--grey-800);
+  color: var(--white);
+  font-size: 14px;
+  line-height: 140%;
+  transition: 250ms ease-in-out;
+}
+.page-nav > * button:hover {
+  border: 1px solid var(--white);
+}
+.page-nav > * button:active {
+  background: var(--white);
+  color: var(--background);
+}
+.page-nav > * button span {
+  width: 140px;
+  text-align: center;
+}
+.page-nav > * button img {
+  width: 14px;
+  height: 20px;
+}
+.page-nav > *.previous-page {
+  align-items: flex-start;
+}
+.page-nav > *.previous-page button {
+  justify-content: flex-start;
+}
+.page-nav > *.next-page {
+  align-items: flex-end;
+}
+.page-nav > *.next-page button {
+  justify-content: flex-end;
+}
