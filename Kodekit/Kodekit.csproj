@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -11,14 +11,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="SharpScss" Version="2.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Authentication.Passwordless\Sparc.Blossom.Authentication.Passwordless.csproj" />
-		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj" />
-		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Data.AzureStorage\Sparc.Blossom.Data.AzureStorage.csproj" />
-		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Data.Cosmos\Sparc.Blossom.Data.Cosmos.csproj" />
-		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.csproj" />
-		<ProjectReference Include="..\..\Sparc.Kernel\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj" OutputItemType="Analyzer" />
+		<PackageReference Include="Sparc.Blossom" Version="8.0.2" />
+		<PackageReference Include="Sparc.Blossom.Data.Cosmos" Version="8.0.0" />
 	</ItemGroup>
 </Project>
