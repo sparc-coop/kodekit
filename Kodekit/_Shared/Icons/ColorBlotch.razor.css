@@ -1,0 +1,35 @@
+﻿div {
+  width: 90px;
+  height: 90px;
+  position: relative;
+}
+div svg {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: -1px;
+  left: 1px;
+  z-index: 10;
+}
+div .midtone {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  mix-blend-mode: overlay;
+}
+div .shadow {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+div .highlight {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 40;
+}

@@ -1,6 +1,4 @@
-﻿@import "../_variables.scss";
-
-.kit-card {
+﻿.kit-card {
     width: 100%;
     background: #0E0E0E;
     padding-top: 6px;
@@ -19,7 +17,7 @@
 
         &:hover {
             filter: brightness(160%);
-            border: 1px solid $white;
+            border: 1px solid var(--white);
         }
 
         h3 {
@@ -29,9 +27,8 @@
             font-weight: 400;
             font-size: 14px;
             line-height: 160%;
-            color: $white;
+            color: var(--white);
             transition: 250ms ease-in-out;
-
             /*&:hover {
                 transform: scale(104%);
             }*/
@@ -44,7 +41,7 @@
             font-weight: 400;
             font-size: 14px;
             line-height: 160%;
-            color: $white;
+            color: var(--white);
             text-transform: uppercase;
         }
 
@@ -72,46 +69,46 @@
 
                 &-preview {
                     path {
-                        stroke: $white !important;
+                        stroke: var(--white) !important;
                     }
 
                     &:active {
                         path {
-                            stroke: $grey-800 !important;
+                            stroke: va(--grey-800) !important;
                         }
                     }
                 }
 
                 &-download {
                     path {
-                        fill: $white !important;
-                        stroke: $white !important;
+                        fill: var(--white) !important;
+                        stroke: var(--white) !important;
                     }
 
                     line {
-                        stroke: $white !important;
+                        stroke: var(--white) !important;
                     }
 
                     &:active {
                         path {
-                            fill: $grey-800 !important;
-                            stroke: $grey-800 !important;
+                            fill: var(--grey-800) !important;
+                            stroke: var(--grey-800) !important;
                         }
 
                         line {
-                            stroke: $grey-800 !important;
+                            stroke: var(--grey-800) !important;
                         }
                     }
                 }
 
                 &-delete {
                     path, circle {
-                        stroke: $white !important;
+                        stroke: var(--white) !important;
                     }
 
                     &:active {
                         path, circle, fill {
-                            stroke: $grey-800 !important;
+                            stroke: var(--grey-800) !important;
                         }
                     }
                 }
@@ -120,23 +117,23 @@
                     padding: 0px;
 
                     circle {
-                        fill: $white !important;
+                        fill: var(--white) !important;
                     }
 
                     &:active {
                         circle {
-                            fill: $grey-800 !important;
+                            fill: var(--grey-800) !important;
                         }
                     }
                 }
 
                 &:hover {
-                    border: 1px solid $white;
+                    border: 1px solid var(--white);
                     border-radius: 4px;
                 }
 
                 &:active {
-                    background: $white;
+                    background: var(--white);
                 }
             }
         }
@@ -149,10 +146,10 @@
         justify-content: space-between;
         gap: 16px;
         flex-wrap: wrap;
-        color: $white;
+        color: var(--white);
 
         .preview--divider {
-            border-left: 1px solid $white;
+            border-left: 1px solid var(--white);
             opacity: 30%;
         }
 
@@ -162,7 +159,7 @@
         }
 
         label {
-            color: $white;
+            color: var(--white);
             font-family: 'EncodeSans_Expanded';
             font-weight: 300;
             font-size: 13px;
@@ -177,7 +174,7 @@
             }
 
             h5, p {
-                color: $white;
+                color: var(--white);
                 line-height: 100%;
             }
         }

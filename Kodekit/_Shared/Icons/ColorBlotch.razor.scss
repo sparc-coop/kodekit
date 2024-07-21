@@ -1,9 +1,9 @@
-﻿.color-blotch {
+﻿div {
     width: 90px;
     height: 90px;
     position: relative;
 
-    &--color {
+    svg {
         width: 100%;
         height: auto;
         position: absolute;
@@ -12,7 +12,7 @@
         z-index: 10;
     }
 
-    &--midtone {
+    .midtone {
         width: 100%;
         position: absolute;
         top: 0;
@@ -21,7 +21,7 @@
         mix-blend-mode: overlay;
     }
 
-    &--shadow {
+    .shadow {
         width: 100%;
         position: absolute;
         top: 0;
@@ -29,7 +29,7 @@
         z-index: 30;
     }
 
-    &--highlight {
+    .highlight {
         width: 100%;
         position: absolute;
         top: 0;

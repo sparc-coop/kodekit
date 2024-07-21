@@ -22,5 +22,13 @@
   {
     "outputFile": "Kits/Index.razor.css",
     "inputFile": "Kits/Index.razor.scss"
+  },
+  {
+    "outputFile": "Kits/KitCard.razor.css",
+    "inputFile": "Kits/KitCard.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Icons/ColorBlotch.razor.css",
+    "inputFile": "_Shared/Icons/ColorBlotch.razor.scss"
   }
 ]
