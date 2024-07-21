@@ -7,27 +7,37 @@
     <div class="divider"></div>
 </header>
 
-@if (!hasSidebar)
-{
-    <main class="no-sidebar">
-        <div class="page">
-            <div class="page__container fadeInUp">
-                @Body
+<CascadingValue Value="User">
+    @if (!hasSidebar)
+    {
+        <main class="no-sidebar">
+            <div class="page">
+                <div class="page__container fadeInUp">
+                    @Body
+                </div>
             </div>
-        </div> 
-    </main>
-}
-else
-{
-    <main>
-        @Body
-    </main>
-}
+        </main>
+    }
+    else
+    {
+        <main>
+            @Body
+        </main>
+    }
+</CascadingValue>
 
 @inject IJSRuntime Js
+@inject AuthenticationStateProvider Auth
 @code {
+    ClaimsPrincipal? User { get; set; }
     bool hasSidebar = false;
-    
+
+    protected override async Task OnInitializedAsync()
+    {
+        var state = await Auth.GetAuthenticationStateAsync();
+        User = state.User;
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await Js.InvokeVoidAsync("initHyperScript");
