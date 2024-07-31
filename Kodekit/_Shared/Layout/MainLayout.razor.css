@@ -1,12 +1,10 @@
 ﻿header {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
+  padding: 65px 80px 0;
 }
-header .divider {
-  margin: 0 80px;
+
+hr {
   border-top: 1px solid var(--grey-300);
+  margin-top: 25px;
 }
 
 main {

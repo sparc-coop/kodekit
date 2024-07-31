@@ -567,11 +567,21 @@ template {
 body {
   position: relative;
   margin: 0;
-  overflow-x: hidden;
   background: var(--background);
   font-family: var(--encode_semiexpanded);
   font-weight: 400;
   color: var(--white);
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: minmax(min-content, 150px) auto;
+}
+
+h1 {
+  font-family: "QuantaGroteskPro";
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 100%;
 }
 
 p {
@@ -660,10 +670,4 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
   height: 2rem;
   margin-top: 0.5rem;
   float: right;
-}
-
-#blossomapp {
-  position: relative;
-  z-index: 500;
-  cursor: none;
 }
