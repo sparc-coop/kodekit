@@ -16,10 +16,6 @@
     "inputFile": "_Shared/Layout/CustomCursor.razor.scss"
   },
   {
-    "outputFile": "Kits/KitNavigation.razor.css",
-    "inputFile": "Kits/KitNavigation.razor.scss"
-  },
-  {
     "outputFile": "Kits/Index.razor.css",
     "inputFile": "Kits/Index.razor.scss"
   },
@@ -30,10 +26,6 @@
   {
     "outputFile": "_Shared/Icons/ColorBlotch.razor.css",
     "inputFile": "_Shared/Icons/ColorBlotch.razor.scss"
-  },
-  {
-    "outputFile": "Kits/Overview/Installation.razor.css",
-    "inputFile": "Kits/Overview/Installation.razor.scss"
   },
   {
     "outputFile": "Kits/Overview/Introduction.razor.css",
@@ -48,15 +40,15 @@
     "inputFile": "Kits/Overview/Themes.razor.scss"
   },
   {
-    "outputFile": "_Shared/PageNav.razor.css",
-    "inputFile": "_Shared/PageNav.razor.scss"
+    "outputFile": "_Shared/Layout/PageNav.razor.css",
+    "inputFile": "_Shared/Layout/PageNav.razor.scss"
   },
   {
     "outputFile": "_Shared/Layout/NoSidebarLayout.razor.css",
     "inputFile": "_Shared/Layout/NoSidebarLayout.razor.scss"
   },
   {
-    "outputFile": "Kits/Shared/KitNavLink.razor.css",
-    "inputFile": "Kits/Shared/KitNavLink.razor.scss"
+    "outputFile": "_Shared/Layout/KitNavLink.razor.css",
+    "inputFile": "_Shared/Layout/KitNavLink.razor.scss"
   }
 ]

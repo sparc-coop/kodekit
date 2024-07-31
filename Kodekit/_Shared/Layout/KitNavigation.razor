@@ -1,5 +1,4 @@
 ﻿<nav class="hide-cursor-follow">
-    <CascadingValue Value="Kit.Id">
         <div class="navmenu @Show">
             <div class="menu">
                 <div class="category">
@@ -36,12 +35,11 @@
                 </div>
             </div>
         </div>
-    </CascadingValue>
 </nav>
 
 @code {
     string Show = "";
 
-    [Parameter] public Kit Kit { get; set; } = default!;
+    [CascadingParameter] public Kit Kit { get; set; } = default!;
     private string Link(string page) => $"/{Kit.Id}/{page}";
 }

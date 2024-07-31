@@ -20,7 +20,7 @@ main {
     justify-content: space-between;
     gap: 20px;
 
-    &__container {
+    .main__container {
         width: 100%;
         height: calc(100% - 113px);
         margin-left: 244px;

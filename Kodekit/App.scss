@@ -1,3 +1,4 @@
+@import 'wwwroot/css/destyle';
 @import '_Imports';
 @import 'BlossomProgram';
 @import 'Users/BlossomAuthenticator';
@@ -6,4 +7,8 @@
     position: relative;
     z-index: 500;
     cursor: none;
+}
+
+.blossom-authenticator {
+
 }

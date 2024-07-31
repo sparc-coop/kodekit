@@ -1,13 +1,15 @@
-﻿<NavLink href="@Link(Href)" Match="NavLinkMatch.All" ActiveClass="active">
-    <img src="images/selected-icon.svg" />
-    @Name
-</NavLink>
+﻿<div>
+    <NavLink href="@Link(Href)" Match="NavLinkMatch.All" ActiveClass="active">
+        <img src="images/selected-icon.svg" />
+        @Name
+    </NavLink>
+</div>
 
 @code {
     [Parameter] public string Href { get; set; } = default!;
     [Parameter] public string Name { get; set; } = default!;
     [Parameter] public bool Enabled { get; set; } = true;
-    [CascadingParameter] public Kit Kit { get; set; } = null!;
+    [CascadingParameter] public Kit Kit { get; set; } = default!;
 
     private string Link(string page) => $"/{Kit?.Id}/{page}";
 }

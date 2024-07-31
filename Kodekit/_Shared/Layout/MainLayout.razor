@@ -8,13 +8,17 @@
 </header>
 
 <CascadingValue Value="User">
-    @if (Kit != null)
-    {
-        <Kodekit.Kits.KitNavigation Kit="Kit" />
-    }
-    <main>
-        @Body
-    </main>
+    <CascadingValue Value="Kit">
+        @if (Kit != null)
+        {
+            <KitNavigation />
+        }
+        <main>
+            <div class="main__container">
+                @Body
+            </div>
+        </main>
+    </CascadingValue>
 </CascadingValue>
 
 @inject IJSRuntime Js

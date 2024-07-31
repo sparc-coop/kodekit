@@ -1,4 +1,4 @@
-﻿a::deep {
+﻿::deep a {
   padding: 4px 0;
   padding-left: 15px;
   color: var(--white);
@@ -12,23 +12,23 @@
   position: relative;
   z-index: 1000;
 }
-a::deep:hover {
+::deep a:hover {
   opacity: 1;
 }
-a::deep:active {
+::deep a:active {
   opacity: 0.7;
 }
-a::deep img {
+::deep a img {
   display: none;
   position: absolute;
   top: 8px;
   left: 0px;
   z-index: 1000;
 }
-a::deep.active {
+::deep a.active {
   opacity: 1;
 }
-a::deep.active img {
+::deep a.active img {
   display: inline;
   /*vertical-align: middle;
               margin-top: -3px;
