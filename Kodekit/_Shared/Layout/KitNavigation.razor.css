@@ -1,35 +1,13 @@
 ﻿nav {
-  width: 224px;
-  height: 100%;
-  padding: 40px 40px 80px 0px;
+  margin-top: 40px;
   margin-left: -15px;
-  position: fixed;
-  overflow-y: scroll;
-  box-sizing: border-box;
-  background: transparent;
-  z-index: 900;
-}
-nav > * {
-  position: relative;
-  z-index: 1000;
-}
-nav .navmenu {
-  z-index: 1000;
-}
-nav .menu {
-  min-width: 163px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  z-index: 1000;
 }
 @media screen and (max-width: 780px) {
-  nav .menu {
+  nav {
     transform: translateX(-256px);
     transition: all 0.5s ease;
   }
-  nav .menu.show-mobile {
+  nav.show-mobile {
     display: block;
     left: 0;
     z-index: 11;
@@ -38,61 +16,12 @@ nav .menu {
     box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.1), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
   }
 }
-nav .menu .category {
-  width: 122px;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-}
-nav .menu .category.html-elements {
-  width: fit-content;
-}
-nav .menu .heading {
+nav header {
   padding-left: 15px;
   margin-bottom: 5px;
-  font-family: "QuantaGroteskPro";
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 100%;
+  font: 500 14px/100% "QuantaGroteskPro";
   color: var(--grey-200);
 }
-nav .menu .links {
-  display: flex;
-  flex-direction: column;
-}
-nav .menu .links a {
-  padding: 4px 0;
-  padding-left: 15px;
-  color: var(--white);
-  opacity: 0.7;
-  font-family: "EncodeSans";
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  text-decoration: none;
-  transition: 200ms ease-in-out;
-  position: relative;
-  z-index: 1000;
-}
-nav .menu .links a:hover {
-  opacity: 1;
-}
-nav .menu .links a:active {
-  opacity: 0.7;
-}
-nav .menu .links a img {
-  display: none;
-  position: absolute;
-  top: 8px;
-  left: 0px;
-  z-index: 1000;
-}
-nav .menu .links a.active {
-  opacity: 1;
-}
-nav .menu .links a.active img {
-  display: inline;
-  /*vertical-align: middle;
-  margin-top: -3px;
-  margin-right: 5px;*/
+nav ul {
+  margin-bottom: 40px;
 }

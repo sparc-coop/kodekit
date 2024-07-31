@@ -573,6 +573,7 @@ body {
   color: var(--white);
   height: 100vh;
   width: 100vw;
+  padding: 0 6vw;
   display: grid;
   grid-template-rows: minmax(min-content, 150px) auto;
 }
@@ -593,6 +594,16 @@ p {
 
 a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:hover, li:hover {
   cursor: none;
+}
+
+.fadeInUp {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
+  animation-delay: 0.3s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  -webkit-animation-name: fadeInUp;
 }
 
 .blossom-authenticator {

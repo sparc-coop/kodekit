@@ -46,5 +46,9 @@
   {
     "outputFile": "_Shared/Layout/KitNavLink.razor.css",
     "inputFile": "_Shared/Layout/KitNavLink.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Layout/KitNavigation.razor.css",
+    "inputFile": "_Shared/Layout/KitNavigation.razor.scss"
   }
 ]

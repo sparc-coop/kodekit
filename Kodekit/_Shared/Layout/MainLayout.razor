@@ -9,14 +9,14 @@
 
 <CascadingValue Value="User">
     <CascadingValue Value="Kit">
-        @if (Kit != null)
-        {
-            <KitNavigation />
-        }
         <main class="@(Kit == null ? "no-sidebar" : "")">
-            <div class="main__container">
+            @if (Kit != null)
+            {
+                <KitNavigation />
+            }
+            <article>
                 @Body
-            </div>
+            </article>
         </main>
     </CascadingValue>
 </CascadingValue>

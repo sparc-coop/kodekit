@@ -1,16 +1,10 @@
 ﻿::deep a {
-  padding: 4px 0;
-  padding-left: 15px;
   color: var(--white);
+  padding: 0 15px;
   opacity: 0.7;
-  font-family: "EncodeSans";
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 100%;
-  text-decoration: none;
+  font: 300 14px/22px "EncodeSans";
   transition: 200ms ease-in-out;
   position: relative;
-  z-index: 1000;
 }
 ::deep a:hover {
   opacity: 1;
@@ -21,16 +15,12 @@
 ::deep a img {
   display: none;
   position: absolute;
-  top: 8px;
+  top: 7px;
   left: 0px;
-  z-index: 1000;
 }
 ::deep a.active {
   opacity: 1;
 }
 ::deep a.active img {
-  display: inline;
-  /*vertical-align: middle;
-              margin-top: -3px;
-              margin-right: 5px;*/
+  display: block;
 }

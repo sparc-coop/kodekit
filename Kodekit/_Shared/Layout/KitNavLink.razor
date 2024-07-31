@@ -1,9 +1,9 @@
-﻿<div>
+﻿<li>
     <NavLink href="@Link(Href)" Match="NavLinkMatch.All" ActiveClass="active">
         <img src="images/selected-icon.svg" />
         @Name
     </NavLink>
-</div>
+</li>
 
 @code {
     [Parameter] public string Href { get; set; } = default!;
