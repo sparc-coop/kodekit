@@ -44,10 +44,6 @@
     "inputFile": "_Shared/Layout/PageNav.razor.scss"
   },
   {
-    "outputFile": "_Shared/Layout/NoSidebarLayout.razor.css",
-    "inputFile": "_Shared/Layout/NoSidebarLayout.razor.scss"
-  },
-  {
     "outputFile": "_Shared/Layout/KitNavLink.razor.css",
     "inputFile": "_Shared/Layout/KitNavLink.razor.scss"
   }

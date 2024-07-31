@@ -13,7 +13,7 @@
         {
             <KitNavigation />
         }
-        <main>
+        <main class="@(Kit == null ? "no-sidebar" : "")">
             <div class="main__container">
                 @Body
             </div>
@@ -28,7 +28,7 @@
     ClaimsPrincipal? User { get; set; }
     Kit? Kit;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
         object? kitId = null;
         if ((this.Body?.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out kitId) == true)
