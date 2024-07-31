@@ -54,5 +54,9 @@
   {
     "outputFile": "_Shared/Layout/NoSidebarLayout.razor.css",
     "inputFile": "_Shared/Layout/NoSidebarLayout.razor.scss"
+  },
+  {
+    "outputFile": "Kits/Shared/KitNavLink.razor.css",
+    "inputFile": "Kits/Shared/KitNavLink.razor.scss"
   }
 ]
