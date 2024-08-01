@@ -50,5 +50,9 @@
   {
     "outputFile": "_Shared/Layout/KitNavigation.razor.css",
     "inputFile": "_Shared/Layout/KitNavigation.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/BlobBackground.razor.css",
+    "inputFile": "_Shared/BlobBackground.razor.scss"
   }
 ]
