@@ -6,6 +6,7 @@ body {
     font-weight: 400;
     color: var(--white);
     height: 100vh;
+    overflow: hidden;
     width: 100vw;
     padding: 0 6vw;
     display: grid;
@@ -13,10 +14,21 @@ body {
 }
 
 h1 {
-    font-family: 'QuantaGroteskPro';
-    font-weight: 500;
-    font-size: 23px;
-    line-height: 100%;
+    font: 500 23px/100% 'QuantaGroteskPro';
+}
+
+h2 {
+    font: 400 14px/120% 'QuantaGroteskPro';
+    color: var(--grey-300);
+}
+
+h3 {
+    font: 700 40px/120% 'QuantaGroteskPro';
+    color: var(--white);
+}
+
+h4 {
+    font: 500 20px/130% 'QuantaGroteskPro';
 }
 
 p {
@@ -24,6 +36,47 @@ p {
     font-weight: 400;
     font-size: 16px;
     line-height: 160%;
+    margin-bottom: 12px;
+}
+
+button, a.button {
+    min-width: 220px;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: var(--grey-800);
+    color: var(--white);
+    font-size: 14px;
+    line-height: 140%;
+    text-align: center;
+    transition: 250ms ease-in-out;
+
+    &:hover {
+        border: 1px solid var(--white);
+    }
+
+    &:active {
+        background: var(--white);
+        color: var(--background);
+    }
+}
+
+a.button {
+    display: inline-block;
+}
+
+pre {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    background: var(--grey-800);
+    padding: 32px 44px;
+    margin: 20px 0;
+    font-family: monospace;
+    position: relative;
+
+    code {
+        padding: 0;
+    }
 }
 
 a, button, label, input, select, div, span, li {

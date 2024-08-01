@@ -1,146 +1,128 @@
 ﻿@page "/{kitId}/introduction"
 
-<div class="page introduction fadeInUp">
-    <div class="page__container">
-        <header class="page--header">
-            <div class="title">Overview</div>
-            <h2>Introduction</h2>
-        </header>
-        <div class="content documentation">
-            <section _="on intersection(intersecting) having threshold 0.25
+<header>
+    <h2>Overview</h2>
+    <h3>Introduction</h3>
+    <hr />
+</header>
+
+<article>
+    <section _="on intersection(intersecting) having threshold 0.25
                         if intersecting transition opacity to 1 then set :done to 1
                         else if :done != 1 then transition opacity to 0">
-                <div class="subsection">
-                    <header>
-                        <h3>What is Kodekit?</h3>
-                    </header>
-                    <p>
-                        Kodekit is a new way of building frontend websites & applications.
-                        The idea is that HTML elements should be styled directly, without
-                        the need for additional classes. Only adding classes as additional
-                        modifiers such as style variations and size.
-                    </p>
-                    <p>
-                        Not only that, but Kodekit is also a visual theme builder, meaning
-                        that you can create your own styleguides & themes visually, without
-                        writing any css.
-                    </p>
-                </div>
-                <div class="subsection">
-                    <header>
-                        <h3>Why use this method?</h3>
-                    </header>
-                    <p>
-                        Styling the default HTML directly not only allows for quicker and cleaner
-                        code, but also allows for more consistency across larger projects.
-                    </p>
-                    <p>
-                        No more chaining together multiple classes to create a primary button, only
-                        to forget to add some classes every so often.
-                    </p>
-                </div>
-                <div class="start-btn__container">
-                    <button class="start-btn" @onclick="@GetStarted">Start Your Style</button>
-                </div>
-            </section>
-        </div>
-        @*<SaveAndContinue NextPage="Installation" Text="Get Started" />*@
-    </div>
+        <header>
+            <h4>What is Kodekit?</h4>
+        </header>
+        <p>
+            Kodekit is a new way of building frontend websites & applications.
+            The idea is that HTML elements should be styled directly, without
+            the need for additional classes. Only adding classes as additional
+            modifiers such as style variations and size.
+        </p>
+        <p>
+            Not only that, but Kodekit is also a visual theme builder, meaning
+            that you can create your own styleguides & themes visually, without
+            writing any css.
+        </p>
 
-    <section class="installation">
-            <header class="section--header"
-                    _="on intersection(intersecting) having threshold 0.25
+        <header>
+            <h4>Why use this method?</h4>
+        </header>
+        <p>
+            Styling the default HTML directly not only allows for quicker and cleaner
+            code, but also allows for more consistency across larger projects.
+        </p>
+        <p>
+            No more chaining together multiple classes to create a primary button, only
+            to forget to add some classes every so often.
+        </p>
+
+        <button @onclick="@GetStarted">Start Your Style</button>
+    </section>
+
+    <header _="on intersection(intersecting) having threshold 0.25
                if intersecting transition opacity to 1 then set :done to 1
                else if :done != 1 then transition opacity to 0">
-                <h2>Installation</h2>
-                <p>
-                    There are two ways to install Kodekit into your project, both of which are extremely easy to set up.
-                </p>
-            </header>
-            <div class="content">
-                <section class="option-one"
-                         _="on intersection(intersecting) having threshold 0.25
+        <h3>Installation</h3>
+        <hr />
+    </header>
+    <p>
+        There are two ways to install Kodekit into your project, both of which are extremely easy to set up.
+    </p>
+    <section _="on intersection(intersecting) having threshold 0.25
                    if intersecting transition opacity to 1 then set :done to 1
                    else if :done != 1 then transition opacity to 0">
-                    <header>
-                        <div>
-                            <div class="flex">
-                                <h3><span>01</span> Option One: Import & Auto Update</h3>
-                                <p>
-                                    Your kit's unique name is: @kitId
-                                </p>
-                            </div>
-                            <p class="subheader">
-                                Importing Kodekit into your project is as easy as adding the link to the
-                                <span>&lt;head&gt;</span> section of your "index.html" file.
-                            </p>
-                            <p class="subheader">
-                                It allows for quickly
-                                linking your theme to your project, and allows for auto-updating.
-                            </p>
-                        </div>
-                    </header>
+        <header>
+            <h4><span>01</span> Option One: Import & Auto Update</h4>
+        </header>
+        <p>
+            Your kit's unique name is: <strong>@kitId</strong>
+        </p>
+        <p>
+            Importing Kodekit into your project is as easy as adding the link to the
+            <span>&lt;head&gt;</span> section of your "index.html" file.
+        </p>
+        <p>
+            It allows for quickly
+            linking your theme to your project, and allows for auto-updating.
+        </p>
 
-                    <ol class="instructions"
-                        _="on intersection(intersecting) having threshold 0.25
+        <ol class="instructions"
+            _="on intersection(intersecting) having threshold 0.25
                        if intersecting transition opacity to 1 then set :done to 1
                        else if :done != 1 then transition opacity to 0">
-                        <li class="step-one">
-                            <h4>Add Script</h4>
-                            <div>
-                                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
-                                <pre>
-                                <code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
-                            </pre>
-                                <button class="copy" @onclick="StepOneCopy">@CopyText</button>
-                            </div>
-                        </li>
-                        <li class="step-two">
-                            <h4>Auto Update</h4>
-                            <div>
-                                <p>
-                                    Each time you change, update or save your Kodekit theme, your projects
-                                    using the theme script will auto-update, allowing you to make changes to your live project.
-                                </p>
-                            </div>
-                        </li>
-                    </ol>
-                </section>
-                <section class="option-two"
-                         _="on intersection(intersecting) having threshold 0.25
+            <li>
+                Add Script
+                <input type="hidden" id="step-one" value="@("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + ImportUrl + "\">")" />
+                <pre>
+                <code>&lt;link rel="stylesheet" href="@ImportUrl"&gt;</code>
+                </pre>
+                <button @onclick="StepOneCopy">@CopyText</button>
+            </li>
+            <li>
+                Auto Update
+                <p>
+                    Each time you change, update or save your Kodekit theme, your projects
+                    using the theme script will auto-update, allowing you to make changes to your live project.
+                </p>
+            </li>
+        </ol>
+    </section>
+    <section _="on intersection(intersecting) having threshold 0.25
                    if intersecting transition opacity to 1 then set :done to 1
                    else if :done != 1 then transition opacity to 0">
-                    <header>
-                        <div>
-                            <h3><span script="on click toggle .red on me">02</span> Option Two: Manual Download</h3>
-                            <p class="subheader">
-                                If you would rather take a more manual approach, you can instead download the .css file,
-                                and add that directly to your project folder.
-                            </p>
-                            <p class="subheader">
-                                Make sure you re-download and add this file every time you update the Kodekit Theme.
-                            </p>
-                        </div>
-                    </header>
-                    <ol>
-                        <li>
-                            <p>Download your generated CSS file</p>
-                            <a class="download" href="@ImportUrl" download="@ImportUrl" target="_blank">
-                                Download .css file
-                            </a>
-                        </li>
-                    </ol>
-                </section>
-            </div>
+        <header>
+            <h4><span script="on click toggle .red on me">02</span> Option Two: Manual Download</h4>
+        </header>
+        <p>
+            If you would rather take a more manual approach, you can instead download the .css file,
+            and add that directly to your project folder.
+        </p>
+        <p>
+            Make sure you re-download and add this file every time you update the Kodekit Theme.
+        </p>
+
+        <ol>
+            <li>
+                Download your generated CSS file
+                <p>
+                    <a class="button" href="@ImportUrl" download="@ImportUrl" target="_blank">
+                        Download .css file
+                    </a>
+                </p>
+            </li>
+        </ol>
     </section>
-</div>
-<PageNav KitId=@kitId NextPage="Global Settings" />
+</article>
+
+<PageNav NextPage="Global Settings" />
 
 @inject IConfiguration Config
 @inject IJSRuntime Js
 
 @code {
     [Parameter] public string kitId { get; set; }
+    [CascadingParameter] public Kit? Kit { get; set; }
     string ImportUrl;
     string CopyText = "Copy";
 
