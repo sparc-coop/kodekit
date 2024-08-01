@@ -31,7 +31,7 @@ function initCursor() {
     var cursor = document.getElementById('cursor');
     var cursorFollow = document.getElementById('cursor-follow');
     var cursorText = document.getElementById('cursor-text');
-    var blobGradient = document.getElementById('blob-gradient');
+    var attachToCursor = document.getElementsByClassName('attach-to-cursor');
 
     // cursor/follow changes shape based on element hovered
     // follow disappears when hovering over the nav
@@ -42,8 +42,9 @@ function initCursor() {
         var mouseY = e.clientY;
 
         cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-        if (blobGradient)
-            blobGradient.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        for (var i = 0; i < attachToCursor.length; i++) {
+                attachToCursor[i].style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        }
 
         if (t == null || t.parentElement == null) {
             return;

@@ -56,6 +56,16 @@
     }
 }
 
+#cursor-shadow {
+    width: calc(100vw/4);
+    height: auto;
+    position: absolute;
+    pointer-events: none;
+    opacity: 1;
+    filter: blur(100px);
+    z-index: 500;
+}
+
 
 @keyframes blob1 {
     0% {

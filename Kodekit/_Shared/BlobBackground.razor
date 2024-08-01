@@ -3,8 +3,16 @@
         <div class="blob-container">
             <img class="blob-blue" src="blobs/blob-blue.svg" />
             <img class="blob-purple" src="blobs/blob-purple.svg" />
-            <img id="blob-gradient" class="blob-gradient" src="blobs/blob-gradient.svg" />
+            <img id="blob-gradient" class="blob-gradient attach-to-cursor" src="blobs/blob-gradient.svg" />
+            @if (ShowCursorShadow)
+            {
+                <img id="cursor-shadow" class="attach-to-cursor" src="images/blobs/blob-black.svg" />
+            }
         </div>
         <img class="overlay-noise" src="blobs/noise-3.svg" />
     </div>
 </div>
+
+@code {
+    [Parameter] public bool ShowCursorShadow { get; set; } = false;
+}

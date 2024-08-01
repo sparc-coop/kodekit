@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
-<BlobBackground />
-<CustomCursor />
+<BlobBackground ShowCursorShadow="@(Kit == null)" />
+<CustomCursor IsHomePage="@(Kit == null)" />
 
 <header>
     <NavMenu />

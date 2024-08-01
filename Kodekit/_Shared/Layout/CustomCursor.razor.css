@@ -41,16 +41,6 @@
   transition: opacity 250ms ease-in-out;
 }
 
-#cursor-shadow {
-  width: 25vw;
-  height: auto;
-  position: absolute;
-  pointer-events: none;
-  opacity: 1;
-  filter: blur(100px);
-  z-index: 500;
-}
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);

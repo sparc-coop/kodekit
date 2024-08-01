@@ -49,6 +49,16 @@
   z-index: 30;
 }
 
+#cursor-shadow {
+  width: 25vw;
+  height: auto;
+  position: absolute;
+  pointer-events: none;
+  opacity: 1;
+  filter: blur(100px);
+  z-index: 500;
+}
+
 @keyframes blob1 {
   0% {
     left: 0px;
