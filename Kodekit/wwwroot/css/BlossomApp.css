@@ -662,16 +662,28 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 .blossom-authenticator button, .blossom-authenticator label, .blossom-authenticator figure {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 2rem;
-  background: #FFEAC2;
-  border-radius: 0.5rem;
+  width: 2rem;
+  background: #36A42C;
+  border-radius: 100px;
   border: 0;
   padding: 0;
   cursor: pointer;
 }
+.blossom-authenticator button svg, .blossom-authenticator label svg, .blossom-authenticator figure svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.blossom-authenticator button svg path, .blossom-authenticator label svg path, .blossom-authenticator figure svg path {
+  fill: white;
+  stroke: white;
+}
+.blossom-authenticator button.loggedout, .blossom-authenticator label.loggedout, .blossom-authenticator figure.loggedout {
+  background: black;
+}
 .blossom-authenticator button .icon, .blossom-authenticator label .icon, .blossom-authenticator figure .icon {
-  height: 2rem;
-  padding: 0.625rem;
+  height: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -705,14 +717,6 @@ a:hover, button:hover, label:hover, input:hover, select:hover, div:hover, span:h
 }
 .blossom-authenticator button.loggedout span, .blossom-authenticator label.loggedout span, .blossom-authenticator figure.loggedout span {
   font-weight: 500;
-}
-.blossom-authenticator button.loggedout svg path, .blossom-authenticator label.loggedout svg path, .blossom-authenticator figure.loggedout svg path {
-  fill: #ffd071;
-  stroke: #ffd071;
-}
-.blossom-authenticator button.loggedout:hover svg path, .blossom-authenticator label.loggedout:hover svg path, .blossom-authenticator figure.loggedout:hover svg path {
-  fill: #EBA214;
-  stroke: #EBA214;
 }
 .blossom-authenticator .form-div {
   position: absolute;
