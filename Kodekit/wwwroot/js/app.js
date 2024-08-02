@@ -46,11 +46,10 @@ function initCursor() {
                 attachToCursor[i].style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
         }
 
-        if (t == null || t.parentElement == null) {
+        if (t == null)
             return;
-        }
 
-        var shouldHide = t.closest('hide-cursor-follow') || t.closest('button') || t.closest('a');
+        var shouldHide = t.closest('hide-cursor-follow') || t.closest('button, a, input');
         if (cursorFollow) {
             cursorFollow.style.opacity = shouldHide ? "0" : "1";
         }

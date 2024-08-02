@@ -1,6 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
-<BlobBackground ShowCursorShadow="IsHomePage" />
+@if (IsHomePage)
+{
+    <BlobBackground ShowCursorShadow="true" />
+}
 <CustomCursor IsHomePage="@IsHomePage" />
 
 <header>
