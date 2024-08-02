@@ -1,0 +1,44 @@
+﻿/* Lists (enumeration) */
+/* ============================================ */
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+ol, ul {
+    padding-top: var(--padding-vertical);
+    padding-bottom: var(--padding-vertical);
+    padding-left: var(--padding-horizontal);
+    padding-right: var(--padding-horizontal);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+}
+
+ol {
+    list-style-type: var(--ol-style-type, decimal);
+}
+
+ul {
+    list-style-type: var(--ul-style-type, none);
+}
+
+li {
+    padding-top: var(--li-padding-vertical);
+    padding-bottom: var(--li-padding-vertical);
+    padding-left: var(--li-padding-horizontal);
+    padding-right: var(--li-padding-horizontal);
+}

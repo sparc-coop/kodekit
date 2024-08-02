@@ -25,7 +25,7 @@ BlossomApplication.Run<BlossomProgram, User>(args,
             if (kit == null)
                 return Results.NotFound();
 
-            var revisionId = v == null ? (kit.PublishedRevisionId ?? kit.CurrentRevisionId)
+            var revisionId = v == null ? (kit.PublishedRevisionId ?? kit.Current.Id)
             : v == "live" ? kit.CurrentRevisionId
             : v;
 

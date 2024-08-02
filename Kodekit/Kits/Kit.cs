@@ -18,6 +18,7 @@ public class Kit : BlossomEntity<string>
         KitId = Id;
         Name = name;
         UserId = userId;
+        Current = AddRevision();
     }
 
     internal Kit(Kit copyFromKit) : this(copyFromKit.Name)

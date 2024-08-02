@@ -228,25 +228,25 @@ public class KitRevision : BlossomEntity<string>
             css.AppendLine($"@import url('{url}');");
 
         css.AppendLine(CompileVariables(scope));
-        css.AppendLine(GetLocalFile(rootPath, "Elements/_Shared/destyle-reset.css"));
+        css.AppendLine(GetLocalFile(rootPath, "Kits/Shared/destyle-reset.css"));
 
         if (Settings.UseTypography)
-            css.AppendLine(GetLocalFile(rootPath, "Elements/Typography/typography.css"));
+            css.AppendLine(GetLocalFile(rootPath, "Kits/Typography/typography.css"));
 
         if (Settings.UseButtons)
-            css.AppendLine(GetLocalFile(rootPath, "Elements/Buttons/buttons.css"));
+            css.AppendLine(GetLocalFile(rootPath, "Kits/Buttons/buttons.css"));
 
         if (Settings.UseInputs)
-            css.AppendLine(GetLocalFile(rootPath, "Elements/Inputs/inputs.css"));
+            css.AppendLine(GetLocalFile(rootPath, "Kits/Inputs/inputs.css"));
 
         if (Settings.UseAnchors)
-            css.AppendLine(GetLocalFile(rootPath, "Elements/Anchors/anchors.css"));
+            css.AppendLine(GetLocalFile(rootPath, "Kits/Anchors/anchors.css"));
 
         if (Settings.UseLists)
-            css.AppendLine(GetLocalFile(rootPath, "Elements/Lists/lists.css"));
+            css.AppendLine(GetLocalFile(rootPath, "Kits/Lists/lists.css"));
 
         if (Settings.UseShadows)
-            css.AppendLine(GetLocalFile(rootPath, "Elements/Effects/shadows.css"));
+            css.AppendLine(GetLocalFile(rootPath, "Kits/Effects/shadows.css"));
 
         var result = css.ToString();
         if (!string.IsNullOrWhiteSpace(scope))

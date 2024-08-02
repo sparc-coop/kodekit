@@ -1,0 +1,43 @@
+﻿.shadow-50 {
+    box-shadow: var(--shadow-50);
+}
+
+.shadow-100 {
+    box-shadow: var(--shadow-100);
+}
+
+.shadow-200 {
+    box-shadow: var(--shadow-200);
+}
+
+.shadow-300 {
+    box-shadow: var(--shadow-300);
+}
+
+.shadow-400 {
+    box-shadow: var(--shadow-400);
+}
+
+.shadow-500 {
+    box-shadow: var(--shadow-500);
+}
+
+.shadow-600 {
+    box-shadow: var(--shadow-600);
+}
+
+.shadow-700 {
+    box-shadow: var(--shadow-700);
+}
+
+.shadow-800 {
+    box-shadow: var(--shadow-800);
+}
+
+.shadow-900 {
+    box-shadow: var(--shadow-900);
+}
+
+.shadow-1000 {
+    box-shadow: var(--shadow-1000);
+}

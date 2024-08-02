@@ -10,6 +10,44 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Kits\Anchors\anchors.css" />
+	  <None Remove="Kits\Buttons\buttons.css" />
+	  <None Remove="Kits\Effects\shadows.css" />
+	  <None Remove="Kits\Icons\icons.css" />
+	  <None Remove="Kits\Inputs\inputs.css" />
+	  <None Remove="Kits\Lists\lists.css" />
+	  <None Remove="Kits\Shared\destyle-reset.css" />
+	  <None Remove="Kits\Typography\typography.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Kits\Anchors\anchors.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Buttons\buttons.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Effects\shadows.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Icons\icons.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Inputs\inputs.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Lists\lists.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Shared\destyle-reset.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Kits\Typography\typography.css">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="SharpScss" Version="2.0.0" />
 		<!--<PackageReference Include="Sparc.Blossom" Version="8.0.2" />-->
 		<PackageReference Include="Sparc.Blossom.Data.Cosmos" Version="8.0.0" />
