@@ -1,4 +1,7 @@
-﻿namespace Kodekit;
+﻿using SharpScss;
+using System.Text;
+
+namespace Kodekit;
 
 public class KitRevision : BlossomEntity<string>
 {
@@ -212,4 +215,138 @@ public class KitRevision : BlossomEntity<string>
         .Where(x => !string.IsNullOrWhiteSpace(x))
         .ToList();
     }
+
+
+    internal string Css(string rootPath, string? scope = null)
+    {
+        if (!string.IsNullOrWhiteSpace(scope) && !scope.StartsWith('.'))
+            scope = $".{scope}";
+
+        var css = new StringBuilder();
+
+        foreach (var url in Imports())
+            css.AppendLine($"@import url('{url}');");
+
+        css.AppendLine(CompileVariables(scope));
+        css.AppendLine(GetLocalFile(rootPath, "Elements/_Shared/destyle-reset.css"));
+
+        if (Settings.UseTypography)
+            css.AppendLine(GetLocalFile(rootPath, "Elements/Typography/typography.css"));
+
+        if (Settings.UseButtons)
+            css.AppendLine(GetLocalFile(rootPath, "Elements/Buttons/buttons.css"));
+
+        if (Settings.UseInputs)
+            css.AppendLine(GetLocalFile(rootPath, "Elements/Inputs/inputs.css"));
+
+        if (Settings.UseAnchors)
+            css.AppendLine(GetLocalFile(rootPath, "Elements/Anchors/anchors.css"));
+
+        if (Settings.UseLists)
+            css.AppendLine(GetLocalFile(rootPath, "Elements/Lists/lists.css"));
+
+        if (Settings.UseShadows)
+            css.AppendLine(GetLocalFile(rootPath, "Elements/Effects/shadows.css"));
+
+        var result = css.ToString();
+        if (!string.IsNullOrWhiteSpace(scope))
+            result = Scss.ConvertToCss(scope + " { " + result + " }").Css;
+
+        return result;
+    }
+
+    private string CompileVariables(string? scope)
+    {
+        if (scope == null)
+            scope = ":root";
+        else
+            scope = "*";
+
+        var variables = new Dictionary<string, Dictionary<string, string>>();
+
+        Compile(variables, scope, Colors.Where(x => x.Name != "lightest" && x.Name != "darkest").ToList());
+        Compile(variables, scope, GetGreyscaleColors());
+        Compile(variables, scope, GetShadows());
+
+        if (Settings.UseTypography)
+        {
+            Compile(variables, scope, Paragraphs);
+            Compile(variables, "h1, h2, h3, h4, h5, h6, .subtitle", Headings);
+        }
+
+        if (Settings.UseButtons)
+            Compile(variables, "button, button svg, button img", Buttons);
+
+        if (Settings.UseInputs)
+        {
+            Compile(variables, "input, label, textarea" + (!Dropdowns.OverwriteInherited ? ", select" : ""), Inputs);
+            Compile(variables, "input[type=checkbox], input[type=radio], label.switch, label.switch .slider", Selectors);
+            if (Dropdowns.OverwriteInherited)
+                Compile(variables, "select", Dropdowns);
+        }
+
+        if (Settings.UseAnchors)
+            Compile(variables, "a", Anchors);
+
+        if (Settings.UseLists)
+            Compile(variables, "ol, ul, li", Lists);
+
+        var css = Write(variables);
+        return css;
+    }
+
+    private static void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, ISerializable element)
+    {
+        Compile(variables, scope, element.Serialize());
+    }
+
+    private static void Compile<T>(Dictionary<string, Dictionary<string, string>> variables, string scope, List<Variable<T>> values) where T : ISerializable, new()
+    {
+        foreach (var value in values)
+        {
+            Compile(variables, scope, value.Serialize());
+        }
+    }
+
+    private static void Compile(Dictionary<string, Dictionary<string, string>> variables, string scope, Dictionary<string, string>? values)
+    {
+        if (values == null)
+            return;
+
+        if (variables.ContainsKey(scope))
+        {
+            variables[scope] = variables[scope].Concat(values.Where(x => !variables[scope].ContainsKey(x.Key))).ToDictionary(x => x.Key, x => x.Value);
+        }
+        else
+            variables.Add(scope, values);
+    }
+
+    private static string Write(Dictionary<string, Dictionary<string, string>> variables)
+    {
+        var css = new StringBuilder();
+
+        foreach (var key in variables.Keys)
+        {
+            css.Append(key).AppendLine(" {");
+
+            var indent = "    ";
+
+            foreach (var item in variables[key])
+            {
+                css.Append(indent);
+                css.AppendLine($"--{item.Key.ToLower()}: {item.Value};");
+            }
+
+            css.AppendLine("}");
+            css.AppendLine();
+
+            //if (Variations != null)
+            //    foreach (var variation in Variations)
+            //        css = variation.ToCss(css);
+        }
+
+        return css.ToString();
+    }
+
+    private string GetLocalFile(string rootPath, string filename) => System.IO.File.ReadAllText(Path.Combine(rootPath, filename));
 }

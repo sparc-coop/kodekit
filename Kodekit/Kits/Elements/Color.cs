@@ -4,7 +4,7 @@ namespace Kodekit;
 
 public class Color : ISerializable
 {
-    internal Color()
+    public Color()
     {
         HexValue = ColorTranslator.ToHtml(System.Drawing.Color.White);
     }
