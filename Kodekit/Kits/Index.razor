@@ -31,11 +31,7 @@
                     </div>
                 </header>
 
-                @if (UserKits == null || !UserKits.Any())
-                {
-                    <p>Create a new Kodekit to get started!</p>
-                }
-                else
+                @if (UserKits != null)
                 {
                     <div class="dashboard-container">
                         @foreach (var kit in UserKits)
@@ -62,6 +58,9 @@
         IsLoading = true;
         UserKits = await Kits.All();
         IsLoading = false;
+
+        if (!UserKits.Any())
+            await CreateNew();
     }
 
     private async Task CreateNew()

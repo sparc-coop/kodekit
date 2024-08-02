@@ -54,5 +54,9 @@
   {
     "outputFile": "_Shared/BlobBackground.razor.css",
     "inputFile": "_Shared/BlobBackground.razor.scss"
+  },
+  {
+    "outputFile": "Index.razor.css",
+    "inputFile": "Index.razor.scss"
   }
 ]

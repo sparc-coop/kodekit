@@ -1,1 +1,13 @@
 ﻿@page  "/"
+
+<div @onclick=Go>
+    <h1>Make Your Style Guide Default</h1>
+</div>
+
+@code
+{
+    void Go()
+    {
+        Nav.NavigateTo("/kits");
+    }
+}
