@@ -1,10 +1,8 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Kodekit;
 
-public partial class KodekitContext(DbContextOptions<KodekitContext> options, IPublisher publisher, IHttpContextAccessor auth) 
-    : BlossomDbContext(options, publisher, auth)
+public partial class KodekitContext(BlossomDbContextOptions options) : BlossomDbContext(options)
 {
     protected override void OnModelCreating(ModelBuilder builder)
     {
