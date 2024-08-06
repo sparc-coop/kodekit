@@ -1,13 +1,63 @@
-﻿@page  "/"
+﻿@page "/"
 
-<div @onclick=Go>
-    <h1>Make Your Style Guide Default</h1>
-</div>
+<header>
+    <h1>Make your styleguide the default.</h1>
+    <p>
+        Remove the complexity of CSS-driven HTML by applying your KodeKit styles 
+        directly to the semantic HTML. No arbitrary classes, no confusion.
+    </p>
+    <button @onclick=Go>Start your Style</button>
+</header>
+
+<article>
+    <section _="on intersection(intersecting) having threshold 0.25
+                        if intersecting transition opacity to 1 then set :done to 1
+                        else if :done != 1 then transition opacity to 0">
+        <header>
+            <h4>What is Kodekit?</h4>
+        </header>
+        <p>
+            Kodekit is a new way of building frontend websites & applications.
+            The idea is that HTML elements should be styled directly, without
+            the need for additional classes. Only adding classes as additional
+            modifiers such as style variations and size.
+        </p>
+        <p>
+            Not only that, but Kodekit is also a visual theme builder, meaning
+            that you can create your own styleguides & themes visually, without
+            writing any css.
+        </p>
+
+        <header>
+            <h4>Why use this method?</h4>
+        </header>
+        <p>
+            Styling the default HTML directly not only allows for quicker and cleaner
+            code, but also allows for more consistency across larger projects.
+        </p>
+        <p>
+            No more chaining together multiple classes to create a primary button, only
+            to forget to add some classes every so often.
+        </p>
+
+        <button @onclick="@GetStarted">Start Your Style</button>
+    </section>
+</article>
+
+<section>
+    <header>
+        <h2>Overview</h2>
+        <h3>Introduction</h3>
+        <hr />
+    </header>
+</section>
 
 @code
 {
+    [CascadingParameter] public Sparc.Blossom.Api.Kit Kit { get; set; } = default!;
+
     void Go()
     {
-        Nav.NavigateTo("/kits");
+        Nav.NavigateTo($"/{Kit.Id}/Colors");
     }
 }
