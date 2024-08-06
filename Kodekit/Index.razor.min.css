@@ -1,1 +1,1 @@
-﻿div{display:flex;height:100%;width:100%;align-items:center;justify-content:center;}h1{font-size:2.625rem;}
+﻿h1::deep{display:none;}

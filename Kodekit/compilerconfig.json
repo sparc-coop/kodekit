@@ -58,5 +58,9 @@
   {
     "outputFile": "Index.razor.css",
     "inputFile": "Index.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/Preview.razor.css",
+    "inputFile": "_Shared/Preview.razor.scss"
   }
 ]

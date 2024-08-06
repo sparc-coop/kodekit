@@ -1,0 +1,32 @@
+﻿<header>
+    <h1>Make your styleguide the default.</h1>
+    <p>
+        Remove the complexity of CSS-driven HTML
+        by applying your KodeKit styles directly
+        to the semantic HTML. No arbitrary classes,
+        no confusion.
+    </p>
+
+    @if (Kit == null)
+    {
+        <button @onclick=Create>Start a new KodeKit</button>
+    }
+    else
+    {
+        <button @onclick=GoToMyKits>Go to My Kits</button>
+    }
+</header>
+
+@inject KitApi Kits
+@code {
+    [CascadingParameter] public Sparc.Blossom.Api.Kit? Kit { get; set; }
+    [CascadingParameter] public ClaimsPrincipal? User { get; set; }
+
+    async Task Create()
+    {
+        var kit = await Kits.Create("My First KodeKit", User!.Id());
+        Nav.NavigateTo($"/kits/{kit.KitId}/home");
+    }
+
+    void GoToMyKits() => Nav.NavigateTo($"/kits");
+}

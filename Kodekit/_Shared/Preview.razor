@@ -1,0 +1,49 @@
+﻿@if (Kit != null)
+{
+    <div class="preview" _="install FadeInOnScroll()">
+        @if (CssUrl != null)
+        {
+            <style type="text/css">
+                @@import url('@CssUrl');
+            </style>
+        }
+
+        <div class="@Scope" @ref=PreviewBlock>
+            @ChildContent
+        </div>
+
+        <pre><code tabindex="0" class="language-html" @ref=CodeBlock></code></pre>
+
+        <aside>
+            * Live preview with <a class="preview-link" href="@CssUrl" target="_blank">@(Kit.Id).css</a>
+        </aside>
+    </div>
+}
+
+@inject IJSRuntime Js
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+    [CascadingParameter] public Kit Kit { get; set; } = default!;
+    [Parameter] public string? AdditionalClass { get; set; }
+
+    ElementReference PreviewBlock;
+    ElementReference CodeBlock;
+
+    string Scope = $"preview-{Guid.NewGuid()}";
+    string? CssUrl;
+
+    protected override void OnParametersSet()
+    {
+        if (Kit == null) return;
+
+        var newUrl = $"{Nav.BaseUri}{Kit.Id}.css?scope={Scope}&v=current";
+
+        if (newUrl != CssUrl)
+            CssUrl = newUrl;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Js.InvokeVoidAsync("populatePreviewCode", PreviewBlock, CodeBlock);
+    }
+}

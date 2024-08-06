@@ -1,25 +1,15 @@
 ﻿@page "/"
-@page "/kits/{KitId}"
+@page "/kits/{kitId}/home"
 
-<header>
-    <h1>Make your styleguide the default.</h1>
-    <p>
-        Remove the complexity of CSS-driven HTML by applying your KodeKit styles
-        directly to the semantic HTML. No arbitrary classes, no confusion.
-    </p>
-    @if (Kit == null)
-    {
-        <button @onclick=Create>Start a new KodeKit</button>
-    }
-    else
-    {
-        <button @onclick=GoToMyKits>Go to My Kits</button>
-    }
-</header>
+<article>
+    <header>
+        <Preview>
+            <Hero />
+        </Preview>
+    </header>
 
-@if (Kit != null)
-{
-    <article>
+    @if (Kit != null)
+    {
         <section _="install FadeInOnScroll()">
             <header>
                 <h4>What is KodeKit?</h4>
@@ -46,16 +36,16 @@
                 Or, just <a href="@ImportUrl" download="@ImportUrl" target="_blank">download the generated .css file directly</a>.
             </p>
         </section>
-    </article>
 
-    <section>
-        <header>
-            <h2>Overview</h2>
-            <h3>Introduction</h3>
-            <hr />
-        </header>
-    </section>
-}
+        <section>
+            <header>
+                <h2>Overview</h2>
+                <h3>Introduction</h3>
+                <hr />
+            </header>
+        </section>
+    }
+</article>
 
 @inject IJSRuntime Js
 @inject NavigationManager Nav
@@ -64,7 +54,7 @@
 {
     [CascadingParameter] public Sparc.Blossom.Api.Kit Kit { get; set; } = default!;
     [CascadingParameter] public ClaimsPrincipal? User { get; set; }
-    [Parameter] public string? KitId { get; set; }
+    [Parameter] public string? kitId { get; set; }
     string ClickToCopy = "Click to copy";
     string ImportUrl => $"{Nav.BaseUri}{Kit?.Id}.css";
     string LinkUrl => $"<link rel=\"stylesheet\" href=\"{ImportUrl}\">";
@@ -73,21 +63,13 @@
     {
         if (Kit == null && User != null)
         {
-            KitId ??= User.Get("CurrentKitId")
+            kitId ??= User.Get("CurrentKitId")
                   ?? (await Kits.All()).FirstOrDefault()?.KitId;
 
-            if (KitId != null)
-                Nav.NavigateTo($"/kits/{KitId}");
+            if (kitId != null)
+                Nav.NavigateTo($"/kits/{kitId}/home");
         }
     }
-
-    async Task Create()
-    {
-        var kit = await Kits.Create("My First KodeKit", User!.Id());
-        Nav.NavigateTo($"/kits/{kit.KitId}");
-    }
-
-    void GoToMyKits() => Nav.NavigateTo($"/kits");
 
     async Task CopyLink()
     {
