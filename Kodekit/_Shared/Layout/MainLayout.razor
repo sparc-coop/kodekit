@@ -1,17 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
-@if (IsHomePage)
-{
-    <BlobBackground ShowCursorShadow="true" />
-}
-<CustomCursor IsHomePage="@IsHomePage" />
+<BlobBackground ShowCursorShadow="false" />
+<CustomCursor IsHomePage="false" />
 
 <header>
     <NavMenu />
-    @if (!IsHomePage)
-    {
-        <hr />
-    }
+    <hr />
 </header>
 
 <CascadingValue Value="User">
@@ -34,12 +28,9 @@
 @code {
     ClaimsPrincipal? User { get; set; }
     Kit? Kit;
-    bool IsHomePage;
 
     protected override async Task OnParametersSetAsync()
     {
-        IsHomePage = Nav.ToAbsoluteUri(Nav.Uri).AbsolutePath == "/";
-
         object? kitId = null;
         if ((this.Body?.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out kitId) == true)
             Kit = await Kits.Get(kitId);

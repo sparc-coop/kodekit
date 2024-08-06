@@ -37,6 +37,7 @@
   top: -38vw;
   left: -25vw;
   z-index: 30;
+  opacity: 0.2;
   border: 3px solid red;
 }
 .background .overlay-noise {

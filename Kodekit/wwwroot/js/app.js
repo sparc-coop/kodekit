@@ -1,6 +1,5 @@
-﻿function copyToClipboard(id) {
-    var copyText = document.getElementById(id).value;
-    navigator.clipboard.writeText(copyText);
+﻿function copyToClipboard(text) {
+    navigator.clipboard.writeText(text);
 }
 
 function showHighlight() {

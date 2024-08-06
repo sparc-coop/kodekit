@@ -10,10 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Remove="wwwroot\js\app._hs" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="Kits\Anchors\anchors.css" />
 	  <None Remove="Kits\Buttons\buttons.css" />
 	  <None Remove="Kits\Effects\shadows.css" />
@@ -22,10 +18,6 @@
 	  <None Remove="Kits\Lists\lists.css" />
 	  <None Remove="Kits\Shared\destyle-reset.css" />
 	  <None Remove="Kits\Typography\typography.css" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <_ContentIncludedByDefault Remove="wwwroot\js\app._hs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -53,10 +45,6 @@
 	  <Content Include="Kits\Typography\typography.css">
 	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="wwwroot\js\app._hs" />
 	</ItemGroup>
 
 	<ItemGroup>
