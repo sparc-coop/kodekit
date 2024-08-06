@@ -1,7 +1,7 @@
 using Kodekit;
 using Microsoft.EntityFrameworkCore;
 
-BlossomApplication.Run<BlossomProgram, User>(args,
+BlossomApplication.Run<Html, User>(args,
     builder =>
     {
         builder.Services.AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"]!, "kodekit", ServiceLifetime.Scoped);
