@@ -15,10 +15,6 @@ div {
         transition: opacity 0.2s ease-in-out;
     }
 
-    &:hover img {
-        opacity: 1;
-    }
-
     h4, p, button {
         position: relative;
         z-index: 2;
@@ -31,4 +27,8 @@ div {
     p {
         font-size: 0.875rem;
     }
+}
+
+.kitnavcard:hover img {
+    opacity: 1;
 }
