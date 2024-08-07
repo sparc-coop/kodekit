@@ -1,16 +1,7 @@
 ﻿.preview {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 5rem;
   position: relative;
-}
-
-aside {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 16px;
-  font-size: 0.7rem;
-}
-aside a {
-  text-decoration: underline;
 }

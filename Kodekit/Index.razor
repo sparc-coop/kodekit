@@ -12,6 +12,11 @@
     {
         <section _="install FadeInOnScroll()">
             <header>
+                <h2>Overview</h2>
+                <h3>Introduction</h3>
+                <hr />
+            </header>
+            <header>
                 <h4>What is KodeKit?</h4>
             </header>
             <p>
@@ -26,12 +31,9 @@
                 <h4>How do I install KodeKit on my site?</h4>
             </header>
             <p>
-                Simply add the following link to the <span>&lt;head&gt;</span> section of your site:
+                Simply add the following tag to the <span>&lt;head&gt;</span> section of your site:
             </p>
-            <div @onclick=CopyLink>
-                <pre><code>@LinkUrl</code></pre>
-                <aside>@ClickToCopy</aside>
-            </div>
+            <CodeBlock Code="@LinkUrl" CanCopy="true" />
             <p>
                 Or, just <a href="@ImportUrl" download="@ImportUrl" target="_blank">download the generated .css file directly</a>.
             </p>
@@ -55,7 +57,6 @@
     [CascadingParameter] public Sparc.Blossom.Api.Kit Kit { get; set; } = default!;
     [CascadingParameter] public ClaimsPrincipal? User { get; set; }
     [Parameter] public string? kitId { get; set; }
-    string ClickToCopy = "Click to copy";
     string ImportUrl => $"{Nav.BaseUri}{Kit?.Id}.css";
     string LinkUrl => $"<link rel=\"stylesheet\" href=\"{ImportUrl}\">";
 
@@ -69,13 +70,5 @@
             if (kitId != null)
                 Nav.NavigateTo($"/kits/{kitId}/home");
         }
-    }
-
-    async Task CopyLink()
-    {
-        await Js.InvokeAsync<string>("copyToClipboard", LinkUrl);
-        ClickToCopy = "Copied";
-        await Task.Delay(2000);
-        ClickToCopy = "Copy";
     }
 }

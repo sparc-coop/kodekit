@@ -2,8 +2,8 @@
     navigator.clipboard.writeText(text);
 }
 
-function showHighlight() {
-    hljs.highlightAll();
+function highlight(codeBlock) {
+    hljs.highlightElement(codeBlock);
 }
 
 function populatePreviewCode(previewBlock, codeBlock) {

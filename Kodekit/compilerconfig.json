@@ -62,5 +62,9 @@
   {
     "outputFile": "_Shared/Preview.razor.css",
     "inputFile": "_Shared/Preview.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/CodeBlock.razor.css",
+    "inputFile": "_Shared/CodeBlock.razor.scss"
   }
 ]

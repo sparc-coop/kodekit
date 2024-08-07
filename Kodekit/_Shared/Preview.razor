@@ -12,11 +12,7 @@
             @ChildContent
         </div>
 
-        <pre><code tabindex="0" class="language-html" @ref=CodeBlock></code></pre>
-
-        <aside>
-            * Live preview with <a class="preview-link" href="@CssUrl" target="_blank">@(Kit.Id).css</a>
-        </aside>
+        <CodeBlock Ref="PreviewBlock" Scope="@Scope" />
     </div>
 }
 
@@ -40,10 +36,5 @@
 
         if (newUrl != CssUrl)
             CssUrl = newUrl;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await Js.InvokeVoidAsync("populatePreviewCode", PreviewBlock, CodeBlock);
     }
 }

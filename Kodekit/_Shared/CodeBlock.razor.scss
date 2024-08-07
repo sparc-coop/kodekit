@@ -1,0 +1,42 @@
+div {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2.5rem;
+    background: var(--grey-900);
+    padding: 1rem;
+    margin: 2rem 0;
+    font-family: monospace;
+    position: relative;
+    width: 90vw;
+    max-width: 90vw;
+    overflow: visible;
+
+    @media screen and (min-width: 100vh) {
+        width: auto;
+    }
+}
+
+pre {
+    code {
+        padding: 8px 5px;
+        font-family: 'Fira Code', monospace;
+        font-optical-sizing: auto;
+    }
+}
+
+aside {
+    position: absolute;
+    top: -16px;
+    right: 24px;
+    padding: 8px 16px;
+    font-size: 0.7rem;
+    background: var(--grey-800);
+    border-radius: 100px;
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+div.cancopy aside {
+    cursor: pointer;
+}

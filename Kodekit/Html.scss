@@ -29,6 +29,8 @@ h3 {
 
 h4 {
     font: 500 20px/130% 'QuantaGroteskPro';
+    margin-bottom: 1.25rem;
+    margin-top: 2.5rem;
 }
 
 p {
@@ -69,22 +71,6 @@ a.button {
     background: transparent;
 }
 
-pre {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 2.5rem;
-    background: var(--grey-900);
-    padding: 1rem;
-    font-family: monospace;
-    position: relative;
-
-    code {
-        padding: 0;
-        margin-top: -1em;
-        font-family: 'Fira Code', monospace;
-        font-optical-sizing: auto;
-    }
-}
-
 /*a, button, label, input, select, div, span, li {
     &:hover {
         cursor: none;
@@ -99,4 +85,10 @@ pre {
     -webkit-animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     -webkit-animation-name: fadeInUp;
+}
+
+hr {
+    border-color: rgba(200, 200, 200, 0.3);
+    margin-top: 40px;
+    margin-bottom: 40px;
 }

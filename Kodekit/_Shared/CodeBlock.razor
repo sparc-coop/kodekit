@@ -1,0 +1,55 @@
+﻿@using System.Net
+<div class="@(CanCopy ? "cancopy" : "")">
+    <pre><code @ref=CodeBlockRef class="language-html">@Code</code></pre>
+    @if (CssUrl != null)
+    {
+        <aside>
+            * Live preview with <a class="preview-link" href="@CssUrl" target="_blank">@(Kit!.Id).css</a>
+        </aside>
+    }
+    else if (CanCopy)
+    {
+        <aside @onclick=Copy>@ClickToCopy</aside>
+    }
+</div>
+
+@inject IJSRuntime Js
+@code {
+    [Parameter] public string? Code { get; set; }
+    [Parameter] public string? Scope { get; set; }
+    [Parameter] public ElementReference? Ref { get; set; }
+    [Parameter] public bool CanCopy { get; set; }
+    [CascadingParameter] public Kit? Kit { get; set; } = default!;
+    string? CssUrl;
+    string ClickToCopy = "Click to copy";
+
+
+    ElementReference CodeBlockRef;
+
+    protected override void OnInitialized()
+    {
+        if (Scope == null || Kit == null) return;
+
+        var newUrl = $"{Nav.BaseUri}{Kit.Id}.css?scope={Scope}&v=current";
+
+        if (newUrl != CssUrl)
+            CssUrl = newUrl;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (Ref != null)
+            await Js.InvokeVoidAsync("populatePreviewCode", Ref, CodeBlockRef);
+        else if (firstRender)
+            await Js.InvokeVoidAsync("highlight", CodeBlockRef);
+    }
+
+    async Task Copy()
+    {
+        await Js.InvokeAsync<string>("copyToClipboard", Code);
+        ClickToCopy = "Copied!";
+        StateHasChanged();
+        await Task.Delay(2000);
+        ClickToCopy = "Click to copy";
+    }
+}

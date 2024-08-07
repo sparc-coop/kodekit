@@ -165,3 +165,9 @@
     font-weight: 700;
     src: url(wwwroot/fonts/QuantaGroteskPro-Bold.ttf) format('truetype');
 }
+
+@mixin landscape {
+    @media screen and (min-width: 100vh) {
+        @content;
+    }
+}
