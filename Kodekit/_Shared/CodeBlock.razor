@@ -1,7 +1,7 @@
 ﻿@using System.Net
 <div class="@(CanCopy ? "cancopy" : "")">
     <pre><code @ref=CodeBlockRef class="language-html">@Code</code></pre>
-    @if (CssUrl != null)
+    @if (Kit != null && CssUrl != null)
     {
         <aside>
             * Live preview with <a class="preview-link" href="@CssUrl" target="_blank">@(Kit!.Id).css</a>

@@ -1,1 +1,1 @@
-﻿::deep h1{font-size:3.4rem;line-height:110%;letter-spacing:.045rem;}@media screen and (min-width:100vh){::deep h1{font-size:4.5rem;}}::deep .preview{margin-bottom:8.75rem;}::deep .preview>div{flex:1;}
+﻿::deep h1{font-size:3.4rem;line-height:110%;letter-spacing:.045rem;margin-bottom:1.25rem;}@media screen and (min-width:100vh){::deep h1{font-size:4.5rem;}}::deep button{margin-top:1rem;}a{text-decoration:underline;}::deep .preview{margin-bottom:8.75rem;}::deep .preview>div{flex:1;}

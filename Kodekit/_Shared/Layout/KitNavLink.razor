@@ -11,5 +11,5 @@
     [Parameter] public bool Enabled { get; set; } = true;
     [CascadingParameter] public Kit Kit { get; set; } = default!;
 
-    private string Link(string page) => $"/{Kit?.Id}/{page}";
+    private string Link(string page) => $"/kits/{Kit?.Id}/{page}";
 }
