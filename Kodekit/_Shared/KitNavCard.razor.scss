@@ -1,0 +1,34 @@
+div {
+    position: relative;
+    padding: 1rem 5rem 1rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid white;
+    overflow: hidden;
+    background-color: var(--grey-900);
+
+    img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    &:hover img {
+        opacity: 1;
+    }
+
+    h4, p, button {
+        position: relative;
+        z-index: 2;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    p {
+        font-size: 0.875rem;
+    }
+}

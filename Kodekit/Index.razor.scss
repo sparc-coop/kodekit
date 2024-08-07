@@ -23,3 +23,41 @@ a {
         flex: 1;
     }
 }
+
+aside {
+    color: var(--grey-300);
+}
+
+h3 {
+    margin-bottom: 1.25rem;
+}
+
+section > header {
+    display: flex;
+    gap: 0.39rem;
+    padding: 1.5rem 0;
+    align-items: center;
+
+    span {
+        font-size: 0.875rem;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    aside {
+        margin-left: 1.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+section > div {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1rem;
+
+    @media screen and (min-width: 100vh) {
+        grid-template-columns: 1fr 1fr;
+    }
+}

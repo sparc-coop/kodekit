@@ -8,32 +8,35 @@
         </Preview>
     </header>
 
+
+    <header>
+        <h2>Overview</h2>
+        <h3>My Kit: @Kit.Id</h3>
+        <aside>Learn about KodeKit, install your kit on your site, and browse available styles.</aside>
+        <hr />
+    </header>
+
     @if (Kit != null)
     {
         <section _="install FadeInOnScroll()">
             <header>
-                <h2>Overview</h2>
-                <h3>Introduction</h3>
-                <hr />
+                <span>01</span>
+                <h4>Overview</h4>
+                <aside>Learn about Kodekit and install your kit on your site.</aside>
             </header>
-            <header>
-                <h4>What is KodeKit?</h4>
-            </header>
+
+            <h4>What is KodeKit?</h4>
             <p>
                 KodeKit is a visual theme builder, so you can create
                 style guides and themes without writing any CSS.
             </p>
             <p>
-                KodeKit simplifies frontend development by allowing you to style base HTML 
-                elements directly, without a slew of extra CSS classes. Classes are only used 
+                KodeKit simplifies frontend development by allowing you to style base HTML
+                elements directly, without a slew of extra CSS classes. Classes are only used
                 for style variations--not the primary style.
             </p>
-        </section>
 
-        <section _="install FadeInOnScroll()">
-            <header>
-                <h4>How do I install KodeKit on my site?</h4>
-            </header>
+            <h4>How do I install KodeKit on my site?</h4>
             <p>
                 Simply add the following tag to the <span>&lt;head&gt;</span> section of your site:
             </p>
@@ -41,6 +44,72 @@
             <p>
                 Or, just <a href="@ImportUrl" download="@ImportUrl" target="_blank">download the generated .css file directly</a>.
             </p>
+
+            <h4>How do I use KodeKit?</h4>
+            <p>
+                Once you've added the tag to your site, you can start configuring your KodeKit.
+                Click the cards below to browse and adjust the styles in your KodeKit. All changes you
+                make are live immediately on your site!
+            </p>
+
+            <hr />
+        </section>
+
+        <section _="install FadeInOnScroll()">
+            <header>
+                <span>02</span>
+                <h4>Base Styles</h4>
+                <aside>Set up your color palettes, typography rules, fonts, and icons.</aside>
+            </header>
+
+            <div>
+                <KitNavCard Name="Colors">
+                    Create your default color palettes. The colors you choose here will automatically
+                    applied throughout your KodeKit.
+                </KitNavCard>
+                <KitNavCard Name="Typography">
+                    Set up all of your typography rules here. Choose your fonts, sizes, and weights for your
+                    headers, paragraphs, and other text elements.
+                </KitNavCard>
+                <KitNavCard Name="Icons">
+                    Choose an icon set to use for your site. You can also upload your own SVGs
+                    to use as icons.
+                </KitNavCard>
+            </div>
+            <hr />
+        </section>
+
+        <section _="install FadeInOnScroll()">
+            <header>
+                <span>03</span>
+                <h4>HTML Elements</h4>
+                <aside>Style your buttons, inputs, selectors, and other HTML elements.</aside>
+            </header>
+
+            <div>
+                <KitNavCard Name="Buttons">
+                    Style your buttons, including hover and active states.
+                </KitNavCard>
+                <KitNavCard Name="Inputs">
+                    Style your inputs and textareas, including hover and active states.
+                </KitNavCard>
+                <KitNavCard Name="Selectors">
+                    Style your checkboxes, radio buttons, and toggles.
+                </KitNavCard>
+                <KitNavCard Name="Dropdowns">
+                    Style your dropdowns, including hover and active states.
+                </KitNavCard>
+                <KitNavCard Name="Anchors">
+                    Style your anchor tags, including hover and active states.
+                </KitNavCard>
+                <KitNavCard Name="Lists">
+                    Style your lists, including ordered and unordered lists.
+                </KitNavCard>
+                <KitNavCard Name="Shadows">
+                    Style your box shadows, including hover and active states.
+                </KitNavCard>
+            </div>
+            <hr />
         </section>
     }
 </article>

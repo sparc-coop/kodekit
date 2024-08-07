@@ -1,0 +1,1 @@
+﻿div{position:relative;padding:1rem 5rem 1rem 1rem;border-radius:1rem;border:1px solid #fff;overflow:hidden;background-color:var(--grey-900);}div img{position:absolute;top:0;right:0;z-index:1;opacity:0;transition:opacity .2s ease-in-out;}div:hover img{opacity:1;}div h4,div p,div button{position:relative;z-index:2;}div h4{margin:0;}div p{font-size:.875rem;}

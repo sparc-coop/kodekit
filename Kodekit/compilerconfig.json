@@ -66,5 +66,9 @@
   {
     "outputFile": "_Shared/CodeBlock.razor.css",
     "inputFile": "_Shared/CodeBlock.razor.scss"
+  },
+  {
+    "outputFile": "_Shared/KitNavCard.razor.css",
+    "inputFile": "_Shared/KitNavCard.razor.scss"
   }
 ]

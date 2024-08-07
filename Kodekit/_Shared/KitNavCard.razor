@@ -1,0 +1,17 @@
+﻿<div class="@(Enabled ? "" : "disabled")">
+    <img src="@ImageUrl" alt="@Name" />
+    <h4>@Name</h4>
+    <p>@ChildContent</p>
+    <button @onclick=Link>Configure</button>
+</div>
+
+@code {
+    [Parameter] public string Name { get; set; } = default!;
+    [Parameter] public bool Enabled { get; set; } = true;
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+    [CascadingParameter] public Kit Kit { get; set; } = default!;
+    
+    public string ImageUrl => $"/images/cards/{Name}.png";
+
+    void Link() => Nav.NavigateTo($"/kits/{Kit?.Id}/{Name}");
+}
