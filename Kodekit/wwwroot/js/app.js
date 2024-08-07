@@ -2,6 +2,28 @@
     navigator.clipboard.writeText(text);
 }
 
+let ticking = false;
+let lastKnownScrollPosition = 0;
+function fadeBackgroundOnScroll(element) {
+    var background = document.getElementById('background');
+    console.log('fading setup', background);
+
+    element.addEventListener('scroll', () => {
+        lastKnownScrollPosition = element.scrollTop;
+
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                var opacity = Math.max(0, 1 - (lastKnownScrollPosition / 800));
+                background.style.opacity = opacity;
+                console.log('scroll', opacity);
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+}
+
 function highlight(codeBlock) {
     hljs.highlightElement(codeBlock);
 }

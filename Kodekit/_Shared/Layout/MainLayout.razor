@@ -15,7 +15,7 @@
             {
                 <KitNavigation />
             }
-            <div>
+            <div @ref=Main>
                 @Body
             </div>
         </main>
@@ -28,6 +28,7 @@
 @code {
     ClaimsPrincipal? User { get; set; }
     Kit? Kit;
+    ElementReference Main;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -41,6 +42,9 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        if (firstRender)
+            await Js.InvokeVoidAsync("fadeBackgroundOnScroll", Main);
+
         await Js.InvokeVoidAsync("initHyperScript");
     }
 }
