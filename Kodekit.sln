@@ -11,13 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodekit", "Kodekit\Kodekit.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Legacy", "_Legacy", "{6D3A762F-3F6C-44D4-9921-A7E256CCEA0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom", "..\Sparc.Kernel\Sparc.Blossom.Server\Sparc.Blossom.csproj", "{AF4146B8-6BC5-427A-8F6B-9AF82790C04E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom", "..\blossom\Sparc.Blossom.Server\Sparc.Blossom.csproj", "{AF4146B8-6BC5-427A-8F6B-9AF82790C04E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Blossom", "_Blossom", "{C6E8232B-51B9-427D-9A08-36B5C8D67D8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Core", "..\Sparc.Kernel\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj", "{BC4C6BC8-9F59-4306-ABB4-3A8292BFCF06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Core", "..\blossom\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj", "{BC4C6BC8-9F59-4306-ABB4-3A8292BFCF06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.ApiGenerator", "..\Sparc.Kernel\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj", "{025D838C-E513-4CDE-805C-F03B0CE75299}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.ApiGenerator", "..\blossom\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj", "{025D838C-E513-4CDE-805C-F03B0CE75299}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -130,7 +130,8 @@
         if (Kit == null && User != null)
         {
             kitId ??= User.Get("CurrentKitId")
-                  ?? (await Kits.All()).FirstOrDefault()?.KitId;
+                  ?? (await Kits.All()).FirstOrDefault()?.KitId
+                  ?? (await Kits.Create("My First KodeKit", User!.Id()))?.KitId;
 
             if (kitId != null)
                 Nav.NavigateTo($"/kits/{kitId}/home");
