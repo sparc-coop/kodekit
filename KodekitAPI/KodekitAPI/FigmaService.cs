@@ -76,6 +76,68 @@ namespace KodekitAPI
             var filesResponse = JsonSerializer.Deserialize<FigmaFilesResponse>(json);
             return filesResponse?.Files;
         }
+        public async Task<List<FigmaStyle>> GetStylesForFile(string fileKey, string accessToken)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var response = await _httpClient.GetAsync($"https://api.figma.com/v1/files/{fileKey}/styles");
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            var stylesResponse = JsonSerializer.Deserialize<FigmaStylesResponse>(json);
+            return stylesResponse?.Meta?.Styles;
+        }
+
+        public class FigmaStylesResponse
+        {
+            [JsonPropertyName("meta")]
+            public MetaData Meta { get; set; }
+        }
+
+        public class MetaData
+        {
+            [JsonPropertyName("styles")]
+            public List<FigmaStyle> Styles { get; set; }
+        }
+
+        public class FigmaStyle
+        {
+            [JsonPropertyName("key")]
+            public string Key { get; set; }
+
+            [JsonPropertyName("name")]
+            public string Name { get; set; }
+
+            [JsonPropertyName("style_type")]
+            public string StyleType { get; set; }
+
+            [JsonPropertyName("thumbnail_url")]
+            public string ThumbnailUrl { get; set; }
+
+            [JsonPropertyName("description")]
+            public string Description { get; set; }
+
+            [JsonPropertyName("created_at")]
+            public string CreatedAt { get; set; }
+
+            [JsonPropertyName("updated_at")]
+            public string UpdatedAt { get; set; }
+            [JsonPropertyName("node_id")]
+            public string NodeId { get; set; }
+
+            [JsonPropertyName("user")]
+            public FigmaUser User { get; set; }
+        }
+
+        public class FigmaUser
+        {
+            [JsonPropertyName("id")]
+            public string Id { get; set; }
+
+            [JsonPropertyName("handle")]
+            public string Handle { get; set; }
+
+            [JsonPropertyName("img_url")]
+            public string ImgUrl { get; set; }
+        }
 
         public class FigmaFilesResponse
         {
@@ -121,6 +183,7 @@ namespace KodekitAPI
 
             [JsonPropertyName("name")]
             public string Name { get; set; }
+            public List<FigmaFile> Files { get; set; }
         }
         private class TokenResponse
         {

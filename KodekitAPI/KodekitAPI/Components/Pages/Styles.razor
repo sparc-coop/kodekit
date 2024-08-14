@@ -1,0 +1,43 @@
+﻿@rendermode @(new InteractiveServerRenderMode(prerender: false))
+@page "/styles/{StyleId}"
+@using static KodekitAPI.FigmaService
+@inject FigmaService figmaService
+@inject NavigationManager navigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Figma Styles</PageTitle>
+
+@if (FigmaStyles != null && FigmaStyles.Any())
+{
+    @foreach (var style in FigmaStyles)
+    {
+        <div>Style Key: @style.Key</div>
+        <div>Style Name: @style.Name</div>
+        <div>Style Type: @style.StyleType</div>
+
+    }
+}
+else
+{
+    <p>No styles found.</p>
+    
+}
+
+
+@code {
+    [Parameter] 
+    public string StyleId { get; set; }
+    public List<FigmaStyle> FigmaStyles { get; set; } = new List<FigmaStyle>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var token = await GetTokenAsync();
+        FigmaStyles = await figmaService.GetStylesForFile(StyleId, token);
+        var abc = "";
+    }
+    public async Task<string> GetTokenAsync()
+    {
+        var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "authToken");
+        return token;
+    }
+}

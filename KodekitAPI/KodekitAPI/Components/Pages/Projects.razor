@@ -8,18 +8,24 @@
 <PageTitle>Figma Projects</PageTitle>
 <div>
     <input @bind="TeamId" />
-    <label>Enter Team Id (tip: 1377318027660273677)</label>
+    <label>Enter Team Id (tip: 1013945012488643266)</label>
     <button @onclick="GetProjectsInTeam">Submit</button>
 </div>
-@if (Files.Any())
+@if (FigmaProjects.Any())
 {
-    <ul>
-        @foreach (var file in Files)
-        {
-            <li>@file.Name</li>
-            <img style="max-width: 150px" src="@file.ThumbnailUrl"/>
-        }
-    </ul>
+    @foreach (var project in FigmaProjects)
+    {
+        <div style="border-style: solid; border-width: 2px; border-color: red; padding-bottom: 30px">
+            <h3>@project.Name</h3>
+            @foreach (var file in project.Files)
+            {
+                <div @onclick="() => GoToStyles(file.Key)" style="border-style: solid; border-width: 2px; border-color: blue">
+                    <div>@file.Name (@file.Key)</div>
+                    <img style="max-width: 150px" src="@file.ThumbnailUrl" />
+                </div>
+            }
+        </div>
+    }
 }
 else
 {
@@ -29,7 +35,8 @@ else
 
 
 @code {
-    public List<FigmaFile> Files { get; set; } = new List<FigmaFile>();
+    // public List<FigmaFile> Files { get; set; } = new List<FigmaFile>();
+    public List<Project> FigmaProjects { get; set; } = new List<Project>();
     public string TeamId { get; set; } = "";
 
     // protected override async Task OnInitializedAsync()
@@ -39,10 +46,11 @@ else
     public async Task<string> GetProjectsInTeam()
     {
         var token = await GetTokenAsync();
-        var projects = await figmaService.GetProjectsInTeam(TeamId, token);
-        foreach (var item in projects)
+        FigmaProjects = await figmaService.GetProjectsInTeam(TeamId, token);
+        foreach (var project in FigmaProjects)
         {
-            Files = await figmaService.GetFilesInProject(item.Id, token);
+            // project.Files = new List<FigmaFile>();
+            project.Files = await figmaService.GetFilesInProject(project.Id, token);
         }
         return "";
     }
@@ -51,5 +59,9 @@ else
         var token = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "authToken");
         // Use sessionStorage.getItem if you used sessionStorage to store the token
         return token;
+    }
+    public void GoToStyles(string id)
+    {
+        navigationManager.NavigateTo($"/styles/{id}", replace: true);
     }
 }
