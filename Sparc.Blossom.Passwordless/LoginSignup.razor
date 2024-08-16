@@ -1,0 +1,79 @@
+﻿@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using System.Threading.Tasks
+@using System.Web
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Web
+@using Sparc.Blossom.Authentication
+
+<div class="blossom-authenticator">
+    <AuthorizeView>
+        <Authorized>
+            <figure class="@(context.User.IsAnonymous() ? "loggedout" : "loggedin")" @onclick="BeginLogin">
+                <div class="icon">
+                    <UserIcon LoggedIn="!context.User.IsAnonymous()" />
+
+                </div>
+            </figure>
+        </Authorized>
+        <NotAuthorized>
+        </NotAuthorized>
+    </AuthorizeView>
+</div>
+
+@inject IBlossomAuthenticator Auth
+@code {
+    [CascadingParameter] public ClaimsPrincipal? User { get; set; }
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string? Token { get; set; }
+
+
+    public string? Email;
+
+    ElementReference? LoginInput;
+    string errorMessage = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.User != null || !string.IsNullOrEmpty(Token))
+        {
+            await foreach (var state in Auth.LoginAsync(Token))
+                StateHasChanged();
+        }
+    }
+
+    async Task BeginLogin()
+    {
+        // Attempt autofill signin
+        await foreach (var state in Auth.LoginAsync())
+            StateHasChanged();
+
+        if (Auth.LoginState == LoginStates.LoggedIn)
+            return;
+        
+        Auth.LoginState = LoginStates.ReadyForLogin;
+        StateHasChanged();
+        await Task.Delay(1);
+        if (LoginInput.HasValue)
+            await LoginInput.Value.FocusAsync();
+    }
+
+    async Task LoginAsync()
+    {
+        if (string.IsNullOrWhiteSpace(Email))
+            return;
+
+        await foreach (var state in Auth.LoginAsync(Email))
+            StateHasChanged();
+    }
+
+    async Task LogoutAsync()
+    {
+        await foreach (var state in Auth.LogoutAsync())
+            StateHasChanged();
+    }
+}

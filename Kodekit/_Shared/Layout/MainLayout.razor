@@ -3,13 +3,14 @@
 <BlobBackground ShowCursorShadow="false" />
 @* <CustomCursor IsHomePage="false" />
  *@
-<header>
-    <NavMenu />
-    <hr />
-</header>
+
 
 <CascadingValue Value="User">
     <CascadingValue Value="Kit">
+        <header>
+            <NavMenu />
+            <hr />
+        </header>
         <main class="@(Kit == null ? "no-sidebar" : "")">
             @if (Kit != null)
             {
