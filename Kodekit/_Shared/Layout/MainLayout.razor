@@ -34,7 +34,7 @@
     {
         object? kitId = null;
         if ((this.Body?.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out kitId) == true)
-            Kit = await Kits.Get(kitId);
+            Kit = await Kits.Get(kitId!);
 
         var state = await Auth.GetAuthenticationStateAsync();
         User = state.User;

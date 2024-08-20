@@ -5,8 +5,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>329150da-5a89-409d-94be-570eff81231c</UserSecretsId>
-		<!--<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>-->
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -54,6 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\blossom\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj" />
 	  <ProjectReference Include="..\..\blossom\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj" OutputItemType="Analyzer" />
 	  <ProjectReference Include="..\..\blossom\Sparc.Blossom.Server\Sparc.Blossom.csproj" />
 	</ItemGroup>

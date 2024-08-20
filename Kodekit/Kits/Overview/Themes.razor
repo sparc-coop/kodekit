@@ -38,9 +38,9 @@
 <PageNav KitId="@kitId" PreviousPage="Installation" NextPage="Release Notes" />
 
 @code {
-    [Parameter] public string kitId { get; set; }
+    [Parameter] public required string kitId { get; set; }
 
-    private async Task SelectTheme(string theme)
+    private void SelectTheme(string theme)
     {
         if(theme == "default")
         {

@@ -28,9 +28,9 @@
 </div>
 
 @code {
-    [Parameter] public string KitId { get; set; }
-    [Parameter] public string PreviousPage { get; set; }
-    [Parameter] public string NextPage { get; set; }
+    [Parameter] public required string KitId { get; set; }
+    [Parameter] public required string PreviousPage { get; set; }
+    [Parameter] public required string NextPage { get; set; }
 
     public void GoToPreviousPage()
     {

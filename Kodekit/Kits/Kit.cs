@@ -49,6 +49,12 @@ public class Kit : BlossomEntity<string>
         DateModified = DateTime.UtcNow;
     }
 
+    internal void Delete()
+    {
+        IsDeleted = true;
+        DateModified = DateTime.UtcNow;
+    }
+
     internal void SetUser(string id)
     {
         UserId = id;

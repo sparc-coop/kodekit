@@ -1,5 +1,6 @@
 ﻿namespace Kodekit;
 
+public record TypeScale(double Value, string Name);
 public class Typography : ISerializable
 {
     internal Typography()
@@ -19,17 +20,18 @@ public class Typography : ISerializable
     public double? TypeScale { get; set; }
     public Dictionary<string, string>? FontSizeOverrides { get; set; }
 
-    internal static Dictionary<double, string> TypeScales = new()
-    {
-        { 1.067, "Minor Second" },
-        { 1.125, "Major Second" },
-        { 1.200, "Minor Third" },
-        { 1.250, "Major Third" },
-        { 1.333, "Perfect Fourth" },
-        { 1.414, "Augmented Fourth" },
-        { 1.500, "Perfect Fifth" },
-        { 1.618, "Golden Ratio" }
-    };
+    internal static List<TypeScale> TypeScales = 
+    [
+        new(1.067, "Minor Second"),
+        new(1.125, "Major Second"),
+        new(1.200, "Minor Third"),
+        new(1.250, "Major Third"),
+        new(1.333, "Perfect Fourth"),
+        new(1.414, "Augmented Fourth"),
+        new(1.500, "Perfect Fifth"),
+        new(1.618, "Golden Ratio")
+    ];
+    
 
     public Dictionary<string, string> Serialize()
     {

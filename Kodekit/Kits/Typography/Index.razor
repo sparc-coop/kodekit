@@ -1,0 +1,114 @@
+﻿@page "/kits/{kitId}/typography"
+
+<article>
+    <header>
+        <h2>Base Styles</h2>
+        <h3>Typography</h3>
+        <aside>
+            Set up all of your typography rules here. Choose your fonts, sizes, and weights
+            for your headers, paragraphs, and other text elements.
+        </aside>
+        <hr />
+    </header>
+@* 
+    @if (Kit != null)
+    {
+        <section _="install FadeInOnScroll()">
+            <header>
+                <span>01</span>
+                <h4>Headings</h4>
+                <aside>
+                    Choose the fonts you want to use for your headers, paragraphs, and other text elements.
+                </aside>
+            </header>
+
+            <label class="preview-text">
+                <input @bind=previewText @bind:event="oninput" />
+                Preview Text
+            </label>
+
+            <label>
+                <InputSelect @bind-Value="Kit.Current.Headings.Font.Family">
+                    <option value="">Select a font...</option>
+                    @foreach (var font in Fonts)
+                    {
+                        <option value="@font.Family">
+                            @font.Family
+                        </option>
+                    }
+                </InputSelect>
+                Heading Font
+            </label>
+
+            <label>
+                 <InputFontWeight @bind-Value="Kit.Current.Headings.Font.Weight" />
+                 Default Heading Weight
+            </label>
+
+            <label>
+                <InputNumber @bind-Value="Kit.Current.Headings.Font.Size" />
+                Base Font Size (px)
+            </label>
+
+            <label>
+                <InputSelect @bind-Value="Kit.Current.Headings.TypeScale">
+                    <option value="">Select a type scale...</option>
+                    @foreach (var scale in TypeScales)
+                    {
+                        <option value="@scale.Key">
+                            @scale.Key (@scale.Value)
+                        </option>
+                    }
+                </InputSelect>
+                Headings Type Scale
+            </label>
+
+            <label>
+                <InputNumber @bind-Value="Kit.Current.Headings.Font.LineHeight" min="1" />
+                Base Line Height (%)
+            </label>
+
+            <Preview Kit=kit>
+                <label>Header 1 (H1) - Font Size: @HeadingScale("900")</label>
+                <h1>@previewText</h1>
+                <label>Header 2 (H2) - Font Size: @HeadingScale("800")</label>
+                <h2>@previewText</h2>
+                <label>Header 3 (H3) - Font Size: @HeadingScale("700")</label>
+                <h3>@previewText</h3>
+                <label>Header 4 (H4) - Font Size: @HeadingScale("600")</label>
+                <h4>@previewText</h4>
+                <label>Header 5 (H5) - Font Size: @HeadingScale("500")</label>
+                <h5>@previewText</h5>
+                <label>Header 6 (H6) - Font Size: @HeadingScale("400")</label>
+                <h6>@previewText</h6>
+                <label>Subtitle (.subtitle) - Font Size: @HeadingScale("300")</label>
+                <p class="subtitle">@previewText</p>
+            </Preview>
+        </section>
+    } *@
+</article>
+
+@code {
+    [CascadingParameter] public Kit Kit { get; set; } = default!;
+
+    string previewText = "The quick brown fox jumps over the lazy dog.";
+
+    protected override async Task OnInitializedAsync()
+    {
+        //Fonts = await Fonts.All();
+    }
+
+    // private string HeadingScale(string scale)
+    // {
+    //     return Kit.Current.Headings.T?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
+    //         ? Kit.Heading.TypeScaleValues[$"type-{scale}"]
+    //         : string.Empty;
+    // }
+
+    // private string BodyScale(string scale)
+    // {
+    //     return Model?.Paragraph?.TypeScaleValues?.ContainsKey($"type-{scale}") == true
+    //         ? Model.Paragraph.TypeScaleValues[$"type-{scale}"]
+    //         : string.Empty;
+    // }
+}

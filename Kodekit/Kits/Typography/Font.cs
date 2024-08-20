@@ -1,11 +1,14 @@
 ﻿namespace Kodekit;
 
+public record GoogleFontResponse(List<GoogleFont> Items);
+public record GoogleFont(string Family, string Category);
+public record FontWeight(string Value, string Name);
 public class Font : ISerializable
 {
     internal Font()
     { }
 
-    internal Font(double? size, string? weight, string? family = null, double? lineHeight = null)
+    internal Font(string? family)
     {
         if (family != null)
         {
@@ -13,9 +16,12 @@ public class Font : ISerializable
             var cleanFamily = family.Replace(" ", "+");
             FamilyUrl = $"https://fonts.googleapis.com/css2?family={cleanFamily}&display=swap";
         }
+    }
 
+    internal Font(double? size, string? weight, string? family = null, double? lineHeight = null) : this(family)
+    {
         Size = size.HasValue ? new(size.Value) : null;
-        Weight = weight != null && ValidWeights.ContainsKey(weight) ? weight : "400";
+        Weight = weight != null && ValidWeights.Any(x => x.Value == weight) ? weight : "400";
 
         if (lineHeight.HasValue)
             LineHeight = new(lineHeight.Value);
@@ -27,18 +33,18 @@ public class Font : ISerializable
     public Size? Size { get; set; }
     public Size? LineHeight { get; set; }
 
-    internal static Dictionary<string, string> ValidWeights = new()
-    {
-        { "100", "Thin" },
-        { "200", "Extra-Light" },
-        { "300", "Light" },
-        { "400", "Regular" },
-        { "500", "Medium" },
-        { "600", "Semi-Bold" },
-        { "700", "Bold" },
-        { "800", "Extra-Bold" },
-        { "900", "Black" }
-    };
+    internal static List<FontWeight> ValidWeights =
+    [
+        new("100", "Thin"),
+        new("200", "Extra-Light"),
+        new("300", "Light"),
+        new("400", "Regular"),
+        new("500", "Medium"),
+        new("600", "Semi-Bold"),
+        new("700", "Bold"),
+        new("800", "Extra-Bold"),
+        new("900", "Black")
+    ];
 
     public Dictionary<string, string> Serialize()
     {
