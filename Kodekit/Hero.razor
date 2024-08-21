@@ -16,14 +16,13 @@
     }
 </header>
 
-@inject KitApi Kits
 @code {
     [CascadingParameter] public Sparc.Blossom.Api.Kit? Kit { get; set; }
     [CascadingParameter] public ClaimsPrincipal? User { get; set; }
 
     async Task Create()
     {
-        var kit = await Kits.Create("My First KodeKit", User!.Id());
+        var kit = await Api.Kits.Create("My First KodeKit", User!.Id());
         Nav.NavigateTo($"/kits/{kit.KitId}/home");
     }
 

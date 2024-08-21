@@ -13,8 +13,6 @@
     </div>
 </div>
 
-
-@inject KitApi Kits
 @code {
     [Parameter] public string Show { get; set; } = default!;
     [Parameter] public EventCallback CloseModal { get; set; } 
@@ -27,7 +25,7 @@
 
     private async Task DeleteKit()
     {
-        await Kits.Delete(Kit.KitId);
+        await Api.Kits.Delete(Kit.KitId);
         Nav.NavigateTo("/", forceLoad: true);
         await CloseModal.InvokeAsync();
     }

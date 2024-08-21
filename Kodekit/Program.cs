@@ -5,6 +5,10 @@ BlossomApplication.Run<Html, User>(args,
     builder =>
     {
         builder.Services.AddCosmos<KodekitContext>(builder.Configuration["ConnectionStrings:CosmosDb"]!, "kodekit", ServiceLifetime.Scoped);
+        
+        builder.AddRemoteRepository<GoogleFont, GoogleFontResponse>(
+            "https://www.googleapis.com/webfonts/v1/webfonts?key=" + builder.Configuration["GoogleFontsApiKey"],
+            x => x.Items.Where(y => y.Category == "serif" || y.Category != "sans-serif"));
     },
     app =>
     {

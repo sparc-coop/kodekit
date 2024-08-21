@@ -33,7 +33,7 @@ public class Font : ISerializable
     public Size? Size { get; set; }
     public Size? LineHeight { get; set; }
 
-    internal static List<FontWeight> ValidWeights =
+    public static List<FontWeight> ValidWeights =
     [
         new("100", "Thin"),
         new("200", "Extra-Light"),

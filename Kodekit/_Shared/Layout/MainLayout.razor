@@ -22,8 +22,6 @@
     </CascadingValue>
 </CascadingValue>
 
-@inject IJSRuntime Js
-@inject KitApi Kits
 @inject AuthenticationStateProvider Auth
 @code {
     ClaimsPrincipal? User { get; set; }
@@ -34,7 +32,7 @@
     {
         object? kitId = null;
         if ((this.Body?.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out kitId) == true)
-            Kit = await Kits.Get(kitId!);
+            Kit = await Api.Kits.Get(kitId!);
 
         var state = await Auth.GetAuthenticationStateAsync();
         User = state.User;

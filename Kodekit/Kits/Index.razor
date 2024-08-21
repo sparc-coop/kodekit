@@ -46,8 +46,6 @@
 </div>
 
 @inject IConfiguration Config
-@inject KitApi Kits
-
 @code {
     [CascadingParameter] public ClaimsPrincipal? User { get; set; }
     private IEnumerable<Kit> UserKits = [];
@@ -56,7 +54,7 @@
     protected override async Task OnInitializedAsync()
     {
         IsLoading = true;
-        UserKits = await Kits.All();
+        UserKits = await Api.Kits.All();
         IsLoading = false;
 
         if (!UserKits.Any())
@@ -65,7 +63,7 @@
 
     private async Task CreateNew()
     {
-        var kit = await Kits.Create("Untitled Kit", User?.Id());
+        var kit = await Api.Kits.Create("Untitled Kit", User?.Id());
         GoToKit(kit.KitId);
     }
 
