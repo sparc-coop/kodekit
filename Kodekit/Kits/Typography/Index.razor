@@ -90,6 +90,7 @@
 
 @code {
     [CascadingParameter] public Kit Kit { get; set; } = default!;
+    [Parameter] public required string kitId { get; set; }
 
     string previewText = "The quick brown fox jumps over the lazy dog.";
 
