@@ -77,38 +77,27 @@
     ElementReference? LoginInput;
     string errorMessage = "";
 
-    protected override async Task OnInitializedAsync()
-    {
-        // Load the JS module from the RCL
-        // module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Sparc.Blossom.Passwordless/LoginSignup.js");
-        var test = User;
-
-        // if (Auth.User != null || !string.IsNullOrEmpty(Token))
-        // {
-        //     await foreach (var state in Auth.LoginAsync(Token))
-        //         StateHasChanged();
-        // }
-    }
-
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             await Task.Delay(3000);
 
-            if (Auth.User != null || !string.IsNullOrEmpty(Token))
+            if (!string.IsNullOrEmpty(Token))
             {
                 await foreach (var state in Auth.LoginAsync(User, Token))
                     StateHasChanged();
             }
-            var test = await Auth.GetAsync(User);
-            var name = Auth.User.Username;
-            // var name = User.FindFirst(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-            Regex validateGuidRegex = new Regex("^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$");
-            if (!String.IsNullOrEmpty(name) && !validateGuidRegex.IsMatch(name))
+            else
             {
-                Auth.LoginState = LoginStates.LoggedIn;
-                StateHasChanged();
+                var test = await Auth.GetAsync(User);
+                var name = Auth.User.Username;
+                Regex validateGuidRegex = new Regex("^(?:\\{{0,1}(?:[0-9a-fA-F]){8}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){4}-(?:[0-9a-fA-F]){12}\\}{0,1})$");
+                if (!String.IsNullOrEmpty(name) && !validateGuidRegex.IsMatch(name))
+                {
+                    Auth.LoginState = LoginStates.LoggedIn;
+                    StateHasChanged();
+                }
             }
         }
     }
@@ -140,7 +129,10 @@
 
     async Task LogoutAsync()
     {
-        await foreach (var state in Auth.LogoutAsync())
+        await foreach (var state in Auth.LogoutAsync(User))
             StateHasChanged();
+
+        Auth.LoginState = LoginStates.LoggedOut;
+        StateHasChanged();
     }
 }

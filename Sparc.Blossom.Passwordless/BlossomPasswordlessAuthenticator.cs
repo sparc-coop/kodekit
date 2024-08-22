@@ -91,7 +91,18 @@ namespace Sparc.Blossom.Passwordless
                     yield break;
                 }
 
-                emailOrToken = await GetOrCreatePasswordlessUserAsync(User);
+                var passwordlessResult = await GetOrCreatePasswordlessUserAsync(User);
+
+                if (!String.IsNullOrEmpty(passwordlessResult))
+                {
+                    emailOrToken = passwordlessResult;
+                }
+            }
+
+            if (LoginState == LoginStates.AwaitingMagicLink)
+            {
+                yield return LoginState;
+                yield break;
             }
 
             LoginState = LoginStates.VerifyingToken;
@@ -101,7 +112,7 @@ namespace Sparc.Blossom.Passwordless
             {
                 if (isMagicLinkReturn)
                 {
-                    await GetOrCreatePasswordlessUserAsync(User);
+                    await GetOrCreatePasswordlessUserAsync(User, isMagicLinkReturn);
                 }
                 LoginState = LoginStates.LoggedIn;
                 yield return LoginState;
@@ -133,20 +144,32 @@ namespace Sparc.Blossom.Passwordless
 
             return user;
         }
-        private async Task<string> GetOrCreatePasswordlessUserAsync(BlossomUser user)
+        private async Task<string> GetOrCreatePasswordlessUserAsync(BlossomUser user, bool isMagicLinkReturn = false)
         {
             var js = await Js.Value;
+            
+            var hasPassKey = await HasPasskeys(user);
+            string token = "";
 
-            try
-            {
-                return await HasPasskeys(user)
-                    ? await js.InvokeAsync<string>("signInWithPasskey", user.Username)
-                    : await SignUpWithPasskeyAsync(user);
+            if (hasPassKey && !isMagicLinkReturn)
+            {                
+                token = await js.InvokeAsync<string>("signInWithPasskey", user.Username);
             }
-            catch
+            else
             {
-                return await SignUpWithPasskeyAsync(user);
+                if (!hasPassKey)
+                {
+                    token = await SignUpWithPasskeyAsync(user);
+                }
             }
+
+            if (token == null && !isMagicLinkReturn)
+            {
+                await SendMagicLinkAsync(user.Username, $"{Nav.Uri}?token=$TOKEN", user.ExternalId);
+                LoginState = LoginStates.AwaitingMagicLink;
+            }
+
+            return token;
         }
         private async Task<string> SignUpWithPasskeyAsync(BlossomUser user)
         {
@@ -181,7 +204,7 @@ namespace Sparc.Blossom.Passwordless
         }
         public async Task<BlossomUser?> LoginWithTokenAsync(string token, ClaimsPrincipal principal)
         {
-            var testete = await GetAsync(principal);
+            var user = await GetAsync(principal);
 
             var verifiedUser = await PasswordlessClient.VerifyTokenAsync(token);
             if (verifiedUser?.Success != true)
@@ -196,6 +219,18 @@ namespace Sparc.Blossom.Passwordless
             await Users.UpdateAsync(User as T);
 
             return parentUser;
+        }
+        public override async IAsyncEnumerable<LoginStates> LogoutAsync(ClaimsPrincipal principal)
+        {
+            var user = await GetAsync(principal);
+
+            User.Username = "";
+            User.ParentUserId = null;
+            User.ExternalId = null;
+
+            await Users.UpdateAsync(User as T);
+
+            yield return LoginStates.LoggedOut;
         }
     }
 }
