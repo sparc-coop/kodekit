@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         where TUser : BlossomUser, new()
     {
         var passwordlessSettings = builder.Configuration.GetRequiredSection("Passwordless");
+        builder.Services.AddScoped<LanguageSelector>();
         builder.Services.Configure<PasswordlessOptions>(passwordlessSettings);
         builder.Services.AddPasswordlessSdk(passwordlessSettings.Bind);
 
