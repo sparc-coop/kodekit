@@ -56,5 +56,6 @@
 	  <ProjectReference Include="..\..\blossom\Sparc.Blossom.Core\Sparc.Blossom.Core.csproj" />
 	  <ProjectReference Include="..\..\blossom\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj" OutputItemType="Analyzer" />
 	  <ProjectReference Include="..\..\blossom\Sparc.Blossom.Server\Sparc.Blossom.csproj" />
+	  <ProjectReference Include="..\Sparc.Blossom.Passwordless\Sparc.Blossom.Passwordless.csproj" />
 	</ItemGroup>
 </Project>
