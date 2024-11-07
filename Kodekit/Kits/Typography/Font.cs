@@ -1,7 +1,12 @@
 ﻿namespace Kodekit;
 
 public record GoogleFontResponse(List<GoogleFont> Items);
-public record GoogleFont(string Family, string Category);
+public class GoogleFont : BlossomEntity<string>
+{
+    public required string Family { get; set; }
+    public required string Category { get; set; }
+}
+
 public record FontWeight(string Value, string Name);
 public class Font : ISerializable
 {

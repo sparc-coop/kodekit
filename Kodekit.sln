@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.ApiGenerator"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Authentication.Passwordless", "..\blossom\Sparc.Blossom.Authentication.Passwordless\Sparc.Blossom.Authentication.Passwordless.csproj", "{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Data.Cosmos", "..\blossom\Sparc.Blossom.Data.Cosmos\Sparc.Blossom.Data.Cosmos.csproj", "{04256211-E60D-4B5B-A839-1BF5F0F82068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Kori", "..\kori\Sparc.Kori\Sparc.Kori.csproj", "{55EAD3D1-E242-4A6E-8F74-7C2154FC2107}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04256211-E60D-4B5B-A839-1BF5F0F82068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04256211-E60D-4B5B-A839-1BF5F0F82068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04256211-E60D-4B5B-A839-1BF5F0F82068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04256211-E60D-4B5B-A839-1BF5F0F82068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55EAD3D1-E242-4A6E-8F74-7C2154FC2107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55EAD3D1-E242-4A6E-8F74-7C2154FC2107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55EAD3D1-E242-4A6E-8F74-7C2154FC2107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55EAD3D1-E242-4A6E-8F74-7C2154FC2107}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +76,8 @@ Global
 		{BC4C6BC8-9F59-4306-ABB4-3A8292BFCF06} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
 		{025D838C-E513-4CDE-805C-F03B0CE75299} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
 		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
+		{04256211-E60D-4B5B-A839-1BF5F0F82068} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
+		{55EAD3D1-E242-4A6E-8F74-7C2154FC2107} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B62532E-4EEB-4BBA-BCFC-8047EA9EBBB5}

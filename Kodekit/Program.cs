@@ -1,7 +1,6 @@
 using Kodekit;
 using Microsoft.EntityFrameworkCore;
-using Sparc.Blossom.Authentication;
-using Sparc.Blossom.Passwordless;
+using Sparc.Blossom.Authentication.Passwordless;
 
 BlossomApplication.Run<Html, User>(args,
     builder =>
