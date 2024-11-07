@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.Core", "..\bl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sparc.Blossom.ApiGenerator", "..\blossom\Sparc.Blossom.Server.ApiGenerator\Sparc.Blossom.ApiGenerator.csproj", "{025D838C-E513-4CDE-805C-F03B0CE75299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Passwordless", "Sparc.Blossom.Passwordless\Sparc.Blossom.Passwordless.csproj", "{D33712CC-0377-4278-A26B-2351EEC259D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparc.Blossom.Authentication.Passwordless", "..\blossom\Sparc.Blossom.Authentication.Passwordless\Sparc.Blossom.Authentication.Passwordless.csproj", "{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,10 @@ Global
 		{025D838C-E513-4CDE-805C-F03B0CE75299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{025D838C-E513-4CDE-805C-F03B0CE75299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{025D838C-E513-4CDE-805C-F03B0CE75299}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D33712CC-0377-4278-A26B-2351EEC259D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D33712CC-0377-4278-A26B-2351EEC259D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D33712CC-0377-4278-A26B-2351EEC259D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D33712CC-0377-4278-A26B-2351EEC259D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,7 +63,7 @@ Global
 		{AF4146B8-6BC5-427A-8F6B-9AF82790C04E} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
 		{BC4C6BC8-9F59-4306-ABB4-3A8292BFCF06} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
 		{025D838C-E513-4CDE-805C-F03B0CE75299} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
-		{D33712CC-0377-4278-A26B-2351EEC259D2} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
+		{3623C4BF-ED12-4B26-9BA4-9BC9D2BE62E4} = {C6E8232B-51B9-427D-9A08-36B5C8D67D8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B62532E-4EEB-4BBA-BCFC-8047EA9EBBB5}
