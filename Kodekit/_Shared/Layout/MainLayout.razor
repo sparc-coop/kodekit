@@ -5,27 +5,23 @@
  *@
 
 
-<CascadingValue Value="User">
-    <CascadingValue Value="Kit">
-        <header>
-            <NavMenu />
-            <hr />
-        </header>
-        <main class="@(Kit == null ? "no-sidebar" : "")">
-            @if (Kit != null)
-            {
-                <KitNavigation />
-            }
-            <div @ref=Main>
-                @Body
-            </div>
-        </main>
-    </CascadingValue>
+<CascadingValue Value="Kit">
+    <header>
+        <NavMenu />
+        <hr />
+    </header>
+    <main class="@(Kit == null ? "no-sidebar" : "")">
+        @if (Kit != null)
+        {
+            <KitNavigation />
+        }
+        <div @ref=Main>
+            @Body
+        </div>
+    </main>
 </CascadingValue>
 
-@inject AuthenticationStateProvider Auth
 @code {
-    ClaimsPrincipal? User { get; set; }
     Kit? Kit;
     ElementReference Main;
 
@@ -34,9 +30,6 @@
         object? kitId = null;
         if ((this.Body?.Target as RouteView)?.RouteData.RouteValues?.TryGetValue("kitId", out kitId) == true)
             Kit = await Api.Kits.Get(kitId!);
-
-        var state = await Auth.GetAuthenticationStateAsync();
-        User = state.User;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
